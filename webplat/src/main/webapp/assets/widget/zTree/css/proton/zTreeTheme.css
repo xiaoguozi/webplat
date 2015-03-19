@@ -1,0 +1,321 @@
+.ztree *{font-size: 14px;font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+
+.ztree li{
+    line-height: 26px;
+/*    background-image: url("d2.png");
+    background-color: transparent;
+    background-size: 108px 96px;
+    background-position: -90px 0;
+    background-repeat: repeat-y;
+    min-height: 24px;*/
+}
+
+.ztree li span.button{
+    background-image: url("d2.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 108px 96px;
+    width: 18px;
+    height: 18px;
+}
+
+.ztree li span.button.switch{
+    vertical-align: top  
+}
+
+.ztree li ul.line{
+    background-image: url("d2.png");
+    background-color: transparent;
+    background-size: 108px 96px;
+    background-position: -90px 0;
+    background-repeat: repeat-y;
+    min-height: 24px;
+}
+
+.ztree li a{
+    position: relative;
+    top: -6px;
+    max-width: 85%;
+    display: inline-block;
+    height: 24px;
+    padding: 4px 6px 3px;
+    font-size: 14px;
+    line-height: 15px;
+    vertical-align: middle;
+    border-radius: 3px;
+    color: inherit;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration:none;
+}
+
+
+.ztree li a:hover{
+    background: #76b6ec;
+    color: #fff;
+    text-decoration:none;
+}
+
+
+.ztree li a.curSelectedNode{
+    background: #3392e3;
+    color: #fff;
+    border:0;
+    position: relative;
+    top: -6px;
+    max-width: 85%;
+    display: inline-block;
+    height: 24px;
+    padding: 4px 6px 3px;
+    font-size: 14px;
+    line-height: 15px;
+    vertical-align: middle;
+    border-radius: 3px;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration:none;
+}
+
+.ztree li span.button.ico_docu{
+    background-image: url("glyphicons-halflings_yellow.png");
+    background-position: -24px -24px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.ico_open{
+    background-image: url("glyphicons-halflings_blue.png");
+    background-position: -408px -120px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.ico_close{
+    background-image: url("glyphicons-halflings_blue.png");
+    background-position: -384px -120px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.bottom_docu{
+    background-position: -36px 0;
+}
+
+.ztree li span.button.bottom_open{
+    background-position: -72px 0;
+}
+
+.ztree li span.button.bottom_close{
+    background-position: -54px 0;
+}
+
+.ztree li span.button.center_docu{
+    background-position: -36px 0;
+}
+
+.ztree li span.button.center_open{
+    background-position: -72px 0;
+}
+
+.ztree li span.button.center_close{
+    background-position: -54px 0;
+}
+
+.ztree li span.button.roots_open{
+    background-position: -72px 0;
+}
+
+.ztree li span.button.roots_close{
+    background-position: -54px 0;
+}
+
+.ztree li span.button.noline_open{
+    background-position: -18px 0;
+}
+
+.ztree li span.button.noline_close{
+    background-position: 0 0;
+}
+
+
+.ztree li span.button.add{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -408px -96px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+}
+.ztree li span.button.edit{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -96px -72px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+}
+.ztree li span.button.remove{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -312px -0px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+}
+
+
+.ztree li span.button.glyphicons_folder_ico_open{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -408px -120px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_folder_ico_close{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -384px -120px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_file_ico_close{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -48px -48px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_file_ico_open{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -48px -48px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_file_ico_docu{
+    background-image: url("glyphicons-halflings.png");
+    background-position: -24px -24px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_tag_ico_docu{
+    background-image: url("glyphicons-halflings_green.png");
+    background-position: -0px -48px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+
+.ztree li span.button.glyphicons_multitag_ico_docu{
+    background-image: url("glyphicons-halflings_blue.png");
+    background-position: -24px -48px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li span.button.glyphicons_multitag_ico_open, .ztree li span.button.glyphicons_multitag_ico_close{
+    background-image: url("glyphicons-halflings_blue.png");
+    background-position: -24px -48px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+
+.ztree li span.button.glyphicons_green_ico_docu{
+    background-image: url("glyphicons-halflings_green.png");
+    background-position: -24px -24px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+
+.ztree li span.button.glyphicons_yellow_ico_docu{
+    background-image: url("glyphicons-halflings_yellow.png");
+    background-position: -24px -24px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 469px 159px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+}
+
+.ztree li a input.rename {margin:4px;
+    border:1px #7EC4CC solid; *border:0px;
+
+    position: relative;
+    top: -6px;
+    max-width: 85%;
+    display: inline-block;
+    height: 20px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 15px;
+    vertical-align: middle;
+    border-radius: 3px;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration:none;
+
+}

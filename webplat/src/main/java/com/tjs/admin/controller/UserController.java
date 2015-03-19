@@ -83,15 +83,24 @@ public class UserController {
         return "admin/user/login";
     }
     
-
-    /**
-     * index页
-     */
     @RequestMapping("/index")
     public String index() {
         return "admin/user/index";
     }
+    
+    @RequestMapping("/listDataCount")
+    @ResponseBody
+    public String listDataCount() {
+        return "100";
+    }
 
+    
+    @RequestMapping("/listData")
+    public String listData() {
+        return "admin/user/listData";
+    }
+    
+    
     /**
      * 基于角色 标识的权限控制案例
      */
