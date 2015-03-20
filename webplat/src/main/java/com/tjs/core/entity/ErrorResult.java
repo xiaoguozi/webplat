@@ -15,7 +15,7 @@ public class ErrorResult extends Result {
     /**
      * 封装多个 错误信息
      */
-    private Map<String, Object> errors = new HashMap<>();
+    private Map<String, Object> errors = new HashMap<String, Object>();
 
     public Map<String, Object> getErrors() {
         return errors;
