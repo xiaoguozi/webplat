@@ -237,7 +237,7 @@ var Btk = {};
                 $form.find("input[disabled-field]").prop('disabled', false);
                 $form.ajaxSubmit(function(_data){
                     l.stop();
-                    var data = eval('('+_data+')');
+                    var data = _data;//eval('('+_data+')');
                     Btk.messageData(data);
                     if("0"!=data.code){
                         $form.find("input[disabled-field]").prop('disabled', true);

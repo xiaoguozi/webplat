@@ -233,4 +233,14 @@
             order by ${orderByClause}
         </if>
     </select>
+    
+    <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from user
+    </select>
+     <select id="selectListCount" parameterType="com.tjs.admin.model.UserExample" resultType="java.lang.Integer">
+        select count(*) as total from user
+       
+    </select>
 </mapper>

@@ -1,0 +1,10 @@
+
+.pagination { margin: 0px; vertical-align: bottom; }
+
+.pagination-span { padding: 8px 0; }
+
+.pagination-field { margin: 0 5px; width: 80px; }
+
+.pagination-btn { cursor: pointer; }
+
+.pagination-field .form-control { padding: 6px 2px; }

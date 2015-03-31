@@ -22,6 +22,11 @@ $.fn.BtkPagination =function(options) {
             }
             pageListHtml += opts.pagelinkpost + opts.pagelinklast;
         }
+
+        if(opts.showMode == 'simple'){
+            opts.paginationtemplate = '<ul class="pagination pull-left">#pageListHtml#</ul>'
+                +'<span class="pagination-span pull-right"> 共 #totalCount#条 · #totalPageNo#页</span>';
+        }
         
         var paginationHtml = opts.paginationtemplate.replace(new RegExp("#pageListHtml#", "gm"), pageListHtml)
                 .replace(new RegExp("#pageSize#", "gm"), opts.pageSize)
@@ -40,7 +45,7 @@ $.fn.BtkPagination =function(options) {
             currentPageNo = Number($(this).attr('pageNo'));
 
             //调用回调函数
-            typeof opts.loadPaginationData == 'function' && opts.loadPaginationData.call(this,currentPageNo);
+            typeof opts.loadPaginationData == 'function' && opts.loadPaginationData.call(this,currentPageNo,opts.pageSize);
 
             $this.find("li").removeClass("active");
             $(this).parent().addClass("active");
@@ -62,7 +67,7 @@ $.fn.BtkPagination =function(options) {
             }
 
             //设置页面跳转数字
-            $this.find("#pagination-pageNo :input").val(currentPageNo);
+            $this.find("input[name=pageNo]").val(currentPageNo);
 
             return false;
         });
@@ -131,9 +136,9 @@ $.fn.BtkPagination =function(options) {
         });
 
         //设置页数刷新功能
-        $this.find("#pagination-pageSize span.refreshBtn").click(function(event) {
+        $this.find("span.refreshBtn").click(function(event) {
             event.preventDefault();
-            $input = $this.find("#pagination-pageSize :input");
+            $input = $this.find("input[name=pageSize]");
             refreshPageSize = $input.val();
             //只能输入正整数
             var re = /^[1-9]+[0-9]*]*$/;
@@ -151,9 +156,9 @@ $.fn.BtkPagination =function(options) {
         });
 
         //设置页数跳转功能
-        $this.find("#pagination-pageNo span.jumpBtn").click(function(event) {
+        $this.find("span.jumpBtn").click(function(event) {
             event.preventDefault();
-            $input = $this.find("#pagination-pageNo :input");
+            $input = $this.find("input[name=pageNo]");
             jumpPageNo = $input.val();
             //只能输入正整数
             var re = /^[1-9]+[0-9]*]*$/;
@@ -195,7 +200,7 @@ $.fn.BtkPagination =function(options) {
             if(displayPageCount > 0){
                 $this.find("a[pageNo="+currentPageNo+"]").click();
             }else{
-                typeof opts.loadPaginationData == 'function' && opts.loadPaginationData.call(this,0);            
+                typeof opts.loadPaginationData == 'function' && opts.loadPaginationData.call(this,0,opts.pageSize);            
             }
         }
        
@@ -208,21 +213,22 @@ $.fn.BtkPagination =function(options) {
 
 $.fn.BtkPagination.defaults = {
     pageSize:20,
-    displayPage:8,
+    displayPage:5,
     totalCount: 0,
     loadPaginationData: null,
     loadData: null,
     defaultLoad: true,
+    showMode: "full",
     paginationtemplate: '<ul class="pagination pull-left">#pageListHtml#</ul>'
         +'<span class="pagination-span pull-right"> 条·共 #totalCount# 条·共 #totalPageNo# 页</span>'
-        +'<div id="pagination-pageSize" class="input-group pull-right">'
-        +'<input type="number" class="form-control" value="#pageSize#"/>'
-        +'<span class="input-group-addon refreshBtn" title="刷新">'
+        +'<div class="pagination-field input-group pull-right">'
+        +'<input type="number" name="pageSize" class="form-control" value="#pageSize#"/>'
+        +'<span class="input-group-addon pagination-btn refreshBtn" title="刷新">'
         +'<span class="glyphicon glyphicon-refresh"></span></span></div>'
         +'<span class="pagination-span pull-right">页·每页 </span>'
-        +'<div id="pagination-pageNo" class="input-group pull-right">'
-        +'<input type="text" class="form-control" value="1"/>'
-        +'<span class="input-group-addon jumpBtn" title="跳至">'
+        +'<div class="pagination-field input-group pull-right">'
+        +'<input type="text" name="pageNo" class="form-control" value="1"/>'
+        +'<span class="input-group-addon pagination-btn jumpBtn" title="跳至">'
         +'<span class="glyphicon glyphicon-step-forward"></span></span></div>'
         +'<span class="pagination-span pull-right">跳至 </span>',
     pagelinkfirst : '<li class="firstPage" title="首页"><a href="#" ><span class="glyphicon glyphicon-fast-backward"></span></a></li>',
