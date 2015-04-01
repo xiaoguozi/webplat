@@ -22,13 +22,13 @@
         <input type="hidden" name="id" value="${user.id}">
 
         <div class="form-group">
-            <label for="input-sDsName" class="col-md-3 control-label">username</label>
+            <label class="col-md-3 control-label">username</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="username" value="${user.username}" >
             </div>
         </div>
         <div class="form-group">
-            <label for="input-sHost" class="col-md-3 control-label">password</label>
+            <label class="col-md-3 control-label">password</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="password" value="${user.password}"  >
             </div>
