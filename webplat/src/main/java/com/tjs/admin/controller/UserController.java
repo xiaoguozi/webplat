@@ -1,5 +1,10 @@
 package com.tjs.admin.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -90,17 +95,79 @@ public class UserController {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public String listDataCount() {
-        return "100";
+    public Map<String, Integer> listDataCount() {
+    	Map<String, Integer> result = new HashMap<String, Integer>();
+    	
+    	Integer total = userService.selectListCount();
+    	
+    	result.put("total", total);
+    	
+        return result;
     }
 
     
     @RequestMapping("/listData")
-    public String listData() {
+    public String listData(UserCtrlModel userCtrlModel, Model model) {
+    	List<User> showData = new ArrayList<User>();
+    	showData = userService.selectList();
+    	
+    	model.addAttribute("showData", showData);
+		model.addAttribute("ctrlData", userCtrlModel);
+    	
         return "admin/user/listData";
     }
     
-    
+    @RequestMapping("/insert")
+    public String insert(User user, UserCtrlModel userCtrlModel, Model model) {
+    	user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", userCtrlModel);
+        return "admin/user/insert";
+    }
+  
+
+    @RequestMapping("/insertData")
+    @ResponseBody
+    public Map<String, Object> insertData(User user, UserCtrlModel userCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	int id = userService.insert(user);
+    	result.put("code", "0");
+    	result.put("bizData", user);
+    	
+        return result;
+    }
+
+
+    @RequestMapping("/update")
+    public String update(User user, UserCtrlModel userCtrlModel, Model model) {
+    	//user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", userCtrlModel);
+        return "admin/user/update";
+    }
+  
+
+    @RequestMapping("/updateData")
+    @ResponseBody
+    public Map<String, Object> updateData(User user, UserCtrlModel userCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	//int id = userService.insert(user);
+    	result.put("code", "0");
+    	result.put("bizData", user);
+    	
+        return result;
+    }
+
+
+    @RequestMapping("/view")
+    public String view(User user, UserCtrlModel userCtrlModel, Model model) {
+    	//user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", userCtrlModel);
+        return "admin/user/view";
+    }
+  
+
     /**
      * 基于角色 标识的权限控制案例
      */

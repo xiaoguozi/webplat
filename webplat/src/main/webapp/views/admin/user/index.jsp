@@ -1,32 +1,20 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ include file="/views/admin/include.jsp"%>
+<%@page contentType="text/html;charset=UTF-8"%>
 
+<div class="row" >
+    <div class="col-md-12">
 
+<div id="listDiv">
 <!-- BEGIN PAGE HEADER-->
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title" id="index-page-title">用户管理</h3>
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="#">首页</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">系统管理</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">用户管理</a>
-            </li>
-        </ul>
+        
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
 </div>
 <!-- END PAGE HEADER-->
-
-<div id="listDiv" class="row" >
-    <div class="col-md-12">
 
 <div class="row">
     <div class="col-md-12">
@@ -74,10 +62,12 @@
     </div>
 </div>
 
+</div>
+
+<div id="modalDiv" class="hidden" >
+</div>
 
     </div>
-</div>
-<div id="modalDiv" class="container hidden" >
 </div>
 
 <script type="text/javascript">

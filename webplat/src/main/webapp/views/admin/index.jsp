@@ -1,11 +1,10 @@
+<%@ include file="/views/admin/include.jsp"%>
+<%@page contentType="text/html;charset=UTF-8"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -16,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <head>
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
-        <title>TJS</title>
+        <title>淘金山管理系统</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="" name="description" />
@@ -55,6 +54,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <link rel="stylesheet" href="assets/widget/bootstrap-notify/css/styles/alert-blackgloss.css">
     <link rel="stylesheet" href="assets/widget/bootstrap-notify/css/styles/alert-notification-animations.css">
     <link rel="stylesheet" href="assets/widget/kindeditor/themes/default/default.css">
+    
+    <link rel="stylesheet" href="assets/css/admin-index.css">
 <!-- END CUSTOM CSS IMPORT -->
         <link rel="shortcut icon" href="app/img/favicon.ico" />
     </head>
@@ -295,12 +296,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!-- BEGIN FOOTER -->
         <div class="footer">
             <div class="footer-inner">
-                2014 &copy; TJS Company.
+                2015 &copy; TJS Company.
             </div>
             <div class="footer-tools">
                 <span class="go-top"><i class="fa fa-angle-up"></i></span>
             </div>
         </div>
+        
+        
+		<div id="notifications" class='notifications center'></div>
         <!--[if lt IE 9]>
         <script src="assets/plugins/respond.min.js"></script>
         <script src="assets/plugins/excanvas.min.js"></script>
@@ -320,6 +324,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <!-- BEGIN CUSTOM JS IMPORT -->
 	    <script src="assets/widget/jquery.metadata.js" charset="utf-8"></script>
+	    <script src="assets/widget/spin.min.js" charset="utf-8"></script>
 	    <script src="assets/widget/ladda/js/ladda.min.js" charset="utf-8"></script>
 	    <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 	    <script src="assets/widget/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" charset="utf-8"></script>

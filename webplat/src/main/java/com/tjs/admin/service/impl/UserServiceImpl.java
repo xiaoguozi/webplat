@@ -62,5 +62,15 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
         final List<User> list = userMapper.selectByExample(example);
         return list.get(0);
     }
-
+    
+    @Override
+    public List<User> selectList() {
+    	return userMapper.selectList();
+    }
+    
+    @Override
+    public Integer selectListCount() {
+    	return userMapper.selectListCount();
+    }
+    
 }
