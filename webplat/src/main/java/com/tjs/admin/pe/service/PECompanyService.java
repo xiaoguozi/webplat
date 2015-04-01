@@ -19,4 +19,6 @@ public interface PECompanyService  {
 	int updatePECompany(PECompany peCompany);
 	
 	List<PECompany> getPECompanyList();
+	
+	Integer selectListCount();
 }

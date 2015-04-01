@@ -21,6 +21,7 @@ public interface PECompanyMapper  {
 	int updatePECompany(PECompany peCompany);
 	
 	List<PECompany> getPECompanyList();
-   
+	
+	Integer selectListCount();
 
 }

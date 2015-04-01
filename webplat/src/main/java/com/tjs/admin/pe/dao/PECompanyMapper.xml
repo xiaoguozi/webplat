@@ -49,5 +49,9 @@
        SELECT * FROM private_placement_company
    </select>
    
+   <select id="selectListCount" parameterType="com.tjs.admin.pe.model.PECompany" resultType="java.lang.Integer">
+   		SELECT count(*) AS total
+   		FROM private_placement_company
+    </select>
     
 </mapper>

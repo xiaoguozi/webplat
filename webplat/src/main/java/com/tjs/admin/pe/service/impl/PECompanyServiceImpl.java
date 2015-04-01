@@ -53,4 +53,9 @@ public class PECompanyServiceImpl implements
 		return lstResult;
 	}
 
+	@Override
+	public Integer selectListCount() {
+		return peCompanyMapper.selectListCount();
+	}
+
 }
