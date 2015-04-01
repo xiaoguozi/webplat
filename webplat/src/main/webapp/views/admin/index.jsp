@@ -153,6 +153,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         权限管理
                                     </a>
                                 </li>
+                                 <li>
+                                    <a href="rest/admin/pe/peCompany/index">
+                                        私募公司管理
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
