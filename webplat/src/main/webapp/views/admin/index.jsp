@@ -342,6 +342,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    <script src="assets/widget/bootstrap-modal/js/bootstrap-modalmanager.js" charset="utf-8"></script>
 	    <script src="assets/widget/bootstrap-modal/js/bootstrap-modal.js" charset="utf-8"></script>
 	    <script src="assets/widget/bootstrap-prompts-alert.js" charset="utf-8"></script>
+	    <script src="assets/widget/jquery-inputmask/min/jquery.inputmask.js" charset="utf-8"></script>
+    	<script src="assets/widget/jquery-inputmask/min/jquery.inputmask.date.extensions.js" charset="utf-8"></script>
+    
 	    <script src="assets/widget/bootstrap-notify/js/bootstrap-notify.js" charset="utf-8"></script>
 	    <script src="assets/widget/kindeditor/kindeditor-min.js" charset="utf-8"></script>
 	    <script src="assets/widget/kindeditor/lang/zh_CN.js" charset="utf-8"></script>

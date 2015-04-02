@@ -1,6 +1,9 @@
 package com.tjs.admin.pe.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,14 +13,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tjs.admin.controller.UserCtrlModel;
-import com.tjs.admin.model.User;
+import com.alibaba.druid.util.StringUtils;
 import com.tjs.admin.pe.model.PECompany;
-import com.tjs.admin.pe.model.PECompanyCtrlModel;
 import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.core.util.StringExtUtils;
 
 /**
  *@author zhsoft
@@ -33,20 +34,31 @@ public class PECompanyController {
 	
 	@RequestMapping("/index")
     public String index() {
-        return "admin/pe/peCompanyIndex";
+        return "admin/pe/peCompany/index";
     }
 	
 	@RequestMapping("/insert")
     public String insert(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	model.addAttribute("peCompany", peCompany);
     	model.addAttribute("ctrlData", peCompanyCtrlModel);
-        return "admin/pe/peCompanyInsert";
+        return "admin/pe/peCompany/insert";
     }
 	
-	@RequestMapping("/insertData")        
+    @RequestMapping("/insertData")
     @ResponseBody
     public Map<String, Object> insertData(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	String setupTimeStr = peCompanyCtrlModel.getSetupTimeStr();
+    	if(StringExtUtils.isNotBlank(setupTimeStr)){
+    		try {
+    			Date setupTime = sdf.parse(setupTimeStr);
+    			peCompany.setSetupTime(setupTime);
+    		} catch (ParseException e) {
+    			//e.printStackTrace();
+    		}
+    	}
+    	
     	int id = peCompanyService.insertPECompany(peCompany);
     	result.put("code", "0");
     	result.put("bizData", peCompany);
@@ -63,7 +75,7 @@ public class PECompanyController {
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peCompanyCtrlModel);
     	
-        return "admin/pe/peCompanyListData";
+        return "admin/pe/peCompany/listData";
     }
 	
 	@RequestMapping("/listDataCount")

@@ -1,5 +1,6 @@
-package com.tjs.admin.pe.model;
+package com.tjs.admin.pe.controller;
 
+import com.tjs.admin.pe.model.PECompany;
 import com.tjs.core.generic.GenericCtrlModel;
 
 /**
@@ -11,8 +12,18 @@ import com.tjs.core.generic.GenericCtrlModel;
 public class PECompanyCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
+
+	private String setupTimeStr;
 	
 	private PECompany peCompany;
+
+	public String getSetupTimeStr() {
+		return setupTimeStr;
+	}
+
+	public void setSetupTimeStr(String setupTimeStr) {
+		this.setupTimeStr = setupTimeStr;
+	}
 
 	public String getKeyWord() {
 		return keyWord;

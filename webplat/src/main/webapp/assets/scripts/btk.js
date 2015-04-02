@@ -265,10 +265,9 @@ var Btk = {};
             forceParse: 0,
             pickerPosition:'bottom-left'
         });
-        $this.each(function() {
-            $(this).find('input:text').inputmask($(this).attr("data-date-format"));
-            //$(this).find('input:text').inputmask();
-        });
+//        $this.each(function() {
+//            $(this).find('input:text').inputmask($(this).attr("data-date-format"));
+//        });
     };  
 
 
