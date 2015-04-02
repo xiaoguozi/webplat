@@ -1,0 +1,1 @@
+/*init Table data sql */
