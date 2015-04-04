@@ -1,6 +1,9 @@
 package com.tjs.admin.xintuo.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtgsService;
@@ -24,55 +28,93 @@ public class XinTuoGsControler {
 	 @Resource
 	 private IProductXtgsService iProductXtService;
 
-    
-      
-    /**
-     * 系统公司List
-     * @return
-     */
-    @RequestMapping(value = "/xtgsList")
-    public String xtgsList(Model model) {
-    	 List<ProductXtgs> lstProductGs = iProductXtService.selectProductXtgs();
-         model.addAttribute("lstProductGs", lstProductGs);
-        return "admin/xintuo/xtgsList";
+       
+    @RequestMapping("/xtgsIndex")
+    public String xtgsIndex() {
+        return "admin/xintuo/xtgsIndex";
     }
     
-    
-    
-    /**
-     * 信托公司详细信息初始化
-     * @return
-     */
-    @RequestMapping(value = "/initXtgs")
-    public String initXtgs(Model model ,@RequestParam(value="xtgsId",required=false) Long xtgsId) {  
+    @RequestMapping("/listDataCount")
+    @ResponseBody
+    public Map<String, Integer> listDataCount() {
+    	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	System.err.println(">>>>>123");
-    	ProductXtgs productXtgs =  new ProductXtgs();
-    	if(xtgsId!=null){
-    		productXtgs = iProductXtService.findByProductXtgsId(xtgsId);
-    	}    	
-    	model.addAttribute("productXtgs", productXtgs);
+    	Integer total = iProductXtService.countProductXtgs(null);
     	
-        return "admin/xintuo/xtgsDetail";
+    	result.put("total", total);
+    	
+        return result;
+    }
+
+    
+    @RequestMapping("/listData")
+    public String listData(XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	List<ProductXtgs> showData = new ArrayList<ProductXtgs>();
+    	showData = iProductXtService.selectProductXtgs();
+    	
+    	model.addAttribute("showData", showData);
+		model.addAttribute("ctrlData", xintuoGsCtrlModel);
+    	
+        return "admin/xintuo/gsListData";
+    }
+    
+    @RequestMapping("/insert")
+    public String insert(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	
+    	model.addAttribute(productXtgs);
+    	model.addAttribute("ctrlData", xintuoGsCtrlModel);
+        return "admin/xintuo/insertGs";
+    }
+  
+
+    @RequestMapping("/insertData")
+    @ResponseBody
+    public Map<String, Object> insertData(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	int id = iProductXtService.insert(productXtgs);
+    	result.put("code", "0");
+    	result.put("bizData", productXtgs);
+    	
+        return result;
     }
 
 
+    @RequestMapping("/update")
+    public String update(@RequestParam(value="id",required=false) Long xtgsId, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	ProductXtgs productXtgs = iProductXtService.findByProductXtgsId(xtgsId);
+    	model.addAttribute(productXtgs);
+    	model.addAttribute("ctrlData", xintuoGsCtrlModel);
+        return "admin/xintuo/updateGs";
+    }
+  
+
+    @RequestMapping("/updateData")
+    @ResponseBody
+    public Map<String, Object> updateData(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	int id = iProductXtService.update(productXtgs);
+    	result.put("code", "0");
+    	result.put("bizData", productXtgs);
+    	
+        return result;
+    }
+
+
+    @RequestMapping("/view")
+    public String view(@RequestParam(value="id",required=false) Long xtgsId, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	ProductXtgs productXtgs = iProductXtService.findByProductXtgsId(xtgsId);
+    	model.addAttribute(productXtgs);
+    	model.addAttribute("ctrlData", xintuoGsCtrlModel);
+        return "admin/xintuo/viewGs";
+    }
     
-    
-    /**
-     * 系统公司保存
-     * @return
-     */
-    @RequestMapping(value = "/updateXtgs")
-    public String updateXtgs(ProductXtgs model) {
-    	System.err.println(">>>>>>xxx=="+model.getXtgsId());
-    	if(null==model.getXtgsId()||new Long(0).equals(model.getXtgsId())){
-    		  iProductXtService.insert(model);
-    	}else{
-    		 iProductXtService.updateProductXtgs(model);
-    	}
-      	      	
-        return "admin/xintuo/xtgsDetail";
+    @RequestMapping("/deleteData")
+    public  Map<String, Object> deleteData(@RequestParam(value="ids",required=false) Long[] xtgsIds, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	iProductXtService.deleteBatchProductXtgs(xtgsIds);;
+    	result.put("code", "0");
+    	model.addAttribute("ctrlData", xintuoGsCtrlModel);
+        return result;
     }
     
     

@@ -75,8 +75,17 @@ public class ProductXtcp {
     /**创建人name */
     private String  xtcpUsername;
     
+    /**有效状态 */
+    private String  xtcpvalidStatus;
     
-    public Long getXtcpId() {
+    
+    public String getXtcpvalidStatus() {
+		return xtcpvalidStatus;
+	}
+	public void setXtcpvalidStatus(String xtcpvalidStatus) {
+		this.xtcpvalidStatus = xtcpvalidStatus;
+	}
+	public Long getXtcpId() {
 		return xtcpId;
 	}
 	public void setXtcpId(Long xtcpId) {

@@ -76,5 +76,11 @@ public class ProductXtgsServiceImpl extends GenericServiceImpl<ProductXtgs, Long
 		 return productXtgsMapper.selectProductXtgs();			 
 	}
 
+	@Override
+	public void deleteBatchProductXtgs(Long[] xtgsIds) {
+		productXtgsMapper.deleteBatchProductXtgs(xtgsIds);
+		
+	}
+
 
 }

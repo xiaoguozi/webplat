@@ -45,6 +45,12 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	public List<ProductXtcp> selectProductXtcp() {		
 		return productXtcpMapper.selectProductXtcp();
 	}
+
+	@Override
+	public void deleteBatchProductXtcp(Long[] xtcpIds) {
+		 productXtcpMapper.deleteBatchProductXtcp(xtcpIds);
+		
+	}
 		
 	
 

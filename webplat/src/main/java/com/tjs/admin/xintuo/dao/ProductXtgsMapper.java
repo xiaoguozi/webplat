@@ -20,6 +20,8 @@ public interface ProductXtgsMapper  extends GenericDao<ProductXtgs, Long> {
 	
 	public void deleteProductXtgs(Long xtgsId);
 	
+	public void deleteBatchProductXtgs(Long[] xtgsIds);
+	
 	public ProductXtgs findByProductXtgsId(Long xtgsId);
 	
 	public List<ProductXtgs> selectProductXtgs();
