@@ -9,16 +9,19 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/rest/admin/login"/>
-        <property name="successUrl" value="/rest/admin/index"/>
-        <property name="unauthorizedUrl" value="/rest/admin/page/401"/>
+        <property name="loginUrl" value="/rest/web/login"/>
+        <property name="successUrl" value="/rest/web/home"/>
+        <property name="unauthorizedUrl" value="/views/web/page/401.jsp"/>
         <property name="filterChainDefinitions">
             <value>
                 <!-- 静态资源允许访问 -->
                 /app/** = anon
                 /assets/** = anon
-                <!-- 登录页允许访问 -->
-                /rest/admin/user/login = anon
+                /views/** = anon
+                /rest/web/** = anon
+                /rest/captcha/** = anon
+                /rest/admin/** = authc
+                /rest/web/userCenter/** = user
                 <!-- 其他资源需要认证 -->
                 /** = authc
             </value>

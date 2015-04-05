@@ -83,21 +83,21 @@
 
     <!-- 首页 -->
     <welcome-file-list>
-        <welcome-file>rest/admin/index</welcome-file>
+        <welcome-file>rest/web/welcome</welcome-file>
     </welcome-file-list>
 
     <!-- 错误页 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/rest/admin/page/404</location>
+        <location>/views/web/page/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/rest/admin/page/500</location>
+        <location>/views/web/page/500.jsp</location>
     </error-page>
     <error-page>
         <exception-type>org.apache.shiro.authz.AuthorizationException</exception-type>
-        <location>/rest/admin/page/401</location>
+        <location>/views/web/page/401.jsp</location>
     </error-page>
 
 </web-app>

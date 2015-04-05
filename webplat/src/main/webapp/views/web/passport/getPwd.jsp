@@ -36,12 +36,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <body>
         <div class="row">
 		    <div class="col-md-6 col-md-offset-3">
-		        <h3 class="page-header"> <a href="#">淘金山</a> <small>访客首页 </small></h3>
+		        <h3 class="page-header"> <a href="#">淘金山</a> <small>找回密码 </small></h3>
 		    </div>
 		    <div class="col-md-4 col-md-offset-4">
-			    <a class="btn btn-default btn-block" href="rest/admin/index">管理后台</a>
-			    <a class="btn btn-primary btn-block" href="rest/web/login">登录</a>
-			    <a class="btn btn-primary btn-block" href="rest/web/passport/reg">注册</a>
+			    
 			</div>
 		</div>
 

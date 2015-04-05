@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  **/
 @Controller
 @RequestMapping("/admin")
-public class CommonController {
+public class AdminController {
     /**
      * 首页
      * 
      * @param request
      * @return
      */
-    @RequestMapping("index")
+    @RequestMapping("/index")
     public String index(HttpServletRequest request) {
         return "admin/index";
     }

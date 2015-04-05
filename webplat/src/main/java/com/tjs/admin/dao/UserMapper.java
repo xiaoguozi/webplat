@@ -56,6 +56,8 @@ public interface UserMapper extends GenericDao<User, Long> {
     List<User> selectByExampleAndPage(Page<User> page, UserExample example);
 
     List<User> selectList();
-    
+
     Integer selectListCount();
+    
+    Integer selectCountByUserName(String userName);
 }

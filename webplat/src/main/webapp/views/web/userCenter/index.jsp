@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <head>
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
-        <title>淘金山</title>
+        <title>TJS</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="" name="description" />
@@ -35,13 +35,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <!-- BEGIN BODY -->
     <body>
         <div class="row">
-		    <div class="col-md-6 col-md-offset-3">
-		        <h3 class="page-header"> <a href="#">淘金山</a> <small>访客首页 </small></h3>
+		    <div class="col-md-12">
+		        <h3 class="page-title pull-left"> <a href="#">淘金山</a> <small>个人中心，欢迎您：${userInfo.username }</small></h3>
 		    </div>
-		    <div class="col-md-4 col-md-offset-4">
-			    <a class="btn btn-default btn-block" href="rest/admin/index">管理后台</a>
-			    <a class="btn btn-primary btn-block" href="rest/web/login">登录</a>
-			    <a class="btn btn-primary btn-block" href="rest/web/passport/reg">注册</a>
+		    <div class="col-md-12">
+			    <a class="btn btn-default" href="#">管理后台</a>
+			    <a class="btn btn-primary" href="#">注销</a>
 			</div>
 		</div>
 
