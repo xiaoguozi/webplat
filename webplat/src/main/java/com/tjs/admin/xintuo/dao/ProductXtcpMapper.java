@@ -19,6 +19,8 @@ public interface ProductXtcpMapper {
 	
 	public void deleteProductXtcp(Long xtcpId);
 	
+	public void deleteBatchProductXtcp(Long[] xtcpIds);
+	
 	public ProductXtcp findByProductXtcpId(Long xtcpId);
 	
 	public List<ProductXtcp> selectProductXtcp();

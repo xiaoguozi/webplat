@@ -160,6 +160,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </li>
                             </ul>
                         </li>
+                        
+                        
+                         <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-gears"></i><span class="title"> 产品管理 </span><span
+                                class="arrow "> </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="rest/admin/xintuogs/xtgsIndex">
+                                        信托公司
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="rest/admin/xintuocp/xtcpIndex">
+                                        信托产品
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
 
                         <li class="">
                             <a href="javascript:;">
