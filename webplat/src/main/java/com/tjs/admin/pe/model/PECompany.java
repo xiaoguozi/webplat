@@ -9,9 +9,13 @@ package com.tjs.admin.pe.model;
 
 import java.util.Date;
 
+/**
+ * @author zh
+ *
+ */
 public class PECompany {
 	
-	private int id;
+	private Long id;
 	
 	/** 公司LOGO */
 	private String logo;
@@ -56,11 +60,12 @@ public class PECompany {
 	
 	private Date lastModifyDate;
 
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

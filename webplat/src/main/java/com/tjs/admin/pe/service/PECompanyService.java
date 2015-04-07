@@ -14,11 +14,13 @@ public interface PECompanyService  {
 	
 	int insertPECompany(PECompany peCompany);
 	
-    int deletePECompany(int peCompanyId);
+    int deletePECompany(long peCompanyId);
 	
 	int updatePECompany(PECompany peCompany);
 	
 	List<PECompany> getPECompanyList();
 	
 	Integer selectListCount();
+	
+	PECompany getPECompanyById(Long peCompanyId);
 }

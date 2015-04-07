@@ -33,7 +33,7 @@ public class PECompanyServiceImpl implements
 	}
 
 	@Override
-	public int deletePECompany(int peCompanyId) {
+	public int deletePECompany(long peCompanyId) {
 		int iResult = 0;
 		iResult = peCompanyMapper.deletePECompany(peCompanyId);
 		return iResult;
@@ -56,6 +56,13 @@ public class PECompanyServiceImpl implements
 	@Override
 	public Integer selectListCount() {
 		return peCompanyMapper.selectListCount();
+	}
+
+	@Override
+	public PECompany getPECompanyById(Long peCompanyId) {
+		PECompany result = null;
+		result = peCompanyMapper.getPECompanyById(peCompanyId);     
+		return result;
 	}
 
 }

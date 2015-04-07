@@ -3,7 +3,6 @@ package com.tjs.admin.pe.dao;
 import java.util.List;
 
 import com.tjs.admin.pe.model.PECompany;
-import com.tjs.core.generic.GenericDao;
 
 /**
  * 私募公司DAO
@@ -16,7 +15,7 @@ public interface PECompanyMapper  {
 	
 	int insertPECompany(PECompany peCompany);
 	
-	int deletePECompany(int peCompanyId);
+	int deletePECompany(long peCompanyId);
 	
 	int updatePECompany(PECompany peCompany);
 	
@@ -24,4 +23,5 @@ public interface PECompanyMapper  {
 	
 	Integer selectListCount();
 
+	PECompany getPECompanyById(Long peCompanyId);
 }

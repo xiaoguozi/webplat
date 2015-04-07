@@ -15,7 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.druid.util.StringUtils;
+import com.tjs.admin.controller.UserCtrlModel;
+import com.tjs.admin.model.User;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.core.util.StringExtUtils;
@@ -88,5 +89,33 @@ public class PECompanyController {
     	result.put("total", total);
     	
         return result;
+    }
+	
+	@RequestMapping("/update")
+    public String update(PECompany paraPECompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
+		PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
+    	model.addAttribute(peCompany);
+    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+        return "admin/pe/peCompany/update";
+    }
+	
+	@RequestMapping("/updateData")
+    @ResponseBody
+    public Map<String, Object> updateData(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	int id = peCompanyService.updatePECompany(peCompany);
+    	result.put("code", "0");
+    	result.put("bizData", peCompany);
+    	
+        return result;
+    }
+
+
+    @RequestMapping("/view")
+    public String view(PECompany paraPECompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
+    	PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
+    	model.addAttribute(peCompany);
+    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+        return "admin/pe/peCompany/view";
     }
 }
