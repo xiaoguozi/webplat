@@ -22,7 +22,7 @@ import com.tjs.admin.xintuo.service.IProductXtgsService;
  * @since 2015年3月21日 下午3:54:00
  **/
 @Controller
-@RequestMapping(value = "/admin/xintuogs")
+@RequestMapping(value = "/admin/xintuo/xintuogs")
 public class XinTuoGsControler {
 	
 	 @Resource
@@ -92,10 +92,9 @@ public class XinTuoGsControler {
     @ResponseBody
     public Map<String, Object> updateData(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = iProductXtService.update(productXtgs);
+    	iProductXtService.updateProductXtgs(productXtgs);
     	result.put("code", "0");
     	result.put("bizData", productXtgs);
-    	
         return result;
     }
 

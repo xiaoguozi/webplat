@@ -18,7 +18,7 @@
 <!-- END PAGE HEADER-->
 
 <div class="modal-body">
-    <form id="modalForm" action="rest/admin/xintuocp/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
+    <form id="modalForm" action="rest/admin/xintuo/xintuocp/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
            <input type="hidden" name="xtcpId" value="${productXtcp.xtcpId}">
         <div class="form-group">
             <label class="col-md-2 control-label">信托全称</label>

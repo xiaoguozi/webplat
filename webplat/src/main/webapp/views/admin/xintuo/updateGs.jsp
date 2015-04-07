@@ -18,7 +18,7 @@
 <!-- END PAGE HEADER-->
 
 <div class="modal-body">
-    <form id="modalForm" action="rest/admin/xintuogs/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
+    <form id="modalForm" action="rest/admin/xintuo/xintuogs/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
           <input type="hidden" name="xtgsId" value="${productXtgs.xtgsId}">
 
         <div class="form-group">

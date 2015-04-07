@@ -22,7 +22,7 @@ import com.tjs.admin.xintuo.service.IProductXtcpService;
  * @since 2015年3月21日 下午3:54:00
  **/
 @Controller
-@RequestMapping(value = "/admin/xintuocp")
+@RequestMapping(value = "/admin/xintuo/xintuocp")
 public class XinTuoCpControler {
 	
 	 @Resource
