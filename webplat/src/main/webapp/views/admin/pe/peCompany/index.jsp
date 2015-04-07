@@ -44,7 +44,7 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>
-                        <th field="id">ID <span class="glyphicon"></span></th>
+                        <th field="id">序号<span class="glyphicon"></span></th>
                         <th field="name">公司名称 <span class="glyphicon"></span></th>
                         <th field="setupTime">成立日期 <span class="glyphicon"></span></th>
                         <th field="managementScale">管理规模<span class="glyphicon"></span></th>

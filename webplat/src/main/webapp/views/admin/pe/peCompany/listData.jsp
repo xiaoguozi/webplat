@@ -2,7 +2,7 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 
 
-
+<%int index = 1;%>
 <c:forEach items="${showData}" var="peCompany">
     <tr>
         <td class="data-operator">
@@ -15,12 +15,14 @@
             </a>
         </td>
         <td>
-            <a data-id="${peCompany.id}" href="" class="view" title="查看">
-                ${peCompany.id}
+        	<%=index++ %>
+        </td>
+        <td>
+        	<a data-id="${peCompany.id}" href="" class="view" title="查看">
+                ${peCompany.name}
             </a>
         </td>
-        <td>${peCompany.name}</td>
-        <td>${peCompany.setupTime}</td>
+        <td><fmt:formatDate value="${peCompany.setupTime}" pattern="yyyy-MM-dd" /></td>
         <td>${peCompany.managementScale}</td>
         <td>${peCompany.area}</td>
         <td>${peCompany.investmentNumber}</td>
