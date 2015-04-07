@@ -1,71 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tjs.admin.pe.dao.PECompanyMapper">
+<mapper namespace="com.tjs.admin.pe.dao.PEProductMapper">
 		
-   <resultMap id="peResultMap" type="com.tjs.admin.pe.model.PECompany">
-   		<id column="id" property="id" jdbcType="BIGINT" />
-   		<result property="logo" column="logo" jdbcType="VARCHAR" />
-   		<result property="name" column="name" jdbcType="VARCHAR" />
-   		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
-   		<result property="managementScale" column="management_scale" jdbcType="VARCHAR" />
-   		<result property="area" column="area" jdbcType="VARCHAR" />
-   		<result property="investmentNumber" column="investment_number" jdbcType="VARCHAR" />
-   		<result property="manager" column="manager" jdbcType="VARCHAR" />
-   		<result property="productLine" column="product_line" jdbcType="VARCHAR" />
-   		<result property="review" column="review" jdbcType="VARCHAR" />
-   		<result property="coreCharacter" column="core_character" jdbcType="VARCHAR" />
-   		<result property="investmentPhilosophy" column="investment_philosophy" jdbcType="VARCHAR" />
-   		<result property="investmentTeam" column="investment_team" jdbcType="VARCHAR" />
-   		<result property="companyProfile" column="company_profile" jdbcType="VARCHAR" />
-   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
-   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
-   </resultMap>
-   
-   <sql id="Base_select_Column_List">
-		    id, logo, name, setup_time, management_scale,
-   			area, investment_number, manager, product_line, review, core_character, investment_philosophy,
-   			investment_team, company_profile, create_date, last_modify_date
-	</sql>
-    
-   <insert id="insertPECompany"  useGeneratedKeys="true"
-    keyProperty="id">
-   		INSERT INTO private_placement_company (logo, name, setup_time, management_scale,
-   			area, investment_number, manager, product_line, review, core_character, investment_philosophy,
-   			investment_team, company_profile, create_date, last_modify_date)
-   		VALUES (#{logo}, #{name}, #{setupTime}, #{managementScale},
-   			#{area}, #{investmentNumber}, #{manager}, #{productLine}, #{review}, #{coreCharacter}, #{investmentPhilosophy},
-   			#{investmentTeam}, #{companyProfile}, #{createDate}, #{lastModifyDate})
-   
-   </insert>
-   
-   <delete id="deletePECompany" parameterType="long">
-   		DELETE FROM private_placement_company WHERE id=#{id}
-   </delete>
-   
-   <update id="updatePECompany" parameterType="com.tjs.admin.pe.model.PECompany">
-   		UPDATE private_placement_company 
-   		SET logo=#{logo}, name=#{name}, setup_time=#{setupTime}, management_scale=#{managementScale},
-   			area=#{area}, investment_number=#{investmentNumber}, manager=#{manager}, product_line=#{productLine}, 
-   			review=#{review}, core_character=#{coreCharacter}, investment_philosophy=#{investmentPhilosophy},
-   			investment_team=#{investmentTeam}, company_profile=#{companyProfile}, last_modify_date=#{lastModifyDate}
-   		WHERE id=#{id}
-   </update>
-   
-   <select id="getPECompanyList" resultMap="peResultMap">
-       SELECT * FROM private_placement_company
-   </select>
-   
-   <select id="selectListCount" parameterType="com.tjs.admin.pe.model.PECompany" resultType="java.lang.Integer">
-   		SELECT count(*) AS total
-   		FROM private_placement_company
-    </select>
-    
-    <select id="getPECompanyById" parameterType="Long"
-		resultType="com.tjs.admin.pe.model.PECompany">
-		SELECT
-		<include refid="Base_select_Column_List" />
-		FROM private_placement_company 
-		WHERE id=#{id}
-	</select>
+ 
     
 </mapper>
