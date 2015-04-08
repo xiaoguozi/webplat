@@ -9,13 +9,15 @@ package com.tjs.admin.pe.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author zh
  *
  */
 public class PECompany {
 	
-	private Long id;
+	private long id;
 	
 	/** 公司LOGO */
 	private String logo;
@@ -60,12 +62,11 @@ public class PECompany {
 	
 	private Date lastModifyDate;
 
-	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -10,7 +10,7 @@ import java.util.Date;
  **/
 public class PEProduct {
    
-	private Long id;
+	private long id;
 	
 	/* 基金名称 */
 	private String name; 
@@ -81,7 +81,7 @@ public class PEProduct {
 	/* 浮动管理费 */
 	private String managementFee;
 	
-	/* 基金名称 */
+	/* 推荐理由 */
 	private String recommendReason;
 	
 	/* 创建日期 */
@@ -111,11 +111,12 @@ public class PEProduct {
 	/* 私募公司名称 */
 	private String pecompanyName;
 
-	public Long getId() {
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

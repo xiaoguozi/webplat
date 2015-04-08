@@ -1,9 +1,6 @@
 package com.tjs.admin.pe.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,15 +10,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tjs.admin.controller.UserCtrlModel;
-import com.tjs.admin.model.User;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.service.PECompanyService;
-import com.tjs.core.util.StringExtUtils;
+import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 
 /**
+ * 私募公司控制器
+ * 
  *@author zhsoft
  *@since 2015年3月31日
  **/
@@ -49,19 +47,8 @@ public class PECompanyController {
     @ResponseBody
     public Map<String, Object> insertData(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    	String setupTimeStr = peCompanyCtrlModel.getSetupTimeStr();
-    	if(StringExtUtils.isNotBlank(setupTimeStr)){
-    		try {
-    			Date setupTime = sdf.parse(setupTimeStr);
-    			peCompany.setSetupTime(setupTime);
-    		} catch (ParseException e) {
-    			//e.printStackTrace();
-    		}
-    	}
-    	
-    	int id = peCompanyService.insertPECompany(peCompany);
-    	result.put("code", "0");
+    	int id = peCompanyService.insertPECompany(peCompany, peCompanyCtrlModel);
+    	result.put("code", "0");              
     	result.put("bizData", peCompany);
     	
         return result;
@@ -94,7 +81,7 @@ public class PECompanyController {
 	@RequestMapping("/update")
     public String update(PECompany paraPECompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
 		PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
-    	model.addAttribute(peCompany);
+    	model.addAttribute("peCompany", peCompany);
     	model.addAttribute("ctrlData", peCompanyCtrlModel);
         return "admin/pe/peCompany/update";
     }
@@ -103,8 +90,8 @@ public class PECompanyController {
     @ResponseBody
     public Map<String, Object> updateData(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = peCompanyService.updatePECompany(peCompany);
-    	result.put("code", "0");
+    	int id = peCompanyService.updatePECompany(peCompany, peCompanyCtrlModel);
+    	result.put("code", "0");        
     	result.put("bizData", peCompany);
     	
         return result;
@@ -114,8 +101,17 @@ public class PECompanyController {
     @RequestMapping("/view")
     public String view(PECompany paraPECompany, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
-    	model.addAttribute(peCompany);
+    	model.addAttribute("peCompany", peCompany);
     	model.addAttribute("ctrlData", peCompanyCtrlModel);
         return "admin/pe/peCompany/view";
+    }
+    
+    @RequestMapping("/deleteData")
+    public  Map<String, Object> deleteData(@RequestParam(value="ids",required=false) long[] ids, PECompanyCtrlModel peCompanyCtrlModel, Model model) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	peCompanyService.deleteBatchPECompany(ids);
+    	result.put("code", "0");
+    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+        return result;
     }
 }

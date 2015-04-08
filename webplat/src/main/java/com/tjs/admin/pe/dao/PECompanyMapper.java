@@ -23,5 +23,9 @@ public interface PECompanyMapper  {
 	
 	Integer selectListCount();
 
-	PECompany getPECompanyById(Long peCompanyId);
+	PECompany getPECompanyById(long peCompanyId);
+	
+	int deleteBatchPECompany(long[] ids);
+	
+	List<PECompany> getPECompanyListAndPage();
 }
