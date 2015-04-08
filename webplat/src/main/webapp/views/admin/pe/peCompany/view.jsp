@@ -35,11 +35,7 @@
         <div class="form-group">
             <label for="input-sDsName" class="col-md-3 control-label">成立时间</label>
             <div class="col-md-6">
-                <div class="input-group date form_date" data-date-format="yyyy-mm-dd" startview="1" minview="0">
-                    <input type="text" class="form-control" name="setupTime" value="${peCompany.setupTime}">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
+                    <input type="text" class="form-control form_datetime required" name="setupTime" value="<fmt:formatDate value="${peCompany.setupTime}" pattern="yyyy-MM-dd"/>"  >
             </div>
         </div>
         <div class="form-group">

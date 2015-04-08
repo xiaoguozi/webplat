@@ -38,7 +38,7 @@
             <label class="col-md-2 control-label">成立时间</label>
             <div class="col-md-6">
             	<div class="input-group date form_date" data-date-format="yyyy-mm-dd" startview="1" minview="0">
-                    <input type="text" class="form-control" name="setupTimeStr" value="${peCompany.setupTime}">
+                    <input type="text" class="form-control" name="setupTimeStr" value="<fmt:formatDate value="${peCompany.setupTime}" pattern="yyyy-MM-dd"/>">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>

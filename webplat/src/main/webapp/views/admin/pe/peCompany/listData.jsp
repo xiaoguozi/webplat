@@ -15,7 +15,7 @@
             </a>
         </td>
         <td>
-        	<%=index++ %>
+        	${peCompany.id}
         </td>
         <td>
         	<a data-id="${peCompany.id}" href="" class="view" title="查看">
