@@ -6,43 +6,30 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.dao.ProductXtgsMapper;
 import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtgsService;
-import com.tjs.core.generic.GenericDao;
-import com.tjs.core.generic.GenericServiceImpl;
 
 @Service
-public class ProductXtgsServiceImpl extends GenericServiceImpl<ProductXtgs, Long> implements IProductXtgsService {
+public class ProductXtgsServiceImpl  implements IProductXtgsService {
 
 	@Resource
     private ProductXtgsMapper productXtgsMapper;
 		
 	@Override
-	public GenericDao<ProductXtgs, Long> getDao() {
-		 return productXtgsMapper;
-	}
-
-	@Override
-	public int countProductXtgs(ProductXtgs productXtgs) {
-		return productXtgsMapper.countProductXtgs(productXtgs);
+	public int countProductXtgs(XinTuoGsCtrlModel xinTuoGsCtrlModel) {
+		return productXtgsMapper.countProductXtgs(xinTuoGsCtrlModel);
 	}
 
 	@Override
 	public int  insertProductXtgs(ProductXtgs productXtgs) {
-		// TODO Auto-generated method stub
-		 productXtgsMapper.insertProductXtgs(productXtgs);
-		 System.err.println(">>>xt="+productXtgs.getXtgsId());
-		 return 1;
+		return productXtgsMapper.insertProductXtgs(productXtgs);
+		 
 	}
-
-
-
-
-
+	
 	@Override
 	public void updateProductXtgs(ProductXtgs productXtgs) {
-		// TODO Auto-generated method stub
 		productXtgsMapper.updateProductXtgs(productXtgs);
 	}
 
@@ -52,7 +39,6 @@ public class ProductXtgsServiceImpl extends GenericServiceImpl<ProductXtgs, Long
 
 	@Override
 	public void deleteProductXtgs(Long xtgsId) {
-		// TODO Auto-generated method stub
 		productXtgsMapper.deleteProductXtgs(xtgsId);
 	}
 
@@ -66,20 +52,16 @@ public class ProductXtgsServiceImpl extends GenericServiceImpl<ProductXtgs, Long
 	}
 	
 	
-	@Override
-    public int insert(ProductXtgs productXtgs) {
-        return productXtgsMapper.insertProductXtgs(productXtgs);
-    }
-
-	@Override
-	public List<ProductXtgs> selectProductXtgs() {
-		 return productXtgsMapper.selectProductXtgs();			 
-	}
-
+	
 	@Override
 	public void deleteBatchProductXtgs(Long[] xtgsIds) {
 		productXtgsMapper.deleteBatchProductXtgs(xtgsIds);
 		
+	}
+
+	@Override
+	public List<ProductXtgs> selectProductXtgs(XinTuoGsCtrlModel xintuoGsCtrlModel) {
+		return productXtgsMapper.selectProductXtgs(xintuoGsCtrlModel);
 	}
 
 

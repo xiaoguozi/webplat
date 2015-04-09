@@ -24,21 +24,27 @@
         <td>${xintuocp.xtcpSysm}</td>
         <td>
               <c:choose>  
-                <c:when test="${xintuocp.xtcpFb=='1'}">  
-                  		  已发布
-                </c:when>  
+                <c:when test="${xintuocp.xtcpStatus=='10'}">  
+                  		未上线
+                </c:when>
+                 <c:when test="${xintuocp.xtcpStatus=='20'}">  
+                  		  已上线
+                </c:when>    
                 <c:otherwise>  
-                     	未发布
+                     	已下线
                 </c:otherwise>  
             </c:choose>                 
         </td>
         <td>
           <c:choose>  
-                <c:when test="${xintuocp.xtcpInshow=='1'}">  
-                  		  首页显示
+                <c:when test="${xintuocp.xtcpTjw=='10'}">  
+                  		  首页
+                </c:when> 
+                <c:when test="${xintuocp.xtcpTjw=='20'}">  
+                  		板块头     
                 </c:when>  
                 <c:otherwise>  
-                     	首页不显示
+                     	板块头中
                 </c:otherwise>  
             </c:choose>   
         

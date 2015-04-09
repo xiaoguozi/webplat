@@ -13,7 +13,7 @@
 		<result column="xtcp_cxq" property="xtcpCxq" jdbcType="VARCHAR" />
 		<result column="xtcp_xtlx" property="xtcpXtlx" jdbcType="VARCHAR" />
 		<result column="xtcp_zdrgje" property="xtcpZdrgje" javaType="java.math.BigDecimal" />
-		<result column="xtcp_dyl" property="xtcpDyl" javaType="java.math.BigDecimal" />
+		<result column="xtcp_dyl" property="xtcpDyl" jdbcType="VARCHAR" />
 		<result column="xtcp_tzly" property="xtcpTzly" jdbcType="VARCHAR" />
 		<result column="xtcp_dyw" property="xtcpDyw" jdbcType="VARCHAR" />
 		<result column="xtcp_sysm" property="xtcpSysm" jdbcType="VARCHAR" />
@@ -24,8 +24,10 @@
 		<result column="xtcp_fkcs" property="xtcpFkcs" jdbcType="VARCHAR" />
 		<result column="xtcp_zcglr" property="xtcpZcglr" jdbcType="VARCHAR" />
 		<result column="xtcp_dp" property="xtcpDp" jdbcType="VARCHAR" />
-		<result column="xtcp_fb" property="xtcpFb" jdbcType="VARCHAR" />
-		<result column="xtcp_inshow" property="xtcpInshow" jdbcType="VARCHAR" />
+		<result column="xtcp_hd" property="xtcpHd" jdbcType="VARCHAR" />
+		<result column="xtcp_status" property="xtcpStatus" jdbcType="VARCHAR" />
+		<result column="xtcp_tjw" property="xtcpTjw" jdbcType="VARCHAR" />
+		<result column="xtcp_tjno" property="xtcpTjno" javaType="java.lang.Long"  jdbcType="BIGINT" />
 		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="DATE" />
 		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="DATE" />
 		<result column="xtcp_userId" property="xtcpUserId" javaType="java.lang.Long" jdbcType="BIGINT"  />
@@ -38,13 +40,13 @@
 	<sql id="Base_select_Column_List">
 		xtcp_id, xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
-		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_fb,xtcp_inshow,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus
+		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
-		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_fb,xtcp_inshow,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username
+		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username
 	</sql>
 
 	<select id="countProductXtcp" resultType="int"
@@ -84,8 +86,10 @@
 		#{xtcpFkcs},
 		#{xtcpZcglr},
 		#{xtcpDp},
-		#{xtcpFb},
-		#{xtcpInshow},
+		#{xtcpHd},
+		#{xtcpStatus},
+		#{xtcpTjw},
+		#{xtcpTjno},
 		#{xtcpCreateDate},
 		#{xtcpModifyDate},
 		#{xtcpUserId},
@@ -116,8 +120,10 @@
 		xtcp_fkcs=#{xtcpFkcs},
 		xtcp_zcglr=#{xtcpZcglr},
 		xtcp_dp=#{xtcpDp},
-		xtcp_fb=#{xtcpFb},
-		xtcp_inshow=#{xtcpInshow},
+		xtcp_hd=#{xtcpHd},
+		xtcp_status=#{xtcpStatus},
+		xtcp_tjw=#{xtcpTjw},
+		xtcp_tjno=#{xtcpTjno},
 		xtcp_createDate=#{xtcpCreateDate},
 		xtcp_modifyDate=#{xtcpModifyDate},
 		xtcp_userId=#{xtcpUserId},

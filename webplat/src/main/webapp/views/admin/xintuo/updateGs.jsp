@@ -23,22 +23,30 @@
 
         <div class="form-group">
             <label class="col-md-2 control-label">公司编码</label>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xtgsCode" value="${productXtgs.xtgsCode}" >
             </div>
-             <label class="col-md-2 control-label">公司LOGO</label>
-            <div class="col-md-3">
+             
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-2 control-label">公司LOGO</label>
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xtgsLog" value="${productXtgs.xtgsLog}"  >
             </div>
-        </div>
+         </div>
         
          <div class="form-group">
             <label class="col-md-2 control-label">公司中文名称</label>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsZhname" value="${productXtgs.xgtsZhname}" >
             </div>
-             <label class="col-md-2 control-label">公司英文名称</label>
-            <div class="col-md-3">
+            
+        </div>
+        
+        <div class="form-group">
+         <label class="col-md-2 control-label">公司英文名称</label>
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsEnname" value="${productXtgs.xgtsEnname}"  >
             </div>
         </div>
@@ -46,23 +54,34 @@
         
          <div class="form-group">
             <label class="col-md-2 control-label">公司简称</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control required" name="xgtsSplname" value="${productXtgs.xgtsSplname}" >
+            <div class="col-md-6">
+                <input type="text" class="form-control required " name="xgtsSplname" value="${productXtgs.xgtsSplname}" >
             </div>
-             <label class="col-md-2 control-label">成立日期</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control form_datetime required" name="xgtsCreatedate" value="<fmt:formatDate value="${productXtgs.xgtsCreatedate}" pattern="yyyy-MM-dd"/>"  >
-               <script type="text/javascript">  $(".form_datetime").datetimepicker();</script>
-            </div>
+            
         </div>
+        
+        <div class="form-group">
+         <label class="col-md-2 control-label">成立日期</label>
+            <div class="col-md-6">                             
+               <div class="input-group date form_date" data-date-format="yyyy-mm-dd" startview="1" minview="0">
+                    <input type="text" class="form-control" name="xgtsCreatedate" value="<fmt:formatDate value="${productXtgs.xgtsCreatedate}" pattern="yyyy-MM-dd"/>">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+         </div>
         
           <div class="form-group">
             <label class="col-md-2 control-label">注册资本</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control required" name="xgtsZczb" value="${productXtgs.xgtsZczb}" >
+            <div class="col-md-6">
+                <input type="text" class="form-control required number " name="xgtsZczb" value="${productXtgs.xgtsZczb}" >
             </div>
-             <label class="col-md-2 control-label">所在城市</label>
-            <div class="col-md-3">
+             
+        </div>
+        
+         <div class="form-group">
+        <label class="col-md-2 control-label">所在城市</label>
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsCity" value="${productXtgs.xgtsCity}"  >
             </div>
         </div>
@@ -70,53 +89,99 @@
         
           <div class="form-group">
             <label class="col-md-2 control-label">董事长</label>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsGsz" value="${productXtgs.xgtsGsz}" >
             </div>
-             <label class="col-md-2 control-label">总经理</label>
-            <div class="col-md-3">
+            
+        </div>
+        
+         <div class="form-group">
+         <label class="col-md-2 control-label">总经理</label>
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsZjl" value="${productXtgs.xgtsZjl}"  >
             </div>
-        </div>
+         </div>
         
         
           <div class="form-group">
             <label class="col-md-2 control-label">法人代表</label>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsFrdb" value="${productXtgs.xgtsFrdb}" >
             </div>
-             <label class="col-md-2 control-label">大股东</label>
-            <div class="col-md-3">
+             
+        </div>
+         <div class="form-group">
+        <label class="col-md-2 control-label">大股东</label>
+            <div class="col-md-6">
                 <input type="text" class="form-control required" name="xgtsDgd" value="${productXtgs.xgtsDgd}"  >
             </div>
-        </div>
-        
-          <div class="form-group">
-            <label class="col-md-2 control-label">是否上市</label>
-            <div class="col-md-3">
-                   <input type="radio" name="xgtsSs" value="1" <c:if test="${productXtgs.xgtsSs== '1'}">checked="checked"</c:if>>是
-                   <input type="radio" name="xgtsSs" value="0" <c:if test="${productXtgs.xgtsSs== '0'}">checked="checked"</c:if>>否	  
-            </div>
-             <label class="col-md-2 control-label">公司性质</label>
-            <div class="col-md-3">
+          </div>
+                       
+         <div class="form-group">
+         <label class="col-md-2 control-label">公司性质</label>
+            <div class="col-md-6">
                 <select name="xgtsGsxz"  style="font-family: sans-serif" mce_style="font-family: sans-serif">   
                          <option value="1" <c:if test="${productXtgs.xgtsGsxz == '1'}">selected</c:if>>中央企业控股</option>  
                          <option value="2" <c:if test="${productXtgs.xgtsGsxz == '2'}">selected</c:if>>金融机构控股</option>  
                 </select> 
             </div>
-        </div>
+         </div>
+         
+          <div class="form-group">
+            <label class="col-md-2 control-label">是否上市</label>
+            <div class="col-md-6">
+                   <input type="radio" name="xgtsSs" value="1" <c:if test="${productXtgs.xgtsSs== '1'}">checked="checked"</c:if>>是
+                   <input type="radio" name="xgtsSs" value="2" <c:if test="${productXtgs.xgtsSs== '2'}">checked="checked"</c:if>>否                   	  
+            </div>
+            
+          </div>
+         
+         <div class="form-group">
+            <label class="col-md-2 control-label">状态</label>
+            <div class="col-md-6">
+                   <input type="radio" name="xgtsStatus" value="10" <c:if test="${productXtgs.xgtsStatus== '10'}">checked="checked"</c:if>>未上线
+                   <input type="radio" name="xgtsStatus" value="20" <c:if test="${productXtgs.xgtsStatus== '20'}">checked="checked"</c:if>>已上线  
+                   <input type="radio" name="xgtsStatus" value="30" <c:if test="${productXtgs.xgtsStatus== '30'}">checked="checked"</c:if>>已下线                                
+            </div>
+            
+          </div>
+          
+          
+           <div class="form-group">
+            <label class="col-md-2 control-label">推荐位</label>
+            <div class="col-md-6">
+                   <input type="radio" name="xgtsTjw" value="10" <c:if test="${productXtgs.xgtsTjw== '10'}">checked="checked"</c:if>>首页
+                   <input type="radio" name="xgtsTjw" value="20" <c:if test="${productXtgs.xgtsTjw== '20'}">checked="checked"</c:if>>板块头             	  
+            </div>
+            
+          </div>
+         
+                          
+           <div class="form-group">
+            <label class="col-md-2 control-label">推荐序号</label>
+            <div class="col-md-6">
+                    <input type="text" class="form-control required number" name="xgtsTjno" value="${productXtgs.xgtsTjno}"  >
+            </div>
+            
+          </div>
+          
         
         
         <div class="form-group">
             <label class="col-md-2 control-label">资产管理规模</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control required" name="xgtsZcglgm" value="${productXtgs.xgtsZcglgm}" >
+            <div class="col-md-6">
+            <textarea rows="6" cols="100" class="form-control required" name="xgtsZcglgm">${productXtgs.xgtsZcglgm}</textarea>
             </div>
-             <label class="col-md-2 control-label">公司简介</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control required" name="xgtsGsjj" value="${productXtgs.xgtsGsjj}"  >
+            
+        </div>
+        
+        <div class="form-group">
+         <label class="col-md-2 control-label">公司简介</label>
+            <div class="col-md-6">
+                <textarea rows="6" cols="100" class="form-control required" name="xgtsGsjj">${productXtgs.xgtsGsjj}</textarea>
             </div>
         </div>
+       
         
     </form>
 </div>

@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.xintuo.dao.ProductXtcpMapper;
+import com.tjs.admin.xintuo.dao.ProductXtgsMapper;
 import com.tjs.admin.xintuo.model.ProductXtcp;
+import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
 
 @Service
@@ -15,6 +17,9 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 
 	@Resource
     private ProductXtcpMapper productXtcpMapper;
+	
+	@Resource
+    private ProductXtgsMapper productXtgsMapper;
 
 	@Override
 	public int countProductXtcp(ProductXtcp productXtcp) {
@@ -22,12 +27,16 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	}
 
 	@Override
-	public int insertProductXtcp(ProductXtcp productXtcp) {
+	public int insertProductXtcp(ProductXtcp productXtcp) {	
+		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
+		productXtcp.setXtcpGszhname(productXtgs.getXgtsZhname());
 		return productXtcpMapper.insertProductXtcp(productXtcp);		
 	}
 
 	@Override
 	public int updateProductXtcp(ProductXtcp productXtcp) {
+		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
+		productXtcp.setXtcpGszhname(productXtgs.getXgtsZhname());
 		return productXtcpMapper.updateProductXtcp(productXtcp);
 	}
 

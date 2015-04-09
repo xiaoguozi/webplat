@@ -50,6 +50,33 @@ public class ProductXtgs {
 	private String xgtsZcglgm;
 	/**公司简介*/
 	private String xgtsGsjj;
+	
+	/**公司推荐位*/
+	private String xgtsTjw;
+	
+	/**推荐序号*/
+	private Long xgtsTjno;	
+	/**状态*/
+	private String xgtsStatus;
+	
+	public String getXgtsTjw() {
+		return xgtsTjw;
+	}
+	public void setXgtsTjw(String xgtsTjw) {
+		this.xgtsTjw = xgtsTjw;
+	}
+	public Long getXgtsTjno() {
+		return xgtsTjno;
+	}
+	public void setXgtsTjno(Long xgtsTjno) {
+		this.xgtsTjno = xgtsTjno;
+	}
+	public String getXgtsStatus() {
+		return xgtsStatus;
+	}
+	public void setXgtsStatus(String xgtsStatus) {
+		this.xgtsStatus = xgtsStatus;
+	}
 	public Long getXtgsId() {
 		return xtgsId;
 	}

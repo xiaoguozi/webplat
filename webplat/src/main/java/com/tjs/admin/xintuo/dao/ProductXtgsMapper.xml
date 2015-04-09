@@ -19,24 +19,37 @@
         <result column="xgts_gsxz" property="xgtsGsxz" jdbcType="VARCHAR" />
         <result column="xgts_zcglgm" property="xgtsZcglgm" jdbcType="VARCHAR" />
         <result column="xgts_gsjj" property="xgtsGsjj" jdbcType="VARCHAR" />        
+        <result column="xgts_tjw" property="xgtsTjw" jdbcType="VARCHAR" />
+        <result column="xgts_status" property="xgtsStatus" jdbcType="VARCHAR" />
+        <result column="xgts_tjno" property="xgtsTjno" javaType="java.lang.Long" jdbcType="BIGINT" />       
     </resultMap>
     
     <sql id="Base_select_Column_List">
-        xtgs_id, xtgs_code,xtgs_log, xgts_zhname, xgts_enname, xgts_splname,xgts_createdate,xgts_zczb,xgts_city,xgts_gsz,xgts_zjl,xgts_frdb,xgts_dgd,xgts_ss,xgts_gsxz,xgts_zcglgm,xgts_gsjj
+        xtgs_id, xtgs_code,xtgs_log, xgts_zhname, xgts_enname, xgts_splname,xgts_createdate,xgts_zczb,xgts_city,xgts_gsz,xgts_zjl,xgts_frdb,
+        xgts_dgd,xgts_ss,xgts_gsxz,xgts_zcglgm,xgts_gsjj,xgts_status,xgts_tjw,xgts_tjno
     </sql>
     
      <sql id="Base_insert_Column_List">
-        xtgs_code,xtgs_log, xgts_zhname, xgts_enname, xgts_splname,xgts_createdate,xgts_zczb,xgts_city,xgts_gsz,xgts_zjl,xgts_frdb,xgts_dgd,xgts_ss,xgts_gsxz,xgts_zcglgm,xgts_gsjj
+        xtgs_code,xtgs_log, xgts_zhname, xgts_enname, xgts_splname,xgts_createdate,xgts_zczb,xgts_city,xgts_gsz,xgts_zjl,xgts_frdb,xgts_dgd,
+        xgts_ss,xgts_gsxz,xgts_zcglgm,xgts_gsjj,xgts_status,xgts_tjw,xgts_tjno
     </sql>
     
-    <select id="countProductXtgs" resultType="int" parameterType="com.tjs.admin.xintuo.model.ProductXtgs" >
-        select count(*) c from tjs_product_xtgs;
+    <select id="countProductXtgs" resultType="int" parameterType="com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel" >
+        select count(*) c from tjs_product_xtgs where 1=1
+          <if test="productXtgs!=null and productXtgs.xgtsStatus!= null and productXtgs.xgtsStatus!= ''">
+           AND xgts_status= #{productXtgs.xgtsStatus}
+          </if>
+        
     </select>
     
-    <select id="selectProductXtgs" resultType="com.tjs.admin.xintuo.model.ProductXtgs">
+    <select id="selectProductXtgs" resultType="com.tjs.admin.xintuo.model.ProductXtgs" parameterType="com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel">
         select         
           <include refid="Base_select_Column_List" />           
-        from  tjs_product_xtgs
+        from  tjs_product_xtgs where 1=1
+        
+       <if test="productXtgs!=null and productXtgs.xgtsStatus!= null and productXtgs.xgtsStatus!= ''">
+           AND xgts_status= #{productXtgs.xgtsStatus}
+          </if>
     </select>
     
     <insert id="insertProductXtgs"   useGeneratedKeys="true" keyProperty="xtgsId"  parameterType="com.tjs.admin.xintuo.model.ProductXtgs">
@@ -58,7 +71,10 @@
         #{xgtsSs},
         #{xgtsGsxz},
         #{xgtsZcglgm},
-        #{xgtsGsjj}        
+        #{xgtsGsjj},
+        #{xgtsStatus},
+        #{xgtsTjw},
+        #{xgtsTjno}        
         )
     </insert>
     
@@ -79,7 +95,10 @@
         xgts_ss=#{xgtsSs},
         xgts_gsxz=#{xgtsGsxz},
         xgts_zcglgm=#{xgtsZcglgm},
-        xgts_gsjj=#{xgtsGsjj}                  
+        xgts_gsjj=#{xgtsGsjj},
+        xgts_status=#{xgtsStatus},
+        xgts_tjw=#{xgtsTjw},
+        xgts_tjno=#{xgtsTjno}                 
          where xtgs_id=#{xtgsId}
     </update>
     

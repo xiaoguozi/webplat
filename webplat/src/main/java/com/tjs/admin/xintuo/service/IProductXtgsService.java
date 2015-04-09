@@ -2,6 +2,7 @@ package com.tjs.admin.xintuo.service;
 
 import java.util.List;
 
+import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.core.generic.GenericService;
 
@@ -10,9 +11,9 @@ import com.tjs.core.generic.GenericService;
  * @author Administrator
  *
  */
-public interface IProductXtgsService extends GenericService<ProductXtgs, Long>  {
+public interface IProductXtgsService  {
 	
-	public int countProductXtgs(ProductXtgs productXtgs);
+	public int countProductXtgs(XinTuoGsCtrlModel xintuoGsCtrlModel);
 	
 	public int insertProductXtgs(ProductXtgs productXtgs);
 	
@@ -24,5 +25,5 @@ public interface IProductXtgsService extends GenericService<ProductXtgs, Long>  
 	
 	public ProductXtgs findByProductXtgsId(Long xtgsId);
 	
-	public List<ProductXtgs> selectProductXtgs();
+	public List<ProductXtgs> selectProductXtgs(XinTuoGsCtrlModel xintuoGsCtrlModel);
 }

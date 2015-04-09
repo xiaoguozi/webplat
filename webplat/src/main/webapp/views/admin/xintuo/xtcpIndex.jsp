@@ -48,8 +48,8 @@
                         <th field="xtcpFullname"> 信托全称 <span class="glyphicon"></span></th>
                         <th field="xtcpGszhname">信托公司名称<span class="glyphicon"></span></th>
                         <th field="xtcpSysm">收益说明<span class="glyphicon"></span></th>
-                        <th field="xtcpFb">是否发布<span class="glyphicon"></span></th>
-                         <th field="xtcpInshow">是否在首页显示<span class="glyphicon"></span></th>                                             
+                        <th field="xtcpStatus">状态<span class="glyphicon"></span></th>
+                         <th field="xtcpTjw">推荐位<span class="glyphicon"></span></th>                                             
                     </tr>
                 </thead>
                 <tbody>
