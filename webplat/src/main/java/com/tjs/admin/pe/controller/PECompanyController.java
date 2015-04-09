@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.service.PECompanyService;
-import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 
 /**
  * 私募公司控制器

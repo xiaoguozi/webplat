@@ -16,6 +16,8 @@ import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
+ * 私募产品控制器
+ * 
  *@author zhsoft
  *@since 2015年3月31日
  **/
@@ -32,34 +34,24 @@ public class PEProductController {
         return "admin/pe/peProduct/index";
     }
 	
-/*	@RequestMapping("/insert")
-    public String insert(PECompany peCompany, PEProductCtrlModel peCompanyCtrlModel, Model model) {
-    	model.addAttribute("peCompany", peCompany);
+	@RequestMapping("/insert")
+    public String insert(PEProduct peProduct, PEProductCtrlModel peCompanyCtrlModel, Model model) {
+    	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peCompanyCtrlModel);
         return "admin/pe/peProduct/insert";
     }
 	
+
     @RequestMapping("/insertData")
     @ResponseBody
-    public Map<String, Object> insertData(PECompany peCompany, PEProductCtrlModel peCompanyCtrlModel, Model model) {
+    public Map<String, Object> insertData(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    	String setupTimeStr = peCompanyCtrlModel.getSetupTimeStr();
-    	if(StringExtUtils.isNotBlank(setupTimeStr)){
-    		try {
-    			Date setupTime = sdf.parse(setupTimeStr);
-    			peCompany.setSetupTime(setupTime);
-    		} catch (ParseException e) {
-    			//e.printStackTrace();
-    		}
-    	}
-    	
-    	int id = peCompanyService.insertPECompany(peCompany);
+    	int id = peProductService.insertPEProduct(peProduct, peProductCtrlModel);
     	result.put("code", "0");
-    	result.put("bizData", peCompany);
+    	result.put("bizData", peProduct);
     	
         return result;
-    }*/
+    }
 	
 	
 	@RequestMapping("/listData")
@@ -85,31 +77,30 @@ public class PEProductController {
         return result;
     }
 	
-	/*@RequestMapping("/update")
-    public String update(PECompany paraPECompany, PEProductCtrlModel peCompanyCtrlModel, Model model) {
-		PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
-    	model.addAttribute("peCompany", peCompany);
-    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+	@RequestMapping("/update")
+    public String update(PEProduct paraPEProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
+		PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
+    	model.addAttribute("peProduct", peProduct);
+    	model.addAttribute("ctrlData", peProductCtrlModel);
         return "admin/pe/peProduct/update";
     }
 	
 	@RequestMapping("/updateData")
     @ResponseBody
-    public Map<String, Object> updateData(PECompany peProduct, PEProductCtrlModel peCompanyCtrlModel, Model model) {
+    public Map<String, Object> updateData(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = peCompanyService.updatePECompany(peProduct);
+    	int id = peProductService.updatePEProduct(peProduct, peProductCtrlModel);               
     	result.put("code", "0");
     	result.put("bizData", peProduct);
     	
         return result;
     }
 
-
     @RequestMapping("/view")
-    public String view(PECompany paraPECompany, PEProductCtrlModel peCompanyCtrlModel, Model model) {
-    	PECompany peCompany = peCompanyService.getPECompanyById(paraPECompany.getId());
-    	model.addAttribute("peCompany", peCompany);
-    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+    public String view(PEProduct paraPEProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
+    	PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
+    	model.addAttribute("peProduct", peProduct);
+    	model.addAttribute("ctrlData", peProductCtrlModel);
         return "admin/pe/peProduct/view";
-    }*/
+    }
 }

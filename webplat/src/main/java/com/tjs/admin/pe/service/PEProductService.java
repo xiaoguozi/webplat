@@ -2,14 +2,14 @@ package com.tjs.admin.pe.service;
 
 import java.util.List;
 
-import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEProduct;
 
 /**
+ * 私募产品服务接口
+ * 
  *@Author zhsoft
  *@Time 2015年3月26日
- *
- * 私募公司服务接口
  **/
 public interface PEProductService  {
 	
@@ -24,4 +24,8 @@ public interface PEProductService  {
 	Integer selectListCount();
 	
 	PEProduct getPEProductById(long peProductId);
+	
+	int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
+	
+	int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 }

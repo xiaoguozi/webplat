@@ -2,7 +2,6 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
-import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 
 /**

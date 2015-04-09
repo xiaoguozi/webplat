@@ -88,29 +88,28 @@ public class PEProduct {
 	private Date createDate;
 	
 	/* 最后修改日期 */
-	private Date lastMdifyDate;
+	private Date lastModifyDate;
 	
 	/* 创建人ID */
-	private Long createrId;
+	private long createrId;
 	
 	/* 创建人姓名 */
 	private String createrName;
 	
 	/* 推荐位 */
-	private int recommendLocation;
+	private String recommendLocation;
 	
 	/* 推荐顺序 */
-	private int recommendSequence;
+	private String recommendSequence;
 	
 	/* 产品状态:1、上线，2、运行中, 3、下线 */
 	private int status;
 	
 	/* 私募公司ID */
-	private Long pecompanyId;
+	private long pecompanyId;
 	
 	/* 私募公司名称 */
 	private String pecompanyName;
-
 
 	public long getId() {
 		return id;
@@ -320,19 +319,19 @@ public class PEProduct {
 		this.createDate = createDate;
 	}
 
-	public Date getLastMdifyDate() {
-		return lastMdifyDate;
+	public Date getLastModifyDate() {
+		return lastModifyDate;
 	}
 
-	public void setLastMdifyDate(Date lastMdifyDate) {
-		this.lastMdifyDate = lastMdifyDate;
+	public void setLastModifyDate(Date lastMdifyDate) {
+		this.lastModifyDate = lastMdifyDate;
 	}
 
-	public Long getCreaterId() {
+	public long getCreaterId() {
 		return createrId;
 	}
 
-	public void setCreaterId(Long createrId) {
+	public void setCreaterId(long createrId) {
 		this.createrId = createrId;
 	}
 
@@ -344,19 +343,19 @@ public class PEProduct {
 		this.createrName = createrName;
 	}
 
-	public int getRecommendLocation() {
+	public String getRecommendLocation() {
 		return recommendLocation;
 	}
 
-	public void setRecommendLocation(int recommendLocation) {
+	public void setRecommendLocation(String recommendLocation) {
 		this.recommendLocation = recommendLocation;
 	}
 
-	public int getRecommendSequence() {
+	public String getRecommendSequence() {
 		return recommendSequence;
 	}
 
-	public void setRecommendSequence(int recommendSequence) {
+	public void setRecommendSequence(String recommendSequence) {
 		this.recommendSequence = recommendSequence;
 	}
 
@@ -368,11 +367,11 @@ public class PEProduct {
 		this.status = status;
 	}
 
-	public Long getPecompanyId() {
+	public long getPecompanyId() {
 		return pecompanyId;
 	}
 
-	public void setPecompanyId(Long pecompanyId) {
+	public void setPecompanyId(long pecompanyId) {
 		this.pecompanyId = pecompanyId;
 	}
 
@@ -401,12 +400,13 @@ public class PEProduct {
 				+ ", subscripFee=" + subscripFee + ", exitFee=" + exitFee
 				+ ", managementFee=" + managementFee + ", recommendReason="
 				+ recommendReason + ", createDate=" + createDate
-				+ ", lastMdifyDate=" + lastMdifyDate + ", createrId="
+				+ ", lastMdifyDate=" + lastModifyDate + ", createrId="
 				+ createrId + ", createrName=" + createrName
 				+ ", recommendLocation=" + recommendLocation
 				+ ", recommendSequence=" + recommendSequence + ", status="
 				+ status + ", pecompanyId=" + pecompanyId + ", pecompanyName="
 				+ pecompanyName + "]";
 	}
+
 	
 }

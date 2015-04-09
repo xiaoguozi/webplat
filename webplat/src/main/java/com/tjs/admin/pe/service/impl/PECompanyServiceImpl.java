@@ -76,6 +76,7 @@ public class PECompanyServiceImpl implements PECompanyService {
 		
 		Date setupTime = DateUtils.str2Date(peCompanyCtrlModel.getSetupTimeStr());
 		peCompany.setSetupTime(setupTime);
+		peCompany.setLastModifyDate(DateUtils.getCurrentDate());
 		result = updatePECompany(peCompany);
 		
 		return result;

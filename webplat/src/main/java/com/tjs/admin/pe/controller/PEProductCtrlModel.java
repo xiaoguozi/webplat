@@ -1,6 +1,5 @@
 package com.tjs.admin.pe.controller;
 
-import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.core.generic.GenericCtrlModel;
 
@@ -13,7 +12,16 @@ import com.tjs.core.generic.GenericCtrlModel;
 public class PEProductCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
-
+	
+	/* 净值日期 */
+	private String netWorthTimeStr;
+	
+	/* 成立日期 */
+	private String setupTimeStr;
+	
+	/* 开放日期 */
+	private String openTimeStr;
+	
 	private PEProduct peProduct;
 
 
@@ -33,5 +41,30 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 		this.peProduct = peProduct;
 	}
 
+	public String getNetWorthTimeStr() {
+		return netWorthTimeStr;
+	}
+
+	public void setNetWorthTimeStr(String netWorthTimeStr) {
+		this.netWorthTimeStr = netWorthTimeStr;
+	}
+
+	public String getSetupTimeStr() {
+		return setupTimeStr;
+	}
+
+	public void setSetupTimeStr(String setupTimeStr) {
+		this.setupTimeStr = setupTimeStr;
+	}
+
+	public String getOpenTimeStr() {
+		return openTimeStr;
+	}
+
+	public void setOpenTimeStr(String openTimeStr) {
+		this.openTimeStr = openTimeStr;
+	}
+
+	
 	
 }

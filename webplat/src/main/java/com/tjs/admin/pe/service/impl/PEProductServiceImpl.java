@@ -1,16 +1,18 @@
 package com.tjs.admin.pe.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEProductMapper;
-import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.core.util.DateUtils;
 
 /**
  * 私募产品服务 
@@ -23,12 +25,16 @@ import com.tjs.admin.pe.service.PEProductService;
 public class PEProductServiceImpl implements PEProductService {
 
 	@Resource
-	PEProductMapper peProductMappper;
+	private PEProductMapper peProductMappper;
+	
 	
 	@Override
 	public int insertPEProduct(PEProduct peProduct) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		peProduct.setCreateDate(DateUtils.getCurrentDate());
+		peProduct.setLastModifyDate(DateUtils.getCurrentDate());
+		result = peProductMappper.insertPEProduct(peProduct);
+		return result;
 	}
 
 	@Override
@@ -39,15 +45,16 @@ public class PEProductServiceImpl implements PEProductService {
 
 	@Override
 	public int updatePEProduct(PEProduct peProduct) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		result = peProductMappper.updatePEProduct(peProduct);
+		return result;
 	}
 
 	@Override
 	public List<PEProduct> getPEProductList() {
-		List<PEProduct> lstResult = new ArrayList<PEProduct>();
-		lstResult = peProductMappper.getPEProductList();
-		return lstResult;
+		List<PEProduct> result = new ArrayList<PEProduct>();
+		result = peProductMappper.getPEProductList();
+		return result;
 	}
 
 	@Override
@@ -57,8 +64,35 @@ public class PEProductServiceImpl implements PEProductService {
 
 	@Override
 	public PEProduct getPEProductById(long peProductId) {
-		// TODO Auto-generated method stub
-		return null;
+		return peProductMappper.getPEProductById(peProductId);
 	}
 
+	@Override
+	public int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
+		int result = 0;
+		str2Date(peProduct, peProductCtrlModel);
+		result = this.insertPEProduct(peProduct);
+		return result;
+	}
+
+	@Override
+	public int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
+		int result = 0;
+		str2Date(peProduct, peProductCtrlModel);
+		peProduct.setLastModifyDate(DateUtils.getCurrentDate());
+		result = this.updatePEProduct(peProduct);
+		return result;
+	}
+
+	
+	private void str2Date(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
+		Date netWorthTime = DateUtils.str2Date(peProductCtrlModel.getNetWorthTimeStr());
+		Date setupTime = DateUtils.str2Date(peProductCtrlModel.getSetupTimeStr());
+		Date openTime = DateUtils.str2Date(peProductCtrlModel.getOpenTimeStr());
+		peProduct.setNetWorthTime(netWorthTime);
+		peProduct.setSetupTime(setupTime);
+		peProduct.setOpenTime(openTime);
+	}
+
+	
 }

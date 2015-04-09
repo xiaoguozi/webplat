@@ -9,8 +9,6 @@ package com.tjs.admin.pe.model;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 /**
  * @author zh
  *
