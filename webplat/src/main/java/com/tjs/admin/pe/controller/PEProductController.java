@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PEProduct;
-import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
-import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
-import com.tjs.admin.xintuo.model.Lable;
-import com.tjs.admin.xintuo.model.ProductXtgs;
 
 /**
  * 私募产品控制器
@@ -40,9 +36,9 @@ public class PEProductController {
     }
 	
 	@RequestMapping("/insert")
-    public String insert(PEProduct peProduct, PEProductCtrlModel peCompanyCtrlModel, Model model) {
+    public String insert(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	model.addAttribute("peProduct", peProduct);
-    	model.addAttribute("ctrlData", peCompanyCtrlModel);
+    	model.addAttribute("ctrlData", peProductCtrlModel);
         return "admin/pe/peProduct/insert";
     }
 	

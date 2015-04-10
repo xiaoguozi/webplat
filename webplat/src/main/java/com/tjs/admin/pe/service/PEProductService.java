@@ -26,7 +26,7 @@ public interface PEProductService  {
 	
 	PEProduct getPEProductById(long peProductId);
 	
-	int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
+    int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
 	int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
@@ -36,5 +36,4 @@ public interface PEProductService  {
 	 * @return Map值 total：记录数， data：数据集
 	 */
 	Map<String, Object> getOnLinePECompanyList();
-	
 }
