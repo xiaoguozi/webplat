@@ -64,7 +64,7 @@
     
    <insert id="insertPECompany"  useGeneratedKeys="true"
     keyProperty="id">
-   		INSERT INTO  private_placement_company (<include refid="Base_select_Column_List" />)
+   		INSERT INTO  pe_company (<include refid="Base_select_Column_List" />)
    		VALUES (#{id}, 
    		        #{logo}, 
    		        #{name}, 
@@ -89,11 +89,11 @@
    </insert>
    
    <delete id="deletePECompany" parameterType="long">
-   		DELETE FROM private_placement_company WHERE id=#{id}
+   		DELETE FROM pe_company WHERE id=#{id}
    </delete>
    
    <update id="updatePECompany" parameterType="com.tjs.admin.pe.model.PECompany">
-   		UPDATE private_placement_company 
+   		UPDATE pe_company 
    		SET logo=#{logo}, 
    		    name=#{name}, 
    		    setup_time=#{setupTime}, 
@@ -113,27 +113,35 @@
    		WHERE id=#{id}
    </update>
    
-   <select id="getPECompanyList" resultMap="peResultMap">
+   <select id="getPECompanyList" parameterType="com.tjs.admin.pe.controller.PECompanyCtrlModel" resultMap="peResultMap">
        SELECT 
        <include refid="Base_select_Column_List" /> 
-       FROM private_placement_company
+       FROM pe_company
+       WHERE 1=1
+   		<if test="peCompany != null and peCompany.status == 2">
+   			AND status = #{peCompany.status}
+   		</if>          
    </select>
    
-   <select id="selectListCount" parameterType="com.tjs.admin.pe.model.PECompany" resultType="java.lang.Integer">
+   <select id="selectListCount" parameterType="com.tjs.admin.pe.controller.PECompanyCtrlModel" resultType="int">
    		SELECT count(*) AS total
-   		FROM private_placement_company
+   		FROM pe_company
+   		WHERE 1=1
+   		<if test="peCompany != null and peCompany.status == 2">
+   			AND status = #{peCompany.status}
+   		</if>
     </select>
     
     <select id="getPECompanyById" parameterType="long"
 		resultType="com.tjs.admin.pe.model.PECompany">
 		SELECT
 		<include refid="Base_select_Column_List" />
-		FROM private_placement_company 
+		FROM pe_company 
 		WHERE id=#{id}
 	</select>
     
     <delete id="deleteBatchPECompany" parameterType="long" >
-		 DELETE FROM private_placement_company
+		 DELETE FROM pe_company
 		 WHERE id in 
 		<foreach item="idItem" collection="array" open="(" separator="," close=")">
 		  #{idItem}
@@ -147,7 +155,7 @@
             DISTINCT
         </if>
         <include refid="Base_select_Column_List" />
-        FROM private_placement_company
+        FROM pe_company
         <if test="_parameter != null">
             <include refid="Where_Clause" />
         </if>

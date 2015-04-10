@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.model.PECompany;
 
 /**
@@ -28,4 +29,8 @@ public interface PECompanyMapper  {
 	int deleteBatchPECompany(long[] ids);
 	
 	List<PECompany> getPECompanyListAndPage();
+	
+	int selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
+	
+	List<PECompany> getPECompanyList(PECompanyCtrlModel peCompanyCtrlModel);
 }

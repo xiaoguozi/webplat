@@ -2,7 +2,9 @@ package com.tjs.admin.pe.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.dao.PECompanyMapper;
+import com.tjs.admin.pe.model.Lable;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.core.util.DateUtils;
@@ -23,6 +26,9 @@ import com.tjs.core.util.DateUtils;
 
 @Service
 public class PECompanyServiceImpl implements PECompanyService {
+	
+	/** 公司上线状态 */
+	public static final int ON_LINE = 2;
 	
 	@Resource
 	private PECompanyMapper peCompanyMapper;
@@ -59,7 +65,7 @@ public class PECompanyServiceImpl implements PECompanyService {
 	}
 
 	@Override
-	public Integer selectListCount() {
+	public int selectListCount() {
 		return peCompanyMapper.selectListCount();
 	}
 
@@ -97,6 +103,42 @@ public class PECompanyServiceImpl implements PECompanyService {
 		
 		peCompanyMapper.deleteBatchPECompany(ids);
 		
+		return result;
+	}
+
+	@Override
+	public Map<String, Object> getOnLinePECompany() {
+		Map<String, Object> result = new HashMap<String, Object>();
+		PECompanyCtrlModel peCompanyCtrlModel = new PECompanyCtrlModel();
+		PECompany peCompany = new PECompany(); 
+		peCompany.setStatus(PECompanyServiceImpl.ON_LINE);
+		peCompanyCtrlModel.setPeCompany(peCompany);
+		int count = this.selectListCount(peCompanyCtrlModel);
+		List<PECompany> peCompanys = this.getPECompanyList(peCompanyCtrlModel);          
+		List<Lable> lables = new ArrayList<Lable>();
+		for (PECompany company : peCompanys) {
+			Lable lable = new Lable();
+			lable.setId(String.valueOf(company.getId()));
+			lable.setTitle(company.getName());
+			lables.add(lable);
+		}
+		
+		result.put("total", count);
+    	result.put("data", lables); 
+		return result;
+	}
+
+	@Override
+	public int selectListCount(PECompanyCtrlModel peCompanyCtrlModel) {
+		int result = 0;
+		result = peCompanyMapper.selectListCount(peCompanyCtrlModel);
+		return result;
+	}
+
+	@Override
+	public List<PECompany> getPECompanyList(PECompanyCtrlModel peCompanyCtrlModel) {
+		List<PECompany> result = new ArrayList<PECompany>();
+		result = peCompanyMapper.getPECompanyList(peCompanyCtrlModel);
 		return result;
 	}
 

@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
+import com.tjs.admin.xintuo.model.Lable;
+import com.tjs.admin.xintuo.model.ProductXtgs;
 
 /**
  * 私募产品控制器
@@ -28,6 +32,7 @@ public class PEProductController {
 
 	@Resource
 	private PEProductService peProductService;
+	
 	
 	@RequestMapping("/index")
     public String index() {
@@ -102,5 +107,13 @@ public class PEProductController {
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
         return "admin/pe/peProduct/view";
+    }
+    
+    @RequestMapping("/getOnLinePECompanyList")
+    @ResponseBody
+    public  Map<String, Object> getOnLinePECompanyList() {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	result = peProductService.getOnLinePECompanyList(); 
+        return result;
     }
 }

@@ -1,3 +1,7 @@
+package com.tjs.admin.pe.model;
+
+import java.util.Date;
+
 /**
  * 私募公司
  * 
@@ -5,14 +9,6 @@
  *@Time 2015年3月25日
  *
  **/
-package com.tjs.admin.pe.model;
-
-import java.util.Date;
-
-/**
- * @author zh
- *
- */
 public class PECompany {
 	
 	private long id;

@@ -3,6 +3,7 @@ package com.tjs.admin.pe.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEProductMapper;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
 
@@ -27,6 +29,8 @@ public class PEProductServiceImpl implements PEProductService {
 	@Resource
 	private PEProductMapper peProductMappper;
 	
+	@Resource
+	private PECompanyService peCompanyService;
 	
 	@Override
 	public int insertPEProduct(PEProduct peProduct) {
@@ -92,6 +96,11 @@ public class PEProductServiceImpl implements PEProductService {
 		peProduct.setNetWorthTime(netWorthTime);
 		peProduct.setSetupTime(setupTime);
 		peProduct.setOpenTime(openTime);
+	}
+
+	@Override
+	public Map<String, Object> getOnLinePECompanyList() {
+		return peCompanyService.getOnLinePECompany();
 	}
 
 	

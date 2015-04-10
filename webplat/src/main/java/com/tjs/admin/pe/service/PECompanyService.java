@@ -1,6 +1,7 @@
 package com.tjs.admin.pe.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.model.PECompany;
@@ -21,7 +22,7 @@ public interface PECompanyService  {
 	
 	List<PECompany> getPECompanyList();
 	
-	Integer selectListCount();
+	int selectListCount();             
 	
 	PECompany getPECompanyById(long peCompanyId);
 	
@@ -30,4 +31,15 @@ public interface PECompanyService  {
 	int insertPECompany(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel);
 	
 	int deleteBatchPECompany(long[] ids);
+	
+	int selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
+	
+	List<PECompany> getPECompanyList(PECompanyCtrlModel peCompanyCtrlModel);
+	
+	/**
+	 * 获取上线的私募公司清单 
+	 * 
+	 * @return Map值 total：记录数， data：数据集
+	 */
+	Map<String, Object> getOnLinePECompany();
 }
