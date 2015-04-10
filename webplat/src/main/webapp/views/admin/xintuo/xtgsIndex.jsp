@@ -78,12 +78,12 @@
 var IndexPage = {};
 
 $(function(){
-    var insertUrl = "rest/admin/xintuogs/insert";
-    var updateUrl = "rest/admin/xintuogs/update";
-    var viewUrl = "rest/admin/xintuogs/view";
-    var deleteDataUrl = "rest/admin/xintuogs/deleteData";
-    var listDataCountUrl = "rest/admin/xintuogs/listDataCount";
-    var listDataUrl = "rest/admin/xintuogs/listData";
+    var insertUrl = "rest/admin/xintuo/xintuogs/insert";
+    var updateUrl = "rest/admin/xintuo/xintuogs/update";
+    var viewUrl = "rest/admin/xintuo/xintuogs/view";
+    var deleteDataUrl = "rest/admin/xintuo/xintuogs/deleteData";
+    var listDataCountUrl = "rest/admin/xintuo/xintuogs/listDataCount";
+    var listDataUrl = "rest/admin/xintuo/xintuogs/listData";
 
     Btk.form($('#searchForm'));
 

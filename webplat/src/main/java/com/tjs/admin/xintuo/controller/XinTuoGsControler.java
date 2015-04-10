@@ -22,7 +22,7 @@ import com.tjs.admin.xintuo.service.IProductXtgsService;
  * @since 2015年3月21日 下午3:54:00
  **/
 @Controller
-@RequestMapping(value = "/admin/xintuogs")
+@RequestMapping(value = "/admin/xintuo/xintuogs")
 public class XinTuoGsControler {
 	
 	 @Resource
@@ -36,10 +36,9 @@ public class XinTuoGsControler {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(@RequestParam(required=false)XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
-    	
-    	Integer total = iProductXtService.countProductXtgs(null);
+    	Integer total = iProductXtService.countProductXtgs(xintuoGsCtrlModel);
     	
     	result.put("total", total);
     	
@@ -50,7 +49,7 @@ public class XinTuoGsControler {
     @RequestMapping("/listData")
     public String listData(XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	List<ProductXtgs> showData = new ArrayList<ProductXtgs>();
-    	showData = iProductXtService.selectProductXtgs();
+    	showData = iProductXtService.selectProductXtgs(xintuoGsCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", xintuoGsCtrlModel);
@@ -71,7 +70,7 @@ public class XinTuoGsControler {
     @ResponseBody
     public Map<String, Object> insertData(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = iProductXtService.insert(productXtgs);
+    	int id = iProductXtService.insertProductXtgs(productXtgs);
     	result.put("code", "0");
     	result.put("bizData", productXtgs);
     	
@@ -82,6 +81,7 @@ public class XinTuoGsControler {
     @RequestMapping("/update")
     public String update(@RequestParam(value="id",required=false) Long xtgsId, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	ProductXtgs productXtgs = iProductXtService.findByProductXtgsId(xtgsId);
+    	System.err.println(">>>>>>"+productXtgs.getXgtsStatus());
     	model.addAttribute(productXtgs);
     	model.addAttribute("ctrlData", xintuoGsCtrlModel);
         return "admin/xintuo/updateGs";
@@ -92,10 +92,9 @@ public class XinTuoGsControler {
     @ResponseBody
     public Map<String, Object> updateData(ProductXtgs productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = iProductXtService.update(productXtgs);
+    	iProductXtService.updateProductXtgs(productXtgs);
     	result.put("code", "0");
     	result.put("bizData", productXtgs);
-    	
         return result;
     }
 

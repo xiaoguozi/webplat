@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.xintuo.model.Lable;
 import com.tjs.admin.xintuo.model.ProductXtcp;
+import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
+import com.tjs.admin.xintuo.service.IProductXtgsService;
 /**
  * 系统产品//http://127.0.0.1:8080/webplat/product/xt/list?method=getXtList
  * 
@@ -22,11 +25,14 @@ import com.tjs.admin.xintuo.service.IProductXtcpService;
  * @since 2015年3月21日 下午3:54:00
  **/
 @Controller
-@RequestMapping(value = "/admin/xintuocp")
+@RequestMapping(value = "/admin/xintuo/xintuocp")
 public class XinTuoCpControler {
 	
 	 @Resource
 	 private IProductXtcpService iProductXtService;
+	 
+	 @Resource
+	 private IProductXtgsService iProductXtgsService;
 
     
     @RequestMapping("/xtcpIndex")
@@ -114,6 +120,29 @@ public class XinTuoCpControler {
     	iProductXtService.deleteBatchProductXtcp(xtcpIds);;
     	result.put("code", "0");
     	model.addAttribute("ctrlData", xintuoCpCtrlModel);
+        return result;
+    }
+    
+    
+    @RequestMapping("/queryGsData")
+    @ResponseBody
+    public  Map<String, Object> queryGsData() {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	XinTuoGsCtrlModel xintuoGsCtrlModel = new XinTuoGsCtrlModel();
+    	ProductXtgs productXtgs = new ProductXtgs();
+    	productXtgs.setXgtsStatus("20");
+    	xintuoGsCtrlModel.setProductXtgs(productXtgs);
+    	int icount = iProductXtgsService.countProductXtgs(xintuoGsCtrlModel);
+    	List<ProductXtgs> lstGs = iProductXtgsService.selectProductXtgs(xintuoGsCtrlModel);
+    	List<Lable> lstLable = new ArrayList<Lable>();
+    	for(ProductXtgs productXtgs1:lstGs){
+    		Lable lable = new Lable();
+    		lable.setId(productXtgs1.getXtgsId().toString());
+    		lable.setTitle(productXtgs1.getXgtsZhname());
+    		lstLable.add(lable);
+    	}   	
+    	result.put("total", icount);
+    	result.put("data", lstLable);   	
         return result;
     }
     

@@ -44,7 +44,7 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>
-                        <th field="id">序号<span class="glyphicon"></span></th>
+                        <th field="id">ID<span class="glyphicon"></span></th>
                         <th field="name">公司名称 <span class="glyphicon"></span></th>
                         <th field="setupTime">成立日期 <span class="glyphicon"></span></th>
                         <th field="managementScale">管理规模<span class="glyphicon"></span></th>
@@ -52,6 +52,7 @@
                         <th field="investmentNumber">投研人数 <span class="glyphicon"></span></th>	
                         <th field="coreCharacter">核心人物 <span class="glyphicon"></span></th>	
                         <th field="productLine">产品线 <span class="glyphicon"></span></th>	
+                         <th field="status">公司状态 <span class="glyphicon"></span></th>
                     </tr>
                 </thead>
                 <tbody>

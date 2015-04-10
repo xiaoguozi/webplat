@@ -20,10 +20,8 @@
                 /views/** = anon
                 /rest/web/** = anon
                 /rest/captcha/** = anon
-                /rest/admin/** = authc
-                /rest/web/userCenter/** = user
-                <!-- 其他资源需要认证 -->
-                /** = authc
+                /rest/admin/** = anon
+                
             </value>
         </property>
     </bean>

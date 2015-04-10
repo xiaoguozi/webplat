@@ -92,6 +92,36 @@
                 <textarea rows="6" cols="100" class="form-control required" name="investmentTeam">${peCompany.investmentTeam}</textarea>
             </div>
         </div>
+         <div class="form-group">
+            <label class="col-md-3 control-label">推荐位置</label>
+            <div class="col-md-6">
+                 <select name="recommendLocation"  style="width: 200px; height: 30px " class="form-control required">   
+                         <option value="1" <c:if test="${peCompany.recommendLocation == '1'}">selected</c:if>>平台首页</option>  
+                         <option value="2" <c:if test="${peCompany.recommendLocation == '2'}">selected</c:if>>版块首页</option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">推荐顺序</label>
+            <div class="col-md-6">
+            	<select name="recommendSequence"  style="width: 200px; height: 30px " class="form-control required">   
+                         <option value="1" <c:if test="${peCompany.recommendSequence == '1'}">selected</c:if>>一</option>  
+                         <option value="2" <c:if test="${peCompany.recommendSequence == '2'}">selected</c:if>>二</option>
+                         <option value="3" <c:if test="${peCompany.recommendSequence == '3'}">selected</c:if>>三</option>
+                         <option value="4" <c:if test="${peCompany.recommendSequence == '4'}">selected</c:if>>四</option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">公司状态</label>
+            <div class="col-md-6">
+                <select name="status"  style="width: 200px; height: 30px " class="form-control required">   
+                		<option value="1" <c:if test="${peCompany.status == '1'}">selected</c:if>>未上线</option> 
+                         <option value="2" <c:if test="${peCompany.status == '2'}">selected</c:if>>上线</option>  
+                         <option value="3" <c:if test="${peCompany.status == '3'}">selected</c:if>>下线</option>
+                </select> 
+            </div>
+        </div>
     </form>
 </div>
 

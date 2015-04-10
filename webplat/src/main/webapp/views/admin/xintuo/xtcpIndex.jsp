@@ -48,8 +48,8 @@
                         <th field="xtcpFullname"> 信托全称 <span class="glyphicon"></span></th>
                         <th field="xtcpGszhname">信托公司名称<span class="glyphicon"></span></th>
                         <th field="xtcpSysm">收益说明<span class="glyphicon"></span></th>
-                        <th field="xtcpFb">是否发布<span class="glyphicon"></span></th>
-                         <th field="xtcpInshow">是否在首页显示<span class="glyphicon"></span></th>                                             
+                        <th field="xtcpStatus">状态<span class="glyphicon"></span></th>
+                         <th field="xtcpTjw">推荐位<span class="glyphicon"></span></th>                                             
                     </tr>
                 </thead>
                 <tbody>
@@ -79,12 +79,12 @@
 var IndexPage = {};
 
 $(function(){
-    var insertUrl = "rest/admin/xintuocp/insert";
-    var updateUrl = "rest/admin/xintuocp/update";
-    var viewUrl = "rest/admin/xintuocp/view";
-    var deleteDataUrl = "rest/admin/xintuocp/deleteData";
-    var listDataCountUrl = "rest/admin/xintuocp/listDataCount";
-    var listDataUrl = "rest/admin/xintuocp/listData";
+    var insertUrl = "rest/admin/xintuo/xintuocp/insert";
+    var updateUrl = "rest/admin/xintuo/xintuocp/update";
+    var viewUrl = "rest/admin/xintuo/xintuocp/view";
+    var deleteDataUrl = "rest/admin/xintuo/xintuocp/deleteData";
+    var listDataCountUrl = "rest/admin/xintuo/xintuocp/listDataCount";
+    var listDataUrl = "rest/admin/xintuo/xintuocp/listData";
 
     Btk.form($('#searchForm'));
 

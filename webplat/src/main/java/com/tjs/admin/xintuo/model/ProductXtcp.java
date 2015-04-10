@@ -38,8 +38,7 @@ public class ProductXtcp {
     @NumberFormat(style=Style.CURRENCY)
     private BigDecimal  xtcpZdrgje;
     /**抵押率 */
-    @NumberFormat(style=Style.CURRENCY)
-    private BigDecimal  xtcpDyl;
+    private String  xtcpDyl;
     /**投资领域 */
     private String  xtcpTzly;
     /**抵押物 */
@@ -59,11 +58,7 @@ public class ProductXtcp {
     /**资产管理人 */
     private String  xtcpZcglr;
     /** 点评*/
-    private String  xtcpDp;
-    /**是否发布1：发布，没有发布 */
-    private String  xtcpFb;
-    /**是否在首页显示1：显示，：不显示 */
-    private String  xtcpInshow;
+    private String  xtcpDp;   
     /** 产品上架时间*/
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date  xtcpCreateDate;
@@ -78,8 +73,41 @@ public class ProductXtcp {
     /**有效状态 */
     private String  xtcpvalidStatus;
     
+    /**公司推荐位*/
+	private String xtcpTjw;	
+	/**推荐序号*/
+	private Long xtcpTjno;	
+	/**状态*/
+	private String xtcpStatus;
+	/**活动*/
+	private String xtcpHd;
     
-    public String getXtcpvalidStatus() {
+    
+    public String getXtcpHd() {
+		return xtcpHd;
+	}
+	public void setXtcpHd(String xtcpHd) {
+		this.xtcpHd = xtcpHd;
+	}
+	public String getXtcpTjw() {
+		return xtcpTjw;
+	}
+	public void setXtcpTjw(String xtcpTjw) {
+		this.xtcpTjw = xtcpTjw;
+	}
+	public Long getXtcpTjno() {
+		return xtcpTjno;
+	}
+	public void setXtcpTjno(Long xtcpTjno) {
+		this.xtcpTjno = xtcpTjno;
+	}
+	public String getXtcpStatus() {
+		return xtcpStatus;
+	}
+	public void setXtcpStatus(String xtcpStatus) {
+		this.xtcpStatus = xtcpStatus;
+	}
+	public String getXtcpvalidStatus() {
 		return xtcpvalidStatus;
 	}
 	public void setXtcpvalidStatus(String xtcpvalidStatus) {
@@ -151,10 +179,13 @@ public class ProductXtcp {
 	public void setXtcpZdrgje(BigDecimal xtcpZdrgje) {
 		this.xtcpZdrgje = xtcpZdrgje;
 	}
-	public BigDecimal getXtcpDyl() {
+	
+	
+	
+	public String getXtcpDyl() {
 		return xtcpDyl;
 	}
-	public void setXtcpDyl(BigDecimal xtcpDyl) {
+	public void setXtcpDyl(String xtcpDyl) {
 		this.xtcpDyl = xtcpDyl;
 	}
 	public String getXtcpTzly() {
@@ -216,18 +247,6 @@ public class ProductXtcp {
 	}
 	public void setXtcpDp(String xtcpDp) {
 		this.xtcpDp = xtcpDp;
-	}
-	public String getXtcpFb() {
-		return xtcpFb;
-	}
-	public void setXtcpFb(String xtcpFb) {
-		this.xtcpFb = xtcpFb;
-	}
-	public String getXtcpInshow() {
-		return xtcpInshow;
-	}
-	public void setXtcpInshow(String xtcpInshow) {
-		this.xtcpInshow = xtcpInshow;
 	}
 	public Date getXtcpCreateDate() {
 		return xtcpCreateDate;

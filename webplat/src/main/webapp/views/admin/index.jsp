@@ -164,12 +164,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="rest/admin/xintuogs/xtgsIndex">
+                                    <a href="rest/admin/xintuo/xintuogs/xtgsIndex">
                                         信托公司
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="rest/admin/xintuocp/xtcpIndex">
+                                    <a href="rest/admin/xintuo/xintuocp/xtcpIndex">
                                         信托产品
                                     </a>
                                 </li>

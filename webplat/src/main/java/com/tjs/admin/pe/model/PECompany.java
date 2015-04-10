@@ -35,9 +35,6 @@ public class PECompany {
 	/** 投研人数 */
 	private String investmentNumber;
 	
-	/** 旗下经理 */
-	private String manager;
-	
 	/** 产品线 */
 	private String productLine;
 	
@@ -59,6 +56,22 @@ public class PECompany {
 	private Date createDate;
 	
 	private Date lastModifyDate;
+	
+	/* 创建人ID */
+	private long createrId;
+	
+	/* 创建人姓名 */
+	private String createrName;
+	
+	/* 推荐位置 */
+	private String recommendLocation;
+	
+	/* 推荐顺序 */
+	private String recommendSequence;
+	
+	/* 公司状态 */
+	private int status;
+	
 
 	public long getId() {
 		return id;
@@ -114,14 +127,6 @@ public class PECompany {
 
 	public void setInvestmentNumber(String investmentNumber) {
 		this.investmentNumber = investmentNumber;
-	}
-
-	public String getManager() {
-		return manager;
-	}
-
-	public void setManager(String manager) {
-		this.manager = manager;
 	}
 
 	public String getProductLine() {
@@ -188,20 +193,61 @@ public class PECompany {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-	@Override
-	public String toString() {
-		return "PrivatePlacementCompany [id=" + id + ", logo=" + logo
-				+ ", name=" + name + ", setupTime=" + setupTime
-				+ ", managementScale=" + managementScale + ", area=" + area
-				+ ", investmentNumber=" + investmentNumber + ", manager="
-				+ manager + ", productLine=" + productLine + ", review="
-				+ review + ", coreCharacter=" + coreCharacter
-				+ ", investmentPhilosophy=" + investmentPhilosophy
-				+ ", investmentTeam=" + investmentTeam + ", companyProfile="
-				+ companyProfile + ", createDate=" + createDate
-				+ ", lastModifyDate=" + lastModifyDate + "]";
+	public long getCreaterId() {
+		return createrId;
 	}
 
-	
+	public void setCreaterId(long createrId) {
+		this.createrId = createrId;
+	}
+
+	public String getCreaterName() {
+		return createrName;
+	}
+
+	public void setCreaterName(String createrName) {
+		this.createrName = createrName;
+	}
+
+	public String getRecommendLocation() {
+		return recommendLocation;
+	}
+
+	public void setRecommendLocation(String recommendLocation) {
+		this.recommendLocation = recommendLocation;
+	}
+
+	public String getRecommendSequence() {
+		return recommendSequence;
+	}
+
+	public void setRecommendSequence(String recommendSequence) {
+		this.recommendSequence = recommendSequence;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "PECompany [id=" + id + ", logo=" + logo + ", name=" + name
+				+ ", setupTime=" + setupTime + ", managementScale="
+				+ managementScale + ", area=" + area + ", investmentNumber="
+				+ investmentNumber + ", productLine="
+				+ productLine + ", review=" + review + ", coreCharacter="
+				+ coreCharacter + ", investmentPhilosophy="
+				+ investmentPhilosophy + ", investmentTeam=" + investmentTeam
+				+ ", companyProfile=" + companyProfile + ", createDate="
+				+ createDate + ", lastModifyDate=" + lastModifyDate
+				+ ", createrId=" + createrId + ", createrName=" + createrName
+				+ ", recommendLocation=" + recommendLocation
+				+ ", recommendSequence=" + recommendSequence + ", status="
+				+ status + "]";
+	}
 	
 }

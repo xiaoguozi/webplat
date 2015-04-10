@@ -44,7 +44,7 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>
-                        <th field="id">id <span class="glyphicon"></span></th>
+                        <th field="id">ID<span class="glyphicon"></span></th>
                         <th field="simpleName">产品名称 <span class="glyphicon"></span></th>
                         <th field="pecompanyName">私募公司 <span class="glyphicon"></span></th>
                         <th field="simpleName">基金经理 <span class="glyphicon"></span></th>
