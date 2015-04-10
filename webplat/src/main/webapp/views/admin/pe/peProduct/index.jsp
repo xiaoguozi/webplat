@@ -47,7 +47,6 @@
                         <th field="id">ID<span class="glyphicon"></span></th>
                         <th field="simpleName">产品名称 <span class="glyphicon"></span></th>
                         <th field="pecompanyName">私募公司 <span class="glyphicon"></span></th>
-                        <th field="simpleName">基金经理 <span class="glyphicon"></span></th>
                         <th field="productLevel">产品等级 <span class="glyphicon"></span></th>
                         <th field="accumulatedIncome">累计收益 <span class="glyphicon"></span></th>
                         <th field="nowRate">今年以来收益 <span class="glyphicon"></span></th>

@@ -21,7 +21,6 @@
         </td>
         <td>${peProduct.simpleName}</td>
         <td>${peProduct.pecompanyName}</td>
-        <td>${peProduct.simpleName}</td>
         <td>
         	<c:choose>  
                 <c:when test="${peProduct.productLevel =='1'}">一级</c:when>

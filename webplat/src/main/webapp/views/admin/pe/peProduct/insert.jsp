@@ -24,7 +24,8 @@
 		 <div class="form-group">             
             <label class="col-md-3 control-label">私募公司</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="pecompanyName" value="${peProduct.pecompanyName}" >
+            	<input type="text" class="form-control ajax-select required" name="pecompanyId" value="${peProduct.pecompanyId}" 
+            		data-title="${peProduct.pecompanyName}" placeholder="请选择"  data-url="rest/admin/pe/peProduct/getOnLinePECompanyList" >   
             </div>
         </div>
         <div class="form-group">
