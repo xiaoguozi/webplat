@@ -39,6 +39,12 @@
           <if test="productXtgs!=null and productXtgs.xgtsStatus!= null and productXtgs.xgtsStatus!= ''">
            AND xgts_status= #{productXtgs.xgtsStatus}
           </if>
+          
+           <if test="keyWord!= null and keyWord!= ''">
+           AND (xgts_zhname like CONCAT('%',#{keyWord},'%') OR xtgs_code like CONCAT('%',#{keyWord},'%'))
+          </if>
+          
+          
         
     </select>
     
@@ -47,9 +53,22 @@
           <include refid="Base_select_Column_List" />           
         from  tjs_product_xtgs where 1=1
         
-       <if test="productXtgs!=null and productXtgs.xgtsStatus!= null and productXtgs.xgtsStatus!= ''">
+        <if test="productXtgs!=null and productXtgs.xgtsStatus!= null and productXtgs.xgtsStatus!= ''">
            AND xgts_status= #{productXtgs.xgtsStatus}
+        </if>
+        
+          <if test="keyWord!= null and keyWord!= ''">
+            AND (xgts_zhname like CONCAT('%',#{keyWord},'%') OR xtgs_code like CONCAT('%',#{keyWord},'%'))
           </if>
+               
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
     </select>
     
     <insert id="insertProductXtgs"   useGeneratedKeys="true" keyProperty="xtgsId"  parameterType="com.tjs.admin.xintuo.model.ProductXtgs">

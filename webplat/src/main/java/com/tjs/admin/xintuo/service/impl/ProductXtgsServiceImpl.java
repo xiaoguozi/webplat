@@ -61,6 +61,9 @@ public class ProductXtgsServiceImpl  implements IProductXtgsService {
 
 	@Override
 	public List<ProductXtgs> selectProductXtgs(XinTuoGsCtrlModel xintuoGsCtrlModel) {
+		if(xintuoGsCtrlModel!=null){
+			xintuoGsCtrlModel.setLimitStart((xintuoGsCtrlModel.getPageNo()-1)*xintuoGsCtrlModel.getPageSize());
+		}
 		return productXtgsMapper.selectProductXtgs(xintuoGsCtrlModel);
 	}
 
