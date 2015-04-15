@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" size="30" name="keyword" placeholder="关键字" value="" >
+                <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
@@ -88,7 +88,7 @@ $(function(){
     Btk.form($('#searchForm'));
 
     //搜索事件
-    $("#searchBtn").click(function(event) {
+    $("#searchBtn").click(function(event) {   	
         event.preventDefault();
         loadList();
         return false;
@@ -180,12 +180,13 @@ $(function(){
             _pageSize = pageSize
         }
         $("#searchForm input[name='pageSize']").val(_pageSize);
+        $("#searchForm input[name='pageNo']").val(0);
         
         $.post(
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
             function(data){
-                if(data && data.total){
+                if(data && "undefined"!= typeof data.total){
                     //分页数据
                     $("#paginationDiv").BtkPagination({
                         pageSize: _pageSize,
@@ -200,7 +201,8 @@ $(function(){
                     });                    
                 }
 
-            }, "json");
+            });  
+                     
     }
 
     //加载列表数据
