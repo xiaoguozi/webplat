@@ -13,8 +13,17 @@ public class XinTuoGsCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
+	private int limitStart;
+	
 	private ProductXtgs productXtgs;
+	
+	public int getLimitStart() {
+		return limitStart;
+	}
 
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
 	
 	public String getKeyWord() {
 		return keyWord;

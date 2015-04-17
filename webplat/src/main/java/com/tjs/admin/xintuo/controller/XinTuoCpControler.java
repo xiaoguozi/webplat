@@ -129,6 +129,7 @@ public class XinTuoCpControler {
     public  Map<String, Object> queryGsData() {
     	Map<String, Object> result = new HashMap<String, Object>();
     	XinTuoGsCtrlModel xintuoGsCtrlModel = new XinTuoGsCtrlModel();
+    	xintuoGsCtrlModel.setPageNo(0);
     	ProductXtgs productXtgs = new ProductXtgs();
     	productXtgs.setXgtsStatus("20");
     	xintuoGsCtrlModel.setProductXtgs(productXtgs);
