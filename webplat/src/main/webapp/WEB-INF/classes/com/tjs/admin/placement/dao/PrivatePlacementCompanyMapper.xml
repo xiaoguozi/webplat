@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.placement.dao.PrivatePlacementCompanyMapper">
+	
+	
+   	
+   <resultMap id="placementResultMap" type="com.tjs.admin.placement.dao.PrivatePlacementCompanyMapper">
+   		<id column="id" property="id" jdbcType="SMALLINT" />
+   		<result property="logo" column="logo" jdbcType="VARCHAR" />
+   		<result property="name" column="name" jdbcType="VARCHAR" />
+   		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
+   		<result property="managementScale" column="management_scale" jdbcType="VARCHAR" />
+   		<result property="area" column="area" jdbcType="VARCHAR" />
+   		<result property="investmentNumber" column="investment_number" jdbcType="VARCHAR" />
+   		<result property="manager" column="manager" jdbcType="VARCHAR" />
+   		<result property="productLine" column="product_line" jdbcType="VARCHAR" />
+   		<result property="review" column="review" jdbcType="VARCHAR" />
+   		<result property="coreCharacter" column="core_character" jdbcType="VARCHAR" />
+   		<result property="investmentPhilosophy" column="investment_philosophy" jdbcType="VARCHAR" />
+   		<result property="investmentTeam" column="investment_team" jdbcType="VARCHAR" />
+   		<result property="companyProfile" column="company_profile" jdbcType="VARCHAR" />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+   </resultMap>
+    
+   <insert id="insertPrivatePlacementCompany"  useGeneratedKeys="true"
+    keyProperty="id">
+   		INSERT INTO private_placement_company (logo, name, setup_time, management_scale,
+   			area, investment_number, manager, product_line, review, core_character, investment_philosophy,
+   			investment_team, company_profile, create_date, last_modify_date)
+   		VALUES (#{logo}, #{name}, #{setupTime}, #{managementScale},
+   			#{area}, #{investmentNumber}, #{manager}, #{productLine}, #{review}, #{coreCharacter}, #{investmentPhilosophy},
+   			#{investmentTeam}, #{companyProfile}, #{createDate}, #{lastModifyDate})
+   
+   </insert>
+   
+    
+</mapper>

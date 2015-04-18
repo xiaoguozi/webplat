@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.xintuo.dao.ProductXtcpMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.xintuo.model.ProductXtcp">
+		<id column="xtcp_id" property="xtcpId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="xtcp_log" property="xtcpLog" jdbcType="VARCHAR" />
+		<result column="xtcp_fullname" property="xtcpFullname" jdbcType="VARCHAR" />
+		<result column="xtcp_gszhname" property="xtcpGszhname" jdbcType="VARCHAR" />
+		<result column="xtcp_gsId" property="xtcpGsId" javaType="java.lang.Long" jdbcType="BIGINT" />
+		<result column="xtcp_fxgm" property="xtcpFxgm" jdbcType="VARCHAR" />
+		<result column="xtcp_nsyl" property="xtcpNsyl" jdbcType="VARCHAR" />
+		<result column="xtcp_lxfp" property="xtcpLxfp" jdbcType="VARCHAR" />
+		<result column="xtcp_cxq" property="xtcpCxq" jdbcType="VARCHAR" />
+		<result column="xtcp_xtlx" property="xtcpXtlx" jdbcType="VARCHAR" />
+		<result column="xtcp_zdrgje" property="xtcpZdrgje" javaType="java.math.BigDecimal" />
+		<result column="xtcp_dyl" property="xtcpDyl" jdbcType="VARCHAR" />
+		<result column="xtcp_tzly" property="xtcpTzly" jdbcType="VARCHAR" />
+		<result column="xtcp_dyw" property="xtcpDyw" jdbcType="VARCHAR" />
+		<result column="xtcp_sysm" property="xtcpSysm" jdbcType="VARCHAR" />
+		<result column="xtcp_mjzh" property="xtcpMjzh" jdbcType="VARCHAR" />
+		<result column="xtcp_rzf" property="xtcpRzf" jdbcType="VARCHAR" />
+		<result column="xtcp_zjyt" property="xtcpZjyt" jdbcType="VARCHAR" />
+		<result column="xtcp_hkly" property="xtcpHkly" jdbcType="VARCHAR" />
+		<result column="xtcp_fkcs" property="xtcpFkcs" jdbcType="VARCHAR" />
+		<result column="xtcp_zcglr" property="xtcpZcglr" jdbcType="VARCHAR" />
+		<result column="xtcp_dp" property="xtcpDp" jdbcType="VARCHAR" />
+		<result column="xtcp_hd" property="xtcpHd" jdbcType="VARCHAR" />
+		<result column="xtcp_status" property="xtcpStatus" jdbcType="VARCHAR" />
+		<result column="xtcp_tjw" property="xtcpTjw" jdbcType="VARCHAR" />
+		<result column="xtcp_tjno" property="xtcpTjno" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="xtcp_userId" property="xtcpUserId" javaType="java.lang.Long" jdbcType="BIGINT"  />
+		<result column="xtcp_username" property="xtcpUsername" jdbcType="VARCHAR" />
+		<result column="xtcp_validstatus" property="xtcpvalidStatus" jdbcType="VARCHAR" />
+		
+
+	</resultMap>
+
+	<sql id="Base_select_Column_List">
+		xtcp_id, xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
+		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
+		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+		xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
+		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
+		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username
+	</sql>
+
+	<select id="countProductXtcp" resultType="int"
+		parameterType="com.tjs.admin.xintuo.model.ProductXtcp">
+		select count(*) c from tjs_product_xtcp  where xtcp_validstatus='1'
+	</select>
+
+	<select id="selectProductXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where xtcp_validstatus='1'
+	</select>
+
+	<insert id="insertProductXtcp" useGeneratedKeys="true"
+		keyProperty="xtcpId" parameterType="com.tjs.admin.xintuo.model.ProductXtcp">
+		insert into tjs_product_xtcp(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{xtcpLog},
+		#{xtcpFullname},
+		#{xtcpGszhname},
+		#{xtcpGsId},
+		#{xtcpFxgm},
+		#{xtcpNsyl},
+		#{xtcpLxfp},
+		#{xtcpCxq},
+		#{xtcpXtlx},
+		#{xtcpZdrgje},
+		#{xtcpDyl},
+		#{xtcpTzly},
+		#{xtcpDyw},
+		#{xtcpSysm},
+		#{xtcpMjzh},
+		#{xtcpRzf},
+		#{xtcpZjyt},
+		#{xtcpHkly},
+		#{xtcpFkcs},
+		#{xtcpZcglr},
+		#{xtcpDp},
+		#{xtcpHd},
+		#{xtcpStatus},
+		#{xtcpTjw},
+		#{xtcpTjno},
+		#{xtcpCreateDate},
+		#{xtcpModifyDate},
+		#{xtcpUserId},
+		#{xtcpUsername}
+		)
+	</insert>
+
+	<update id="updateProductXtcp" parameterType="com.tjs.admin.xintuo.model.ProductXtcp">
+		update tjs_product_xtcp set
+		xtcp_log=#{xtcpLog},
+		xtcp_fullname=#{xtcpFullname},
+		xtcp_gszhname=#{xtcpGszhname},
+		xtcp_gsId=#{xtcpGsId},
+		xtcp_fxgm=#{xtcpFxgm},
+		xtcp_nsyl=#{xtcpNsyl},
+		xtcp_lxfp=#{xtcpLxfp},
+		xtcp_cxq=#{xtcpCxq},
+		xtcp_xtlx=#{xtcpXtlx},
+		xtcp_zdrgje=#{xtcpZdrgje},
+		xtcp_dyl=#{xtcpDyl},
+		xtcp_tzly=#{xtcpTzly},
+		xtcp_dyw=#{xtcpDyw},
+		xtcp_sysm=#{xtcpSysm},
+		xtcp_mjzh=#{xtcpMjzh},
+		xtcp_rzf=#{xtcpRzf},
+		xtcp_zjyt=#{xtcpZjyt},
+		xtcp_hkly=#{xtcpHkly},
+		xtcp_fkcs=#{xtcpFkcs},
+		xtcp_zcglr=#{xtcpZcglr},
+		xtcp_dp=#{xtcpDp},
+		xtcp_hd=#{xtcpHd},
+		xtcp_status=#{xtcpStatus},
+		xtcp_tjw=#{xtcpTjw},
+		xtcp_tjno=#{xtcpTjno},
+		xtcp_createDate=#{xtcpCreateDate},
+		xtcp_modifyDate=#{xtcpModifyDate},
+		xtcp_userId=#{xtcpUserId},
+		xtcp_username=#{xtcpUsername}
+		where xtcp_id=#{xtcpId}
+	</update>
+
+	<delete id="deleteProductXtcp" parameterType="Long">
+	    update tjs_product_xtcp set
+	    xtcp_validstatus = '2'
+	    where xtcp_id=#{xtcpId}
+	</delete>
+	
+	
+	<delete id="deleteBatchProductXtcp" parameterType="Long">
+		 update tjs_product_xtcp set
+		 xtcp_validstatus = '2'
+		 where xtcp_id in 
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+		</foreach>
+	</delete>
+
+	<select id="findByProductXtcpId" parameterType="Long"
+		resultType="com.tjs.admin.xintuo.model.ProductXtcp">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where xtcp_id=#{xtcpId}
+	</select>
+</mapper>

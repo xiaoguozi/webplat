@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.tjs.admin.model.UserInfo">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="nick_name" property="nickName" jdbcType="CHAR" />
+        <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+        <result column="qq_no" property="qqNo" jdbcType="VARCHAR" />
+        <result column="wechat_no" property="wechatNo" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
+        <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+   
+    <sql id="Base_Column_List">
+        id, user_id, nick_name, mobile_no, qq_no, wechat_no, email, user_status, reg_time
+    </sql>
+    
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from t_user_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_user_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    
+    <insert id="insert" parameterType="com.tjs.admin.model.UserInfo">
+        insert into t_user_info (id, user_id, nick_name, mobile_no, qq_no, wechat_no, email, user_status, reg_time)
+        values (#{id,jdbcType=BIGINT}, 
+        #{userId,jdbcType=BIGINT}, 
+        #{nickName,jdbcType=VARCHAR},
+        #{mobileNo,jdbcType=VARCHAR}, 
+        #{qqNo,jdbcType=VARCHAR}, 
+        #{wechatNo,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR}, 
+        #{userStatus,jdbcType=VARCHAR},  
+        #{regTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.tjs.admin.model.UserInfo">
+        insert into t_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="mobileNo != null">
+                mobile_no,
+            </if>
+            <if test="qqNo != null">
+                qq_no,
+            </if>
+            <if test="wechatNo != null">
+                wechat_no,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="userStatus != null">
+                user_status,
+            </if>
+            <if test="regTime != null">
+                reg_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="nickName != null">
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileNo != null">
+                #{mobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="qqNo != null">
+                #{qqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="wechatNo != null">
+                #{wechatNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="userStatus != null">
+                #{userStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="regTime != null">
+                #{regTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    
+    <update id="updateByPrimaryKeySelective" parameterType="com.tjs.admin.model.UserInfo">
+        update t_user_info
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="nickName != null">
+                nick_name = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileNo != null">
+                mobile_no = #{mobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="qqNo != null">
+                qq_no = #{qqNo,jdbcType=VARCHAR},
+            </if>
+            <if test="wechatNo != null">
+                wechat_no = #{wechatNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="userStatus != null">
+                user_status = #{userStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="regTime != null">
+                reg_time = #{regTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tjs.admin.model.UserInfo">
+        update t_user_info
+        set user_id = #{userId,jdbcType=BIGINT},
+        nick_name = #{nickName,jdbcType=VARCHAR},
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+        qq_no = #{qqNo,jdbcType=VARCHAR},
+        wechat_no = #{wechatNo,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        user_status = #{userStatus,jdbcType=VARCHAR},
+        reg_time =
+        #{regTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+   
+    
+    <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from t_user_info
+    </select>
+     <select id="selectListCount" parameterType="com.tjs.admin.model.UserInfo" resultType="java.lang.Integer">
+        select count(*) as total from t_user_info
+       
+    </select>
+</mapper>

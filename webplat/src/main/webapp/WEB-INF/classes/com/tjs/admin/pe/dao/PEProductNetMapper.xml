@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.pe.dao.PEProductNetMapper">
+    
+    <resultMap id="peProductNetMap" type="com.tjs.admin.pe.model.PEProductNet" >
+    	<id column="id" property="id" jdbcType="BIGINT" />
+    	<result property="netTime" column="net_time" jdbcType="TIMESTAMP" />
+    	<result property="unitNet" column="unit_net" jdbcType="VARCHAR" />
+   		<result property="totalNet" column="total_net" jdbcType="VARCHAR" />
+   	    <result property="increaseRate" column="increase_rate" jdbcType="VARCHAR" />
+   		<result property="productId" column="product_id" jdbcType="BIGINT" />
+   		<result property="productName" column="product_name" jdbcType="VARCHAR" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        id, 
+        net_time,
+        unit_net,
+        total_net,
+        increase_rate,
+        product_id,
+        product_name,
+        creater_id,
+        creater_name,
+        create_date,
+        last_modify_date
+    </sql>
+    
+    <select id="getPEProductNetById" resultMap="peProductNetMap" parameterType="long">
+        SELECT
+        <include refid="Base_select_Column_List" />
+        FROM pe_product_net 
+        WHERE id = #{id}
+    </select>
+ 
+ 	 <select id="getPEProductNetList" resultMap="peProductNetMap">
+        SELECT
+        <include refid="Base_select_Column_List" />
+         FROM pe_product_net
+    </select>
+    
+     <select id="selectListCount" resultType="int">
+        SELECT COUNT(*) AS total FROM pe_product_net
+    </select>
+    
+    <insert id="insertPEProductNet" parameterType="com.tjs.admin.pe.model.PEProductNet" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO pe_product_net (<include refid="Base_select_Column_List" />)
+        VALUES (#{id}, 
+         		#{netTime},
+         		#{unitNet},
+         		#{totalNet},
+         		#{increaseRate},
+         		#{productId},
+         		#{productName},
+                #{createrId},
+                #{createrName}, 
+                #{createDate}, 
+                #{lastModifyDate})              
+    </insert>
+ 
+ 	 <update id="updatePEProductNet"  parameterType="com.tjs.admin.pe.model.PEProductNet">
+   		UPDATE pe_product_net
+   		SET net_time=#{netTime}, 
+   		    unit_net=#{unitNet}, 
+	   		total_net=#{totalNet}, 
+	   		increase_rate=#{increaseRate},
+	   		product_id=#{productId}, 
+	   		product_name=#{productName},
+	        last_modify_date=#{lastModifyDate}
+   		WHERE id=#{id}
+   </update>
+   
+</mapper>

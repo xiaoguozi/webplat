@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.pe.dao.PEProductIncomeMapper">
+	<resultMap id="peProductIncomeMap" type="com.tjs.admin.pe.model.PEProductIncome">
+        <id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="year" column="year" jdbcType="VARCHAR" />
+   		<result property="durationIncome" column="duration_income" jdbcType="VARCHAR" />
+   		<result property="industryAverage" column="industry_average" jdbcType="VARCHAR" />
+   		<result property="hs300" column="hs_300" jdbcType="VARCHAR" />
+   		<result property="rank" column="rank" jdbcType="VARCHAR" />
+   		<result property="rankInterval" column="rank_interval" jdbcType="VARCHAR" />
+   		<result property="productId" column="product_id" jdbcType="BIGINT" />
+   		<result property="productName" column="product_name" jdbcType="VARCHAR" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        id, 
+        year,
+        duration_income,
+        industry_average,
+        hs_300,
+        rank,
+        rank_interval,
+        product_id,
+        product_name,
+        creater_id,
+        creater_name,
+        create_date,
+        last_modify_date
+    </sql>
+    
+    <select id="getPEProductIncomeById" resultMap="peProductIncomeMap" parameterType="long">
+        SELECT
+        <include refid="Base_select_Column_List" />
+        FROM pe_product_income
+        WHERE id = #{id}
+    </select>
+ 
+ 	 <select id="getPEProductIncomeList" resultMap="peProductIncomeMap">
+        SELECT
+        <include refid="Base_select_Column_List" />
+         FROM pe_product_income
+    </select>
+    
+     <select id="selectListCount" resultType="int">
+        SELECT COUNT(*) AS total FROM pe_product_income
+    </select>
+    
+    <insert id="insertPEProductIncome" parameterType="com.tjs.admin.pe.model.PEProductIncome" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO pe_product_income (<include refid="Base_select_Column_List" />)
+        VALUES (#{id}, 
+         		#{year},
+         		#{durationIncome},
+         		#{industryAverage},
+         		#{hs300},
+         		#{rank},
+         		#{rankInterval},
+         		#{productId},
+         		#{productName},
+                #{createrId},
+                #{createrName}, 
+                #{createDate}, 
+                #{lastModifyDate})              
+    </insert>
+ 
+ 	 <update id="updatePEProductIncome"  parameterType="com.tjs.admin.pe.model.PEProductIncome">
+   		UPDATE pe_product_income 
+   		SET year=#{year}, 
+   		    duration_income=#{durationIncome}, 
+	   		industry_average=#{industryAverage}, 
+	   		hs_300=#{hs300},
+	   		rank=#{rank}, 
+	   		rank_interval=#{rankInterval}, 
+	   		product_id=#{productId}, 
+	   		product_name=#{productName},
+	        last_modify_date=#{lastModifyDate}
+   		WHERE id=#{id}
+   </update>
+   
+    
+</mapper>

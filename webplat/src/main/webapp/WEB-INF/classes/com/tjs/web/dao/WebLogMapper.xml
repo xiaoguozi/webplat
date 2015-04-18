@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.web.dao.WebLogMapper">
+    <resultMap id="BaseResultMap" type="com.tjs.web.model.WebLog">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="op_code" property="opCode" jdbcType="CHAR" />
+        <result column="op_result" property="opResult" jdbcType="VARCHAR" />
+        <result column="op_obj" property="opObj" jdbcType="VARCHAR" />
+        <result column="req_url" property="reqUrl" jdbcType="VARCHAR" />
+        <result column="req_ref" property="reqRef" jdbcType="VARCHAR" />
+        <result column="req_ip" property="reqIp" jdbcType="VARCHAR" />
+        <result column="op_time" property="opTime" jdbcType="TIMESTAMP" />
+        <result column="log_time" property="logTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+   
+    <sql id="Base_Column_List">
+        id, user_name, op_code, op_result, op_obj, req_url, req_ref, req_ip, op_time, log_time
+    </sql>
+    
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from t_web_log
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_web_log
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    
+    <insert id="insert" parameterType="com.tjs.web.model.WebLog">
+        insert into t_web_log (id, user_name, op_code, op_result, op_obj, req_url, req_ref, req_ip, op_time, log_time)
+        values (#{id,jdbcType=BIGINT}, 
+        #{userName,jdbcType=VARCHAR}, 
+        #{opCode,jdbcType=VARCHAR},
+        #{opResult,jdbcType=VARCHAR}, 
+        #{opObj,jdbcType=VARCHAR}, 
+        #{reqUrl,jdbcType=VARCHAR},
+        #{reqRef,jdbcType=VARCHAR}, 
+        #{reqIp,jdbcType=VARCHAR},  
+        #{opTime,jdbcType=TIMESTAMP},  
+        #{logTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.tjs.web.model.WebLog">
+        insert into t_web_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="opCode != null">
+                op_code,
+            </if>
+            <if test="opResult != null">
+                op_result,
+            </if>
+            <if test="opObj != null">
+                op_obj,
+            </if>
+            <if test="reqUrl != null">
+                req_url,
+            </if>
+            <if test="reqRef != null">
+                req_ref,
+            </if>
+            <if test="reqIp != null">
+                req_ip,
+            </if>
+            <if test="opTime != null">
+                op_time,
+            </if>
+            <if test="logTime != null">
+                log_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="opCode != null">
+                #{opCode,jdbcType=VARCHAR},
+            </if>
+            <if test="opResult != null">
+                #{opResult,jdbcType=VARCHAR},
+            </if>
+            <if test="opObj != null">
+                #{opObj,jdbcType=VARCHAR},
+            </if>
+            <if test="reqUrl != null">
+                #{reqUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="reqRef != null">
+                #{reqRef,jdbcType=VARCHAR},
+            </if>
+            <if test="reqIp != null">
+                #{reqIp,jdbcType=VARCHAR},
+            </if>
+            <if test="opTime != null">
+                #{opTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="logTime != null">
+                #{logTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    
+   
+    
+    <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from t_web_log
+    </select>
+     <select id="selectListCount" parameterType="com.tjs.web.model.WebLog" resultType="java.lang.Integer">
+        select count(*) as total from t_web_log
+       
+    </select>
+</mapper>

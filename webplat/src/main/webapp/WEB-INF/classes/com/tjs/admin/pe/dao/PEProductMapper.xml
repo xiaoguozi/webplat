@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.pe.dao.PEProductMapper">
+	<resultMap id="peProductMap" type="com.tjs.admin.pe.model.PEProduct">
+        <id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="name" column="name" jdbcType="VARCHAR"  />
+   		<result property="simpleName" column="simple_name" jdbcType="VARCHAR"  />
+   		<result property="netWorth" column="net_worth" jdbcType="VARCHAR"  />
+   		<result property="accumulatedIncome" column="accumulated_income" jdbcType="VARCHAR"  />
+   		<result property="netWorthTime" column="net_worth_time" jdbcType="TIMESTAMP" />
+   		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
+   		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
+   		<result property="nowRate" column="now_rate" jdbcType="VARCHAR"  />
+   		<result property="towRate" column="tow_rate" jdbcType="VARCHAR"  />
+   		<result property="oneRate" column="one_rate" jdbcType="VARCHAR"  />
+   		<result property="yearRate" column="year_rate" jdbcType="VARCHAR"  />
+   		<result property="fundType" column="fund_type" jdbcType="INTEGER" />
+   		<result property="productLevel" column="product_level" jdbcType="INTEGER" />
+   		<result property="distributionPlatform" column="distribution_platform" jdbcType="VARCHAR"  />
+   		<result property="custodianBank" column="custodian_bank" jdbcType="VARCHAR"  />
+   		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
+   		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
+   		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
+   		<result property="openTime" column="open_time" jdbcType="TIMESTAMP" />
+   		<result property="subscripStart" column="subscrip_start" jdbcType="VARCHAR"  />
+   		<result property="subscripFee" column="subscrip_fee" jdbcType="VARCHAR"  />
+   		<result property="exitFee" column="exit_fee" jdbcType="VARCHAR"  />
+   		<result property="managementFee" column="management_fee" jdbcType="VARCHAR"  />
+   		<result property="recommendReason" column="recommend_reason" jdbcType="VARCHAR"  />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR"  />
+   		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR"  />
+   		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="pecompanyId" column="pecompany_id" jdbcType="BIGINT" />
+   		<result property="pecompanyName" column="pecompany_name" jdbcType="VARCHAR"  />
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        id, name, simple_name, net_worth, accumulated_income,
+        net_worth_time, setup_time, run_time, now_rate, tow_rate,
+        one_rate, year_rate, fund_type, product_level, distribution_platform,
+        custodian_bank, stockbrokers, fund_property, whether_structure,
+        open_time, subscrip_start, subscrip_fee, exit_fee, management_fee,
+        recommend_reason, create_date, last_modify_date, creater_id,
+        creater_name, recommend_location, recommend_sequence, status,
+        pecompany_id, pecompany_name
+    </sql>
+    
+    <select id="getPEProductById" resultMap="peProductMap" parameterType="long">
+        SELECT
+        <include refid="Base_select_Column_List" />
+        FROM pe_product
+        WHERE id = #{id}
+    </select>
+ 
+ 	 <select id="getPEProductList" resultMap="peProductMap" parameterType="map">
+        SELECT
+        <include refid="Base_select_Column_List" />
+         FROM pe_product
+    </select>
+    
+     <select id="selectListCount" parameterType="com.tjs.admin.pe.model.PEProduct" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS total FROM pe_product
+    </select>
+    
+    <insert id="insertPEProduct" parameterType="com.tjs.admin.pe.model.PEProduct" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO pe_product (<include refid="Base_select_Column_List" />)
+        VALUES (#{id}, 
+                #{name}, 
+                #{simpleName}, 
+                #{netWorth}, 
+                #{accumulatedIncome}, 
+                #{netWorthTime}, 
+                #{setupTime}, 
+                #{runTime}, 
+                #{nowRate},
+                #{towRate}, 
+                #{oneRate}, 
+                #{yearRate}, 
+                #{fundType}, 
+                #{productLevel}, 
+                #{distributionPlatform}, 
+                #{custodianBank}, 
+                #{stockbrokers}, 
+                #{fundProperty}, 
+                #{whetherStructure}, 
+                #{openTime},
+                #{subscripStart}, 
+                #{subscripFee}, 
+                #{exitFee}, 
+                #{managementFee}, 
+                #{recommendReason}, 
+                #{createDate}, 
+                #{lastModifyDate}, 
+                #{createrId},
+                #{createrName}, 
+                #{recommendLocation}, 
+                #{recommendSequence},
+                #{status}, 
+                #{pecompanyId}, 
+                #{pecompanyName})              
+    </insert>
+ 
+ 	 <update id="updatePEProduct" parameterType="com.tjs.admin.pe.model.PEProduct">
+   		UPDATE pe_product 
+   		SET name=#{name}, 
+   		    simple_name=#{simpleName}, 
+	   		net_worth=#{netWorth}, 
+	   		accumulated_income=#{accumulatedIncome},
+	   		net_worth_time=#{netWorthTime}, 
+	   		setup_time=#{setupTime}, 
+	   		run_time=#{runTime}, 
+	   		now_rate=#{nowRate},
+	        tow_rate=#{towRate}, 
+	        one_rate=#{oneRate}, 
+	        year_rate=#{yearRate}, 
+	        fund_type=#{fundType}, 
+	        product_level=#{productLevel}, 
+	        distribution_platform=#{distributionPlatform}, 
+	        custodian_bank=#{custodianBank}, 
+	        stockbrokers=#{stockbrokers}, 
+	        fund_property=#{fundProperty}, 
+	        whether_structure=#{whetherStructure}, 
+	        open_time=#{openTime},
+	        subscrip_start=#{subscripStart}, 
+	        subscrip_fee=#{subscripFee}, 
+	        exit_fee=#{exitFee}, 
+	        management_fee=#{managementFee}, 
+	        recommend_reason=#{recommendReason}, 
+	        last_modify_date=#{lastModifyDate}, 
+	        recommend_location=#{recommendLocation}, 
+	        recommend_sequence=#{recommendSequence},
+	        status=#{status}, 
+	        pecompany_id=#{pecompanyId}, 
+	        pecompany_name=#{pecompanyName}
+   		WHERE id=#{id}
+   </update>
+   
+    
+</mapper>
