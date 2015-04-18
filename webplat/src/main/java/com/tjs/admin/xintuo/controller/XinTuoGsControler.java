@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,24 +37,21 @@ public class XinTuoGsControler {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(@RequestParam(required=false)XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    public Map<String, Integer> listDataCount(XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {    	
+    	
     	Map<String, Integer> result = new HashMap<String, Integer>();
-    	Integer total = iProductXtService.countProductXtgs(xintuoGsCtrlModel);
-    	
-    	result.put("total", total);
-    	
+    	Integer total = iProductXtService.countProductXtgs(xintuoGsCtrlModel);   
+    	result.put("total", total.intValue());    	
         return result;
     }
 
     
     @RequestMapping("/listData")
-    public String listData(XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    public String listData(XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {   	
     	List<ProductXtgs> showData = new ArrayList<ProductXtgs>();
-    	showData = iProductXtService.selectProductXtgs(xintuoGsCtrlModel);
-    	
+    	showData = iProductXtService.selectProductXtgs(xintuoGsCtrlModel);   	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", xintuoGsCtrlModel);
-    	
         return "admin/xintuo/gsListData";
     }
     
