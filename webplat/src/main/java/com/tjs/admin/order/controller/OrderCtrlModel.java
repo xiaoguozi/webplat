@@ -1,7 +1,6 @@
-package com.tjs.admin.xintuo.controller;
+package com.tjs.admin.order.controller;
 
-import com.tjs.admin.xintuo.model.ProductXtcp;
-import com.tjs.admin.xintuo.model.ProductXtgs;
+import com.tjs.admin.order.model.Order;
 import com.tjs.core.generic.GenericCtrlModel;
 
 /**
@@ -10,7 +9,7 @@ import com.tjs.core.generic.GenericCtrlModel;
  *@author zhsoft
  *@since 2015年4月1日
  **/
-public class XinTuoCpCtrlModel extends GenericCtrlModel {
+public class OrderCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
@@ -34,7 +33,7 @@ public class XinTuoCpCtrlModel extends GenericCtrlModel {
 		this.limitStart = limitStart;
 	}
 
-	private ProductXtcp productXtcp;
+	private Order order;
 
 	
 	public String getKeyWord() {
@@ -45,13 +44,7 @@ public class XinTuoCpCtrlModel extends GenericCtrlModel {
 		this.keyWord = keyWord;
 	}
 
-	public ProductXtcp getProductXtcp() {
-		return productXtcp;
-	}
-
-	public void setProductXtcp(ProductXtcp productXtcp) {
-		this.productXtcp = productXtcp;
-	}
+	
 
 	
 

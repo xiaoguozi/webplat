@@ -14,14 +14,40 @@
                 <span class="glyphicon glyphicon-edit"></span> 修改
             </a>
         </td>
+        <td> ${xintuocp.xtcpGszhname}</td>
         <td>
             <a data-id="${xintuocp.xtcpId}" href="" class="view" title="查看">
-                ${xintuocp.xtcpId}
+               ${xintuocp.xtcpFullname}             
             </a>
         </td>
-        <td>${xintuocp.xtcpFullname}</td>
-        <td>${xintuocp.xtcpGszhname}</td>
-        <td>${xintuocp.xtcpSysm}</td>
+        
+        <td>${xintuocp.xtcpNsyl}</td>
+        <td>${xintuocp.xtcpHd}</td>
+        <td><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#00.####"/></td> 
+        <td>${xintuocp.xtcpCxq}</td>
+        <td>
+           <c:choose>  
+                <c:when test="${xintuocp.xtcpLxfp=='10'}">  
+                  		不限按月付息
+                </c:when>
+                 <c:when test="${xintuocp.xtcpLxfp=='20'}">  
+                  		  按季付息
+                </c:when>
+                 <c:when test="${xintuocp.xtcpLxfp=='30'}">  
+                  		  半年付息 
+                </c:when> 
+                 <c:when test="${xintuocp.xtcpLxfp=='40'}">  
+                  		 按年付息
+                </c:when> 
+                 <c:when test="${xintuocp.xtcpLxfp=='50'}">  
+                  		 到期付息
+                </c:when>     
+                <c:otherwise>  
+                     	其他
+                </c:otherwise>  
+            </c:choose>                              
+        </td>
+        <td>${xintuocp.xtcpTzly}</td>      
         <td>
               <c:choose>  
                 <c:when test="${xintuocp.xtcpStatus=='10'}">  
@@ -34,22 +60,7 @@
                      	已下线
                 </c:otherwise>  
             </c:choose>                 
-        </td>
-        <td>
-          <c:choose>  
-                <c:when test="${xintuocp.xtcpTjw=='10'}">  
-                  		  首页
-                </c:when> 
-                <c:when test="${xintuocp.xtcpTjw=='20'}">  
-                  		板块头     
-                </c:when>  
-                <c:otherwise>  
-                     	板块头中
-                </c:otherwise>  
-            </c:choose>   
-        
-        
-        </td>
+        </td>      
     </tr>
 
 </c:forEach>

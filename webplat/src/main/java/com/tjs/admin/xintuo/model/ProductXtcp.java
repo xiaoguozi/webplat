@@ -25,7 +25,7 @@ public class ProductXtcp {
     /**信托公司ID */
     private Long  xtcpGsId;
     /**预计发行规模 */
-    private String  xtcpFxgm;
+    private BigDecimal  xtcpFxgm;
     /**预期年收益率 */
     private String  xtcpNsyl;
     /**利息分配 */
@@ -35,7 +35,6 @@ public class ProductXtcp {
     /**信托类型 */
     private String  xtcpXtlx;
     /**最低认购金额 */
-    @NumberFormat(style=Style.CURRENCY)
     private BigDecimal  xtcpZdrgje;
     /**抵押率 */
     private String  xtcpDyl;
@@ -58,7 +57,12 @@ public class ProductXtcp {
     /**资产管理人 */
     private String  xtcpZcglr;
     /** 点评*/
-    private String  xtcpDp;   
+    private String  xtcpDp;    
+    /** 所在区域*/
+    private String  xtcpArea; 
+    
+    /** 所在区域*/
+    private String  xtcpCity;     
     /** 产品上架时间*/
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date  xtcpCreateDate;
@@ -143,10 +147,10 @@ public class ProductXtcp {
 	public void setXtcpGsId(Long xtcpGsId) {
 		this.xtcpGsId = xtcpGsId;
 	}
-	public String getXtcpFxgm() {
+	public BigDecimal getXtcpFxgm() {
 		return xtcpFxgm;
 	}
-	public void setXtcpFxgm(String xtcpFxgm) {
+	public void setXtcpFxgm(BigDecimal xtcpFxgm) {
 		this.xtcpFxgm = xtcpFxgm;
 	}
 	public String getXtcpNsyl() {
@@ -271,6 +275,18 @@ public class ProductXtcp {
 	}
 	public void setXtcpUsername(String xtcpUsername) {
 		this.xtcpUsername = xtcpUsername;
+	}
+	public String getXtcpArea() {
+		return xtcpArea;
+	}
+	public void setXtcpArea(String xtcpArea) {
+		this.xtcpArea = xtcpArea;
+	}
+	public String getXtcpCity() {
+		return xtcpCity;
+	}
+	public void setXtcpCity(String xtcpCity) {
+		this.xtcpCity = xtcpCity;
 	}
 	
     

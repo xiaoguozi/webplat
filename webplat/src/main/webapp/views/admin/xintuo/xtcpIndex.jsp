@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" size="30" name="keyword" placeholder="关键字" value="" >
+                <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
@@ -43,13 +43,16 @@
                                 <input type="checkbox" value=""/> 
                                 &nbsp;&nbsp;&nbsp;
                             </label>
-                        </th>
-                        <th field="xtcpId">ID <span class="glyphicon"></span></th>
-                        <th field="xtcpFullname"> 信托全称 <span class="glyphicon"></span></th>
-                        <th field="xtcpGszhname">信托公司名称<span class="glyphicon"></span></th>
-                        <th field="xtcpSysm">收益说明<span class="glyphicon"></span></th>
-                        <th field="xtcpStatus">状态<span class="glyphicon"></span></th>
-                         <th field="xtcpTjw">推荐位<span class="glyphicon"></span></th>                                             
+                        </th>                      
+                        <th field="xtcpGszhname">信托公司  <span class="glyphicon"></span></th>
+                        <th field="xtcpFullname">信托产品<span class="glyphicon"></span></th>
+                        <th field="xtcpNsyl">预期年份收益<span class="glyphicon"></span></th>
+                        <th field="xtcpHd">活动<span class="glyphicon"></span></th>
+                        <th field="xtcpZdrgje">最低认购金额（万元）<span class="glyphicon"></span></th>                     
+                        <th field="xtcpCxq">存续期<span class="glyphicon"></span></th>
+                        <th field="xtcpLxfp">利息分配<span class="glyphicon"></span></th>
+                        <th field="xtcpTzly">投资领域<span class="glyphicon"></span></th>
+                        <th field="xtcpTjw">是否上线<span class="glyphicon"></span></th>                                                 
                     </tr>
                 </thead>
                 <tbody>
@@ -181,12 +184,13 @@ $(function(){
             _pageSize = pageSize
         }
         $("#searchForm input[name='pageSize']").val(_pageSize);
+        $("#searchForm input[name='pageNo']").val(0);
         
         $.post(
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
             function(data){
-                if(data && data.total){
+                if(data && "undefined"!= typeof data.total){
                     //分页数据
                     $("#paginationDiv").BtkPagination({
                         pageSize: _pageSize,
@@ -201,7 +205,7 @@ $(function(){
                     });                    
                 }
 
-            }, "json");
+            });
     }
 
     //加载列表数据

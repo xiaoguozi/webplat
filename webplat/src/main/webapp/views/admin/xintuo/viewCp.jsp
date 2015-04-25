@@ -20,7 +20,7 @@
     <form id="modalForm" action="" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
        <input type="hidden" name="xtcpId" value="${productXtcp.xtcpId}">
         <div class="form-group">
-            <label class="col-md-2 control-label">信托全称</label>
+            <label class="col-md-2 control-label">信托产品</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="xtcpFullname" value="${productXtcp.xtcpFullname}" >
             </div>            
@@ -42,9 +42,9 @@
         </div>
         
          <div class="form-group">
-       		 <label class="col-md-2 control-label">预计发行规模</label>
+       		 <label class="col-md-2 control-label">预计发行规模（元）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpFxgm" value="${productXtcp.xtcpFxgm}"  >
+                <input type="text" class="form-control required number" name="xtcpFxgm" value="${productXtcp.xtcpFxgm}"  >
             </div>
            </div>
         
@@ -59,7 +59,11 @@
             <div class="form-group">
             <label class="col-md-2 control-label">利息分配</label>
             <div class="col-md-6">
-                  <input type="text" class="form-control required" name="xtcpLxfp" value="${productXtcp.xtcpLxfp}" >
+                  <input type="radio" name="xtcpLxfp" value="10" <c:if test="${productXtcp.xtcpLxfp== '10'}">checked="checked"</c:if>>不限按月付息
+                  <input type="radio" name="xtcpLxfp" value="20" <c:if test="${productXtcp.xtcpLxfp== '20'}">checked="checked"</c:if>>按季付息
+                  <input type="radio" name="xtcpLxfp" value="30" <c:if test="${productXtcp.xtcpLxfp== '30'}">checked="checked"</c:if>>半年付息      
+                  <input type="radio" name="xtcpLxfp" value="40" <c:if test="${productXtcp.xtcpLxfp== '40'}">checked="checked"</c:if>>按年付息
+                  <input type="radio" name="xtcpLxfp" value="50" <c:if test="${productXtcp.xtcpLxfp== '50'}">checked="checked"</c:if>>到期付息   
             </div>
             </div>
            
@@ -76,13 +80,16 @@
          <div class="form-group">
          <label class="col-md-2 control-label">信托类型</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpXtlx" value="${productXtcp.xtcpXtlx}"  >               
+                   <input type="radio" name="xtcpXtlx" value="10" <c:if test="${productXtcp.xtcpXtlx== '10'}">checked="checked"</c:if>>小额信托
+                   <input type="radio" name="xtcpXtlx" value="20" <c:if test="${productXtcp.xtcpXtlx== '20'}">checked="checked"</c:if>>1年期信托
+                   <input type="radio" name="xtcpXtlx" value="30" <c:if test="${productXtcp.xtcpXtlx== '30'}">checked="checked"</c:if>>高收益信托       
+                   <input type="radio" name="xtcpXtlx" value="40" <c:if test="${productXtcp.xtcpXtlx== '40'}">checked="checked"</c:if>>政信类依托                      
             </div>
             </div>
         
         
           <div class="form-group">
-            <label class="col-md-2 control-label">最低认购金额 （万元）</label>
+            <label class="col-md-2 control-label">最低认购金额 （元）</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required number" name="xtcpZdrgje" value="${productXtcp.xtcpZdrgje}" >
             </div>
@@ -129,15 +136,27 @@
         </div>
         
         <div class="form-group">
+        <label class="col-md-2 control-label">所在区域</label>
+            <div class="col-md-6">
+                <textarea rows="3" cols="100" class="form-control required" name="xtcpMjzh">${productXtcp.xtcpArea}</textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+           <label class="col-md-2 control-label">城市</label>
+            <div class="col-md-6">
+                <textarea rows="3" cols="100" class="form-control required" name="xtcpMjzh">${productXtcp.xtcpCity}</textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
         <label class="col-md-2 control-label">募集进度/账号</label>
             <div class="col-md-6">
                 <textarea rows="3" cols="100" class="form-control required" name="xtcpMjzh">${productXtcp.xtcpMjzh}</textarea>
             </div>
         </div>
         
-        
-       
-        
+              
          <div class="form-group">
             <label class="col-md-2 control-label">状态</label>
             <div class="col-md-6">

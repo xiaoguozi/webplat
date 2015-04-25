@@ -185,6 +185,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </li>
                             </ul>
                         </li>
+                        
+                        
+                        
+                           <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-gears"></i><span class="title"> 订单管理 </span><span
+                                class="arrow "> </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="rest/admin/order/order/orderIndex">
+                                     	  预约管理
+                                    </a>
+                                </li>                                                               
+                            </ul>
+                        </li>
 
                         <li class="">
                             <a href="javascript:;">

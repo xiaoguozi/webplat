@@ -72,7 +72,7 @@
          </div>
         
           <div class="form-group">
-            <label class="col-md-2 control-label">注册资本</label>
+            <label class="col-md-2 control-label">注册资本（元）</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required number " name="xgtsZczb" value="${productXtgs.xgtsZczb}" >
             </div>
@@ -120,10 +120,22 @@
          <div class="form-group">
          <label class="col-md-2 control-label">公司性质</label>
             <div class="col-md-6">
-                <select name="xgtsGsxz"  style="font-family: sans-serif" mce_style="font-family: sans-serif">   
-                         <option value="1" <c:if test="${productXtgs.xgtsGsxz == '1'}">selected</c:if>>中央企业控股</option>  
-                         <option value="2" <c:if test="${productXtgs.xgtsGsxz == '2'}">selected</c:if>>金融机构控股</option>  
-                </select> 
+                <input type="text" class="form-control required" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
+            </div>
+         </div>
+         
+          <div class="form-group">
+         <label class="col-md-2 control-label">平均收益率(%)</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control required number " name="xgtsPjsyl" value="${productXtgs.xgtsPjsyl}" >
+            </div>
+         </div>
+         
+         
+         <div class="form-group">
+         <label class="col-md-2 control-label">产品兑付比例(%)</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control required number " name="xgtsCpdfbl" value="${productXtgs.xgtsCpdfbl}" >
             </div>
          </div>
          
