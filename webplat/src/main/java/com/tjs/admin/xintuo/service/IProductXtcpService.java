@@ -25,4 +25,7 @@ public interface IProductXtcpService  {
 		public ProductXtcp findByProductXtcpId(Long xtcpId);
 		
 		public List<ProductXtcp> selectProductXtcp(XinTuoCpCtrlModel xintuoCpCtrlModel);
+		
+		/**查询首页产品*/
+		public List<ProductXtcp> selectProductXtcpIndex();
 }

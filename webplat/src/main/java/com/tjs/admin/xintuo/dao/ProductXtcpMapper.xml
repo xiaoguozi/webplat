@@ -176,4 +176,16 @@
 		<include refid="Base_select_Column_List" />
 		from tjs_product_xtcp where xtcp_id=#{xtcpId}
 	</select>
+	
+	
+	<select id="selectProductXtcpIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where 
+		xtcp_validstatus='1'
+		AND xtcp_status='20'
+		AND xtcp_tjw='10'
+		ORDER BY xtcp_tjno								
+	</select>
+	
 </mapper>

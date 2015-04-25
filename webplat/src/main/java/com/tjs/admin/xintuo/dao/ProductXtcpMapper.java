@@ -25,4 +25,7 @@ public interface ProductXtcpMapper {
 	public ProductXtcp findByProductXtcpId(Long xtcpId);
 	
 	public List<ProductXtcp> selectProductXtcp(XinTuoCpCtrlModel xintuoCpCtrlModel);
+
+	public List<ProductXtcp> selectProductXtcpIndex();
+
 }
