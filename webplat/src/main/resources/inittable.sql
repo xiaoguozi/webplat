@@ -20,6 +20,33 @@ CREATE TABLE `private_placement_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='私募公司';
 
 
+CREATE TABLE `tjs_product_xtgs` (
+  `xtgs_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
+  `xtgs_code` varchar(200) DEFAULT NULL COMMENT '公司编码',
+  `xtgs_log` varchar(500) DEFAULT NULL COMMENT '公司LOGO',
+  `xgts_zhname` varchar(500) DEFAULT NULL COMMENT '公司中文名称',
+  `xgts_enname` varchar(200) DEFAULT NULL COMMENT '公司英文名称 ',
+  `xgts_splname` varchar(200) DEFAULT NULL COMMENT '公司简称',
+  `xgts_createdate` date DEFAULT NULL COMMENT '成立日期',
+  `xgts_zczb` float(18,2) DEFAULT NULL COMMENT '注册资本',
+  `xgts_city` varchar(200) DEFAULT NULL COMMENT '所在城市',
+  `xgts_gsz` varchar(200) DEFAULT NULL COMMENT '董事长',
+  `xgts_zjl` varchar(200) DEFAULT NULL COMMENT '总经理',
+  `xgts_frdb` varchar(200) DEFAULT NULL COMMENT '法人代表',
+  `xgts_dgd` varchar(200) DEFAULT NULL COMMENT '大股东',
+  `xgts_ss` varchar(45) DEFAULT NULL COMMENT '是否上市',
+  `xgts_gsxz` varchar(45) NOT NULL COMMENT '公司性质',
+  `xgts_zcglgm` varchar(2000) DEFAULT NULL COMMENT '公司管理规模',
+  `xgts_gsjj` varchar(2000) DEFAULT NULL COMMENT '公司简介',
+  `xgts_status` varchar(5) DEFAULT NULL COMMENT '状态',
+  `xgts_tjw` varchar(5) DEFAULT NULL COMMENT '推荐位',
+  `xgts_tjno` bigint(20) DEFAULT NULL COMMENT '状态',
+  `xgts_pjsyl` decimal(10,2) DEFAULT NULL COMMENT '平均收益率',
+  `xgts_cpdfbl` decimal(10,2) DEFAULT NULL COMMENT '产品兑付比例',
+  PRIMARY KEY (`xtgs_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='信托公司';
+
+
 CREATE TABLE `tjs_product_xtcp` (
   `xtcp_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '信托产品流水号',
   `xtcp_log` varchar(200) DEFAULT NULL COMMENT '信托产品LOGO',
@@ -52,33 +79,26 @@ CREATE TABLE `tjs_product_xtcp` (
   `xtcp_userId` varchar(50) DEFAULT NULL COMMENT '创建人Id ',
   `xtcp_username` varchar(50) DEFAULT NULL COMMENT '创建人name',
   `xtcp_validstatus` varchar(50) DEFAULT '1' COMMENT '有效状态1：有效，2：无效',
+  `xtcp_area` varchar(100) DEFAULT NULL COMMENT '所在区域',
+  `xtcp_city` varchar(100) DEFAULT NULL COMMENT '所在城市',
   PRIMARY KEY (`xtcp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='信托产品';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='信托产品';
 
 
 
-CREATE TABLE `tjs_product_xtgs` (
-  `xtgs_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `xtgs_code` varchar(200) DEFAULT NULL COMMENT '公司编码',
-  `xtgs_log` varchar(500) DEFAULT NULL COMMENT '公司LOGO',
-  `xgts_zhname` varchar(500) DEFAULT NULL COMMENT '公司中文名称',
-  `xgts_enname` varchar(200) DEFAULT NULL COMMENT '公司英文名称 ',
-  `xgts_splname` varchar(200) DEFAULT NULL COMMENT '公司简称',
-  `xgts_createdate` date DEFAULT NULL COMMENT '成立日期',
-  `xgts_zczb` float(18,2) DEFAULT NULL COMMENT '注册资本',
-  `xgts_city` varchar(200) DEFAULT NULL COMMENT '所在城市',
-  `xgts_gsz` varchar(200) DEFAULT NULL COMMENT '董事长',
-  `xgts_zjl` varchar(200) DEFAULT NULL COMMENT '总经理',
-  `xgts_frdb` varchar(200) DEFAULT NULL COMMENT '法人代表',
-  `xgts_dgd` varchar(200) DEFAULT NULL COMMENT '大股东',
-  `xgts_ss` varchar(45) DEFAULT NULL COMMENT '是否上市',
-  `xgts_gsxz` varchar(45) NOT NULL COMMENT '公司性质',
-  `xgts_zcglgm` varchar(2000) DEFAULT NULL COMMENT '公司管理规模',
-  `xgts_gsjj` varchar(2000) DEFAULT NULL COMMENT '公司简介',
-  `xgts_status` varchar(5) DEFAULT NULL COMMENT '状态',
-  `xgts_tjw` varchar(5) DEFAULT NULL COMMENT '推荐位',
-  `xgts_tjno` bigint(20) DEFAULT NULL COMMENT '状态',
-  PRIMARY KEY (`xtgs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='信托公司';
-
+CREATE TABLE `tjs_order` (
+  `order_id` bigint(20) NOT NULL COMMENT '订单号',
+  `order_user_id` bigint(20) DEFAULT NULL COMMENT '订单提交人ID',
+  `order_user_name` varchar(200) DEFAULT NULL COMMENT '订单人名称',
+  `order_telphone` varchar(45) DEFAULT NULL COMMENT '订单人电话',
+  `order_product_id` bigint(20) DEFAULT NULL COMMENT '订单产品ID',
+  `order_product_name` varchar(500) DEFAULT NULL COMMENT '订单产品名称',
+  `order_product_type` varchar(10) DEFAULT NULL COMMENT '订单产品类型',
+  `order_operate_status` varchar(45) DEFAULT NULL COMMENT '订单处理状态',
+  `order_operate_ID` bigint(20) DEFAULT NULL COMMENT '订单处理人ID',
+  `order_operate_name` varchar(200) DEFAULT NULL COMMENT '订单处理人',
+  `order_create_date` date DEFAULT NULL COMMENT '订单创建时间',
+  `order_operate_date` date DEFAULT NULL COMMENT '订单处理时间',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='预定信息表';
 
