@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.pe.dao.PEManagerMapper">
+    
+    <resultMap id="peManagerMap" type="com.tjs.admin.pe.model.PEManager" >
+    	<id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="logo" column="logo" jdbcType="VARCHAR" />
+   		<result property="name" column="name" jdbcType="VARCHAR" />
+   		<result property="education" column="education" jdbcType="VARCHAR" />
+   		<result property="school" column="school" jdbcType="VARCHAR" />
+   		<result property="workYear" column="work_year" jdbcType="VARCHAR" />
+   		<result property="background" column="background" jdbcType="VARCHAR" />
+   		<result property="institution" column="institution" jdbcType="VARCHAR" />
+   		<result property="level" column="level" jdbcType="INTEGER" />
+   		<result property="manageFund" column="manage_fund" jdbcType="VARCHAR" />
+   		<result property="profitProduct" column="profit_product" jdbcType="VARCHAR" />
+   		<result property="review" column="review" jdbcType="VARCHAR" />
+   		<result property="introduce" column="introduce" jdbcType="VARCHAR" />
+   		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR" />
+   		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR" />
+   		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        id, 
+        logo,
+        name,
+        education,
+        school,
+        work_year,
+        background,
+        institution,
+        level,
+        manage_fund,
+        profit_product,
+        review,
+        introduce,
+        recommend_location,
+        recommend_sequence,
+        status,
+        creater_id,
+        creater_name,
+        create_date,
+        last_modify_date
+    </sql>
+    
+    <select id="getPEManagerById" resultMap="peManagerMap" parameterType="long">
+        SELECT
+        <include refid="Base_select_Column_List" />
+        FROM pe_manager 
+        WHERE id = #{id}
+    </select>
+ 
+ 	 <select id="getPEManagerList" resultMap="peManagerMap">
+        SELECT
+        <include refid="Base_select_Column_List" />
+         FROM pe_manager
+    </select>
+    
+     <select id="selectListCount" resultType="int">
+        SELECT COUNT(*) AS total FROM pe_manager
+    </select>
+    
+    <insert id="insertPEManager" parameterType="com.tjs.admin.pe.model.PEManager" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO pe_manager (<include refid="Base_select_Column_List" />)
+        VALUES (#{id}, 
+         		#{logo},
+         		#{name},
+         		#{education},
+         		#{school},
+         		#{workYear},
+         		#{background},
+         		#{institution},
+         		#{level},
+         		#{manageFund},
+         		#{profitProduct},
+         		#{review},
+         		#{introduce},
+         		#{recommendLocation},
+         		#{recommendSequence},
+         		#{status},
+                #{createrId},
+                #{createrName}, 
+                #{createDate}, 
+                #{lastModifyDate})              
+    </insert>
+ 
+ 	 <update id="updatePEManager"  parameterType="com.tjs.admin.pe.model.PEManager">
+   		UPDATE pe_manager
+   		SET logo=#{logo}, 
+   		    name=#{name}, 
+	   		education=#{education}, 
+	   		school=#{school},
+	   		work_year=#{workYear}, 
+	   		background=#{background},
+	   		institution=#{institution},
+	   		level=#{level},
+	   		manage_fund=#{manageFund},
+	   		profit_product=#{profitProduct},
+	   		review=#{review},
+	   		introduce=#{introduce},
+	   		recommend_location=#{recommendLocation},
+	   		recommend_sequence=#{recommendSequence},
+	   		status=#{status},
+	        last_modify_date=#{lastModifyDate}
+   		WHERE id=#{id}
+   </update>
+   
+</mapper>
