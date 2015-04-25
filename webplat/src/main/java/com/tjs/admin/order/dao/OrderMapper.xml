@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.order.dao.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.tjs.admin.order.model.Order">
+        <id column="order_id" property="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+        <result column="order_user_id" property="userID" javaType="java.lang.Long" jdbcType="BIGINT"  />
+        <result column="order_user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="order_telphone" property="telphone" jdbcType="VARCHAR" />
+        <result column="order_product_id" property="productId" javaType="java.lang.Long" jdbcType="BIGINT"  />
+        <result column="order_product_name" property="productName" jdbcType="VARCHAR" />
+        <result column="order_product_type" property="productType" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="order_operate_status" property="operateStatus" javaType="java.math.BigDecimal" />
+        <result column="order_operate_ID" property="operateId" javaType="java.lang.Long" jdbcType="BIGINT"  />
+        <result column="order_operate_name" property="operateName" jdbcType="VARCHAR" />
+        <result column="order_create_date" property="createDate" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="order_operate_date" property="operateDate" javaType="java.util.Date" jdbcType="DATE" />        
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        order_id,order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type
+        order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date
+    </sql>
+    
+     <sql id="Base_insert_Column_List">
+       order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type
+       order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date
+    </sql>
+    
+    <select id="countOrder" resultType="int" parameterType="com.tjs.admin.order.controller.OrderCtrlModel" >
+        select count(*) c from tjs_order where 1=1
+          <if test="order!=null and order.operateStatus!= null and order.operateStatus!= ''">
+           AND order_operate_status= #{order.operateStatus}
+          </if>
+          
+           <if test="keyWord!= null and keyWord!= ''">
+           AND order_product_name like CONCAT('%',#{keyWord},'%')
+          </if>
+          
+          
+        
+    </select>
+    
+    <select id="selectOrder" resultType="com.tjs.admin.order.model.Order" parameterType="com.tjs.admin.order.controller.OrderCtrlModel">
+        select         
+          <include refid="Base_select_Column_List" />           
+        from  tjs_order where 1=1        
+         <if test="order!=null and order.operateStatus!= null and order.operateStatus!= ''">
+           AND order_operate_status= #{order.operateStatus}
+          </if>
+          
+           <if test="keyWord!= null and keyWord!= ''">
+           AND order_product_name like CONCAT('%',#{keyWord},'%')
+          </if>
+               
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+    </select>
+    
+    <insert id="insertOrder"   useGeneratedKeys="true" keyProperty="id"  parameterType="com.tjs.admin.order.model.Order">
+        insert into tjs_order(
+         <include refid="Base_insert_Column_List" /> 
+        ) values
+        (#{userID},
+        #{userName},
+        #{telphone},
+        #{productId},
+        #{productName},
+        #{productType},
+        #{operateStatus},
+        #{operateId},
+        #{operateName},
+        #{createDate},
+        #{operateDate}   
+        )
+    </insert>
+    
+    <update id="updateOrder" parameterType="com.tjs.admin.order.model.Order">
+        update tjs_order set 
+        order_user_id=#{userID},
+        order_user_name=#{userName},
+        order_telphone=#{telphone},
+        order_product_id=#{productId},
+        order_product_name=#{productName},
+        order_product_type=#{productType},
+        order_operate_status=#{operateStatus},
+        order_operate_ID=#{operateId},
+        order_operate_name=#{operateName},
+        order_create_date=#{createDate},
+        order_operate_date=#{operateDate}       
+         where order_id=#{id}
+    </update>
+    
+    <delete id="deleteOrder" parameterType="Long">
+        delete from tjs_order where order_id=#{id}
+    </delete>
+    
+    
+     <delete id="deleteBatchOrder" parameterType="Long">
+        delete from tjs_order where order_id in       
+        <foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+		</foreach>
+    </delete>
+    
+    <select id="findByOrderId" parameterType="Long" resultType="com.tjs.admin.order.model.Order">
+        select 
+         <include refid="Base_select_Column_List" />    
+        from  tjs_order  where order_id=#{id}
+    </select>
+    
+     <update id="updateBatchOrderStatus" parameterType="Long">
+        update tjs_order set  order_operate_status=#{operateStatus}  
+         where order_id in
+          <foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+		</foreach>
+    </update>
+</mapper>
