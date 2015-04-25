@@ -24,7 +24,7 @@ import com.tjs.admin.constants.UserConstants;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserService;
-import com.tjs.core.util.StringExtUtils;
+import com.tjs.web.constants.WebConstants;
 import com.tjs.web.service.PassportService;
 
 /**
@@ -100,6 +100,30 @@ public class PassportController {
         return "web/passport/getPwd";
     }
 
+    @RequestMapping("/getPwdS2")
+    public String getPwdS2(User user, PassportCtrlModel ctrlModel, Model model) {
+    	user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+        return "web/passport/getPwdS2";
+    }
+
+    @RequestMapping("/getPwdS3")
+    public String getPwdS3(User user, PassportCtrlModel ctrlModel, Model model) {
+    	user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+        return "web/passport/getPwdS3";
+    }
+
+    @RequestMapping("/getPwdS4")
+    public String getPwdSuccess(User user, PassportCtrlModel ctrlModel, Model model) {
+    	user.setUsername("myname");
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+        return "web/passport/getPwdS4";
+    }
+
     @RequestMapping("/reg")
     public String reg(User user, PassportCtrlModel ctrlModel, Model model) {
     	model.addAttribute(user);
@@ -140,11 +164,27 @@ public class PassportController {
         return true;
     }
 
-    @RequestMapping("/regData")
-    public String regData(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
-    	Map<String, Object> result = new HashMap<String, Object>();
+    @RequestMapping("/regS2")
+    public String regS2(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
     	String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
         if(code.equalsIgnoreCase(ctrlModel.getVerifyCode())){
+        	return "web/passport/regS2";
+        	
+        }else{
+        	model.addAttribute("error", "验证码错误");
+        }
+    	
+    	
+        return "web/passport/reg";
+
+        
+    }
+
+    @RequestMapping("/regS3")
+    public String regS3(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	String code = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);        //获取生成的验证码 
+        if(code.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
         	User user = new User();
         	user.setUsername(ctrlModel.getUserName());
         	user.setPassword(ctrlModel.getPassword());
@@ -167,7 +207,7 @@ public class PassportController {
         		 } catch (AuthenticationException e) {
         	            // 身份验证失败
         	            model.addAttribute("error", "注册服务发生错误，请稍后再试！");
-        	            return "web/passport/reg";
+        	            return "web/passport/regS2";
         	        }
         	}
         	model.addAttribute("error", "注册服务发生错误，请稍后再试！");
@@ -177,7 +217,7 @@ public class PassportController {
         }
     	
     	
-        return "web/passport/reg";
+        return "web/passport/regS2";
 
         
     }

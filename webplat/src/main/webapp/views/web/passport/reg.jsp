@@ -5,90 +5,77 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" class="no-js">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
-    <head>
-        <base href="<%=basePath%>">
-        <meta charset="utf-8" />
-        <title>淘金山</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
-        <meta name="MobileOptimized" content="320">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘金山——注册</title>
+<link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
+</head>
 
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
+<body>
+<div class="home_all">
 
-        <link rel="shortcut icon" href="app/img/favicon.ico" />
-    </head>
-    <!-- END HEAD -->
+<%@ include file="/views/web/header.jsp"%>
+<!-- /header_top -->
 
-    <!-- BEGIN BODY -->
-    <body>
-        <div class="row">
-		    <div class="col-md-6 col-md-offset-3">
-		        <h3 class="page-header"> <a href="#">淘金山</a> <small>注册页面 </small></h3>
-		    </div>
-		    <div class="col-md-4 col-md-offset-4">
-		    <form class="register-form" action="rest/web/passport/regData" method="post">
-		<div class="text-danger">${error }</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">手机号码</label>
-			<div class="input-icon">
-				<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="手机号码" name="userName"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">密码</label>
-			<div class="input-icon">
-				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="密码" name="password"/>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">再次输入密码</label>
-			<div class="controls">
-				<div class="input-icon">
-					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="再次输入密码" name="rpassword"/>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label visible-ie8 visible-ie9">验证码</label>
-			<div class="input-icon">
-				<img id="verifyCodeImg" class="img-rounded " alt="验证码" src="rest/captcha/img"> <a href="#" id="newVerifyCode">换一张</a>
-				<br/><br/>
-				<input name="verifyCode" id="verifyCode" size="25" value="" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="验证码" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label>
-			<input type="checkbox" name="tnc"/> 我同意 <a href="#">服务条款</a> 和 <a href="#">隐私政策</a>
-			</label>
-			<div id="register_tnc_error">
-			</div>
-		</div>
-		<div class="form-actions">
-			<button id="register-submit-btn" type="submit" class="btn btn-primary btn-lg btn-block">
-			注册 <i class="m-icon-swapright m-icon-white"></i>
-			</button>
-		</div>
-		
+<div class="header_menu">
+<div class="tjs_1108px center" style="position: relative;">
+
+     <div class="logo_wrap"><a href="http://www.taojinshan.com.cn"><img src="assets/img/ui/register_logo.png" width="338" height="94" alt="logo" /></a></div>
+    
+  </div>
+</div>
+<!-- /header_menu -->
+
+<div class="tjs_register_all_div">
+<div class="tjs_1108px center tjs_all_border">
+
+<div class="tjs_schedulediv">
+<ul>
+<li class="tjs_width330px tjs_backgroundblue tjs_bk_01"><span class="tjs_textwhite">&nbsp;&nbsp;&nbsp;&nbsp;填写帐户信息</span></li>
+<li class="tjs_width47px"><img src="assets/img/ui/arrows_ico.png" width="47" height="60" /></li>
+<li class="tjs_backgroundgray_b tjs_width330px tjs_bk_02"><span class="tjs_textgray">&nbsp;&nbsp;&nbsp;&nbsp;验证账户信息</span></li>
+<li class="tjs_width47px"><img src="assets/img/ui/arrows__no_ico.png" width="47" height="60" /></li>
+<li class="tjs_backgroundgray_b tjs_width330px tjs_bk_03"><span class="tjs_textgray">注册成功&nbsp;&nbsp;</span></li>
+</ul>
+</div>
+
+<div class="tjs_register_div">
+
+ <form class="register-form" action="rest/web/passport/regS2" method="post">
+ 
+<div style=" height:30px;width:100%;"></div>
+<div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="userName" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机" autofocus x-webkit-speech ></div>
+
+<div class="tjs_register_left">密码：</div><div class="tjs_register_right"><input id="register_password" name="password" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 初始密码" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">确认：</div><div class="tjs_register_right"><input name="rpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确定密码" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">验证码：</div><div class="tjs_register_right"><input name="verifyCode" id="verifyCode" type="text" class="tjs_register_input  tjs_width176px" tabindex="1" spellcheck="false" placeholder=" 验证码" autofocus x-webkit-speech >&nbsp;&nbsp;<span class="tjs_verificationcode"><a href="#"><img id="verifyCodeImg" src="rest/captcha/img" width="100" height="38"  align="middle"/></a></span>&nbsp;&nbsp;<span><a href="#" id="newVerifyCode" class="tjs_registercode">换一张</a></span></div>
+<div class="clearfloat"></div>
+<div class="tjs_register_agreement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="tnc" type="checkbox" value="" checked="checked" />&nbsp;我已阅读接受&nbsp;<a href="#" class="tjs_registercode">《淘金山用户使用协议》</a></div>
+<div style="height:60px; width:100%; text-align: center;"><a id="register-submit-btn"  href="#" class="tjs_registerbtn">下一步</a></div>
+<div style="height:60px; width:100%; text-align: center;">已经注册? 前往 <a href="rest/web/login" class="tjs_registercode"><strong>登录</strong></a></div>
+
+
+	
 	</form>
-			</div>
-		</div>
+	
+</div>
+</div>
+<!-- /tjs_content_div tjs_1108px -->
+</div>
+<!-- /tjs_content_div -->
 
-        <script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-   <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+
+<%@ include file="/views/web/footer.jsp"%>
+<!-- /footer tjs_1108px -->
+
+</div>
+<!-- /home_all -->
+
+<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
            <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
         <script src="app/lib/security/sha256.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
@@ -185,6 +172,16 @@ $(function() {
                 return false;
             }
         });
+        
+
+	    $('#register-submit-btn').click(function(e){
+	    	e.preventDefault();
+	    	if ($('.register-form').validate().form()) {
+                $('.register-form').submit();
+            }
+	    	return false;
+	    });
+        
 	}
 	var handleNewVerifyCode = function(){
 		$("#newVerifyCode, #verifyCodeImg").click(function(event){
@@ -201,6 +198,7 @@ $(function() {
 		});
 	</script>
         
-        
-    </body>
+
+
+</body>
 </html>

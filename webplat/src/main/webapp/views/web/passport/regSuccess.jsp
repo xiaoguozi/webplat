@@ -5,56 +5,64 @@
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" class="no-js">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
-    <head>
-        <base href="<%=basePath%>">
-        <meta charset="utf-8" />
-        <title>淘金山</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
-        <meta name="MobileOptimized" content="320">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘金山——注册</title>
+<link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
+</head>
 
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
+<body>
+<div class="home_all">
 
-        <link rel="shortcut icon" href="app/img/favicon.ico" />
-    </head>
-    <!-- END HEAD -->
+<%@ include file="/views/web/header.jsp"%>
+<!-- /header_top -->
 
-    <!-- BEGIN BODY -->
-    <body>
-        <div class="row">
-		    <div class="col-md-6 col-md-offset-3">
-		        <h3 class="page-header"> <a href="#">淘金山</a> <small>注册成功页面 </small></h3>
-		    </div>
-		    <div class="col-md-4 col-md-offset-4">
-			    <a class="btn btn-primary btn-block" href="rest/web/welcome">注册成功，回到首页</a>
-			</div>
-		</div>
+<div class="header_menu">
+<div class="tjs_1108px center" style="position: relative;">
 
-        <script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-   <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-           <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
-        <script src="app/lib/security/sha256.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-$(function() {  
-	
-		});
-	</script>
-        
-        
-    </body>
+     <div class="logo_wrap"><a href="http://www.taojinshan.com.cn"><img src="assets/img/ui/register_logo.png" width="338" height="94" alt="logo" /></a></div>
+    
+  </div>
+</div>
+<!-- /header_menu -->
+
+<div class="tjs_register_all_div">
+<div class="tjs_1108px center tjs_all_border">
+
+<div class="tjs_schedulediv">
+<ul>
+<li class="tjs_width330px tjs_backgroundblue tjs_bk_01"><span class="tjs_textwhite">&nbsp;&nbsp;&nbsp;&nbsp;填写帐户信息</span></li>
+<li class="tjs_width47px"><img src="assets/img/ui/finish_ico.png" width="47" height="60" /></li>
+<li class="tjs_backgroundblue tjs_width330px tjs_bk_02"><span class="tjs_textwhite">&nbsp;&nbsp;&nbsp;&nbsp;验证账户信息</span></li>
+<li class="tjs_width47px"><img src="assets/img/ui/finish_ico.png" width="47" height="60" /></li>
+<li class="tjs_backgroundblue tjs_width330px tjs_bk_03"><span class="tjs_textwhite">注册成功&nbsp;&nbsp;</span></li>
+</ul>
+</div>
+
+<div class="tjs_register_div">
+<div style=" height:30px;width:100%;"></div>
+<div class="tjs_finish_left"></div>
+<div class="tjs_finish_right">
+<div style="height:50px; width:100%; text-align: center;"></div>
+<span style="color:#ff6600; font-size:24px;">恭喜您注册成功！</span><br /><a href="#">去挑选理财产品？</a></div>
+<div style="height:60px; width:100%; text-align: center;"><a href="rest/web/welcome" class="tjs_registerbtn">回到首页</a></div>
+<div style=" height:30px;width:100%;"></div>
+</div>
+</div>
+<!-- /tjs_content_div tjs_1108px -->
+</div>
+<!-- /tjs_content_div -->
+
+
+
+<%@ include file="/views/web/footer.jsp"%>
+<!-- /footer tjs_1108px -->
+
+</div>
+<!-- /home_all -->
+</body>
 </html>
