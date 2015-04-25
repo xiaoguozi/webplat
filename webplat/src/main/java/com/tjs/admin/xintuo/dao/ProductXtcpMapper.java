@@ -2,6 +2,7 @@ package com.tjs.admin.xintuo.dao;
 
 import java.util.List;
 
+import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 
 /**
@@ -11,7 +12,7 @@ import com.tjs.admin.xintuo.model.ProductXtcp;
  */
 public interface ProductXtcpMapper {
 	
-    public int countProductXtcp(ProductXtcp productXtcp);
+    public int countProductXtcp(XinTuoCpCtrlModel xintuoCpCtrlModel);
 	
 	public int  insertProductXtcp(ProductXtcp productXtcp);
 	
@@ -23,5 +24,5 @@ public interface ProductXtcpMapper {
 	
 	public ProductXtcp findByProductXtcpId(Long xtcpId);
 	
-	public List<ProductXtcp> selectProductXtcp();
+	public List<ProductXtcp> selectProductXtcp(XinTuoCpCtrlModel xintuoCpCtrlModel);
 }

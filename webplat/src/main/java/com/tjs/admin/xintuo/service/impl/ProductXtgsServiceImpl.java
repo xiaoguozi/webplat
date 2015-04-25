@@ -1,5 +1,6 @@
 package com.tjs.admin.xintuo.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.dao.ProductXtgsMapper;
 import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtgsService;
+import com.tjs.admin.xintuo.util.BigDecimalUtils;
 
 @Service
 public class ProductXtgsServiceImpl  implements IProductXtgsService {
@@ -64,7 +66,14 @@ public class ProductXtgsServiceImpl  implements IProductXtgsService {
 		if(xintuoGsCtrlModel!=null){
 			xintuoGsCtrlModel.setLimitStart((xintuoGsCtrlModel.getPageNo()-1)*xintuoGsCtrlModel.getPageSize());
 		}
-		return productXtgsMapper.selectProductXtgs(xintuoGsCtrlModel);
+		List<ProductXtgs> lstVos = productXtgsMapper.selectProductXtgs(xintuoGsCtrlModel);
+		if(xintuoGsCtrlModel!=null&&xintuoGsCtrlModel.isFormat()){
+			BigDecimal div10000 = new BigDecimal(10000);
+			for(ProductXtgs productVO:lstVos){
+				productVO.setXgtsZczb(BigDecimalUtils.div(productVO.getXgtsZczb(), div10000));
+			}
+		}
+		return lstVos;
 	}
 
 

@@ -15,6 +15,8 @@ public class XinTuoGsCtrlModel extends GenericCtrlModel {
 	
 	private int limitStart;
 	
+	private boolean isFormat=true;
+	
 	private ProductXtgs productXtgs;
 	
 	public int getLimitStart() {
@@ -39,6 +41,14 @@ public class XinTuoGsCtrlModel extends GenericCtrlModel {
 
 	public void setProductXtgs(ProductXtgs productXtgs) {
 		this.productXtgs = productXtgs;
+	}
+
+	public boolean isFormat() {
+		return isFormat;
+	}
+
+	public void setFormat(boolean isFormat) {
+		this.isFormat = isFormat;
 	}
 
 	

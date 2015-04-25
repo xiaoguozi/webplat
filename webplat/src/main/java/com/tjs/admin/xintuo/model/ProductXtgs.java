@@ -30,7 +30,6 @@ public class ProductXtgs {
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date  xgtsCreatedate;
 	/**注册资本*/ 
-	 @NumberFormat(style=Style.CURRENCY)
 	private BigDecimal xgtsZczb;
 	/**所在城市*/
 	private String xgtsCity;
@@ -50,6 +49,10 @@ public class ProductXtgs {
 	private String xgtsZcglgm;
 	/**公司简介*/
 	private String xgtsGsjj;
+	
+	private BigDecimal xgtsPjsyl;
+	
+	private BigDecimal xgtsCpdfbl;
 	
 	/**公司推荐位*/
 	private String xgtsTjw;
@@ -178,6 +181,18 @@ public class ProductXtgs {
 	}
 	public void setXgtsGsjj(String xgtsGsjj) {
 		this.xgtsGsjj = xgtsGsjj;
+	}
+	public BigDecimal getXgtsPjsyl() {
+		return xgtsPjsyl;
+	}
+	public void setXgtsPjsyl(BigDecimal xgtsPjsyl) {
+		this.xgtsPjsyl = xgtsPjsyl;
+	}
+	public BigDecimal getXgtsCpdfbl() {
+		return xgtsCpdfbl;
+	}
+	public void setXgtsCpdfbl(BigDecimal xgtsCpdfbl) {
+		this.xgtsCpdfbl = xgtsCpdfbl;
 	}
 	
 	

@@ -42,10 +42,10 @@ public class XinTuoCpControler {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = iProductXtService.countProductXtcp(null);
+    	Integer total = iProductXtService.countProductXtcp(xintuoCpCtrlModel);
     	
     	result.put("total", total);
     	
@@ -56,7 +56,7 @@ public class XinTuoCpControler {
     @RequestMapping("/listData")
     public String listData(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
     	List<ProductXtcp> showData = new ArrayList<ProductXtcp>();
-    	showData = iProductXtService.selectProductXtcp();
+    	showData = iProductXtService.selectProductXtcp(xintuoCpCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", xintuoCpCtrlModel);
