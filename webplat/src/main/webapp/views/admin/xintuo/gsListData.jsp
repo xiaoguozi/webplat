@@ -16,13 +16,16 @@
         </td>
         <td>
             <a data-id="${xintuogs.xtgsId}" href="" class="view" title="查看">
-                ${xintuogs.xtgsId}
+                ${xintuogs.xgtsSplname}
             </a>
         </td>
-        <td>${xintuogs.xgtsZhname}</td>
-        <td>${xintuogs.xtgsCode}</td>
-        <td>${xintuogs.xgtsGsz}</td>
-        
+        <td>${xintuogs.xgtsPjsyl}%</td>
+        <td>${xintuogs.xgtsCpdfbl}%</td>
+        <td><fmt:formatNumber value="${xintuogs.xgtsZczb}" pattern="#00.####"/></td>
+        <td>${xintuogs.xgtsGsxz}</td>
+        <td>${xintuogs.xgtsFrdb}</td>
+        <td>${xintuogs.xgtsCity}</td>
+        <td><fmt:formatDate value="${xintuogs.xgtsCreatedate}" pattern="yyyy-MM-dd"/></td>        
     </tr>
 
 </c:forEach>

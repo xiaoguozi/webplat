@@ -44,10 +44,14 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>
-                        <th field="xtgsId">ID <span class="glyphicon"></span></th>
-                        <th field="xgtsZhname">公司名称 <span class="glyphicon"></span></th>
-                        <th field="xtgsCode">公司编码<span class="glyphicon"></span></th>
-                        <th field="xgtsGsz">董事长<span class="glyphicon"></span></th>
+                        <th field="xgtsSplname">公司简称 <span class="glyphicon"></span></th>
+                        <th field="xgtsPjsyl">平均收益率 <span class="glyphicon"></span></th>
+                        <th field="xgtsCpdfbl">产品兑付比例<span class="glyphicon"></span></th>
+                        <th field="xgtsZczb">注册资本（万元）<span class="glyphicon"></span></th>
+                        <th field="xgtsGsxz">股东背景<span class="glyphicon"></span></th>
+                        <th field="xgtsFrdb">法人代表<span class="glyphicon"></span></th>
+                        <th field="xgtsCity">所在地区<span class="glyphicon"></span></th>
+                        <th field="xgtsCreatedate">成立时间<span class="glyphicon"></span></th>
                         
                     </tr>
                 </thead>
