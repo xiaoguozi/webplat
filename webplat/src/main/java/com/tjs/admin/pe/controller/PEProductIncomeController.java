@@ -31,7 +31,9 @@ public class PEProductIncomeController {
 	
 	
 	@RequestMapping("/index")
-    public String index() {
+    public String index(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
+		String productId = peProductIncomeCtrlModel.getProductId();
+		System.out.println("==================" + productId + "=======================");
         return "admin/pe/peProductIncome/index";
     }
 	

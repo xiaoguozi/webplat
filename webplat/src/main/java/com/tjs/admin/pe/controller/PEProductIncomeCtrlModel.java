@@ -13,6 +13,8 @@ public class PEProductIncomeCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
+	private String productId;
+	
 	private PEProductIncome peProductIncome;
 
 	public String getKeyWord() {
@@ -30,5 +32,14 @@ public class PEProductIncomeCtrlModel extends GenericCtrlModel {
 	public void setPeProductIncome(PEProductIncome peProductIncome) {
 		this.peProductIncome = peProductIncome;
 	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+	
 	
 }

@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEProduct;
 
 /**
@@ -24,6 +25,10 @@ public interface PEProductMapper  {
 	Integer selectListCount();
 
 	PEProduct getPEProductById(long peProductId);
+	
+    int selectListCount(PEProductCtrlModel peProductCtrlModel);
+	
+	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
 	
 	
 }

@@ -39,7 +39,8 @@ public class PEProductController {
     public String insert(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
-        return "admin/pe/peProduct/insert";
+//        return "admin/pe/peProduct/insert";
+        return "admin/pe/peProduct/main";
     }
 	
 

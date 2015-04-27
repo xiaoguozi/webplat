@@ -103,5 +103,19 @@ public class PEProductServiceImpl implements PEProductService {
 		return peCompanyService.getOnLinePECompany();
 	}
 
+	@Override
+	public int selectListCount(PEProductCtrlModel peProductCtrlModel) {
+		int result = 0;
+		result = peProductMappper.selectListCount(peProductCtrlModel);
+		return result;
+	}
+
+	@Override
+	public List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel) {
+		List<PEProduct> result = new ArrayList<PEProduct>();
+		result = peProductMappper.getPEProductList(peProductCtrlModel);
+		return result;
+	}
+
 	
 }

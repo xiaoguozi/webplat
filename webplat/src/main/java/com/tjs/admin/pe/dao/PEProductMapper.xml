@@ -60,10 +60,27 @@
         SELECT
         <include refid="Base_select_Column_List" />
          FROM pe_product
+         WHERE 1=1
+         
+         <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
+         
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
     </select>
     
      <select id="selectListCount" parameterType="com.tjs.admin.pe.model.PEProduct" resultType="java.lang.Integer">
         SELECT COUNT(*) AS total FROM pe_product
+        WHERE 1=1
+        <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
     </select>
     
     <insert id="insertPEProduct" parameterType="com.tjs.admin.pe.model.PEProduct" useGeneratedKeys="true" keyProperty="id">

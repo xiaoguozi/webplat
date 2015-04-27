@@ -30,6 +30,10 @@ public interface PEProductService  {
 	
 	int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
+    int selectListCount(PEProductCtrlModel peProductCtrlModel);
+	
+	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
+	
 	/**
 	 * 获取上线的私募公司清单 
 	 * 
