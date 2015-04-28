@@ -8,10 +8,6 @@
 <!-- BEGIN PAGE HEADER-->
 <div class="row">
     <div class="col-md-12">
-        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title" id="index-page-title">私募产品净值管理</h3>
-        
-        <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
 </div>
 <!-- END PAGE HEADER-->
