@@ -28,7 +28,7 @@ public class Order {
 		/** 订单处理状态 */
 		private String operateStatus;
 		/**订单处理人ID  */
-		private String operateId;
+		private Long operateId;
 		/**订单处理人  */
 		private String operateName;
 		/**订单创建时间  */
@@ -37,6 +37,10 @@ public class Order {
 		/**订单处理时间  */
 		 @DateTimeFormat(pattern="yyyy-MM-dd")
 		private Date operateDate;
+		 
+		 /**备注*/
+		private String remark;
+		
 		public Long getId() {
 			return id;
 		}
@@ -85,10 +89,10 @@ public class Order {
 		public void setOperateStatus(String operateStatus) {
 			this.operateStatus = operateStatus;
 		}
-		public String getOperateId() {
+		public Long getOperateId() {
 			return operateId;
 		}
-		public void setOperateId(String operateId) {
+		public void setOperateId(Long operateId) {
 			this.operateId = operateId;
 		}
 		public String getOperateName() {
@@ -108,6 +112,12 @@ public class Order {
 		}
 		public void setOperateDate(Date operateDate) {
 			this.operateDate = operateDate;
+		}
+		public String getRemark() {
+			return remark;
+		}
+		public void setRemark(String remark) {
+			this.remark = remark;
 		}
 		
 

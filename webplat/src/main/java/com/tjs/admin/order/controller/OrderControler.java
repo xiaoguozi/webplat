@@ -1,12 +1,15 @@
 package com.tjs.admin.order.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +39,7 @@ public class OrderControler {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(OrderCtrlModel orderCtrlModel, Model model) {    	
-    	
+    public Map<String, Integer> listDataCount(OrderCtrlModel orderCtrlModel, Model model) {    	   	
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	Integer total = iOrderService.countOrder(orderCtrlModel);   
     	result.put("total", total.intValue());    	
@@ -65,7 +67,12 @@ public class OrderControler {
 
     @RequestMapping("/insertData")
     @ResponseBody
-    public Map<String, Object> insertData(Order order, OrderCtrlModel orderCtrlModel, Model model) {
+    public Map<String, Object> insertData(Order order, OrderCtrlModel orderCtrlModel, Model model) {    	
+    	
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+        //订单人提交信息
+		
     	Map<String, Object> result = new HashMap<String, Object>();
     	int id = iOrderService.insertOrder(order);
     	result.put("code", "0");
@@ -88,7 +95,18 @@ public class OrderControler {
     @ResponseBody
     public Map<String, Object> updateData(Order order, OrderCtrlModel orderCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
+    	
+    	if("20".equals(order.getOperateStatus())){
+    		Subject subject = SecurityUtils.getSubject();
+    		String username = (String)subject.getPrincipal();
+//    		order.setOperateId(operateId);
+//    		order.setOperateName(operateName);
+    		order.setOperateDate(new Date());
+    		
+    		
+		}   	
     	iOrderService.updateOrder(order);
+    	
     	result.put("code", "0");
     	result.put("bizData", order);
         return result;

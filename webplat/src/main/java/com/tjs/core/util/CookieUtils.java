@@ -62,7 +62,7 @@ public class CookieUtils {
      */
     public static ArrayList<Cookie> addCookies(HttpServletResponse response, Map<String, String> values, String path, int maxAge) {
         Set<Map.Entry<String, String>> entries = values.entrySet();
-        ArrayList<Cookie> cookies = new ArrayList<>();
+        ArrayList<Cookie> cookies = new ArrayList<Cookie>();
         try {
             for (Map.Entry<String, String> entry : entries) {
                 Cookie cookie = new Cookie(entry.getKey(), URLEncoder.encode(entry.getValue(), "UTF-8"));

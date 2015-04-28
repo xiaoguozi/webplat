@@ -8,9 +8,9 @@
 		<result column="xtcp_gszhname" property="xtcpGszhname" jdbcType="VARCHAR" />
 		<result column="xtcp_gsId" property="xtcpGsId" javaType="java.lang.Long" jdbcType="BIGINT" />
 		<result column="xtcp_fxgm" property="xtcpFxgm" javaType="java.math.BigDecimal" />
-		<result column="xtcp_nsyl" property="xtcpNsyl" jdbcType="VARCHAR" />
+		<result column="xtcp_nsyl" property="xtcpNsyl" javaType="java.math.BigDecimal" />
 		<result column="xtcp_lxfp" property="xtcpLxfp" jdbcType="VARCHAR" />
-		<result column="xtcp_cxq" property="xtcpCxq" jdbcType="VARCHAR" />
+		<result column="xtcp_cxq" property="xtcpCxq" javaType="java.lang.Integer" />
 		<result column="xtcp_xtlx" property="xtcpXtlx" jdbcType="VARCHAR" />
 		<result column="xtcp_zdrgje" property="xtcpZdrgje" javaType="java.math.BigDecimal" />
 		<result column="xtcp_dyl" property="xtcpDyl" jdbcType="VARCHAR" />

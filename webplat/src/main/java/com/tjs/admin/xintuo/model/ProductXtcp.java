@@ -27,11 +27,11 @@ public class ProductXtcp {
     /**预计发行规模 */
     private BigDecimal  xtcpFxgm;
     /**预期年收益率 */
-    private String  xtcpNsyl;
+    private BigDecimal  xtcpNsyl;
     /**利息分配 */
     private String  xtcpLxfp;
     /** 存续期*/
-    private String  xtcpCxq;
+    private Integer  xtcpCxq;
     /**信托类型 */
     private String  xtcpXtlx;
     /**最低认购金额 */
@@ -87,7 +87,19 @@ public class ProductXtcp {
 	private String xtcpHd;
     
     
-    public String getXtcpHd() {
+    public BigDecimal getXtcpNsyl() {
+		return xtcpNsyl;
+	}
+	public void setXtcpNsyl(BigDecimal xtcpNsyl) {
+		this.xtcpNsyl = xtcpNsyl;
+	}
+	public Integer getXtcpCxq() {
+		return xtcpCxq;
+	}
+	public void setXtcpCxq(Integer xtcpCxq) {
+		this.xtcpCxq = xtcpCxq;
+	}
+	public String getXtcpHd() {
 		return xtcpHd;
 	}
 	public void setXtcpHd(String xtcpHd) {
@@ -153,24 +165,14 @@ public class ProductXtcp {
 	public void setXtcpFxgm(BigDecimal xtcpFxgm) {
 		this.xtcpFxgm = xtcpFxgm;
 	}
-	public String getXtcpNsyl() {
-		return xtcpNsyl;
-	}
-	public void setXtcpNsyl(String xtcpNsyl) {
-		this.xtcpNsyl = xtcpNsyl;
-	}
+	
 	public String getXtcpLxfp() {
 		return xtcpLxfp;
 	}
 	public void setXtcpLxfp(String xtcpLxfp) {
 		this.xtcpLxfp = xtcpLxfp;
 	}
-	public String getXtcpCxq() {
-		return xtcpCxq;
-	}
-	public void setXtcpCxq(String xtcpCxq) {
-		this.xtcpCxq = xtcpCxq;
-	}
+	
 	public String getXtcpXtlx() {
 		return xtcpXtlx;
 	}
