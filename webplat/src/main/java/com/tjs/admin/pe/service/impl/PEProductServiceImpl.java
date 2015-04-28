@@ -55,18 +55,6 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public List<PEProduct> getPEProductList() {
-		List<PEProduct> result = new ArrayList<PEProduct>();
-		result = peProductMappper.getPEProductList();
-		return result;
-	}
-
-	@Override
-	public Integer selectListCount() {
-		return peProductMappper.selectListCount();
-	}
-
-	@Override
 	public PEProduct getPEProductById(long peProductId) {
 		return peProductMappper.getPEProductById(peProductId);
 	}
@@ -104,7 +92,7 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public int selectListCount(PEProductCtrlModel peProductCtrlModel) {
+	public Integer selectListCount(PEProductCtrlModel peProductCtrlModel) {
 		int result = 0;
 		result = peProductMappper.selectListCount(peProductCtrlModel);
 		return result;

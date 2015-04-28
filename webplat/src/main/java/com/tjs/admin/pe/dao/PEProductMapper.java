@@ -19,14 +19,10 @@ public interface PEProductMapper  {
 	int deletePEProductById(long peProductId);
 	
 	int updatePEProduct(PEProduct peProduct);
-	
-	List<PEProduct> getPEProductList();
-	
-	Integer selectListCount();
 
 	PEProduct getPEProductById(long peProductId);
 	
-    int selectListCount(PEProductCtrlModel peProductCtrlModel);
+    Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
 	
 	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
 	

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
 import com.tjs.admin.pe.dao.PEProductIncomeMapper;
 import com.tjs.admin.pe.model.PEProductIncome;
 import com.tjs.admin.pe.service.PEProductIncomeService;
@@ -44,15 +45,15 @@ public class PEProductIncomeServiceImpl implements PEProductIncomeService {
 	}
 
 	@Override
-	public List<PEProductIncome> getPEProductIncomeList() {
+	public List<PEProductIncome> getPEProductIncomeList(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
 		List<PEProductIncome> result = new ArrayList<PEProductIncome>();
-		result = peProductIncomeMappper.getPEProductIncomeList();
+		result = peProductIncomeMappper.getPEProductIncomeList(peProductIncomeCtrlModel);
 		return result;
 	}
 
 	@Override
-	public int selectListCount() {
-		return peProductIncomeMappper.selectListCount();
+	public int selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
+		return peProductIncomeMappper.selectListCount(peProductIncomeCtrlModel);
 	}
 
 	@Override

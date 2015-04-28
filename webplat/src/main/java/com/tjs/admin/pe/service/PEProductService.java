@@ -20,17 +20,13 @@ public interface PEProductService  {
 	
 	int updatePEProduct(PEProduct peProduct);
 	
-	List<PEProduct> getPEProductList();
-	
-	Integer selectListCount();
-	
 	PEProduct getPEProductById(long peProductId);
 	
     int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
 	int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
-    int selectListCount(PEProductCtrlModel peProductCtrlModel);
+    Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
 	
 	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
 	

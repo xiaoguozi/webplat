@@ -32,8 +32,6 @@ public class PEProductIncomeController {
 	
 	@RequestMapping("/index")
     public String index(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
-		String productId = peProductIncomeCtrlModel.getProductId();
-		System.out.println("==================" + productId + "=======================");
         return "admin/pe/peProductIncome/index";
     }
 	
@@ -60,7 +58,7 @@ public class PEProductIncomeController {
 	@RequestMapping("/listData")
     public String listData(PEProductIncomeCtrlModel peProductIncomeCtrlModel, Model model) {
     	List<PEProductIncome> showData = new ArrayList<PEProductIncome>();
-    	showData = peProductIncomeService.getPEProductIncomeList();
+    	showData = peProductIncomeService.getPEProductIncomeList(peProductIncomeCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peProductIncomeCtrlModel);
@@ -70,10 +68,10 @@ public class PEProductIncomeController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = peProductIncomeService.selectListCount();
+    	Integer total = peProductIncomeService.selectListCount(peProductIncomeCtrlModel);
     	
     	result.put("total", total);
     	
