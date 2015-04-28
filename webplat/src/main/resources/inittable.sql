@@ -54,9 +54,9 @@ CREATE TABLE `tjs_product_xtcp` (
   `xtcp_gszhname` varchar(200) DEFAULT NULL COMMENT '信托公司名称',
   `xtcp_gsId` bigint(20) DEFAULT NULL COMMENT '系统公司ID',
   `xtcp_fxgm` varchar(200) DEFAULT NULL COMMENT '预计发行规模',
-  `xtcp_nsyl` varchar(200) DEFAULT NULL COMMENT '预期年收益率',
+  `xtcp_nsyl` decimal(18,2) DEFAULT NULL COMMENT '预期年收益率',
   `xtcp_lxfp` varchar(200) DEFAULT NULL COMMENT '利息分配',
-  `xtcp_cxq` varchar(200) DEFAULT NULL COMMENT '存续期',
+  `xtcp_cxq` bigint(10) DEFAULT NULL COMMENT '存续期',
   `xtcp_xtlx` varchar(45) DEFAULT NULL COMMENT '信托类型',
   `xtcp_zdrgje` decimal(18,2) DEFAULT NULL COMMENT '最低认购金额',
   `xtcp_dyl` varchar(200) DEFAULT NULL COMMENT '抵押率',
@@ -82,7 +82,8 @@ CREATE TABLE `tjs_product_xtcp` (
   `xtcp_area` varchar(100) DEFAULT NULL COMMENT '所在区域',
   `xtcp_city` varchar(100) DEFAULT NULL COMMENT '所在城市',
   PRIMARY KEY (`xtcp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='信托产品';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='信托产品';
+
 
 
 
