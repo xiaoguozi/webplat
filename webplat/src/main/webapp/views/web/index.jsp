@@ -43,7 +43,7 @@ document.all(imgg).style.display='block'}}
     <div class="top_wrap_menu">
     <ul>
     <li><a href="#">首页</a></li>
-    <li><a href="#">信托</a></li>
+    <li><a href="rest/web/xintuo/trust/trustIndex">信托</a></li>
     <li><a href="#">私募</a></li>
     <li><a href="#">配资</a></li>
     <li><a href="#">海外保险</a></li>
