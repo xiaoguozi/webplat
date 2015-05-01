@@ -36,6 +36,9 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	}
 
 	public PEProduct getPeProduct() {
+		if (null == peProduct) {
+			peProduct = new PEProduct();
+		}
 		return peProduct;
 	}
 

@@ -19,6 +19,8 @@
    		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR" />
    		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR" />
    		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="companyId" column="company_id" jdbcType="BIGINT"/>
+   		<result property="companyName" column="company_name" jdbcType="VARCHAR"/>
    		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
    		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
    		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
@@ -42,6 +44,8 @@
         recommend_location,
         recommend_sequence,
         status,
+        company_id,
+        company_name,
         creater_id,
         creater_name,
         create_date,
@@ -83,6 +87,8 @@
          		#{recommendLocation},
          		#{recommendSequence},
          		#{status},
+         		#{companyId},
+         		#{companyName},
                 #{createrId},
                 #{createrName}, 
                 #{createDate}, 
@@ -106,6 +112,8 @@
 	   		recommend_location=#{recommendLocation},
 	   		recommend_sequence=#{recommendSequence},
 	   		status=#{status},
+	   		company_id=#{companyId},
+	   		company_name=#{companyName},
 	        last_modify_date=#{lastModifyDate}
    		WHERE id=#{id}
    </update>

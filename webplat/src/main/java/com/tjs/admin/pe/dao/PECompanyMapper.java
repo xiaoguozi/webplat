@@ -20,17 +20,13 @@ public interface PECompanyMapper  {
 	
 	int updatePECompany(PECompany peCompany);
 	
-	List<PECompany> getPECompanyList();
-	
-	Integer selectListCount();
-
 	PECompany getPECompanyById(long peCompanyId);
 	
 	int deleteBatchPECompany(long[] ids);
 	
 	List<PECompany> getPECompanyListAndPage();
 	
-	int selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
+	Integer selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
 	
 	List<PECompany> getPECompanyList(PECompanyCtrlModel peCompanyCtrlModel);
 }

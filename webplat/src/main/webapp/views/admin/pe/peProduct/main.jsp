@@ -297,9 +297,10 @@ $(function () {
     
     Btk.form($("#modalForm"),"insert",function(data){
         if("0"==data.code){
-            $("#searchBtn").click();
+          //  $("#searchBtn").click();
             productId = data.bizData.id;
         }
+        
     });
 
 

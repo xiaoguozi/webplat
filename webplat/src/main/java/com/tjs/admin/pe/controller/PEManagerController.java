@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.service.PEManagerProductService;
 import com.tjs.admin.pe.service.PEManagerService;
 
 /**
@@ -29,6 +31,8 @@ public class PEManagerController {
 	@Resource
 	private PEManagerService peManagerService;
 	
+	@Resource
+	private PEManagerProductService peManagerProductService;
 	
 	@RequestMapping("/index")
     public String index() {
@@ -50,7 +54,9 @@ public class PEManagerController {
     	peManagerService.insertPEManager(peManager, peManagerCtrlModel);
     	result.put("code", "0");
     	result.put("bizData", peManager);
-    	
+    	List<PEProduct> peProducts = peManagerService.getOnLinePEProductList(peManager);
+    	result.put("peProducts", peProducts);
+    	peManagerProductService.insert(peManager, peProducts);
         return result;
     }
 	
@@ -103,6 +109,20 @@ public class PEManagerController {
     	model.addAttribute("peManager", peManager);
     	model.addAttribute("ctrlData", peManagerCtrlModel);
         return "admin/pe/peManager/view";
+    }
+    
+    @RequestMapping("/getOnLinePECompanyList")
+    @ResponseBody
+    public  Map<String, Object> getOnLinePECompanyList() {
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	result = peManagerService.getOnLinePECompanyList(); 
+        return result;
+    }
+    
+    @RequestMapping("/getOnLinePEProductList")
+    @ResponseBody
+    List<PEProduct> getOnLinePEProductList(PEManager peManager) {
+    	return peManagerService.getOnLinePEProductList(peManager);
     }
    
 }

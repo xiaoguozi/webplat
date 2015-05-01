@@ -3,6 +3,7 @@ package com.tjs.admin.pe.service;
 import java.util.List;
 
 import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
+import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductIncome;
 
 /**
@@ -21,8 +22,10 @@ public interface PEProductIncomeService  {
 	
 	List<PEProductIncome> getPEProductIncomeList(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 	
-	int selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
+	Integer selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 	
 	PEProductIncome getPEProductIncomeById(long peProductIncomeId);
+	
+	PEProduct getPEProductById(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 	
 }

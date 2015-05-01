@@ -57,11 +57,17 @@
     </select>
  
  	 <select id="getPEProductList" resultMap="peProductMap" parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel">
- 	 <![CDATA[
         SELECT
         <include refid="Base_select_Column_List" />
          FROM pe_product
          WHERE 1=1
+         <if test="peProduct.pecompanyId != null and peProduct.pecompanyId != 0">
+         	AND (pecompany_id = #{peProduct.pecompanyId})
+         </if>
+         
+         <if test="peProduct.status != 0">
+         	AND (status = #{peProduct.status})
+         </if>
          
          <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
@@ -74,18 +80,15 @@
          <if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}
         </if>  
-        ]]>
     </select>
     
      <select id="selectListCount" parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel" resultType="java.lang.Integer">
-      <![CDATA[
         SELECT COUNT(*) AS total FROM pe_product
         WHERE 1=1
         
         <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
          </if>
-         ]]>
     </select>
     
     <insert id="insertPEProduct" parameterType="com.tjs.admin.pe.model.PEProduct" useGeneratedKeys="true" keyProperty="id">

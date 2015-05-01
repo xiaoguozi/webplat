@@ -57,6 +57,12 @@ public class PEManager {
 	/** 状态:1、未上线，2、上线, 3、下线  */
 	private int status;
 	
+	/** 公司ID */
+	private Long companyId;
+	
+	/** 公司名称  */
+	private String companyName;
+	
 	private long createrId;
 	
 	private String createrName;
@@ -225,6 +231,22 @@ public class PEManager {
 		this.lastModifyDate = lastModifyDate;
 	}
 
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	@Override
 	public String toString() {
 		return "PEManager [id=" + id + ", logo=" + logo + ", name=" + name
@@ -235,7 +257,8 @@ public class PEManager {
 				+ profitProduct + ", review=" + review + ", introduce="
 				+ introduce + ", recommendLocation=" + recommendLocation
 				+ ", recommendSequence=" + recommendSequence + ", status="
-				+ status + ", createrId=" + createrId + ", createrName="
+				+ status + ", companyId=" + companyId + ", companyName="
+				+ companyName + ", createrId=" + createrId + ", createrName="
 				+ createrName + ", createDate=" + createDate
 				+ ", lastModifyDate=" + lastModifyDate + "]";
 	}

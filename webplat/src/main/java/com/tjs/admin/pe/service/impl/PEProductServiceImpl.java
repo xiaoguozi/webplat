@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEProductMapper;
+import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
@@ -63,6 +64,8 @@ public class PEProductServiceImpl implements PEProductService {
 	public int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
 		int result = 0;
 		str2Date(peProduct, peProductCtrlModel);
+		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
+		peProduct.setPecompanyName(peCompany.getName());
 		result = this.insertPEProduct(peProduct);
 		return result;
 	}

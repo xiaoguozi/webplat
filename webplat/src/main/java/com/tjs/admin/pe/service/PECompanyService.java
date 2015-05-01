@@ -20,10 +20,6 @@ public interface PECompanyService  {
 	
 	int updatePECompany(PECompany peCompany);
 	
-	List<PECompany> getPECompanyList();
-	
-	int selectListCount();             
-	
 	PECompany getPECompanyById(long peCompanyId);
 	
 	int updatePECompany(PECompany peCompany, PECompanyCtrlModel peCompanyCtrlModel);
@@ -32,7 +28,7 @@ public interface PECompanyService  {
 	
 	int deleteBatchPECompany(long[] ids);
 	
-	int selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
+	Integer selectListCount(PECompanyCtrlModel peCompanyCtrlModel);
 	
 	List<PECompany> getPECompanyList(PECompanyCtrlModel peCompanyCtrlModel);
 	

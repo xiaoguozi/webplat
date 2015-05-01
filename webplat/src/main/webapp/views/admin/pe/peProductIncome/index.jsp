@@ -17,7 +17,7 @@
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" size="30" name="keyword" placeholder="关键字" value="" >
+                <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
@@ -77,12 +77,12 @@
 var IndexPage = {};
 
 $(function(){
-    var insertUrl = "rest/admin/pe/peProductIncome/insert";
-    var updateUrl = "rest/admin/pe/peProductIncome/update";
+    var insertUrl = "rest/admin/pe/peProductIncome/insert?productId=" + ${productId};
+    var updateUrl = "rest/admin/pe/peProductIncome/update?productId=" + ${productId};
     var viewUrl = "rest/admin/pe/peProductIncome/view";
     var deleteDataUrl = "rest/admin/pe/peProductIncome/deleteData";
-    var listDataCountUrl = "rest/admin/pe/peProductIncome/listDataCount";
-    var listDataUrl = "rest/admin/pe/peProductIncome/listData";
+    var listDataCountUrl = "rest/admin/pe/peProductIncome/listDataCount?productId=" + ${productId};
+    var listDataUrl = "rest/admin/pe/peProductIncome/listData?productId=" + ${productId};
 
     Btk.form($('#searchForm'));
 
@@ -179,7 +179,7 @@ $(function(){
             _pageSize = pageSize
         }
         $("#searchForm input[name='pageSize']").val(_pageSize);
-        
+        $("#searchForm input[name='pageNo']").val("0");
         $.post(
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
@@ -199,7 +199,7 @@ $(function(){
                     });                    
                 }
 
-            }, "json");
+            });
     }
 
     //加载列表数据

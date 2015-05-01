@@ -47,15 +47,15 @@ public class PEProductNetServiceImpl implements PEProductNetService {
 	}
 
 	@Override
-	public List<PEProductNet> getPEProductNetList() {
+	public List<PEProductNet> getPEProductNetList(PEProductNetCtrlModel peProductNetCtrlModel) {
 		List<PEProductNet> result = new ArrayList<PEProductNet>();
-		result = peProductNetMapper.getPEProductNetList();
+		result = peProductNetMapper.getPEProductNetList(peProductNetCtrlModel);
 		return result;
 	}
 
 	@Override
-	public int selectListCount() {
-		return peProductNetMapper.selectListCount();
+	public int selectListCount(PEProductNetCtrlModel peProductNetCtrlModel) {
+		return peProductNetMapper.selectListCount(peProductNetCtrlModel);
 	}
 
 	@Override

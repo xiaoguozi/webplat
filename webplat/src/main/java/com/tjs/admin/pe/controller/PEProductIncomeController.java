@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductIncome;
 import com.tjs.admin.pe.service.PEProductIncomeService;
 
@@ -31,12 +32,17 @@ public class PEProductIncomeController {
 	
 	
 	@RequestMapping("/index")
-    public String index(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
+    public String index(PEProductIncomeCtrlModel peProductIncomeCtrlModel, Model model) {
+		String productId = peProductIncomeCtrlModel.getProductId();
+		model.addAttribute("productId", productId);
         return "admin/pe/peProductIncome/index";
     }
 	
 	@RequestMapping("/insert")
     public String insert(PEProductIncome peProductIncome, PEProductIncomeCtrlModel peProductIncomeCtrlModel, Model model) {
+		PEProduct peProduct = peProductIncomeService.getPEProductById(peProductIncomeCtrlModel);
+		peProductIncome.setProductId(peProduct.getId());
+		peProductIncome.setProductName(peProduct.getName());
     	model.addAttribute("peProductIncome", peProductIncome);
     	model.addAttribute("ctrlData", peProductIncomeCtrlModel);
         return "admin/pe/peProductIncome/insert";

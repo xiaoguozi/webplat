@@ -22,7 +22,7 @@ public interface PEProductIncomeMapper  {
 	
 	List<PEProductIncome> getPEProductIncomeList(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 	
-	int selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
+	Integer selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 
 	PEProductIncome getPEProductIncomeById(long peProductIncomeId);
 	
