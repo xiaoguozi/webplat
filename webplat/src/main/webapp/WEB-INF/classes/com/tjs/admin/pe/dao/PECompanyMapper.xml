@@ -25,36 +25,6 @@
    		<result property="status" column="status" jdbcType="INTEGER" />
    </resultMap>
    
-   <sql id="Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
-            </foreach>
-        </where>
-    </sql>
-   
    <sql id="Base_select_Column_List">
 		    id, logo, name, setup_time, management_scale,
    			area, investment_number, product_line, review, core_character, investment_philosophy,
@@ -62,6 +32,8 @@
    			creater_id,creater_name, recommend_location, recommend_sequence, status
 	</sql>
     
+   
+   
    <insert id="insertPECompany"  useGeneratedKeys="true"
     keyProperty="id">
    		INSERT INTO  pe_company (<include refid="Base_select_Column_List" />)
@@ -88,7 +60,7 @@
    
    </insert>
    
-   <delete id="deletePECompany" parameterType="long">
+   <delete id="deletePECompany" parameterType="java.lang.Long">
    		DELETE FROM pe_company WHERE id=#{id}
    </delete>
    
@@ -120,19 +92,37 @@
        WHERE 1=1
    		<if test="peCompany != null and peCompany.status == 2">
    			AND status = #{peCompany.status}
-   		</if>          
+   		</if> 
+   		       
+   		 <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
+         
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
+        
    </select>
    
-   <select id="selectListCount" parameterType="com.tjs.admin.pe.controller.PECompanyCtrlModel" resultType="int">
+   <select id="selectListCount" parameterType="com.tjs.admin.pe.controller.PECompanyCtrlModel" resultType="java.lang.Integer">
    		SELECT count(*) AS total
    		FROM pe_company
    		WHERE 1=1
    		<if test="peCompany != null and peCompany.status == 2">
    			AND status = #{peCompany.status}
    		</if>
+   		
+   		 <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
+   		
     </select>
     
-    <select id="getPECompanyById" parameterType="long"
+    <select id="getPECompanyById" parameterType="java.lang.Long"
 		resultType="com.tjs.admin.pe.model.PECompany">
 		SELECT
 		<include refid="Base_select_Column_List" />
@@ -140,28 +130,12 @@
 		WHERE id=#{id}
 	</select>
     
-    <delete id="deleteBatchPECompany" parameterType="long" >
+    <delete id="deleteBatchPECompany" parameterType="java.lang.Long" >
 		 DELETE FROM pe_company
 		 WHERE id in 
 		<foreach item="idItem" collection="array" open="(" separator="," close=")">
 		  #{idItem}
 		</foreach>
 	</delete>
-	
-	 <!-- 分页条件查询 -->
-    <select id="getPECompanyListAndPage" resultMap="peResultMap" parameterType="com.tjs.admin.pe.model.PECompany">
-        SELECT
-        <if test="distinct">
-            DISTINCT
-        </if>
-        <include refid="Base_select_Column_List" />
-        FROM pe_company
-        <if test="_parameter != null">
-            <include refid="Where_Clause" />
-        </if>
-        <if test="orderByClause != null">
-            ORDER BY ${orderByClause}
-        </if>
-    </select>
 	
 </mapper>

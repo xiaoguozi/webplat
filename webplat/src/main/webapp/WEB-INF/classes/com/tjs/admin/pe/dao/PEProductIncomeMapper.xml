@@ -40,14 +40,23 @@
         WHERE id = #{id}
     </select>
  
- 	 <select id="getPEProductIncomeList" resultMap="peProductIncomeMap">
+ 	 <select id="getPEProductIncomeList" resultMap="peProductIncomeMap" parameterType="com.tjs.admin.pe.controller.PEProductIncomeCtrlModel">
         SELECT
         <include refid="Base_select_Column_List" />
          FROM pe_product_income
+         WHERE  product_id = #{productId}
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
     </select>
     
-     <select id="selectListCount" resultType="int">
+     <select id="selectListCount" resultType="java.lang.Integer" parameterType="com.tjs.admin.pe.controller.PEProductIncomeCtrlModel">
         SELECT COUNT(*) AS total FROM pe_product_income
+        WHERE product_id = #{productId}
     </select>
     
     <insert id="insertPEProductIncome" parameterType="com.tjs.admin.pe.model.PEProductIncome" useGeneratedKeys="true" keyProperty="id">

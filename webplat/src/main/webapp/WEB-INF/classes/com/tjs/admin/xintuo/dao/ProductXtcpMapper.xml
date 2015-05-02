@@ -8,9 +8,9 @@
 		<result column="xtcp_gszhname" property="xtcpGszhname" jdbcType="VARCHAR" />
 		<result column="xtcp_gsId" property="xtcpGsId" javaType="java.lang.Long" jdbcType="BIGINT" />
 		<result column="xtcp_fxgm" property="xtcpFxgm" javaType="java.math.BigDecimal" />
-		<result column="xtcp_nsyl" property="xtcpNsyl" jdbcType="VARCHAR" />
+		<result column="xtcp_nsyl" property="xtcpNsyl" javaType="java.math.BigDecimal" />
 		<result column="xtcp_lxfp" property="xtcpLxfp" jdbcType="VARCHAR" />
-		<result column="xtcp_cxq" property="xtcpCxq" jdbcType="VARCHAR" />
+		<result column="xtcp_cxq" property="xtcpCxq" javaType="java.lang.Integer" />
 		<result column="xtcp_xtlx" property="xtcpXtlx" jdbcType="VARCHAR" />
 		<result column="xtcp_zdrgje" property="xtcpZdrgje" javaType="java.math.BigDecimal" />
 		<result column="xtcp_dyl" property="xtcpDyl" jdbcType="VARCHAR" />
@@ -52,7 +52,7 @@
 	</sql>
 
 	<select id="countProductXtcp" resultType="int"
-		parameterType="com.tjs.admin.xintuo.model.ProductXtcp">
+		parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select count(*) c from tjs_product_xtcp  where xtcp_validstatus='1'
 		
 		 <if test="keyWord!= null and keyWord!= ''">
@@ -60,7 +60,7 @@
          </if>
 	</select>
 
-	<select id="selectProductXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp">
+	<select id="selectProductXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp" parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
 		<include refid="Base_select_Column_List" />
 		from tjs_product_xtcp where xtcp_validstatus='1'
@@ -186,6 +186,33 @@
 		AND xtcp_status='20'
 		AND xtcp_tjw='10'
 		ORDER BY xtcp_tjno								
+	</select>
+	
+	<select id="selectProductXtcpTrustTopIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
+	parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where 
+		xtcp_validstatus='1'
+		AND xtcp_status='20'
+		AND xtcp_tjw in ('10','20')
+		ORDER BY xtcp_tjno
+		limit 0,4								
+	</select>
+	
+	<select id="selectProductXtcpTrustFootIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
+	 parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where 
+		xtcp_validstatus='1'
+		AND xtcp_status='20'
+		AND xtcp_tjw in ('10','20')
+		 <if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">
+        AND xtcp_xtlx=#{productXtcp.xtcpXtlx}
+        </if>
+		ORDER BY xtcp_tjno
+		limit 0,4								
 	</select>
 	
 </mapper>
