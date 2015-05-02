@@ -115,7 +115,7 @@ $(function() {
 
 	            userName : {
 	                required : "手机号码不能为空.",
-	                remote:"手机号未注册过，您可以直接<a href='rest/web/reg'>注册</a>"
+	                remote:"手机号未注册过，您可以直接<a href='rest/web/passport/reg'>注册</a>"
 	            },
 	            verifyCode : {
 	                required : "验证码不能为空.",

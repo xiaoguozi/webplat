@@ -637,7 +637,7 @@ top:85px; right:0px; position: absolute;
 
 .tjs_assist{width:100%; height:42px;}
 .tjs_assist_left{width:90px; height:32px; line-height:32px; float:left; margin-left:47px;}
-.tjs_assist_right{width:175px; height:32px; line-height:32px; float:right; margin-right:28px;}
+.tjs_assist_right{width:90px; height:32px; line-height:32px; float:right; margin-right:28px;}
 .tjs_copyright_div{width:100%; height:76px;line-height:76px; color:#666; text-align: center;}
 
 
