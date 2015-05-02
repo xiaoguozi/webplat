@@ -51,7 +51,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_finish_right">
 <div style="height:50px; width:100%; text-align: center;"></div>
 <span style="color:#39b53c; font-size:24px;">您已成功重置密码！</span><br /><a href="rest/web/login">马上登录？</a></div>
-<div style="height:60px; width:100%; text-align: center;"><a href="#" class="tjs_registerbtn">回到首页</a></div>
+<div style="height:60px; width:100%; text-align: center;"><a href="rest/web/welcome" class="tjs_registerbtn">回到首页</a></div>
 
 <div style=" height:60px;width:100%;"></div>
 

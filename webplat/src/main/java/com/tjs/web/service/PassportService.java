@@ -13,5 +13,10 @@ import com.tjs.core.generic.GenericService;
 public interface PassportService{
    
     long regUser(User user, UserInfo userInfo);
-    boolean validUserName(String userName);
+    
+    boolean notExistUserName(String userName);
+
+    String sendSmsCode(String userName);
+    
+    boolean resetPassword(String userName, String password);
 }

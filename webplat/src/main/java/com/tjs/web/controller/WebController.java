@@ -1,5 +1,6 @@
 package com.tjs.web.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.service.UserService;
 
 /**
  * 公共视图控制器
@@ -21,6 +23,9 @@ import com.tjs.admin.model.User;
 @RequestMapping("/web")
 public class WebController {
 
+    @Resource
+    private UserService userService;
+    
 	/**
 	 * 首页－默认
 	 * 
@@ -38,6 +43,10 @@ public class WebController {
 			isLogin = true;
 			//User userInfo = (User)session.getAttribute("userInfo");
 			model.addAttribute("username",username);
+			if(null == request.getSession().getAttribute("userInfo")){
+        		final User authUserInfo = userService.selectByUsername(username);
+                request.getSession().setAttribute("userInfo", authUserInfo);
+        	}
 		}
 
 		if (isLogin) {

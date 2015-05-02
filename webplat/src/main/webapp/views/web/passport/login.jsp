@@ -42,14 +42,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_topheight12"></div>
 
 <div class="tjs_input_div">
-  <input  name="username" id="username" type="text" class="tjs_input_text" tabindex="1" spellcheck="false" placeholder=" 手机号/邮箱" autofocus x-webkit-speech >
+  <input  name="username" id="username" type="text" class="tjs_input_text" tabindex="1" spellcheck="false" placeholder=" 手机号码" autofocus x-webkit-speech >
 </div>
 <div class="tjs_input_div">
 <input name="password" id="password" type="password" class="tjs_input_text" placeholder=" 登录密码" tabindex="2">
 
 </div>
-<div class="text-danger">${error }</div>
+
 <div class="tjs_botton_div">
+<span class="">${error }</span>
 <a href="＃" id="loginBut" class="tjs_loginbtn">登录</a>
 </div>
 <div class="tjs_assist">

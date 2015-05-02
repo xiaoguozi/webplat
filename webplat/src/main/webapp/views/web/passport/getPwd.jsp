@@ -46,17 +46,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 
 <div class="tjs_register_div">
+
+
+ <form class="register-form" action="rest/web/passport/getPwdS2" method="post">
+ 
+ 
 <div style=" height:60px;width:100%;"></div>
-<div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="email" type="email" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="userName" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机号码" autofocus x-webkit-speech ></div>
 
 
-<div class="tjs_register_left">验证码：</div><div class="tjs_register_right"><input name="email" type="email" class="tjs_register_input  tjs_width176px" tabindex="1" spellcheck="false" placeholder=" 验证码" autofocus x-webkit-speech >&nbsp;&nbsp;<span class="tjs_verificationcode"><a href="#"><img src="assets/img/ui/code.png" width="100" height="38"  align="middle"/></a></span>&nbsp;&nbsp;<span><a href="#" class="tjs_registercode">换一张</a></span></div>
+<div class="tjs_register_left">验证码：</div><div class="tjs_register_right"><input name="verifyCode" id="verifyCode" type="text" class="tjs_register_input  tjs_width176px" tabindex="1" spellcheck="false" placeholder=" 验证码" autofocus x-webkit-speech >&nbsp;&nbsp;
+<span class="tjs_verificationcode"><a href="#"><img id="verifyCodeImg" src="rest/captcha/img" width="100" height="38"  align="middle"/></a></span>&nbsp;&nbsp;<span><a href="#" id="newVerifyCode" class="tjs_registercode">换一张</a></span></div>
 <div class="clearfloat"></div>
 
-<div style="height:60px; width:100%; text-align: center;"><a href="reset_verify.html" class="tjs_registerbtn">下一步</a></div>
+<div style="height:60px; width:100%; text-align: center;"><a id="register-submit-btn"  href="#" class="tjs_registerbtn">下一步</a></div>
 <div style=" height:60px;width:100%;"></div>
 
 
+	</form>
+	
 </div>
 </div>
 <!-- /tjs_content_div tjs_1108px -->
@@ -70,5 +78,113 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 </div>
 <!-- /home_all -->
+
+
+
+<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+           <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
+        <script src="app/lib/security/sha256.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+$(function() {  
+	var handleRegister = function() {
+
+		jQuery.validator.addMethod("mobileCN", function(value, element) {
+			return this.optional(element) || /^0?(13[0-9]|15[012356789]|18[0236789]|14[57]|17[7])[0-9]{8}$/.test(value);
+		}, "手机号码格式不正确");
+
+
+        $('.register-form').validate({
+            errorElement : 'span', // default input error message container
+            errorClass : 'help-block', // default input error message class
+            focusInvalid : false, // do not focus the last invalid input
+            ignore : "",
+            rules : {
+                userName : {
+                    required : true,
+                    mobileCN : true,
+                    remote: "rest/web/passport/existUserName"
+                },
+                verifyCode : {
+                    required : true,
+                    remote: "rest/web/passport/validVerifyCode"
+                }
+            },
+
+            messages : { // custom messages for radio buttons and checkboxes
+
+	            userName : {
+	                required : "手机号码不能为空.",
+	                remote:"手机号未注册过，您可以直接<a href='rest/web/reg'>注册</a>"
+	            },
+	            verifyCode : {
+	                required : "验证码不能为空.",
+	                remote: "验证码输入有误."
+	            }
+            },
+
+            invalidHandler : function(event, validator) { 
+            	$('.alert-danger', $('.register-form')).show();
+            },
+
+            highlight : function(element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-error');
+            },
+
+            success : function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement : function(error, element) {
+               if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler : function(form) {
+            	
+                form.submit();
+            }
+        });
+
+        $('.register-form input').keypress(function(e) {
+            if (e.which == 13) {
+                if ($('.register-form').validate().form()) {
+                    $('.register-form').submit();
+                }
+                return false;
+            }
+        });
+        
+
+	    $('#register-submit-btn').click(function(e){
+	    	e.preventDefault();
+	    	if ($('.register-form').validate().form()) {
+                $('.register-form').submit();
+            }
+	    	return false;
+	    });
+        
+	}
+	var handleNewVerifyCode = function(){
+		$("#newVerifyCode, #verifyCodeImg").click(function(event){
+			event.preventDefault();
+			var imgSrc = "rest/captcha/img?r=";
+			$("#verifyCodeImg").attr("src", imgSrc+Math.random());
+			return false;
+		});
+	}
+		   
+		   
+	handleRegister();
+	handleNewVerifyCode();
+		});
+	</script>
+        
+
+
 </body>
 </html>

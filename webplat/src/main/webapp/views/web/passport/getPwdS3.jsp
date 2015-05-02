@@ -46,18 +46,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 
 <div class="tjs_register_div">
+
+
+ <form class="register-form" action="rest/web/passport/getPwdS4" method="post">
+ 
+<input type="hidden" name="userName" value="${ctrlData.userName }">
+<input type="hidden" name="mobileVerifyCode" value="${ctrlData.mobileVerifyCode }">
+
+
 <div style=" height:60px;width:100%;"></div>
 
-<div style=" height:38px;width:100%; color:#999;">* 密码为6-16个字符，区分大小写。建议使用字母加数字或符号的组合 </div>
+<div style=" height:38px;width:100%; color:#999;">* 密码为6~16个字母、符号或数字组合，字母区分大小写 </div>
 
-<div class="tjs_register_left">新密码：</div><div class="tjs_register_right"><input name="email" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 新密码" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">新密码：</div><div class="tjs_register_right"><input id="register_password" name="password" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 新密码" autofocus x-webkit-speech ></div>
 
 
-<div class="tjs_register_left">确认新密码：</div><div class="tjs_register_right"><input name="email" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确认密码" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">确认新密码：</div><div class="tjs_register_right"><input name="rpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确认密码" autofocus x-webkit-speech ></div>
 <div class="clearfloat"></div>
 
-<div style="height:60px; width:100%; text-align: center;"><a href="reset_finish.html" class="tjs_registerbtn">下一步</a></div>
+<div style="height:60px; width:100%; text-align: center;"><a id="register-submit-btn"  href="#" class="tjs_registerbtn">下一步</a></div>
 <div style=" height:60px;width:100%;"></div>
+
+	</form>
+	
 
 
 </div>
@@ -72,5 +83,93 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 </div>
 <!-- /home_all -->
+
+
+<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+           <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
+        <script src="app/lib/security/sha256.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+$(function() {  
+	var handleRegister = function() {
+
+        $('.register-form').validate({
+            errorElement : 'span', // default input error message container
+            errorClass : 'help-block', // default input error message class
+            focusInvalid : false, // do not focus the last invalid input
+            ignore : "",
+            rules : {
+                password : {
+                    required : true,
+                    rangelength:[6,16]
+                },
+                rpassword : {
+                    equalTo : "#register_password"
+                }
+            },
+
+            messages : { // custom messages for radio buttons and checkboxes
+
+	            
+	            password : {
+	                required : "密码不能为空."
+	            },
+            },
+
+            invalidHandler : function(event, validator) { 
+            	$('.alert-danger', $('.register-form')).show();
+            },
+
+            highlight : function(element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-error');
+            },
+
+            success : function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement : function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler : function(form) {
+            	var passwordInput = $('[name="password"]');
+	            passwordInput.val(sha256_digest(passwordInput.val()));
+                form.submit();
+            }
+        });
+
+        $('.register-form input').keypress(function(e) {
+            if (e.which == 13) {
+                if ($('.register-form').validate().form()) {
+                    $('.register-form').submit();
+                }
+                return false;
+            }
+        });
+        
+
+	    $('#register-submit-btn').click(function(e){
+	    	e.preventDefault();
+	    	if ($('.register-form').validate().form()) {
+                $('.register-form').submit();
+            }
+	    	return false;
+	    });
+        
+	}
+	
+		   
+	handleRegister();
+		});
+	</script>
+        
+
+
 </body>
 </html>

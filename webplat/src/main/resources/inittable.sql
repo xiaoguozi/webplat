@@ -1,4 +1,38 @@
 /*create Table sql */
+
+create table t_user_info
+(
+   id bigint(20) not null AUTO_INCREMENT comment 'ID',
+   user_id bigint(20) comment '用户唯一标识',
+   nick_name varchar(64) comment '用户昵称',
+   mobile_no varchar(16) comment '手机号',
+   qq_no varchar(16) comment 'QQ号',
+   wechat_no varchar(16) comment '微信号',
+   email varchar(128) comment '邮箱',
+   user_status varchar(16) comment '用户状态',
+   reg_time datetime comment '注册时间',
+   primary key (id)
+) DEFAULT CHARSET=utf8 comment='用户信息';
+
+create table t_web_log
+(
+   id bigint(20) not null AUTO_INCREMENT comment 'ID',
+   user_name varchar(32) comment 'username',
+   op_code varchar(32) comment '操作码',
+   op_result varchar(32) comment '操作结果',
+   op_obj varchar(32) comment '操作对象',
+   req_url varchar(256) comment '请求地址',
+   req_ref varchar(256) comment '请求来源地址',
+   req_ip varchar(32) comment '请求IP',
+   op_time datetime comment '操作时间',
+   log_time datetime comment '日志时间',
+   primary key (id)
+) DEFAULT CHARSET=utf8 comment='web日志';
+
+
+
+
+
 CREATE TABLE `private_placement_company` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `logo` varchar(45) DEFAULT NULL COMMENT '公司LOGO',

@@ -48,10 +48,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
  <form class="register-form" action="rest/web/passport/regS2" method="post">
  
 <div style=" height:30px;width:100%;"></div>
-<div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="userName" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="userName" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机号码" autofocus x-webkit-speech ></div>
 
-<div class="tjs_register_left">密码：</div><div class="tjs_register_right"><input id="register_password" name="password" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 初始密码" autofocus x-webkit-speech ></div>
-<div class="tjs_register_left">确认：</div><div class="tjs_register_right"><input name="rpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确定密码" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">密码：</div><div class="tjs_register_right"><input id="register_password" name="password" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 初始密码，6~16个字母、符号或数字组合" autofocus x-webkit-speech ></div>
+<div class="tjs_register_left">确认密码：</div><div class="tjs_register_right"><input name="rpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确认密码" autofocus x-webkit-speech ></div>
 <div class="tjs_register_left">验证码：</div><div class="tjs_register_right"><input name="verifyCode" id="verifyCode" type="text" class="tjs_register_input  tjs_width176px" tabindex="1" spellcheck="false" placeholder=" 验证码" autofocus x-webkit-speech >&nbsp;&nbsp;<span class="tjs_verificationcode"><a href="#"><img id="verifyCodeImg" src="rest/captcha/img" width="100" height="38"  align="middle"/></a></span>&nbsp;&nbsp;<span><a href="#" id="newVerifyCode" class="tjs_registercode">换一张</a></span></div>
 <div class="clearfloat"></div>
 <div class="tjs_register_agreement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="tnc" type="checkbox" value="" checked="checked" />&nbsp;我已阅读接受&nbsp;<a href="#" class="tjs_registercode">《淘金山用户使用协议》</a></div>
@@ -97,10 +97,11 @@ $(function() {
                 userName : {
                     required : true,
                     mobileCN : true,
-                    remote: "rest/web/passport/validUserName"
+                    remote: "rest/web/passport/notExistUserName"
                 },
                 password : {
-                    required : true
+                    required : true,
+                    rangelength:[6,16]
                 },
                 rpassword : {
                     equalTo : "#register_password"

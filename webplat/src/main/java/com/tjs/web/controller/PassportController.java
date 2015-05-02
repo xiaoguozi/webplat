@@ -24,6 +24,7 @@ import com.tjs.admin.constants.UserConstants;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserService;
+import com.tjs.core.util.StringExtUtils;
 import com.tjs.web.constants.WebConstants;
 import com.tjs.web.service.PassportService;
 
@@ -53,10 +54,14 @@ public class PassportController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@Valid User user, String verifyCode, BindingResult result, Model model, HttpServletRequest request) {
         try {
-        	String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
+        	//String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
             Subject subject = SecurityUtils.getSubject();
             // 已登陆则 跳到首页
             if (subject.isAuthenticated()) {
+            	if(null == request.getSession().getAttribute("userInfo")){
+            		final User authUserInfo = userService.selectByUsername((String)subject.getPrincipal());
+                    request.getSession().setAttribute("userInfo", authUserInfo);
+            	}
                 return "redirect:/";
             }
             if (result.hasErrors()) {
@@ -88,55 +93,160 @@ public class PassportController {
         // 登出操作
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "web/passport/login";
+        return "redirect:/";
     }
     
 
     @RequestMapping("/getPwd")
     public String getPwd(User user, PassportCtrlModel ctrlModel, Model model) {
-    	user.setUsername("myname");
+    	
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
+    	
         return "web/passport/getPwd";
     }
 
     @RequestMapping("/getPwdS2")
-    public String getPwdS2(User user, PassportCtrlModel ctrlModel, Model model) {
-    	user.setUsername("myname");
+    public String getPwdS2(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	//验证手机号，验证图片验证码，清除session图片验证码
+    	//发送短信验证码(若果session中已有同一个手机号&手机验证码，则不发送，防刷？)，同时把手机号和验证码保存到session
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
-        return "web/passport/getPwdS2";
+    	String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY); 
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	if(StringExtUtils.isBlank(code) || !code.equalsIgnoreCase(ctrlModel.getVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "验证码错误";
+    	}else if(!StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号格式错误";
+    	}else if(passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号未注册";
+    	}
+    	//清空图片验证码
+    	request.getSession().setAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY, "");
+    	
+    	if(dataValid){
+    		request.getSession().setAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY, ctrlModel.getUserName());
+        	String smsCode = passportService.sendSmsCode(ctrlModel.getUserName());
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, smsCode);
+        	request.getSession().setAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY, 0);
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY, 0);
+        	
+        	return "web/passport/getPwdS2";
+    	}
+
+		model.addAttribute("error", errorMsg);
+		return "web/passport/getPwd";
     }
 
     @RequestMapping("/getPwdS3")
-    public String getPwdS3(User user, PassportCtrlModel ctrlModel, Model model) {
-    	user.setUsername("myname");
+    public String getPwdS3(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	//验证手机号&短信验证码
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
-        return "web/passport/getPwdS3";
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号未注册";
+    	}
+    	
+    	if(dataValid){
+        	return "web/passport/getPwdS3";
+    	}
+    	
+    	model.addAttribute("error", errorMsg);
+		return "web/passport/getPwdS2";
+    	
     }
 
     @RequestMapping("/getPwdS4")
-    public String getPwdSuccess(User user, PassportCtrlModel ctrlModel, Model model) {
-    	user.setUsername("myname");
+    public String getPwdS4(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	//验证手机号，验证短信验证码
+    	//保存新密码到数据库，清除session中的手机号和短信验证码
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
-        return "web/passport/getPwdS4";
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword()) ){
+    		dataValid = false;
+    		errorMsg = "新密码验证错误";
+    	}else if(passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号未注册";
+    	}
+    	
+    	if(dataValid){
+			boolean result = passportService.resetPassword(userName, ctrlModel.getPassword());
+			if(result){
+				// 清除session中的手机号&短信验证码
+				request.getSession().setAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY, "");
+				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
+				return "web/passport/getPwdS4";
+			}else{
+				dataValid = false;
+	    		errorMsg = "重置密码服务发生错误，请稍后再试！";
+			}
+    	}
+
+		model.addAttribute("error", errorMsg);
+		return "web/passport/getPwdS3";
+    	
     }
 
     @RequestMapping("/reg")
-    public String reg(User user, PassportCtrlModel ctrlModel, Model model) {
+    public String reg(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
         return "web/passport/reg";
     }
 
 
-    @RequestMapping("/validUserName")
+    @RequestMapping("/existUserName")
     @ResponseBody
-    public boolean validUsername(String userName, Model model, HttpServletRequest request) {
-    	        
-    	boolean isValid = passportService.validUserName(userName);    	
+    public boolean existUserName(String userName, Model model, HttpServletRequest request) {
+    	
+    	boolean isValid = false;
+    	if(StringExtUtils.checkMobileNumber(userName)){
+    		isValid = !passportService.notExistUserName(userName); 
+    	}
+    	   	
+        return isValid;
+    }
+
+
+    @RequestMapping("/notExistUserName")
+    @ResponseBody
+    public boolean notExistUserName(String userName, Model model, HttpServletRequest request) {
+    	
+    	boolean isValid = false;
+    	if(StringExtUtils.checkMobileNumber(userName)){
+    		isValid = passportService.notExistUserName(userName); 
+    	}
+    	   	
         return isValid;
     }
     
@@ -151,41 +261,116 @@ public class PassportController {
         }
         return isValid;
     }
-    
+
+    @RequestMapping("/reSendMobileVerifyCode")
+    @ResponseBody
+    public boolean reSendMobileVerifyCode(String mobileNo, Model model, HttpServletRequest request) {
+    	boolean isValid = false;
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isNotBlank(userName) 
+    			&& userName.equalsIgnoreCase(mobileNo) 
+    			&& StringExtUtils.checkMobileNumber(mobileNo)){
+    		//TODO 添加计数器，防刷
+    		String resendCount = (String)request.getSession().getAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY);
+    		int count = Integer.valueOf(resendCount);
+    		if(count<=WebConstants.SMS_RESEND_COUNT_MAX){
+    			String smsCode = passportService.sendSmsCode(userName);
+    			count ++;
+    			resendCount = ""+count;
+            	request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, smsCode);
+            	request.getSession().setAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY, resendCount);
+            	isValid = true;
+    		}
+    	}
+    	
+    	return isValid;
+    }
+
     @RequestMapping("/validMobileVerifyCode")
     @ResponseBody
     public boolean validMobileVerifyCode(String mobileVerifyCode, Model model, HttpServletRequest request) {
     	
-    	/*boolean isValid = false;    	
-    	String code = (String) request.getSession().getAttribute("mobileVerifyCode");
-        if(StringExtUtils.isNotBlank(code) && code.equalsIgnoreCase(mobileVerifyCode)){
-        	isValid = true;  
-        }*/
-        return true;
+    	boolean isValid = false;  
+    	String verifyCount = (String)request.getSession().getAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY);
+		int count = Integer.valueOf(verifyCount);
+		if(count<=WebConstants.SMS_VERIFY_COUNT_MAX){
+			String code = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+	        if(StringExtUtils.isNotBlank(code) && code.equalsIgnoreCase(mobileVerifyCode)){
+	        	isValid = true;  
+	        }
+			count ++;
+			verifyCount = ""+count;
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY, verifyCount);
+		}
+		
+    	
+        return isValid;
     }
 
     @RequestMapping("/regS2")
     public String regS2(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
-    	String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
-        if(code.equalsIgnoreCase(ctrlModel.getVerifyCode())){
-        	return "web/passport/regS2";
+    	//验证手机号，验证图片验证码，清除session图片验证码
+    	//发送短信验证码(若果session中已有同一个手机号&手机验证码，则不发送，防刷？)，同时把手机号和验证码保存到session
+    	model.addAttribute("ctrlData", ctrlModel);
+    	String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY); 
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	if(StringExtUtils.isBlank(code) || !code.equalsIgnoreCase(ctrlModel.getVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "验证码错误";
+    	}else if(!StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号格式错误";
+    	}else if(!passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号已注册";
+    	}
+    	//清空图片验证码
+    	request.getSession().setAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY, "");
+    	
+    	if(dataValid){
+    		request.getSession().setAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY, ctrlModel.getUserName());
+        	String smsCode = passportService.sendSmsCode(ctrlModel.getUserName());
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, smsCode);
+        	request.getSession().setAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY, 0);
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY, 0);
         	
-        }else{
-        	model.addAttribute("error", "验证码错误");
-        }
-    	
-    	
-        return "web/passport/reg";
+        	return "web/passport/regS2";
+    	}
 
+		model.addAttribute("error", errorMsg);
+		return "web/passport/reg";
+    	
         
     }
 
     @RequestMapping("/regS3")
     public String regS3(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
-    	Map<String, Object> result = new HashMap<String, Object>();
-    	String code = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);        //获取生成的验证码 
-        if(code.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
-        	User user = new User();
+    	//验证手机号，验证短信验证码（session是否匹配，数据库中是否存在）
+    	//新增帐号到数据库，清除session中的手机号和短信验证码
+    	model.addAttribute("ctrlData", ctrlModel);
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword())){
+    		dataValid = false;
+    		errorMsg = "密码验证错误";
+    	}else if(!passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号已注册";
+    	}
+    	
+    	if(dataValid){
+    		User user = new User();
         	user.setUsername(ctrlModel.getUserName());
         	user.setPassword(ctrlModel.getPassword());
         	user.setCreateTime(new Date());
@@ -195,31 +380,31 @@ public class PassportController {
         	userInfo.setRegTime(new Date());
         	userInfo.setUserStatus(UserConstants.USER_STATUS_REG);
         	Long userId = passportService.regUser(user, userInfo);
-        	if(userId>0){
-        		//注册成功，登录后回到首页
-        		 try {
-        		Subject subject = SecurityUtils.getSubject();
-        		subject.login(new UsernamePasswordToken(ctrlModel.getUserName(), ctrlModel.getPassword()));
-                // 验证成功在Session中保存用户信息
-                final User authUserInfo = userService.selectByUsername(user.getUsername());
-                request.getSession().setAttribute("userInfo", authUserInfo);
-                return "web/passport/regSuccess";
-        		 } catch (AuthenticationException e) {
-        	            // 身份验证失败
-        	            model.addAttribute("error", "注册服务发生错误，请稍后再试！");
-        	            return "web/passport/regS2";
-        	        }
-        	}
-        	model.addAttribute("error", "注册服务发生错误，请稍后再试！");
-        	
-        }else{
-        	model.addAttribute("error", "验证码错误");
-        }
-    	
-    	
-        return "web/passport/regS2";
+			if (userId > 0) {
+				// 注册成功，登录后回到首页
+				// 清除session中的短信验证码
+				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
+				try {
+					Subject subject = SecurityUtils.getSubject();
+					subject.login(new UsernamePasswordToken(ctrlModel.getUserName(), ctrlModel.getPassword()));
+					// 验证成功在Session中保存用户信息
+					final User authUserInfo = userService.selectByUsername(user.getUsername());
+					request.getSession().setAttribute("userInfo", authUserInfo);
+				} catch (AuthenticationException e) {
+					// 身份验证失败，需重新登录
+					//dataValid = false;
+		    		//errorMsg = "注册成功，立即登录！";
+				}
+	    		return "web/passport/regSuccess";
+			}
 
-        
+			dataValid = false;
+    		errorMsg = "注册服务发生错误，请稍后再试！";
+    	}
+
+		model.addAttribute("error", errorMsg);
+		return "web/passport/regS2";
+    	
     }
   
 

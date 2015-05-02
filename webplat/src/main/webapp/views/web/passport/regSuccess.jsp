@@ -48,7 +48,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_finish_left"></div>
 <div class="tjs_finish_right">
 <div style="height:50px; width:100%; text-align: center;"></div>
-<span style="color:#ff6600; font-size:24px;">恭喜您注册成功！</span><br /><a href="#">去挑选理财产品？</a></div>
+<span style="color:#ff6600; font-size:24px;">恭喜您注册成功！</span></div>
 <div style="height:60px; width:100%; text-align: center;"><a href="rest/web/welcome" class="tjs_registerbtn">回到首页</a></div>
 <div style=" height:30px;width:100%;"></div>
 </div>

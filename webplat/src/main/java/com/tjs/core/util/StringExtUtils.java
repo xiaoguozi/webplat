@@ -1,5 +1,8 @@
 package com.tjs.core.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.CharUtils;
 
 
@@ -181,4 +184,23 @@ public class StringExtUtils extends org.apache.commons.lang3.StringUtils {
 		}
 		return s.replaceAll("<[^>]+>", "").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("&nbsp;", " ");
 	}
+	
+	/**
+     * 验证手机号码
+     * @param mobiles
+     * @return
+     */
+    public static boolean checkMobileNumber(String mobileNumber){
+        boolean flag = false;
+        try{
+                Pattern regex = Pattern.compile("^(((13[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\\d{8})|(0\\d{2}-\\d{8})|(0\\d{3}-\\d{7})$");
+                Matcher matcher = regex.matcher(mobileNumber);
+                flag = matcher.matches();
+            }catch(Exception e){
+                flag = false;
+            }
+        return flag;
+    }
+    
+    
 }
