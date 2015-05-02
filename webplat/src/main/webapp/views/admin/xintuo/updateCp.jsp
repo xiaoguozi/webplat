@@ -19,7 +19,7 @@
 
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/xintuo/xintuocp/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
-           <input type="hidden" name="xtcpId" value="${productXtcp.xtcpId}">
+        <input type="hidden" name="xtcpId" value="${productXtcp.xtcpId}">         
         <div class="form-group">
             <label class="col-md-2 control-label">信托产品</label>
             <div class="col-md-6">
@@ -51,9 +51,9 @@
         
         
          <div class="form-group">
-            <label class="col-md-2 control-label">预期年收益率</label>
+            <label class="col-md-2 control-label">预期年收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required " name="xtcpNsyl" value="${productXtcp.xtcpNsyl}" >
+                <input type="text" class="form-control required number" name="xtcpNsyl" value="${productXtcp.xtcpNsyl}" >
             </div>
            </div>
            
@@ -71,9 +71,9 @@
            
         
           <div class="form-group">
-            <label class="col-md-2 control-label">存续期</label>
+            <label class="col-md-2 control-label">存续期（月份）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpCxq" value="${productXtcp.xtcpCxq}" >
+                <input type="text" class="form-control required digits" name="xtcpCxq" value="${productXtcp.xtcpCxq}" >
             </div>
             
         </div>

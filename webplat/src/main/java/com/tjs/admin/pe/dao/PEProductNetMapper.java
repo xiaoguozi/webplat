@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PEProductNet;
 
 /**
@@ -19,9 +20,9 @@ public interface PEProductNetMapper  {
 	
 	void updatePEProductNet(PEProductNet peProductNet);
 	
-	List<PEProductNet> getPEProductNetList();
+	List<PEProductNet> getPEProductNetList(PEProductNetCtrlModel peProductNetCtrlModel);
 	
-	int selectListCount();
+	int selectListCount(PEProductNetCtrlModel peProductNetCtrlModel);
 
 	PEProductNet getPEProductNetById(long peProductNetId);
 	

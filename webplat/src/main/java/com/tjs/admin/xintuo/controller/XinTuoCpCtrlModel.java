@@ -46,6 +46,9 @@ public class XinTuoCpCtrlModel extends GenericCtrlModel {
 	}
 
 	public ProductXtcp getProductXtcp() {
+		if(productXtcp==null){
+			productXtcp = new ProductXtcp();
+		}
 		return productXtcp;
 	}
 

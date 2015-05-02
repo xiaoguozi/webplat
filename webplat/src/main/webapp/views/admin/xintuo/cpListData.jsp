@@ -21,10 +21,10 @@
             </a>
         </td>
         
-        <td>${xintuocp.xtcpNsyl}</td>
+        <td>${xintuocp.xtcpNsyl}%</td>
         <td>${xintuocp.xtcpHd}</td>
         <td><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#00.####"/></td> 
-        <td>${xintuocp.xtcpCxq}</td>
+        <td>${xintuocp.xtcpCxq}个月</td>
         <td>
            <c:choose>  
                 <c:when test="${xintuocp.xtcpLxfp=='10'}">  

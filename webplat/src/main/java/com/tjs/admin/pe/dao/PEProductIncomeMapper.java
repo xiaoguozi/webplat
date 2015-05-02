@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
 import com.tjs.admin.pe.model.PEProductIncome;
 
 /**
@@ -19,9 +20,9 @@ public interface PEProductIncomeMapper  {
 	
 	void updatePEProductIncome(PEProductIncome peProductIncome);
 	
-	List<PEProductIncome> getPEProductIncomeList();
+	List<PEProductIncome> getPEProductIncomeList(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 	
-	int selectListCount();
+	Integer selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel);
 
 	PEProductIncome getPEProductIncomeById(long peProductIncomeId);
 	

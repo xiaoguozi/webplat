@@ -7,7 +7,6 @@
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title pull-left">私募产品收益排名  <small>新增</small></h3>
-        
 <div class="pull-right">
     <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
     <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
@@ -20,7 +19,7 @@
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/pe/peProductIncome/insertData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
      	<input type="hidden" name="id" value="${peProductIncome.id}">
-     	
+     	<input type="hidden" name="productId" value="${peProductIncome.productId}"/>
         <div class="form-group">
             <label class="col-md-3 control-label">产品名称</label>
             <div class="col-md-6">

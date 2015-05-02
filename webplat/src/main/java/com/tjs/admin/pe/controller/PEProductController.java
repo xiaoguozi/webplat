@@ -39,7 +39,7 @@ public class PEProductController {
     public String insert(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
-        return "admin/pe/peProduct/insert";
+        return "admin/pe/peProduct/main";
     }
 	
 
@@ -58,7 +58,7 @@ public class PEProductController {
 	@RequestMapping("/listData")
     public String listData(PEProductCtrlModel peProductCtrlModel, Model model) {
     	List<PEProduct> showData = new ArrayList<PEProduct>();
-    	showData = peProductService.getPEProductList();
+    	showData = peProductService.getPEProductList(peProductCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peProductCtrlModel);
@@ -68,10 +68,10 @@ public class PEProductController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(PEProductCtrlModel peProductCtrlModel) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = peProductService.selectListCount();
+    	Integer total = peProductService.selectListCount(peProductCtrlModel);
     	
     	result.put("total", total);
     	

@@ -15,6 +15,8 @@ public class PECompanyCtrlModel extends GenericCtrlModel {
 
 	private String setupTimeStr;
 	
+	private int limitStart;
+	
 	private PECompany peCompany;
 
 	public String getSetupTimeStr() {
@@ -40,6 +42,13 @@ public class PECompanyCtrlModel extends GenericCtrlModel {
 	public void setPeCompany(PECompany peCompany) {
 		this.peCompany = peCompany;
 	}
-	
+
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
 	
 }

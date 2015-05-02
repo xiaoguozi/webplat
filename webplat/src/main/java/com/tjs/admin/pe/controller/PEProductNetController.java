@@ -58,7 +58,7 @@ public class PEProductNetController {
 	@RequestMapping("/listData")
     public String listData(PEProductNetCtrlModel peProductNetCtrlModel, Model model) {
     	List<PEProductNet> showData = new ArrayList<PEProductNet>();
-    	showData = peProductNetService.getPEProductNetList();
+    	showData = peProductNetService.getPEProductNetList(peProductNetCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peProductNetCtrlModel);
@@ -68,10 +68,10 @@ public class PEProductNetController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(PEProductNetCtrlModel peProductNetCtrlModel) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = peProductNetService.selectListCount();
+    	Integer total = peProductNetService.selectListCount(peProductNetCtrlModel);
     	
     	result.put("total", total);
     	

@@ -7,9 +7,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
 import com.tjs.admin.pe.dao.PEProductIncomeMapper;
+import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductIncome;
 import com.tjs.admin.pe.service.PEProductIncomeService;
+import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
 
 /**
@@ -24,6 +27,9 @@ public class PEProductIncomeServiceImpl implements PEProductIncomeService {
 
 	@Resource
 	private PEProductIncomeMapper peProductIncomeMappper;
+	
+	@Resource 
+	private PEProductService peProductService;
 
 	@Override
 	public void insertPEProductIncome(PEProductIncome peProductIncome) {
@@ -44,15 +50,15 @@ public class PEProductIncomeServiceImpl implements PEProductIncomeService {
 	}
 
 	@Override
-	public List<PEProductIncome> getPEProductIncomeList() {
+	public List<PEProductIncome> getPEProductIncomeList(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
 		List<PEProductIncome> result = new ArrayList<PEProductIncome>();
-		result = peProductIncomeMappper.getPEProductIncomeList();
+		result = peProductIncomeMappper.getPEProductIncomeList(peProductIncomeCtrlModel);
 		return result;
 	}
 
 	@Override
-	public int selectListCount() {
-		return peProductIncomeMappper.selectListCount();
+	public Integer selectListCount(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
+		return peProductIncomeMappper.selectListCount(peProductIncomeCtrlModel);
 	}
 
 	@Override
@@ -60,4 +66,9 @@ public class PEProductIncomeServiceImpl implements PEProductIncomeService {
 		return peProductIncomeMappper.getPEProductIncomeById(peProductIncomeId);
 	}
 	
+	
+	public PEProduct getPEProductById(PEProductIncomeCtrlModel peProductIncomeCtrlModel) {
+		long productId = Long.valueOf(peProductIncomeCtrlModel.getProductId()).longValue();
+		return peProductService.getPEProductById(productId);
+	}
 }

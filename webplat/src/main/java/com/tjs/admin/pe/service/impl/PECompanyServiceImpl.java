@@ -58,18 +58,6 @@ public class PECompanyServiceImpl implements PECompanyService {
 	}
 
 	@Override
-	public List<PECompany> getPECompanyList() {
-		List<PECompany> lstResult = new ArrayList<PECompany>();
-		lstResult = peCompanyMapper.getPECompanyList();
-		return lstResult;
-	}
-
-	@Override
-	public int selectListCount() {
-		return peCompanyMapper.selectListCount();
-	}
-
-	@Override
 	public PECompany getPECompanyById(long peCompanyId) {
 		PECompany result = null;
 		result = peCompanyMapper.getPECompanyById(peCompanyId);     
@@ -118,7 +106,7 @@ public class PECompanyServiceImpl implements PECompanyService {
 		List<Lable> lables = new ArrayList<Lable>();
 		for (PECompany company : peCompanys) {
 			Lable lable = new Lable();
-			lable.setId(String.valueOf(company.getId()));
+			lable.setId(company.getId().toString());       
 			lable.setTitle(company.getName());
 			lables.add(lable);
 		}
@@ -129,10 +117,8 @@ public class PECompanyServiceImpl implements PECompanyService {
 	}
 
 	@Override
-	public int selectListCount(PECompanyCtrlModel peCompanyCtrlModel) {
-		int result = 0;
-		result = peCompanyMapper.selectListCount(peCompanyCtrlModel);
-		return result;
+	public Integer selectListCount(PECompanyCtrlModel peCompanyCtrlModel) {
+		return  peCompanyMapper.selectListCount(peCompanyCtrlModel);
 	}
 
 	@Override

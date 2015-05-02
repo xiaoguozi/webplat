@@ -80,6 +80,39 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	public List<ProductXtcp> selectProductXtcpIndex() {
 		return productXtcpMapper.selectProductXtcpIndex();
 	}
+
+	@Override
+	public List<ProductXtcp> selectProductXtcpTrustTopIndex(XinTuoCpCtrlModel xintuoCpCtrlModel) {
+		// TODO Auto-generated method stub
+		List<ProductXtcp> lstVOs = productXtcpMapper.selectProductXtcpTrustTopIndex(xintuoCpCtrlModel);
+		
+		if(xintuoCpCtrlModel!=null&&xintuoCpCtrlModel.isFormat()){
+			BigDecimal div10000 = new BigDecimal(10000);
+			for(ProductXtcp product:lstVOs){
+				product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+				product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+			}
+		}
+		
+		return lstVOs;
+	}
+
+	@Override
+	public List<ProductXtcp> selectProductXtcpTrustFootIndex(
+			XinTuoCpCtrlModel xintuoCpCtrlModel) {
+		// TODO Auto-generated method stub
+		List<ProductXtcp> lstVOs = productXtcpMapper.selectProductXtcpTrustFootIndex(xintuoCpCtrlModel);
+		
+		if(xintuoCpCtrlModel!=null&&xintuoCpCtrlModel.isFormat()){
+			BigDecimal div10000 = new BigDecimal(10000);
+			for(ProductXtcp product:lstVOs){
+				product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+				product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+			}
+		}
+		
+		return lstVOs;
+	}
 		
 	
 

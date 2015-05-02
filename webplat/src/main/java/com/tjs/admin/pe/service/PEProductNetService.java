@@ -19,9 +19,9 @@ public interface PEProductNetService  {
 	
 	void updatePEProductNet(PEProductNet peProductNet);
 	
-	List<PEProductNet> getPEProductNetList();
+	List<PEProductNet> getPEProductNetList(PEProductNetCtrlModel peProductNetCtrlModel);
 	
-	int selectListCount();
+	int selectListCount(PEProductNetCtrlModel peProductNetCtrlModel);
 	
 	PEProductNet getPEProductNetById(long peProductNetId);
 	

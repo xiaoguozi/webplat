@@ -34,8 +34,7 @@ public class OrderService implements IOrderService {
 	}
 
 	@Override
-	public int updateOrder(Order order) {
-		// TODO Auto-generated method stub
+	public int updateOrder(Order order) {				
 		return orderMapper.updateOrder(order);
 	}
 

@@ -13,6 +13,8 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
+	private int limitStart;
+	
 	/* 净值日期 */
 	private String netWorthTimeStr;
 	
@@ -34,6 +36,9 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	}
 
 	public PEProduct getPeProduct() {
+		if (null == peProduct) {
+			peProduct = new PEProduct();
+		}
 		return peProduct;
 	}
 
@@ -65,6 +70,12 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 		this.openTimeStr = openTimeStr;
 	}
 
-	
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
 	
 }

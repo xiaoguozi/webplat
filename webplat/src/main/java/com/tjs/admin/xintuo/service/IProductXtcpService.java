@@ -28,4 +28,9 @@ public interface IProductXtcpService  {
 		
 		/**查询首页产品*/
 		public List<ProductXtcp> selectProductXtcpIndex();
+		
+		/**查询信托产品首页上面四个*/		
+		public List<ProductXtcp> selectProductXtcpTrustTopIndex(XinTuoCpCtrlModel xintuoCpCtrlModel);		
+		/**按信托类型查询产品*/
+		public List<ProductXtcp> selectProductXtcpTrustFootIndex(XinTuoCpCtrlModel xintuoCpCtrlModel);
 }

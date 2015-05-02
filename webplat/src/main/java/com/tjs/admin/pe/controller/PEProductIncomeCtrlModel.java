@@ -13,7 +13,13 @@ public class PEProductIncomeCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
+	private String productId;
+	
+	private int limitStart;
+	
 	private PEProductIncome peProductIncome;
+	
+	
 
 	public String getKeyWord() {
 		return keyWord;
@@ -29,6 +35,22 @@ public class PEProductIncomeCtrlModel extends GenericCtrlModel {
 
 	public void setPeProductIncome(PEProductIncome peProductIncome) {
 		this.peProductIncome = peProductIncome;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
 	}
 	
 }

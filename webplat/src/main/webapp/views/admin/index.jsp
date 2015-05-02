@@ -183,6 +183,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         私募产品
                                     </a>
                                 </li>
+                                  <li>
+                                    <a href="rest/admin/pe/peProductIncome/index">
+                                        私募收益表
+                                    </a>
+                                </li>
+                                  <li>
+                                    <a href="rest/admin/pe/peProductNet/index">
+                                        私募净值表
+                                    </a>
+                                </li>
+                                  <li>
+                                    <a href="rest/admin/pe/peManager/index">
+                                        私募经理 
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         

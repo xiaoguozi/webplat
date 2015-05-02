@@ -20,15 +20,15 @@ public interface PEProductService  {
 	
 	int updatePEProduct(PEProduct peProduct);
 	
-	List<PEProduct> getPEProductList();
-	
-	Integer selectListCount();
-	
 	PEProduct getPEProductById(long peProductId);
 	
     int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
 	
 	int updatePEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel);
+	
+    Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
+	
+	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
 	
 	/**
 	 * 获取上线的私募公司清单 
@@ -36,4 +36,5 @@ public interface PEProductService  {
 	 * @return Map值 total：记录数， data：数据集
 	 */
 	Map<String, Object> getOnLinePECompanyList();
+	
 }

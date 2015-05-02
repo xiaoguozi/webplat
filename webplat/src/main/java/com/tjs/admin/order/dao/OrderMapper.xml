@@ -8,22 +8,23 @@
         <result column="order_telphone" property="telphone" jdbcType="VARCHAR" />
         <result column="order_product_id" property="productId" javaType="java.lang.Long" jdbcType="BIGINT"  />
         <result column="order_product_name" property="productName" jdbcType="VARCHAR" />
-        <result column="order_product_type" property="productType" javaType="java.util.Date" jdbcType="DATE" />
-        <result column="order_operate_status" property="operateStatus" javaType="java.math.BigDecimal" />
+        <result column="order_product_type" property="productType" jdbcType="VARCHAR"  />
+        <result column="order_operate_status" property="operateStatus" jdbcType="VARCHAR" />
         <result column="order_operate_ID" property="operateId" javaType="java.lang.Long" jdbcType="BIGINT"  />
         <result column="order_operate_name" property="operateName" jdbcType="VARCHAR" />
         <result column="order_create_date" property="createDate" javaType="java.util.Date" jdbcType="DATE" />
-        <result column="order_operate_date" property="operateDate" javaType="java.util.Date" jdbcType="DATE" />        
+        <result column="order_operate_date" property="operateDate" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="order_remark" property="remark" jdbcType="VARCHAR" />
     </resultMap>
     
     <sql id="Base_select_Column_List">
-        order_id,order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type
-        order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date
+        order_id,order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type,
+        order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date,order_remark
     </sql>
     
      <sql id="Base_insert_Column_List">
-       order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type
-       order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date
+       order_user_id,order_user_name,order_telphone,order_product_id,order_product_name,order_product_type,
+       order_operate_status,order_operate_ID,order_operate_name,order_create_date,order_operate_date,order_remark
     </sql>
     
     <select id="countOrder" resultType="int" parameterType="com.tjs.admin.order.controller.OrderCtrlModel" >
@@ -40,7 +41,7 @@
         
     </select>
     
-    <select id="selectOrder" resultType="com.tjs.admin.order.model.Order" parameterType="com.tjs.admin.order.controller.OrderCtrlModel">
+    <select id="selectOrder"  resultMap="BaseResultMap" parameterType="com.tjs.admin.order.controller.OrderCtrlModel">
         select         
           <include refid="Base_select_Column_List" />           
         from  tjs_order where 1=1        
@@ -76,7 +77,8 @@
         #{operateId},
         #{operateName},
         #{createDate},
-        #{operateDate}   
+        #{operateDate},
+        #{remark}    
         )
     </insert>
     
@@ -92,7 +94,8 @@
         order_operate_ID=#{operateId},
         order_operate_name=#{operateName},
         order_create_date=#{createDate},
-        order_operate_date=#{operateDate}       
+        order_operate_date=#{operateDate}, 
+        order_remark= #{remark}     
          where order_id=#{id}
     </update>
     
@@ -108,7 +111,7 @@
 		</foreach>
     </delete>
     
-    <select id="findByOrderId" parameterType="Long" resultType="com.tjs.admin.order.model.Order">
+    <select id="findByOrderId" parameterType="Long" resultMap="BaseResultMap">
         select 
          <include refid="Base_select_Column_List" />    
         from  tjs_order  where order_id=#{id}

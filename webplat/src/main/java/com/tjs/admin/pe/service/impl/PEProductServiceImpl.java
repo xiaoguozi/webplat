@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEProductMapper;
+import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
@@ -55,18 +56,6 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public List<PEProduct> getPEProductList() {
-		List<PEProduct> result = new ArrayList<PEProduct>();
-		result = peProductMappper.getPEProductList();
-		return result;
-	}
-
-	@Override
-	public Integer selectListCount() {
-		return peProductMappper.selectListCount();
-	}
-
-	@Override
 	public PEProduct getPEProductById(long peProductId) {
 		return peProductMappper.getPEProductById(peProductId);
 	}
@@ -75,6 +64,8 @@ public class PEProductServiceImpl implements PEProductService {
 	public int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
 		int result = 0;
 		str2Date(peProduct, peProductCtrlModel);
+		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
+		peProduct.setPecompanyName(peCompany.getName());
 		result = this.insertPEProduct(peProduct);
 		return result;
 	}
@@ -101,6 +92,20 @@ public class PEProductServiceImpl implements PEProductService {
 	@Override
 	public Map<String, Object> getOnLinePECompanyList() {
 		return peCompanyService.getOnLinePECompany();
+	}
+
+	@Override
+	public Integer selectListCount(PEProductCtrlModel peProductCtrlModel) {
+		int result = 0;
+		result = peProductMappper.selectListCount(peProductCtrlModel);
+		return result;
+	}
+
+	@Override
+	public List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel) {
+		List<PEProduct> result = new ArrayList<PEProduct>();
+		result = peProductMappper.getPEProductList(peProductCtrlModel);
+		return result;
 	}
 
 	

@@ -57,7 +57,7 @@ public class PECompanyController {
 	@RequestMapping("/listData")
     public String listData(PECompanyCtrlModel peCompanyCtrlModel, Model model) {
     	List<PECompany> showData = new ArrayList<PECompany>();
-    	showData = peCompanyService.getPECompanyList();
+    	showData = peCompanyService.getPECompanyList(peCompanyCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peCompanyCtrlModel);
@@ -67,10 +67,10 @@ public class PECompanyController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(PECompanyCtrlModel peCompanyCtrlModel) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = peCompanyService.selectListCount();
+    	Integer total = peCompanyService.selectListCount(peCompanyCtrlModel);
     	
     	result.put("total", total);
     	

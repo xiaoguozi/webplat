@@ -102,11 +102,11 @@ public class PEProduct {
 	/* 推荐顺序 */
 	private String recommendSequence;
 	
-	/* 产品状态:1、上线，2、运行中, 3、下线 */
+	/* 产品状态:1、未上线，2、上线, 3、下线 */
 	private int status;
 	
 	/* 私募公司ID */
-	private long pecompanyId;
+	private Long pecompanyId;
 	
 	/* 私募公司名称 */
 	private String pecompanyName;
@@ -367,11 +367,11 @@ public class PEProduct {
 		this.status = status;
 	}
 
-	public long getPecompanyId() {
+	public Long getPecompanyId() {
 		return pecompanyId;
 	}
 
-	public void setPecompanyId(long pecompanyId) {
+	public void setPecompanyId(Long pecompanyId) {
 		this.pecompanyId = pecompanyId;
 	}
 

@@ -11,7 +11,7 @@ import java.util.Date;
  **/
 public class PECompany {
 	
-	private long id;
+	private Long id;
 	
 	/** 公司LOGO */
 	private String logo;
@@ -67,13 +67,12 @@ public class PECompany {
 	
 	/* 公司状态 */
 	private int status;
-	
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -234,16 +233,16 @@ public class PECompany {
 		return "PECompany [id=" + id + ", logo=" + logo + ", name=" + name
 				+ ", setupTime=" + setupTime + ", managementScale="
 				+ managementScale + ", area=" + area + ", investmentNumber="
-				+ investmentNumber + ", productLine="
-				+ productLine + ", review=" + review + ", coreCharacter="
-				+ coreCharacter + ", investmentPhilosophy="
-				+ investmentPhilosophy + ", investmentTeam=" + investmentTeam
-				+ ", companyProfile=" + companyProfile + ", createDate="
-				+ createDate + ", lastModifyDate=" + lastModifyDate
-				+ ", createrId=" + createrId + ", createrName=" + createrName
+				+ investmentNumber + ", productLine=" + productLine
+				+ ", review=" + review + ", coreCharacter=" + coreCharacter
+				+ ", investmentPhilosophy=" + investmentPhilosophy
+				+ ", investmentTeam=" + investmentTeam + ", companyProfile="
+				+ companyProfile + ", createDate=" + createDate
+				+ ", lastModifyDate=" + lastModifyDate + ", createrId="
+				+ createrId + ", createrName=" + createrName
 				+ ", recommendLocation=" + recommendLocation
 				+ ", recommendSequence=" + recommendSequence + ", status="
 				+ status + "]";
 	}
-	
+
 }

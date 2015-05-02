@@ -50,9 +50,9 @@
         
         
          <div class="form-group">
-            <label class="col-md-2 control-label">预期年收益率</label>
+            <label class="col-md-2 control-label">预期年收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpNsyl" value="${productXtcp.xtcpNsyl}" >
+                <input type="text" class="form-control required number" name="xtcpNsyl" value="${productXtcp.xtcpNsyl}" >
             </div>
            </div>
            
@@ -70,9 +70,9 @@
            
         
           <div class="form-group">
-            <label class="col-md-2 control-label">存续期</label>
+            <label class="col-md-2 control-label">存续期（月份）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpCxq" value="${productXtcp.xtcpCxq}" >
+                <input type="text" class="form-control required digits" name="xtcpCxq" value="${productXtcp.xtcpCxq}" >
             </div>
             
         </div>
