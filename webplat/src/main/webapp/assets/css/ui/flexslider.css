@@ -49,7 +49,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 
 /* Direction Nav */
 .flex-direction-nav { height: 0; }
-.flex-direction-nav li a {width: 28px; height: 28px; margin: -26px 0 0; display: block; background: url(../../img/ui/bg_direction_nav.png) no-repeat; position: absolute; top: 50%; cursor: pointer; text-indent: -999em;}
+.flex-direction-nav li a {width: 28px; height: 28px; margin: -26px 0 0; display: block; background: url(../images/bg_direction_nav.png) no-repeat; position: absolute; top: 50%; cursor: pointer; text-indent: -999em;}
 .flex-direction-nav li .next {background-position: -28px 0; right: 20%;}
 .flex-direction-nav li .prev {left: 20%;}
 .flex-direction-nav li .disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
@@ -65,6 +65,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 .flex-control-nav {width: 100%; position: absolute; bottom: -25px; text-align: center;}
 .flex-control-nav li {margin: 0 0 0 5px; display: inline-block; zoom: 1; *display: inline;}
 .flex-control-nav li:first-child {margin: 0;}
-.flex-control-nav li a {width: 15px; height: 15px; display: block; background: url(../../img/ui/circlebutton.png) no-repeat; cursor: pointer; text-indent: -999em;transition: all .5s;-moz-transition: all .5s;-webkit-transition: all .5s;-o-transition: all .5s;}
+.flex-control-nav li a {width: 15px; height: 15px; display: block; background: url(../images/circlebutton.png) no-repeat; cursor: pointer; text-indent: -999em;transition: all .5s;-moz-transition: all .5s;-webkit-transition: all .5s;-o-transition: all .5s;}
 .flex-control-nav li a:hover {background-position: 0 -22px;}
 .flex-control-nav li a.active {background-position: 0 -22px; cursor: default;}
