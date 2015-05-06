@@ -138,14 +138,14 @@
         <div class="form-group">
         <label class="col-md-2 control-label">所在区域</label>
             <div class="col-md-6">
-                <textarea rows="3" cols="100" class="form-control required" name="xtcpMjzh">${productXtcp.xtcpArea}</textarea>
+                <textarea rows="3" cols="100" class="form-control required" name="xtcpArea">${productXtcp.xtcpArea}</textarea>
             </div>
         </div>
         
         <div class="form-group">
            <label class="col-md-2 control-label">城市</label>
             <div class="col-md-6">
-                <textarea rows="3" cols="100" class="form-control required" name="xtcpMjzh">${productXtcp.xtcpCity}</textarea>
+                <textarea rows="3" cols="100" class="form-control required" name="xtcpCity">${productXtcp.xtcpCity}</textarea>
             </div>
         </div>
         

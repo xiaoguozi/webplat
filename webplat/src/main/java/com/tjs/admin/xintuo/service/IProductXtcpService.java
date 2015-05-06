@@ -3,6 +3,7 @@ package com.tjs.admin.xintuo.service;
 import java.util.List;
 
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
+import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 
 /**
@@ -33,4 +34,10 @@ public interface IProductXtcpService  {
 		public List<ProductXtcp> selectProductXtcpTrustTopIndex(XinTuoCpCtrlModel xintuoCpCtrlModel);		
 		/**按信托类型查询产品*/
 		public List<ProductXtcp> selectProductXtcpTrustFootIndex(XinTuoCpCtrlModel xintuoCpCtrlModel);
+		
+		
+		/**查询信托产品*/		
+		public int countProductXtcpTrust(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);		
+		/**查询信托产品*/
+		public List<ProductXtcp> selectProductXtcpTrust(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);
 }

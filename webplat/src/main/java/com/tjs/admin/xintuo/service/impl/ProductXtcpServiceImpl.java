@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
+import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.dao.ProductXtcpMapper;
 import com.tjs.admin.xintuo.dao.ProductXtgsMapper;
 import com.tjs.admin.xintuo.model.ProductXtcp;
@@ -111,6 +112,27 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 			}
 		}
 		
+		return lstVOs;
+	}
+
+	@Override
+	public int countProductXtcpTrust(XinTuoSeachCtrlVO xinTuoSeachCtrlVO) {
+		// TODO Auto-generated method stub
+		return productXtcpMapper.countProductXtcpTrust(xinTuoSeachCtrlVO);
+	}
+
+	@Override
+	public List<ProductXtcp> selectProductXtcpTrust(
+			XinTuoSeachCtrlVO  xinTuoSeachCtrlVO) {		
+		if(xinTuoSeachCtrlVO!=null){
+			xinTuoSeachCtrlVO.setLimitStart((xinTuoSeachCtrlVO.getPageNo()-1)*xinTuoSeachCtrlVO.getPageSize());
+		}
+		List<ProductXtcp> lstVOs =productXtcpMapper.selectProductXtcpTrust(xinTuoSeachCtrlVO);	
+		BigDecimal div10000 = new BigDecimal(10000);
+		for(ProductXtcp product:lstVOs){
+			product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+			product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+		}		
 		return lstVOs;
 	}
 		

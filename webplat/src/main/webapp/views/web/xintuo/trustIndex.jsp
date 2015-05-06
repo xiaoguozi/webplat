@@ -39,7 +39,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <div class="top_wrap_menu">
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex">信托首页</a></li>
-    <li><a href="#">信托产品</a></li>
+    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
     <li><a href="#">信托公司</a></li>
     <li><a href="#">安全保障</a></li>
 
@@ -60,7 +60,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_topinput_div">手机号：<input name="" type="text" class="tjs_login_input tjs_width180px" /></div>
 <div class="tjs_topinput_div">
 <div class="tjs_v_div_left">验证码：<input name="" type="text" class="tjs_login_input tjs_width90px" /></div>
-<div class="tjs_v_div_right"><img src="images/verification_img.png" width="65" height="30" /> <span><a href="#" class="tjs_registerurl">看不清</a></span></div>
+<div class="tjs_v_div_right"><img src="assets/img/ui/verification_img.png" width="65" height="30" /> <span><a href="#" class="tjs_registerurl">看不清</a></span></div>
 </div>
 <div class="learfloat"></div>
 <div  style=" height:26px; width:100%;"></div>
