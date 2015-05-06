@@ -41,7 +41,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct">信托产品</a></li>
-    <li><a href="#">信托公司</a></li>
+    <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
     <li><a href="#">安全保障</a></li>
 
     </ul>

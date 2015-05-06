@@ -8,8 +8,10 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
+import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
 /**
@@ -109,15 +111,48 @@ public class TrustController {
     	xinTuoAdminSeachCtrlVO.setPageNo(currentPageNo);
     	xinTuoSeachCtrlVO.setPageNo(currentPageNo);
     	
-    	System.err.println(">>>>>xtcpNsyl="+xinTuoAdminSeachCtrlVO.getXtcpNsyl()+"adsfa");
-    	System.err.println(">>>>>xtcpLxfp="+xinTuoAdminSeachCtrlVO.getXtcpLxfp()+"adsfa");
-    	System.err.println(">>>>>xtcpArea="+xinTuoAdminSeachCtrlVO.getXtcpArea()+"adsfa");
-    	System.err.println(">>>>>xtcpTzly="+xinTuoAdminSeachCtrlVO.getXtcpTzly()+"adsfa");
     	List<ProductXtcp> lstProductVos= iProductXtService.selectProductXtcpTrust(xinTuoAdminSeachCtrlVO);    	
     	//分页结束
     	model.addAttribute("xintuoSearVO", xinTuoSeachCtrlVO);
     	model.addAttribute("lstProductVos", lstProductVos);
         return "web/xintuo/trustProduct";
     }
+    
+    
+    /**
+     * 查询信托公司列表
+     * @param model
+     * @param xinTuoSeachCtrlVO
+     * @return
+     */
+    @RequestMapping("/trustCompany")
+    public String trustCompany(Model model,XinTuoGsCtrlModel xintuoGsCtrlModel) {
+    	return "web/xintuo/trustCompany";
+    }
+    
+    
+    /**
+     * 查询公司简介
+     * @param model
+     * @param xinTuoSeachCtrlVO
+     * @return
+     */
+    @RequestMapping("/companyProfile")
+    public String companyProfile(Model model,@RequestParam(value="id",required=false) Long xtgsId) {
+    	return "web/xintuo/companyProfile";
+    }
+    
+    
+    /**
+     * 查询信托产品简介
+     * @param model
+     * @param xinTuoSeachCtrlVO
+     * @return
+     */
+    @RequestMapping("/trustParticulars")
+    public String trustParticulars(Model model,@RequestParam(value="id",required=false) Long xtcpId) {
+    	return "web/xintuo/trustParticulars";
+    }
+    
   
 }

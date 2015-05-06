@@ -1,9 +1,17 @@
+<%@ include file="/views/web/include.jsp"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>淘金山——信托公司</title>
-<link href="css/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
@@ -17,24 +25,18 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <body>
 <div class="tis_trust_all">
 
-<div class="header_top">
-<div class="tjs_1108px center">
-     <span class="time">欢迎您来到淘金山，投资有风险，选择需谨慎！</span>
-     <div class="topservice">400-888-896</div>
-    <div class="toplinks"><a href="login.html" class="log_link">登录</a> | <a href="register.html">注册</a></div>    
-  </div>
-</div>
+<%@ include file="/views/web/header.jsp"%>
 <!-- /header_top -->
 
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-     <div class="logo_wrap"><a href="index.html"><img src="images/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+     <div class="logo_wrap"><a href="index.html"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
-    <li><a href="trust.html">信托首页</a></li>
-    <li><a href="trust_product.html">信托产品</a></li>
-    <li><a href="trust_company.html">信托公司</a></li>
+    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
+    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
+    <li><a href="rest/web/xintuo/trust/trustCompany">信托公司</a></li>
     <li><a href="#">安全保障</a></li>
 
     </ul>
@@ -58,27 +60,27 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 <div class="tjs_cpy_typle">
 <div class="tjs_cpy_unit tjs_right_1pxdashed">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="images/img_005.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_005.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
 </div>
 </div>
 <!-- /tjs_right_unit 01 -->
 
 <div class="tjs_cpy_unit tjs_right_1pxdashed">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="images/img_006.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_006.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
 </div>
 </div>
 <!-- /tjs_right_unit 02 -->
 <div class="tjs_cpy_unit tjs_right_1pxdashed">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="images/img_007.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_007.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
 </div>
 </div>
 <!-- /tjs_right_unit 03 -->
 
 <div class="tjs_cpy_unit">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="images/img_008.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_008.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
 </div>
 </div>
@@ -96,7 +98,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- 信托公司开始 -->
 <div class="tjs_1108px center">
 <div class="tjs_cpy_title ">全部信托公司</div>
-<div class="tjs_cpy_searchdiv"><input name="keyword"  type="text"  value="请输入关键字" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search"><a href="#"><img src="images/search_ico.png" width="33" height="33" style="float:left"></a></div>
+<div class="tjs_cpy_searchdiv"><input name="keyword"  type="text"  value="请输入关键字" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div>
 <div class="clearfloat"></div>
 
 <div class="tjs_product_coloreddiv"></div>
@@ -115,7 +117,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -130,7 +132,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -145,7 +147,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
  <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -160,7 +162,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -175,7 +177,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -190,7 +192,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -205,7 +207,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -220,7 +222,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -235,7 +237,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -250,7 +252,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -265,7 +267,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -280,7 +282,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -295,7 +297,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -310,7 +312,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -325,7 +327,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -340,7 +342,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr class="tjs_cpy_evenbg">
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -355,7 +357,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tr>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="images/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
   </tr>
 </table></td>
@@ -408,49 +410,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="clearfloat"></div>
 <div style=" height:26px; width:100%;"></div>
 
+<%@ include file="/views/web/footer.jsp"%>
 
-
-<div class="tjs_footer_div">
-<div style=" height:6px; font-size:0px; width:100%; background-color:#959494;"></div>
-<div class="tjs_1108px center">
-<div class="tjs_footer_copyrightdiv">
-<ul>
-<li class="tjs_2_border">
-<span style="height:45px;display:inline-block;">关于我们</span><br />
-<a href="#">公司介绍</a><br />
-<a href="#">股东背景</a><br />
-<a href="#">媒体报道</a><br />
-<a href="#">最新动态</a><br />
-</li>
-<li class="tjs_2_border">
-<span style="height:45px;display:inline-block;">帮助中心</span><br />
-<a href="#">新手入门</a><br />
-<a href="#">理财问答</a><br />
-<a href="#">使用帮助</a><br />
-</li>
-<li class="tjs_2_border">
-<span style="height:50px;display:inline-block;">关注我们</span><br />
-<a href="#" class="tjs_footer_sns"><br /><br /><span>&nbsp;腾讯微博</span></a>&nbsp;
-<a href="#" class="tjs_footer_sina"><br /><br /><span>&nbsp;新浪微博</span></a>&nbsp;
-<a href="#" class="tjs_footer_blog"><br /><br /><span>&nbsp;腾讯微博</span></a>
-</li>
-<li>
-<span style="height:40px;display:inline-block;">客服热线</span><br />
-<span class="tjs_service_ico"></span><span style=" float:left;height:40px; line-height:40px;display:inline-block; color:#999;">400-888-896</span><br />
-<span style="height:46px; line-height:50px;display:inline-block;">在线咨询</span><br />
-<a href="#" class="tjs_footer_qq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>在线咨询</span></a><span style="font-size:14px; color:#999;">08:00 - 23:00</span>
-</li>
-</ul>
-</div>
-<!-- /tjs_footer_copyrightdiv -->
-
-<div class="tjs_footer_copyrightcontent"> <a href="#">商务合作</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">加入我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">免责声明</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">意见反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">友情链接</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">网站地图</a><br />
-淘金山互联网在线理财  版权所有 &copy; 2015-2018   粤ICP备 12068806号-1<br />投资有风险，理财需谨慎 
-
-</div>
-</div>
-<!-- /footer tjs_1108px -->
-</div>
 </div>
 <!-- /tis_trust_all -->
 <!--======tab pages JS======-->
