@@ -29,6 +29,7 @@ create table t_web_log
    primary key (id)
 ) DEFAULT CHARSET=utf8 comment='web日志';
 
+DROP TABLE IF EXISTS `tjs_product_xtgs`;
 CREATE TABLE `tjs_product_xtgs` (
   `xtgs_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `xtgs_code` varchar(200) DEFAULT NULL COMMENT '公司编码',
@@ -53,9 +54,9 @@ CREATE TABLE `tjs_product_xtgs` (
   `xgts_pjsyl` decimal(10,2) DEFAULT NULL COMMENT '平均收益率',
   `xgts_cpdfbl` decimal(10,2) DEFAULT NULL COMMENT '产品兑付比例',
   PRIMARY KEY (`xtgs_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='信托公司';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='信托公司';
 
-
+DROP TABLE IF EXISTS `tjs_product_xtcp`;
 CREATE TABLE `tjs_product_xtcp` (
   `xtcp_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '信托产品流水号',
   `xtcp_log` varchar(200) DEFAULT NULL COMMENT '信托产品LOGO',
@@ -91,7 +92,7 @@ CREATE TABLE `tjs_product_xtcp` (
   `xtcp_area` varchar(100) DEFAULT NULL COMMENT '所在区域',
   `xtcp_city` varchar(100) DEFAULT NULL COMMENT '所在城市',
   PRIMARY KEY (`xtcp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='信托产品';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='信托产品';
 
 
 
