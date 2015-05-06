@@ -10,9 +10,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.dao.PEIndexMapper;
 import com.tjs.admin.pe.dao.PEProductMapper;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
@@ -32,6 +34,9 @@ public class PEProductServiceImpl implements PEProductService {
 	
 	@Resource
 	private PECompanyService peCompanyService;
+	
+	@Resource
+	private PEIndexMapper peIndexMapper;
 	
 	@Override
 	public int insertPEProduct(PEProduct peProduct) {
@@ -108,5 +113,11 @@ public class PEProductServiceImpl implements PEProductService {
 		return result;
 	}
 
-	
+	@Override
+	public List<PETopProduct> getTop4PEProductList() {
+		//TODO
+		List<PETopProduct> result = new ArrayList<PETopProduct>();
+		result = peIndexMapper.getTop4PEProductList();
+		return result;
+	}
 }

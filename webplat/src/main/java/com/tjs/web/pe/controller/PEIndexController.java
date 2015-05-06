@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -27,12 +29,18 @@ import com.tjs.admin.pe.service.PEProductService;
 @RequestMapping(value = "/web/pe/")
 public class PEIndexController {
 
-//	@Resource
-//	private PEProductService peProductService;
+	@Resource
+	private PEProductService peProductService;
 	
 	
 	@RequestMapping("/peIndex")
-    public String index() {
+    public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
+		peProductCtrlModel.setPageNo(0);
+		peProductCtrlModel.setPageSize(4);
+		List<PETopProduct> showData = new ArrayList<PETopProduct>();
+    	showData = peProductService.getTop4PEProductList();
+    	model.addAttribute("showData", showData);
+    	
         return "web/pe/peIndex";
     }
 	

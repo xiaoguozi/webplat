@@ -87,6 +87,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                         <div class="tjs_coloreddiv ml0 bgcolor"></div>
                         <div class="tjs_right_typle border_left">
+                            <c:forEach items="${showData}" var="peTopProduct">
+                        	
                             <div class="tjs_right_unit w275 tjs_right_2border">
                                 <div class="tjs_private_icodiv">
                                     <div style="height: 23px; width: 100%;"></div>
@@ -94,74 +96,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         <img src="assets/img/ui/user01.png" width="128" height="128" />
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
-                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">罗林正</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">泽熙3期</a></div>
+                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTopProduct.accumulatedIncome}</span>%</div>
+                                    <div class="tjs_private_textdiv">基金经理：<a href="#">${peTopProduct.managerName}</a></div>
+                                    <div class="tjs_private_textdiv">产品名称：<a href="#">${peTopProduct.name}</a></div>
                                 </div>
-                                <div class="tjs_product_textdiv">私募一哥，风格犀利，踩点精准， 业绩遥遥领先！ </div>
+                                <div class="tjs_product_textdiv">${peTopProduct.managerReview} </div>
                                 <div class="tjs_right_btndiv">
                                     <a href="#" class="tjs_btn">
                                         <img src="assets/img/ui/clock.png" />立即预约</a>
                                 </div>
                             </div>
                             <!-- /tjs_right_unit 01 -->
-
-                            <div class="tjs_right_unit w275 tjs_right_2border">
-                                <div class="tjs_private_icodiv">
-                                    <div style="height: 23px; width: 100%;"></div>
-                                    <div class="tjs_right_privatetitle chanpinjingli">
-                                        <img src="assets/img/ui/user02.png" width="128" height="128" />
-                                    </div>
-                                    <div class="tjs_private_textbgdiv">累计收益</div>
-                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">黄浩平</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">创势翔1号</a></div>
-                                </div>
-                                <div class="tjs_product_textdiv">连续两年股票私募冠军，成就私募历史第一人！ </div>
-                                <div class="tjs_right_btndiv">
-                                    <a class="tjs_btn">
-                                        <img src="assets/img/ui/clock.png" />立即预约</a>
-                                </div>
-                            </div>
-                            <!-- /tjs_right_unit 02 -->
-
-                            <div class="tjs_right_unit w275 tjs_right_2border">
-                                <div class="tjs_private_icodiv">
-                                    <div style="height: 23px; width: 100%;"></div>
-                                    <div class="tjs_right_privatetitle chanpinjingli">
-                                        <img src="assets/img/ui/user02.png" width="128" height="128" />
-                                    </div>
-                                    <div class="tjs_private_textbgdiv">累计收益</div>
-                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">黄浩平</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">创势翔1号</a></div>
-                                </div>
-                                <div class="tjs_product_textdiv">连续两年股票私募冠军，成就私募历史第一人！ </div>
-                                <div class="tjs_right_btndiv">
-                                    <a href="#" class="tjs_btn">
-                                        <img src="assets/img/ui/clock.png" />立即预约</a>
-                                </div>
-                            </div>
-                            <!-- /tjs_right_unit 02 -->
-
-                            <div class="tjs_right_unit w275  tjs_backgroundgray">
-                                <div class="tjs_private_icodiv">
-                                    <div style="height: 23px; width: 100%;"></div>
-                                    <div class="tjs_right_privatetitle chanpinjingli">
-                                        <img src="assets/img/ui/user03.png" width="128" height="128" />
-                                    </div>
-                                    <div class="tjs_private_textbgdiv">累计收益</div>
-                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">孙海宣</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">和聚1期</a></div>
-                                </div>
-                                <div class="tjs_product_textdiv">专注成长股，长牛私募，所有产品年化收益29%！ </div>
-                                <div class="tjs_right_btndiv">
-                                    <a href="#" class="tjs_btn">
-                                        <img src="assets/img/ui/clock.png" />立即预约</a>
-                                </div>
-                            </div>
-                            <!-- /tjs_right_unit 03 -->
+                            </c:forEach>
+                            
 
                             <div class="clearfloat"></div>
                         </div>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PETopProduct;
 
 /**
  * 私募产品服务接口
@@ -36,5 +37,12 @@ public interface PEProductService  {
 	 * @return Map值 total：记录数， data：数据集
 	 */
 	Map<String, Object> getOnLinePECompanyList();
+	
+	/**
+	 * 得到私募首页顶级私募推荐
+	 * @param peProductCtrlModel
+	 * @return PEProduct 集合
+	 */
+	List<PETopProduct> getTop4PEProductList();
 	
 }
