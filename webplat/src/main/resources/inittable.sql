@@ -29,31 +29,6 @@ create table t_web_log
    primary key (id)
 ) DEFAULT CHARSET=utf8 comment='web日志';
 
-
-
-
-
-CREATE TABLE `private_placement_company` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `logo` varchar(45) DEFAULT NULL COMMENT '公司LOGO',
-  `name` varchar(45) DEFAULT NULL COMMENT '公司名称',
-  `setup_time` datetime DEFAULT NULL COMMENT '成立时间',
-  `management_scale` varchar(45) DEFAULT NULL COMMENT '管理规模',
-  `area` varchar(45) DEFAULT NULL COMMENT '所在区域',
-  `investment_number` varchar(20) DEFAULT NULL COMMENT '投研人数',
-  `manager` varchar(45) DEFAULT NULL COMMENT '旗下经理',
-  `product_line` varchar(45) DEFAULT NULL COMMENT '产品线',
-  `review` varchar(45) DEFAULT NULL COMMENT '点评',
-  `core_character` varchar(1000) DEFAULT NULL COMMENT '核心人物',
-  `investment_philosophy` varchar(1000) DEFAULT NULL COMMENT '投资理念',
-  `investment_team` varchar(1000) DEFAULT NULL COMMENT '投研团队',
-  `company_profile` varchar(1000) DEFAULT NULL COMMENT '公司简介',
-  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
-  `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='私募公司';
-
-
 CREATE TABLE `tjs_product_xtgs` (
   `xtgs_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `xtgs_code` varchar(200) DEFAULT NULL COMMENT '公司编码',
@@ -137,3 +112,150 @@ CREATE TABLE `tjs_order` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='预定信息表';
 
+
+DROP TABLE IF EXISTS `pe_company`;
+
+CREATE TABLE `pe_company` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `logo` varchar(100) DEFAULT NULL COMMENT '公司LOGO',
+  `name` varchar(100) DEFAULT NULL COMMENT '公司名称',
+  `setup_time` datetime DEFAULT NULL COMMENT '成立时间',
+  `management_scale` varchar(100) DEFAULT NULL COMMENT '管理规模',
+  `area` varchar(100) DEFAULT NULL COMMENT '所在区域',
+  `investment_number` varchar(100) DEFAULT NULL COMMENT '投研人数',
+  `product_line` varchar(100) DEFAULT NULL COMMENT '产品线',
+  `review` varchar(100) DEFAULT NULL COMMENT '点评',
+  `core_character` varchar(2000) DEFAULT NULL COMMENT '核心人物',
+  `investment_philosophy` varchar(2000) DEFAULT NULL COMMENT '投资理念',
+  `investment_team` varchar(2000) DEFAULT NULL COMMENT '投研团队',
+  `company_profile` varchar(2000) DEFAULT NULL COMMENT '公司简介',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `creater_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `creater_name` varchar(100) DEFAULT NULL COMMENT '创建人名称',
+  `recommend_location` varchar(100) DEFAULT NULL COMMENT '推荐位置',
+  `recommend_sequence` varchar(100) DEFAULT NULL COMMENT '推荐顺序',
+  `status` int(11) DEFAULT NULL COMMENT '公司状态:1、未上线，2、上线, 3、下线',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募公司';
+
+DROP TABLE IF EXISTS `pe_manager`;
+
+CREATE TABLE `pe_manager` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `logo` varchar(100) DEFAULT NULL COMMENT '头像',
+  `name` varchar(100) DEFAULT NULL COMMENT '姓名',
+  `education` varchar(100) DEFAULT NULL COMMENT '文化程度',
+  `school` varchar(100) DEFAULT NULL COMMENT '毕业院校',
+  `work_year` varchar(100) DEFAULT NULL COMMENT '从业年限',
+  `background` varchar(100) DEFAULT NULL COMMENT '从业背景',
+  `institution` varchar(100) DEFAULT NULL COMMENT '过往从业机构',
+  `level` int(11) DEFAULT NULL COMMENT '经理评级: 1:一级、2:二级、3:三级、4:四级、5:五级',
+  `manage_fund` varchar(100) DEFAULT NULL COMMENT '管理基金数',
+  `profit_product` varchar(100) DEFAULT NULL COMMENT '盈利产品',
+  `review` varchar(1000) DEFAULT NULL COMMENT '点评',
+  `introduce` varchar(2000) DEFAULT NULL COMMENT '人物介绍',
+  `recommend_location` varchar(100) DEFAULT NULL COMMENT '推荐位 ',
+  `recommend_sequence` varchar(100) DEFAULT NULL COMMENT '推荐顺序',
+  `status` int(11) DEFAULT NULL COMMENT '状态:1、未上线，2、上线, 3、下线 ',
+  `company_id` bigint(20) DEFAULT NULL COMMENT '公司ID',
+  `company_name` varchar(100) DEFAULT NULL COMMENT '公司名称',
+  `creater_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `creater_name` varchar(100) DEFAULT NULL COMMENT '创建人姓名',
+  `create_date` datetime DEFAULT NULL COMMENT '创建日期',
+  `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募经理';
+
+
+DROP TABLE IF EXISTS `pe_manager_product`;
+
+CREATE TABLE `pe_manager_product` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `manager_id` bigint(20) DEFAULT NULL COMMENT '经理ID',
+  `manager_name` varchar(100) DEFAULT NULL,
+  `company_id` bigint(20) DEFAULT NULL COMMENT '公司ID',
+  `company_name` varchar(100) DEFAULT NULL COMMENT '公司名称',
+  `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
+  `product_name` varchar(100) DEFAULT NULL COMMENT '产品名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募经理产品关联表';
+
+
+DROP TABLE IF EXISTS `pe_product`;
+
+CREATE TABLE `pe_product` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(100) DEFAULT NULL COMMENT '基金名称',
+  `simple_name` varchar(100) DEFAULT NULL COMMENT '基金简称',
+  `net_worth` varchar(100) DEFAULT NULL COMMENT '最新净值',
+  `accumulated_income` varchar(100) DEFAULT NULL COMMENT '累计收益',
+  `net_worth_time` datetime DEFAULT NULL COMMENT '净值日期',
+  `setup_time` datetime DEFAULT NULL COMMENT '成立日期',
+  `run_time` varchar(100) DEFAULT NULL COMMENT '运行时间',
+  `now_rate` varchar(100) DEFAULT NULL COMMENT '今年以来收益率',
+  `tow_rate` varchar(100) DEFAULT NULL COMMENT '近2年收益率',
+  `one_rate` varchar(100) DEFAULT NULL COMMENT '近1年收益率',
+  `year_rate` varchar(100) DEFAULT NULL COMMENT '年化收益率',
+  `fund_type` int(11) DEFAULT NULL COMMENT '基金类型:1:股票、2:期货基金、3:股票量化、4:债券型、5:定向增发、6:宏观对冲、7:组合基金、8:其他',
+  `product_level` int(11) DEFAULT NULL COMMENT '产品等级:1、一级，2、二级，3、三级， 4、四级，5、五级',
+  `distribution_platform` varchar(100) DEFAULT NULL COMMENT '发行平台',
+  `custodian_bank` varchar(100) DEFAULT NULL COMMENT '托管银行',
+  `stockbrokers` varchar(100) DEFAULT NULL COMMENT '证券经纪',
+  `fund_property` int(11) DEFAULT NULL COMMENT '基金性质:1、主基金，2、子基金',
+  `whether_structure` varchar(100) DEFAULT NULL COMMENT '是否结构化',
+  `open_time` datetime DEFAULT NULL COMMENT '开放日期 ',
+  `subscrip_start` varchar(100) DEFAULT NULL COMMENT '认购起点',
+  `subscrip_fee` varchar(100) DEFAULT NULL COMMENT '认 购 费',
+  `exit_fee` varchar(100) DEFAULT NULL COMMENT '退出费用',
+  `management_fee` varchar(100) DEFAULT NULL COMMENT '浮动管理费',
+  `recommend_reason` varchar(200) DEFAULT NULL COMMENT '推荐理由',
+  `create_date` datetime DEFAULT NULL,
+  `last_modify_date` datetime DEFAULT NULL,
+  `creater_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `creater_name` varchar(100) DEFAULT NULL COMMENT '创建人姓名',
+  `recommend_location` varchar(100) DEFAULT NULL COMMENT '推荐位',
+  `recommend_sequence` varchar(100) DEFAULT NULL COMMENT '推荐顺序',
+  `status` int(11) DEFAULT NULL COMMENT '产品状态:1、未上线，2、上线, 3、下线 ',
+  `pecompany_id` bigint(20) DEFAULT NULL COMMENT '私募公司ID',
+  `pecompany_name` varchar(100) DEFAULT NULL COMMENT '私募公司名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品';
+
+
+DROP TABLE IF EXISTS `pe_product_income`;
+
+CREATE TABLE `pe_product_income` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `year` varchar(100) DEFAULT NULL COMMENT '年度',
+  `duration_income` varchar(100) DEFAULT NULL COMMENT '期间收益',
+  `industry_average` varchar(100) DEFAULT NULL COMMENT '行业平均',
+  `hs_300` varchar(100) DEFAULT NULL COMMENT '沪深300',
+  `rank` varchar(100) DEFAULT NULL COMMENT '排名',
+  `rank_interval` varchar(100) DEFAULT NULL COMMENT '排名区间',
+  `creater_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `creater_name` varchar(100) DEFAULT NULL COMMENT '创建人名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `product_id` bigint(20) DEFAULT NULL COMMENT '产品ID',
+  `product_name` varchar(100) DEFAULT NULL COMMENT '产品名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品收益排名表';
+
+
+DROP TABLE IF EXISTS `pe_product_net`;
+
+CREATE TABLE `pe_product_net` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `net_time` datetime DEFAULT NULL COMMENT '净值时间',
+  `unit_net` varchar(100) DEFAULT NULL COMMENT '单位净值',
+  `total_net` varchar(100) DEFAULT NULL COMMENT '累计净值',
+  `increase_rate` varchar(100) DEFAULT NULL COMMENT '增长率',
+  `product_id` bigint(20) DEFAULT NULL COMMENT '私募产品ID',
+  `product_name` varchar(100) DEFAULT NULL COMMENT '私募产品名称',
+  `creater_id` bigint(20) DEFAULT NULL COMMENT '创建人ID',
+  `creater_name` varchar(100) DEFAULT NULL COMMENT '创建人名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品净值表';
