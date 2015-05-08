@@ -9,6 +9,12 @@
    		<result property="managerName" column="manager_name"  jdbcType="VARCHAR" />
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
    		<result property="managerReview" column="manager_review" jdbcType="VARCHAR" />
+   		
+   		<result property="nowRate" column="now_rate" jdbcType="VARCHAR" />
+   		<result property="oneRate" column="one_rate" jdbcType="VARCHAR" />
+   		<result property="towRate" column="tow_rate" jdbcType="VARCHAR" />
+   		<result property="companyName" column="company_name" jdbcType="VARCHAR" />
+   		
     </resultMap>
  
  	 <select id="getTop4PEProductList" resultMap="peIndexProductMap" >
@@ -28,6 +34,31 @@
 		  AND MP.MANAGER_ID = M.ID 
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,4
+    </select>
+    
+ 	 <select id="getTop10PEProductList" resultMap="peIndexProductMap" >
+        SELECT 
+		  P.id,
+		  P.name,
+		  P.accumulated_income,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  P.now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  C.name company_name,
+		  M.REVIEW manager_review
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M,
+		  PE_COMPANY C
+		WHERE P.id = MP.product_id 
+		  AND MP.MANAGER_ID = M.ID 
+		  AND M.company_id = C.id
+		ORDER BY P.ACCUMULATED_INCOME DESC
+		LIMIT 0,10
     </select>
    
     

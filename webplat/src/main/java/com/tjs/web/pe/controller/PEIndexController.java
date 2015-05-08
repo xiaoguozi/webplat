@@ -35,11 +35,16 @@ public class PEIndexController {
 	
 	@RequestMapping("/peIndex")
     public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
-		peProductCtrlModel.setPageNo(0);
-		peProductCtrlModel.setPageSize(4);
+		//查询4个顶级私募
 		List<PETopProduct> showData = new ArrayList<PETopProduct>();
     	showData = peProductService.getTop4PEProductList();
-    	model.addAttribute("showData", showData);
+    	
+    	//查询私募收益排行
+    	List<PETopProduct> top10Data = new ArrayList<PETopProduct>();
+    	top10Data = peProductService.getTop10PEProductList();
+    	
+    	model.addAttribute("top4Data", showData);
+    	model.addAttribute("top10Data", top10Data);
     	
         return "web/pe/peIndex";
     }

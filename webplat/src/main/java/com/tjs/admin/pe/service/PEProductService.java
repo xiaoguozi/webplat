@@ -45,4 +45,11 @@ public interface PEProductService  {
 	 */
 	List<PETopProduct> getTop4PEProductList();
 	
+	/**
+	 * 得到私募首页私募收益排行
+	 * @param peProductCtrlModel
+	 * @return PEProduct 集合
+	 */
+	List<PETopProduct> getTop10PEProductList();
+	
 }

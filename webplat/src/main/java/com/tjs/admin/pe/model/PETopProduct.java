@@ -11,6 +11,15 @@ public class PETopProduct {
 	/** 累计收益 */
 	private String accumulatedIncome;
 	
+	/** 今年以来收益率 */
+	private String nowRate;
+	
+	/** 近1年收益率 */
+	private String oneRate;
+	
+	/** 近2年收益率 */
+	private String towRate;
+	
 	/** 基金经理Id */
 	private String managerId;
 	
@@ -22,6 +31,9 @@ public class PETopProduct {
 	
 	/** 基金经理评价 */
 	private String managerReview;
+	
+	/** 公司名称 */
+	private String companyName;
 
 	public long getId() {
 		return id;
@@ -78,14 +90,40 @@ public class PETopProduct {
 	public void setManagerReview(String managerReview) {
 		this.managerReview = managerReview;
 	}
-
-	@Override
-	public String toString() {
-		return "PETopProduct [id=" + id + ", name=" + name
-				+ ", accumulatedIncome=" + accumulatedIncome + ", managerId="
-				+ managerId + ", managerName=" + managerName + ", managerLogo="
-				+ managerLogo + ", managerReview=" + managerReview + "]";
+	
+	public String getNowRate() {
+		return nowRate;
 	}
+
+	public void setNowRate(String nowRate) {
+		this.nowRate = nowRate;
+	}
+
+	public String getOneRate() {
+		return oneRate;
+	}
+
+	public void setOneRate(String oneRate) {
+		this.oneRate = oneRate;
+	}
+
 	
+	public String getTowRate() {
+		return towRate;
+	}
+
+	public void setTowRate(String towRate) {
+		this.towRate = towRate;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	
+
 }

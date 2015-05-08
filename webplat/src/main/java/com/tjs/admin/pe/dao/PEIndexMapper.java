@@ -14,4 +14,6 @@ import com.tjs.admin.pe.model.PETopProduct;
 public interface PEIndexMapper  {
 	
 	List<PETopProduct> getTop4PEProductList();
+	
+	List<PETopProduct> getTop10PEProductList();
 }
