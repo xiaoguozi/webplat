@@ -293,7 +293,7 @@ $(function () {
         	  $(this).attr("data-load","yes");
     	  }
       }
-    }) 
+    }); 
     
     Btk.form($("#modalForm"),"insert",function(data){
         if("0"==data.code){

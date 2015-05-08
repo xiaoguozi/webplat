@@ -6,11 +6,11 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title pull-left">私募产品收益排名  <small>修改</small></h3>
+        <h3 class="page-title pull-left">私募产品净值表  <small>修改</small></h3>
         
 <div class="pull-right">
-    <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
-    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
+    <button type="button" class="btn btn-default net_modalCloseBtn" data-dismiss="modal">关闭</button>
+    <button type="button" id="net_modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
 </div>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
@@ -18,7 +18,7 @@
 <!-- END PAGE HEADER-->
 
 <div class="modal-body">
-    <form id="modalForm" action="rest/admin/pe/peProductNet/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
+    <form id="net_modalForm" action="rest/admin/pe/peProductNet/updateData" method="post" class="form-horizontal" role="form" data-submit="#net_modalSaveBtn">
        <input type="hidden" name="id" value="${peProductNet.id}">
      	
         <div class="form-group">
@@ -63,15 +63,15 @@
 
 $(function(){
 
-    Btk.form($("#modalForm"),"update",function(data){
+    Btk.form($("#net_modalForm"),"update",function(data){
         if("0"==data.code){
-            IndexPage.togglePage('list');
+            net_IndexPage.togglePage('list');
             $("#searchBtn").click();
         }
     });
 
-    $("button.modalCloseBtn").unbind('click').click(function(event) {
-        IndexPage.togglePage('list');
+    $("button.net_modalCloseBtn").unbind('click').click(function(event) {
+        net_IndexPage.togglePage('list');
     });
 
 
