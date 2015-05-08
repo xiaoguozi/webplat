@@ -55,7 +55,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_pfe_box tjs_234border">
 <div class="tjs_product_coloreddiv"></div>
 
-<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="assets/img/ui/img_005.png" width="32" height="32" /></span>${productXtgs.xgtsSplname}</div>
+<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="assets/img/xintuo/small/${productXtgs.xtgsLog}" width="32" height="32" /></span>${productXtgs.xgtsSplname}</div>
 <div class="tjs_pfe_text tjs_padding_height16px">
 <ul>
 <li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">${productXtgs.xgtsGsxz}</span><br />股东背景</li>
@@ -111,6 +111,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </tbody>		
 </table>
 </div>
+
 <!-- /tjs_pfe_box 02-->
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div class="tjs_pfe_box">
@@ -137,111 +138,33 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 
 <div class="tjs_trust_tabbox">
-<div class="tjs_trust_content tjs_bg_gray">
 
+<c:forEach items="${lstProductXtcp}" var="productXtcp" varStatus="status">
+<div class="tjs_trust_content <c:if test="${status.index%2==0}">tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="images/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}"><img src="assets/img/xintuo/middle/${productXtcp.xtcpLog}" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width320px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">五矿信托-通黔四号</a></div>
-<div class="tjs_trust_bonus">返现 ￥6000</div>
-<div class="tjs_trust_contentdiv">受托经营国务院有关部门批准证券承销业务</div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}">${productXtcp.xtcpSplname}</a></div>
+<div class="tjs_trust_bonus">${productXtcp.xtcpHd}</div>
+<div class="tjs_trust_contentdiv">${productXtcp.xtcpDp}</div>
 </div>
 <div class="tjs_float_left tjs_width270px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_base">投资起点：<span style="color:#666;">100万</span><br />
-投资期限：<span style="color:#666;">10个月</span><br />
-投资方向：<span style="color:#666;">基础设施</span></div>
+<div class="tjs_trust_base">投资起点：<span style="color:#666;"><fmt:formatNumber value="${productXtcp.xtcpZdrgje}" pattern="#0.####"/>万</span><br />
+投资期限：<span style="color:#666;">${productXtcp.xtcpCxq}个月</span><br />
+投资方向：<span style="color:#666;">${productXtcp.xtcpTzly}</span></div>
 </div>
 <div class="tjs_float_left tjs_width340px tjs_height145px">
 <div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px">8</span>.30%</span></div>
+<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${productXtcp.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
 <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
 </div>
 </div>
 
 </div>
-<!--//tjs_trust_content 1 div-->	
-
-<div class="tjs_trust_content">
-
-<div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="images/trust_img002.png" width="108" height="108" /></a></div>
+</c:forEach>	
 </div>
-
-<div class="tjs_float_left tjs_width320px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">五矿信托-通黔四号</a></div>
-<div class="tjs_trust_bonus">返现 ￥6000</div>
-<div class="tjs_trust_contentdiv">受托经营国务院有关部门批准证券承销业务</div>
-</div>
-<div class="tjs_float_left tjs_width270px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_base">投资起点：<span style="color:#666;">100万</span><br />
-投资期限：<span style="color:#666;">10个月</span><br />
-投资方向：<span style="color:#666;">基础设施</span></div>
-</div>
-<div class="tjs_float_left tjs_width340px tjs_height145px">
-<div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px">12</span>.60%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
-</div>
-</div>
-
-</div>
-<!--//tjs_trust_content 2 div-->
-
-<div class="tjs_trust_content tjs_bg_gray">
-
-<div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="images/trust_img002.png" width="108" height="108" /></a></div>
-</div>
-
-<div class="tjs_float_left tjs_width320px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">五矿信托-通黔四号</a></div>
-<div class="tjs_trust_bonus">返现 ￥6000</div>
-<div class="tjs_trust_contentdiv">受托经营国务院有关部门批准证券承销业务</div>
-</div>
-<div class="tjs_float_left tjs_width270px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_base">投资起点：<span style="color:#666;">100万</span><br />
-投资期限：<span style="color:#666;">10个月</span><br />
-投资方向：<span style="color:#666;">基础设施</span></div>
-</div>
-<div class="tjs_float_left tjs_width340px tjs_height145px">
-<div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px">6</span>.20%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
-</div>
-</div>
-
-</div>
-<!--//tjs_trust_content 3 div-->	
-
-<div class="tjs_trust_content">
-
-<div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="images/trust_img002.png" width="108" height="108" /></a></div>
-</div>
-
-<div class="tjs_float_left tjs_width320px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">五矿信托-通黔四号</a></div>
-<div class="tjs_trust_bonus">返现 ￥6000</div>
-<div class="tjs_trust_contentdiv">受托经营国务院有关部门批准证券承销业务</div>
-</div>
-<div class="tjs_float_left tjs_width270px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_base">投资起点：<span style="color:#666;">100万</span><br />
-投资期限：<span style="color:#666;">10个月</span><br />
-投资方向：<span style="color:#666;">基础设施</span></div>
-</div>
-<div class="tjs_float_left tjs_width340px tjs_height145px">
-<div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px">10</span>.50%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
-</div>
-</div>
-
-</div>
-<!--//tjs_trust_content 4 div-->	
-</div>
-<!--//tjs_trust_tabbox div-->	
 
 </div>
 <!-- /tjs_content_div tjs_1108px -->
@@ -285,48 +208,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 
 
-
-<div class="tjs_footer_div">
-<div style=" height:6px; font-size:0px; width:100%; background-color:#959494;"></div>
-<div class="tjs_1108px center">
-<div class="tjs_footer_copyrightdiv">
-<ul>
-<li class="tjs_2_border">
-<span style="height:45px;display:inline-block;">关于我们</span><br />
-<a href="#">公司介绍</a><br />
-<a href="#">股东背景</a><br />
-<a href="#">媒体报道</a><br />
-<a href="#">最新动态</a><br />
-</li>
-<li class="tjs_2_border">
-<span style="height:45px;display:inline-block;">帮助中心</span><br />
-<a href="#">新手入门</a><br />
-<a href="#">理财问答</a><br />
-<a href="#">使用帮助</a><br />
-</li>
-<li class="tjs_2_border">
-<span style="height:50px;display:inline-block;">关注我们</span><br />
-<a href="#" class="tjs_footer_sns"><br /><br /><span>&nbsp;腾讯微博</span></a>&nbsp;
-<a href="#" class="tjs_footer_sina"><br /><br /><span>&nbsp;新浪微博</span></a>&nbsp;
-<a href="#" class="tjs_footer_blog"><br /><br /><span>&nbsp;腾讯微博</span></a>
-</li>
-<li>
-<span style="height:40px;display:inline-block;">客服热线</span><br />
-<span class="tjs_service_ico"></span><span style=" float:left;height:40px; line-height:40px;display:inline-block; color:#999;">400-888-896</span><br />
-<span style="height:46px; line-height:50px;display:inline-block;">在线咨询</span><br />
-<a href="#" class="tjs_footer_qq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>在线咨询</span></a><span style="font-size:14px; color:#999;">08:00 - 23:00</span>
-</li>
-</ul>
-</div>
-<!-- /tjs_footer_copyrightdiv -->
-
-<div class="tjs_footer_copyrightcontent"> <a href="#">商务合作</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">加入我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">免责声明</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">意见反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">友情链接</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">网站地图</a><br />
-淘金山互联网在线理财  版权所有 &copy; 2015-2018   粤ICP备 12068806号-1<br />投资有风险，理财需谨慎 
-
-</div>
-</div>
+<%@ include file="/views/web/footer.jsp"%>
 <!-- /footer tjs_1108px -->
-</div>
 </div>
 <!-- /tis_trust_all -->
 <!--======tab pages JS======-->
