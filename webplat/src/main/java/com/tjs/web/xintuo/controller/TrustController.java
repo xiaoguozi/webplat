@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.model.ProductXtcp;
+import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
+import com.tjs.admin.xintuo.service.IProductXtgsService;
 /**
  * 系统产品//http://127.0.0.1:8080/webplat/product/xt/list?method=getXtList
  * 
@@ -25,6 +27,9 @@ import com.tjs.admin.xintuo.service.IProductXtcpService;
 public class TrustController {
 	@Resource
 	private IProductXtcpService iProductXtService;
+	
+	@Resource
+	private IProductXtgsService iProductgsService;
 	
 	/**
 	 * 查询信托首页
@@ -126,7 +131,28 @@ public class TrustController {
      * @return
      */
     @RequestMapping("/trustCompany")
-    public String trustCompany(Model model,XinTuoGsCtrlModel xintuoGsCtrlModel) {
+    public String trustCompany(Model model,XinTuoGsCtrlModel xintuoGsCtrlModel) {    	
+    	//公司列表推荐为四个   	
+    	List<ProductXtgs> productXtgs = iProductgsService.selectProductXtgsIndex();
+    	model.addAttribute("productXtgsIndex", productXtgs);
+    	
+    	//查询列表
+    	xintuoGsCtrlModel.getProductXtgs().setXgtsStatus("20");
+    	   	
+    	int totalcount = iProductgsService.countProductXtgs(xintuoGsCtrlModel);
+    	xintuoGsCtrlModel.setTotalCount(totalcount);
+		 int totalPageNO = xintuoGsCtrlModel.getTotalPageSize();//总页数
+	     if(xintuoGsCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+	    	 xintuoGsCtrlModel.setPageNo(1);
+	     } else if(xintuoGsCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+	    	 xintuoGsCtrlModel.setPageNo(totalPageNO);
+	     }
+	     List<ProductXtgs> lstProductXtgs =  iProductgsService.selectProductXtgs(xintuoGsCtrlModel);
+	     
+	     model.addAttribute("lstProductXtgs", lstProductXtgs);
+	     
+    	model.addAttribute("xintuoGsCtrlModel", xintuoGsCtrlModel);
+    	
     	return "web/xintuo/trustCompany";
     }
     

@@ -271,7 +271,7 @@ public class PassportController {
     			&& userName.equalsIgnoreCase(mobileNo) 
     			&& StringExtUtils.checkMobileNumber(mobileNo)){
     		//TODO 添加计数器，防刷
-    		int resendCount = (int)request.getSession().getAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY);
+    		Integer resendCount = (Integer)request.getSession().getAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY);
     		if(resendCount<=WebConstants.SMS_RESEND_COUNT_MAX){
     			String smsCode = passportService.sendSmsCode(userName);
     			resendCount ++;
@@ -289,7 +289,7 @@ public class PassportController {
     public boolean validMobileVerifyCode(String mobileVerifyCode, Model model, HttpServletRequest request) {
     	
     	boolean isValid = false;  
-    	int verifyCount = (int)request.getSession().getAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY);
+    	Integer verifyCount = (Integer)request.getSession().getAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY);
 		if(verifyCount<=WebConstants.SMS_VERIFY_COUNT_MAX){
 			String code = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
 	        if(StringExtUtils.isNotBlank(code) && code.equalsIgnoreCase(mobileVerifyCode)){

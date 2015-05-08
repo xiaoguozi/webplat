@@ -19,8 +19,22 @@ public class XinTuoGsCtrlModel extends GenericCtrlModel {
 	
 	private ProductXtgs productXtgs;
 	
+	private int totalPageSize;
+	
 	public int getLimitStart() {
 		return limitStart;
+	}
+
+	public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}
+	}
+
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
 	}
 
 	public void setLimitStart(int limitStart) {
@@ -36,6 +50,9 @@ public class XinTuoGsCtrlModel extends GenericCtrlModel {
 	}
 
 	public ProductXtgs getProductXtgs() {
+		if(productXtgs==null){
+			productXtgs = new ProductXtgs();
+		}
 		return productXtgs;
 	}
 

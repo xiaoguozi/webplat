@@ -25,6 +25,8 @@ public interface ProductXtgsMapper  {
 	public ProductXtgs findByProductXtgsId(Long xtgsId);
 	
 	public List<ProductXtgs> selectProductXtgs(XinTuoGsCtrlModel xinTuoGsCtrlModel );
+	
+	public List<ProductXtgs> selectProductXtgsIndex();
 		
 }
 

@@ -76,5 +76,17 @@ public class ProductXtgsServiceImpl  implements IProductXtgsService {
 		return lstVos;
 	}
 
+	@Override
+	public List<ProductXtgs> selectProductXtgsIndex() {
+		// TODO Auto-generated method stub
+		List<ProductXtgs> lstVos = productXtgsMapper.selectProductXtgsIndex();		
+			BigDecimal div10000 = new BigDecimal(10000);
+			for(ProductXtgs productVO:lstVos){
+				productVO.setXgtsZczb(BigDecimalUtils.div(productVO.getXgtsZczb(), div10000));
+			}
+		
+		return lstVos;
+	}
+
 
 }

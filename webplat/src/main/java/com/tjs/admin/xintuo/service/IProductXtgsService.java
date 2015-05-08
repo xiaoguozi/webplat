@@ -26,4 +26,6 @@ public interface IProductXtgsService  {
 	public ProductXtgs findByProductXtgsId(Long xtgsId);
 	
 	public List<ProductXtgs> selectProductXtgs(XinTuoGsCtrlModel xintuoGsCtrlModel);
+	/**查询信托公司上面四个*/
+	public List<ProductXtgs> selectProductXtgsIndex();
 }

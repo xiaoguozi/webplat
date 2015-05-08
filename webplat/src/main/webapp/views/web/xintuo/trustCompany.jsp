@@ -12,6 +12,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>淘金山——信托公司</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+ <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
@@ -59,31 +63,17 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_trust_coloreddiv"></div>
 
 <div class="tjs_cpy_typle">
-<div class="tjs_cpy_unit tjs_right_1pxdashed">
+<c:forEach items="${productXtgsIndex}" var="xtgs" varStatus="status" >
+<div class="tjs_cpy_unit  <c:if test='${status.index!=3}'>tjs_right_1pxdashed</c:if>">
 <div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_005.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
-<div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
+<div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">${xtgs.xgtsGsxz}</span><br /><br />   注册资本：<span style="color:#333"><fmt:formatNumber value="${xtgs.xgtsZczb}" pattern="#0.####"/>万</span><br /><br />    管理规模：<span style="color:#333">${xtgs.xgtsZcglgm}</span><br />
 </div>
 </div>
+</c:forEach>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_cpy_unit tjs_right_1pxdashed">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_006.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
-<div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
-</div>
-</div>
-<!-- /tjs_right_unit 02 -->
-<div class="tjs_cpy_unit tjs_right_1pxdashed">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_007.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
-<div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
-</div>
-</div>
-<!-- /tjs_right_unit 03 -->
 
-<div class="tjs_cpy_unit">
-<div class="tjs_cpy_icodiv"> <a href="company_profile.html"><img src="assets/img/ui/img_008.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
-<div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">中央企业控股</span><br /><br />   注册资本：<span style="color:#333">600000万</span><br /><br />    管理规模：<span style="color:#333">4785亿</span><br />
-</div>
-</div>
+
 <!-- /tjs_right_unit 04 -->
 <div class="clearfloat"></div>
 
@@ -96,9 +86,14 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 <div  style=" height:26px; width:100%;"></div>
 <!-- 信托公司开始 -->
+<form id="modalForm" action="rest/web/xintuo/trust/trustCompany" method="post" >
+<input name="sortField" type="hidden" value="${xintuoGsCtrlModel.sortField }"/>
+<input name="sortType" type="hidden" value="${xintuoGsCtrlModel.sortType}"/>
+<input name="pageNo" type="hidden" value="${xintuoGsCtrlModel.pageNo}"/>
+<input name="pageSize" type="hidden" value="${xintuoGsCtrlModel.pageSize }"/>
 <div class="tjs_1108px center">
 <div class="tjs_cpy_title ">全部信托公司</div>
-<div class="tjs_cpy_searchdiv"><input name="keyword"  type="text"  value="请输入关键字" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div>
+<div class="tjs_cpy_searchdiv"><input name="keyWord"  type="text"  value="${xintuoGsCtrlModel.keyWord}" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search" placeholder="请输入关键字"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div>
 <div class="clearfloat"></div>
 
 <div class="tjs_product_coloreddiv"></div>
@@ -114,261 +109,25 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <td width="10%" align="center" class="tjs_cpy_tabletitle_div">所在地区</td>
     <td align="center" class="tjs_cpy_tabletitle_div">成立时间</td>
   </tr>
-  <tr>
+  
+  <c:forEach items="${lstProductXtgs}" var="ProductXtgs" varStatus="status">
+  <tr <c:if test="${status.index%2==0}"> class="tjs_cpy_evenbg"</c:if>>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
+    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="${ProductXtgs.xgtsSplname }" width="36" height="30" align="middle"></a></td>
+    <td align="left">&nbsp;&nbsp;<a title="${ProductXtgs.xgtsSplname }" href="#">${ProductXtgs.xgtsSplname }</a></td>
   </tr>
 </table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
- <tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-  <tr class="tjs_cpy_evenbg">
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
-  </tr>
-<tr>
-    <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="50" align="right"><a href="company_profile.html"><img src="assets/img/ui/company_ico01.png" alt="某某信托公司" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a title="某某信托公司" href="#">银象168号</a></td>
-  </tr>
-</table></td>
-    <td align="right"><span style="color:#FF6600;">7.28%</span></td>
-    <td align="right">100％</td>
-    <td align="right">698800</td>
-    <td align="center">金融机构控股</td>
-    <td align="center">周辉</td>
-    <td align="center">深圳</td>
-    <td align="center">2015-05-01</td>
+    <td align="right"><span style="color:#FF6600;">${ProductXtgs.xgtsPjsyl }%</span></td>
+    <td align="right">${ProductXtgs.xgtsCpdfbl }％</td>
+    <td align="right"><fmt:formatNumber value="${ProductXtgs.xgtsZczb}" pattern="#0.####"/></td>
+    <td align="center">${ProductXtgs.xgtsGsxz}</td>
+    <td align="center">${ProductXtgs.xgtsFrdb}</td>
+    <td align="center">${ProductXtgs.xgtsCity}</td>
+    <td align="center"><fmt:formatDate value="${ProductXtgs.xgtsCreatedate}" pattern="yyyy-MM-dd"/></td>
   </tr> 
+</c:forEach>
+   
 </table>
 
 </div>
@@ -380,30 +139,27 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <table class=pagetb cellspacing=0>
       <tbody>
         <tr>
-        <td class=pagnum><a title=最前一页 href="#">|<</a></td>
-        <td class=pagnum><a class=currentpg title=上一页 href="#"><</a></td>
-          <td class=pagnum><a class=currentpg title=当前页 
-      href="#" id="pagnum_click">1</a></td>
-          <td class=pagnum><a title=第2页 
-      href="#">2</a></td>
-          <td class=pagnum><a title=第3页 
-      href="#">3</a></td>
-          <td class=pagnum><a title=第4页 
-      href="#">4</a></td>
-          <td class=pagnum><a title=第5页 
-      href="http#">5</a></td>
-          <td class=pagnum><a title=第6页 
-      href="#">6</a></td>
-          <td class=pagnum><a title=第7页 
-      href="#">7</a></td>
-      <td class=pagnum><a class=currentpg title=下一页 href="#">></a></td>
-      <td class=pagnum><a title=最前一页 href="#">>|</a></td>
+        <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
+        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${xintuoGsCtrlModel.pageNo-1}"><</a></td>
+        <c:forEach var="item" varStatus="status" begin="1" end="${xintuoGsCtrlModel.totalPageSize}">             
+        <c:choose>  
+          <c:when test="${status.index==xintuoGsCtrlModel.pageNo }"> 
+           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+          </c:when> 
+          <c:otherwise>
+          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+          </c:otherwise> 
+        </c:choose>             
+        </c:forEach>
+        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${xintuoGsCtrlModel.pageNo+1}">></a></td>
+        <td class=pagnum><a title=最前一页 href="#" page_no="${xintuoGsCtrlModel.totalPageSize}">>|</a></td>          
         </tr>
       </tbody>
     </table>
   </div>
  <!-- 翻页结束 -->
 </div>
+</form>
 <!-- 信托产品结束 -->
 
 
@@ -416,20 +172,28 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- /tis_trust_all -->
 <!--======tab pages JS======-->
 <SCRIPT type=text/javascript>
-function selectTag(showContent,selfObj){
-	// 
-	var tag = document.getElementById("tags").getElementsByTagName("li");
-	var taglength = tag.length;
-	for(i=0; i<taglength; i++){
-		tag[i].className = "";
-	}
-	selfObj.parentNode.className = "selectTag";
-	// 
-	for(i=0; j=document.getElementById("tagContent"+i); i++){
-		j.style.display = "none";
-	}
-	document.getElementById(showContent).style.display = "block";
-}
+
+$(function () {                    
+    $(".pagnum a").click(function(event){
+    	event.preventDefault();
+        $("input[name=pageNo]").val($(this).attr("page_no"));
+    	//获取查询条件  	    	    	
+    	$("#modalForm").submit();
+
+    });
+    
+    $(".tjs_cpy_searchdiv a").click(function(event){
+    	event.preventDefault();
+    	//获取查询条件  	    	    	
+    	$("#modalForm").submit();
+
+    });
+    
+  
+    		       
+}); 
+
+
 </SCRIPT>
 </body>
 </html>
