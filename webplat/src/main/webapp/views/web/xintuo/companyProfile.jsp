@@ -1,9 +1,18 @@
+<%@ include file="/views/web/include.jsp"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>五矿信托公司</title>
-<link href="css/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
@@ -15,25 +24,19 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <body>
 <div class="tis_trust_all">
 
-<div class="header_top">
-<div class="tjs_1108px center">
-     <span class="time">欢迎您来到淘金山，投资有风险，选择需谨慎！</span>
-     <div class="topservice">400-888-896</div>
-    <div class="toplinks"><a href="login.html" class="log_link">登录</a> | <a href="register.html">注册</a></div>    
-  </div>
-</div>
+<%@ include file="/views/web/header.jsp"%>
 <!-- /header_top -->
 
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-     <div class="logo_wrap"><a href="index.html"><img src="images/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+     <div class="logo_wrap"><a href="#"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
-    <li><a href="trust.html">信托首页</a></li>
-    <li><a href="trust_product.html">信托产品</a></li>
-    <li><a href="trust_company.html">信托公司</a></li>
-    <li><a href="#">安全保障</a></li>
+    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
+    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
+    <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
+    <li><a href="#" target="_blank">安全保障</a></li>
 
     </ul>
     </div>    
@@ -42,7 +45,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- /header_menu -->
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="index.html">首页</a> > <a href="trust_company.html">信托公司</a> > 五矿信托公司</div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="#">首页</a> > <a href="rest/web/xintuo/trust/trustCompany" target="_blank" >信托公司</a> > 五矿信托公司</div></div>
 
 <!-- 产品基本信息 开始-->
 
@@ -52,12 +55,12 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_pfe_box tjs_234border">
 <div class="tjs_product_coloreddiv"></div>
 
-<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="images/wk_img.png" width="32" height="32" /></span>五矿信托</div>
+<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="assets/img/ui/img_005.png" width="32" height="32" /></span>${productXtgs.xgtsSplname}</div>
 <div class="tjs_pfe_text tjs_padding_height16px">
 <ul>
-<li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">中央企业控股</span><br />股东背景</li>
-<li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">60亿</span><br />注册资本</li>
-<li><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">---</span><br />股东背景</li>
+<li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">${productXtgs.xgtsGsxz}</span><br />股东背景</li>
+<li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;"><fmt:formatNumber value="${productXtgs.xgtsZczb}" pattern="#0.####"/>万</span><br />注册资本</li>
+<li><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">${productXtgs.xgtsZcglgm}</span><br />资产管理规模</li>
 </ul>
 </div>
 </div>
@@ -73,37 +76,37 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <tbody>
   <tr>
       <td width="16%" height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">公司名称：</td>
-      <td width="35%" bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">中融国际信托有限公司</td>
+      <td width="35%" bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsZhname}</td>
       <td width="16%" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">公司简称：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">中融信托</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsSplname}</td>
   </tr>
   <tr class="even">
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">英文名称：</td>
-      <td colspan="3" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">Zhongrong International Trust Co.,Ltd.</td>
+      <td colspan="3" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsEnname}</td>
   </tr>
   <tr>
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">成立日期：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">1987</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><fmt:formatDate value="${productXtgs.xgtsCreatedate}" pattern="yyyy"/></td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">注册资本(万元)：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">600000</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><fmt:formatNumber value="${productXtgs.xgtsZczb}" pattern="#0.####"/></td>
   </tr>
   <tr class="even">
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">所在城市：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">黑龙江</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsCity}</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">董事长：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">刘洋</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsGsz}</td>
   </tr>
   <tr>
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">总经理：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">范韬</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsEnname}</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">法人代表：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">刘洋</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsFrdb}</td>
   </tr>
   <tr class="even">
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">大股东：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">经纬纺织机械股份有限公司</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsDgd}</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">是否上市：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">否</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg"><c:if test="${productXtgs.xgtsSs== '1'}">是</c:if><c:if test="${productXtgs.xgtsSs== '2'}">否</c:if></td>
   </tr>
 </tbody>		
 </table>
@@ -118,7 +121,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
       </tr>
   <tr>
     <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_textevenbg tjs_padding_height16px"><div class="tjs_pfe_about">
-中融国际信托有限公司是经中国银监会批准设立的金融机构，前身为哈尔滨国际信托投资公司，成立于1987年。注册地为黑龙江省哈尔滨市南岗区嵩山路33号，主要办公地为北京市西城区金融街武定侯街2号。公司目前注册资本60亿元，经纬纺织机械股份有限公司（央企恒天集团下属A+H股上市公司）、中植企业集团有限公司、哈尔滨投资集团有限责任公司及沈阳安泰达商贸有限公司分别持股37.47%、32.99%、21.54%和8.01%。公司目前员工1700余人，分布于全国20余个主要城市。银监会对公司2011年监管评级（最新）为2C级。 2013年末，公司资产管理总规模4,882.23亿元，净资产76.45亿元，净资本69.48亿元，净利润20.18亿元。公司拥有35,000名高端自然人客户及980余家机构客户。 公司主营业务覆盖房地产、证券、工商企业及基础设施领域，"多元化"交易模式包括股权投资、信托贷款、股权收益权、财产权管理等。经过20余年的发展，公司已成为公司治理完善、风险管控有效、业务创新积极、人员覆盖全国的大型金融企业。</div>
+    ${productXtgs.xgtsGsjj}
+</div>
     </td>
     </tr>
 </tbody>		
@@ -126,7 +130,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </div>
 <!-- /tjs_pfe_box 03 -->
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div class="tjs_recommend_title tjs_belongico">旗下产品<span style="display: inline-block;font-size:14px; margin-right:20px;float:right;"><a href="#">更多...</a></span></div>
+<div class="tjs_recommend_title tjs_belongico">旗下产品<span style="display: inline-block;font-size:14px; margin-right:20px;float:right;"><a href="rest/web/xintuo/trust/trustProduct">更多...</a></span></div>
 
 <div style=" height:10px; width:100%; font-size:0px;"></div>
 <div class="tjs_trust_coloreddiv"></div>

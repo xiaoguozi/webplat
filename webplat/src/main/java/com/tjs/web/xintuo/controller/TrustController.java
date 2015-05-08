@@ -1,5 +1,6 @@
 package com.tjs.web.xintuo.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.model.ProductXtgs;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
 import com.tjs.admin.xintuo.service.IProductXtgsService;
+import com.tjs.admin.xintuo.util.BigDecimalUtils;
 /**
  * 系统产品//http://127.0.0.1:8080/webplat/product/xt/list?method=getXtList
  * 
@@ -165,6 +167,14 @@ public class TrustController {
      */
     @RequestMapping("/companyProfile")
     public String companyProfile(Model model,@RequestParam(value="id",required=false) Long xtgsId) {
+    	ProductXtgs  productXtgs = iProductgsService.findByProductXtgsId(xtgsId);
+    	BigDecimal div10000 = new BigDecimal(10000);		
+    	productXtgs.setXgtsZczb(BigDecimalUtils.div(productXtgs.getXgtsZczb(), div10000));
+	
+    	 model.addAttribute("productXtgs", productXtgs);    	 
+    	 List<ProductXtcp> lstProductXtcp  = iProductXtService.selectProductXtcpByGsId(xtgsId);
+    	 model.addAttribute("lstProductXtcp", lstProductXtcp);
+    	 
     	return "web/xintuo/companyProfile";
     }
     

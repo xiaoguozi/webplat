@@ -135,6 +135,17 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 		}		
 		return lstVOs;
 	}
+
+	@Override
+	public List<ProductXtcp> selectProductXtcpByGsId(Long xtgsId) {		
+			List<ProductXtcp> lstVOs = productXtcpMapper.selectProductXtcpByGsId(xtgsId);								
+				BigDecimal div10000 = new BigDecimal(10000);
+				for(ProductXtcp product:lstVOs){
+					product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+					product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+				}				
+		return lstVOs;
+	}
 		
 	
 

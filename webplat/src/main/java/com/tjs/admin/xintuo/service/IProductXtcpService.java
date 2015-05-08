@@ -40,4 +40,7 @@ public interface IProductXtcpService  {
 		public int countProductXtcpTrust(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);		
 		/**查询信托产品*/
 		public List<ProductXtcp> selectProductXtcpTrust(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);
+		
+		/**根据公司ID查询产品*/
+		public List<ProductXtcp> selectProductXtcpByGsId(Long xtgsId);
 }

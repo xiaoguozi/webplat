@@ -36,7 +36,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-    <div class="logo_wrap"><a href="index.html"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+    <div class="logo_wrap"><a href="#"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex"><span class="simu_on">信托首页</span></a></li>
@@ -75,39 +75,12 @@ html{ width:100%; height:100%;background:#f5f5f5;}
         <div class="tjs_liuchengbg"></div>
         
 
-
-<div class="tjs_content_div">
-<div class="tjs_1108px center">
-<div class="tjs_liucheng"></div>
-<div class="tjs_slogan_div"><span style="font-size:42px; color:#FF6600">淘金山</span>&nbsp;&nbsp;&nbsp;是一个致力于安全保障，稳健收益的实力平台</div>
-<div class="tjs_advantage_div">
-<ul>
-<li>
-<div class="tjs_icodiv"><img src="assets/img/ui/trend_ico.png" width="120" height="120"/></div>
-<div class="tjs_ico_titlediv tjs_colorblue">高额收益</div>
-<div class="tjs_ico_textdiv">年化收益率高达 <span class="tjs_colororange">14.6%</span></div>
-</li>
-<li>
-<div class="tjs_icodiv"><img src="assets/img/ui/safety_ico.png" width="120" height="120"/></div>
-<div class="tjs_ico_titlediv tjs_colorgreen">安全保障</div>
-<div class="tjs_ico_textdiv">本息收益 <span class="tjs_colororange">100%</span> 保障</div>
-</li>
-<li>
-<div class="tjs_icodiv"><img src="assets/img/ui/money.png" width="120" height="120"/></div>
-<div class="tjs_ico_titlediv tjs_colorcyan">优质项目</div>
-<div class="tjs_ico_textdiv">收益稳健</div>
-</li>
-</ul>
-</div>
-</div>
-<!-- /tjs_content_div tjs_1108px -->
-</div>
 <!-- 焦点广告 结束 -->
 
 
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="index.html">首页</a> > <a href="#">信托产品</a></div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="#">首页</a> > <a href="rest/web/xintuo/trust/trustIndex">信托首页</a></div></div>
 
 <!-- 精选推荐 开始-->
 
@@ -122,12 +95,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_trust_unit tjs_right_1pxdashed">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></td>
+<div class="tjs_right_title">
+  <tr  width="90%" >
+    <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></td>
     <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpSplname}</span></td>
   </tr>
-</table>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
 <div  style=" height:20px; width:100%;"></div>
