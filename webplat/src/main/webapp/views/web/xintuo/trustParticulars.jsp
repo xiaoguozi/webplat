@@ -30,7 +30,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <li><a href="<%=basePath%>rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
     <li><a href="<%=basePath%>rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
     <li><a href="<%=basePath%>rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
-    <li><a href="<%=basePath%>rest/web/xintuo/trust/trustSafeguard">安全保障</a></li>
+    <li><a href="<%=basePath%>rest/web/xintuo/trust/trustSafeguard"  target="_blank">安全保障</a></li>
 
     </ul>
     </div>    
