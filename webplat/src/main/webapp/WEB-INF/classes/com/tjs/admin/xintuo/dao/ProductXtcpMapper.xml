@@ -34,21 +34,24 @@
 		<result column="xtcp_username" property="xtcpUsername" jdbcType="VARCHAR" />
 		<result column="xtcp_validstatus" property="xtcpvalidStatus" jdbcType="VARCHAR" />
 		<result column="xtcp_area" property="xtcpArea" jdbcType="VARCHAR" />
-		<result column="xtcp_city" property="xtcpCity" jdbcType="VARCHAR" />		
+		<result column="xtcp_city" property="xtcpCity" jdbcType="VARCHAR" />
+		<result column="xtcp_splname" property="xtcpSplname" jdbcType="VARCHAR" />
+		<result column="xtcp_tzfs" property="xtcpTzfs" jdbcType="VARCHAR" />
+				
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
 		xtcp_id, xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
 		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus,
-		xtcp_area,xtcp_city
+		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
 		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,
-		xtcp_area,xtcp_city
+		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs
 	</sql>
 
 	<select id="countProductXtcp" resultType="int"
@@ -114,7 +117,9 @@
 		#{xtcpUserId},
 		#{xtcpUsername},
 		#{xtcpArea},
-		#{xtcpCity}		
+		#{xtcpCity},
+		#{xtcpSplname},
+		#{xtcpTzfs}		
 		)
 	</insert>
 
@@ -150,8 +155,11 @@
 		xtcp_userId=#{xtcpUserId},
 		xtcp_username=#{xtcpUsername},
 		xtcp_area=#{xtcpArea},
-		xtcp_city=#{xtcpCity}
+		xtcp_city=#{xtcpCity},
+		xtcp_splname=#{xtcpSplname},
+		xtcp_tzfs=#{xtcpTzfs}
 		where xtcp_id=#{xtcpId}
+		
 	</update>
 
 	<delete id="deleteProductXtcp" parameterType="Long">
@@ -208,8 +216,8 @@
 		xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw in ('10','20')
-		 <if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">
-        AND xtcp_xtlx=#{productXtcp.xtcpXtlx}
+		 <if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">		
+        AND xtcp_xtlx like CONCAT('%',#{productXtcp.xtcpXtlx},'%') 
         </if>
 		ORDER BY xtcp_tjno
 		limit 0,4								

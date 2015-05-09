@@ -24,7 +24,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-     <div class="logo_wrap"><a href="http://www.taojinshan.com.cn"><img src="assets/img/ui/reset_logo.png" width="338" height="94" alt="logo" /></a></div>
+     <div class="logo_wrap"><a href="#"><img src="assets/img/ui/reset_logo.png" width="338" height="94" alt="logo" /></a></div>
     
   </div>
 </div>

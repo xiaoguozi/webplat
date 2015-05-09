@@ -74,6 +74,24 @@ document.all(imgg).style.display='block'}}
             jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
         </script>
         <div class="tjs_liuchengbg"></div>
+        
+<div class="top_header_logindiv"  id="tip120"  style="display:block">
+<div id="J_unloginInfo" class="unlogin-info">
+     <div class="unlogin-title">
+       <p class="profit-hd">淘金山预期年化收益</p>
+       <p class="profit-hb orange">高达 <big>15%</big></p>
+     </div>
+     <p class="security-tip">账户资金安全由银行和PICC共同保障</p>
+     <p>
+       <a href="rest/web/passport/reg" class="btn btn-danger btn-larger btn-register">立即注册</a>
+     </p>
+     <p class="direct-login">
+       <span>有账号？直接</span>
+       <a href="rest/web/login">登录&gt;</a>
+     </p>
+   </div>
+</div>
+<!-- /top_header_logindiv -->
 
 
 <div class="tjs_content_div">
