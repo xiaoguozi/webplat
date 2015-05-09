@@ -97,6 +97,8 @@ public class XinTuoCpControler {
     @RequestMapping("/updateData")
     @ResponseBody
     public Map<String, Object> updateData(ProductXtcp productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    	
+    	System.err.println(">>>>>>>>>>>"+productXtgs.getXtcpXtlx());
     	Map<String, Object> result = new HashMap<String, Object>();
     	int id = iProductXtService.updateProductXtcp(productXtgs);
     	result.put("code", "0");

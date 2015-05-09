@@ -87,10 +87,18 @@ public class ProductXtcp {
 	private String xtcpHd;
 	/**信托产品简称*/
 	private String xtcpSplname;
+	
+	private String xtcpTzfs;
     
     
 	
   
+	public String getXtcpTzfs() {
+		return xtcpTzfs;
+	}
+	public void setXtcpTzfs(String xtcpTzfs) {
+		this.xtcpTzfs = xtcpTzfs;
+	}
 	public String getXtcpSplname() {
 		return xtcpSplname;
 	}

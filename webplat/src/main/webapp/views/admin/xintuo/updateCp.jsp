@@ -88,10 +88,23 @@
          <div class="form-group">
          <label class="col-md-2 control-label">信托类型</label>
             <div class="col-md-6">
-                   <input type="radio" name="xtcpXtlx" value="10" <c:if test="${productXtcp.xtcpXtlx== '10'}">checked="checked"</c:if>>小额信托
-                   <input type="radio" name="xtcpXtlx" value="20" <c:if test="${productXtcp.xtcpXtlx== '20'}">checked="checked"</c:if>>1年期信托
-                   <input type="radio" name="xtcpXtlx" value="30" <c:if test="${productXtcp.xtcpXtlx== '30'}">checked="checked"</c:if>>高收益信托       
-                   <input type="radio" name="xtcpXtlx" value="40" <c:if test="${productXtcp.xtcpXtlx== '40'}">checked="checked"</c:if>>政信类依托                     
+                   <input type="checkbox" name="xtcpXtlx" value="10" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'10')}">checked="checked"</c:if>>小额信托
+                   <input type="checkbox" name="xtcpXtlx" value="20" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'20')}">checked="checked"</c:if>>1年期信托
+                   <input type="checkbox" name="xtcpXtlx" value="30" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'30')}">checked="checked"</c:if>>高收益信托       
+                   <input type="checkbox" name="xtcpXtlx" value="40" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'40')}">checked="checked"</c:if>>政信类依托                     
+            </div>
+            </div>
+            
+            
+            <div class="form-group">
+            <label class="col-md-2 control-label">投资方式</label>
+            <div class="col-md-6">
+                   <input type="radio" name="xtcpTzfs" value="10" <c:if test="${productXtcp.xtcpTzfs== '10'}">checked="checked"</c:if>>信托贷款
+                   <input type="radio" name="xtcpTzfs" value="20" <c:if test="${productXtcp.xtcpTzfs== '20'}">checked="checked"</c:if>>股权投资
+                   <input type="radio" name="xtcpTzfs" value="30" <c:if test="${productXtcp.xtcpTzfs== '30'}">checked="checked"</c:if>>权益投资      
+                   <input type="radio" name="xtcpTzfs" value="40" <c:if test="${productXtcp.xtcpTzfs== '40'}">checked="checked"</c:if>>组合运用   
+                   <input type="radio" name="xtcpTzfs" value="50" <c:if test="${productXtcp.xtcpTzfs== '50'}">checked="checked"</c:if>>债券投资 
+                   <input type="radio" name="xtcpTzfs" value="60" <c:if test="${productXtcp.xtcpTzfs== '60'}">checked="checked"</c:if>>其他投资                   
             </div>
             </div>
         
