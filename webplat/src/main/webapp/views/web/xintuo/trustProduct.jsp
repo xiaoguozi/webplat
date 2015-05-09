@@ -135,7 +135,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpFullname}</span></td>
+    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
@@ -208,7 +208,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_pct_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><a href="#"><img src="assets/img/ui/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a href="#" class="tjs_pct_titleurl">${xintuoProduct.xtcpFullname}</a></td>
+    <td align="left">&nbsp;&nbsp;<a href="#" class="tjs_pct_titleurl">${xintuoProduct.xtcpSplname}</a></td>
   </tr>
 </table>
 </div>
