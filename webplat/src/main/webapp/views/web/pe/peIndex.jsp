@@ -22,6 +22,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 <script type="text/javascript" src="assets/scripts/slide.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
 
 
 </head>
@@ -41,8 +42,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <div class="top_wrap_menu menu">
             <ul>
-                <li><a href="index.html"><span class="simu_on">私募首页</span></a></li>
-                <li><a href="simuchanpin.html"><span>私募产品</span></a></li>
+                <li><a href="rest/web/pe/peIndex"><span class="simu_on">私募首页</span></a></li>
+                <li><a href="rest/web/pe/peIndexProduct"><span>私募产品</span></a></li>
                 <li><a href="simuchanpinpaihang.html"><span>私募排行</span></a></li>
                 <li><a href="simuchanpinjingli.html"><span>私募经理</span></a></li>
             </ul>
@@ -102,7 +103,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </div>
                                 <div class="tjs_product_textdiv">${peTop4Product.managerReview} </div>
                                 <div class="tjs_right_btndiv">
-                                    <a href="#" class="tjs_btn">
+                                    <a class="tjs_btn" href="javascript:void(0)" onclick="alertbox(this)">
                                         <img src="assets/img/ui/clock.png" />立即预约</a>
                                 </div>
                             </div>
@@ -198,49 +199,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <!-- 私募板块结束 -->
 
         </div>
-        <div class="tjs_footer_div">
-            <div style="height: 6px; font-size: 0px; width: 100%; background-color: #959494;"></div>
-            <div class="tjs_1108px center">
-                <div class="tjs_footer_copyrightdiv">
-                    <ul>
-                        <li class="tjs_2_border"><span style="height: 45px; display: inline-block;">关于我们</span><br />
-                            <a href="#">公司介绍</a><br />
-                            <a href="#">股东背景</a><br />
-                            <a href="#">媒体报道</a><br />
-                            <a href="#">最新动态</a><br />
-                        </li>
-                        <li class="tjs_2_border"><span style="height: 45px; display: inline-block;">帮助中心</span><br />
-                            <a href="#">新手入门</a><br />
-                            <a href="#">理财问答</a><br />
-                            <a href="#">使用帮助</a><br />
-                        </li>
-                        <li class="tjs_2_border"><span style="height: 50px; display: inline-block;">关注我们</span><br />
-                            <a href="#" class="tjs_footer_sns">
-                                <br />
-                                <br />
-                                <span>&nbsp;腾讯微博</span></a>&nbsp; <a href="#" class="tjs_footer_sina">
-                                    <br />
-                                    <br />
-                                    <span>&nbsp;新浪微博</span></a>&nbsp; <a href="#" class="tjs_footer_blog">
-                                        <br />
-                                        <br />
-                                        <span>&nbsp;腾讯微博</span></a> </li>
-                        <li><span style="height: 40px; display: inline-block;">客服热线</span><br />
-                            <span class="tjs_service_ico"></span><span style="float: left; height: 40px; line-height: 40px; display: inline-block; color: #999;">400-888-896</span><br />
-                            <span style="height: 46px; line-height: 50px; display: inline-block;">在线咨询</span><br />
-                            <a href="#" class="tjs_footer_qq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>在线咨询</span></a><span style="font-size: 14px; color: #999;">08:00 - 23:00</span> </li>
-                    </ul>
-                </div>
-                <!-- /tjs_footer_copyrightdiv -->
-
-                <div class="tjs_footer_copyrightcontent">
-                    <a href="#">商务合作</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">加入我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">免责声明</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">意见反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">友情链接</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">网站地图</a><br />
-                    淘金山互联网在线理财  版权所有 &copy; 2015-2018   粤ICP备 12068806号-1<br />
-                    投资有风险，理财需谨慎
-                </div>
-            </div>
-            <!-- /footer tjs_1108px -->
-        </div>
+        
+		<%@ include file="/views/web/footer.jsp"%>
     </div>
     <!-- /home_all -->
     <script>
@@ -268,6 +228,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $("tr:even").css("background", "#EEEDEB");
             //--/表格单行变色--
         }
+        
+      	//--预约--
+        function alertbox() {
+            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
+        }
+        //--/预约--
     </script>
     
     
