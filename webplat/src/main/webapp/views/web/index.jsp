@@ -74,8 +74,9 @@ document.all(imgg).style.display='block'}}
             jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
         </script>
         <div class="tjs_liuchengbg"></div>
-        
+<div class="opacity-wrap"></div>        
 <div class="top_header_logindiv"  id="tip120"  style="display:block">
+
 <div id="J_unloginInfo" class="unlogin-info">
      <div class="unlogin-title">
        <p class="profit-hd">淘金山预期年化收益</p>
