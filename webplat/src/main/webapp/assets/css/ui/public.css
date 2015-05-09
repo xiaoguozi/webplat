@@ -233,3 +233,9 @@ body,h1,h2,h3,h4,h5,h6,a{font-family:"微软雅黑", Georgia, "Times New Roman",
 .content_links dd a{padding:10px 20px 10px 20px; border:solid 1px #F0F0F0; color:#666; border-radius:5px;}
 .content_links dd a img{width:81px; height:30px; border:0;}
 .content_links dd a:hover{padding:10px 20px 10px 20px; border:solid 1px #09F; color:#09F; text-decoration:none; border-radius:5px;}
+
+
+.simu_on {
+    border-bottom: 3px solid #FF8B00;
+    padding-bottom: 5px;
+}

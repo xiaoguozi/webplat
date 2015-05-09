@@ -40,7 +40,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
     <div class="top_wrap_menu">
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
-    <li><a href="rest/web/xintuo/trust/trustProduct">信托产品</a></li>
+    <li><a href="rest/web/xintuo/trust/trustProduct" ><span class="simu_on">信托产品</span></a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
     <li><a href="#">安全保障</a></li>
 
@@ -49,72 +49,6 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
   </div>
 </div>
 <!-- /header_menu -->
-
-
-<!-- 焦点广告 开始 -->
-<div class="header">
-<div  class="tjs_1108px" style=" margin:0 auto;position: relative; z-index:20000;height:360px;">
-<div class="top_header_logindiv"  id="tip120"  style="display:block">
-<div class="top_login_title">快速注册  仅需10秒</div>
-<div  style=" height:22px; width:100%;"></div>
-
-<div class="tjs_topinput_div">手机号：<input name="" type="text" class="tjs_login_input tjs_width180px" /></div>
-<div class="tjs_topinput_div">
-<div class="tjs_v_div_left">验证码：<input name="" type="text" class="tjs_login_input tjs_width90px" /></div>
-<div class="tjs_v_div_right"><img src="assets/img/ui/verification_img.png" width="65" height="30" /> <span><a href="#" class="tjs_registerurl">看不清</a></span></div>
-</div>
-<div class="learfloat"></div>
-<div  style=" height:26px; width:100%;"></div>
-<div class="tjs_btndiv"><a href="#" class="tjs_next_btn" onclick='show("tip120","img128")'>下一步</a><!--<input name="" type="button" value="下一步" class="tjs_register_btn" onclick='show("tip120","img128")'/>--></div>
-<div class="tjs_talkdiv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="checkbox" value="" checked="checked" /> <a href="#" class="tjs_registerurl">我同意《淘金山用户使用协议》</a></div>
-</div>
-<!-- /top_header_logindiv -->
-
-<div class="top_header_logindiv"  id="img128" style="display:none">
-<div class="top_login_title">快速注册 仅需10秒</div>
-
-<div class="tjs_cellphone_div"><span>手机号：<span style="color:#ff6600">13798239230</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_pw_url"><span style="color:#00aeff">修改</span></a></span></div>
-<div class="tjs_pw_div_left">短信验证码：</div>
-<div class="tjs_pw_div_right"><input name="" type="text" class="tjs_login_input tjs_width90px" />&nbsp;&nbsp;<span><a href="#">未收到？</a></span></div>
-
-<div class="learfloat"></div>
-<div class="tjs_topinput_pw_div">设置密码：<input name="" type="text" class="tjs_login_input tjs_width150px" /></div>
-
-<div class="tjs_topinput_pw_div">重复密码：<input name="" type="text" class="tjs_login_input tjs_width150px" /></div>
-
-<div  style=" height:5px; width:100%; font-size:0px;"></div>
-<div class="tjs_pw_btndiv"><a href="#" class="tjs_ok_btn"  onclick='show("tip120","img128")'>完成</a></div>
-
-</div>
-<!-- /top_header_logindiv -->
-
-
-  <div id="onebyone_slider">
-
-    <div class="oneByOne_item">
-		<span class="ob1_title">漫画原创时间日期Jquery插件</span>
-		<span class="ob1_description">1、可以灵活设计响应事件（Event） 2、层显示的位置（Left，Top）3、年月日之的连接符号 4、自由控制是否显示时间（isTime）5、年份下列列表的开始值与结束值。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创时间日期Jquery插件" />
-	</div>
-   <div class="oneByOne_item">
-		<span class="ob1_title">jcDate原创时间Jquery插件</span>
-		<span class="ob1_description">可支持：1、图标样式名称;2、响应的事件;3、出现的速度;4、靠左的位置;5、靠上的位置;6、日期连接字符;7、关闭时间。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="jcDate原创时间Jquery插件" />
-	</div>
-	<div class="oneByOne_item">
-		<span class="ob1_title">漫画原创弹出内容提示Jquery插件</span>
-		<span class="ob1_description">可支持响应的事件、提示层显示的时间、显示的消息、滑动速度、提示类型（1、success 2、error 3、warning）等参数的灵活设置，具体请查看详细介绍。。。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创弹出内容提示Jquery插件" />
-	</div>
-
-  </div>
-   </div>
-</div>
-<!-- 焦点广告 结束 -->
-
 
 
 
@@ -186,15 +120,16 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 <li><div class="tjs_condition_left">信托公司： </div><div class="tjs_condition_right" id="xtcpGsId"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">平安信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中融信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中信信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">华润信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">四川信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中江信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中泰信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">更多></a></div></li>
 </ul>
+<form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
 <div class="tjs_dashed_bottom tjst_height_32px"></div>
-<div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
+<div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
 <div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">产品期限：</div><div class="tjs_pct_right">共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">清空条件</a></div></div>
 </div>
 <!-- //tjs_product_search -->
 
 
 <div class="tjst_height_32px"></div>
-<form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
+
 <input name="sortField" type="hidden" value="${xintuoSearVO.sortField }"/>
 <input name="sortType" type="hidden" value="${xintuoSearVO.sortType}"/>
 <input name="pageNo" type="hidden" value="${xintuoSearVO.pageNo}"/>
@@ -299,12 +234,30 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
 
 	    });
-	    
-	  
-	    		       
+	   
+	    if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+	        $('[placeholder]').focus(function() {
+	            var input = $(this);
+	            if (input.val() == input.attr('placeholder')) {
+	                input.val('');
+	                input.removeClass('placeholder');
+	            }
+	        }).blur(function() {
+	            var input = $(this);
+	            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	                input.addClass('placeholder');
+	                input.val(input.attr('placeholder'));
+	            }
+	        }).blur();
+	    };
+ 	    		       
 	}); 
 	
-	
+	function placeholderSupport() {
+	    return 'placeholder' in document.createElement('input');
+	}
+
+		
 	function SetPara() { 
 		var xtcpZdrgje = $("#xtcpZdrgje a.tjs_condition_selected").attr("tag");
 		var xtcpCxq = $("#xtcpCxq a.tjs_condition_selected").attr("tag");
@@ -312,17 +265,15 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 		var xtcpLxfp = $("#xtcpLxfp a.tjs_condition_selected").attr("tag");
 		var xtcpTzly =$("#xtcpTzly a.tjs_condition_selected").attr("tag");
 		var xtcpArea =$("#xtcpArea a.tjs_condition_selected").attr("tag");
-		var keyword=$("input[name=keyword]").val();
-		var params = "?xtcpZdrgje=" + xtcpZdrgje + "&xtcpCxq=" + xtcpCxq + "&xtcpNsyl="+ xtcpNsyl+ "&xtcpLxfp=" + xtcpLxfp+ "&xtcpTzly=" + xtcpTzly+ "&xtcpArea=" + xtcpArea+"&keyword="+keyword;
+		if($("input[name=keyword]").val()==$("input[name=keyword]").attr('placeholder')){
+			$("input[name=keyword]").val("");
+		}
+		
+		var params = "?xtcpZdrgje=" + xtcpZdrgje + "&xtcpCxq=" + xtcpCxq + "&xtcpNsyl="+ xtcpNsyl+ "&xtcpLxfp=" + xtcpLxfp+ "&xtcpTzly=" + xtcpTzly+ "&xtcpArea=" + xtcpArea;
 		return params;
 	}
 	
-	
-	
-	
-	
-  	
-	
+  		
 </SCRIPT>
 </body>
 </html>

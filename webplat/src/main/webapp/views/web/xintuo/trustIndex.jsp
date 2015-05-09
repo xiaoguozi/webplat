@@ -38,7 +38,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <div class="logo_wrap"><a href="index.html"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
-    <li><a href="rest/web/xintuo/trust/trustIndex">信托首页</a></li>
+    <li><a href="rest/web/xintuo/trust/trustIndex"><span class="simu_on">信托首页</span></a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
     <li><a href="#">安全保障</a></li>

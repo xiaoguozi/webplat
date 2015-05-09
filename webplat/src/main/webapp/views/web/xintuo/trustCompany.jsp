@@ -12,6 +12,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>淘金山——信托公司</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="assets/css/ui/public.css" rel="stylesheet" />
  <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
@@ -39,8 +40,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <div class="top_wrap_menu">
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
-    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
-    <li><a href="rest/web/xintuo/trust/trustCompany">信托公司</a></li>
+    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank" >信托产品</a></li>
+    <li><a href="rest/web/xintuo/trust/trustCompany"><span class="simu_on">信托公司</span></a></li>
     <li><a href="#">安全保障</a></li>
 
     </ul>
