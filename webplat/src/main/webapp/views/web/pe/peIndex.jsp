@@ -87,20 +87,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                         <div class="tjs_coloreddiv ml0 bgcolor"></div>
                         <div class="tjs_right_typle border_left">
-                            <c:forEach items="${showData}" var="peTopProduct">
+                            <c:forEach items="${top4Data}" var="peTop4Product">
                         	
                             <div class="tjs_right_unit w275 tjs_right_2border">
                                 <div class="tjs_private_icodiv">
                                     <div style="height: 23px; width: 100%;"></div>
                                     <div class="tjs_right_privatetitle chanpinjingli">
-                                        <img src="assets/img/ui/user01.png" width="128" height="128" />
+                                        <img src="assets/img/${peTop4Product.managerLogo}" width="128" height="128" />
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
-                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTopProduct.accumulatedIncome}</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">${peTopProduct.managerName}</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">${peTopProduct.name}</a></div>
+                                    <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTop4Product.accumulatedIncome}</span>%</div>
+                                    <div class="tjs_private_textdiv">基金经理：<a href="#">${peTop4Product.managerName}</a></div>
+                                    <div class="tjs_private_textdiv">产品名称：<a href="#">${peTop4Product.name}</a></div>
                                 </div>
-                                <div class="tjs_product_textdiv">${peTopProduct.managerReview} </div>
+                                <div class="tjs_product_textdiv">${peTop4Product.managerReview} </div>
                                 <div class="tjs_right_btndiv">
                                     <a href="#" class="tjs_btn">
                                         <img src="assets/img/ui/clock.png" />立即预约</a>
@@ -153,247 +153,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </ul>
                     </div>
                     <table class="tjs_table_shouyipaihang" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao">01</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao">02</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao">03</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">04</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">05</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">06</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">07</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">08</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">09</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tjs_table_td_one">
-                                <span class="tjs_xuhao hunse">10</span>
-                            </td>
-                            <td class="tjs_table_td_two">
-                                <div class="tjs_table_div_right">
-                                    <p class="tjs_table_ptitle">好运来巨牛一号</p>
-                                    <p class="tjs_table_pname">曾学鑫</p>
-                                    <p>巨牛投资</p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_three">
-                                <div class="tjs_table_div_right">
-                                    <p>近一年收益： ----</p>
-                                    <p>近二年收益： ----</p>
-                                    <p>今年以来收益：<span class="tjs_table_pname">450.64%</span></p>
-                                </div>
-                            </td>
-                            <td class="tjs_table_td_four">
-                                <p>累计收益</p>
-                                <p class="tjs_num">450.<span class="tjsfont_size">64%</span></p>
-                                <p><a href="#" class="tjs_btn">我要预约</a></p>
-                            </td>
-                        </tr>
+                        <c:forEach items="${top10Data}" varStatus="status" var="peTop10Product">
+	                        <tr>
+	                            <td class="tjs_table_td_one">
+	                            	<c:if test="${status.count <10}">
+	                            	    <c:if test="${status.count <=3}">
+			                                <span class="tjs_xuhao">0${status.count}</span>
+	                            	    </c:if>
+	                            	    <c:if test="${status.count > 3}">
+	                            	    	<span class="tjs_xuhao hunse">0${status.count}</span>
+	                            	    </c:if>
+	                            	</c:if>
+	                            	<c:if test="${status.count >= 10}">
+		                                <span class="tjs_xuhao hunse">${status.count}</span>
+	                            	</c:if>
+	                            </td>
+	                            <td class="tjs_table_td_two">
+	                                <div class="tjs_table_div_right">
+	                                    <p class="tjs_table_ptitle">${peTop10Product.name}</p>
+	                                    <p class="tjs_table_pname">${peTop10Product.managerName}</p>
+	                                    <p>${peTop10Product.companyName}</p>
+	                                </div>
+	                            </td>
+	                            <td class="tjs_table_td_three">
+	                                <div class="tjs_table_div_right">
+	                                    <p>近一年收益：${peTop10Product.oneRate}</p>
+	                                    <p>近二年收益：${peTop10Product.towRate}</p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname">${peTop10Product.nowRate}</span></p>
+	                                </div>
+	                            </td>
+	                            <td class="tjs_table_td_four">
+	                                <p>累计收益</p>
+	                                <p class="tjs_num"><fmt:formatNumber value="${peTop10Product.accumulatedIncome}" pattern="#0"/>.<span class="tjsfont_size"><fmt:formatNumber value="${peTop10Product.accumulatedIncome*100%100}" pattern="00"/>%</span></p>
+	                                <p><a href="#" class="tjs_btn">我要预约</a></p>
+	                            </td>
+	                        </tr>
+                        </c:forEach>
                     </table>
 
 
