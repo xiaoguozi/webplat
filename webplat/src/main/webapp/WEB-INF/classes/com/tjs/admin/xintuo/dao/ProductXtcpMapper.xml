@@ -215,4 +215,132 @@
 		limit 0,4								
 	</select>
 	
+	
+	<select id="countProductXtcpTrust" resultType="int"
+	 parameterType="com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO">
+		select
+		 count(*) c
+		from tjs_product_xtcp where 
+		xtcp_validstatus='1'
+		AND xtcp_status='20'
+		
+		<if test="xtcpZdrgje!=0">
+		AND xtcp_zdrgje=#{xtcpZdrgje}*10000
+		</if>
+		
+		<choose> 
+		     <when test="xtcpCxq=='11'">AND xtcp_cxq&lt;12 </when>
+		     <when test="xtcpCxq=='12'">AND xtcp_cxq=12 </when> 
+		     <when test="xtcpCxq=='13'">AND xtcp_cxq&gt;12 AND xtcp_cxq&lt;24 </when> 
+		     <when test="xtcpCxq=='24'">AND xtcp_cxq=24 </when> 
+		     <when test="xtcpCxq=='25'">AND xtcp_cxq&gt;24 </when> 
+		     <otherwise> </otherwise>
+		 </choose>
+		 
+		 
+		<choose> 
+		     <when test="xtcpNsyl==7">AND xtcp_nsyl&lt;8</when>
+		     <when test="xtcpNsyl==8">AND xtcp_nsyl&gt;=8 AND xtcp_nsyl&lt;10 </when> 
+		     <when test="xtcpNsyl=='10'">AND xtcp_nsyl&gt;=10 AND xtcp_nsyl&lt;12 </when> 
+		     <when test="xtcpNsyl=='12'">AND xtcpNsyl&gt;=12 </when> 
+		    <otherwise> </otherwise>
+		 </choose>	
+		 
+		 <if test="xtcpLxfp!=0">
+		    AND xtcp_lxfp=#{xtcpLxfp}
+		 </if>
+		 
+		 
+		 <choose> 
+		     <when test="xtcpTzly=='10'">AND xtcp_tzly='房地产'</when>
+		     <when test="xtcpTzly=='20'">AND xtcp_tzly='金融'</when> 
+		     <when test="xtcpTzly=='30'">AND xtcp_tzly='基础设施'</when> 
+		     <when test="xtcpTzly=='40'">AND xtcp_tzly='工商企业' </when>
+		     <when test="xtcpTzly=='50'">AND xtcp_tzly not in('房地产','金融','基础设施','工商企业')</when>  
+		    <otherwise> </otherwise>
+		 </choose>
+		 
+		  <choose> 
+		     <when test="xtcpArea=='10'">AND xtcp_area='珠三角'</when>
+		     <when test="xtcpArea=='20'">AND xtcp_area='江浙'</when> 
+		     <when test="xtcpArea=='30'">AND xtcp_area='沪京'</when> 
+		     <when test="xtcpArea=='40'">AND xtcp_area='津冀' </when>
+		     <when test="xtcpArea=='50'">AND xtcp_area not in('珠三角','江浙','沪京','津冀')</when>  
+		    <otherwise> </otherwise>
+		 </choose>
+		 
+		 
+		  <if test="keyword!=null and keyword!=''">
+		    AND (xtcp_fullname like CONCAT('%',#{keyword},'%') OR xtcp_gszhname like CONCAT('%',#{keyword},'%'))
+		 </if>	   				
+   			
+	</select>
+	
+	
+	
+	<select id="selectProductXtcpTrust" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
+	 parameterType="com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO">
+	
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where 
+		xtcp_validstatus='1'
+		AND xtcp_status='20'
+		
+		<if test="xtcpZdrgje!=0">
+		AND xtcp_zdrgje=#{xtcpZdrgje}*10000
+		</if>
+		
+		<choose> 
+		     <when test="xtcpCxq=='11'">AND xtcp_cxq&lt;12 </when>
+		     <when test="xtcpCxq=='12'">AND xtcp_cxq=12 </when> 
+		     <when test="xtcpCxq=='13'">AND xtcp_cxq&gt;12 AND xtcp_cxq&lt;24 </when> 
+		     <when test="xtcpCxq=='24'">AND xtcp_cxq=24 </when> 
+		     <when test="xtcpCxq=='25'">AND xtcp_cxq&gt;24 </when> 
+		     <otherwise> </otherwise>
+		 </choose>
+		 
+		 
+		 <choose> 
+		     <when test="xtcpNsyl==7">AND xtcp_nsyl&lt;8</when>
+		     <when test="xtcpNsyl==8">AND xtcp_nsyl&gt;=8 AND xtcp_nsyl&lt;10 </when> 
+		     <when test="xtcpNsyl=='10'">AND xtcp_nsyl&gt;=10 AND xtcp_nsyl&lt;12 </when> 
+		     <when test="xtcpNsyl=='12'">AND xtcpNsyl&gt;=12 </when> 
+		     <otherwise></otherwise>
+		 </choose>
+		 
+		 <if test="xtcpLxfp!=0">
+		    AND xtcp_lxfp=#{xtcpLxfp}
+		</if>
+		
+		 <choose> 
+		      <when test="xtcpTzly=='10'">AND xtcp_tzly='房地产'</when>
+		     <when test="xtcpTzly=='20'">AND xtcp_tzly='金融'</when> 
+		     <when test="xtcpTzly=='30'">AND xtcp_tzly='基础设施'</when> 
+		     <when test="xtcpTzly=='40'">AND xtcp_tzly='工商企业' </when>
+		     <when test="xtcpTzly=='50'">AND xtcp_tzly not in('房地产','金融','基础设施','工商企业')</when>    
+		    <otherwise> </otherwise>
+		 </choose>		
+		 
+		 
+		 <choose> 
+		     <when test="xtcpArea=='10'">AND xtcp_area='珠三角'</when>
+		     <when test="xtcpArea=='20'">AND xtcp_area='江浙'</when> 
+		     <when test="xtcpArea=='30'">AND xtcp_area='沪京'</when> 
+		     <when test="xtcpArea=='40'">AND xtcp_area='津冀' </when>
+		     <when test="xtcpArea=='50'">AND xtcp_area not in('珠三角','江浙','沪京','津冀')</when>  
+		    <otherwise> </otherwise>
+		 </choose>
+		 
+		 <if test="keyword!=null and keyword!=''">
+		    AND (xtcp_fullname like CONCAT('%',#{keyword},'%') OR xtcp_gszhname like CONCAT('%',#{keyword},'%'))
+		 </if>
+		
+		
+		
+					
+		LIMIT #{limitStart} ,#{pageSize}
+		 							
+	</select>
+	
 </mapper>

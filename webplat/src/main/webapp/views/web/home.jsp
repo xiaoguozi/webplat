@@ -13,11 +13,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <title>淘金山—欢迎你—跟我淘金山</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
+<link href="assets/css/ui/simu.css" rel="stylesheet" />
 
-<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
+<script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
+<script type="text/javascript" src="assets/scripts/ui/Slide.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
 
 
  <SCRIPT>
@@ -39,7 +39,7 @@ document.all(imgg).style.display='block'}}
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-     <div class="logo_wrap"><a href="http://www.taojinshan.com.cn"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+     <div class="logo_wrap"><a href="#"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
     <li><a href="#">首页</a></li>
@@ -55,43 +55,33 @@ document.all(imgg).style.display='block'}}
 <!-- /header_menu -->
 
 
-<!-- 焦点广告 开始 -->
-<div class="header">
-<div  class="tjs_1108px" style=" margin:0 auto;position: relative; z-index:20000;height:360px;">
-
-
-<!-- /top_header_logindiv -->
-
-
-  <div id="onebyone_slider">
-
-    <div class="oneByOne_item">
-		<span class="ob1_title">漫画原创时间日期Jquery插件</span>
-		<span class="ob1_description">1、可以灵活设计响应事件（Event） 2、层显示的位置（Left，Top）3、年月日之的连接符号 4、自由控制是否显示时间（isTime）5、年份下列列表的开始值与结束值。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创时间日期Jquery插件" />
-	</div>
-   <div class="oneByOne_item">
-		<span class="ob1_title">jcDate原创时间Jquery插件</span>
-		<span class="ob1_description">可支持：1、图标样式名称;2、响应的事件;3、出现的速度;4、靠左的位置;5、靠上的位置;6、日期连接字符;7、关闭时间。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="jcDate原创时间Jquery插件" />
-	</div>
-	<div class="oneByOne_item">
-		<span class="ob1_title">漫画原创弹出内容提示Jquery插件</span>
-		<span class="ob1_description">可支持响应的事件、提示层显示的时间、显示的消息、滑动速度、提示类型（1、success 2、error 3、warning）等参数的灵活设置，具体请查看详细介绍。。。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创弹出内容提示Jquery插件" />
-	</div>
-
-  </div>
-   </div>
-</div>
-<!-- 焦点广告 结束 -->
+        <div id="slideBox" class="slideBox">
+            <div class="hd">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li><a class="inter_cutimg" href="" target="_blank"></a></li>
+                    <li><a class="inter_cutimg img02" href="" target="_blank"></a></li>
+                    <li><a class="inter_cutimg img03" href="" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
+        </div>
+        <script type="text/javascript">
+            jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
+        </script>
+        <div class="tjs_liuchengbg"></div>
+        
 
 
 <div class="tjs_content_div">
 <div class="tjs_1108px center">
+<div class="tjs_liucheng"></div>
 <div class="tjs_slogan_div"><span style="font-size:42px; color:#FF6600">淘金山</span>&nbsp;&nbsp;&nbsp;是一个致力于安全保障，稳健收益的实力平台</div>
 <div class="tjs_advantage_div">
 <ul>
@@ -522,5 +512,48 @@ document.all(imgg).style.display='block'}}
 
 </div>
 <!-- /home_all -->
+
+
+<script>
+
+var IndexPage = {};
+
+$(function() {  
+	var slideboxshow = function () {
+            //--轮播按钮--
+            $(".slideBox").hover(function () {
+                $(".prev,.next").show();
+            }, function () {
+                $(".prev,.next").hide();
+            });
+            //--/轮播按钮--
+            //--自定义下拉框--
+            $(".sel_wrap").click(function () {
+                $(".select").toggle();
+                $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
+                $(".select>li").each(function (index) {
+                    $(this).click(function () {
+                        var opt = $(this).html();
+                        $(".lbl").html(opt);
+                    })
+                })
+                })
+            //--/自定义下拉框--
+            //--表格单行变色--
+            $("tr:even").css("background", "#EEEDEB");
+            //--/表格单行变色--
+        }
+        //--预约--
+        IndexPage.alertbox = function() {
+            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
+        }
+        //--/预约--
+		   
+		   
+		slideboxshow();
+		});
+	</script>
+        
+
 </body>
 </html>
