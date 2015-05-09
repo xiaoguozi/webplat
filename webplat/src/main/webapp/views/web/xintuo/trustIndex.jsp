@@ -42,7 +42,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <li><a href="rest/web/xintuo/trust/trustIndex"><span class="simu_on">信托首页</span></a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
-    <li><a href="#">安全保障</a></li>
+    <li><a href="rest/web/xintuo/trust/trustSafeguard" target="_blank">安全保障</a></li>
 
     </ul>
     </div>    
@@ -97,8 +97,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr  width="90%" >
-    <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></td>
-    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpSplname}</span></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
@@ -152,11 +152,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootSmalls}" var="xintuofootsmall" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 	<div class="tjs_float_left tjs_width165px">
-	<div class="tjs_trust_logodiv"><a href="#"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+	<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 	</div>
 	
 	<div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-	<div class="tjs_trust_title"><a href="#">${xintuofootsmall.xtcpSplname}</a></div>
+	<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}">${xintuofootsmall.xtcpSplname}</a></div>
 	<div class="tjs_trust_bonus">${xintuofootsmall.xtcpHd}</div>
 	<div class="tjs_trust_contentdiv">${xintuofootsmall.xtcpDp}</div>
 	</div>
@@ -188,11 +188,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOnes}" var="xintuofootone" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">${xintuofootone.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}">${xintuofootone.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${xintuofootone.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${xintuofootone.xtcpDp}</div>
 </div>
@@ -225,11 +225,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootHighs}" var="lstTopfootHighs" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">${lstTopfootHighs.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}">${lstTopfootHighs.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootHighs.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootHighs.xtcpDp}</div>
 </div>
@@ -259,11 +259,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOthers}" var="lstTopfootOthers" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="#"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="#">${lstTopfootOthers.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}">${lstTopfootOthers.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootOthers.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootOthers.xtcpDp}</div>
 </div>

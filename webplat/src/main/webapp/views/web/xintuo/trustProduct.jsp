@@ -43,7 +43,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct" ><span class="simu_on">信托产品</span></a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
-    <li><a href="#">安全保障</a></li>
+    <li><a href="rest/web/xintuo/trust/trustSafeguard">安全保障</a></li>
 
     </ul>
     </div>    
@@ -69,8 +69,8 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpSplname}</span></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 
 </div>
@@ -143,8 +143,8 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_pct_title">
   <tr>
-    <td width="65" align="right"><a href="#"><img src="assets/img/ui/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a href="#" class="tjs_pct_titleurl">${xintuoProduct.xtcpSplname}</a></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}"><img src="assets/img/ui/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
+    <td align="left">&nbsp;&nbsp;<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" class="tjs_pct_titleurl">${xintuoProduct.xtcpSplname}</a></td>
   </tr>
 </div>
 <div class="tjs_pct_icodiv">

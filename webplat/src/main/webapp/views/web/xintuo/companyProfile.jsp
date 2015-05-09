@@ -10,7 +10,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>五矿信托公司</title>
+<title>${productXtgs.xgtsSplname}</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
@@ -36,7 +36,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
-    <li><a href="#" target="_blank">安全保障</a></li>
+    <li><a href="rest/web/xintuo/trust/trustSafeguard" target="_blank">安全保障</a></li>
 
     </ul>
     </div>    
@@ -45,7 +45,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- /header_menu -->
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="#">首页</a> > <a href="rest/web/xintuo/trust/trustCompany" target="_blank" >信托公司</a> > 五矿信托公司</div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="#">首页</a> > <a href="rest/web/xintuo/trust/trustCompany" target="_blank" >信托公司</a> > ${productXtgs.xgtsSplname}</div></div>
 
 <!-- 产品基本信息 开始-->
 

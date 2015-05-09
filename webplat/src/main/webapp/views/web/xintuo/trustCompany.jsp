@@ -44,7 +44,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
     <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank" >信托产品</a></li>
     <li><a href="rest/web/xintuo/trust/trustCompany"><span class="simu_on">信托公司</span></a></li>
-    <li><a href="#">安全保障</a></li>
+    <li><a href="rest/web/xintuo/trust/trustSafeguard">安全保障</a></li>
 
     </ul>
     </div>    

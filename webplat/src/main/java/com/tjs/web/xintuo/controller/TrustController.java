@@ -187,8 +187,25 @@ public class TrustController {
      */
     @RequestMapping("/trustParticulars")
     public String trustParticulars(Model model,@RequestParam(value="id",required=false) Long xtcpId) {
+    	ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(xtcpId);
+    	BigDecimal div10000 = new BigDecimal(10000);		
+    	productXtcp.setXtcpFxgm(BigDecimalUtils.div(productXtcp.getXtcpFxgm(), div10000));
+    	productXtcp.setXtcpZdrgje(BigDecimalUtils.div(productXtcp.getXtcpZdrgje(), div10000));
+    	
+    	 model.addAttribute("productXtcp", productXtcp);
     	return "web/xintuo/trustParticulars";
     }
     
+    
+    /**
+     * 查询安全保障也
+     * @param model
+     * @param xinTuoSeachCtrlVO
+     * @return
+     */
+    @RequestMapping("/trustSafeguard")
+    public String trustSafeguard() {
+    	return "web/xintuo/trustSafeguard";
+    }
   
 }
