@@ -13,11 +13,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <title>淘金山——信托</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
+<link href="assets/css/ui/simu.css" rel="stylesheet" />
 
- <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
+<script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
+<script type="text/javascript" src="assets/scripts/ui/Slide.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
 html{ width:100%; height:100%;background:#f5f5f5;}
@@ -51,66 +52,55 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 
 <!-- 焦点广告 开始 -->
-<div class="header">
-<div  class="tjs_1108px" style=" margin:0 auto;position: relative; z-index:20000;height:360px;">
-<div class="top_header_logindiv"  id="tip120"  style="display:block">
-<div class="top_login_title">快速注册  仅需10秒</div>
-<div  style=" height:22px; width:100%;"></div>
+  <div id="slideBox" class="slideBox">
+            <div class="hd">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li><a class="inter_cutimg"  href="" target="_blank"></a></li>
+                    <li><a class="inter_cutimg img02" href="" target="_blank"></a></li>
+                    <li><a class="inter_cutimg img03" href="" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
+        </div>
+        <script type="text/javascript">
+            $(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
+        </script>
+        <div class="tjs_liuchengbg"></div>
+        
 
-<div class="tjs_topinput_div">手机号：<input name="" type="text" class="tjs_login_input tjs_width180px" /></div>
-<div class="tjs_topinput_div">
-<div class="tjs_v_div_left">验证码：<input name="" type="text" class="tjs_login_input tjs_width90px" /></div>
-<div class="tjs_v_div_right"><img src="assets/img/ui/verification_img.png" width="65" height="30" /> <span><a href="#" class="tjs_registerurl">看不清</a></span></div>
+
+<div class="tjs_content_div">
+<div class="tjs_1108px center">
+<div class="tjs_liucheng"></div>
+<div class="tjs_slogan_div"><span style="font-size:42px; color:#FF6600">淘金山</span>&nbsp;&nbsp;&nbsp;是一个致力于安全保障，稳健收益的实力平台</div>
+<div class="tjs_advantage_div">
+<ul>
+<li>
+<div class="tjs_icodiv"><img src="assets/img/ui/trend_ico.png" width="120" height="120"/></div>
+<div class="tjs_ico_titlediv tjs_colorblue">高额收益</div>
+<div class="tjs_ico_textdiv">年化收益率高达 <span class="tjs_colororange">14.6%</span></div>
+</li>
+<li>
+<div class="tjs_icodiv"><img src="assets/img/ui/safety_ico.png" width="120" height="120"/></div>
+<div class="tjs_ico_titlediv tjs_colorgreen">安全保障</div>
+<div class="tjs_ico_textdiv">本息收益 <span class="tjs_colororange">100%</span> 保障</div>
+</li>
+<li>
+<div class="tjs_icodiv"><img src="assets/img/ui/money.png" width="120" height="120"/></div>
+<div class="tjs_ico_titlediv tjs_colorcyan">优质项目</div>
+<div class="tjs_ico_textdiv">收益稳健</div>
+</li>
+</ul>
 </div>
-<div class="learfloat"></div>
-<div  style=" height:26px; width:100%;"></div>
-<div class="tjs_btndiv"><a href="#" class="tjs_next_btn" onclick='show("tip120","img128")'>下一步</a><!--<input name="" type="button" value="下一步" class="tjs_register_btn" onclick='show("tip120","img128")'/>--></div>
-<div class="tjs_talkdiv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="checkbox" value="" checked="checked" /> <a href="#" class="tjs_registerurl">我同意《淘金山用户使用协议》</a></div>
 </div>
-<!-- /top_header_logindiv -->
-
-<div class="top_header_logindiv"  id="img128" style="display:none">
-<div class="top_login_title">快速注册 仅需10秒</div>
-
-<div class="tjs_cellphone_div"><span>手机号：<span style="color:#ff6600">13798239230</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_pw_url"><span style="color:#00aeff">修改</span></a></span></div>
-<div class="tjs_pw_div_left">短信验证码：</div>
-<div class="tjs_pw_div_right"><input name="" type="text" class="tjs_login_input tjs_width90px" />&nbsp;&nbsp;<span><a href="#">未收到？</a></span></div>
-
-<div class="learfloat"></div>
-<div class="tjs_topinput_pw_div">设置密码：<input name="" type="text" class="tjs_login_input tjs_width150px" /></div>
-
-<div class="tjs_topinput_pw_div">重复密码：<input name="" type="text" class="tjs_login_input tjs_width150px" /></div>
-
-<div  style=" height:5px; width:100%; font-size:0px;"></div>
-<div class="tjs_pw_btndiv"><a href="#" class="tjs_ok_btn"  onclick='show("tip120","img128")'>完成</a></div>
-
-</div>
-<!-- /top_header_logindiv -->
-
-
-  <div id="onebyone_slider">
-
-    <div class="oneByOne_item">
-		<span class="ob1_title">漫画原创时间日期Jquery插件</span>
-		<span class="ob1_description">1、可以灵活设计响应事件（Event） 2、层显示的位置（Left，Top）3、年月日之的连接符号 4、自由控制是否显示时间（isTime）5、年份下列列表的开始值与结束值。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创时间日期Jquery插件" />
-	</div>
-   <div class="oneByOne_item">
-		<span class="ob1_title">jcDate原创时间Jquery插件</span>
-		<span class="ob1_description">可支持：1、图标样式名称;2、响应的事件;3、出现的速度;4、靠左的位置;5、靠上的位置;6、日期连接字符;7、关闭时间。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="jcDate原创时间Jquery插件" />
-	</div>
-	<div class="oneByOne_item">
-		<span class="ob1_title">漫画原创弹出内容提示Jquery插件</span>
-		<span class="ob1_description">可支持响应的事件、提示层显示的时间、显示的消息、滑动速度、提示类型（1、success 2、error 3、warning）等参数的灵活设置，具体请查看详细介绍。。。</span>
-		<span class="ob1_button"><a href="http://www.taojinshan.com.cn/" target="_blank" class="default_button">查看详情</a></span>
-		<img src="assets/img/ui/header/2.png" class="ob1_img_device1" alt="漫画原创弹出内容提示Jquery插件" />
-	</div>
-
-  </div>
-   </div>
+<!-- /tjs_content_div tjs_1108px -->
 </div>
 <!-- 焦点广告 结束 -->
 
@@ -395,6 +385,45 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- /tis_trust_all -->
 <!--======tab pages JS======-->
 <SCRIPT type=text/javascript>
+var IndexPage = {};
+
+$(function() {  
+	var slideboxshow = function () {
+            //--轮播按钮--
+            $(".slideBox").hover(function () {
+                $(".prev,.next").show();
+            }, function () {
+                $(".prev,.next").hide();
+            });
+            //--/轮播按钮--
+            //--自定义下拉框--
+            $(".sel_wrap").click(function () {
+                $(".select").toggle();
+                $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
+                $(".select>li").each(function (index) {
+                    $(this).click(function () {
+                        var opt = $(this).html();
+                        $(".lbl").html(opt);
+                    })
+                })
+                })
+            //--/自定义下拉框--
+            //--表格单行变色--
+            $("tr:even").css("background", "#EEEDEB");
+            //--/表格单行变色--
+        }
+        //--预约--
+        IndexPage.alertbox = function() {
+            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
+        }
+        //--/预约--
+		   
+		   
+		slideboxshow();
+		});
+
+
+
 function selectTag(showContent,selfObj){
 	// 
 	var tag = document.getElementById("tags").getElementsByTagName("li");
