@@ -33,14 +33,14 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	@Override
 	public int insertProductXtcp(ProductXtcp productXtcp) {	
 		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
-		productXtcp.setXtcpGszhname(productXtgs.getXgtsZhname());
+		productXtcp.setXtcpGszhname(productXtgs.getXgtsSplname());
 		return productXtcpMapper.insertProductXtcp(productXtcp);		
 	}
 
 	@Override
 	public int updateProductXtcp(ProductXtcp productXtcp) {
 		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
-		productXtcp.setXtcpGszhname(productXtgs.getXgtsZhname());
+		productXtcp.setXtcpGszhname(productXtgs.getXgtsSplname());
 		return productXtcpMapper.updateProductXtcp(productXtcp);
 	}
 

@@ -139,7 +139,7 @@ public class XinTuoCpControler {
     	for(ProductXtgs productXtgs1:lstGs){
     		Lable lable = new Lable();
     		lable.setId(productXtgs1.getXtgsId().toString());
-    		lable.setTitle(productXtgs1.getXgtsZhname());
+    		lable.setTitle(productXtgs1.getXgtsSplname());
     		lstLable.add(lable);
     	}   	
     	result.put("total", icount);
