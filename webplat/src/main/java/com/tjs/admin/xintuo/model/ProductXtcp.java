@@ -85,9 +85,19 @@ public class ProductXtcp {
 	private String xtcpStatus;
 	/**活动*/
 	private String xtcpHd;
+	/**信托产品简称*/
+	private String xtcpSplname;
     
     
-    public BigDecimal getXtcpNsyl() {
+	
+  
+	public String getXtcpSplname() {
+		return xtcpSplname;
+	}
+	public void setXtcpSplname(String xtcpSplname) {
+		this.xtcpSplname = xtcpSplname;
+	}
+	public BigDecimal getXtcpNsyl() {
 		return xtcpNsyl;
 	}
 	public void setXtcpNsyl(BigDecimal xtcpNsyl) {

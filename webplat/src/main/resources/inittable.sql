@@ -263,5 +263,17 @@ CREATE TABLE `pe_product_net` (
 
 
 ALTER TABLE `tjs`.`tjs_product_xtcp` 
-CHANGE COLUMN `xtcp_rzf` `xtcp_rzf` VARCHAR(4000) NULL DEFAULT NULL COMMENT '融资方' ;
+CHANGE COLUMN `xtcp_sysm` `xtcp_sysm` VARCHAR(4000) NULL DEFAULT NULL COMMENT '收益说明' ;
+
+
+ALTER TABLE `tjs`.`tjs_product_xtcp` 
+CHANGE COLUMN `xtcp_zcglr` `xtcp_zcglr` VARCHAR(4000) NULL DEFAULT NULL COMMENT '资产管理人' ;
+
+
+ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ADD COLUMN `xtcp_splname` VARCHAR(500) NULL AFTER `xtcp_city`;
+
+
+
+
 

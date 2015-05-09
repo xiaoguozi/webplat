@@ -21,9 +21,16 @@
     <form id="modalForm" action="rest/admin/xintuo/xintuocp/insertData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="xtcpId" value="${productXtcp.xtcpId}">
         <div class="form-group">
-            <label class="col-md-2 control-label">信托产品</label>
+            <label class="col-md-2 control-label">信托产品全称</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="xtcpFullname" value="${productXtcp.xtcpFullname}" >
+            </div>            
+        </div>
+        
+        <div class="form-group">
+            <label class="col-md-2 control-label">信托产品简称</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control required" name="xtcpSplname" value="${productXtcp.xtcpSplname}" >
             </div>            
         </div>
         

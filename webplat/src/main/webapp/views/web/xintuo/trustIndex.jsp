@@ -135,7 +135,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpFullname}</span></td>
+    <td align="left">&nbsp;&nbsp;<span>${xintuotop.xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
@@ -194,7 +194,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 	</div>
 	
 	<div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-	<div class="tjs_trust_title"><a href="#">${xintuofootsmall.xtcpFullname}</a></div>
+	<div class="tjs_trust_title"><a href="#">${xintuofootsmall.xtcpSplname}</a></div>
 	<div class="tjs_trust_bonus">${xintuofootsmall.xtcpHd}</div>
 	<div class="tjs_trust_contentdiv">${xintuofootsmall.xtcpDp}</div>
 	</div>
