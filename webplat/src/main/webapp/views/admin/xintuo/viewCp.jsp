@@ -123,7 +123,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">收益说明</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpSysm" value="${productXtcp.xtcpSysm}" >
+                  <textarea rows="3" cols="100" class="form-control required" name="xtcpSysm">${productXtcp.xtcpSysm}</textarea>
             </div>
              
         </div>

@@ -260,3 +260,8 @@ CREATE TABLE `pe_product_net` (
   `last_modify_date` datetime DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品净值表';
+
+
+ALTER TABLE `tjs`.`tjs_product_xtcp` 
+CHANGE COLUMN `xtcp_rzf` `xtcp_rzf` VARCHAR(4000) NULL DEFAULT NULL COMMENT '融资方' ;
+
