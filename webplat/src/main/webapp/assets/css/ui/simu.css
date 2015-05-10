@@ -83,12 +83,25 @@
     height:400px;
     display:block;
 }
-    .inter_cutimg img02 {
+.inter_cutimg img02 {
         background: url(../../img/ui2/images02.jpg) no-repeat center center;
     }
-    .inter_cutimg img03 {
+.inter_cutimg img03 {
         background: url(../../img/ui2/images03.jpg) no-repeat center center;
     }
+    
+    
+ .xintuo_cutimg {
+    background: url(../../img/ui/banner/xintu1.jpg) no-repeat center center;
+    width:100%;
+    height:400px;
+    display:block;
+}
+.xintuo_cutimg img02 {
+        background: url(../../img/ui/banner/xintu2.jpg) no-repeat center center;
+    }
+
+       
     .slideBox .prev,
     .slideBox .next {
         position: absolute;

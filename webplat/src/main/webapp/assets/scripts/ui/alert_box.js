@@ -84,9 +84,16 @@
     btn1.href = 'javascript:void(0)';
     btn1.innerHTML = '<cite>我要预约</cite>';
     btn1.onclick = function () {
+    	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")){
+    		alert("需要填写名字和电话号码");
+    		return ;
+    	}    	
+        if(IndexPage.orderProduct){
+        	IndexPage.orderProduct(document.getElementById("productId").value,document.getElementById("productType").value,document.getElementById("alert_name").value,document.getElementById("alert_tel").value);
+        }
         document.body.removeChild(alertBox);
         document.body.removeChild(shadowDiv);
-        return true;
+        return true; 
     };
     alertBox.appendChild(btn1);
     if (mode === 1) {

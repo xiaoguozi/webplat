@@ -18,6 +18,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
 <script type="text/javascript" src="assets/scripts/ui/Slide.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
@@ -60,11 +61,10 @@ html{ width:100%; height:100%;background:#f5f5f5;}
                     <li>3</li>
                 </ul>
             </div>
-            <div class="bd">
-                <ul>
-                    <li><a class="inter_cutimg"  href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img02" href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img03" href="" target="_blank"></a></li>
+            <div class="bd">           
+                <ul>                
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/xintu1.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/xintu2.jpg"/></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
@@ -97,8 +97,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr  width="90%" >
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
-    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}">${xintuotop.xtcpSplname}</a></span></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
@@ -107,7 +107,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_right_textdiv"> 门槛：  <fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/>万 | 期限：${xintuotop.xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv"> ${xintuotop.xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">立即预约</a></div>
+<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
 </div>
 </c:forEach>
 
@@ -152,11 +152,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootSmalls}" var="xintuofootsmall" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 	<div class="tjs_float_left tjs_width165px">
-	<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+	<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 	</div>
 	
 	<div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-	<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}">${xintuofootsmall.xtcpSplname}</a></div>
+	<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}" target="_blank">${xintuofootsmall.xtcpSplname}</a></div>
 	<div class="tjs_trust_bonus">${xintuofootsmall.xtcpHd}</div>
 	<div class="tjs_trust_contentdiv">${xintuofootsmall.xtcpDp}</div>
 	</div>
@@ -168,7 +168,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 	<div class="tjs_float_left tjs_width225px tjs_height145px">
 	<div class="tjs_trust_order">
 	<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
+	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootsmall.xtcpId}">立即预约</a></div>
 	</div>
 	</div>
 </div>
@@ -188,11 +188,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOnes}" var="xintuofootone" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}">${xintuofootone.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank">${xintuofootone.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${xintuofootone.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${xintuofootone.xtcpDp}</div>
 </div>
@@ -204,7 +204,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootone.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootone.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
+<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootone.xtcpId}">立即预约</a></div>
 </div>
 </div>
 </div>
@@ -225,11 +225,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootHighs}" var="lstTopfootHighs" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}">${lstTopfootHighs.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank">${lstTopfootHighs.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootHighs.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootHighs.xtcpDp}</div>
 </div>
@@ -241,7 +241,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
+<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootHighs.xtcpId}">立即预约</a></div>
 </div>
 </div>
 </div>
@@ -259,11 +259,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOthers}" var="lstTopfootOthers" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}">${lstTopfootOthers.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank">${lstTopfootOthers.xtcpFullname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootOthers.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootOthers.xtcpDp}</div>
 </div>
@@ -275,7 +275,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
+<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootOthers.xtcpId}">立即预约</a></div>
 </div>
 </div>
 </div>
@@ -358,6 +358,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!--======tab pages JS======-->
 <SCRIPT type=text/javascript>
 var IndexPage = {};
+IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 
 $(function() {  
 	var slideboxshow = function () {
@@ -383,20 +384,48 @@ $(function() {
             //--表格单行变色--
             $("tr:even").css("background", "#EEEDEB");
             //--/表格单行变色--
-        }
-        //--预约--
-        IndexPage.alertbox = function() {
-            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-        }
-        //--/预约--
-		   
-		   
+        }      		  		   
 		slideboxshow();
+    		
+		  //--预约--                   
+		$("a.tjs_btn").click(function(event){	
+			event.preventDefault();
+			var htmlMgs="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";
+				htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
+				htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
+			    alertMsg(htmlMgs, 1);  							    
+				if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+			        $('[placeholder]').focus(function() {
+			            var input = $(this);
+			            if (input.val() == input.attr('placeholder')) {
+			                input.val('');
+			                input.removeClass('placeholder');
+			            }
+			        }).blur(function() {
+			            var input = $(this);
+			            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+			                input.addClass('placeholder');
+			                input.val(input.attr('placeholder'));
+			            }
+			        }).blur();
+			    };
 		});
+		  
+		IndexPage.orderProduct= function(productId,productType,username,usertel){
+		     $.post(IndexPage.orderProductUrl, 
+		            $('#orderform').formSerialize(),
+		            function(data){		              
+						
+		             });
+		 }        
+		});
+      //--/预约--
 
-
-
-function selectTag(showContent,selfObj){
+      
+  function placeholderSupport() {
+	    return 'placeholder' in document.createElement('input');
+	}
+   function selectTag(showContent,selfObj){
 	// 
 	var tag = document.getElementById("tags").getElementsByTagName("li");
 	var taglength = tag.length;
@@ -410,6 +439,8 @@ function selectTag(showContent,selfObj){
 	}
 	document.getElementById(showContent).style.display = "block";
 }
+      
+
 </SCRIPT>
 </body>
 </html>

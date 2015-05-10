@@ -11,9 +11,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${productXtgs.xgtsSplname}</title>
+<script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
-
+<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 <style>
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
 html{ width:100%; height:100%;background:#f5f5f5;}
@@ -158,7 +160,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width340px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${productXtcp.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn">立即预约</a></div>
+<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
 </div>
 </div>
 
@@ -214,20 +216,47 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- /tis_trust_all -->
 <!--======tab pages JS======-->
 <SCRIPT type=text/javascript>
-function selectTag(showContent,selfObj){
-	// 
-	var tag = document.getElementById("tags").getElementsByTagName("li");
-	var taglength = tag.length;
-	for(i=0; i<taglength; i++){
-		tag[i].className = "";
-	}
-	selfObj.parentNode.className = "selectTag";
-	// 
-	for(i=0; j=document.getElementById("tagContent"+i); i++){
-		j.style.display = "none";
-	}
-	document.getElementById(showContent).style.display = "block";
+var IndexPage = {};
+IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
+$(function () {                   
+    //--预约--                   
+	$("a.tjs_btn").click(function(event){	
+		event.preventDefault();
+		var htmlMgs="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";
+			htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
+			htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
+		    alertMsg(htmlMgs, 1);  							    
+			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+		        $('[placeholder]').focus(function() {
+		            var input = $(this);
+		            if (input.val() == input.attr('placeholder')) {
+		                input.val('');
+		                input.removeClass('placeholder');
+		            }
+		        }).blur(function() {
+		            var input = $(this);
+		            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		                input.addClass('placeholder');
+		                input.val(input.attr('placeholder'));
+		            }
+		        }).blur();
+		    };
+	});
+	  
+	IndexPage.orderProduct= function(productId,productType,username,usertel){
+	     $.post(IndexPage.orderProductUrl, 
+	            $('#orderform').formSerialize(),
+	            function(data){		              
+					
+	             });
+	 }  
+	    		       
+}); 
+
+function placeholderSupport() {
+    return 'placeholder' in document.createElement('input');
 }
+
 </SCRIPT>
 </body>
 </html>

@@ -283,6 +283,15 @@ ALTER TABLE `tjs`.`tjs_product_xtcp`
 CHANGE COLUMN `xtcp_rzf` `xtcp_rzf` VARCHAR(4000) NULL DEFAULT NULL COMMENT '融资方' ;
 
 
+ALTER TABLE `tjs`.`tjs_order` 
+ADD COLUMN `order_remark` VARCHAR(2000) NULL COMMENT '备注' AFTER `order_operate_date`;
+
+ALTER TABLE `tjs`.`tjs_order` 
+CHANGE COLUMN `order_id` `order_id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '订单号' ;
+
+
+
+
 
 
 
