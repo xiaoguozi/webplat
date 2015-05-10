@@ -84,7 +84,8 @@
     btn1.href = 'javascript:void(0)';
     btn1.innerHTML = '<cite>我要预约</cite>';
     btn1.onclick = function () {
-    	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")){
+    	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")
+    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""){
     		alert("需要填写名字和电话号码");
     		return ;
     	}    	

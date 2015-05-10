@@ -279,21 +279,7 @@ $(function(){
 			htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
 			htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
 		    alertMsg(htmlMgs, 1);  							    
-			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
-		        $('[placeholder]').focus(function() {
-		            var input = $(this);
-		            if (input.val() == input.attr('placeholder')) {
-		                input.val('');
-		                input.removeClass('placeholder');
-		            }
-		        }).blur(function() {
-		            var input = $(this);
-		            if (input.val() == '' || input.val() == input.attr('placeholder')) {
-		                input.addClass('placeholder');
-		                input.val(input.attr('placeholder'));
-		            }
-		        }).blur();
-		    };
+		
 	});
 	  
 	IndexPage.orderProduct= function(productId,productType,username,usertel){
