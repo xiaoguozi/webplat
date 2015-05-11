@@ -59,7 +59,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <li class="flow_menu_dash"><a href="#F">资产管理</a></li>
 </ul>
 </div>
-<div class="tjs_pcs_title" style="width:100%">产品概况  <a name="A" id="A"></a><div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div></div>
+<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div> <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a><a href="#" class="tjs_countbtn">理财计算</a></div></div>
 <div style=" height:10px; width:100%; font-size:0px;"></div>
 <div class="tjs_pcs_box">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tjs_pcs_bable">
@@ -278,7 +278,22 @@ $(function(){
 		var htmlMgs="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";
 			htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
 			htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
-		    alertMsg(htmlMgs, 1);  							    
+		    alertMsg(htmlMgs, 1);
+			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+		        $('[placeholder]').focus(function() {
+		            var input = $(this);
+		            if (input.val() == input.attr('placeholder')) {
+		                input.val('');
+		                input.removeClass('placeholder');
+		            }
+		        }).blur(function() {
+		            var input = $(this);
+		            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		                input.addClass('placeholder');
+		                input.val(input.attr('placeholder'));
+		            }
+		        }).blur();
+		    };
 		
 	});
 	  

@@ -980,7 +980,8 @@ background-color: #f4f6fe;
 
 /*particulars CSS*/
 .tjs_pcs_title{width:auto; height:60px; line-height:60px; color:#FF6600; font-size:28px; text-align:left;}
-.tjs_pcs_titleright{ padding-top:12px;width:360px;height: auto;text-align:left; float:right;}
+.tjs_pcs_titleleft{width:360px; height:58px; line-height:58px;text-align:left; float: left;}
+.tjs_pcs_titleright{ margin-left:360px;width: auto;height:58px; line-height:58px;text-align:right;}
 .tjs_pcs_box{ width: auto;min-height:120px;height:auto !important;height:120px; line-height:24px; color:#666; background-color:#FFF;border-bottom:solid 1px #ECECEC;overflow:hidden;}
 .tjs_pcs_bable{ font-size:16px;color:#999; }
 .tjs_pcs_titleoddbg{background-color:#F2F2F2; padding-left:24px;text-align:left;}
