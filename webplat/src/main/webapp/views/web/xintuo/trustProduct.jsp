@@ -114,22 +114,20 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 <li><div class="tjs_condition_left">付息方式： </div><div class="tjs_condition_right" id="xtcpLxfp"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="按月付息">按月付息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn"  tag="20" title="按季付息">按季付息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn"  tag="30" title="半年付息">半年付息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn"  tag="40" title="按年付息">按年付息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn"  tag="50" title="到期付息">到期付息</a></div></li>
 
-<li><div class="tjs_condition_left">投资领域：</div><div class="tjs_condition_right" id="xtcpTzly"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="房地产">房地产</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20" title="金融">金融</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30">基础设施</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="40">工商企业</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50">其他</a></div></li>
+<li><div class="tjs_condition_left">投资领域：</div><div class="tjs_condition_right" id="xtcpTzly"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="房地产">房地产</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20" title="金融">金融</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30" title="基础设施">基础设施</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="40" title="工商企业">工商企业</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50"  title="其他">其他</a></div></li>
 
-<li><div class="tjs_condition_left">项目所在地：</div><div class="tjs_condition_right" id="xtcpArea"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10">珠三角</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20">江浙沪</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30">京津冀</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50">其它地区</a></div></li>
-<!--  
+<li><div class="tjs_condition_left">项目所在地：</div><div class="tjs_condition_right" id="xtcpArea"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="珠三角">珠三角</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20" title="江浙沪">江浙沪</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30" title="京津冀">京津冀</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50" title="其它地区">其它地区</a></div></li>
+
 <li><div class="tjs_condition_left">信托公司： </div><div class="tjs_condition_right" id="xtcpGsId"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">平安信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中融信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中信信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">华润信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">四川信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中江信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中泰信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">更多></a></div></li>
--->
+
 </ul>
 <form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
 <div class="tjs_dashed_bottom tjst_height_32px"></div>
 <div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
 <div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">已选条件： </div>
-<div class="tjs_pct_right">
-<a href="#" class="tjs_close_btn">50万</a>&nbsp;&nbsp;
-<a href="#" class="tjs_close_btn">12个月</a>&nbsp;&nbsp;
-<a href="#" class="tjs_close_btn">12个月</a>&nbsp;&nbsp;
-<a href="#" class="tjs_close_btn">半年付息</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="tjs_pct_right "><span class="searchCondition">
+
+</span>
 共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="#">清空条件</a></div></div>
 </div>
@@ -211,13 +209,43 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <SCRIPT type=text/javascript>
 var IndexPage = {};
 IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
-	$(function () {             
+	$(function () {  
+		//初始化选择按钮
 	    $("#xtcpZdrgje a[tag=${xintuoSearVO.xtcpZdrgje}]").addClass("tjs_condition_selected");
 	    $("#xtcpCxq a[tag=${xintuoSearVO.xtcpCxq}]").addClass("tjs_condition_selected");
 	    $("#xtcpNsyl a[tag=${xintuoSearVO.xtcpNsyl}]").addClass("tjs_condition_selected");
 	    $("#xtcpLxfp a[tag=${xintuoSearVO.xtcpLxfp}]").addClass("tjs_condition_selected");
 	    $("#xtcpTzly a[tag=${xintuoSearVO.xtcpTzly}]").addClass("tjs_condition_selected");
 	    $("#xtcpArea a[tag=${xintuoSearVO.xtcpArea}]").addClass("tjs_condition_selected");
+	    
+	    //初始化选这按钮
+	    if($("#xtcpZdrgje a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpZdrgje a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    if($("#xtcpCxq a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpCxq a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    if($("#xtcpNsyl a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpNsyl a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    if($("#xtcpLxfp a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpLxfp a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    if($("#xtcpTzly a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpTzly a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    if($("#xtcpArea a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpArea a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	   
+	    
+	    
+	    	    
 	    $("li .tjs_condition_right a").click(function(event){
 	    	event.preventDefault();
 	    	$(this).removeClass("tjs_condition_selected").addClass("tjs_condition_selected").siblings().removeClass("tjs_condition_selected");

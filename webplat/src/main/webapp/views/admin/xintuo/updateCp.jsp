@@ -91,7 +91,7 @@
                    <input type="checkbox" name="xtcpXtlx" value="10" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'10')}">checked="checked"</c:if>>小额信托
                    <input type="checkbox" name="xtcpXtlx" value="20" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'20')}">checked="checked"</c:if>>1年期信托
                    <input type="checkbox" name="xtcpXtlx" value="30" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'30')}">checked="checked"</c:if>>高收益信托       
-                   <input type="checkbox" name="xtcpXtlx" value="40" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'40')}">checked="checked"</c:if>>政信类依托                     
+                   <input type="checkbox" name="xtcpXtlx" value="40" <c:if test="${fn:contains(productXtcp.xtcpXtlx,'40')}">checked="checked"</c:if>>政信类信托                    
             </div>
             </div>
             
@@ -128,7 +128,11 @@
           <div class="form-group">
             <label class="col-md-2 control-label">投资领域</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpTzly" value="${productXtcp.xtcpTzly}" >
+                <input type="radio" name="xtcpTzly" value="10" <c:if test="${productXtcp.xtcpTzly== '10'}">checked="checked"</c:if>>房地产
+                <input type="radio" name="xtcpTzly" value="20" <c:if test="${productXtcp.xtcpTzly== '20'}">checked="checked"</c:if>>金融
+                <input type="radio" name="xtcpTzly" value="30" <c:if test="${productXtcp.xtcpTzly== '30'}">checked="checked"</c:if>>基础设施      
+                <input type="radio" name="xtcpTzly" value="40" <c:if test="${productXtcp.xtcpTzly== '40'}">checked="checked"</c:if>>工商企业
+                <input type="radio" name="xtcpTzly" value="50" <c:if test="${productXtcp.xtcpTzly== '50'}">checked="checked"</c:if>>其他
             </div>
              
         </div>
@@ -159,7 +163,10 @@
         <div class="form-group">
         <label class="col-md-2 control-label">所在区域</label>
             <div class="col-md-6">
-             <input type="text" class="form-control required" name="xtcpArea" value="${productXtcp.xtcpArea}" >
+                <input type="radio" name="xtcpArea" value="10" <c:if test="${productXtcp.xtcpArea== '10'}">checked="checked"</c:if>>珠三角
+                <input type="radio" name="xtcpArea" value="20" <c:if test="${productXtcp.xtcpArea== '20'}">checked="checked"</c:if>>江浙沪
+                <input type="radio" name="xtcpArea" value="30" <c:if test="${productXtcp.xtcpArea== '30'}">checked="checked"</c:if>>京津冀       
+                <input type="radio" name="xtcpArea" value="50" <c:if test="${productXtcp.xtcpArea== '50'}">checked="checked"</c:if>>其它地区
             </div>
         </div>
         

@@ -137,7 +137,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   </tr>
   <tr>
     <td height="40" class="tjs_pcs_titleevenbg">投资领域：</td>
-    <td class="tjs_pcs_textevenbg">${productXtcp.xtcpTzly}</td>
+    <td class="tjs_pcs_textevenbg">    
+             <c:choose>  
+                <c:when test="${productXtcp.xtcpTzly=='10'}">  
+                  		房地产
+                </c:when>
+                 <c:when test="${productXtcp.xtcpTzly=='20'}">  
+                  		  金融
+                </c:when>
+                 <c:when test="${productXtcp.xtcpTzly=='30'}">  
+                  		基础设施  
+                </c:when> 
+                 <c:when test="${productXtcp.xtcpTzly=='40'}">  
+                  		工商企业
+                </c:when> 
+                 <c:when test="${productXtcp.xtcpTzly=='50'}">  
+                  		其他
+                </c:when>                 
+                <c:otherwise>  
+                     	其他
+                </c:otherwise>  
+            </c:choose>
+          </td>
+    
+    
+    
     <td class="tjs_pcs_titleevenbg">抵押物:</td>
     <td class="tjs_pcs_textevenbg">${productXtcp.xtcpDyw}</td>
   </tr>
