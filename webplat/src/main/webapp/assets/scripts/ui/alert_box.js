@@ -54,8 +54,8 @@
     }();
     //alert(winSize.pageWidth);
     //遮罩层
-    var styleStr = 'top:0;left:0;position:fixed;z-index:10000;background:#000;width:100%;height:100%;';
-    styleStr += (isIe) ? "filter:alpha(opacity=10);" : "opacity:0.1;"; //遮罩层DIV
+    var styleStr = 'top:0;left:0;position:fixed;z-index:10000;width:100%;height:100%;';
+    styleStr += (isIe) ? "filter:alpha(opacity=10);background:none;" : "opacity:0.1;background:#000;"; //遮罩层DIV
     var shadowDiv = document.createElement('div'); //添加阴影DIV
     shadowDiv.style.cssText = styleStr; //添加样式
     shadowDiv.id = "shadowDiv";
@@ -85,16 +85,16 @@
     btn1.innerHTML = '<cite>我要预约</cite>';
     btn1.onclick = function () {
     	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")
-    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""){
-    		alert("需要填写名字和电话号码");
-    		return ;
+    	    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""){
+			alert("需要填写名字和电话号码");
+			return ;
     	}    	
         if(IndexPage.orderProduct){
         	IndexPage.orderProduct(document.getElementById("productId").value,document.getElementById("productType").value,document.getElementById("alert_name").value,document.getElementById("alert_tel").value);
         }
         document.body.removeChild(alertBox);
         document.body.removeChild(shadowDiv);
-        return true; 
+        return true;
     };
     alertBox.appendChild(btn1);
     if (mode === 1) {
