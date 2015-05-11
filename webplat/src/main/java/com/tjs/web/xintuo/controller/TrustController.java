@@ -232,7 +232,6 @@ public class TrustController {
     @RequestMapping("/orderProduct")
     @ResponseBody
     public Map<String, String> orderProduct(@RequestParam(value="productId",required=false) Long productId,@RequestParam(value="productType") String productType,@RequestParam(value="alert_name") String userName,@RequestParam(value="alert_tel") String  userTel) {
-    	System.err.println(">>>>"+productId+">>>>>>"+productType+">>>>>>>>>>>>>>>>"+userName+">>>>>>>>>>>>"+userTel);
     	Order order = new Order();
     	order.setCreateDate(new Date());
     	//未处理

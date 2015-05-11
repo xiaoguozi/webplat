@@ -116,14 +116,22 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 <li><div class="tjs_condition_left">投资领域：</div><div class="tjs_condition_right" id="xtcpTzly"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="房地产">房地产</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20" title="金融">金融</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30">基础设施</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="40">工商企业</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50">其他</a></div></li>
 
-<li><div class="tjs_condition_left">项目所在地：</div><div class="tjs_condition_right" id="xtcpArea"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10">珠三角</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20">江浙</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30">沪京</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="40">津冀</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50">其它地区</a></div></li>
-
+<li><div class="tjs_condition_left">项目所在地：</div><div class="tjs_condition_right" id="xtcpArea"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10">珠三角</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20">江浙沪</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30">京津冀</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50">其它地区</a></div></li>
+<!--  
 <li><div class="tjs_condition_left">信托公司： </div><div class="tjs_condition_right" id="xtcpGsId"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">平安信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中融信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中信信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">华润信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">四川信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中江信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中泰信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">更多></a></div></li>
+-->
 </ul>
 <form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
 <div class="tjs_dashed_bottom tjst_height_32px"></div>
 <div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
-<div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">产品期限：</div><div class="tjs_pct_right">共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">清空条件</a></div></div>
+<div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">已选条件： </div>
+<div class="tjs_pct_right">
+<a href="#" class="tjs_close_btn">50万</a>&nbsp;&nbsp;
+<a href="#" class="tjs_close_btn">12个月</a>&nbsp;&nbsp;
+<a href="#" class="tjs_close_btn">12个月</a>&nbsp;&nbsp;
+<a href="#" class="tjs_close_btn">半年付息</a>&nbsp;&nbsp;&nbsp;&nbsp;
+共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#">清空条件</a></div></div>
 </div>
 <!-- //tjs_product_search -->
 
