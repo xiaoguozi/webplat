@@ -33,12 +33,7 @@
             </div>            
         </div>
         
-        <div class="form-group">
-             <label class="col-md-2 control-label">信托产品LOGO</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpLog" value="${productXtcp.xtcpLog}"  >
-            </div>
-        </div>
+     
         
          <div class="form-group">
             <label class="col-md-2 control-label">信托公司名称</label>

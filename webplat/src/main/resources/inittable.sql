@@ -290,6 +290,10 @@ ALTER TABLE `tjs`.`tjs_order`
 CHANGE COLUMN `order_id` `order_id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '订单号' ;
 
 
+ALTER TABLE `tjs`.`tjs_product_xtgs` 
+CHANGE COLUMN `xgts_zczb` `xgts_zczb` DECIMAL(18,2) NULL DEFAULT NULL COMMENT '注册资本' ;
+
+
 
 
 

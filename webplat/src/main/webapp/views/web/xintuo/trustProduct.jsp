@@ -73,12 +73,12 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
   </tr>
 
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuotop.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuotop.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuotop.xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛：<fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限： ${xintuotop.xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xintuotop.xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px"> ${xintuotop.xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
 </div>
 
@@ -153,12 +153,12 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
   </tr>
 </div>
 <div class="tjs_pct_icodiv">
-<div class="tjs_pct_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuoProduct.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuoProduct.xtcpNsyl*100%100}" pattern="00"/>%</div>
+<div class="tjs_pct_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuoProduct.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuoProduct.xtcpNsyl*100%100}" pattern="00"/>%</div>
 <div  style=" height:15px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuoProduct.xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xintuoProduct.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限：  ${xintuoProduct.xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xintuoProduct.xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px"> ${xintuoProduct.xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuoProduct.xtcpId}">>立即预约</a></div>
 </div>
 <!-- /tjs_pct_unit 01 -->
@@ -220,29 +220,38 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    
 	    //初始化选这按钮
 	    if($("#xtcpZdrgje a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpZdrgje a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpZdrgje'>"+$("#xtcpZdrgje a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
 	    
 	    if($("#xtcpCxq a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpCxq a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpCxq'>"+$("#xtcpCxq a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
 	    
 	    if($("#xtcpNsyl a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpNsyl a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpNsyl'>"+$("#xtcpNsyl a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
 	    
 	    if($("#xtcpLxfp a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpLxfp a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpLxfp'>"+$("#xtcpLxfp a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
 	    
 	    if($("#xtcpTzly a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpTzly a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpTzly'>"+$("#xtcpTzly a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
 	    
 	    if($("#xtcpArea a.tjs_condition_selected").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn'>"+$("#xtcpArea a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpArea'>"+$("#xtcpArea a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
+	    
 	   
+	    $(".searchCondition a").click(function(event){
+	    	event.preventDefault();	    	
+	    	$("#"+$(this).attr("condition_name")+" a").removeClass("tjs_condition_selected");
+	    	$("#"+$(this).attr("condition_name")+" a[tag=0]").addClass("tjs_condition_selected");	    		    	
+	    	var params =SetPara();	    	    	
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+
+	    });
 	    
 	    
 	    	    

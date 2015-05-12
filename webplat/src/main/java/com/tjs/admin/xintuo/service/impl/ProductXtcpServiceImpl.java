@@ -34,6 +34,7 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	public int insertProductXtcp(ProductXtcp productXtcp) {	
 		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
 		productXtcp.setXtcpGszhname(productXtgs.getXgtsSplname());
+		productXtcp.setXtcpLog(productXtgs.getXtgsLog());
 		return productXtcpMapper.insertProductXtcp(productXtcp);		
 	}
 
@@ -41,6 +42,7 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 	public int updateProductXtcp(ProductXtcp productXtcp) {
 		ProductXtgs productXtgs =productXtgsMapper.findByProductXtgsId(productXtcp.getXtcpGsId());
 		productXtcp.setXtcpGszhname(productXtgs.getXgtsSplname());
+		productXtcp.setXtcpLog(productXtgs.getXtgsLog());
 		return productXtcpMapper.updateProductXtcp(productXtcp);
 	}
 
@@ -79,6 +81,12 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 
 	@Override
 	public List<ProductXtcp> selectProductXtcpIndex() {
+		List<ProductXtcp> lstVOs = productXtcpMapper.selectProductXtcpIndex();		
+		BigDecimal div10000 = new BigDecimal(10000);
+		for(ProductXtcp product:lstVOs){
+			product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+			product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+		}		
 		return productXtcpMapper.selectProductXtcpIndex();
 	}
 

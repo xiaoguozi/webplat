@@ -47,7 +47,29 @@
                 </c:otherwise>  
             </c:choose>                              
         </td>
-        <td>${xintuocp.xtcpTzly}</td>      
+        <td>
+         <c:choose>  
+                <c:when test="${xintuocp.xtcpTzly=='10'}">  
+                  		房地产
+                </c:when>
+                 <c:when test="${xintuocp.xtcpTzly=='20'}">  
+                  		金融
+                </c:when>
+                 <c:when test="${xintuocp.xtcpTzly=='30'}">  
+                  		 基础设施
+                </c:when> 
+                 <c:when test="${xintuocp.xtcpTzly=='40'}">  
+                  		工商企业
+                </c:when> 
+                 <c:when test="${xintuocp.xtcpTzly=='50'}">  
+                  		其他
+                </c:when>     
+                <c:otherwise>  
+                     	其他
+                </c:otherwise>  
+            </c:choose> 
+        
+        </td>      
         <td>
               <c:choose>  
                 <c:when test="${xintuocp.xtcpStatus=='10'}">  

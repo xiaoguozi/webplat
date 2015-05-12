@@ -127,7 +127,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <td align="center">${ProductXtgs.xgtsGsxz}</td>
     <td align="center">${ProductXtgs.xgtsFrdb}</td>
     <td align="center">${ProductXtgs.xgtsCity}</td>
-    <td align="center"><fmt:formatDate value="${ProductXtgs.xgtsCreatedate}" pattern="yyyy-MM-dd"/></td>
+    <td align="center"><fmt:formatDate value="${ProductXtgs.xgtsCreatedate}" pattern="yyyy-MM"/></td>
   </tr> 
 </c:forEach>
    

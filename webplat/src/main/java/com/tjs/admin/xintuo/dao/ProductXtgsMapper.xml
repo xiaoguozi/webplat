@@ -108,7 +108,7 @@
         xgts_enname=#{xgtsEnname},
         xgts_splname=#{xgtsSplname},
         xgts_createdate=#{xgtsCreatedate},
-        xgts_zczb=#{xgtsZczb},
+        xgts_zczb=#{xgtsZczb,javaType=java.math.BigDecimal},
         xgts_city=#{xgtsCity},
         xgts_gsz=#{xgtsGsz},
         xgts_zjl=#{xgtsZjl},
