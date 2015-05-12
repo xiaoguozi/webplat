@@ -4,7 +4,7 @@
 <div class="row" >
     <div class="col-md-12">
 
-<div id="listDiv">
+<div id="net_listDiv">
 <!-- BEGIN PAGE HEADER-->
 <div class="row">
     <div class="col-md-12">
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <form id="searchForm" class="form-inline" role="form">
+        <form id="net_searchForm" class="form-inline" role="form">
             <div class="form-group">
                 <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
                 <input type="hidden" name="sortField" value="">
@@ -22,16 +22,16 @@
                 <input type="hidden" name="pageNo" value="">
                 <input type="hidden" name="pageSize" value="">
             </div>&nbsp;&nbsp;
-            <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
-            <button type="button" id="insertBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</button>
-            <button type="button" id="deleteBtn" class="btn btn-danger ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-trash"></span> 删除</button>
+            <button type="submit" id="net_searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+            <button type="button" id="net_insertBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</button>
+            <button type="button" id="net_deleteBtn" class="btn btn-danger ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-trash"></span> 删除</button>
         </form>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
                 <div class="table-scroll table-scrollable">
-            <table id="list-data" class="table table-striped table-bordered table-hover dataTable no-footer">
+            <table id="net_list-data" class="table table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                     <tr>
                         <th class="data-operator">
@@ -55,7 +55,7 @@
             </table>
         </div>
         <div class="row" >
-            <div id="paginationDiv" class="col-md-12">
+            <div id="net_paginationDiv" class="col-md-12">
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
 
 </div>
 
-<div id="modalDiv" class="hidden" >
+<div id="net_modalDiv" class="hidden" >
 </div>
 
     </div>
@@ -71,7 +71,7 @@
 
 <script type="text/javascript">
 
-var IndexPage = {};
+var net_IndexPage = {};
 
 $(function(){
     var insertUrl = "rest/admin/pe/peProductNet/insert";
@@ -81,24 +81,24 @@ $(function(){
     var listDataCountUrl = "rest/admin/pe/peProductNet/listDataCount";
     var listDataUrl = "rest/admin/pe/peProductNet/listData";
 
-    Btk.form($('#searchForm'));
+    Btk.form($('#net_searchForm'));
 
     //搜索事件
-    $("#searchBtn").click(function(event) {
+    $("#net_searchBtn").click(function(event) {
         event.preventDefault();
         loadList();
         return false;
     }).click();
 
-    $("#searchForm select[name=sType]").change(function(event) {
+    $("#net_searchForm select[name=sType]").change(function(event) {
         event.preventDefault();
         loadList();
         return false;
     })
 
     //新增事件
-    $("#insertBtn").click(function() {
-        $("#modalDiv").load(
+    $("#net_insertBtn").click(function() {
+        $("#net_modalDiv").load(
             insertUrl, 
             {
             },
@@ -109,8 +109,8 @@ $(function(){
     });
 
     //删除事件
-    $("#deleteBtn").click(function() {
-        var ids = Btk.tableCheckedIds($("#list-data"));
+    $("#net_deleteBtn").click(function() {
+        var ids = Btk.tableCheckedIds($("#net_list-data"));
         if(!ids){
             Btk.message("请选择记录进行操作！");
             return false;
@@ -137,9 +137,9 @@ $(function(){
 
     //修改事件
     function updateEvent(){
-        $("#list-data > tbody a.edit").click(function(event) {
+        $("#net_list-data > tbody a.edit").click(function(event) {
             event.preventDefault();
-            $("#modalDiv").load(
+            $("#net_modalDiv").load(
                 updateUrl, 
                 {
                     "id": $(this).attr("data-id")?$(this).attr("data-id"):""
@@ -153,9 +153,9 @@ $(function(){
 
     //查看事件
     function viewEvent(){
-        $("#list-data > tbody a.view").click(function(event) {
+        $("#net_list-data > tbody a.view").click(function(event) {
             event.preventDefault();
-            $("#modalDiv").load(
+            $("#net_modalDiv").load(
                 viewUrl, 
                 {
                     "id": $(this).attr("data-id")?$(this).attr("data-id"):""
@@ -169,25 +169,25 @@ $(function(){
 
     //加载列表
     function loadList(pageSize){
-        var _pageSize = $("#searchForm input[name='pageSize']").val();
+        var _pageSize = $("#net_searchForm input[name='pageSize']").val();
         if(!pageSize){
             _pageSize = _pageSize?_pageSize:Btk.defaultPageSize;
         }else{
             _pageSize = pageSize
         }
-        $("#searchForm input[name='pageSize']").val(_pageSize);
-        $("#searchForm input[name='pageNo']").val("0");
+        $("#net_searchForm input[name='pageSize']").val(_pageSize);
+        $("#net_searchForm input[name='pageNo']").val("0");
         $.post(
             listDataCountUrl, 
-            $('#searchForm').formSerialize(),
+            $('#net_searchForm').formSerialize(),
             function(data){
                 if(data && data.total){
                     //分页数据
-                    $("#paginationDiv").BtkPagination({
+                    $("#net_paginationDiv").BtkPagination({
                         pageSize: _pageSize,
                         totalCount: data.total,
                         loadPaginationData: function(pNo){
-                            $("#searchForm input[name='pageNo']").val(pNo);
+                            $("#net_searchForm input[name='pageNo']").val(pNo);
                             loadListData();
                         },
                         loadData: function(pSize){
@@ -202,41 +202,41 @@ $(function(){
     //加载列表数据
     function loadListData(){
         Btk.loading("show");
-        $("#list-data > tbody").load(
+        $("#net_list-data > tbody").load(
             listDataUrl, 
-            $('#searchForm').formSerialize(), 
+            $('#net_searchForm').formSerialize(), 
             function(){
                 updateEvent();
                 viewEvent();
-                Btk.table($("#list-data"));
+                Btk.table($("#net_list-data"));
                 Btk.loading("hide");
             });
     }
 
-    $("#list-data").BtkTable({
+    $("#net_list-data").BtkTable({
         thSort: function(){
-            $("#searchForm input[name='sortField']").val($(this).attr("field"));
-            $("#searchForm input[name='sortType']").val($(this).attr("sortType"));
+            $("#net_searchForm input[name='sortField']").val($(this).attr("field"));
+            $("#net_searchForm input[name='sortType']").val($(this).attr("sortType"));
             loadListData();
         }
     });
 
     function togglePage(type){
         if("list" == type){
-            $('#modalDiv').empty();
-            $('#modalDiv').addClass('hidden');
-            $('#listDiv').removeClass('hidden');
+            $('#net_modalDiv').empty();
+            $('#net_modalDiv').addClass('hidden');
+            $('#net_listDiv').removeClass('hidden');
         }else if("modal" == type){
-            $('#modalDiv').removeClass('hidden');
-            $('#listDiv').addClass('hidden');
+            $('#net_modalDiv').removeClass('hidden');
+            $('#net_listDiv').addClass('hidden');
         }
     }
 
-    IndexPage.togglePage = function(type){
+    net_IndexPage.togglePage = function(type){
         togglePage(type);
     }
 
-    IndexPage.loadListData = function(){
+    net_IndexPage.loadListData = function(){
         loadListData();
     }
 

@@ -9,8 +9,8 @@
         <h3 class="page-title pull-left">私募产品收益排名  <small>修改</small></h3>
         
 <div class="pull-right">
-    <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
-    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
+    <button type="button" class="btn btn-default income_modalCloseBtn" data-dismiss="modal">关闭</button>
+    <button type="button" id="income_modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
 </div>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
@@ -18,7 +18,7 @@
 <!-- END PAGE HEADER-->
 
 <div class="modal-body">
-    <form id="modalForm" action="rest/admin/pe/peProductIncome/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
+    <form id="income_modalForm" action="rest/admin/pe/peProductIncome/updateData" method="post" class="form-horizontal" role="form" data-submit="#income_modalSaveBtn">
         <input type="hidden" name="id" value="${peProductIncome.id}">
      	
         <div class="form-group">
@@ -71,15 +71,15 @@
 
 $(function(){
 
-    Btk.form($("#modalForm"),"update",function(data){
+    Btk.form($("#income_modalForm"),"update",function(data){
         if("0"==data.code){
-            IndexPage.togglePage('list');
-            $("#searchBtn").click();
+            income_IndexPage.togglePage('list');
+            $("#income_searchBtn").click();
         }
     });
 
-    $("button.modalCloseBtn").unbind('click').click(function(event) {
-        IndexPage.togglePage('list');
+    $("button.income_modalCloseBtn").unbind('click').click(function(event) {
+        income_IndexPage.togglePage('list');
     });
 
 
