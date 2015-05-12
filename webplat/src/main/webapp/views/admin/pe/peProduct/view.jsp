@@ -7,15 +7,42 @@
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title pull-left">私募产品  <small>查看</small></h3>
-        
-<div class="pull-right">
-    <button type="button" class="btn btn-primary modalCloseBtn" data-dismiss="modal">关闭</button>
-</div>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
 </div>
 <!-- END PAGE HEADER-->
+<div>
+	<ul class="nav nav-tabs" role="tablist" id="myTab">
+	  <li role="presentation" class="active">
+	  	<a href="#product" aria-controls="product" role="tab" data-toggle="tab" >
+	  		产品基本信息
+	  	</a>
+	  </li>
+	  <li role="presentation">
+	  	<a href="#income" aria-controls="income" role="tab" data-toggle="tab">
+	  		收益表
+	  	</a>
+	  </li>
+	  <li role="presentation">
+	  	<a href="#net" aria-controls="net" role="tab" data-toggle="tab">
+	  		净值表
+	  	</a>
+	  </li>
+	</ul>
+</div>
 
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="product">
+  <div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+        
+	<div class="pull-right">
+	    <button type="button" class="btn btn-primary modalCloseBtn" data-dismiss="modal">关闭</button>
+	</div>
+        <!-- END PAGE TITLE & BREADCRUMB-->
+    </div>
+</div>
 <div class="modal-body">
     <form id="modalForm" action="" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="id" value="${peProduct.id}">
@@ -228,13 +255,42 @@
         </div>
     </form>
 </div>
-
+</div>
+ <div role="tabpanel" class="tab-pane" id="income"></div>
+  <div role="tabpanel" class="tab-pane" id="net"></div>
+</div>
 
 <script type="text/javascript">
+var productId = 0;
 
 $(function(){
+	
+	 $('#myTab a').click(function (e) { 
+	      e.preventDefault();//阻止a链接的跳转行为 
+	      $(this).tab('show');//显示当前选中的链接及关联的content 
+	      var sel = $(this).attr("href");
+	      var isload = $(this).attr("data-load");
+	      if("yes" != isload){	
+	    	  var loadUrl = "";
+	    	  if("#income" == sel){
+	    		  loadUrl = "rest/admin/pe/peProductIncome/index?productId=" + productId;
+	    	  }if("#net" == sel){
+	    		  loadUrl = "rest/admin/pe/peProductNet/index?productId=" + productId;
+	    	  }
+	    	  if(loadUrl){
 
-    Btk.form($("#modalForm"),"view");
+	        	  $(""+sel).load(loadUrl);
+	        	  $(this).attr("data-load","yes");
+	    	  }
+	      }
+	    }); 
+	 
+    Btk.form($("#modalForm"),"view",function(data){
+        if(peProduct != ""){
+              productId = ${peProduct.id};
+          }
+          
+      });
 
 
     $("button.modalCloseBtn").unbind('click').click(function(event) {
