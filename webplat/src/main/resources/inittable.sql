@@ -276,7 +276,11 @@ ADD COLUMN `xtcp_splname` VARCHAR(500) NULL AFTER `xtcp_city`;
 
 ALTER TABLE `tjs`.`tjs_product_xtcp` 
 CHANGE COLUMN `xtcp_splname` `xtcp_splname` VARCHAR(500) NULL DEFAULT NULL COMMENT '产品简称' ,
-ADD COLUMN `xtcp_tzfs` VARCHAR(100) NULL COMMENT '投资方式' AFTER `xtcp_tzfs`;
+ADD COLUMN `xtcp_tzfs` VARCHAR(100) NULL COMMENT '投资方式' AFTER `xtcp_splname`;
+
+
+ALTER TABLE `tjs`.`tjs_product_xtcp` 
+CHANGE COLUMN `xtcp_rzf` `xtcp_rzf` VARCHAR(4000) NULL DEFAULT NULL COMMENT '融资方' ;
 
 
 
