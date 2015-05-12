@@ -5,11 +5,14 @@
         <id column="id" property="id" jdbcType="BIGINT" />
    		<result property="name" column="name" jdbcType="VARCHAR"  />
    		<result property="accumulatedIncome" column="accumulated_income" jdbcType="VARCHAR"  />
+   		<result property="netWorth" column="net_worth" jdbcType="VARCHAR"  />
+   		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
    		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
    		<result property="managerName" column="manager_name"  jdbcType="VARCHAR" />
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
    		<result property="managerReview" column="manager_review" jdbcType="VARCHAR" />
    		
+   		<result property="yearRate" column="year_rate" jdbcType="VARCHAR" />
    		<result property="nowRate" column="now_rate" jdbcType="VARCHAR" />
    		<result property="oneRate" column="one_rate" jdbcType="VARCHAR" />
    		<result property="towRate" column="tow_rate" jdbcType="VARCHAR" />
@@ -18,6 +21,26 @@
     </resultMap>
  
  	 <select id="getTop4PEProductList" resultMap="peIndexProductMap" >
+        SELECT 
+		  P.id,
+		  P.name,
+		  P.accumulated_income,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  M.REVIEW manager_review
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M 
+		WHERE P.id = MP.product_id 
+		  AND MP.MANAGER_ID = M.ID 
+		  AND P.recommend_location = 2
+		ORDER BY P.ACCUMULATED_INCOME DESC
+		LIMIT 0,4
+    </select>
+    
+ 	 <select id="getTop4AnyPEProductList" resultMap="peIndexProductMap" >
         SELECT 
 		  P.id,
 		  P.name,
@@ -60,6 +83,40 @@
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,10
     </select>
+    
+ 	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel">
+        SELECT 
+		  P.id,
+		  P.name,
+		  P.accumulated_income,
+		  P.net_worth,
+		  P.run_time,
+		  P.year_rate,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  P.now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  C.name company_name,
+		  M.REVIEW manager_review
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M,
+		  PE_COMPANY C
+		WHERE P.id = MP.product_id 
+		  AND P.status != 3
+		  AND MP.MANAGER_ID = M.ID 
+		  AND M.company_id = C.id
+		ORDER BY P.ACCUMULATED_INCOME DESC
+		
+		<if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
+        
+    </select>
+ 	 
    
     
 </mapper>

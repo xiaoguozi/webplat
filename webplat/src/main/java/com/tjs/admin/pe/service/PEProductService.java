@@ -40,16 +40,28 @@ public interface PEProductService  {
 	
 	/**
 	 * 得到私募首页顶级私募推荐
-	 * @param peProductCtrlModel
-	 * @return PEProduct 集合
+	 * @return PETopProduct 集合
 	 */
 	List<PETopProduct> getTop4PEProductList();
 	
 	/**
+	 * 得到私募产品顶级私募推荐
+	 * @return PETopProduct 集合
+	 */
+	List<PETopProduct> getTop4AnyPEProductList();
+	
+	/**
 	 * 得到私募首页私募收益排行
 	 * @param peProductCtrlModel
-	 * @return PEProduct 集合
+	 * @return PETopProduct 集合
 	 */
 	List<PETopProduct> getTop10PEProductList();
+	
+	/**
+	 * 得到私募所有产品
+	 * @param peProductCtrlModel
+	 * @return PETopProduct 集合
+	 */
+	List<PETopProduct> getAnyPEProductList(PEProductCtrlModel peProductCtrlModel);
 	
 }

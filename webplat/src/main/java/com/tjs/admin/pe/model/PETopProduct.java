@@ -11,6 +11,15 @@ public class PETopProduct {
 	/** 累计收益 */
 	private String accumulatedIncome;
 	
+	/** 最新净值 */
+	private String netWorth;
+	
+	/** 运行时间 */
+	private String runTime;
+	
+	/** 年收益率 */
+	private String yearRate;
+	
 	/** 今年以来收益率 */
 	private String nowRate;
 	
@@ -122,6 +131,30 @@ public class PETopProduct {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public String getNetWorth() {
+		return netWorth;
+	}
+
+	public void setNetWorth(String netWorth) {
+		this.netWorth = netWorth;
+	}
+
+	public String getRunTime() {
+		return runTime;
+	}
+
+	public void setRunTime(String runTime) {
+		this.runTime = runTime;
+	}
+
+	public String getYearRate() {
+		return yearRate;
+	}
+
+	public void setYearRate(String yearRate) {
+		this.yearRate = yearRate;
 	}
 
 	

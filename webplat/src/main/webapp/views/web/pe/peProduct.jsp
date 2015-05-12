@@ -74,18 +74,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</div>
 					<div class="box_bd">
 						<ul class="simu_hotpro_list clearfix">
+							<c:forEach items="${top4Data}" var="peTop4Product">
 							<li class="hotpro_item bg_hover">
 								<div class="hotpro_hd">
-									<a href="" target="_blank"><span class="txt_1">徐翔</span>&nbsp;
-										<span class="txt_2">泽熙3期</span> </a>
+									<a href="" target="_blank"><span class="txt_1">${peTop4Product.managerName}</span>&nbsp;
+										<span class="txt_2">${peTop4Product.name}</span> </a>
 								</div>
 								<div class="hotpro_income">
-									<span class="income_tit">累计收益</span><br /> <span class="money">534.<em
-										class="small">88%</em>
+									<span class="income_tit">累计收益</span><br /> <span class="money"><fmt:formatNumber value="${peTop4Product.accumulatedIncome}" pattern="#0"/>.<em
+										class="small"><fmt:formatNumber value="${peTop4Product.accumulatedIncome*100%100}" pattern="00"/>%</em>
 									</span>
 								</div>
 								<div class="hotpro_comment">
-									<span class="comment_tit"></span>私募一哥，风格犀利，踩点精准，业绩遥遥领先！
+									<span class="comment_tit"></span>${peTop4Product.managerReview}
 								</div>
 								<div class="hotpro_control">
 									<a class="uc_btn_primary uc_btn simu_reserve_btn"
@@ -94,67 +95,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									</a>
 								</div>
 							</li>
-							<li class="hotpro_item bg_hover">
-								<div class="hotpro_hd">
-									<a href="" target="_blank"><span class="txt_1">张小川</span>&nbsp;
-										<span class="txt_2">清水源1号</span> </a>
-								</div>
-								<div class="hotpro_income">
-									<span class="income_tit">累计收益</span> <br /> <span
-										class="money">672.<em class="small">89%</em>
-									</span>
-								</div>
-								<div class="hotpro_comment">
-									<span class="comment_tit"></span>擅长趋势投资策略，风控严谨产品回撤幅度小！
-								</div>
-								<div class="hotpro_control">
-									<a class="uc_btn_primary uc_btn simu_reserve_btn"
-										href="javascript:void(0)" onclick="alertbox(this)"> <img
-										src="assets/img/ui/clock.png" />立即预约
-									</a>
-								</div>
-							</li>
-							<li class="hotpro_item bg_hover">
-								<div class="hotpro_hd">
-									<a href="" target="_blank"><span class="txt_1">赵军</span>&nbsp;
-										<span class="txt_2">淡水泉成长一期</span> </a>
-								</div>
-								<div class="hotpro_income">
-									<span class="income_tit">累计收益</span><br /> <span class="money">358.<em
-										class="small">86%</em>
-									</span>
-								</div>
-								<div class="hotpro_comment">
-									<span class="comment_tit"></span>老牌大型私募，业绩持续稳定，管理规模排名前三！
-								</div>
-								<div class="hotpro_control">
-									<a class="uc_btn_primary uc_btn simu_reserve_btn"
-										href="javascript:void(0)" onclick="alertbox(this)"> <img
-										src="assets/img/ui/clock.png" />立即预约
-									</a>
-								</div>
-							</li>
-							<li class="hotpro_item bg_hover"
-								style="border-right: 1px solid #e1e1e1">
-								<div class="hotpro_hd">
-									<a href="" target="_blank"><span class="txt_1">张高</span>&nbsp;
-										<span class="txt_2">鼎锋成长一期</span> </a>
-								</div>
-								<div class="hotpro_income">
-									<span class="income_tit">累计收益</span><br /> <span class="money">312.<em
-										class="small">70%</em>
-									</span>
-								</div>
-								<div class="hotpro_comment">
-									<span class="comment_tit"></span>专注成长投资+主题博弈，累计收益已破290%！
-								</div>
-								<div class="hotpro_control">
-									<a class="uc_btn_primary uc_btn simu_reserve_btn"
-										href="javascript:void(0)" onclick="alertbox(this)"> <img
-										src="assets/img/ui/clock.png" />立即预约
-									</a>
-								</div>
-							</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -450,6 +391,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${lstAll}" var="peAllProduct">
 									<tr class="odd">
 										<td class="c_c c_b c_first_control">
 											<div class="lb_wrap">
@@ -457,15 +399,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 													type="checkbox">
 											</div>
 										</td>
-										<td class="c_l"><a href="simuchanpinmingxi.html">翼虎成长5期</a></td>
-										<td class="c_l">余定恒</td>
-										<td class="c_c_s c_b">翼虎投资</td>
-										<td class="c_r_s"><span>99.92</span></td>
-										<td class="c_r_s"><span class="f_f80 ">392.00%</span></td>
-										<td class="c_c_s c_b">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s c_b ">380.00%</td>
+										<td class="c_l"><a href="simuchanpinmingxi.html">${peAllProduct.name }</td>
+										<td class="c_l">${peAllProduct.managerName }</td>
+										<td class="c_c_s c_b">${peAllProduct.companyName }</td>
+										<td class="c_r_s"><span>${peAllProduct.netWorth }</span></td>
+										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peTop4Product.accumulatedIncome}" pattern="#0"/>.<fmt:formatNumber value="${peTop4Product.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
+										<td class="c_c_s c_b">${peAllProduct.runTime }</td>
+										<td class="c_r_s">${peAllProduct.towRate }</td>
+										<td class="c_r_s">${peAllProduct.oneRate }</td>
+										<td class="c_r_s c_b "><fmt:formatNumber value="${peTop4Product.yearRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop4Product.yearRate*100%100}" pattern="00"/>%</td>
 										<td class="c_b">
 											<div class="trend_viewer">
 												<div class="trend_viewer_hd">
@@ -480,126 +422,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_c"><a
 											class="tb_btn tb_btn_primary simu_reserve_btn" href="">预约</a></td>
 									</tr>
-									<tr class="odd">
-										<td class="c_c c_b c_first_control">
-											<div class="lb_wrap">
-												<span class="lb_b"></span> <input class="tb_chk"
-													type="checkbox">
-											</div>
-										</td>
-										<td class="c_l"><a href="simuchanpinmingxi.html">翼虎成长5期</a></td>
-										<td class="c_l">余定恒</td>
-										<td class="c_c_s c_b">翼虎投资</td>
-										<td class="c_r_s"><span>99.92</span></td>
-										<td class="c_r_s"><span class="f_f80 ">392.00%</span></td>
-										<td class="c_c_s c_b">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s c_b ">380.00%</td>
-										<td class="c_b">
-											<div class="trend_viewer">
-												<div class="trend_viewer_hd">
-													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
-												</div>
-												<div class="details_show">
-													<em class="left_icon"></em>
-													<div class="details_boxes"></div>
-												</div>
-											</div>
-										</td>
-										<td class="c_c"><a
-											class="tb_btn tb_btn_primary simu_reserve_btn" href="">预约</a></td>
-									</tr>
-									<tr class="odd">
-										<td class="c_c c_b c_first_control">
-											<div class="lb_wrap">
-												<span class="lb_b"></span> <input class="tb_chk"
-													type="checkbox">
-											</div>
-										</td>
-										<td class="c_l"><a href="simuchanpinmingxi.html">翼虎成长5期</a></td>
-										<td class="c_l">余定恒</td>
-										<td class="c_c_s c_b">翼虎投资</td>
-										<td class="c_r_s"><span>99.92</span></td>
-										<td class="c_r_s"><span class="f_f80 ">392.00%</span></td>
-										<td class="c_c_s c_b">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s c_b ">380.00%</td>
-										<td class="c_b">
-											<div class="trend_viewer">
-												<div class="trend_viewer_hd">
-													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
-												</div>
-												<div class="details_show">
-													<em class="left_icon"></em>
-													<div class="details_boxes"></div>
-												</div>
-											</div>
-										</td>
-										<td class="c_c"><a
-											class="tb_btn tb_btn_primary simu_reserve_btn" href="">预约</a></td>
-									</tr>
-									<tr class="odd">
-										<td class="c_c c_b c_first_control">
-											<div class="lb_wrap">
-												<span class="lb_b"></span> <input class="tb_chk"
-													type="checkbox">
-											</div>
-										</td>
-										<td class="c_l"><a href="simuchanpinmingxi.html">翼虎成长5期</a></td>
-										<td class="c_l">余定恒</td>
-										<td class="c_c_s c_b">翼虎投资</td>
-										<td class="c_r_s"><span>99.92</span></td>
-										<td class="c_r_s"><span class="f_f80 ">392.00%</span></td>
-										<td class="c_c_s c_b">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s c_b ">380.00%</td>
-										<td class="c_b">
-											<div class="trend_viewer">
-												<div class="trend_viewer_hd">
-													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
-												</div>
-												<div class="details_show">
-													<em class="left_icon"></em>
-													<div class="details_boxes"></div>
-												</div>
-											</div>
-										</td>
-										<td class="c_c"><a
-											class="tb_btn tb_btn_primary simu_reserve_btn" href="">预约</a></td>
-									</tr>
-									<tr class="odd">
-										<td class="c_c c_b c_first_control">
-											<div class="lb_wrap">
-												<span class="lb_b"></span> <input class="tb_chk"
-													type="checkbox">
-											</div>
-										</td>
-										<td class="c_l"><a href="simuchanpinmingxi.html">翼虎成长5期</a></td>
-										<td class="c_l">余定恒</td>
-										<td class="c_c_s c_b">翼虎投资</td>
-										<td class="c_r_s"><span>99.92</span></td>
-										<td class="c_r_s"><span class="f_f80 ">392.00%</span></td>
-										<td class="c_c_s c_b">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s">---</td>
-										<td class="c_r_s c_b ">380.00%</td>
-										<td class="c_b">
-											<div class="trend_viewer">
-												<div class="trend_viewer_hd">
-													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
-												</div>
-												<div class="details_show">
-													<em class="left_icon"></em>
-													<div class="details_boxes"></div>
-												</div>
-											</div>
-										</td>
-										<td class="c_c"><a
-											class="tb_btn tb_btn_primary simu_reserve_btn" href="">预约</a></td>
-									</tr>
+									</c:forEach>
 									<tr>
 										<td colspan="12" class="foot_page" style="text-align: center;">
 											<a href="#"><em>|</em><</a><a class="pagingnum" href="#"><</a><a
@@ -692,6 +515,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
         }
         //--/预约--
+        
+        //--/详情框--
+        //--点击更多js--
+        function packUp(btn, i) {
+            var num = true;
+            $(btn).click(function () {
+                if (num) {
+                    var shouqi = "&gt; 收起";
+                    num = false;
+                } else {
+                    var shouqi = "&gt; 更多";
+                    num = true;
+                }
+                $(this).html(shouqi);
+                $(".mult_more_wrap:eq(" + i + ")").toggle();
+            });
+        }
+        packUp("#tjs_more", 0);
+        packUp("#tjs_mores", 1);
+        
     </script>
 
 
