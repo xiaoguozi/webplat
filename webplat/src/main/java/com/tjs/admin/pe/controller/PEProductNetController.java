@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.service.PEProductNetService;
+import com.tjs.admin.pe.service.PEProductService;
 
 /**
  * 私募产品净值控制器
@@ -29,14 +31,18 @@ public class PEProductNetController {
 	@Resource
 	private PEProductNetService peProductNetService;
 	
-	
 	@RequestMapping("/index")
-    public String index() {
+    public String index(PEProductNetCtrlModel peProductNetCtrlModel, Model model) {
+		String productId = peProductNetCtrlModel.getProductId();
+		model.addAttribute("productId", productId);
         return "admin/pe/peProductNet/index";
     }
 	
 	@RequestMapping("/insert")
     public String insert(PEProductNet peProductNet, PEProductNetCtrlModel peProductNetCtrlModel, Model model) {
+		PEProduct peProduct = peProductNetService.getPEProductById(peProductNetCtrlModel);
+		peProductNet.setProductId(peProduct.getId());
+		peProductNet.setProductName(peProduct.getName());
     	model.addAttribute("peProductNet", peProductNet);
     	model.addAttribute("ctrlData", peProductNetCtrlModel);
         return "admin/pe/peProductNet/insert";

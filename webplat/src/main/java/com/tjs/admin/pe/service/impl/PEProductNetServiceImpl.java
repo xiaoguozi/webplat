@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.dao.PEProductNetMapper;
+import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.service.PEProductNetService;
+import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
 
 /**
@@ -26,6 +28,9 @@ public class PEProductNetServiceImpl implements PEProductNetService {
 	
 	@Resource
 	private PEProductNetMapper peProductNetMapper;
+	
+	@Resource
+	private PEProductService peProductService;
 
 	@Override
 	public void insertPEProductNet(PEProductNet peProductNet) {
@@ -75,6 +80,12 @@ public class PEProductNetServiceImpl implements PEProductNetService {
 		Date netTime = DateUtils.str2Date(peProductNetCtrlModel.getNetTimeStr());
 		peProductNet.setNetTime(netTime);
 		this.updatePEProductNet(peProductNet);
+	}
+
+	@Override
+	public PEProduct getPEProductById(PEProductNetCtrlModel peProductNetCtrlModel) {
+		long productId = Long.valueOf(peProductNetCtrlModel.getProductId()).longValue();
+		return peProductService.getPEProductById(productId);
 	}
 
 }
