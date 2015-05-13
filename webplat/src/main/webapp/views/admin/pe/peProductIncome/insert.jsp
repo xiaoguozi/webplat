@@ -23,7 +23,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">产品名称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="productName" value="${peProductIncome.productName}" >
+                <input type="text" class="form-control required" name="productName" value="${peProductIncome.productName}" readonly>
             </div>
         </div>
         <div class="form-group">

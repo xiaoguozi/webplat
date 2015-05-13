@@ -266,7 +266,6 @@
 </div>
 
 <script type="text/javascript">
-var productId = 0;
 
 $(function(){
 	
@@ -278,9 +277,9 @@ $(function(){
 	      if("yes" != isload){	
 	    	  var loadUrl = "";
 	    	  if("#income" == sel){
-	    		  loadUrl = "rest/admin/pe/peProductIncome/index?productId=" + productId;
+	    		  loadUrl = "rest/admin/pe/peProductIncome/index?productId=" + ${peProduct.id};
 	    	  }if("#net" == sel){
-	    		  loadUrl = "rest/admin/pe/peProductNet/index?productId=" + productId;
+	    		  loadUrl = "rest/admin/pe/peProductNet/index?productId=" + ${peProduct.id};
 	    	  }
 	    	  if(loadUrl){
 
@@ -294,7 +293,7 @@ $(function(){
         if("0"==data.code){
            // IndexPage.togglePage('list');
            // $("#searchBtn").click();
-        	 productId = data.bizData.id;
+        	
         }
     });
 

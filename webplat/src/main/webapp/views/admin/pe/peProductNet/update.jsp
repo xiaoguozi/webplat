@@ -24,14 +24,14 @@
         <div class="form-group">
             <label class="col-md-3 control-label">产品名称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="productName" value="${peProductNet.productName}" >
+                <input type="text" class="form-control required" name="productName" value="${peProductNet.productName}" readonly>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">净值时间</label>
             <div class="col-md-6">
                 <div class="input-group date form_date" data-date-format="yyyy-mm-dd" startview="1" minview="0">
-                    <input type="text" class="form-control" name="netTimeStr" value="${peProductNet.netTime}">
+                    <input type="text" class="form-control" name="netTimeStr" value="<fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy-MM-dd"/>">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -66,7 +66,7 @@ $(function(){
     Btk.form($("#net_modalForm"),"update",function(data){
         if("0"==data.code){
             net_IndexPage.togglePage('list');
-            $("#searchBtn").click();
+            $("#net_searchBtn").click();
         }
     });
 
