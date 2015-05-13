@@ -74,12 +74,12 @@
 var net_IndexPage = {};
 
 $(function(){
-    var insertUrl = "rest/admin/pe/peProductNet/insert";
-    var updateUrl = "rest/admin/pe/peProductNet/update";
-    var viewUrl = "rest/admin/pe/peProductNet/view";
-    var deleteDataUrl = "rest/admin/pe/peProductNet/deleteData";
-    var listDataCountUrl = "rest/admin/pe/peProductNet/listDataCount";
-    var listDataUrl = "rest/admin/pe/peProductNet/listData";
+    var insertUrl = "rest/admin/pe/peProductNet/insert?productId=" + ${productId};
+    var updateUrl = "rest/admin/pe/peProductNet/update?productId=" + ${productId};
+    var viewUrl = "rest/admin/pe/peProductNet/view?productId=" + ${productId};
+    var deleteDataUrl = "rest/admin/pe/peProductNet/deleteData?productId=" + ${productId};
+    var listDataCountUrl = "rest/admin/pe/peProductNet/listDataCount?productId=" + ${productId};
+    var listDataUrl = "rest/admin/pe/peProductNet/listData?productId=" + ${productId};
 
     Btk.form($('#net_searchForm'));
 
