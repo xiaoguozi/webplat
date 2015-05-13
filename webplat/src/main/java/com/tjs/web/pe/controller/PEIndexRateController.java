@@ -1,24 +1,20 @@
 package com.tjs.web.pe.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
-import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
- * 私募产品控制器
+ * 私募排行控制器
  * 
  *@author duanyujun
  *@since 2015年5月2日
@@ -27,26 +23,26 @@ import com.tjs.admin.pe.service.PEProductService;
 
 @Controller
 @RequestMapping(value = "/web/pe/")
-public class PEIndexProductController {
+public class PEIndexRateController {
 
 	@Resource
 	private PEProductService peProductService;
 	
 	
-	@RequestMapping("/peIndexProduct")
+	@RequestMapping("/peIndexRate")
     public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
-		//查询4个顶级私募
-		List<PETopProduct> showData = new ArrayList<PETopProduct>();
-    	showData = peProductService.getTop4AnyPEProductList();
-    	model.addAttribute("top4Data", showData);
+//		//查询4个顶级私募
+//		List<PETopProduct> showData = new ArrayList<PETopProduct>();
+//    	showData = peProductService.getTop4AnyPEProductList();
+//    	model.addAttribute("top4Data", showData);
+//    	
+//    	//全部产品
+//    	peProductCtrlModel.setPageSize(10);
+//    	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
+//    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
+//    	model.addAttribute("lstAll", lstAll);
     	
-    	//全部产品
-    	peProductCtrlModel.setPageSize(10);
-    	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
-    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
-    	model.addAttribute("lstAll", lstAll);
-    	
-        return "web/pe/peProduct";
+        return "web/pe/peRate";
     }
 	
 //	@RequestMapping("/insert")

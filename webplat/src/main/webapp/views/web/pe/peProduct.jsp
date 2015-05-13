@@ -47,8 +47,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<ul>
 						<li><a href="rest/web/pe/peIndex"><span>私募首页</span></a></li>
 						<li><a href="rest/web/pe/peIndexProduct"><span class="simu_on">私募产品</span></a></li>
-						<li><a href="simuchanpinpaihang.html"><span>私募排行</span></a></li>
-						<li><a href="simuchanpinjingli.html"><span>私募经理</span></a></li>
+						<li><a href="rest/web/pe/peIndexRate"><span>私募排行</span></a></li>
+						<li><a href="rest/web/pe/peIndexManager"><span>私募经理</span></a></li>
 					</ul>
 				</div>
 			</div>
