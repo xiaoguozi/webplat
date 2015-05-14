@@ -62,7 +62,7 @@
             <div class="form-group">
             <label class="col-md-2 control-label">利息分配</label>
             <div class="col-md-6">
-                   <input type="radio" name="xtcpLxfp" value="10" <c:if test="${productXtcp.xtcpLxfp== '10'}">checked="checked"</c:if>>不限按月付息
+                   <input type="radio" name="xtcpLxfp" value="10" <c:if test="${productXtcp.xtcpLxfp== '10'}">checked="checked"</c:if>>按月付息
                   <input type="radio" name="xtcpLxfp" value="20" <c:if test="${productXtcp.xtcpLxfp== '20'}">checked="checked"</c:if>>按季付息
                   <input type="radio" name="xtcpLxfp" value="30" <c:if test="${productXtcp.xtcpLxfp== '30'}">checked="checked"</c:if>>半年付息      
                   <input type="radio" name="xtcpLxfp" value="40" <c:if test="${productXtcp.xtcpLxfp== '40'}">checked="checked"</c:if>>按年付息
@@ -244,7 +244,7 @@
         
         
         <div class="form-group">
-            <label class="col-md-2 control-label">资产管理人</label>
+            <label class="col-md-2 control-label">管理机构</label>
             <div class="col-md-6">
                 <textarea rows="6" cols="100" class="form-control required" name="xtcpZcglr">${productXtcp.xtcpZcglr}</textarea>
             </div>

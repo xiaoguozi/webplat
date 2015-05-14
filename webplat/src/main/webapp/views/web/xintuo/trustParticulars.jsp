@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <li class="flow_menu_dash"><a href="#C">资金用途</a></li>
 <li class="flow_menu_dash"><a href="#D">风控措施</a></li>
 <li class="flow_menu_dash"><a href="#E">还款来源</a></li>
-<li class="flow_menu_dash"><a href="#F">资产管理</a></li>
+<li class="flow_menu_dash"><a href="#F">管理机构</a></li>
 </ul>
 </div>
 <div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div> <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div></div>
@@ -232,7 +232,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px">
-<div class="tjs_pcs_title">资产管理人是谁？<a name="F" id="F"></a></div>
+<div class="tjs_pcs_title">管理机构是谁？<a name="F" id="F"></a></div>
 
  ${productXtcp.xtcpZcglr}
 <!--// tjs_pcs_box 05-->
