@@ -213,7 +213,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank">${xintuofootone.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank">${xintuofootone.xtcpSplname}</a></div>
 <div class="tjs_trust_bonus">${xintuofootone.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${xintuofootone.xtcpDp}</div>
 </div>
@@ -272,7 +272,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank">${lstTopfootHighs.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank">${lstTopfootHighs.xtcpSplname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootHighs.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootHighs.xtcpDp}</div>
 </div>
@@ -327,7 +327,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
-<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank">${lstTopfootOthers.xtcpFullname}</a></div>
+<div class="tjs_trust_title"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank">${lstTopfootOthers.xtcpSplname}</a></div>
 <div class="tjs_trust_bonus">${lstTopfootOthers.xtcpHd}</div>
 <div class="tjs_trust_contentdiv">${lstTopfootOthers.xtcpDp}</div>
 </div>
@@ -466,8 +466,9 @@ $(function() {
                 })
                 })
             //--/自定义下拉框--
-            //--表格单行变色--
-            $("tr:even").css("background", "#EEEDEB");
+            //--表格单行变色--98
+            $("tr:even").css
+            ("background", "#EEEDEB");
             //--/表格单行变色--
         }      		  		   
 		slideboxshow();
@@ -499,7 +500,8 @@ $(function() {
 		IndexPage.orderProduct= function(productId,productType,username,usertel){
 		     $.post(IndexPage.orderProductUrl, 
 		            $('#orderform').formSerialize(),
-		            function(data){		              
+		            function(data){	
+		    	 	   
 						
 		             });
 		 }        

@@ -54,8 +54,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <li class="flow_menu_dash"><a href="#A"  id="flow_menu_click">产品概况</a></li>
 <li class="flow_menu_dash"><a href="#B">融资方</a></li>
 <li class="flow_menu_dash"><a href="#C">资金用途</a></li>
-<li class="flow_menu_dash"><a href="#D">还款来源</a></li>
-<li class="flow_menu_dash"><a href="#E">风控措施</a></li>
+<li class="flow_menu_dash"><a href="#D">风控措施</a></li>
+<li class="flow_menu_dash"><a href="#E">还款来源</a></li>
 <li class="flow_menu_dash"><a href="#F">资产管理</a></li>
 </ul>
 </div>
