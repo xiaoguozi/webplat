@@ -74,7 +74,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
             $(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
         </script>
         <div class="tjs_liuchengbg"></div>
-        
+       
 
 <!-- 焦点广告 结束 -->
 
@@ -86,6 +86,9 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- 精选推荐 开始-->
 
 <div class="tjs_1108px center">
+<div class="tjs_liucheng">
+            </div>
+            
 <div style=" height:20px; width:100%;"></div>
 <div class="tjs_recommend_title tjs_recommend_trusticobg">精选推荐</div>
 <div style=" height:10px; width:100%; font-size:0px;"></div>
@@ -130,7 +133,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 <div class="tjs_1108px center">
 <div class="tjs_trust_product_left">
-<div class="tjs_trust_more"><a href="#">更多...</a></div>
+<div class="tjs_trust_more"><a href="rest/web/xintuo/trust/trustProduct">更多...</a></div>
 <!-- 信托TAB代码 开始 -->
 <div class="tjs_trust_tabtitle">
 <ul id=tags>
