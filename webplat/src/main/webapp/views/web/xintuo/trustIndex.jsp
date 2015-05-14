@@ -13,11 +13,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <title>淘金山——信托</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
-<link href="assets/css/ui/simu.css" rel="stylesheet" />
+<link href="assets/css/ui/simu.css?1=1" rel="stylesheet" />
 
 <script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
 <script type="text/javascript" src="assets/scripts/ui/Slide.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
 <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 
 <style>
@@ -476,35 +477,26 @@ $(function() {
 		  //--预约--                   
 		$("a.tjs_btn").click(function(event){	
 			event.preventDefault();
-			var htmlMgs="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";
-				htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
-				htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
-			    alertMsg(htmlMgs, 1);  							    
-				if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
-			        $('[placeholder]').focus(function() {
-			            var input = $(this);
-			            if (input.val() == input.attr('placeholder')) {
-			                input.val('');
-			                input.removeClass('placeholder');
-			            }
-			        }).blur(function() {
-			            var input = $(this);
-			            if (input.val() == '' || input.val() == input.attr('placeholder')) {
-			                input.addClass('placeholder');
-			                input.val(input.attr('placeholder'));
-			            }
-			        }).blur();
-			    };
+			
+		    alertMsg($(this).attr("data_id"),'10', 1);  
+		    
+			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+		        $('[placeholder]').focus(function() {
+		            var input = $(this);
+		            if (input.val() == input.attr('placeholder')) {
+		                input.val('');
+		                input.removeClass('placeholder');
+		            }
+		        }).blur(function() {
+		            var input = $(this);
+		            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		                input.addClass('placeholder');
+		                input.val(input.attr('placeholder'));
+		            }
+		        }).blur();
+		    };
 		});
-		  
-		IndexPage.orderProduct= function(productId,productType,username,usertel){
-		     $.post(IndexPage.orderProductUrl, 
-		            $('#orderform').formSerialize(),
-		            function(data){	
-		    	 	   
-						
-		             });
-		 }        
+		  		       
 		});
       //--/预约--
 

@@ -1,5 +1,13 @@
-﻿function alertMsg(msg, mode) { //mode为空，即只有一个确认按钮，mode为1时有确认和取消两个按钮
-    msg = msg || '';
+﻿function alertMsg(productId,productType, mode) { //mode为空，即只有一个确认按钮，mode为1时有确认和取消两个按钮	 
+	var msg="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";	
+	msg=msg+"<p><input name='productId' id='productId'  type='hidden' value='"+productId+"'/><input name='productType' id='productType'  type='hidden' value='"+productType+"'/></p>";
+	msg=msg+"<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p>";
+	msg=msg+"<p id='tip_01' style='height:20px'></p>";
+	msg=msg+"<p id='tip_02' style='padding-top:0px;padding-bottom:3px;padding-left:opx;color: red;font-size:13px;text-align:left;display:none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入2-5字中文姓名</p>";				
+	msg=msg+"<p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p>";	
+	msg=msg+"<p id='tip_03' style='padding-top:0px;padding-bottom:3px;padding-left:opx;color: red;font-size:13px;text-align:left;display:none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入11位手机号</p>";	
+	msg=msg+"</div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>";
+	
     mode = mode || 0;
     var top = document.body.scrollTop || document.documentElement.scrollTop;
     var isIe = (document.all) ? true : false;
@@ -85,15 +93,22 @@
     btn1.innerHTML = '<cite>我要预约</cite>';
     btn1.onclick = function () {
     	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")
-    	    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""){
-			alert("需要填写名字和电话号码");
+    	    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""||!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(document.getElementById("alert_tel").value.replace(/^\s+|\s+$/g, '')))){
+			$("#tip_01").css('display',"none");
+			$("#tip_02").css('display',"block");
+			$("#tip_03").css('display',"block");   		
 			return ;
-    	}    	
-        if(IndexPage.orderProduct){
-        	IndexPage.orderProduct(document.getElementById("productId").value,document.getElementById("productType").value,document.getElementById("alert_name").value,document.getElementById("alert_tel").value);
-        }
-        document.body.removeChild(alertBox);
-        document.body.removeChild(shadowDiv);
+    	}  
+    	      			 
+	  $.post(IndexPage.orderProductUrl, 
+        $('#orderform').formSerialize(),
+        function(data){		  
+         document.body.removeChild(alertBox);
+         document.body.removeChild(shadowDiv);
+         alertTip("<div class='capacity'>预约</div><div class='alert_in_box' style='text-align: center; width: 320px;height:300px'><p>恭喜,预约成功！</p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>",1);
+                                   
+      });
+        
         return true;
     };
     alertBox.appendChild(btn1);
@@ -112,3 +127,4 @@
     document.body.appendChild(alertBox);
 
 }
+

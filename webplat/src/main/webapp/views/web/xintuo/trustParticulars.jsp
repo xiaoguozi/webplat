@@ -13,7 +13,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <title>${productXtcp.xtcpSplname}</title>
 <link href="<%=basePath%>assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
  <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/jquery.js"></script>
- <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/scripts/ui/tip_box.js"></script>
 <script src="<%=basePath%>assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 <link href="<%=basePath%>assets/css/ui/simu.css" rel="stylesheet" />
 </head>
@@ -59,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <li class="flow_menu_dash"><a href="#F">资产管理</a></li>
 </ul>
 </div>
-<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div> <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a><a href="#" class="tjs_countbtn">理财计算</a></div></div>
+<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div> <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div></div>
 <div style=" height:10px; width:100%; font-size:0px;"></div>
 <div class="tjs_pcs_box">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tjs_pcs_bable">
@@ -299,10 +300,7 @@ $(function(){
 	 //--预约--                   
 	$("a.tjs_btn").click(function(event){	
 		event.preventDefault();
-		var htmlMgs="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";
-			htmlMgs+="<p><input name='productId' id='productId'  type='hidden' value='"+$(this).attr("data_id")+"'/><input name='productType' id='productType'  type='hidden' value='10'/></p>";
-			htmlMgs+="<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>"
-		    alertMsg(htmlMgs, 1);
+		 alertMsg($(this).attr("data_id"),'10', 1);  	
 			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
 		        $('[placeholder]').focus(function() {
 		            var input = $(this);

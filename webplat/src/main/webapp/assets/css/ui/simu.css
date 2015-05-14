@@ -818,7 +818,7 @@
             color: #3B4E77;
             text-align:center;
             margin-left: 20px;
-            padding-bottom: 10px;
+            padding-bottom: 0px;
         }
         .alert_in_box input {
             border: 1px solid #BED1E4;
