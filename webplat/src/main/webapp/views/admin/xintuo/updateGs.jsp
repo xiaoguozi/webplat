@@ -120,7 +120,7 @@
          <div class="form-group">
          <label class="col-md-2 control-label">公司性质</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required"  maxlength="20" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
+                <input type="text" class="form-control required"  maxlength="10" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
             </div>
          </div>
          
@@ -182,7 +182,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">资产管理规模</label>
             <div class="col-md-6">
-             <input type="text" class="form-control required" name="xgtsZcglgm"  maxlength="20" value="${productXtgs.xgtsZcglgm}"  >     
+             <input type="text" class="form-control required" name="xgtsZcglgm"  maxlength="12" value="${productXtgs.xgtsZcglgm}"  >     
             </div>
             
         </div>
