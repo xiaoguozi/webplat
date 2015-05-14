@@ -117,13 +117,13 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr <c:if test="${status.index%2==0}"> class="tjs_cpy_evenbg"</c:if>>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50" align="right"><a href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank"><img src="assets/img/ui/company_ico01.png" alt="${ProductXtgs.xgtsSplname }" width="36" height="30" align="middle"></a></td>
+    <td width="80" align="right"><a href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank"><img src="assets/img/ui/company_ico01.png" alt="${ProductXtgs.xgtsSplname }" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="${ProductXtgs.xgtsSplname }" href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank">${ProductXtgs.xgtsSplname }</a></td>
   </tr>
 </table></td>
-    <td align="right"><span style="color:#FF6600;">${ProductXtgs.xgtsPjsyl }%</span></td>
-    <td align="right">${ProductXtgs.xgtsCpdfbl }％</td>
-    <td align="right"><fmt:formatNumber value="${ProductXtgs.xgtsZczb}" pattern="#0.####"/></td>
+    <td align="right"><span style="color:#FF6600;">${ProductXtgs.xgtsPjsyl }%&nbsp;&nbsp;&nbsp;</span></td>
+    <td align="right">${ProductXtgs.xgtsCpdfbl }％&nbsp;&nbsp;&nbsp;</td>
+    <td align="right"><fmt:formatNumber value="${ProductXtgs.xgtsZczb}" pattern="#0.####"/>&nbsp;&nbsp;</td>
     <td align="center">${ProductXtgs.xgtsGsxz}</td>
     <td align="center">${ProductXtgs.xgtsFrdb}</td>
     <td align="center">${ProductXtgs.xgtsCity}</td>
