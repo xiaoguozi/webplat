@@ -87,8 +87,11 @@ html{ width:100%; height:100%;background:#f5f5f5;}
       <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsSplname}</td>
   </tr>
   <tr class="even">
-      <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">英文名称：</td>
-      <td colspan="3" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsEnname}</td>
+      <td width="16%" height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">英文名称：</td>
+      <td width="35%" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsEnname}</td>
+      <td width="16%" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">法人代表：</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsFrdb}</td>
+            
   </tr>
   <tr>
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">成立日期：</td>
@@ -103,16 +106,10 @@ html{ width:100%; height:100%;background:#f5f5f5;}
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsGsz}</td>
   </tr>
   <tr>
-      <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">总经理：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsZjl}</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">法人代表：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsFrdb}</td>
-  </tr>
-  <tr class="even">
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">大股东：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">${productXtgs.xgtsDgd}</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsDgd}</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">是否上市：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg"><c:if test="${productXtgs.xgtsSs== '1'}">是</c:if><c:if test="${productXtgs.xgtsSs== '2'}">否</c:if></td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><c:if test="${productXtgs.xgtsSs== '1'}">是</c:if><c:if test="${productXtgs.xgtsSs== '2'}">否</c:if></td>
   </tr>
 </tbody>		
 </table>

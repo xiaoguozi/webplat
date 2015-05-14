@@ -21,13 +21,7 @@
     <form id="modalForm" action="rest/admin/xintuo/xintuogs/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
           <input type="hidden" name="xtgsId" value="${productXtgs.xtgsId}">
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">公司编码</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" name="xtgsCode" value="${productXtgs.xtgsCode}" >
-            </div>
-             
-        </div>
+       
         
         <div class="form-group">
             <label class="col-md-2 control-label">公司LOGO</label>
@@ -95,14 +89,7 @@
             
         </div>
         
-         <div class="form-group">
-         <label class="col-md-2 control-label">总经理</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control required" name="xgtsZjl" value="${productXtgs.xgtsZjl}"  >
-            </div>
-         </div>
-        
-        
+               
           <div class="form-group">
             <label class="col-md-2 control-label">法人代表</label>
             <div class="col-md-6">
