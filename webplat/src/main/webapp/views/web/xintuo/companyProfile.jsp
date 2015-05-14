@@ -13,8 +13,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${productXtgs.xgtsSplname}</title>
 <script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
+<link href="assets/css/ui/alertMessage.css" rel="stylesheet" />
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
-<link href="assets/css/ui/simu.css" rel="stylesheet" />
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
 <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
@@ -22,6 +22,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 body{ width:100%; height:100%;font-family: "Microsoft YaHei" !important;font-size: 14px; background-color:#f5f5f5;}
 html{ width:100%; height:100%;background:#f5f5f5;}
 </style>
+
+
 
 </head>
 
