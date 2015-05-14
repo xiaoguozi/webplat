@@ -99,7 +99,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_right_title">
   <tr  width="90%" >
     <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
-    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank">${xintuotop.xtcpSplname}</a></span></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank" style="font-size:16px">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl.intValue()}" pattern="#0" />.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>

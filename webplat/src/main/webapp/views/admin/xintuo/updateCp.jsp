@@ -30,7 +30,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">信托产品简称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpSplname" maxlength="10" value="${productXtcp.xtcpSplname}" >
+                <input type="text" class="form-control required" name="xtcpSplname" maxlength="13" value="${productXtcp.xtcpSplname}" >
             </div>            
         </div>
         
