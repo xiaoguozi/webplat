@@ -1,20 +1,21 @@
 package com.tjs.web.pe.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
-import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PETopProduct;
+import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -32,19 +33,35 @@ public class PEIndexProductController {
 	@Resource
 	private PEProductService peProductService;
 	
+	@Resource
+	private PEManagerService peManagerService;
+	
+	@Resource
+	private PECompanyService peCompanyService;
+	
 	
 	@RequestMapping("/peIndexProduct")
-    public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
+    public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
 		//查询4个顶级私募
 		List<PETopProduct> showData = new ArrayList<PETopProduct>();
     	showData = peProductService.getTop4AnyPEProductList();
     	model.addAttribute("top4Data", showData);
     	
     	//全部产品
-    	peProductCtrlModel.setPageSize(10);
+    	peSearchCtrlVO.setPageSize(10);
     	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
-    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
+    	lstAll = peProductService.getAnyPEProductList(peSearchCtrlVO);
     	model.addAttribute("lstAll", lstAll);
+    	
+    	//基金经理
+    	List<PEManager> lstManager = peManagerService.getPEManagerList();
+    	model.addAttribute("lstManager", lstManager);
+    	
+    	//基金公司
+    	PECompanyCtrlModel peCompanyModel = new PECompanyCtrlModel();
+    	List<PECompany> lstCompany = peCompanyService.getPECompanyList(peCompanyModel);
+    	model.addAttribute("lstCompany", lstCompany);
+    	model.addAttribute("simuSearchVO", peSearchCtrlVO);
     	
         return "web/pe/peProduct";
     }

@@ -18,6 +18,7 @@ import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
+import com.tjs.web.pe.controller.PESearchCtrlVO;
 
 /**
  * 私募产品服务 
@@ -135,9 +136,9 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 	
 	@Override
-	public List<PETopProduct> getAnyPEProductList(PEProductCtrlModel peProductCtrlModel) {
+	public List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO) {
 		List<PETopProduct> result = new ArrayList<PETopProduct>();
-		result = peIndexMapper.getAnyPEProductList(peProductCtrlModel);
+		result = peIndexMapper.getAnyPEProductList(peSearchCtrlVO);
 		return result;
 	}
 }

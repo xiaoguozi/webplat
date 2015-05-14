@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PETopProduct;
+import com.tjs.web.pe.controller.PESearchCtrlVO;
 
 /**
  * 私募产品DAO
@@ -22,5 +23,5 @@ public interface PEIndexMapper  {
 	
 	Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
 	
-	List<PETopProduct> getAnyPEProductList(PEProductCtrlModel peProductCtrlModel);
+	List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO);
 }
