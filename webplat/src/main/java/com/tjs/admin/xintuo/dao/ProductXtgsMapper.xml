@@ -149,7 +149,7 @@
         select         
           <include refid="Base_select_Column_List" />           
         from  tjs_product_xtgs where 1=1
-        AND xgts_tjw='10'                            
+        AND xgts_tjw like CONCAT('%','20','%') 
         LIMIT 0 ,4              
     </select>
     

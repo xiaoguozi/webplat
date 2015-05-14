@@ -162,10 +162,10 @@
            <div class="form-group">
             <label class="col-md-2 control-label">推荐位</label>
             <div class="col-md-6">
-                   <input type="radio" name="xgtsTjw" value="10" <c:if test="${productXtgs.xgtsTjw== '10'}">checked="checked"</c:if>>首页
-                   <input type="radio" name="xgtsTjw" value="20" <c:if test="${productXtgs.xgtsTjw== '20'}">checked="checked"</c:if>>板块头             	  
-            </div>
-            
+                  <input type="checkbox" name="xgtsTjw" value="10" <c:if test="${fn:contains(productXtgs.xgtsTjw,'10')}">checked="checked"</c:if>>平台首页
+                  <input type="checkbox" name="xgtsTjw" value="20" <c:if test="${fn:contains(productXtgs.xgtsTjw,'20')}">checked="checked"</c:if>>版块首页 
+                  <input type="checkbox" name="xgtsTjw" value="30" <c:if test="${fn:contains(productXtgs.xgtsTjw,'30')}">checked="checked"</c:if>>无推荐                     	  
+            </div>            
           </div>
          
                           

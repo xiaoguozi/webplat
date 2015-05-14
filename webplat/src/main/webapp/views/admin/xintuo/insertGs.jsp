@@ -144,8 +144,7 @@
             <div class="col-md-6">
                    <input type="radio" name="xgtsSs" value="1" <c:if test="${productXtgs.xgtsSs== '1'}">checked="checked"</c:if>>是
                    <input type="radio" name="xgtsSs" value="2" <c:if test="${productXtgs.xgtsSs== '2'}">checked="checked"</c:if>>否                   	  
-            </div>
-            
+            </div>            
           </div>
          
          <div class="form-group">
@@ -162,8 +161,9 @@
            <div class="form-group">
             <label class="col-md-2 control-label">推荐位</label>
             <div class="col-md-6">
-                   <input type="radio" name="xgtsTjw" value="10" <c:if test="${productXtgs.xgtsTjw== '10'}">checked="checked"</c:if>>首页
-                   <input type="radio" name="xgtsTjw" value="20" <c:if test="${productXtgs.xgtsTjw== '20'}">checked="checked"</c:if>>板块头             	  
+                  <input type="checkbox" name="xgtsTjw" value="10" <c:if test="${fn:contains(productXtgs.xgtsTjw,'10')}">checked="checked"</c:if>>平台首页
+                  <input type="checkbox" name="xgtsTjw" value="20" <c:if test="${fn:contains(productXtgs.xgtsTjw,'20')}">checked="checked"</c:if>>版块首页 
+                  <input type="checkbox" name="xgtsTjw" value="30" <c:if test="${fn:contains(productXtgs.xgtsTjw,'30')}">checked="checked"</c:if>>无推荐                                
             </div>
             
           </div>
@@ -173,8 +173,7 @@
             <label class="col-md-2 control-label">推荐序号</label>
             <div class="col-md-6">
                     <input type="text" class="form-control required number" name="xgtsTjno" value="${productXtgs.xgtsTjno}"  >
-            </div>
-            
+            </div>            
           </div>
           
         
