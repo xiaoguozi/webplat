@@ -27,6 +27,8 @@ public interface UserInfoMapper extends GenericDao<UserInfo, Long> {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    
+    UserInfo findUserInfoByUserId(Long userId);
 
     List<UserInfo> selectList();
     

@@ -52,7 +52,9 @@
                         <th field="xtcpCxq">存续期<span class="glyphicon"></span></th>
                         <th field="xtcpLxfp">利息分配<span class="glyphicon"></span></th>
                         <th field="xtcpTzly">投资领域<span class="glyphicon"></span></th>
-                        <th field="xtcpTjw">是否上线<span class="glyphicon"></span></th>                                                 
+                        <th field="xtcpTjw">是否上线<span class="glyphicon"></span></th>
+                        <th field="xtcpUsername">创建人<span class="glyphicon"></span></th> 
+                        <th field="xtcpModifyDate">最后修改时间<span class="glyphicon"></span></th>                                                  
                     </tr>
                 </thead>
                 <tbody>

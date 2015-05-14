@@ -1,18 +1,25 @@
 package com.tjs.admin.xintuo.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.service.UserInfoService;
+import com.tjs.admin.service.UserService;
 import com.tjs.admin.xintuo.model.Lable;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.model.ProductXtgs;
@@ -33,6 +40,14 @@ public class XinTuoCpControler {
 	 
 	 @Resource
 	 private IProductXtgsService iProductXtgsService;
+	 
+	 @Resource
+	 private UserService userService;
+	 
+	 @Resource
+	 private UserInfoService UserInfoService;
+	 
+	 
 
     
     @RequestMapping("/xtcpIndex")
@@ -65,8 +80,7 @@ public class XinTuoCpControler {
     }
     
     @RequestMapping("/insert")
-    public String insert(ProductXtcp productXtcp, XinTuoGsCtrlModel xintuoCpCtrlModel, Model model) {
-    	
+    public String insert(ProductXtcp productXtcp, XinTuoGsCtrlModel xintuoCpCtrlModel, Model model) {	    	
     	model.addAttribute(productXtcp);
     	model.addAttribute("ctrlData", xintuoCpCtrlModel);
         return "admin/xintuo/insertCp";
@@ -77,6 +91,18 @@ public class XinTuoCpControler {
     @ResponseBody
     public Map<String, Object> insertData(ProductXtcp productXtcp, XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
+    	
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+		
+		
+		productXtcp.setXtcpUserId(user.getId());		
+		productXtcp.setXtcpUsername(userInfo==null?"":userInfo.getNickName());
+		productXtcp.setXtcpCreateDate(new Date());
+		productXtcp.setXtcpModifyDate(new Date());
     	int id = iProductXtService.insertProductXtcp(productXtcp);
     	result.put("code", "0");
     	result.put("bizData", productXtcp);
@@ -88,6 +114,7 @@ public class XinTuoCpControler {
     @RequestMapping("/update")
     public String update(@RequestParam(value="id",required=false) Long xtcpId, XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
     	ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(xtcpId);
+    	productXtcp.setXtcpModifyDate(new Date());
     	model.addAttribute(productXtcp);
     	model.addAttribute("ctrlData", xintuoCpCtrlModel);
         return "admin/xintuo/updateCp";

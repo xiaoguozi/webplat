@@ -54,6 +54,12 @@ public class UserInfoServiceImpl extends GenericServiceImpl<UserInfo, Long> impl
     public List<UserInfo> selectList() {
     	return userInfoMapper.selectList();
     }
+
+	@Override
+	public UserInfo findUserInfoByUserId(Long userId) {
+		// TODO Auto-generated method stub
+		return userInfoMapper.findUserInfoByUserId(userId);
+	}
     
     
 }

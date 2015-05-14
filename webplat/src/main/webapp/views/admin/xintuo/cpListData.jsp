@@ -82,7 +82,13 @@
                      	已下线
                 </c:otherwise>  
             </c:choose>                 
-        </td>      
+        </td>
+         <td>
+            ${xintuocp.xtcpUsername}            
+        </td>  
+         <td>
+         <fmt:formatDate value="${xintuocp.xtcpModifyDate}" pattern="yyyy-MM-dd"/>
+        </td>        
     </tr>
 
 </c:forEach>

@@ -10,5 +10,7 @@ import com.tjs.core.generic.GenericService;
  * @since 2014年7月5日 上午11:53:33
  **/
 public interface UserInfoService extends GenericService<UserInfo, Long> {
+	
+	 UserInfo findUserInfoByUserId(Long userId);
 
 }
