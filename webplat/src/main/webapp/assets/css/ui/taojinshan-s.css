@@ -771,7 +771,7 @@ OL LI {margin:8px}
 	background-position: left bottom;}
 .tjst_height_32px{width:100%;height:32px; line-height:32px;}
 .tjst_height_50px{width:100%;height:50px; line-height:50px;}
-.tjst_pct_search{width:265px;height:31px; line-height:31px; border-bottom: solid 1px #dddddd;border-left: solid 1px #dddddd;border-top: solid 1px #dddddd;border-right: none; color:#ccc; float:left;}
+.tjst_pct_search{width:265px;height:31px; line-height:31px; border-bottom: solid 1px #dddddd;border-left: solid 1px #dddddd;border-top: solid 1px #dddddd;border-right: none; color:#333; float:left;}
 .tjs_search_left{width:105px;height:50px; line-height:50px; color:#a1a1a1; text-align:right; float:left;}
 .tjs_search_right{ margin-left:120px; padding-top:8px;width: auto;height:50px;color:#a1a1a1; text-align:left;}
 .tjs_pct_right{ margin-left:120px; width: auto;height:50px; line-height:50px;color:#666; text-align:left;}
