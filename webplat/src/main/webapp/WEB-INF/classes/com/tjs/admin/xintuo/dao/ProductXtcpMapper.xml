@@ -192,7 +192,7 @@
 		from tjs_product_xtcp where 
 		xtcp_validstatus='1'
 		AND xtcp_status='20'
-		AND xtcp_tjw='10'
+		AND xtcp_tjw like CONCAT('%','10','%') 
 		ORDER BY xtcp_tjno								
 	</select>
 	
@@ -203,7 +203,7 @@
 		from tjs_product_xtcp where 
 		xtcp_validstatus='1'
 		AND xtcp_status='20'
-		AND xtcp_tjw in ('10','20')
+		AND xtcp_tjw like CONCAT('%','20','%') 
 		ORDER BY xtcp_tjno
 		limit 0,4								
 	</select>
@@ -225,7 +225,7 @@
 		from tjs_product_xtcp where 
 		xtcp_validstatus='1'
 		AND xtcp_status='20'
-		AND xtcp_tjw in ('10','20')
+		AND xtcp_tjw like CONCAT('%','20','%') 
 		<if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">		
         AND xtcp_xtlx like CONCAT('%',#{productXtcp.xtcpXtlx},'%') 
         </if>
@@ -241,8 +241,7 @@
 		 count(*) c
 		from tjs_product_xtcp where 
 		xtcp_validstatus='1'
-		AND xtcp_status='20'
-		
+		AND xtcp_status='20'		
 		<if test="xtcpZdrgje!=0">
 		AND xtcp_zdrgje=#{xtcpZdrgje}*10000
 		</if>

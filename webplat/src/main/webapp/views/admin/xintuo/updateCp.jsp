@@ -196,8 +196,9 @@
            <div class="form-group">
             <label class="col-md-2 control-label">推荐位</label>
             <div class="col-md-6">
-                   <input type="radio" name="xtcpTjw" value="10" <c:if test="${productXtcp.xtcpTjw== '10'}">checked="checked"</c:if>>首页
-                   <input type="radio" name="xtcpTjw" value="20" <c:if test="${productXtcp.xtcpTjw== '20'}">checked="checked"</c:if>>板块头             	  
+                  <input type="checkbox" name="xtcpTjw" value="10" <c:if test="${fn:contains(productXtcp.xtcpTjw,'10')}">checked="checked"</c:if>>平台首页
+                  <input type="checkbox" name="xtcpTjw" value="20" <c:if test="${fn:contains(productXtcp.xtcpTjw,'20')}">checked="checked"</c:if>>版块首页 
+                  <input type="checkbox" name="xtcpTjw" value="30" <c:if test="${fn:contains(productXtcp.xtcpTjw,'30')}">checked="checked"</c:if>>无推荐                  	  
             </div>
             
           </div>
