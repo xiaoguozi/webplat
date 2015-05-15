@@ -71,7 +71,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_right_title">
   <tr>
     <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}">${xintuotop.xtcpSplname}</a></span></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" style="font-size:16px">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 
 </div>
@@ -144,7 +144,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 </ul>
 <form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
 <div class="tjs_dashed_bottom tjst_height_32px" style="margin-top:4px;padding-top:0px;height:2px"></div>
-<div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
+<div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">关  键  词： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="请输入关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
 <div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">已选条件： </div>
 <div class="tjs_pct_right "><span class="searchCondition">
 
@@ -170,7 +170,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_pct_title">
   <tr>
     <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}"><img src="assets/img/ui/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" class="tjs_pct_titleurl">${xintuoProduct.xtcpSplname}</a></td>
+    <td align="left">&nbsp;&nbsp;<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" class="tjs_pct_titleurl" style="font-size:16px">${xintuoProduct.xtcpSplname}</a></td>
   </tr>
 </div>
 <div class="tjs_pct_icodiv">

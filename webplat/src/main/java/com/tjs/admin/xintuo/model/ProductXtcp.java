@@ -59,7 +59,7 @@ public class ProductXtcp {
     /** 点评*/
     private String  xtcpDp;    
     /** 所在区域*/
-    private String  xtcpArea; 
+    private String  xtcpArea="50"; 
     
     /** 所在区域*/
     private String  xtcpCity;     

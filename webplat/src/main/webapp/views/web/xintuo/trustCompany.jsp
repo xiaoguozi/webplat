@@ -96,7 +96,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <input name="pageSize" type="hidden" value="${xintuoGsCtrlModel.pageSize }"/>
 <div class="tjs_1108px center">
 <div class="tjs_cpy_title ">全部信托公司</div>
-<div class="tjs_cpy_searchdiv"><input name="keyWord"  type="text"  value="${xintuoGsCtrlModel.keyWord}" onFocus="this.value=''" onBlur="if(!value){value=defaultValue;}" class="tjst_pct_search" placeholder="请输入关键字"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div>
+<div class="tjs_cpy_searchdiv"><input name="keyWord"  type="text"  value="${xintuoGsCtrlModel.keyWord}" class="tjst_pct_search" placeholder="请输入关键字"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div>
 <div class="clearfloat"></div>
 
 <div class="tjs_product_coloreddiv"></div>

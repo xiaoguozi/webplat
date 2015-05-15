@@ -107,7 +107,7 @@
          <div class="form-group">
          <label class="col-md-2 control-label">公司性质</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required"  maxlength="10" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
+                <input type="text" class="form-control required"  maxlength="9" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
             </div>
          </div>
          

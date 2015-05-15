@@ -150,7 +150,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">活动</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpHd" value="${productXtcp.xtcpHd}" >
+                <input type="text" class="form-control required" name="xtcpHd"  maxlength="16" value="${productXtcp.xtcpHd}" >
             </div>
              
         </div>
@@ -255,7 +255,7 @@
         <div class="form-group">
          <label class="col-md-2 control-label">点评</label>
             <div class="col-md-6">
-                 <textarea rows="6" cols="100" class="form-control required"  maxlength="32" name="xtcpDp">${productXtcp.xtcpDp}</textarea>
+                 <textarea rows="6" cols="100" class="form-control required"  maxlength="30" name="xtcpDp">${productXtcp.xtcpDp}</textarea>
             </div>
        </div>
         
