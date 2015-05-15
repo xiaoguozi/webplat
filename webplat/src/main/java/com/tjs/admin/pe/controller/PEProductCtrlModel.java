@@ -9,6 +9,10 @@ import com.tjs.core.generic.GenericCtrlModel;
  *@author zhsoft
  *@since 2015年4月1日
  **/
+/**
+ * @author zh
+ *
+ */
 public class PEProductCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
@@ -24,9 +28,12 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	/* 开放日期 */
 	private String openTimeStr;
 	
+	/** 产品对象 */
 	private PEProduct peProduct;
-
-
+	
+	/** 经理ID */
+	private String managerId;
+	
 	public String getKeyWord() {
 		return keyWord;
 	}
@@ -76,6 +83,14 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 
 	public void setLimitStart(int limitStart) {
 		this.limitStart = limitStart;
+	}
+
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
 	}
 	
 }

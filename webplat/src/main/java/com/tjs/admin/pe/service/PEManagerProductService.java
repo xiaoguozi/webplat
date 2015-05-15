@@ -24,4 +24,12 @@ public interface PEManagerProductService {
 	 * @return 1 成功， 0 失败
 	 */
 	int insert(PEManager peManager, List<PEProduct> products);
+	
+	/**
+	 * 通过经理ID,公司ID查询经理所负责的产品。
+	 * 
+	 * @param peManager
+	 * @return 经理产品关系列表
+	 */
+	List<PEManagerProduct> queryProductsByManager(PEManager peManager);
 }

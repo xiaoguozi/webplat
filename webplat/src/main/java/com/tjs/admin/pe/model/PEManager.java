@@ -1,6 +1,7 @@
 package com.tjs.admin.pe.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 私募经理
@@ -70,6 +71,9 @@ public class PEManager {
 	private Date createDate;
 	
 	private Date lastModifyDate;
+	
+	/** 私募经理所管理的产品 */
+	private List<PEManagerProduct> products;
 
 	public long getId() {
 		return id;
@@ -247,6 +251,14 @@ public class PEManager {
 		this.companyName = companyName;
 	}
 
+	public List<PEManagerProduct> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<PEManagerProduct> products) {
+		this.products = products;
+	}
+
 	@Override
 	public String toString() {
 		return "PEManager [id=" + id + ", logo=" + logo + ", name=" + name
@@ -260,7 +272,8 @@ public class PEManager {
 				+ status + ", companyId=" + companyId + ", companyName="
 				+ companyName + ", createrId=" + createrId + ", createrName="
 				+ createrName + ", createDate=" + createDate
-				+ ", lastModifyDate=" + lastModifyDate + "]";
+				+ ", lastModifyDate=" + lastModifyDate + ", products="
+				+ products + "]";
 	}
 
 }

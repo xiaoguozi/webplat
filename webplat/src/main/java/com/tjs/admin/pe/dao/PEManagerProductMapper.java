@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEManagerProduct;
 
 /**
@@ -13,4 +14,12 @@ import com.tjs.admin.pe.model.PEManagerProduct;
 public interface PEManagerProductMapper {
 
 	void insert(List<PEManagerProduct> managerProducts);
+	
+	/**
+	 * 通过经理ID,公司ID查询经理所负责的产品。
+	 * 
+	 * @param peManager
+	 * @return 经理产品关系列表
+	 */
+	List<PEManagerProduct> queryProductsByManager(PEManager peManager);
 }

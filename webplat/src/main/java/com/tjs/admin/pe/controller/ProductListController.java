@@ -19,12 +19,12 @@ import com.tjs.admin.pe.service.PEProductService;
  * 私募产品控制器
  * 
  *@author zhsoft
- *@since 2015年3月31日
+ *@since 2015年5月14日
  **/
 
 @Controller
-@RequestMapping(value = "/admin/pe/peProduct")
-public class PEProductController {
+@RequestMapping(value = "/admin/pe/productList")
+public class ProductListController {
 
 	@Resource
 	private PEProductService peProductService;
@@ -32,14 +32,18 @@ public class PEProductController {
 	
 	@RequestMapping("/index")
     public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
-        return "admin/pe/peProduct/index";
+		String companyId = String.valueOf(peProductCtrlModel.getPeProduct().getPecompanyId());
+		String managerId = peProductCtrlModel.getManagerId();
+		model.addAttribute("companyId", companyId);
+		model.addAttribute("managerId", managerId);
+        return "admin/pe/productList/index";
     }
 	
 	@RequestMapping("/insert")
     public String insert(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
-        return "admin/pe/peProduct/main";
+        return "admin/pe/productList/main";
     }
 	
 
@@ -63,7 +67,7 @@ public class PEProductController {
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peProductCtrlModel);
     	
-        return "admin/pe/peProduct/listData";
+        return "admin/pe/productList/listData";
     }
 	
 	@RequestMapping("/listDataCount")
@@ -83,7 +87,7 @@ public class PEProductController {
 		PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
-        return "admin/pe/peProduct/update";
+        return "admin/pe/productList/update";
     }
 	
 	@RequestMapping("/updateData")
@@ -102,7 +106,7 @@ public class PEProductController {
     	PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
     	model.addAttribute("peProduct", peProduct);
     	model.addAttribute("ctrlData", peProductCtrlModel);
-        return "admin/pe/peProduct/view";
+        return "admin/pe/productList/view";
     }
     
     @RequestMapping("/getOnLinePECompanyList")

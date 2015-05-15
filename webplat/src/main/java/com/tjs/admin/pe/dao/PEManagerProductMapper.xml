@@ -11,8 +11,56 @@
    		<result property="productName" column="product_name" jdbcType="VARCHAR" />
     </resultMap>
     
+    <resultMap id="peProductMap" type="com.tjs.admin.pe.model.PEProduct">
+        <id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="name" column="name" jdbcType="VARCHAR"  />
+   		<result property="simpleName" column="simple_name" jdbcType="VARCHAR"  />
+   		<result property="netWorth" column="net_worth" jdbcType="VARCHAR"  />
+   		<result property="accumulatedIncome" column="accumulated_income" jdbcType="VARCHAR"  />
+   		<result property="netWorthTime" column="net_worth_time" jdbcType="TIMESTAMP" />
+   		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
+   		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
+   		<result property="nowRate" column="now_rate" jdbcType="VARCHAR"  />
+   		<result property="towRate" column="tow_rate" jdbcType="VARCHAR"  />
+   		<result property="oneRate" column="one_rate" jdbcType="VARCHAR"  />
+   		<result property="yearRate" column="year_rate" jdbcType="VARCHAR"  />
+   		<result property="fundType" column="fund_type" jdbcType="INTEGER" />
+   		<result property="productLevel" column="product_level" jdbcType="INTEGER" />
+   		<result property="distributionPlatform" column="distribution_platform" jdbcType="VARCHAR"  />
+   		<result property="custodianBank" column="custodian_bank" jdbcType="VARCHAR"  />
+   		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
+   		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
+   		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
+   		<result property="openTime" column="open_time" jdbcType="TIMESTAMP" />
+   		<result property="subscripStart" column="subscrip_start" jdbcType="VARCHAR"  />
+   		<result property="subscripFee" column="subscrip_fee" jdbcType="VARCHAR"  />
+   		<result property="exitFee" column="exit_fee" jdbcType="VARCHAR"  />
+   		<result property="managementFee" column="management_fee" jdbcType="VARCHAR"  />
+   		<result property="recommendReason" column="recommend_reason" jdbcType="VARCHAR"  />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR"  />
+   		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR"  />
+   		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="pecompanyId" column="pecompany_id" jdbcType="BIGINT" />
+   		<result property="pecompanyName" column="pecompany_name" jdbcType="VARCHAR"  />
+    </resultMap>
+    
     <sql id="Base_select_Column_List">
         manager_id, manager_name, company_id, company_name, product_id, product_name
+    </sql>
+    
+    <sql id="Product_Column_List">
+        t2.id, t2.name, t2.simple_name, t2.net_worth, t2.accumulated_income,
+        t2.net_worth_time, t2.setup_time, t2.run_time, t2.now_rate, t2.tow_rate,
+        t2.one_rate, t2.year_rate, t2.fund_type, t2.product_level, t2.distribution_platform,
+        t2.custodian_bank, t2.stockbrokers, t2.fund_property, t2.whether_structure,
+        t2.open_time, t2.subscrip_start, t2.subscrip_fee, t2.exit_fee, t2.management_fee,
+        t2.recommend_reason, t2.create_date, t2.last_modify_date, t2.creater_id,
+        t2.creater_name, t2.recommend_location, t2.recommend_sequence, status,
+        t2.pecompany_id, t2.pecompany_name
     </sql>
     
     <insert id="insert" parameterType="java.util.List" useGeneratedKeys="true" >
@@ -32,5 +80,14 @@
                 #{item.productName})    
 		</foreach>          
     </insert>
+    
+       <select id="queryProductsByManager" parameterType="com.tjs.admin.pe.model.PEManager" resultMap="managerProductMap">
+   		SELECT 
+		    <include refid="Product_Column_List" />
+		FROM pe_manager_product t1
+		LEFT JOIN  pe_product t2
+		ON t1.product_id = t2.id
+		WHERE t1.manager_id = #{id} AND t1.company_id = #{companyId}
+   </select>
     
 </mapper>

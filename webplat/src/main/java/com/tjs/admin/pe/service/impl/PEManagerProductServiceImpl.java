@@ -55,4 +55,9 @@ public class PEManagerProductServiceImpl implements PEManagerProductService {
 		return result;
 	}
 
+	@Override
+	public List<PEManagerProduct> queryProductsByManager(PEManager peManager) {
+		return peManagerProductMapper.queryProductsByManager(peManager);
+	}
+
 }
