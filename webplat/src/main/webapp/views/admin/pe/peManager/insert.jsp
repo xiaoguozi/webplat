@@ -7,16 +7,35 @@
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title pull-left">私募经理  <small>新增</small></h3>
-        
-<div class="pull-right">
-    <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
-    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
-</div>
-        <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
 </div>
 <!-- END PAGE HEADER-->
 
+<div class="tabpanel">
+	<ul class="nav nav-tabs" role="tablist" id="myTab">
+	  <li role="presentation" class="active">
+	  	<a href="#manager" aria-controls="manager" role="tab" data-toggle="tab" >
+	  		经理基本信息
+	  	</a>
+	  </li>
+	  <li role="presentation">
+	  	<a href="#productList" aria-controls="productList" role="tab" data-toggle="tab">
+	  		产品列表
+	  	</a>
+	  </li>
+	</ul>
+</div>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="manager">
+    <div class="row">
+	    <div class="col-md-12">
+			<div class="pull-right">
+			    <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
+			    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
+		    </div>
+	    </div>
+	</div>
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/pe/peManager/insertData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
      	<input type="hidden" name="id" value="${peManager.id}">
@@ -138,93 +157,39 @@
         </div>
     </form>
 </div>
-<div class="table-scroll table-scrollable">
-            <table id="list-data" class="table table-striped table-bordered table-hover dataTable no-footer">
-                <thead>
-                    <tr>
-                        <th class="data-operator">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value=""/> 
-                                &nbsp;&nbsp;&nbsp;
-                            </label>
-                        </th>
-                        <th field="id">ID<span class="glyphicon"></span></th>
-                        <th field="simpleName">产品名称 <span class="glyphicon"></span></th>
-                        <th field="pecompanyName">私募公司 <span class="glyphicon"></span></th>
-                        <th field="productLevel">产品等级 <span class="glyphicon"></span></th>
-                        <th field="accumulatedIncome">累计收益 <span class="glyphicon"></span></th>
-                        <th field="nowRate">今年以来收益 <span class="glyphicon"></span></th>
-                        <th field="oneRate">近1年收益 <span class="glyphicon"></span></th>
-                        <th field="towRate">近2年收益 <span class="glyphicon"></span></th>
-                        <th field="netWorthTime">净值日期 <span class="glyphicon"></span></th>
-                        <th field="setupTime">成立日期 <span class="glyphicon"></span></th>
-                        <th field="status">产品状态 <span class="glyphicon"></span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                </tfoot>
-            </table>
-        </div>
-        <div class="row" >
-            <div id="paginationDiv" class="col-md-12">
-            <c:forEach items="${data.peProducts}" var="peProduct">
-    <tr>
-        <td class="data-operator">
-            <label class="checkbox-inline">
-                <input type="checkbox" name="data-id" value="${peProduct.id}"> 
-                &nbsp;&nbsp;&nbsp;
-            </label>
-            <a data-id="${peProduct.id}" href="" class="edit invisible" title="修改">
-                <span class="glyphicon glyphicon-edit"></span> 修改
-            </a>
-        </td>
-        <td>
-            <a data-id="${peProduct.id}" href="" class="view" title="查看">
-                ${peProduct.id}
-            </a>
-        </td>
-        <td>${peProduct.simpleName}</td>
-        <td>${peProduct.pecompanyName}</td>
-        <td>
-        	<c:choose>  
-                <c:when test="${peProduct.productLevel =='1'}">一级</c:when>
-                <c:when test="${peProduct.productLevel =='2'}">二级</c:when>
-                <c:when test="${peProduct.productLevel =='3'}">三级</c:when>
-                <c:when test="${peProduct.productLevel =='4'}">四级</c:when>
-                <c:when test="${peProduct.productLevel =='5'}">五级</c:when>
-            </c:choose>  
-        </td>
-        <td>${peProduct.accumulatedIncome}</td>
-        <td>${peProduct.nowRate}</td>
-        <td>${peProduct.oneRate}</td>
-        <td>${peProduct.towRate}</td>
-        <td><fmt:formatDate value="${peProduct.netWorthTime}" pattern="yyyy-MM-dd" /></td>
-        <td><fmt:formatDate value="${peProduct.setupTime}" pattern="yyyy-MM-dd" /></td>
-        <td>
-        	 <c:choose>  
-                <c:when test="${peProduct.status =='1'}">未上线</c:when>
-                <c:when test="${peProduct.status =='2'}">上线</c:when>
-                <c:otherwise>下线</c:otherwise>  
-            </c:choose>   
-        
-        </td>
-    </tr>
 
-</c:forEach>
-            </div>
-        </div>
-
+  </div>
+	 <div role="tabpanel" class="tab-pane" id="productList"></div>
+</div>
 <script type="text/javascript">
 
-$(function(){
+var companyId = 0;
 
+$(function(){
+	
+	 $('#myTab a').click(function (e) { 
+	      e.preventDefault();//阻止a链接的跳转行为 
+	      $(this).tab('show');//显示当前选中的链接及关联的content 
+	      
+	      var sel = $(this).attr("href");
+	      var isload = $(this).attr("data-load");
+	      if("yes" != isload){	
+	    	  var loadUrl = "";
+	    	  if("#productList" == sel){
+	    		  loadUrl = "rest/admin/pe/productList/index?peProduct.pecompanyId=" + companyId + "&managerId=" + $("input[name='id']").val() ;
+	    	  }
+	    	  
+	    	  if(loadUrl){
+
+	        	  $(""+sel).load(loadUrl);
+	        	  $(this).attr("data-load","yes");
+	    	  }
+	      }
+	 }); 
 
     Btk.form($("#modalForm"),"insert",function(data){
         if("0"==data.code){
-            //IndexPage.togglePage('list');
-            $("#searchBtn").click();
+           companyId = data.bizData.companyId
         }
     });
 
