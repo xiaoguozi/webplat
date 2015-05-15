@@ -12,7 +12,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>淘金山——信托产品</title>
-<link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="assets/css/ui/taojinshan.css?1=1" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
@@ -120,18 +120,37 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 <li><div class="tjs_condition_left">项目所在地：</div><div class="tjs_condition_right" id="xtcpArea"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="10" title="珠三角">珠三角</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="20" title="江浙沪">江浙沪</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="30" title="京津冀">京津冀</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn" tag="50" title="其它地区">其它地区</a></div></li>
 
-<li><div class="tjs_condition_left">信托公司： </div><div class="tjs_condition_right" id="xtcpGsId"><a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">平安信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中融信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中信信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">华润信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">四川信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中江信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="tjs_condition_btn">中泰信托</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">更多></a></div></li>
-
+<li><div class="tjs_condition_left">信托公司： </div><div class="tjs_condition_right xtcpGsId" id="xtcpGsId">
+<a href="#" class="tjs_condition_btn" tag="0" title="不限">不限</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<c:forEach items="${lstProductXtgs}" var="productXtgs" end="5">
+	<a class="tjs_condition_btn" href="#" tag="${productXtgs.xtgsId}"  title="${productXtgs.xgtsSplname}">${productXtgs.xgtsSplname}</a> 
+</c:forEach>
+<a href="#" class="more_condition">更多&gt;</a>
+</div>
+</li>
+<li style="height:auto;display:none" class="xtcpGsId" id="more_gs_condition">
+<div  class="tjs_condition_right" style="height:auto;width:80%;border: 1px solid #D3D3D3;" >
+	<div class="">
+		<ul class="">			          		
+					<c:if test="${fn:length(lstProductXtgs)>6}">
+					 <c:forEach items="${lstProductXtgs}" var="productXtgs" begin="6">					    
+						<a class="tjs_condition_btn " href="#" tag="${productXtgs.xtgsId}" tagmore="1" style="width:90px"  title="${productXtgs.xgtsSplname}">${productXtgs.xgtsSplname}</a>						
+					 </c:forEach>
+				  </c:if>				
+		</ul>
+	</div>
+</div>
+</li>
 </ul>
 <form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
-<div class="tjs_dashed_bottom tjst_height_32px"></div>
+<div class="tjs_dashed_bottom tjst_height_32px" style="margin-top:4px;padding-top:0px;height:2px"></div>
 <div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">信托公司： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
 <div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">已选条件： </div>
 <div class="tjs_pct_right "><span class="searchCondition">
 
 </span>
 共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#">清空条件</a></div></div>
+<a href="rest/web/xintuo/trust/trustProduct">清空条件</a></div></div>
 </div>
 <!-- //tjs_product_search -->
 
@@ -219,6 +238,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    $("#xtcpLxfp a[tag=${xintuoSearVO.xtcpLxfp}]").addClass("tjs_condition_selected");
 	    $("#xtcpTzly a[tag=${xintuoSearVO.xtcpTzly}]").addClass("tjs_condition_selected");
 	    $("#xtcpArea a[tag=${xintuoSearVO.xtcpArea}]").addClass("tjs_condition_selected");
+	    $(".xtcpGsId a[tag=${xintuoSearVO.xtcpGsId}]").addClass("tjs_condition_selected");
 	    
 	    //初始化选这按钮
 	    if($("#xtcpZdrgje a.tjs_condition_selected").attr("tag")!='0'){
@@ -244,6 +264,12 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    if($("#xtcpArea a.tjs_condition_selected").attr("tag")!='0'){
 	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpArea'>"+$("#xtcpArea a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
 	    }
+	    	    
+	    if($(".xtcpGsId a.tjs_condition_selected").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' condition_name='xtcpGsId'>"+$(".xtcpGsId a.tjs_condition_selected").attr("title")+"</a>&nbsp;&nbsp;");
+	    }
+	    
+	    
 	    
 	   
 	    $(".searchCondition a").click(function(event){
@@ -259,11 +285,37 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    	    
 	    $("li .tjs_condition_right a").click(function(event){
 	    	event.preventDefault();
-	    	$(this).removeClass("tjs_condition_selected").addClass("tjs_condition_selected").siblings().removeClass("tjs_condition_selected");
-	    	var params =SetPara();	    	    	
+	    	if($(this).attr("tagmore")=='1'){
+	    		$(".xtcpGsId a").removeClass("tjs_condition_selected")
+	    		$(this).addClass("tjs_condition_selected");
+	    	}else{
+	    		$(this).removeClass("tjs_condition_selected").addClass("tjs_condition_selected").siblings().removeClass("tjs_condition_selected");	
+	    	}
+	    	
+	    	$("#more_gs_condition").css("display","none");
+	    	var params =SetPara();
 	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
 
 	    });
+	    
+	    
+	    
+	    $(".more_condition").unbind();
+	    $(".more_condition").click(function(event){
+	    	event.preventDefault();	    	
+	    	if($("#more_gs_condition").css("display")=='none'){
+	    		$(this).html("隐藏&gt;");
+	    		$("#more_gs_condition").css("display","block");
+	    	}else{
+	    		$(this).html("更多&gt;");	
+	    		$("#more_gs_condition").css("display","none")
+	    	};
+	    });
+	    
+	    
+	  
+	    
+	    
 	    
 	    
 	    $(".tjs_dashed_bottom a").click(function(event){
@@ -321,13 +373,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 			    };
 		});
 		  
-		IndexPage.orderProduct= function(productId,productType,username,usertel){
-		     $.post(IndexPage.orderProductUrl, 
-		            $('#orderform').formSerialize(),
-		            function(data){		              
-						
-		             });
-		 }  
+		
  	    		       
 	}); 
 	
@@ -343,11 +389,12 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 		var xtcpLxfp = $("#xtcpLxfp a.tjs_condition_selected").attr("tag");
 		var xtcpTzly =$("#xtcpTzly a.tjs_condition_selected").attr("tag");
 		var xtcpArea =$("#xtcpArea a.tjs_condition_selected").attr("tag");
+		var xtcpGsId =$(".xtcpGsId a.tjs_condition_selected").attr("tag");
+		
 		if($("input[name=keyword]").val()==$("input[name=keyword]").attr('placeholder')){
 			$("input[name=keyword]").val("");
-		}
-		
-		var params = "?xtcpZdrgje=" + xtcpZdrgje + "&xtcpCxq=" + xtcpCxq + "&xtcpNsyl="+ xtcpNsyl+ "&xtcpLxfp=" + xtcpLxfp+ "&xtcpTzly=" + xtcpTzly+ "&xtcpArea=" + xtcpArea;
+		}		
+		var params = "?xtcpZdrgje=" + xtcpZdrgje + "&xtcpCxq=" + xtcpCxq + "&xtcpNsyl="+ xtcpNsyl+ "&xtcpLxfp=" + xtcpLxfp+ "&xtcpTzly=" + xtcpTzly+ "&xtcpArea=" + xtcpArea+"&xtcpGsId="+xtcpGsId;
 		return params;
 	}
 	

@@ -9,15 +9,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tjs.admin.model.User;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.service.UserService;
@@ -102,7 +99,14 @@ public class TrustController {
     	ctrlModel.setFormat(true);
         //查询前面四个
     	List<ProductXtcp> lstTopVos = iProductXtService.selectProductXtcpTrustTopIndex(ctrlModel);
-    	model.addAttribute("lstTopVos", lstTopVos);   	
+    	model.addAttribute("lstTopVos", lstTopVos);
+    	
+    	//查询信托公司
+    	XinTuoGsCtrlModel xintuoGsCtrlModel = new XinTuoGsCtrlModel();
+    	xintuoGsCtrlModel.setPageNo(1);
+    	xintuoGsCtrlModel.setPageSize(Integer.MAX_VALUE);
+    	List<ProductXtgs> lstProductXtgs =  iProductgsService.selectProductXtgs(xintuoGsCtrlModel);
+    	model.addAttribute("lstProductXtgs", lstProductXtgs);
     	
     	//分页数据
     	//设置每页16条数据,前后台保持一致

@@ -25,7 +25,7 @@ public class XinTuoSeachCtrlVO extends GenericCtrlModel {
 	 /**信托公司名称 */
 	 private String  xtcpGszhname;
 	 /**信托公司ID */
-	 private Long  xtcpGsId;
+	 private long  xtcpGsId=0;
 	 
 	 private int limitStart;
 	 
