@@ -54,8 +54,14 @@
           </if>
                
          <if test="sortField!= null and sortField!= ''">
-           ORDER BY #{sortField} #{sortType}
+           ORDER BY ${sortField} ${sortType}
         </if>
+        
+         <if test="sortField== null or sortField==''">
+           ORDER BY  order_operate_status asc,order_create_date desc
+        </if>
+        
+        
         
          <if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}

@@ -43,13 +43,13 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>                      
-                        <th field="userName">客户名称  <span class="glyphicon"></span></th>
-                        <th field="telphone">客户电话<span class="glyphicon"></span></th>
-                        <th field="productName">产品名称<span class="glyphicon"></span></th>
-                        <th field="productType">产品类型<span class="glyphicon"></span></th>
-                        <th field="createDate">预约时间<span class="glyphicon"></span></th>
-                        <th field="operateName">处理人<span class="glyphicon"></span></th>                     
-                        <th field="operateStatus">处理状态<span class="glyphicon"></span></th>                                              
+                        <th field="order_user_name">客户名称  <span class="glyphicon"></span></th>
+                        <th field="order_telphone">客户电话<span class="glyphicon"></span></th>
+                        <th field="order_product_name">产品名称<span class="glyphicon"></span></th>
+                        <th field="order_product_type">产品类型<span class="glyphicon"></span></th>
+                        <th field="order_create_date">预约时间<span class="glyphicon"></span></th>
+                        <th field="order_operate_name">处理人<span class="glyphicon"></span></th>                     
+                        <th field="order_operate_status">处理状态<span class="glyphicon"></span></th>                                              
                     </tr>
                 </thead>
                 <tbody>
