@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
+import com.tjs.admin.service.UserInfoService;
+import com.tjs.admin.service.UserService;
 /**
  * 订单预定控制
  * 
@@ -30,6 +34,12 @@ public class OrderControler {
 	
 	 @Resource
 	 private IOrderService iOrderService;
+	 
+	 @Resource
+	 private UserService userService;
+	 
+	 @Resource
+	 private UserInfoService UserInfoService;
 
        
     @RequestMapping("/orderIndex")
@@ -99,8 +109,12 @@ public class OrderControler {
     	if("20".equals(order.getOperateStatus())){
     		Subject subject = SecurityUtils.getSubject();
     		String username = (String)subject.getPrincipal();
-//    		order.setOperateId(operateId);
-//    		order.setOperateName(operateName);
+    		
+    		User user = userService.selectByUsername(username);
+    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+    		
+    		order.setOperateId(user.getId());
+    		order.setOperateName(userInfo==null?"":userInfo.getNickName());
     		order.setOperateDate(new Date());
     		
     		

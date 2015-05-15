@@ -32,10 +32,10 @@ public class Order {
 		/**订单处理人  */
 		private String operateName;
 		/**订单创建时间  */
-		 @DateTimeFormat(pattern="yyyy-MM-dd")
+	   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		private Date createDate;
 		/**订单处理时间  */
-		 @DateTimeFormat(pattern="yyyy-MM-dd")
+	   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		private Date operateDate;
 		 
 		 /**备注*/

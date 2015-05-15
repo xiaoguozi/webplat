@@ -42,7 +42,7 @@
             </c:choose>    
                        
         </td>
-        <td><fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd"/></td> 
+        <td><fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd HH:mm"/></td> 
         <td>${order.operateName}</td>       
         <td>
         

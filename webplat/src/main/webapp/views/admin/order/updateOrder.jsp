@@ -20,8 +20,8 @@
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/order/order/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="id" value="${order.id}">
-        <input type="hidden" name="createDate" value="<fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd"/>">
-        <input type="hidden" name="operateDate" value="<fmt:formatDate value="${order.operateDate}" pattern="yyyy-MM-dd"/>">
+        <input type="hidden" name="createDate" value="<fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
+        <input type="hidden" name="operateDate" value="<fmt:formatDate value="${order.operateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
         <input type="hidden" name="operateName" value="${order.operateName}">
         <input type="hidden" name="operateId" value="${order.operateId}">
         <div class="form-group">

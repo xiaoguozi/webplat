@@ -12,8 +12,8 @@
         <result column="order_operate_status" property="operateStatus" jdbcType="VARCHAR" />
         <result column="order_operate_ID" property="operateId" javaType="java.lang.Long" jdbcType="BIGINT"  />
         <result column="order_operate_name" property="operateName" jdbcType="VARCHAR" />
-        <result column="order_create_date" property="createDate" javaType="java.util.Date" jdbcType="DATE" />
-        <result column="order_operate_date" property="operateDate" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="order_create_date" property="createDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <result column="order_operate_date" property="operateDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
         <result column="order_remark" property="remark" jdbcType="VARCHAR" />
     </resultMap>
     
@@ -76,8 +76,8 @@
         #{operateStatus},
         #{operateId},
         #{operateName},
-        #{createDate},
-        #{operateDate},
+        #{createDate,jdbcType=TIMESTAMP},
+        #{operateDate,jdbcType=TIMESTAMP},
         #{remark}    
         )
     </insert>
@@ -93,8 +93,8 @@
         order_operate_status=#{operateStatus},
         order_operate_ID=#{operateId},
         order_operate_name=#{operateName},
-        order_create_date=#{createDate},
-        order_operate_date=#{operateDate}, 
+        order_create_date=#{createDate,jdbcType=TIMESTAMP},
+        order_operate_date=#{operateDate,jdbcType=TIMESTAMP}, 
         order_remark= #{remark}     
          where order_id=#{id}
     </update>

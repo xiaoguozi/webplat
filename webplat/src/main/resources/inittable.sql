@@ -294,6 +294,11 @@ ALTER TABLE `tjs`.`tjs_product_xtgs`
 CHANGE COLUMN `xgts_zczb` `xgts_zczb` DECIMAL(18,2) NULL DEFAULT NULL COMMENT '注册资本' ;
 
 
+ALTER TABLE `tjs`.`tjs_order` 
+CHANGE COLUMN `order_create_date` `order_create_date` DATETIME NULL DEFAULT NULL COMMENT '订单创建时间' ,
+CHANGE COLUMN `order_operate_date` `order_operate_date` DATETIME NULL DEFAULT NULL COMMENT '订单处理时间' ;
+
+
 
 
 
