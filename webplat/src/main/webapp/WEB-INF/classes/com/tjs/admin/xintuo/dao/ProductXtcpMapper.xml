@@ -208,6 +208,16 @@
 		limit 0,4								
 	</select>
 	
+	<select id="selectProductXtcpByGsId" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
+	 parameterType="Long">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_product_xtcp where xtcp_gsId = #{xtgsId}
+		ORDER BY xtcp_tjno
+		limit 0,4								
+	</select>
+	
+	
 	<select id="selectProductXtcpTrustFootIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
 	 parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
@@ -216,12 +226,13 @@
 		xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw in ('10','20')
-		 <if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">		
+		<if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">		
         AND xtcp_xtlx like CONCAT('%',#{productXtcp.xtcpXtlx},'%') 
         </if>
 		ORDER BY xtcp_tjno
 		limit 0,4								
 	</select>
+	
 	
 	
 	<select id="countProductXtcpTrust" resultType="int"
@@ -250,7 +261,7 @@
 		     <when test="xtcpNsyl==7">AND xtcp_nsyl&lt;8</when>
 		     <when test="xtcpNsyl==8">AND xtcp_nsyl&gt;=8 AND xtcp_nsyl&lt;10 </when> 
 		     <when test="xtcpNsyl=='10'">AND xtcp_nsyl&gt;=10 AND xtcp_nsyl&lt;12 </when> 
-		     <when test="xtcpNsyl=='12'">AND xtcpNsyl&gt;=12 </when> 
+		     <when test="xtcpNsyl=='12'">AND xtcp_nsyl&gt;=12 </when> 
 		    <otherwise> </otherwise>
 		 </choose>	
 		 
@@ -313,7 +324,7 @@
 		     <when test="xtcpNsyl==7">AND xtcp_nsyl&lt;8</when>
 		     <when test="xtcpNsyl==8">AND xtcp_nsyl&gt;=8 AND xtcp_nsyl&lt;10 </when> 
 		     <when test="xtcpNsyl=='10'">AND xtcp_nsyl&gt;=10 AND xtcp_nsyl&lt;12 </when> 
-		     <when test="xtcpNsyl=='12'">AND xtcpNsyl&gt;=12 </when> 
+		     <when test="xtcpNsyl=='12'">AND xtcp_nsyl&gt;=12 </when> 
 		     <otherwise></otherwise>
 		 </choose>
 		 
