@@ -58,14 +58,12 @@ document.all(imgg).style.display='block'}}
                 <ul>
                     <li>1</li>
                     <li>2</li>
-                    <li>3</li>
                 </ul>
             </div>
             <div class="bd">
                 <ul>
-                    <li><a class="inter_cutimg" href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img02" href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img03" href="" target="_blank"></a></li>
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main1.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main2.jpg"/></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
@@ -73,13 +71,11 @@ document.all(imgg).style.display='block'}}
         <script type="text/javascript">
             jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
         </script>
-        <div class="tjs_liuchengbg"></div>
         
 
 
 <div class="tjs_content_div">
 <div class="tjs_1108px center">
-<div class="tjs_liucheng"></div>
 <div class="tjs_slogan_div"><span style="font-size:42px; color:#FF6600">淘金山</span>&nbsp;&nbsp;&nbsp;是一个致力于安全保障，稳健收益的实力平台</div>
 <div class="tjs_advantage_div">
 <ul>
@@ -136,18 +132,18 @@ document.all(imgg).style.display='block'}}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[0].xtcpSplname}A</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[0].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[0].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[0].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[0].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[0].xtcpZdrgje} 万 | 期限： ${xtcpData[0].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv"> ${xtcpData[0].xtcpDp}</div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[0].xtcpId}" target="_blank" class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
@@ -157,18 +153,18 @@ document.all(imgg).style.display='block'}}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[1].xtcpSplname} B</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[1].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[1].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[1].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[1].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[1].xtcpZdrgje} 万 | 期限： ${xtcpData[1].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv"> ${xtcpData[1].xtcpDp}</div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[1].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
@@ -178,18 +174,18 @@ document.all(imgg).style.display='block'}}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[2].xtcpSplname} C</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[2].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[2].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[2].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[2].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[2].xtcpZdrgje} 万 | 期限： ${xtcpData[2].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv"> ${xtcpData[2].xtcpDp}</div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[2].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 03 -->

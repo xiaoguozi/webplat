@@ -52,20 +52,17 @@ document.all(imgg).style.display='block'}}
   </div>
 </div>
 <!-- /header_menu -->
-
         <div id="slideBox" class="slideBox">
             <div class="hd">
                 <ul>
                     <li>1</li>
                     <li>2</li>
-                    <li>3</li>
                 </ul>
             </div>
             <div class="bd">
                 <ul>
-                    <li><a class="inter_cutimg" href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img02" href="" target="_blank"></a></li>
-                    <li><a class="inter_cutimg img03" href="" target="_blank"></a></li>
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main1.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main2.jpg"/></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
@@ -73,7 +70,7 @@ document.all(imgg).style.display='block'}}
         <script type="text/javascript">
             jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
         </script>
-        <div class="tjs_liuchengbg"></div>
+        
 <div class="opacity-wrap"></div>        
 <div class="top_header_logindiv"  id="tip120"  style="display:block">
 
@@ -97,7 +94,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_content_div">
 <div class="tjs_1108px center">
-<div class="tjs_liucheng"></div>
+
 <div class="tjs_slogan_div"><span style="font-size:42px; color:#FF6600">淘金山</span>&nbsp;&nbsp;&nbsp;是一个致力于安全保障，稳健收益的实力平台</div>
 <div class="tjs_advantage_div">
 <ul>
@@ -165,7 +162,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[0].xtcpZdrgje} 万 | 期限： ${xtcpData[0].xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv"> ${xtcpData[0].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[0].xtcpId}" target="_blank" class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
@@ -186,7 +183,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[1].xtcpZdrgje} 万 | 期限： ${xtcpData[1].xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv"> ${xtcpData[1].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[1].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
@@ -207,7 +204,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[2].xtcpZdrgje} 万 | 期限： ${xtcpData[2].xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv"> ${xtcpData[2].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[2].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 03 -->
@@ -579,7 +576,6 @@ $(function() {
 		});
 	</script>
         
-
 
 </body>
 </html>

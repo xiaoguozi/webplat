@@ -50,20 +50,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         <div class="col-md-12 page-404">
             <div class="number">404</div>
             <div class="details">
-                <h3>Oops! You're lost.</h3>
+                <h3>页面未找到</h3>
                 <p>
-                    We can not find the page you're looking for.<br /> <a href="<%=basePath%>">Return home</a> or try the search bar below.
+                    您访问的页面不存在。<br /> <a href="<%=basePath%>">回到首页</a> 
                 </p>
-                <form action="#">
-                    <div class="input-group input-medium">
-                        <input type="text" class="form-control" placeholder="keyword..."> <span class="input-group-btn">
-                            <button type="submit" class="btn blue">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
-                </form>
+                
             </div>
         </div>
     </div>

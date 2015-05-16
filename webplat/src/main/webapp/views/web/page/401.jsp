@@ -53,9 +53,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			 401
 		</div>
 		<div class=" details">
-			<h3>未授权</h3>
+			<h3>页面未授权</h3>
 			<p>
-				Please come back in a while.<br/><br/>
+				您访问的页面未授权。<br /> <a href="<%=basePath%>">回到首页</a> 
 			</p>
 		</div>
 	</div>
