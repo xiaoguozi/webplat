@@ -102,7 +102,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   </tr>
   <tr>
     <td height="40"  class="tjs_pcs_titleevenbg">存续期：</td>
-    <td class="tjs_pcs_textevenbg">${xintuotop.xtcpCxq} 个月</td>
+    <td class="tjs_pcs_textevenbg">${productXtcp.xtcpCxq} 个月</td>
     <td class="tjs_pcs_titleevenbg">投资方式:</td>
     <td class="tjs_pcs_textevenbg">
     		<c:choose>  

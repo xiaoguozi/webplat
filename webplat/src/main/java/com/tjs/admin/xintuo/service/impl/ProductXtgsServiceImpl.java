@@ -32,6 +32,7 @@ public class ProductXtgsServiceImpl  implements IProductXtgsService {
 	
 	@Override
 	public void updateProductXtgs(ProductXtgs productXtgs) {
+		System.err.println(">>>"+productXtgs.getXgtsZczb());
 		productXtgsMapper.updateProductXtgs(productXtgs);
 	}
 

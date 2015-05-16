@@ -63,8 +63,8 @@ html{ width:100%; height:100%;background:#f5f5f5;}
             </div>
             <div class="bd">           
                 <ul>                
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/xintu1.jpg"/></a></li>
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/xintu2.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu1.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu2.jpg"/></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
@@ -101,12 +101,12 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px"> <fmt:formatNumber value="${xintuotop.xtcpNsyl.intValue()}" pattern="#0" />.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuotop.xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛：  <fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/>万 | 期限：${xintuotop.xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xintuotop.xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px"> ${xintuotop.xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
 </div>
 </c:forEach>
@@ -163,11 +163,32 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 	<div class="tjs_float_left tjs_width225px tjs_height145px  tjs_right_1pxdashed">
 	<div class="tjs_trust_base">投资起点：<span style="color:#666;"><fmt:formatNumber value="${xintuofootsmall.xtcpZdrgje}" pattern="#0.####"/>万</span><br />
 	投资期限：<span style="color:#666;">${xintuofootsmall.xtcpCxq}个月</span><br />
-	投资方向：<span style="color:#666;">${xintuofootsmall.xtcpZjyt}</span></div>
+	投资方向：<span style="color:#666;">
+          <c:choose>  
+               <c:when test="${xintuofootsmall.xtcpTzly=='10'}">  
+                 		房地产
+               </c:when>
+                <c:when test="${xintuofootsmall.xtcpTzly=='20'}">  
+                 		金融
+               </c:when>
+                <c:when test="${xintuofootsmall.xtcpTzly=='30'}">  
+                 		 基础设施
+               </c:when> 
+                <c:when test="${xintuofootsmall.xtcpTzly=='40'}">  
+                 		工商企业
+               </c:when> 
+                <c:when test="${xintuofootsmall.xtcpTzly=='50'}">  
+                 		其他
+               </c:when>     
+               <c:otherwise>  
+                    	其他
+               </c:otherwise>  
+           </c:choose> 		
+	</span></div>
 	</div>
 	<div class="tjs_float_left tjs_width225px tjs_height145px">
 	<div class="tjs_trust_order">
-	<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
+	<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
 	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootsmall.xtcpId}">立即预约</a></div>
 	</div>
 	</div>
@@ -199,11 +220,33 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px  tjs_right_1pxdashed">
 <div class="tjs_trust_base">投资起点：<span style="color:#666;"><fmt:formatNumber value="${xintuofootone.xtcpZdrgje}" pattern="#0.####"/>万</span><br />
 投资期限：<span style="color:#666;">${xintuofootone.xtcpCxq}个月</span><br />
-投资方向：<span style="color:#666;">${xintuofootone.xtcpZjyt}</span></div>
+投资方向：<span style="color:#666;">
+           <c:choose>  
+               <c:when test="${xintuofootone.xtcpTzly=='10'}">  
+                 		房地产
+               </c:when>
+                <c:when test="${xintuofootone.xtcpTzly=='20'}">  
+                 		金融
+               </c:when>
+                <c:when test="${xintuofootone.xtcpTzly=='30'}">  
+                 		 基础设施
+               </c:when> 
+                <c:when test="${xintuofootone.xtcpTzly=='40'}">  
+                 		工商企业
+               </c:when> 
+                <c:when test="${xintuofootone.xtcpTzly=='50'}">  
+                 		其他
+               </c:when>     
+               <c:otherwise>  
+                    	其他
+               </c:otherwise>  
+           </c:choose> 		
+
+</span></div>
 </div>
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootone.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootone.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
+<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootone.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootone.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
 <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootone.xtcpId}">立即预约</a></div>
 </div>
 </div>
@@ -236,11 +279,32 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px  tjs_right_1pxdashed">
 <div class="tjs_trust_base">投资起点：<span style="color:#666;">${lstTopfootHighs.xtcpZdrgje}万</span><br />
 投资期限：<span style="color:#666;">${lstTopfootHighs.xtcpCxq}个月</span><br />
-投资方向：<span style="color:#666;">${lstTopfootHighs.xtcpZjyt}</span></div>
+投资方向：<span style="color:#666;">
+   <c:choose>  
+               <c:when test="${lstTopfootHighs.xtcpTzly=='10'}">  
+                 		房地产
+               </c:when>
+                <c:when test="${lstTopfootHighs.xtcpTzly=='20'}">  
+                 		金融
+               </c:when>
+                <c:when test="${lstTopfootHighs.xtcpTzly=='30'}">  
+                 		 基础设施
+               </c:when> 
+                <c:when test="${lstTopfootHighs.xtcpTzly=='40'}">  
+                 		工商企业
+               </c:when> 
+                <c:when test="${lstTopfootHighs.xtcpTzly=='50'}">  
+                 		其他
+               </c:when>     
+               <c:otherwise>  
+                    	其他
+               </c:otherwise>  
+           </c:choose> 		
+</span></div>
 </div>
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
+<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
 <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootHighs.xtcpId}">立即预约</a></div>
 </div>
 </div>
@@ -270,11 +334,32 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px  tjs_right_1pxdashed">
 <div class="tjs_trust_base">投资起点：<span style="color:#666;">${lstTopfootOthers.xtcpZdrgje}万</span><br />
 投资期限：<span style="color:#666;">${lstTopfootOthers.xtcpCxq}个月</span><br />
-投资方向：<span style="color:#666;">${lstTopfootOthers.xtcpZjyt}</span></div>
+投资方向：<span style="color:#666;">
+  <c:choose>  
+               <c:when test="${lstTopfootOthers.xtcpTzly=='10'}">  
+                 		房地产
+               </c:when>
+                <c:when test="${lstTopfootOthers.xtcpTzly=='20'}">  
+                 		金融
+               </c:when>
+                <c:when test="${lstTopfootOthers.xtcpTzly=='30'}">  
+                 		 基础设施
+               </c:when> 
+                <c:when test="${lstTopfootOthers.xtcpTzly=='40'}">  
+                 		工商企业
+               </c:when> 
+                <c:when test="${lstTopfootOthers.xtcpTzly=='50'}">  
+                 		其他
+               </c:when>     
+               <c:otherwise>  
+                    	其他
+               </c:otherwise>  
+           </c:choose> 	
+</span></div>
 </div>
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
-<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
+<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
 <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootOthers.xtcpId}">立即预约</a></div>
 </div>
 </div>

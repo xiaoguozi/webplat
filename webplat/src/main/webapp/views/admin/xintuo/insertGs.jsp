@@ -24,7 +24,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">公司编码</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtgsCode" value="${productXtgs.xtgsCode}" >
+                <input type="text" class="form-control " name="xtgsCode" value="${productXtgs.xtgsCode}" >
             </div>
              
         </div>
@@ -55,7 +55,7 @@
          <div class="form-group">
             <label class="col-md-2 control-label">公司简称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required " name="xgtsSplname" value="${productXtgs.xgtsSplname}" >
+                <input type="text" class="form-control required " maxlength="20" name="xgtsSplname" value="${productXtgs.xgtsSplname}" >
             </div>
             
         </div>
@@ -120,7 +120,7 @@
          <div class="form-group">
          <label class="col-md-2 control-label">公司性质</label>
             <div class="col-md-6">
-                 <input type="text" class="form-control required" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
+                 <input type="text" class="form-control required"  maxlength="20" name="xgtsGsxz" value="${productXtgs.xgtsGsxz}">
             </div>
          </div>
          
@@ -182,7 +182,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">资产管理规模</label>
             <div class="col-md-6">
-            <textarea rows="6" cols="100" class="form-control required" name="xgtsZcglgm">${productXtgs.xgtsZcglgm}</textarea>
+              <input type="text" class="form-control required" name="xgtsZcglgm"  maxlength="20" value="${productXtgs.xgtsZcglgm}"  >            
             </div>
             
         </div>

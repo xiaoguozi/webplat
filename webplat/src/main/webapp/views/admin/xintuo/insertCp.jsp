@@ -23,23 +23,18 @@
         <div class="form-group">
             <label class="col-md-2 control-label">信托产品全称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpFullname" value="${productXtcp.xtcpFullname}" >
+                <input type="text" class="form-control required"  name="xtcpFullname" value="${productXtcp.xtcpFullname}" >
             </div>            
         </div>
         
         <div class="form-group">
             <label class="col-md-2 control-label">信托产品简称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpSplname" value="${productXtcp.xtcpSplname}" >
+                <input type="text" class="form-control required" maxlength="20" name="xtcpSplname" value="${productXtcp.xtcpSplname}" >
             </div>            
         </div>
         
-        <div class="form-group">
-             <label class="col-md-2 control-label">信托产品LOGO</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control required" name="xtcpLog" value="${productXtcp.xtcpLog}"  >
-            </div>
-        </div>
+       
         
          <div class="form-group">
             <label class="col-md-2 control-label">信托公司名称</label>
@@ -261,7 +256,7 @@
         <div class="form-group">
          <label class="col-md-2 control-label">点评</label>
             <div class="col-md-6">
-                 <textarea rows="6" cols="100" class="form-control required" name="xtcpDp">${productXtcp.xtcpDp}</textarea>
+                 <textarea rows="6" cols="100" class="form-control required"  maxlength="36" name="xtcpDp">${productXtcp.xtcpDp}</textarea>
             </div>
        </div>
                                               

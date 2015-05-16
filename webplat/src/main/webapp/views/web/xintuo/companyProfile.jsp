@@ -88,7 +88,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   </tr>
   <tr>
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">成立日期：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><fmt:formatDate value="${productXtgs.xgtsCreatedate}" pattern="yyyy"/></td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><fmt:formatDate value="${productXtgs.xgtsCreatedate}" pattern="yyyy-MM"/></td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">注册资本(万元)：</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg"><fmt:formatNumber value="${productXtgs.xgtsZczb}" pattern="#0.####"/></td>
   </tr>
@@ -100,7 +100,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   </tr>
   <tr>
       <td height="50" bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">总经理：</td>
-      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsEnname}</td>
+      <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsZjl}</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_titleevenbg">法人代表：</td>
       <td bgcolor="#FFFFFF" class="tjs_pcs_textevenbg">${productXtgs.xgtsFrdb}</td>
   </tr>
