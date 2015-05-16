@@ -9,7 +9,7 @@
      <a href="rest/web/login" class="log_link">登录</a> | <a href="rest/web/passport/reg">注册</a> 
 </c:if>  
 <c:if test="${not empty sessionScope.userInfo.username}">  
-     <a href="rest/web/userCenter/index" class="log_link">欢迎您：${sessionScope.userInfo.username }</a> | <a href="rest/web/passport/logout">退出</a> | <a href="rest/admin/index" target="_blank">管理后台</a> 
+     <a href="rest/web/userCenter/index" class="log_link">欢迎您：${sessionScope.userInfo.username }</a> | <a href="rest/web/passport/logout">退出</a> 
 </c:if>      
     
     

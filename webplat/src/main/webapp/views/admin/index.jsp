@@ -58,6 +58,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <link rel="stylesheet" href="assets/css/admin-index.css">
 <!-- END CUSTOM CSS IMPORT -->
         <link rel="shortcut icon" href="app/img/favicon.ico" />
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/lib/bootstrap3/css/bootstrap-ie78.css">
+    <script src="assets/css/html5shiv.min.js"></script>
+    <script src="assets/css/respond.min.js"></script>
+    <![endif]-->
+
+
     </head>
     <!-- END HEAD -->
 
