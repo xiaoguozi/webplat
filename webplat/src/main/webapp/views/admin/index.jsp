@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     
     <link rel="stylesheet" href="assets/css/admin-index.css">
 <!-- END CUSTOM CSS IMPORT -->
-        <link rel="shortcut icon" href="app/img/favicon.ico" />
+        <link rel="shortcut icon" href="favicon.ico" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

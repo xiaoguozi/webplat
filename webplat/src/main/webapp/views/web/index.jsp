@@ -85,7 +85,7 @@ document.all(imgg).style.display='block'}}
      </p>
      <p class="direct-login">
        <span>有账号？直接</span>
-       <a href="rest/web/login">登录&gt;</a>
+       <a href="rest/web/login">登录</a>
      </p>
    </div>
 </div>
