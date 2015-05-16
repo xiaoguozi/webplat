@@ -27,7 +27,7 @@
 </li>
 <li>
 <span style="height:40px;display:inline-block;">客服热线</span><br />
-<span class="tjs_service_ico"></span><span style=" float:left;height:40px; line-height:40px;display:inline-block; color:#999;">400-888-896</span><br />
+<span class="tjs_service_ico"></span><span style=" float:left;height:40px; line-height:40px;display:inline-block; color:#999;">4006-114-088</span><br />
 <span style="height:46px; line-height:50px;display:inline-block;">在线咨询</span><br />
 <a href="#" class="tjs_footer_qq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>在线咨询</span></a><span style="font-size:14px; color:#999;">08:00 - 23:00</span>
 </li>

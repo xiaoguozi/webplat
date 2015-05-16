@@ -89,7 +89,7 @@ $(function() {
 
         $('.register-form').validate({
             errorElement : 'span', // default input error message container
-            errorClass : 'help-block', // default input error message class
+            errorClass : 'tjs_reg_error', // default input error message class
             focusInvalid : false, // do not focus the last invalid input
             ignore : "",
             rules : {
