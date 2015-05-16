@@ -83,7 +83,7 @@ public class PassportServiceImpl implements PassportService {
         
         String smsCode = ""+code;
     	
-    	userName = "15099934336";
+    //	userName = "15099934336";
     	
     	//TODO 发送短信验证码
     	
@@ -102,7 +102,7 @@ public class PassportServiceImpl implements PassportService {
 			//e.printStackTrace();
 		}
 		
-		smsCode = "1234";
+	//	smsCode = "1234";
     	
     	return smsCode;
     }

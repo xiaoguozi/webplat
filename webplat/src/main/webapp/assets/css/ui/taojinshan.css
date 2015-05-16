@@ -290,7 +290,7 @@ a.tjs_moreurl:hover{  text-decoration:none; color:#FF6600;}
 .tjs_right_2border{border-right:solid 1px #ECECEC; }
 .tjs_right_title{ height:46px;width:100%; text-align:center; color:#666; overflow:hidden;}
 .tjs_right_title span{font-size:20px;}
-
+.tjs_right_title tr{background:none !important;}
 .tjs_right_privatetitle{
 	margin-left:50px;
 	height:128px;

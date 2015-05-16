@@ -149,64 +149,64 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[0].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[0].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[0].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[0].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[0].xtcpZdrgje} 万 | 期限： ${xtcpData[0].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
+<div class="tjs_product_textdiv"> ${xtcpData[0].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[1].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[1].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[1].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[1].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[1].xtcpZdrgje} 万 | 期限： ${xtcpData[1].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
+<div class="tjs_product_textdiv"> ${xtcpData[1].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit ">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[2].xtcpLog}" width="36" height="30" align="middle"></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[2].xtcpSplname}</span></td>
   </tr>
 </table>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">11.</span>00%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[2].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">返现 ￥6000</span></div>
-<div class="tjs_right_textdiv"> 门槛： 100 万 | 期限： 24 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[2].xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： ${xtcpData[2].xtcpZdrgje} 万 | 期限： ${xtcpData[2].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> 半年付息，高收益，融资方实力 雄厚，还款来源充足可靠！</div>
+<div class="tjs_product_textdiv"> ${xtcpData[2].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -253,7 +253,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user01.png" width="128" height="128" /></div>
@@ -269,7 +269,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user02.png" width="128" height="128" /></div>
@@ -286,7 +286,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_right_unit 02 -->
 
 
-<div class="tjs_right_unit  tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user03.png" width="128" height="128" /></div>
@@ -339,7 +339,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>包赚不赔</span><br />包赚不赔，新手体验
@@ -354,7 +354,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>天天赚</span><br />短线投资 , 4倍杠杆
@@ -369,7 +369,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>低息1配1</span><br />长线投资，月息仅0.69%
@@ -426,7 +426,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -444,7 +444,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -462,7 +462,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -564,9 +564,18 @@ $(function() {
             alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
         }
         //--/预约--
+        
+        var hoverproduct = function(){
+        	$(".product_div").hover(function () {
+                $(this).addClass("tjs_backgroundgray");
+            }, function () {
+            	$(this).removeClass("tjs_backgroundgray");
+            });
+        }
 		   
 		   
 		slideboxshow();
+		hoverproduct();
 		});
 	</script>
         

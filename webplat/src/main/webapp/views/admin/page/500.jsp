@@ -53,10 +53,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			 500
 		</div>
 		<div class=" details">
-			<h3>Oops! Something went wrong.</h3>
+			<h3>服务器发生错误</h3>
 			<p>
-				 We are fixing it!<br/>
-				Please come back in a while.<br/><br/>
+				服务器发生异常，我们正在紧急修复中，请稍后再访问<br /><br />
 			</p>
 		</div>
 	</div>

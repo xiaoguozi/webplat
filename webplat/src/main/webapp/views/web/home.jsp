@@ -44,7 +44,7 @@ document.all(imgg).style.display='block'}}
     <ul>
     <li><a href="#">首页</a></li>
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
-    <li><a href="#">私募</a></li>
+    <li><a href="rest/web/pe/peIndex">私募</a></li>
     <li><a href="#">配资</a></li>
     <li><a href="#">海外保险</a></li>
     <li><a href="#">新手指引</a></li>
@@ -131,13 +131,13 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[0].xtcpSplname}A</span></td>
   </tr>
 </table>
 </div>
@@ -152,13 +152,13 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[1].xtcpSplname} B</span></td>
   </tr>
 </table>
 </div>
@@ -173,13 +173,13 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit ">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="65" align="right"><img src="assets/img/ui/company_ico01.png" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>银象168号</span></td>
+    <td align="left">&nbsp;&nbsp;<span>${xtcpData[2].xtcpSplname} C</span></td>
   </tr>
 </table>
 </div>
@@ -235,7 +235,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user01.png" width="128" height="128" /></div>
@@ -251,7 +251,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user02.png" width="128" height="128" /></div>
@@ -268,7 +268,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_right_unit 02 -->
 
 
-<div class="tjs_right_unit  tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
 <div class="tjs_right_privatetitle"> <img src="assets/img/ui/user03.png" width="128" height="128" /></div>
@@ -321,7 +321,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>包赚不赔</span><br />包赚不赔，新手体验
@@ -336,7 +336,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>天天赚</span><br />短线投资 , 4倍杠杆
@@ -351,7 +351,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>低息1配1</span><br />长线投资，月息仅0.69%
@@ -408,7 +408,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -426,7 +426,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="tjs_right_unit tjs_right_2border">
+<div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -444,7 +444,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_right_unit 02 -->
 
-<div class="tjs_right_unit tjs_backgroundgray">
+<div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
@@ -546,9 +546,18 @@ $(function() {
             alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
         }
         //--/预约--
+        
+        var hoverproduct = function(){
+        	$(".product_div").hover(function () {
+                $(this).addClass("tjs_backgroundgray");
+            }, function () {
+            	$(this).removeClass("tjs_backgroundgray");
+            });
+        }
 		   
 		   
 		slideboxshow();
+		hoverproduct();
 		});
 	</script>
         

@@ -1,5 +1,7 @@
 package com.tjs.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.xintuo.model.ProductXtcp;
+import com.tjs.admin.xintuo.service.IProductXtcpService;
+import com.tjs.admin.xintuo.service.impl.ProductXtcpServiceImpl;
 
 /**
  * 公共视图控制器
@@ -25,6 +30,8 @@ public class WebController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private IProductXtcpService productXtcpService;
     
 	/**
 	 * 首页－默认
@@ -64,7 +71,16 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping("/index")
-	public String index(HttpServletRequest request) {
+	public String index(HttpServletRequest request, Model model) {
+		
+		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
+
+		for(int i=xtcp.size(); i<3; i++){
+			xtcp.add(new ProductXtcp());
+		}
+		
+		model.addAttribute("xtcpData", xtcp);
+		
 		return "web/index";
 	}
 
@@ -75,7 +91,16 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping("/home")
-	public String home(HttpServletRequest request) {
+	public String home(HttpServletRequest request, Model model) {
+
+		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
+	
+		for(int i=xtcp.size(); i<3; i++){
+			xtcp.add(new ProductXtcp());
+		}
+		
+		model.addAttribute("xtcpData", xtcp);
+		
 		return "web/home";
 	}
 
