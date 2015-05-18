@@ -6,6 +6,7 @@ import java.util.Map;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
+import com.tjs.web.pe.controller.PESearchCtrlVO;
 
 /**
  * 私募产品服务接口
@@ -59,9 +60,9 @@ public interface PEProductService  {
 	
 	/**
 	 * 得到私募所有产品
-	 * @param peProductCtrlModel
+	 * @param PESearchCtrlVO
 	 * @return PETopProduct 集合
 	 */
-	List<PETopProduct> getAnyPEProductList(PEProductCtrlModel peProductCtrlModel);
+	List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
 }

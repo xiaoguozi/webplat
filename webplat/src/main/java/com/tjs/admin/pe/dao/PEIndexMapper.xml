@@ -84,7 +84,7 @@
 		LIMIT 0,10
     </select>
     
- 	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel">
+ 	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
 		  P.id,
 		  P.name,
@@ -109,11 +109,21 @@
 		  AND P.status != 3
 		  AND MP.MANAGER_ID = M.ID 
 		  AND M.company_id = C.id
-		ORDER BY P.ACCUMULATED_INCOME DESC
 		
+		<if test="peManagerId!=0">
+		    AND M.ID=#{peManagerId}
+		</if>
+		
+		<if test="peCompanyId!=0">
+		    AND C.ID=#{peCompanyId}
+		</if>
+		
+		ORDER BY P.ACCUMULATED_INCOME DESC
+		<!-- 
 		<if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}
         </if>  
+         -->
         
     </select>
  	 

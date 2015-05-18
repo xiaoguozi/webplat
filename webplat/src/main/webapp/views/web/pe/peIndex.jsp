@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 
 <!--私募页面样式-->
-<link href="assets/css/simu.css" rel="stylesheet" />
+<link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
@@ -37,7 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="header_menu">
     <div class="tjs_1108px center" style="position: relative;">
         <div class="logo_wrap">
-            <a href="http://www.taojinshan.com.cn">
+            <a href="#">
                 <img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a>
         </div>
         <div class="top_wrap_menu menu">
@@ -186,7 +186,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <td class="tjs_table_td_four">
 	                                <p>累计收益</p>
 	                                <p class="tjs_num"><fmt:formatNumber value="${peTop10Product.accumulatedIncome}" pattern="#0"/>.<span class="tjsfont_size"><fmt:formatNumber value="${peTop10Product.accumulatedIncome*100%100}" pattern="00"/>%</span></p>
-	                                <p><a href="#" class="tjs_btn">我要预约</a></p>
+	                                <p><a href="javascript:void(0)" onclick="alertbox(this)" class="tjs_btn"><img src="assets/img/ui/clock.png" />立即预约</a></p>
 	                            </td>
 	                        </tr>
                         </c:forEach>
