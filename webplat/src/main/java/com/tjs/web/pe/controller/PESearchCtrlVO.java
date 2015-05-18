@@ -22,6 +22,12 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	
 	/** 年华收益率  */
 	private int peYearRate = 0;
+	
+	/** 基金经理更多 */
+	private int peManagerMore = 0;
+	
+	/** 基金公司更多 */
+	private int peCompanyMore = 0;
 
 	public String getKeyword() {
 		return keyword;
@@ -62,5 +68,23 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	public void setPeYearRate(int peYearRate) {
 		this.peYearRate = peYearRate;
 	}
+
+	public int getPeManagerMore() {
+		return peManagerMore;
+	}
+
+	public void setPeManagerMore(int peManagerMore) {
+		this.peManagerMore = peManagerMore;
+	}
+
+	public int getPeCompanyMore() {
+		return peCompanyMore;
+	}
+
+	public void setPeCompanyMore(int peCompanyMore) {
+		this.peCompanyMore = peCompanyMore;
+	}
+	
+	
 	
 }

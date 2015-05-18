@@ -109,151 +109,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">基金经理：</div>
 								<div class="mult_con" id="divPEManager">
 									<a href="#" class="mult_lk" tag="0" title="不限">不限</a> 
-										<c:forEach items="${lstManager}" var="peManager" end="9">
-											<a class="mult_lk" href="#" tag="${peManager.id}" title="${peManager.name}">${peManager.name}</a> 
+										<c:forEach items="${lstManager}" var="peManager" end="3">
+											<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="0"  title="${peManager.name}">${peManager.name}</a> 
 										</c:forEach>
-									<a id="tjs_more" class="mult_more">&gt; 更多</a>
-									<div class="mult_more_wrap" style="display: none;">
-										<ul class="more_wrap_hd">
-											<li class="active"><a href="">A</a></li>
-											<li><a href="">B</a></li>
-											<li><a href="">C</a></li>
-											<li><a href="">D</a></li>
-											<li><a href="">E</a></li>
-											<li><a href="">F</a></li>
-											<li><a href="">G</a></li>
-											<li><a href="">H</a></li>
-											<li><a href="">I</a></li>
-											<li><a href="">J</a></li>
-											<li><a href="">K</a></li>
-											<li><a href="">L</a></li>
-											<li><a href="">M</a></li>
-											<li><a href="">N</a></li>
-											<li><a href="">O</a></li>
-											<li><a href="">P</a></li>
-											<li><a href="">Q</a></li>
-											<li><a href="">R</a></li>
-											<li><a href="">S</a></li>
-											<li><a href="">T</a></li>
-											<li><a href="">U</a></li>
-											<li><a href="">V</a></li>
-											<li><a href="">W</a></li>
-											<li><a href="">X</a></li>
-											<li><a href="">Y</a></li>
-											<li><a href="">Z</a></li>
-										</ul>
+									<a id="tjs_more" href="javascript:void(0)" class="mult_more" >&gt; 更多</a>
+									<div class="mult_more_wrap" ${simuSearchVO.peManagerMore==0?"style='display: none;'":""}>
 										<div class="more_wrap_bd">
 											<ul class="more_lk_list">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">安农</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">艾亮</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">安亚林</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">艾亮</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">安俊杰</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="l" class="mult_lk">包周荣</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">陈子木</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">曹素生</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">段文胜</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">段成玉</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">耳頔</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">付英杰</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">冯志坚</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">甘华</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">郭振宇</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">何震</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">胡慧珍</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">吉建晔</a> </label></li>
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">姜德取</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">康道志</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">鲁轶</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">梅琳燕</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">宁金山</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="l" class="mult_lk">欧阳苗伟</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">潘静</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">齐士扬</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">饶向辉</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">孙志洪</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">涂忠华</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">万桦</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">徐胜广</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">杨欢</a> </label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk">周枫</a> </label></li>
+												<c:if test="${fn:length(lstManager)>4}">
+													<c:forEach items="${lstManager}" var="peManager" begin="4">
+														<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="1" title="${peManager.name}">${peManager.name}</a> 
+													</c:forEach>
+												</c:if>
 											</ul>
 										</div>
 									</div>
@@ -263,49 +130,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">基金公司：</div>
 								<div class="mult_con" id="divPECompany">
 										<a href="" class="mult_lk" tag="0" title="不限">不限</a> 
-										<c:forEach items="${lstCompany}" var="peCompany" end="10">
-											<a href="" class="mult_lk" tag="${peCompany.id}" title="${peCompany.name}">${peCompany.name}</a>
+										<c:forEach items="${lstCompany}" var="peCompany" end="3">
+											<a href="" class="mult_lk" tag="${peCompany.id}" tagmore="0" title="${peCompany.name}">${peCompany.name}</a>
 										</c:forEach>
 									<a id="tjs_mores" class="mult_more">&gt;
 										更多</a>
-									<div class="mult_more_wrap" style="display: none;">
-										<ul class="more_wrap_hd">
-											<li class="active"><a href="">A</a></li>
-											<li><a href="">B</a></li>
-											<li><a href="">C</a></li>
-											<li><a href="">D</a></li>
-											<li><a href="">E</a></li>
-											<li><a href="">F</a></li>
-											<li><a href="">G</a></li>
-											<li><a href="">H</a></li>
-											<li><a href="">I</a></li>
-											<li><a href="">J</a></li>
-											<li><a href="">K</a></li>
-											<li><a href="">L</a></li>
-											<li><a href="">M</a></li>
-											<li><a href="">N</a></li>
-											<li><a href="">O</a></li>
-											<li><a href="">P</a></li>
-											<li><a href="">Q</a></li>
-											<li><a href="">R</a></li>
-											<li><a href="">S</a></li>
-											<li><a href="">T</a></li>
-											<li><a href="">U</a></li>
-											<li><a href="">V</a></li>
-											<li><a href="">W</a></li>
-											<li><a href="">X</a></li>
-											<li><a href="">Y</a></li>
-											<li><a href="">Z</a></li>
-
-										</ul>
+									<div class="mult_more_wrap" ${simuSearchVO.peCompanyMore==0?"style='display: none;'":""}>
 										<div class="more_wrap_bd">
 											<ul class="more_lk_list">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk"></a></label></li>
-											</ul>
-											<ul class="more_lk_list" style="display: none;">
-												<li class="lk_item"><label class="lk_lbl"><a
-														href="" class="mult_lk"></a></label></li>
+												<c:if test="${fn:length(lstCompany)>4}">
+													<c:forEach items="${lstCompany}" var="peCompany" begin="4">
+														<a class="mult_lk" href="#" tag="${peCompany.id}" tagmore="1" title="${peCompany.name}">${peCompany.name}</a> 
+													</c:forEach>
+												</c:if>
 											</ul>
 										</div>
 									</div>
@@ -496,30 +333,45 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    $("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").addClass("mult_checked");
 		
 	  	//初始化选这按钮
-	    if($("#divPEManager a.mult_checked").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPEManager'>"+$("#divPEManager a.mult_checked").attr("title")+"</a>");
+	    if($("#divPEManager a[tag=${simuSearchVO.peManagerId}]").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPEManager'>"+$("#divPEManager a[tag=${simuSearchVO.peManagerId}]").attr("title")+"</a>");
 	    }
 	    
-	    if($("#divPECompany a.mult_checked").attr("tag")!='0'){
-	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPECompany'>"+$("#divPECompany a.mult_checked").attr("title")+"</a>");
+	    if($("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPECompany'>"+$("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").attr("title")+"</a>");
 	    }
 	    
 	    $(".searchCondition a").click(function(event){
 	    	event.preventDefault();	    	
 	    	$("#"+$(this).attr("condition_name")+" a").removeClass("mult_checked");
 	    	$("#"+$(this).attr("condition_name")+" a[tag=0]").addClass("mult_checked");	    		    	
-	    	var params =SetPara();	    	    	
+	    	var params =SetPara();	    
+	    	
 	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
-
 	    });
 		
-	    $("div .mult_con a").click(function(event){
+	    $("#divPEManager a[class=mult_lk]").click(function(event){
 	    	event.preventDefault();
-	    	$(this).removeClass("mult_checked").addClass("mult_checked").siblings().removeClass("mult_checked");
-	    	var params =SetPara();	    	    	
+	    	$("#divPEManager a[class='mult_lk mult_checked']").each(function(index){
+	    		$(this).removeClass("mult_checked");
+	    	});
+	    	$(this).removeClass("mult_checked").addClass("mult_checked");
+	    	var params =SetPara();	 
 	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
-
 	    });
+	    
+	    $("#divPECompany a[class=mult_lk]").click(function(event){
+	    	event.preventDefault();
+	    	$("#divPECompany a[class='mult_lk mult_checked']").each(function(index){
+	    		$(this).removeClass("mult_checked");
+	    	});   
+	    	$(this).removeClass("mult_checked").addClass("mult_checked"); 
+	    	var params =SetPara();	 
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    });
+	    
+	    
+	    
 	    
         //--对比框--
         var sum = 0;
@@ -564,10 +416,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             });
         });
         //--/详情框--
+        
+        
         //--点击更多js--
         function packUp(btn, i) {
             var num = true;
-            $(btn).click(function () {
+            $(btn).click(function (event) {
+            	event.preventDefault();
                 if (num) {
                     var shouqi = "&gt; 收起";
                     num = false;
@@ -577,10 +432,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 }
                 $(this).html(shouqi);
                 $(".mult_more_wrap:eq(" + i + ")").toggle();
+                
             });
         }
         packUp("#tjs_more", 0);
         packUp("#tjs_mores", 1);
+
+
+        
+       
         //--/点击更多js--
         //--排行图标--
         $(".uc_sort").each(function (index) {
@@ -604,14 +464,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     }
 	
 	function SetPara() { 
-		var peManagerId = $("#divPEManager a.mult_checked").attr("tag");
-		var peCompanyId = $("#divPECompany a.mult_checked").attr("tag");
+		var peManagerFilter = $("#divPEManager a.mult_checked");
+		var peCompanyFilter = $("#divPECompany a.mult_checked");
+		
+		var peManagerId = peManagerFilter.attr("tag");
+		var peManagerMore = peManagerFilter.attr("tagmore");
+		if(peManagerMore==undefined){
+			peManagerMore = 0;
+		}
+		
+		var peCompanyId = peCompanyFilter.attr("tag");
+		var peCompanyMore = peCompanyFilter.attr("tagmore");
+		if(peCompanyMore==undefined){
+			peCompanyMore = 0;
+		}
 	
 		/* if($("input[name=keyword]").val()==$("input[name=keyword]").attr('placeholder')){
 			$("input[name=keyword]").val("");
 		} */
 		
-		var params = "?peManagerId=" + peManagerId + "&peCompanyId=" + peCompanyId;
+		var params = "?peManagerId=" + peManagerId + "&peCompanyId=" + peCompanyId + "&peManagerMore="+peManagerMore + "&peCompanyMore="+peCompanyMore ;
 		return params;
 	}
 	
@@ -621,6 +493,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     function alertbox() {
         alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
     }
+    
         
     </script>
 
@@ -629,23 +502,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
