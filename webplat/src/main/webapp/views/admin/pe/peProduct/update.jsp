@@ -68,13 +68,13 @@
          <div class="form-group">
             <label class="col-md-3 control-label">最新净值</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="netWorth" value="${peProduct.netWorth}"  >
+                <input type="text" class="form-control required number" name="netWorth" value="${peProduct.netWorth}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">累计收益</label>
+            <label class="col-md-3 control-label">累计收益（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="accumulatedIncome" value="${peProduct.accumulatedIncome}"  >
+                <input type="text" class="form-control required number" name="accumulatedIncome" value="${peProduct.accumulatedIncome}"  >
             </div>
         </div>
          <div class="form-group">
@@ -104,27 +104,27 @@
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">今年以来收益率</label>
+            <label class="col-md-3 control-label">今年以来收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="nowRate" value="${peProduct.nowRate}"  >
+                <input type="text" class="form-control required number" name="nowRate" value="${peProduct.nowRate}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">近2年收益率</label>
+            <label class="col-md-3 control-label">近2年收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="towRate" value="${peProduct.towRate}"  >
+                <input type="text" class="form-control required number" name="towRate" value="${peProduct.towRate}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">近1年收益率</label>
+            <label class="col-md-3 control-label">近1年收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="oneRate" value="${peProduct.oneRate}"  >
+                <input type="text" class="form-control required number" name="oneRate" value="${peProduct.oneRate}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">年化收益率</label>
+            <label class="col-md-3 control-label">年化收益率（%）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="yearRate" value="${peProduct.yearRate}"  >
+                <input type="text" class="form-control required number" name="yearRate" value="${peProduct.yearRate}"  >
             </div>
         </div>
          <div class="form-group">
@@ -200,25 +200,25 @@
          <div class="form-group">
             <label class="col-md-3 control-label">认购起点</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="subscripStart" value="${peProduct.subscripStart}"  >
+                <input type="text" class="form-control required number" name="subscripStart" value="${peProduct.subscripStart}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">认 购 费</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="subscripFee" value="${peProduct.subscripFee}"  >
+                <input type="text" class="form-control required number" name="subscripFee" value="${peProduct.subscripFee}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">退出费用</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="exitFee" value="${peProduct.exitFee}"  >
+                <input type="text" class="form-control required number" name="exitFee" value="${peProduct.exitFee}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">浮动管理费</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="managementFee" value="${peProduct.managementFee}"  >
+                <input type="text" class="form-control required number" name="managementFee" value="${peProduct.managementFee}"  >
             </div>
         </div>
         <div class="form-group">
