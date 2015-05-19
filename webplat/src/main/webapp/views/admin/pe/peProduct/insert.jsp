@@ -108,12 +108,12 @@
             	 <select name="fundType"  style="width: 200px; height: 30px "  class="form-control required">   
                          <option value="1" <c:if test="${peProduct.fundType == '1'}">selected</c:if>>股票</option>  
                          <option value="2" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>期货基金</option>
-                         <option value="3" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>股票量化</option>  
-                         <option value="4" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>债券型</option>  
-                         <option value="5" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>定向增发</option>  
-                         <option value="6" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>宏观对冲</option>  
-                         <option value="7" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>组合基金</option>  
-                         <option value="8" <c:if test="${peProduct.fundType == '2'}">selected</c:if>>其他</option>    
+                         <option value="3" <c:if test="${peProduct.fundType == '3'}">selected</c:if>>股票量化</option>  
+                         <option value="4" <c:if test="${peProduct.fundType == '4'}">selected</c:if>>债券型</option>  
+                         <option value="5" <c:if test="${peProduct.fundType == '5'}">selected</c:if>>定向增发</option>  
+                         <option value="6" <c:if test="${peProduct.fundType == '6'}">selected</c:if>>宏观对冲</option>  
+                         <option value="7" <c:if test="${peProduct.fundType == '7'}">selected</c:if>>组合基金</option>  
+                         <option value="8" <c:if test="${peProduct.fundType == '8'}">selected</c:if>>其他</option>    
                 </select> 
             </div>
         </div>
@@ -123,9 +123,9 @@
                 <select name="productLevel"  style="width: 200px; height: 30px " class="form-control required">   
                          <option value="1" <c:if test="${peProduct.productLevel == '1'}">selected</c:if>>一级</option>  
                          <option value="2" <c:if test="${peProduct.productLevel == '2'}">selected</c:if>>二级</option>
-                         <option value="3" <c:if test="${peProduct.productLevel == '2'}">selected</c:if>>三级</option>  
-                         <option value="4" <c:if test="${peProduct.productLevel == '2'}">selected</c:if>>四级</option>  
-                         <option value="5" <c:if test="${peProduct.productLevel == '2'}">selected</c:if>>五级</option>  
+                         <option value="3" <c:if test="${peProduct.productLevel == '3'}">selected</c:if>>三级</option>  
+                         <option value="4" <c:if test="${peProduct.productLevel == '4'}">selected</c:if>>四级</option>  
+                         <option value="5" <c:if test="${peProduct.productLevel == '5'}">selected</c:if>>五级</option>  
                 </select> 
             </div>
         </div>
