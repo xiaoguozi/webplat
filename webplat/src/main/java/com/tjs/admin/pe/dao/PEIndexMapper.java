@@ -24,4 +24,6 @@ public interface PEIndexMapper  {
 	Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
 	
 	List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO);
+	
+	int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO);
 }

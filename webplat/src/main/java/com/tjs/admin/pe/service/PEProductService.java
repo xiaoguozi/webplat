@@ -65,4 +65,11 @@ public interface PEProductService  {
 	 */
 	List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
+	/**
+	 * 得到私募所有产品数量
+	 * @param PESearchCtrlVO
+	 * @return PETopProduct 集合
+	 */
+	int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO);
+	
 }

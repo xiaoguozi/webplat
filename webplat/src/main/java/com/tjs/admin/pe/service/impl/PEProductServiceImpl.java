@@ -141,4 +141,10 @@ public class PEProductServiceImpl implements PEProductService {
 		result = peIndexMapper.getAnyPEProductList(peSearchCtrlVO);
 		return result;
 	}
+
+	@Override
+	public int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO) {
+		int count = peIndexMapper.getAnyPEProductListCount(peSearchCtrlVO);
+		return count;
+	}
 }

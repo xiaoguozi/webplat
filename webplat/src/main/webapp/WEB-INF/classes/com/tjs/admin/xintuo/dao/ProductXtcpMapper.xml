@@ -289,7 +289,11 @@
 		 
 		  <if test="keyword!=null and keyword!=''">
 		    AND (xtcp_fullname like CONCAT('%',#{keyword},'%') OR xtcp_gszhname like CONCAT('%',#{keyword},'%'))
-		 </if>	   				
+		 </if>
+		 
+		   <if test="xtcpGsId!=0">
+		    AND xtcp_gsId=#{xtcpGsId}
+		 </if>		   				
    			
 	</select>
 	
@@ -352,9 +356,10 @@
 		    AND (xtcp_fullname like CONCAT('%',#{keyword},'%') OR xtcp_gszhname like CONCAT('%',#{keyword},'%'))
 		 </if>
 		
-		
-		
-					
+		  <if test="xtcpGsId!=0">
+		    AND xtcp_gsId=#{xtcpGsId}
+		  </if>
+		ORDER BY xtcp_tjno					
 		LIMIT #{limitStart} ,#{pageSize}
 		 							
 	</select>

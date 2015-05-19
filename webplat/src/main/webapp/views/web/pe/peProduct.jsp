@@ -109,15 +109,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">基金经理：</div>
 								<div class="mult_con" id="divPEManager">
 									<a href="#" class="mult_lk" tag="0" title="不限">不限</a> 
-										<c:forEach items="${lstManager}" var="peManager" end="3">
-											<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="0"  title="${peManager.name}">${peManager.name}</a> 
+										<c:forEach items="${lstManager}" var="peManager" end="9">
+											<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="0" title="${peManager.name}">${peManager.name}</a> 
 										</c:forEach>
-									<a id="tjs_more" href="javascript:void(0)" class="mult_more" >&gt; 更多</a>
-									<div class="mult_more_wrap" ${simuSearchVO.peManagerMore==0?"style='display: none;'":""}>
-										<div class="more_wrap_bd">
+									<a id="tjs_more" href="javascript:void(0)" class="mult_more" style="${fn:length(lstManager)>10?'':'display:none;'}">${simuSearchVO.peManagerMore==0?"&gt; 更多":"&gt; 收起"}</a>	
+									<div class="mult_more_wrap" ${simuSearchVO.peManagerMore==0?"style='display: none;width:882px;'":"style='width:882px;'"}>
+										<div class="more_wrap_bd" style="width:880px;">
 											<ul class="more_lk_list">
-												<c:if test="${fn:length(lstManager)>4}">
-													<c:forEach items="${lstManager}" var="peManager" begin="4">
+												<c:if test="${fn:length(lstManager)>10}">
+													<c:forEach items="${lstManager}" var="peManager" begin="10">
 														<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="1" title="${peManager.name}">${peManager.name}</a> 
 													</c:forEach>
 												</c:if>
@@ -130,17 +130,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">基金公司：</div>
 								<div class="mult_con" id="divPECompany">
 										<a href="" class="mult_lk" tag="0" title="不限">不限</a> 
-										<c:forEach items="${lstCompany}" var="peCompany" end="3">
-											<a href="" class="mult_lk" tag="${peCompany.id}" tagmore="0" title="${peCompany.name}">${peCompany.name}</a>
+										<c:forEach items="${lstCompany}" var="peCompany" end="7">
+											<a href="" class="mult_lk" tag="${peCompany.id}" tagmore="0"  title="${peCompany.name}">${peCompany.name}</a>
 										</c:forEach>
-									<a id="tjs_mores" class="mult_more">&gt;
-										更多</a>
-									<div class="mult_more_wrap" ${simuSearchVO.peCompanyMore==0?"style='display: none;'":""}>
-										<div class="more_wrap_bd">
+									<a id="tjs_mores" class="mult_more" style="${fn:length(peCompany)>8?'':'display:none;'}">${simuSearchVO.peCompanyMore==0?"&gt; 更多":"&gt; 收起"}</a>
+									<div class="mult_more_wrap" ${simuSearchVO.peCompanyMore==0?"style='display: none;width:880px;'":"style='width:880px;'"}>
+										<div class="more_wrap_bd" style="width:880px;">
 											<ul class="more_lk_list">
-												<c:if test="${fn:length(lstCompany)>4}">
-													<c:forEach items="${lstCompany}" var="peCompany" begin="4">
-														<a class="mult_lk" href="#" tag="${peCompany.id}" tagmore="1" title="${peCompany.name}">${peCompany.name}</a> 
+												<c:if test="${fn:length(lstCompany)>8}">
+													<c:forEach items="${lstCompany}" var="peCompany" begin="8">
+														<a class="mult_lk" href="#" tag="${peCompany.id}" tagmore="1"  title="${peCompany.name}">${peCompany.name}</a> 
 													</c:forEach>
 												</c:if>
 											</ul>
@@ -150,30 +149,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div>
 							<div class="mult_item">
 								<div class="mult_name">基金类型：</div>
-								<div class="mult_con">
-									<a class="mult_lk mult_checked" href="">不限</a> <a
-										class="mult_lk" href="">股票策略</a> <a href="#" class="mult_more"></a>
+								<div class="mult_con" id="divPEType">
+									<a class="mult_lk" href="#" tag="0" title="不限">不限</a>
+									<a class="mult_lk" href="#" tag="1" title="股票">股票</a>
+									<a class="mult_lk" href="#" tag="2" title="期货基金">期货基金</a>
+									<a class="mult_lk" href="#" tag="3" title="股票量化">股票量化</a>
+									<a class="mult_lk" href="#" tag="4" title="债券型">债券型</a>
+									<a class="mult_lk" href="#" tag="5" title="定向增发">定向增发</a>
+									<a class="mult_lk" href="#" tag="6" title="宏观对冲">宏观对冲</a>
+									<a class="mult_lk" href="#" tag="7" title="组合基金">组合基金</a>
+									<a class="mult_lk" href="#" tag="8" title="其他">其他</a>
 								</div>
 							</div>
 							<div class="mult_item">
 								<div class="mult_name">年化收益：</div>
-								<div class="mult_con">
-									<a class="mult_lk mult_checked" href="">不限</a> <a
-										class="mult_lk" href="">50%以上</a> <a class="mult_lk" href="">30%-50%</a>
-									<a class="mult_lk" href="">10%-30%</a> <a class="mult_lk"
-										href="">0%-10%</a> <a class="mult_lk" href="">0%以下</a>
+								<div class="mult_con" id="divPEYearRate">
+									<a class="mult_lk" href="" tag="0" title="不限">不限</a> <a
+										class="mult_lk" href="" tag="1" title="50%以上">50%以上</a> <a class="mult_lk" href="" tag="2" title="30%-50%">30%-50%</a>
+									<a class="mult_lk" href="" tag="3" title="10%-30%">10%-30%</a> <a class="mult_lk"
+										href="" tag="4" title="0%-10%">0%-10%</a> <a class="mult_lk" href="" tag="5" title="0%以下">0%以下</a>
 								</div>
 							</div>
 							<form id="modalForm" action="rest/web/pe/peIndexProduct" method="post" >
+							<input name="sortField" type="hidden" value="${simuSearchVO.sortField }"/>
+							<input name="sortType" type="hidden" value="${simuSearchVO.sortType}"/>
+							<input name="pageNo" type="hidden" value="${simuSearchVO.pageNo}"/>
+							<input name="pageSize" type="hidden" value="${simuSearchVO.pageSize }"/>
+							
 							<div class="mult_item mult_item_search">
 								<div class="mult_name">关&nbsp;&nbsp;键&nbsp;&nbsp;词：</div>
 								<div class="mult_con">
 									<div class="uc_boxhd_search skin_1">
-										<input class="input_txt" style="border-right: none;"
+										<input class="input_txt" name="keyword" value="${simuSearchVO.keyword}" placeholder="关键字" style="border-right: none;"
 											type="text"> <a id="simu_product_list_search" href=""
 											class="input_search"></a>
 									</div>
-									<div class="fast_search">
+									<div class="fast_search" style="display: none;">
 										<a target="_blank" href="">泽熙3期</a> <a target="_blank" href="">清水源1号</a>
 										<a target="_blank" href="">淡水泉成长一期</a>
 									</div>
@@ -183,11 +194,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">已选条件：</div>
 								<div class="mult_con">
 									<span class="searchCondition"></span>
-									<span class="checked_info">共 <em class="num">${fn:length(lstAll)}</em>
+									<span class="checked_info">共 <em class="num">${simuSearchVO.totalCount}</em>
 										款产品满足条件
 									</span><a href="rest/web/pe/peIndexProduct" style="margin-left:10px;">清空条件</a> <label class="checked_condition">
 										在售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-										class="input_check" checked="checked" type="checkbox">
+										class="input_check" id="input_check" name="onLine" ${simuSearchVO.onLine==1?'checked=checked':''}  type="checkbox">
 									</label>
 								</div>
 							</div>
@@ -246,9 +257,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_r_s"><span>${peAllProduct.netWorth }</span></td>
 										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
 										<td class="c_c_s c_b">${peAllProduct.runTime }</td>
-										<td class="c_r_s">${peAllProduct.towRate }</td>
-										<td class="c_r_s">${peAllProduct.oneRate }</td>
-										<td class="c_r_s c_b ">${peAllProduct.yearRate}</td>
+										<td class="c_r_s">${peAllProduct.towRate }%</td>
+										<td class="c_r_s">${peAllProduct.oneRate }%</td>
+										<td class="c_r_s c_b ">${peAllProduct.yearRate}%</td>
 										<td class="c_b">
 											<div class="trend_viewer">
 												<div class="trend_viewer_hd">
@@ -264,19 +275,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											class="tb_btn tb_btn_primary simu_reserve_btn" href="javascript:void(0)" onclick="alertbox(this)">预约</a></td>
 									</tr>
 									</c:forEach>
-									<tr>
-										<td colspan="12" class="foot_page" style="text-align: center;">
-											<a href="#"><em>|</em><</a><a class="pagingnum" href="#"><</a><a
-											class="pagingnum page_on" href="#">1</a><a class="pagingnum"
-											href="#">2</a><a class="pagingnum" href="#">></a><a href="#">><em>|</em></a>
-										</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<!-- 翻页开始 -->
+			<div class="pages pgbtn" id="divPages" style="margin-top: 30px;">
+			    <table class=pagetb cellspacing=0>
+			      <tbody>
+			        <tr>
+			        <td class=pagnum><a title=首页 href="#" page_no="1">|<</a></td>
+			        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${simuSearchVO.pageNo-1}"><</a></td>
+			        <c:forEach var="item" varStatus="status" begin="1" end="${simuSearchVO.totalPageSize}">             
+			        <c:choose>  
+			          <c:when test="${status.index==simuSearchVO.pageNo }"> 
+			           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+			          </c:when> 
+			          <c:otherwise>
+			          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+			          </c:otherwise> 
+			        </c:choose>             
+			        </c:forEach>
+			        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${simuSearchVO.pageNo+1}">></a></td>
+			        <td class=pagnum><a title=尾页 href="#" page_no="${simuSearchVO.totalPageSize}">>|</a></td>          
+			        </tr>
+			      </tbody>
+			    </table>
+			  </div>
+			 <!-- 翻页结束 -->
+			 
 			<!-- container end -->
 		</div>
 		<!-- 产品对比 -->
@@ -331,14 +362,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		//初始化选择按钮
 	    $("#divPEManager a[tag=${simuSearchVO.peManagerId}]").addClass("mult_checked");
 	    $("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").addClass("mult_checked");
+	    $("#divPEType a[tag=${simuSearchVO.peType}]").addClass("mult_checked");
+	    $("#divPEYearRate a[tag=${simuSearchVO.peYearRate}]").addClass("mult_checked");
 		
 	  	//初始化选这按钮
 	    if($("#divPEManager a[tag=${simuSearchVO.peManagerId}]").attr("tag")!='0'){
 	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPEManager'>"+$("#divPEManager a[tag=${simuSearchVO.peManagerId}]").attr("title")+"</a>");
 	    }
-	    
 	    if($("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").attr("tag")!='0'){
 	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPECompany'>"+$("#divPECompany a[tag=${simuSearchVO.peCompanyId}]").attr("title")+"</a>");
+	    }
+	    if($("#divPEType a[tag=${simuSearchVO.peType}]").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPEType'>"+$("#divPEType a[tag=${simuSearchVO.peType}]").attr("title")+"</a>");
+	    }
+	    if($("#divPEYearRate a[tag=${simuSearchVO.peYearRate}]").attr("tag")!='0'){
+	    	$(".searchCondition").append("<a href='#' class='tjs_close_btn' style='margin-left:10px;' condition_name='divPEYearRate'>"+$("#divPEYearRate a[tag=${simuSearchVO.peYearRate}]").attr("title")+"</a>");
 	    }
 	    
 	    $(".searchCondition a").click(function(event){
@@ -370,7 +408,70 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
 	    });
 	    
+	    $("#divPEType a[class=mult_lk]").click(function(event){
+	    	event.preventDefault();
+	    	$("#divPEType a[class='mult_lk mult_checked']").each(function(index){
+	    		$(this).removeClass("mult_checked");
+	    	});   
+	    	$(this).removeClass("mult_checked").addClass("mult_checked"); 
+	    	var params =SetPara();	 
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    });
 	    
+	    $("#divPEYearRate a[class=mult_lk]").click(function(event){
+	    	event.preventDefault();
+	    	$("#divPEYearRate a[class='mult_lk mult_checked']").each(function(index){
+	    		$(this).removeClass("mult_checked");
+	    	});   
+	    	$(this).removeClass("mult_checked").addClass("mult_checked"); 
+	    	var params =SetPara();	 
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    });
+	    
+	    //关键字查询按钮
+	    $("#simu_product_list_search").click(function(event){
+	    	event.preventDefault();	    	
+	    	var params =SetPara();	    
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    });
+	    
+	    
+	    /* $("#divPages a").click(function(event){
+	    	event.preventDefault();	    	
+	    	var params =SetPara();	    
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    }); */
+	    
+	    $(".pagnum a").click(function(event){
+	    	event.preventDefault();
+            $("input[name=pageNo]").val($(this).attr("page_no"));
+	    	var params =SetPara();	    	    	
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+
+	    });
+	    
+	    $(".input_check").click(function(event){
+	    	var params =SetPara();	    	    	
+	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+
+	    });
+	    
+	    
+	    if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+	        $('[placeholder]').focus(function() {
+	            var input = $(this);
+	            if (input.val() == input.attr('placeholder')) {
+	                input.val('');
+	                input.removeClass('placeholder');
+	            }
+	        }).blur(function() {
+	            var input = $(this);
+	            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	                input.addClass('placeholder');
+	                input.val(input.attr('placeholder'));
+	            }
+	        }).blur();
+	    };
 	    
 	    
         //--对比框--
@@ -478,13 +579,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		if(peCompanyMore==undefined){
 			peCompanyMore = 0;
 		}
-	
-		/* if($("input[name=keyword]").val()==$("input[name=keyword]").attr('placeholder')){
-			$("input[name=keyword]").val("");
-		} */
 		
-		var params = "?peManagerId=" + peManagerId + "&peCompanyId=" + peCompanyId + "&peManagerMore="+peManagerMore + "&peCompanyMore="+peCompanyMore ;
+		var peType = $("#divPEType a.mult_checked").attr("tag");
+		var peYearRate =  $("#divPEYearRate a.mult_checked").attr("tag");
+	
+		if($("input[name=keyword]").val()==$("input[name=keyword]").attr('placeholder')){
+			$("input[name=keyword]").val("");
+		} 
+		
+		var onLine = $("#input_check").attr("checked");
+		if(onLine==undefined){
+			onLine = 0;
+		}else{
+			onLine = 1;
+		}
+		
+		var params = "?peManagerId=" + peManagerId + "&peCompanyId=" + peCompanyId + "&peManagerMore="
+			+peManagerMore + "&peCompanyMore="+peCompanyMore + "&peType=" + peType + "&peYearRate=" +peYearRate+ "&onLine="+onLine;
 		return params;
+	}
+	
+	function placeholderSupport() {
+	    return 'placeholder' in document.createElement('input');
 	}
 	
 	

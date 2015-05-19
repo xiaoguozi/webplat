@@ -48,7 +48,25 @@ public class PEIndexProductController {
     	model.addAttribute("top4Data", showData);
     	
     	//全部产品
-    	peSearchCtrlVO.setPageSize(10);
+    	peSearchCtrlVO.setPageSize(3);
+    	
+    	//设置总条数
+    	int totalCount = peProductService.getAnyPEProductListCount(peSearchCtrlVO);
+    	peSearchCtrlVO.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = peSearchCtrlVO.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(peSearchCtrlVO.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	peSearchCtrlVO.setPageNo(1);
+        } else if(peSearchCtrlVO.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	peSearchCtrlVO.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = peSearchCtrlVO.getPageNo();
+        }
+    	
+        peSearchCtrlVO.setPageNo(currentPageNo);
+    	
     	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
     	lstAll = peProductService.getAnyPEProductList(peSearchCtrlVO);
     	model.addAttribute("lstAll", lstAll);

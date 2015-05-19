@@ -12,10 +12,10 @@
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
    		<result property="managerReview" column="manager_review" jdbcType="VARCHAR" />
    		
-   		<result property="yearRate" column="year_rate" jdbcType="VARCHAR" />
-   		<result property="nowRate" column="now_rate" jdbcType="VARCHAR" />
-   		<result property="oneRate" column="one_rate" jdbcType="VARCHAR" />
-   		<result property="towRate" column="tow_rate" jdbcType="VARCHAR" />
+   		<result property="yearRate" column="year_rate" javaType="java.math.BigDecimal" />
+   		<result property="nowRate" column="now_rate" javaType="java.math.BigDecimal" />
+   		<result property="oneRate" column="one_rate" javaType="java.math.BigDecimal" />
+   		<result property="towRate" column="tow_rate" javaType="java.math.BigDecimal" />
    		<result property="companyName" column="company_name" jdbcType="VARCHAR" />
    		
     </resultMap>
@@ -84,7 +84,8 @@
 		LIMIT 0,10
     </select>
     
- 	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+ 	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  
+ 	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
 		  P.id,
 		  P.name,
@@ -106,9 +107,14 @@
 		  PE_MANAGER M,
 		  PE_COMPANY C
 		WHERE P.id = MP.product_id 
-		  AND P.status != 3
 		  AND MP.MANAGER_ID = M.ID 
 		  AND M.company_id = C.id
+		
+		<choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>
 		
 		<if test="peManagerId!=0">
 		    AND M.ID=#{peManagerId}
@@ -118,7 +124,103 @@
 		    AND C.ID=#{peCompanyId}
 		</if>
 		
-		ORDER BY P.ACCUMULATED_INCOME DESC
+		<if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		</if>
+		
+		<choose> 
+		     <when test="peYearRate==1">AND P.year_rate &gt;= 50 </when>
+		     <when test="peYearRate==2">AND P.year_rate &gt;= 30 AND P.year_rate &lt; 50</when>
+		     <when test="peYearRate==3">AND P.year_rate &gt;= 10 AND P.year_rate &lt; 30</when>
+		     <when test="peYearRate==4">AND P.year_rate &gt;= 0  AND P.year_rate &lt; 10</when>
+		     <when test="peYearRate==5">AND P.year_rate &lt; 0</when>
+		     <otherwise> </otherwise>
+		 </choose>
+		
+		<if test="keyword!=null and keyword!=''">
+		    AND (P.name like CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+		
+		<choose> 
+		     <when test="sortField=='yearRate'">
+		     		<if test="sortType=='asc'">
+		     			ORDER BY P.year_rate ASC
+		     		</if>
+		     		<if test="sortType=='desc'">
+		     			ORDER BY P.year_rate DESC
+		     		</if>
+		     </when>
+		     <when test="sortField=='towRate'">
+		     		<if test="sortType=='asc'">
+		     			ORDER BY P.tow_rate ASC
+		     		</if>
+		     		<if test="sortType=='desc'">
+		     			ORDER BY P.tow_rate DESC
+		     		</if>
+		     </when>
+		     <when test="sortField=='oneRate'">
+		     		<if test="sortType=='asc'">
+		     			ORDER BY P.one_rate ASC
+		     		</if>
+		     		<if test="sortType=='desc'">
+		     			ORDER BY P.one_rate DESC
+		     		</if>
+		     </when>
+		     
+		     
+		     <otherwise> 
+		     	ORDER BY P.ACCUMULATED_INCOME DESC
+		     </otherwise>
+		 </choose>
+         
+        LIMIT #{limitStart} ,#{pageSize}
+        
+    </select>
+    
+    <select id="getAnyPEProductListCount" resultType="int"  
+    	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        SELECT 
+		  count(P.id) c
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M,
+		  PE_COMPANY C
+		WHERE P.id = MP.product_id 
+		  AND MP.MANAGER_ID = M.ID 
+		  AND M.company_id = C.id
+		
+		<choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>
+		
+		<if test="peManagerId!=0">
+		    AND M.ID=#{peManagerId}
+		</if>
+		
+		<if test="peCompanyId!=0">
+		    AND C.ID=#{peCompanyId}
+		</if>
+		
+		<if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		</if>
+		
+		<choose> 
+		     <when test="peYearRate==1">AND P.year_rate &gt;= 50 </when>
+		     <when test="peYearRate==2">AND P.year_rate &gt;= 30 AND P.year_rate &lt; 50</when>
+		     <when test="peYearRate==3">AND P.year_rate &gt;= 10 AND P.year_rate &lt; 30</when>
+		     <when test="peYearRate==4">AND P.year_rate &gt;= 0  AND P.year_rate &lt; 10</when>
+		     <when test="peYearRate==5">AND P.year_rate &lt; 0</when>
+		     <otherwise> </otherwise>
+		 </choose>
+		
+		<if test="keyword!=null and keyword!=''">
+		    AND (P.name like CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+		
 		<!-- 
 		<if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}

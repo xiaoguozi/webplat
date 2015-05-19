@@ -1,5 +1,7 @@
 package com.tjs.admin.pe.model;
 
+import java.math.BigDecimal;
+
 public class PETopProduct {
 
 	/** 产品Id */
@@ -18,16 +20,16 @@ public class PETopProduct {
 	private String runTime;
 	
 	/** 年收益率 */
-	private String yearRate;
+	private BigDecimal yearRate;
 	
 	/** 今年以来收益率 */
-	private String nowRate;
+	private BigDecimal nowRate;
 	
 	/** 近1年收益率 */
-	private String oneRate;
+	private BigDecimal oneRate;
 	
 	/** 近2年收益率 */
-	private String towRate;
+	private BigDecimal towRate;
 	
 	/** 基金经理Id */
 	private String managerId;
@@ -100,31 +102,6 @@ public class PETopProduct {
 		this.managerReview = managerReview;
 	}
 	
-	public String getNowRate() {
-		return nowRate;
-	}
-
-	public void setNowRate(String nowRate) {
-		this.nowRate = nowRate;
-	}
-
-	public String getOneRate() {
-		return oneRate;
-	}
-
-	public void setOneRate(String oneRate) {
-		this.oneRate = oneRate;
-	}
-
-	
-	public String getTowRate() {
-		return towRate;
-	}
-
-	public void setTowRate(String towRate) {
-		this.towRate = towRate;
-	}
-
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -149,14 +126,37 @@ public class PETopProduct {
 		this.runTime = runTime;
 	}
 
-	public String getYearRate() {
+	public BigDecimal getYearRate() {
 		return yearRate;
 	}
 
-	public void setYearRate(String yearRate) {
+	public void setYearRate(BigDecimal yearRate) {
 		this.yearRate = yearRate;
 	}
 
-	
+	public BigDecimal getNowRate() {
+		return nowRate;
+	}
+
+	public void setNowRate(BigDecimal nowRate) {
+		this.nowRate = nowRate;
+	}
+
+	public BigDecimal getOneRate() {
+		return oneRate;
+	}
+
+	public void setOneRate(BigDecimal oneRate) {
+		this.oneRate = oneRate;
+	}
+
+	public BigDecimal getTowRate() {
+		return towRate;
+	}
+
+	public void setTowRate(BigDecimal towRate) {
+		this.towRate = towRate;
+	}
+
 
 }
