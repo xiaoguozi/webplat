@@ -9,6 +9,10 @@ import java.util.List;
  *@author zhsoft
  *@since 2015年4月21日
  **/
+/**
+ * @author zh
+ *
+ */
 public class PEManager {
 
 	private long id;
@@ -38,10 +42,10 @@ public class PEManager {
 	private int level;
 	
 	/** 管理基金数 */	
-	private String manageFund;
+	private Long manageFund;
 	
 	/** 盈利产品数 */	
-	private String profitProduct;
+	private Long profitProduct;
 	
 	/** 点评 */	
 	private String review;
@@ -71,9 +75,6 @@ public class PEManager {
 	private Date createDate;
 	
 	private Date lastModifyDate;
-	
-	/** 私募经理所管理的产品 */
-	private List<PEManagerProduct> products;
 
 	public long getId() {
 		return id;
@@ -147,19 +148,19 @@ public class PEManager {
 		this.level = level;
 	}
 
-	public String getManageFund() {
+	public Long getManageFund() {
 		return manageFund;
 	}
 
-	public void setManageFund(String manageFund) {
+	public void setManageFund(Long manageFund) {
 		this.manageFund = manageFund;
 	}
 
-	public String getProfitProduct() {
+	public Long getProfitProduct() {
 		return profitProduct;
 	}
 
-	public void setProfitProduct(String profitProduct) {
+	public void setProfitProduct(Long profitProduct) {
 		this.profitProduct = profitProduct;
 	}
 
@@ -203,6 +204,22 @@ public class PEManager {
 		this.status = status;
 	}
 
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	public long getCreaterId() {
 		return createrId;
 	}
@@ -235,30 +252,6 @@ public class PEManager {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-	public Long getCompanyId() {
-		return companyId;
-	}
-
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public List<PEManagerProduct> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<PEManagerProduct> products) {
-		this.products = products;
-	}
-
 	@Override
 	public String toString() {
 		return "PEManager [id=" + id + ", logo=" + logo + ", name=" + name
@@ -272,8 +265,8 @@ public class PEManager {
 				+ status + ", companyId=" + companyId + ", companyName="
 				+ companyName + ", createrId=" + createrId + ", createrName="
 				+ createrName + ", createDate=" + createDate
-				+ ", lastModifyDate=" + lastModifyDate + ", products="
-				+ products + "]";
+				+ ", lastModifyDate=" + lastModifyDate + "]";
 	}
+
 
 }

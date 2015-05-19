@@ -21,9 +21,9 @@ public interface PEManagerService  {
 	
 	void updatePEManager(PEManager peManager);
 	
-	List<PEManager> getPEManagerList();
+	List<PEManager> getPEManagerList(PEManagerCtrlModel peManagerCtrlModel);
 	
-	int selectListCount();
+	int selectListCount(PEManagerCtrlModel newParampeManagerCtrlModel);
 	
 	PEManager getPEManagerById(long peManagerId);
 	

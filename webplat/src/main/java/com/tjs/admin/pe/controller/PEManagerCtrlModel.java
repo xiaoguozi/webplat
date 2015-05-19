@@ -1,7 +1,6 @@
 package com.tjs.admin.pe.controller;
 
 import com.tjs.admin.pe.model.PEManager;
-import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.core.generic.GenericCtrlModel;
 
 /**
@@ -13,6 +12,8 @@ import com.tjs.core.generic.GenericCtrlModel;
 public class PEManagerCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
+	
+	private int limitStart;
 	
 	private PEManager peManager;
 
@@ -32,5 +33,11 @@ public class PEManagerCtrlModel extends GenericCtrlModel {
 		this.peManager = peManager;
 	}
 
-	
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
 }

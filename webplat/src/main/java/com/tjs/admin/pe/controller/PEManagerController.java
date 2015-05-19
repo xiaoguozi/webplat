@@ -64,7 +64,7 @@ public class PEManagerController {
 	@RequestMapping("/listData")
     public String listData(PEManagerCtrlModel peManagerCtrlModel, Model model) {
     	List<PEManager> showData = new ArrayList<PEManager>();
-    	showData = peManagerService.getPEManagerList();
+    	showData = peManagerService.getPEManagerList(peManagerCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", peManagerCtrlModel);
@@ -74,10 +74,10 @@ public class PEManagerController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(PEManagerCtrlModel peManagerCtrlModel) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = peManagerService.selectListCount();
+    	Integer total = peManagerService.selectListCount(peManagerCtrlModel);
     	
     	result.put("total", total);
     	

@@ -12,8 +12,8 @@
    		<result property="background" column="background" jdbcType="VARCHAR" />
    		<result property="institution" column="institution" jdbcType="VARCHAR" />
    		<result property="level" column="level" jdbcType="INTEGER" />
-   		<result property="manageFund" column="manage_fund" jdbcType="VARCHAR" />
-   		<result property="profitProduct" column="profit_product" jdbcType="VARCHAR" />
+   		<result property="manageFund" column="manage_fund" jdbcType="BIGINT" />
+   		<result property="profitProduct" column="profit_product" jdbcType="BIGINT" />
    		<result property="review" column="review" jdbcType="VARCHAR" />
    		<result property="introduce" column="introduce" jdbcType="VARCHAR" />
    		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR" />
@@ -59,14 +59,38 @@
         WHERE id = #{id}
     </select>
  
- 	 <select id="getPEManagerList" resultMap="peManagerMap">
+ 	 <select id="getPEManagerList" resultMap="peManagerMap" parameterType="com.tjs.admin.pe.controller.PEManagerCtrlModel">
         SELECT
         <include refid="Base_select_Column_List" />
          FROM pe_manager
+         WHERE 1=1
+         <if test="peManager != null and peManager.status == 2">
+   			AND status = #{peManager.status}
+   		</if> 
+   		       
+   		 <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
+         
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY #{sortField} #{sortType}
+        </if>
+        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
     </select>
     
-     <select id="selectListCount" resultType="int">
+     <select id="selectListCount" resultType="int" parameterType="com.tjs.admin.pe.controller.PEManagerCtrlModel">
         SELECT COUNT(*) AS total FROM pe_manager
+        WHERE 1=1
+   		<if test="peManager != null and peManager.status == 2">
+   			AND status = #{peCompany.status}
+   		</if>
+   		
+   		 <if test="keyWord!= null and keyWord!= ''">
+           AND (name like CONCAT('%',#{keyWord},'%'))
+         </if>
     </select>
     
     <insert id="insertPEManager" parameterType="com.tjs.admin.pe.model.PEManager" useGeneratedKeys="true" keyProperty="id">

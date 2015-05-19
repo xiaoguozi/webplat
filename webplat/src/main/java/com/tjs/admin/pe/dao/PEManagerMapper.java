@@ -2,6 +2,7 @@ package com.tjs.admin.pe.dao;
 
 import java.util.List;
 
+import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.model.PEManager;
 
 /**
@@ -19,9 +20,9 @@ public interface PEManagerMapper  {
 	
 	void updatePEManager(PEManager peManager);
 	
-	List<PEManager> getPEManagerList();
+	List<PEManager> getPEManagerList(PEManagerCtrlModel peManagerCtrlModel);
 	
-	int selectListCount();
+	int selectListCount(PEManagerCtrlModel peManagerCtrlModel);
 
 	PEManager getPEManagerById(long peManagerId);
 	

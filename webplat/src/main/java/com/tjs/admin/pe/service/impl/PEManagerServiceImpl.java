@@ -59,15 +59,15 @@ public class PEManagerServiceImpl implements PEManagerService {
 	}
 
 	@Override
-	public List<PEManager> getPEManagerList() {
+	public List<PEManager> getPEManagerList(PEManagerCtrlModel peManagerCtrlModel) {
 		List<PEManager> result = new ArrayList<PEManager>();
-		result = peManagerMapper.getPEManagerList();
+		result = peManagerMapper.getPEManagerList(peManagerCtrlModel);
 		return result;
 	}
 
 	@Override
-	public int selectListCount() {
-		return peManagerMapper.selectListCount();
+	public int selectListCount(PEManagerCtrlModel newParampeManagerCtrlModel) {
+		return peManagerMapper.selectListCount(newParampeManagerCtrlModel);
 	}
 
 	@Override
