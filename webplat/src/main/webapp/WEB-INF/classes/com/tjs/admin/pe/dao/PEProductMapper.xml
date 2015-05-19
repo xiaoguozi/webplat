@@ -5,15 +5,15 @@
         <id column="id" property="id" jdbcType="BIGINT" />
    		<result property="name" column="name" jdbcType="VARCHAR"  />
    		<result property="simpleName" column="simple_name" jdbcType="VARCHAR"  />
-   		<result property="netWorth" column="net_worth" jdbcType="VARCHAR"  />
-   		<result property="accumulatedIncome" column="accumulated_income" jdbcType="VARCHAR"  />
+   		<result property="netWorth" column="net_worth"  />
+   		<result property="accumulatedIncome" column="accumulated_income"  />
    		<result property="netWorthTime" column="net_worth_time" jdbcType="TIMESTAMP" />
    		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
    		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
-   		<result property="nowRate" column="now_rate" jdbcType="VARCHAR"  />
-   		<result property="towRate" column="tow_rate" jdbcType="VARCHAR"  />
-   		<result property="oneRate" column="one_rate" jdbcType="VARCHAR"  />
-   		<result property="yearRate" column="year_rate" jdbcType="VARCHAR"  />
+   		<result property="nowRate" column="now_rate"   />
+   		<result property="towRate" column="tow_rate"  />
+   		<result property="oneRate" column="one_rate"   />
+   		<result property="yearRate" column="year_rate"  />
    		<result property="fundType" column="fund_type" jdbcType="INTEGER" />
    		<result property="productLevel" column="product_level" jdbcType="INTEGER" />
    		<result property="distributionPlatform" column="distribution_platform" jdbcType="VARCHAR"  />
@@ -22,10 +22,10 @@
    		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
    		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
    		<result property="openTime" column="open_time" jdbcType="TIMESTAMP" />
-   		<result property="subscripStart" column="subscrip_start" jdbcType="VARCHAR"  />
-   		<result property="subscripFee" column="subscrip_fee" jdbcType="VARCHAR"  />
-   		<result property="exitFee" column="exit_fee" jdbcType="VARCHAR"  />
-   		<result property="managementFee" column="management_fee" jdbcType="VARCHAR"  />
+   		<result property="subscripStart" column="subscrip_start" />
+   		<result property="subscripFee" column="subscrip_fee"  />
+   		<result property="exitFee" column="exit_fee"  />
+   		<result property="managementFee" column="management_fee"  />
    		<result property="recommendReason" column="recommend_reason" jdbcType="VARCHAR"  />
    		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
    		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
