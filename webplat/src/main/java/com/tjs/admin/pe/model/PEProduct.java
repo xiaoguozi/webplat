@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -19,10 +20,10 @@ public class PEProduct {
 	private String simpleName;
 	
 	/* 最新净值 */
-	private String netWorth;
+	private BigDecimal netWorth;
 	
 	/* 累计收益 */
-	private String accumulatedIncome;
+	private BigDecimal accumulatedIncome;
 	
 	/* 净值日期 */
 	private Date netWorthTime;
@@ -34,16 +35,16 @@ public class PEProduct {
 	private String runTime;
 	
 	/* 今年以来收益率 */
-	private String nowRate;
+	private BigDecimal nowRate;
 	
 	/* 近2年收益率 */
-	private String towRate;
+	private BigDecimal towRate;
 	
 	/* 近1年收益率 */
-	private String oneRate;
+	private BigDecimal oneRate;
 	
 	/* 年化收益率 */
-	private String yearRate;
+	private BigDecimal yearRate;
 	
 	/* 基金类型:1:股票、2:期货基金、3:股票量化、4:债券型、5:定向增发、6:宏观对冲、7:组合基金、8:其他 */
 	private int fundType;
@@ -70,16 +71,16 @@ public class PEProduct {
 	private Date openTime;
 	
 	/* 认购起点 */
-	private String subscripStart;
+	private BigDecimal subscripStart;
 	
 	/* 认 购 费 */
-	private String subscripFee;
+	private BigDecimal subscripFee;
 	
 	/* 退出费用 */
-	private String exitFee;
+	private BigDecimal exitFee;
 	
 	/* 浮动管理费 */
-	private String managementFee;
+	private BigDecimal managementFee;
 	
 	/* 推荐理由 */
 	private String recommendReason;
@@ -135,19 +136,19 @@ public class PEProduct {
 		this.simpleName = simpleName;
 	}
 
-	public String getNetWorth() {
+	public BigDecimal getNetWorth() {
 		return netWorth;
 	}
 
-	public void setNetWorth(String netWorth) {
+	public void setNetWorth(BigDecimal netWorth) {
 		this.netWorth = netWorth;
 	}
 
-	public String getAccumulatedIncome() {
+	public BigDecimal getAccumulatedIncome() {
 		return accumulatedIncome;
 	}
 
-	public void setAccumulatedIncome(String accumulatedIncome) {
+	public void setAccumulatedIncome(BigDecimal accumulatedIncome) {
 		this.accumulatedIncome = accumulatedIncome;
 	}
 
@@ -175,35 +176,35 @@ public class PEProduct {
 		this.runTime = runTime;
 	}
 
-	public String getNowRate() {
+	public BigDecimal getNowRate() {
 		return nowRate;
 	}
 
-	public void setNowRate(String nowRate) {
+	public void setNowRate(BigDecimal nowRate) {
 		this.nowRate = nowRate;
 	}
 
-	public String getTowRate() {
+	public BigDecimal getTowRate() {
 		return towRate;
 	}
 
-	public void setTowRate(String towRate) {
+	public void setTowRate(BigDecimal towRate) {
 		this.towRate = towRate;
 	}
 
-	public String getOneRate() {
+	public BigDecimal getOneRate() {
 		return oneRate;
 	}
 
-	public void setOneRate(String oneRate) {
+	public void setOneRate(BigDecimal oneRate) {
 		this.oneRate = oneRate;
 	}
 
-	public String getYearRate() {
+	public BigDecimal getYearRate() {
 		return yearRate;
 	}
 
-	public void setYearRate(String yearRate) {
+	public void setYearRate(BigDecimal yearRate) {
 		this.yearRate = yearRate;
 	}
 
@@ -271,35 +272,35 @@ public class PEProduct {
 		this.openTime = openTime;
 	}
 
-	public String getSubscripStart() {
+	public BigDecimal getSubscripStart() {
 		return subscripStart;
 	}
 
-	public void setSubscripStart(String subscripStart) {
+	public void setSubscripStart(BigDecimal subscripStart) {
 		this.subscripStart = subscripStart;
 	}
 
-	public String getSubscripFee() {
+	public BigDecimal getSubscripFee() {
 		return subscripFee;
 	}
 
-	public void setSubscripFee(String subscripFee) {
+	public void setSubscripFee(BigDecimal subscripFee) {
 		this.subscripFee = subscripFee;
 	}
 
-	public String getExitFee() {
+	public BigDecimal getExitFee() {
 		return exitFee;
 	}
 
-	public void setExitFee(String exitFee) {
+	public void setExitFee(BigDecimal exitFee) {
 		this.exitFee = exitFee;
 	}
 
-	public String getManagementFee() {
+	public BigDecimal getManagementFee() {
 		return managementFee;
 	}
 
-	public void setManagementFee(String managementFee) {
+	public void setManagementFee(BigDecimal managementFee) {
 		this.managementFee = managementFee;
 	}
 
@@ -323,8 +324,8 @@ public class PEProduct {
 		return lastModifyDate;
 	}
 
-	public void setLastModifyDate(Date lastMdifyDate) {
-		this.lastModifyDate = lastMdifyDate;
+	public void setLastModifyDate(Date lastModifyDate) {
+		this.lastModifyDate = lastModifyDate;
 	}
 
 	public long getCreaterId() {
@@ -400,7 +401,7 @@ public class PEProduct {
 				+ ", subscripFee=" + subscripFee + ", exitFee=" + exitFee
 				+ ", managementFee=" + managementFee + ", recommendReason="
 				+ recommendReason + ", createDate=" + createDate
-				+ ", lastMdifyDate=" + lastModifyDate + ", createrId="
+				+ ", lastModifyDate=" + lastModifyDate + ", createrId="
 				+ createrId + ", createrName=" + createrName
 				+ ", recommendLocation=" + recommendLocation
 				+ ", recommendSequence=" + recommendSequence + ", status="
@@ -408,5 +409,4 @@ public class PEProduct {
 				+ pecompanyName + "]";
 	}
 
-	
 }
