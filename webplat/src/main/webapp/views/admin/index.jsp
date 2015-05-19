@@ -189,16 +189,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         私募公司
                                     </a>
                                 </li>
-                                 <li>
-                                    <a href="rest/admin/pe/peProduct/index">
-                                        私募产品
-                                    </a>
-                                </li>
                                   <li>
                                     <a href="rest/admin/pe/peManager/index">
                                         私募经理 
                                     </a>
                                 </li>
+                                 <li>
+                                    <a href="rest/admin/pe/peProduct/index">
+                                        私募产品
+                                    </a>
+                                </li>
+                               
                             </ul>
                         </li>
                         
