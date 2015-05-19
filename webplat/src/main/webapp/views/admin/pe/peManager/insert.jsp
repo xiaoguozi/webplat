@@ -7,35 +7,13 @@
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title pull-left">私募经理  <small>新增</small></h3>
-    </div>
-</div>
-<!-- END PAGE HEADER-->
-
-<div class="tabpanel">
-	<ul class="nav nav-tabs" role="tablist" id="myTab">
-	  <li role="presentation" class="active">
-	  	<a href="#manager" aria-controls="manager" role="tab" data-toggle="tab" >
-	  		经理基本信息
-	  	</a>
-	  </li>
-	  <li role="presentation">
-	  	<a href="#productList" aria-controls="productList" role="tab" data-toggle="tab">
-	  		产品列表
-	  	</a>
-	  </li>
-	</ul>
-</div>
-
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="manager">
-    <div class="row">
-	    <div class="col-md-12">
-			<div class="pull-right">
+        <div class="pull-right">
 			    <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
 			    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
 		    </div>
-	    </div>
-	</div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/pe/peManager/insertData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
      	<input type="hidden" name="id" value="${peManager.id}">
@@ -101,15 +79,15 @@
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">管理基金数</label>
+            <label class="col-md-3 control-label">管理基金数（只）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="manageFund" value="${peManager.manageFund}"  >
+                <input type="text" class="form-control required number" name="manageFund" value="${peManager.manageFund}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">盈利产品数</label>
+            <label class="col-md-3 control-label">盈利产品数（只）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="profitProduct" value="${peManager.profitProduct}"  >
+                <input type="text" class="form-control required number" name="profitProduct" value="${peManager.profitProduct}"  >
             </div>
         </div>
          <div class="form-group">
@@ -158,39 +136,20 @@
     </form>
 </div>
 
-  </div>
-	 <div role="tabpanel" class="tab-pane" id="productList"></div>
-</div>
+
 <script type="text/javascript">
 
 var companyId = 0;
 
 $(function(){
 	
-	 $('#myTab a').click(function (e) { 
-	      e.preventDefault();//阻止a链接的跳转行为 
-	      $(this).tab('show');//显示当前选中的链接及关联的content 
-	      
-	      var sel = $(this).attr("href");
-	      var isload = $(this).attr("data-load");
-	      if("yes" != isload){	
-	    	  var loadUrl = "";
-	    	  if("#productList" == sel){
-	    		  loadUrl = "rest/admin/pe/productList/index?peProduct.pecompanyId=" + companyId + "&managerId=" + $("input[name='id']").val() ;
-	    	  }
-	    	  
-	    	  if(loadUrl){
-
-	        	  $(""+sel).load(loadUrl);
-	        	  $(this).attr("data-load","yes");
-	    	  }
-	      }
-	 }); 
+	
 
     Btk.form($("#modalForm"),"insert",function(data){
-        if("0"==data.code){
-           companyId = data.bizData.companyId
-        }
+    	 if("0"==data.code){
+             IndexPage.togglePage('list');
+             $("#searchBtn").click();
+         }
     });
 
 

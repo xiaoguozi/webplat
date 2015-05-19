@@ -20,14 +20,20 @@
             </a>
         </td>
         <td>${peManager.name}</td>
-        <td>${peManager.name}</td>
+        <td>${peManager.companyName}</td>
         <td>${peManager.education}</td>
         <td>${peManager.workYear}</td>
         <td>${peManager.manageFund}</td>
         <td>${peManager.profitProduct}</td>
-        <td>${peManager.profitProduct}</td>
-        <td>${peManager.profitProduct}</td>
-        <td>${peManager.profitProduct}</td>
+        <td>
+        	<c:choose>  
+                <c:when test="${peManager.level =='1'}">一级</c:when>
+                <c:when test="${peManager.level =='2'}">二级</c:when>
+                <c:when test="${peManager.level =='3'}">三级</c:when>
+                <c:when test="${peManager.level =='4'}">四级</c:when>
+                <c:when test="${peManager.level =='5'}">五级</c:when>
+            </c:choose>  
+        </td>
         <td>
         	<c:choose>  
                 <c:when test="${peManager.status =='1'}">未上线</c:when>

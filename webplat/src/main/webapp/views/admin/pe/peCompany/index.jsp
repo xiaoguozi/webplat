@@ -189,7 +189,7 @@ $(function(){
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
             function(data){
-                if(data && data.total){
+                if(data && "undefined"!= typeof data.total){
                     //分页数据
                     $("#paginationDiv").BtkPagination({
                         pageSize: _pageSize,

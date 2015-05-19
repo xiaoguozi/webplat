@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" size="30" name="keyword" placeholder="关键字" value="" >
+                <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
@@ -46,14 +46,12 @@
                         </th>
                         <th field="id">ID<span class="glyphicon"></span></th>
                         <th field="name">姓名 <span class="glyphicon"></span></th>
-                        <th field="name">私募公司 <span class="glyphicon"></span></th>
+                        <th field="companyName">私募公司 <span class="glyphicon"></span></th>
                         <th field="education">文化程度 <span class="glyphicon"></span></th>
                         <th field="workYear">从业年限 <span class="glyphicon"></span></th>
-                        <th field="manageFund">管理基金数<span class="glyphicon"></span></th>
-                        <th field="profitProduct">盈利基金数<span class="glyphicon"></span></th>
-                        <th field="profitProduct">产品盈利占比<span class="glyphicon"></span></th>
-                        <th field="profitProduct">代表产品<span class="glyphicon"></span></th>
-                        <th field="profitProduct">累计收益<span class="glyphicon"></span></th>
+                        <th field="manageFund">管理基金数（只）<span class="glyphicon"></span></th>
+                        <th field="profitProduct">盈利基金数（只）<span class="glyphicon"></span></th>
+                        <th field="level">经理评级<span class="glyphicon"></span></th>
                         <th field="status">状态<span class="glyphicon"></span></th>
                     </tr>
                 </thead>
@@ -185,12 +183,12 @@ $(function(){
             _pageSize = pageSize
         }
         $("#searchForm input[name='pageSize']").val(_pageSize);
-        
+        $("#searchForm input[name='pageNo']").val("0");
         $.post(
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
             function(data){
-                if(data && data.total){
+                if(data && "undefined"!= typeof data.total){
                     //分页数据
                     $("#paginationDiv").BtkPagination({
                         pageSize: _pageSize,
@@ -205,7 +203,7 @@ $(function(){
                     });                    
                 }
 
-            }, "json");
+            });
     }
 
     //加载列表数据
