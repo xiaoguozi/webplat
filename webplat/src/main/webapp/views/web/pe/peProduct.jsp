@@ -171,8 +171,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								</div>
 							</div>
 							<form id="modalForm" action="rest/web/pe/peIndexProduct" method="post" >
-							<input name="sortField" type="hidden" value="${simuSearchVO.sortField }"/>
-							<input name="sortType" type="hidden" value="${simuSearchVO.sortType}"/>
+							<input name="sortField" id="sortField" type="hidden" value="${simuSearchVO.sortField }"/>
+							<input name="sortType" id="sortType" type="hidden" value="${simuSearchVO.sortType}"/>
 							<input name="pageNo" type="hidden" value="${simuSearchVO.pageNo}"/>
 							<input name="pageSize" type="hidden" value="${simuSearchVO.pageSize }"/>
 							
@@ -233,11 +233,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_c_s c_b"><a class="uc_sort"
 											href="javascript:void(0)">运行时间<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
-											href="javascript:void(0)">近2年<em></em></a></td>
+											href="javascript:void(0)" sortField="tow_rate" sortType="">近2年<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
-											href="javascript:void(0)">近1年<em></em></a></td>
+											href="javascript:void(0)" sortField="one_rate" sortType="">近1年<em></em></a></td>
 										<td class="c_r_s c_b"><a class="uc_sort"
-											href="javascript:void(0)">年化收益<em></em></a></td>
+											href="javascript:void(0)" sortField="year_rate" sortType="">年化收益<em></em></a></td>
 										<td class="c_r_s c_b">净值走势</td>
 										<td class="c_c">预约</td>
 									</tr>
@@ -545,7 +545,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         //--/点击更多js--
         //--排行图标--
         $(".uc_sort").each(function (index) {
-            $(".uc_sort>em").addClass("sort_desc");
+            if($(this).attr("sortField")=="${simuSearchVO.sortField}"){
+            	if("${simuSearchVO.sortType}"=="asc"){
+            		$(this).attr("sortType", "asc");
+            		$(".uc_sort>em:eq(" + index + ")").addClass("sort_u")
+            		$(".uc_sort>em:eq(" + index + ")").addClass("sort_desc");
+            	}else{
+            		$(this).attr("sortType", "desc");
+	                $(".uc_sort>em:eq(" + index + ")").addClass("sort_d");
+            	}
+            }else{
+            	 $(".uc_sort>em").addClass("sort_desc");
+            }
+            
+            
+            //初始化排序箭头
             $(this).click(function () {
                 var s = $(".uc_sort>em:eq(" + index + ")").hasClass("sort_desc");
                 $(".uc_sort>em").removeClass("sort_d sort_u");
@@ -558,6 +572,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     $(".uc_sort>em:eq(" + index + ")").addClass("sort_u")
                     $(".uc_sort>em:eq(" + index + ")").addClass("sort_desc");
                 }
+                $("#sortField").val($(this).attr("sortField"));
+                if($(this).attr("sortType") == "desc"){
+                	$("#sortType").val("asc");
+                }else{
+                	$("#sortType").val("desc");
+                }
+                var params =SetPara();	    	    	
+    	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
             });
 
         })

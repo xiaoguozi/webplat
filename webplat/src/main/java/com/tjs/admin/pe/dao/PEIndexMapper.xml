@@ -140,38 +140,13 @@
 		<if test="keyword!=null and keyword!=''">
 		    AND (P.name like CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
 		 </if>
-		
-		<choose> 
-		     <when test="sortField=='yearRate'">
-		     		<if test="sortType=='asc'">
-		     			ORDER BY P.year_rate ASC
-		     		</if>
-		     		<if test="sortType=='desc'">
-		     			ORDER BY P.year_rate DESC
-		     		</if>
-		     </when>
-		     <when test="sortField=='towRate'">
-		     		<if test="sortType=='asc'">
-		     			ORDER BY P.tow_rate ASC
-		     		</if>
-		     		<if test="sortType=='desc'">
-		     			ORDER BY P.tow_rate DESC
-		     		</if>
-		     </when>
-		     <when test="sortField=='oneRate'">
-		     		<if test="sortType=='asc'">
-		     			ORDER BY P.one_rate ASC
-		     		</if>
-		     		<if test="sortType=='desc'">
-		     			ORDER BY P.one_rate DESC
-		     		</if>
-		     </when>
-		     
-		     
-		     <otherwise> 
-		     	ORDER BY P.ACCUMULATED_INCOME DESC
-		     </otherwise>
-		 </choose>
+		 
+		<if test="sortField!=null and sortField!=''">
+		 	ORDER BY ${sortField} ${sortType}
+		</if>
+		<if test="sortField==null or sortField==''">
+		 	ORDER BY P.ACCUMULATED_INCOME DESC
+		</if>
          
         LIMIT #{limitStart} ,#{pageSize}
         

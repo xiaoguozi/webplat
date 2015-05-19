@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.pe.controller.PECompanyCtrlModel;
+import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
@@ -72,7 +73,8 @@ public class PEIndexProductController {
     	model.addAttribute("lstAll", lstAll);
     	
     	//基金经理
-    	List<PEManager> lstManager = peManagerService.getPEManagerList();
+    	PEManagerCtrlModel peManagerCtrlModel = new PEManagerCtrlModel();
+    	List<PEManager> lstManager = peManagerService.getPEManagerList(peManagerCtrlModel);
     	model.addAttribute("lstManager", lstManager);
     	
     	//基金公司
