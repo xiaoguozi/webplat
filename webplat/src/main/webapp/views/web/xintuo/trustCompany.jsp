@@ -123,7 +123,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 </table></td>
     <td align="right"><span style="color:#FF6600;">${ProductXtgs.xgtsPjsyl }%&nbsp;&nbsp;&nbsp;</span></td>
     <td align="right">${ProductXtgs.xgtsCpdfbl }％&nbsp;&nbsp;&nbsp;</td>
-    <td align="right"><fmt:formatNumber value="${ProductXtgs.xgtsZczb}" pattern="#0.####"/>&nbsp;&nbsp;</td>
+    <td align="right"><fmt:formatNumber value="${ProductXtgs.xgtsZczb}" pattern="#0.####"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td align="center">${ProductXtgs.xgtsGsxz}</td>
     <td align="center">${ProductXtgs.xgtsFrdb}</td>
     <td align="center">${ProductXtgs.xgtsCity}</td>

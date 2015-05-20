@@ -26,7 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- /header_top -->
 
 <div class="header_menu">
-<div class="tjs_1108px center" style="position: relative;">
+<div class="tjs_1108px center" style="position: relative;" >
 
      <div class="logo_wrap"><a href="index.html"><img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
@@ -43,13 +43,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- /header_menu -->
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="<%=basePath%>">首页</a> > <a href="<%=basePath%>rest/web/xintuo/trust/trustProduct">信托产品</a> > ${productXtcp.xtcpSplname}</div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center" >当前位置： <a href="<%=basePath%>">首页</a> > <a href="<%=basePath%>rest/web/xintuo/trust/trustProduct">信托产品</a> > ${productXtcp.xtcpSplname}</div></div>
 
 <!-- 产品基本信息 开始-->
 
-<div class="tjs_1108px center" style="position:relative;">
+<div class="tjs_1108px center" style="position:relative;" >
 <div style=" height:20px; width:100%;"></div>
-<div class="flow_menu">
+<div class="flow_menu" style="width:10%">
 <ul>
 <li class="flow_menu_solid flow_menu_titlebg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>快速直达</strong></li>
 <li class="flow_menu_dash"><a href="#A"  id="flow_menu_click">产品概况</a></li>
@@ -245,14 +245,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- 产品基本信息 结束-->
 
 <div class="tjs_pcs_flow">
-<div class="tjs_1108px center">
-<div style=" height:30px; width:100%; font-size:0px;"></div>
+<div class="tjs_1108px center" >
+<div style=" height:30px;  font-size:0px;"></div>
 
 <div class="tjs_pcs_title">信托购买流程<a name="G" id="G"></a></div>
 
-<div class="tjs_flowdiv">
+<div class="tjs_flowdiv"  >
 <ul>
-<li>
+<li >
 <strong>在线预约</strong><br />
  <span style=" color:#9d9d9d;">或拨打4000-181-131</span>
 </li>
