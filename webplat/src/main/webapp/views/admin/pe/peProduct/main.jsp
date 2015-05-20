@@ -71,7 +71,7 @@
             </div>
         </div>
         
-        
+        <!--  
         <div class="form-group">             
             <label class="col-md-3 control-label">基金经理</label>
             <div class="col-md-6">
@@ -79,6 +79,8 @@
             		data-title="${peProduct.managerName}" placeholder="请选择"  data-url="rest/admin/pe/peProduct/getOnLinePEManagerList" >   
             </div>
         </div>
+        
+        -->
      
          <div class="form-group">
             <label class="col-md-3 control-label">最新净值</label>
@@ -320,9 +322,7 @@ $(function () {
     
   }); 
   
-  function changecompany(obj){
-	 
-	  $('input[name=managerId]').attr('data-url','rest/admin/pe/peProduct/getOnLinePEManagerList?companyId='+obj.value);
-	  alert( $('input[name=managerId]').attr('data-url'));
+  function changecompany(obj){	 
+	 // $('input[name=managerId]').attr('data-url','rest/admin/pe/peProduct/getOnLinePEManagerList?companyId='+obj.value);	
   }
 </script>
