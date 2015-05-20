@@ -47,7 +47,7 @@
                         <th field="industryAverage">行业平均 <span class="glyphicon"></span></th>
                         <th field="hs300">沪深300 <span class="glyphicon"></span></th>
                         <th field="rank">排名 <span class="glyphicon"></span></th>
-                        <th field="rankInterval">排名区间 <span class="glyphicon"></span></th>
+                        <th field="rankInterval">排名区间(%) <span class="glyphicon"></span></th>
                         <th field="productName">产品名称 <span class="glyphicon"></span></th>
                     </tr>
                 </thead>

@@ -35,19 +35,19 @@
          <div class="form-group">
             <label class="col-md-3 control-label">期间收益</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="durationIncome" value="${peProductIncome.durationIncome}"  >
+                <input type="text" class="form-control required number" name="durationIncome" value="${peProductIncome.durationIncome}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">行业平均</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="industryAverage" value="${peProductIncome.industryAverage}"  >
+                <input type="text" class="form-control required number" name="industryAverage" value="${peProductIncome.industryAverage}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">沪深300</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="hs300" value="${peProductIncome.hs300}"  >
+                <input type="text" class="form-control required number" name="hs300" value="${peProductIncome.hs300}"  >
             </div>
         </div>
          <div class="form-group">
@@ -57,9 +57,9 @@
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">排名区间</label>
+            <label class="col-md-3 control-label">排名区间(%)</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="rankInterval" value="${peProductIncome.rankInterval}"  >
+                <input type="text" class="form-control required number" name="rankInterval" value="${peProductIncome.rankInterval}"  >
             </div>
         </div>
     </form>

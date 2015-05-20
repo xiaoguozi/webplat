@@ -44,7 +44,7 @@
                         <th field="netTime">净值时间 <span class="glyphicon"></span></th>
                         <th field="unitNet">单位净值 <span class="glyphicon"></span></th>
                         <th field="totalNet">累计净值 <span class="glyphicon"></span></th>
-                        <th field="increaseRate">增长率 <span class="glyphicon"></span></th>
+                        <th field="increaseRate">增长率(%) <span class="glyphicon"></span></th>
                         <th field="productName">产品名称 <span class="glyphicon"></span></th>
                     </tr>
                 </thead>

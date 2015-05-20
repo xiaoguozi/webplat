@@ -40,19 +40,19 @@
          <div class="form-group">
             <label class="col-md-3 control-label">单位净值 </label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="unitNet" value="${peProductNet.unitNet}"  >
+                <input type="text" class="form-control required number" name="unitNet" value="${peProductNet.unitNet}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">累计净值 </label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="totalNet" value="${peProductNet.totalNet}"  >
+                <input type="text" class="form-control required number" name="totalNet" value="${peProductNet.totalNet}"  >
             </div>
         </div>
          <div class="form-group">
-            <label class="col-md-3 control-label">增长率</label>
+            <label class="col-md-3 control-label">增长率(%)</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="increaseRate" value="${peProductNet.increaseRate}"  >
+                <input type="text" class="form-control required number" name="increaseRate" value="${peProductNet.increaseRate}"  >
             </div>
         </div>
         
