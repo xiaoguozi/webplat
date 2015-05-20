@@ -99,7 +99,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
                                     <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTop4Product.accumulatedIncome}</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexManager?peManagerId=${peTop4Product.managerId}" target="_blank">${peTop4Product.managerName}</a></div>
+                                    <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop4Product.managerId}" target="_blank">${peTop4Product.managerName}</a></div>
                                     <div class="tjs_private_textdiv">产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop4Product.id}" target="_blank">${peTop4Product.name}</a></div>
                                 </div>
                                 <div class="tjs_product_textdiv">${peTop4Product.managerReview} </div>
@@ -184,7 +184,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <td class="tjs_table_td_two">
 	                                <div class="tjs_table_div_right">
 	                                    <p class="tjs_table_ptitle"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop10Product.id}" target="_blank" >${peTop10Product.name}</a></p>
-	                                    <p class="tjs_table_pname"><a href="rest/web/pe/peIndexManager?peManagerId=${peTop10Product.managerId}" target="_blank" style="color: #FE6700;">${peTop10Product.managerName}</a></p>
+	                                    <p class="tjs_table_pname"><a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop10Product.managerId}" target="_blank" style="color: #FE6700;">${peTop10Product.managerName}</a></p>
 	                                    <p>${peTop10Product.companyName}</p>
 	                                </div>
 	                            </td>
