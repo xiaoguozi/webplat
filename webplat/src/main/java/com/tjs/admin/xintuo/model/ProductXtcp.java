@@ -64,10 +64,10 @@ public class ProductXtcp {
     /** 所在区域*/
     private String  xtcpCity;     
     /** 产品上架时间*/
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date  xtcpCreateDate;
     /**产品修改时间 */
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date   xtcpModifyDate;
     /**创建人Id */
     private Long  xtcpUserId;
@@ -82,7 +82,7 @@ public class ProductXtcp {
 	/**推荐序号*/
 	private Long xtcpTjno;	
 	/**状态*/
-	private String xtcpStatus;
+	private String xtcpStatus="10";
 	/**活动*/
 	private String xtcpHd;
 	/**信托产品简称*/

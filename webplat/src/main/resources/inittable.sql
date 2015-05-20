@@ -262,41 +262,46 @@ CREATE TABLE `pe_product_net` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品净值表';
 
 
-ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp` 
 CHANGE COLUMN `xtcp_sysm` `xtcp_sysm` VARCHAR(4000) NULL DEFAULT NULL COMMENT '收益说明' ;
 
 
-ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp` 
 CHANGE COLUMN `xtcp_zcglr` `xtcp_zcglr` VARCHAR(4000) NULL DEFAULT NULL COMMENT '资产管理人' ;
 
 
-ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp` 
 ADD COLUMN `xtcp_splname` VARCHAR(500) NULL AFTER `xtcp_city`;
 
 
-ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp` 
 CHANGE COLUMN `xtcp_splname` `xtcp_splname` VARCHAR(500) NULL DEFAULT NULL COMMENT '产品简称' ,
 ADD COLUMN `xtcp_tzfs` VARCHAR(100) NULL COMMENT '投资方式' AFTER `xtcp_splname`;
 
 
-ALTER TABLE `tjs`.`tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp` 
 CHANGE COLUMN `xtcp_rzf` `xtcp_rzf` VARCHAR(4000) NULL DEFAULT NULL COMMENT '融资方' ;
 
 
-ALTER TABLE `tjs`.`tjs_order` 
+ALTER TABLE `tjs_order` 
 ADD COLUMN `order_remark` VARCHAR(2000) NULL COMMENT '备注' AFTER `order_operate_date`;
 
-ALTER TABLE `tjs`.`tjs_order` 
+ALTER TABLE `tjs_order` 
 CHANGE COLUMN `order_id` `order_id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '订单号' ;
 
 
-ALTER TABLE `tjs`.`tjs_product_xtgs` 
+ALTER TABLE `tjs_product_xtgs` 
 CHANGE COLUMN `xgts_zczb` `xgts_zczb` DECIMAL(18,2) NULL DEFAULT NULL COMMENT '注册资本' ;
 
 
-ALTER TABLE `tjs`.`tjs_order` 
+ALTER TABLE `tjs_order` 
 CHANGE COLUMN `order_create_date` `order_create_date` DATETIME NULL DEFAULT NULL COMMENT '订单创建时间' ,
 CHANGE COLUMN `order_operate_date` `order_operate_date` DATETIME NULL DEFAULT NULL COMMENT '订单处理时间' ;
+
+
+ALTER TABLE `tjs_product_xtcp` 
+CHANGE COLUMN `xtcp_createDate` `xtcp_createDate` DATETIME NULL DEFAULT NULL COMMENT '产品上架时间' ,
+CHANGE COLUMN `xtcp_modifyDate` `xtcp_modifyDate` DATETIME NULL DEFAULT NULL COMMENT '产品修改时间' ;
 
 
 

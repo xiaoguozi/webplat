@@ -113,8 +113,7 @@ public class XinTuoCpControler {
 
     @RequestMapping("/update")
     public String update(@RequestParam(value="id",required=false) Long xtcpId, XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
-    	ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(xtcpId);
-    	productXtcp.setXtcpModifyDate(new Date());
+    	ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(xtcpId);   
     	model.addAttribute(productXtcp);
     	model.addAttribute("ctrlData", xintuoCpCtrlModel);
         return "admin/xintuo/updateCp";
@@ -123,12 +122,13 @@ public class XinTuoCpControler {
 
     @RequestMapping("/updateData")
     @ResponseBody
-    public Map<String, Object> updateData(ProductXtcp productXtgs, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
+    public Map<String, Object> updateData(ProductXtcp productXtcp, XinTuoGsCtrlModel xintuoGsCtrlModel, Model model) {
     	
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = iProductXtService.updateProductXtcp(productXtgs);
+    	productXtcp.setXtcpModifyDate(new Date());
+    	int id = iProductXtService.updateProductXtcp(productXtcp);   	
     	result.put("code", "0");
-    	result.put("bizData", productXtgs);
+    	result.put("bizData", productXtcp);
     	
         return result;
     }

@@ -28,8 +28,8 @@
 		<result column="xtcp_status" property="xtcpStatus" jdbcType="VARCHAR" />
 		<result column="xtcp_tjw" property="xtcpTjw" jdbcType="VARCHAR" />
 		<result column="xtcp_tjno" property="xtcpTjno" javaType="java.lang.Long"  jdbcType="BIGINT" />
-		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="DATE" />
-		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		<result column="xtcp_userId" property="xtcpUserId" javaType="java.lang.Long" jdbcType="BIGINT"  />
 		<result column="xtcp_username" property="xtcpUsername" jdbcType="VARCHAR" />
 		<result column="xtcp_validstatus" property="xtcpvalidStatus" jdbcType="VARCHAR" />
@@ -63,7 +63,7 @@
          </if>
 	</select>
 
-	<select id="selectProductXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp" parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
+	<select id="selectProductXtcp"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
 		<include refid="Base_select_Column_List" />
 		from tjs_product_xtcp where xtcp_validstatus='1'
@@ -73,7 +73,11 @@
          </if>
          
          <if test="sortField!= null and sortField!= ''">
-           ORDER BY #{sortField} #{sortType}
+           ORDER BY ${sortField} ${sortType}
+        </if>
+        
+         <if test="sortField== null or sortField== ''">
+           ORDER BY xtcp_modifyDate desc,xtcp_status asc
         </if>
         
          <if test="pageNo!= 0">
@@ -112,8 +116,8 @@
 		#{xtcpStatus},
 		#{xtcpTjw},
 		#{xtcpTjno},
-		#{xtcpCreateDate},
-		#{xtcpModifyDate},
+		#{xtcpCreateDate,jdbcType=TIMESTAMP},
+		#{xtcpModifyDate,jdbcType=TIMESTAMP},
 		#{xtcpUserId},
 		#{xtcpUsername},
 		#{xtcpArea},
@@ -150,8 +154,7 @@
 		xtcp_status=#{xtcpStatus},
 		xtcp_tjw=#{xtcpTjw},
 		xtcp_tjno=#{xtcpTjno},
-		xtcp_createDate=#{xtcpCreateDate},
-		xtcp_modifyDate=#{xtcpModifyDate},
+		xtcp_modifyDate=#{xtcpModifyDate,jdbcType=TIMESTAMP},
 		xtcp_userId=#{xtcpUserId},
 		xtcp_username=#{xtcpUsername},
 		xtcp_area=#{xtcpArea},

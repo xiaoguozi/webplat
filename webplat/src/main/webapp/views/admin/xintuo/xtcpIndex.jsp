@@ -44,17 +44,17 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>                      
-                        <th field="xtcpGszhname">信托公司  <span class="glyphicon"></span></th>
-                        <th field="xtcpFullname">信托产品<span class="glyphicon"></span></th>
-                        <th field="xtcpNsyl">预期年份收益<span class="glyphicon"></span></th>
-                        <th field="xtcpHd">活动<span class="glyphicon"></span></th>
-                        <th field="xtcpZdrgje">最低认购金额（万元）<span class="glyphicon"></span></th>                     
-                        <th field="xtcpCxq">存续期<span class="glyphicon"></span></th>
-                        <th field="xtcpLxfp">利息分配<span class="glyphicon"></span></th>
-                        <th field="xtcpTzly">投资领域<span class="glyphicon"></span></th>
-                        <th field="xtcpTjw">是否上线<span class="glyphicon"></span></th>
-                        <th field="xtcpUsername">创建人<span class="glyphicon"></span></th> 
-                        <th field="xtcpModifyDate">最后修改时间<span class="glyphicon"></span></th>                                                  
+                        <th field="xtcp_gszhname">信托公司  <span class="glyphicon"></span></th>
+                        <th field="xtcp_fullname">信托产品<span class="glyphicon"></span></th>
+                        <th field="xtcp_nsyl">预期年份收益<span class="glyphicon"></span></th>
+                        <th field="xtcp_hd">活动<span class="glyphicon"></span></th>
+                        <th field="xtcp_zdrgje">最低认购金额（万元）<span class="glyphicon"></span></th>                     
+                        <th field="xtcp_cxq">存续期<span class="glyphicon"></span></th>
+                        <th field="xtcp_lxfp">利息分配<span class="glyphicon"></span></th>
+                        <th field="xtcp_tzly">投资领域<span class="glyphicon"></span></th>
+                        <th field="xtcp_status">是否上线<span class="glyphicon"></span></th>
+                        <th field="xtcp_username">创建人<span class="glyphicon"></span></th> 
+                        <th field="xtcp_modifyDate">最后修改时间<span class="glyphicon"></span></th>                                                  
                     </tr>
                 </thead>
                 <tbody>
