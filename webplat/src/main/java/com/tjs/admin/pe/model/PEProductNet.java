@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,13 +17,13 @@ public class PEProductNet {
 	private Date netTime;
 	
 	/**  单位净值 */
-	private String unitNet;
+	private BigDecimal unitNet;
 	
 	/**  累计净值 */
-	private String totalNet;
+	private BigDecimal totalNet;
 	
 	/**  增长率 */
-	private String increaseRate;
+	private BigDecimal increaseRate;
 	
 	/** 产品ID */
 	private long productId;
@@ -52,30 +53,6 @@ public class PEProductNet {
 
 	public void setNetTime(Date netTime) {
 		this.netTime = netTime;
-	}
-
-	public String getUnitNet() {
-		return unitNet;
-	}
-
-	public void setUnitNet(String unitNet) {
-		this.unitNet = unitNet;
-	}
-
-	public String getTotalNet() {
-		return totalNet;
-	}
-
-	public void setTotalNet(String totalNet) {
-		this.totalNet = totalNet;
-	}
-
-	public String getIncreaseRate() {
-		return increaseRate;
-	}
-
-	public void setIncreaseRate(String increaseRate) {
-		this.increaseRate = increaseRate;
 	}
 
 	public long getProductId() {
@@ -125,15 +102,40 @@ public class PEProductNet {
 	public void setLastModifyDate(Date lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
+	
+	public BigDecimal getUnitNet() {
+		return unitNet;
+	}
+
+	public void setUnitNet(BigDecimal unitNet) {
+		this.unitNet = unitNet;
+	}
+
+	public BigDecimal getTotalNet() {
+		return totalNet;
+	}
+
+	public void setTotalNet(BigDecimal totalNet) {
+		this.totalNet = totalNet;
+	}
+
+	public BigDecimal getIncreaseRate() {
+		return increaseRate;
+	}
+
+	public void setIncreaseRate(BigDecimal increaseRate) {
+		this.increaseRate = increaseRate;
+	}
 
 	@Override
 	public String toString() {
 		return "PEProductNet [id=" + id + ", netTime=" + netTime + ", unitNet="
-				+ unitNet + ", totalNet=" + totalNet + ", increasRate="
+				+ unitNet + ", totalNet=" + totalNet + ", increaseRate="
 				+ increaseRate + ", productId=" + productId + ", productName="
 				+ productName + ", createrId=" + createrId + ", createrName="
 				+ createrName + ", createDate=" + createDate
 				+ ", lastModifyDate=" + lastModifyDate + "]";
 	}
+
 	
 }

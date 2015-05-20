@@ -4,11 +4,11 @@
 	<resultMap id="peProductIncomeMap" type="com.tjs.admin.pe.model.PEProductIncome">
         <id column="id" property="id" jdbcType="BIGINT" />
    		<result property="year" column="year" jdbcType="VARCHAR" />
-   		<result property="durationIncome" column="duration_income" jdbcType="VARCHAR" />
-   		<result property="industryAverage" column="industry_average" jdbcType="VARCHAR" />
-   		<result property="hs300" column="hs_300" jdbcType="VARCHAR" />
+   		<result property="durationIncome" column="duration_income" />
+   		<result property="industryAverage" column="industry_average"  />
+   		<result property="hs300" column="hs_300"  />
    		<result property="rank" column="rank" jdbcType="VARCHAR" />
-   		<result property="rankInterval" column="rank_interval" jdbcType="VARCHAR" />
+   		<result property="rankInterval" column="rank_interval" />
    		<result property="productId" column="product_id" jdbcType="BIGINT" />
    		<result property="productName" column="product_name" jdbcType="VARCHAR" />
    		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />

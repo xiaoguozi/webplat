@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,19 +17,19 @@ public class PEProductIncome {
 	private String year;
 	
 	/** 期间收益 */
-	private String durationIncome;
+	private BigDecimal durationIncome;
 	
 	/** 行业平均 */
-	private String industryAverage;
+	private BigDecimal industryAverage;
 	
 	/** 沪深300 */
-	private String hs300;
+	private BigDecimal hs300;
 	
 	/** 排名 */
 	private String rank;
 	
 	/** 排名区间 */
-	private String rankInterval;
+	private BigDecimal rankInterval;
 	
 	/** 产品ID */
 	private long productId;
@@ -60,28 +61,36 @@ public class PEProductIncome {
 		this.year = year;
 	}
 
-	public String getDurationIncome() {
+	public BigDecimal getDurationIncome() {
 		return durationIncome;
 	}
 
-	public void setDurationIncome(String durationIncome) {
+	public void setDurationIncome(BigDecimal durationIncome) {
 		this.durationIncome = durationIncome;
 	}
 
-	public String getIndustryAverage() {
+	public BigDecimal getIndustryAverage() {
 		return industryAverage;
 	}
 
-	public void setIndustryAverage(String industryAverage) {
+	public void setIndustryAverage(BigDecimal industryAverage) {
 		this.industryAverage = industryAverage;
 	}
 
-	public String getHs300() {
+	public BigDecimal getHs300() {
 		return hs300;
 	}
 
-	public void setHs300(String hs300) {
+	public void setHs300(BigDecimal hs300) {
 		this.hs300 = hs300;
+	}
+
+	public BigDecimal getRankInterval() {
+		return rankInterval;
+	}
+
+	public void setRankInterval(BigDecimal rankInterval) {
+		this.rankInterval = rankInterval;
 	}
 
 	public String getRank() {
@@ -90,14 +99,6 @@ public class PEProductIncome {
 
 	public void setRank(String rank) {
 		this.rank = rank;
-	}
-
-	public String getRankInterval() {
-		return rankInterval;
-	}
-
-	public void setRankInterval(String rankInterval) {
-		this.rankInterval = rankInterval;
 	}
 
 	public long getCreaterId() {
@@ -158,5 +159,6 @@ public class PEProductIncome {
 				+ ", createrName=" + createrName + ", createDate=" + createDate
 				+ ", lastModifyDate=" + lastModifyDate + "]";
 	}
+
 	
 }
