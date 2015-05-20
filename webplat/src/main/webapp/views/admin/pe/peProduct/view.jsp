@@ -46,7 +46,7 @@
 <div class="modal-body">
     <form id="modalForm" action="" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="id" value="${peProduct.id}">
-     
+        <!-- 
         <div class="form-group">             
             <label class="col-md-3 control-label">私募公司</label>
             <div class="col-md-6">
@@ -54,6 +54,7 @@
             		data-title="${peProduct.pecompanyName}" placeholder="请选择"  data-url="rest/admin/pe/peProduct/getOnLinePECompanyList" > 
             </div>
         </div>
+         -->
         <div class="form-group">
             <label class="col-md-3 control-label">基金名称</label>
             <div class="col-md-6">
@@ -64,6 +65,14 @@
             <label class="col-md-3 control-label">基金简称</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="simpleName" value="${peProduct.simpleName}"  >
+            </div>
+        </div>
+        
+         <div class="form-group">             
+            <label class="col-md-3 control-label">基金公司：公司经理</label>
+            <div class="col-md-6">
+            	<input type="text" class="form-control ajax-select required" name="managerId" value="${peProduct.managerId}"  
+            		data-title="${peProduct.pecompanyName}:${peProduct.managerName}" placeholder="请选择"  data-url="rest/admin/pe/peProduct/getOnLinePEManagerList" >   
             </div>
         </div>
          <div class="form-group">
