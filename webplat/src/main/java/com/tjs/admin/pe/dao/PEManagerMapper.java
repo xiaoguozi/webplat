@@ -25,6 +25,6 @@ public interface PEManagerMapper  {
 	int selectListCount(PEManagerCtrlModel peManagerCtrlModel);
 
 	PEManager getPEManagerById(long peManagerId);
-	
+		
 	
 }

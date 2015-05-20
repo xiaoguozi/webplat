@@ -14,6 +14,7 @@ import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEIndexMapper;
 import com.tjs.admin.pe.dao.PEProductMapper;
 import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
@@ -43,6 +44,7 @@ public class PEProductServiceImpl implements PEProductService {
 	
 	@Resource
 	private PEManagerService peManagerService;
+	
 	
 	@Override
 	public int insertPEProduct(PEProduct peProduct) {
@@ -74,9 +76,12 @@ public class PEProductServiceImpl implements PEProductService {
 	@Override
 	public int insertPEProduct(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
 		int result = 0;
-		str2Date(peProduct, peProductCtrlModel);
-		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
-		peProduct.setPecompanyName(peCompany.getName());
+		str2Date(peProduct, peProductCtrlModel);		
+		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+		peProduct.setManagerName(peManager.getName());
+		// PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
+		peProduct.setPecompanyName(peManager.getCompanyName());
+		peProduct.setPecompanyId(peManager.getCompanyId());
 		result = this.insertPEProduct(peProduct);
 		return result;
 	}
@@ -86,6 +91,11 @@ public class PEProductServiceImpl implements PEProductService {
 		int result = 0;
 		str2Date(peProduct, peProductCtrlModel);
 		peProduct.setLastModifyDate(DateUtils.getCurrentDate());
+		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+		peProduct.setManagerName(peManager.getName());
+		// PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
+		peProduct.setPecompanyName(peManager.getCompanyName());
+		peProduct.setPecompanyId(peManager.getCompanyId());
 		result = this.updatePEProduct(peProduct);
 		return result;
 	}
@@ -154,12 +164,7 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public Map<String, Object> getOnLinePEManagerList(PEProductCtrlModel peProductCtrlModel) {
-		Map<String, Object> result = new HashMap<String, Object>();
-		String companyId = peProductCtrlModel.getCompanyId();
-		
-		result = peManagerService.getOnLinePEManagerByCompanyId(Long.valueOf(companyId));
-		
-		return result;
+	public List<PEManager> selectOnLinePEManager(Long companyId,String keyword) {		
+		return peManagerService.selectOnLinePEManager(companyId,keyword);				
 	}
 }

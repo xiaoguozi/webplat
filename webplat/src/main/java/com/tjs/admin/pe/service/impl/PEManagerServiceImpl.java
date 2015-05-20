@@ -87,6 +87,8 @@ public class PEManagerServiceImpl implements PEManagerService {
 
 	@Override
 	public void updatePEManager(PEManager peManager, PEManagerCtrlModel peManagerCtrlModel) {
+		PECompany peCompany = peCompanyService.getPECompanyById(peManager.getCompanyId());
+		peManager.setCompanyName(peCompany.getName());
 		this.updatePEManager(peManager);
 	}
 
@@ -132,6 +134,20 @@ public class PEManagerServiceImpl implements PEManagerService {
 		result.put("total", count);
     	result.put("data", lables); 
 		return result;
+	}
+
+	
+	@Override
+	public List<PEManager> selectOnLinePEManager(Long companyId,
+			String keyword) {
+		PEManagerCtrlModel peManagerCtrlModel = new PEManagerCtrlModel();
+		PEManager peManager = new PEManager();
+		peManager.setStatus(StatusEnum.ON_LINE.getStatus());
+		peManager.setCompanyId(companyId);
+		peManagerCtrlModel.setPeManager(peManager);
+		peManagerCtrlModel.setKeyWord(keyword);		
+		List<PEManager> lstPeManager = peManagerMapper.getPEManagerList(peManagerCtrlModel);
+		return lstPeManager;
 	}
 
 }

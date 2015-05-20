@@ -116,7 +116,7 @@ public class PEProduct {
 	private Long managerId;
 	
 	/* 经理名称 */
-	private Long managerName;
+	private String managerName;
 
 	public long getId() {
 		return id;
@@ -398,11 +398,11 @@ public class PEProduct {
 		this.managerId = managerId;
 	}
 
-	public Long getManagerName() {
+	public String getManagerName() {
 		return managerName;
 	}
 
-	public void setManagerName(Long managerName) {
+	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
 

@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.xintuo.model.Lable;
+import com.tjs.admin.xintuo.model.ProductXtgs;
 
 /**
  * 私募产品控制器
@@ -116,11 +119,19 @@ public class PEProductController {
     
     @RequestMapping("getOnLinePEManagerList")
     @ResponseBody
-    public  Map<String, Object> getOnLinePEManagerList(@RequestParam(value="companyId",required=false) String companyId) {
-    	Map<String, Object> result = new HashMap<String, Object>();
+    public  Map<String, Object> getOnLinePEManagerList(@RequestParam(value="companyId",required=false) Long companyId, @RequestParam(value="keyword",required=false) String keyword) {
     	
-    	//result = peProductService.getOnLinePEManagerList(peProductCtrlModel); 
-    	System.err.println(">>>>>"+companyId);
-        return result;
+    	Map<String, Object> result = new HashMap<String, Object>();    	
+    	List<PEManager> lstPeManager =  peProductService.selectOnLinePEManager(companyId,keyword);     	
+    	 result.put("total", lstPeManager!=null?lstPeManager.size():0);
+    	 List<Lable> lstLable = new ArrayList<Lable>();
+    	 for(PEManager peManager:lstPeManager){
+     		Lable lable = new Lable();
+     		lable.setId(peManager.getId().toString());
+     		lable.setTitle(peManager.getCompanyName()+":"+peManager.getName());
+     		lstLable.add(lable);
+     	} 
+     	  result.put("data", lstLable);   	
+         return result;
     }
 }

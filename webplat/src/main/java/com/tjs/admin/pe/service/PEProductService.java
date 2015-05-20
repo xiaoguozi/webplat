@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
@@ -44,7 +45,7 @@ public interface PEProductService  {
 	 * 
 	 * @return Map值 total：记录数， data：数据集
 	 */
-	Map<String, Object> getOnLinePEManagerList(PEProductCtrlModel peProductCtrlModel);
+	List<PEManager> selectOnLinePEManager(Long companyId,String keyword);
 	
 	/**
 	 * 得到私募首页顶级私募推荐

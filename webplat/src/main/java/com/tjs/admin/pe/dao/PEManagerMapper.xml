@@ -74,7 +74,7 @@
    		</if> 
    		       
    		 <if test="keyWord!= null and keyWord!= ''">
-           AND (name like CONCAT('%',#{keyWord},'%'))
+           AND (name like CONCAT('%',#{keyWord},'%') or company_name like CONCAT('%',#{keyWord},'%'))
          </if>
          
          <if test="sortField!= null and sortField!= ''">
@@ -147,6 +147,13 @@
    		WHERE id=#{id}
    </update>
    
-
+	 <select id="selectOnLinePEManager" resultMap="peManagerMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_select_Column_List" />
+        FROM pe_manager 
+        
+        
+        WHERE id = #{id}
+    </select>
    
 </mapper>
