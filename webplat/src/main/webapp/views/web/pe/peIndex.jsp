@@ -23,7 +23,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 <script type="text/javascript" src="assets/scripts/slide.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
-
+<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
+<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 
 </head>
 
@@ -62,11 +63,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
             <div class="bd">
                 <ul>
-                    <li><a href="" target="_blank">
+                    <li><a href="rest/web/pe/peIndex" >
                         <img src="assets/img/ui/images01.jpg" /></a></li>
-                    <li><a href="" target="_blank">
+                    <li><a href="rest/web/pe/peIndex" >
                         <img src="assets/img/ui/images01.jpg" /></a></li>
-                    <li><a href="" target="_blank">
+                    <li><a href="rest/web/pe/peIndex" >
                         <img src="assets/img/ui/images01.jpg" /></a></li>
                 </ul>
             </div>
@@ -84,7 +85,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="tjs_1108px center">
                     <div class="tjs_product_right ml0">
                         <div class="tjs_right_titlediv fontcolor">
-                            <img class="tjs_img_diamond" src="assets/img/ui/diamond.png" />顶级私募推荐<span style="float: right;"><a href="#" class="tjs_moreurl">更多>></a></span>
+                            <img class="tjs_img_diamond" src="assets/img/ui/diamond.png" />顶级私募推荐<span style="float: right;"><a href="rest/web/pe/peIndexProduct" class="tjs_moreurl">更多>></a></span>
                         </div>
                         <div class="tjs_coloreddiv ml0 bgcolor"></div>
                         <div class="tjs_right_typle border_left">
@@ -98,12 +99,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
                                     <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTop4Product.accumulatedIncome}</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="#">${peTop4Product.managerName}</a></div>
-                                    <div class="tjs_private_textdiv">产品名称：<a href="#">${peTop4Product.name}</a></div>
+                                    <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexManager?peManagerId=${peTop4Product.managerId}" target="_blank">${peTop4Product.managerName}</a></div>
+                                    <div class="tjs_private_textdiv">产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop4Product.id}" target="_blank">${peTop4Product.name}</a></div>
                                 </div>
                                 <div class="tjs_product_textdiv">${peTop4Product.managerReview} </div>
                                 <div class="tjs_right_btndiv">
-                                    <a class="tjs_btn" href="javascript:void(0)" onclick="alertbox(this)">
+                                    <a class="tjs_btn" href="#" data_id="${peTop4Product.id}">
                                         <img src="assets/img/ui/clock.png" />立即预约</a>
                                 </div>
                             </div>
@@ -115,28 +116,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                     </div>
                     <!-- /顶级私募推荐 -->
+                    <form id="modalForm" action="rest/web/pe/peIndex" method="post" >
                     <div class="tjs_right_titlediv fcolor">
                         <img class="tjs_img_diamond" src="assets/img/ui/ranklist.png" />私募收益排行 
-        <div class="sel_wrap">
-            <label>全部策略</label>
-            <select class="select">
-                <option value="0">全部策略</option>
-                <option value="1">股票策略</option>
-                <option value="2">宏观策略</option>
-                <option value="3">管理期货</option>
-                <option value="4">事件驱动</option>
-                <option value="5">相对价值策略</option>
-                <option value="6">债券策略</option>
-                <option value="7">组合基金</option>
-                <option value="8">复合策略</option>
-                <option value="9">其它策略</option>
-            </select>
-        </div>
+				        <div class="sel_wrap">
+				            <label class="lbl">
+				            	<c:if test="${simuSearchVO.peType==0}">全部策略</c:if>
+				            	<c:if test="${simuSearchVO.peType==1}">股票</c:if>
+				            	<c:if test="${simuSearchVO.peType==2}">期货基金</c:if>
+				            	<c:if test="${simuSearchVO.peType==3}">股票量化</c:if>
+				            	<c:if test="${simuSearchVO.peType==4}">债券型</c:if>
+				            	<c:if test="${simuSearchVO.peType==5}">定向增发</c:if>
+				            	<c:if test="${simuSearchVO.peType==6}">宏观对冲</c:if>
+				            	<c:if test="${simuSearchVO.peType==7}">组合基金</c:if>
+				            	<c:if test="${simuSearchVO.peType==8}">其他</c:if>
+				            </label>
+				            <ul class="select">
+				            	<li type="0">全部策略</li>
+				                <li type="1">股票</li>
+				                <li type="2">期货基金</li>
+				                <li type="3">股票量化</li>
+				                <li type="4">债券型</li>
+				                <li type="5">定向增发</li>
+				                <li type="6">宏观对冲</li>
+				                <li type="7">组合基金</li>
+				                <li type="8">其他</li>
+				            </ul>
+				        </div>
                         <!--<select class="tjs_select">
             
 
         </select>-->
-                        <span style="float: right;"><a href="#" class="tjs_moreurl">更多>></a></span>
+                        <span style="float: right;"><a href="rest/web/pe/peIndexProduct" class="tjs_moreurl">更多>></a></span>
                     </div>
                     <div class="tjs_coloreddiv ml0 bgcolorc"></div>
                     <div class="tjs_years">
@@ -153,6 +164,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <li><a href="">2006</a></li>
                         </ul>
                     </div>
+                    </form>
                     <table class="tjs_table_shouyipaihang" cellpadding="0" cellspacing="0">
                         <c:forEach items="${top10Data}" varStatus="status" var="peTop10Product">
 	                        <tr>
@@ -171,22 +183,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            </td>
 	                            <td class="tjs_table_td_two">
 	                                <div class="tjs_table_div_right">
-	                                    <p class="tjs_table_ptitle">${peTop10Product.name}</p>
-	                                    <p class="tjs_table_pname">${peTop10Product.managerName}</p>
+	                                    <p class="tjs_table_ptitle"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop10Product.id}" target="_blank" >${peTop10Product.name}</a></p>
+	                                    <p class="tjs_table_pname"><a href="rest/web/pe/peIndexManager?peManagerId=${peTop10Product.managerId}" target="_blank" style="color: #FE6700;">${peTop10Product.managerName}</a></p>
 	                                    <p>${peTop10Product.companyName}</p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_three">
 	                                <div class="tjs_table_div_right">
-	                                    <p>近一年收益：${peTop10Product.oneRate}</p>
-	                                    <p>近二年收益：${peTop10Product.towRate}</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname">${peTop10Product.nowRate}</span></p>
+	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
+	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname">${peTop10Product.nowRate}%</span></p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">
 	                                <p>累计收益</p>
 	                                <p class="tjs_num"><fmt:formatNumber value="${peTop10Product.accumulatedIncome}" pattern="#0"/>.<span class="tjsfont_size"><fmt:formatNumber value="${peTop10Product.accumulatedIncome*100%100}" pattern="00"/>%</span></p>
-	                                <p><a href="javascript:void(0)" onclick="alertbox(this)" class="tjs_btn"><img src="assets/img/ui/clock.png" />立即预约</a></p>
+	                                <p><a href="javascript:void(0)" class="tjs_btn" data_id="${peTop10Product.id}"><img src="assets/img/ui/clock.png" />立即预约</a></p>
 	                            </td>
 	                        </tr>
                         </c:forEach>
@@ -204,6 +216,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </div>
     <!-- /home_all -->
     <script>
+	    var IndexPage = {};
+	    IndexPage.orderProductUrl="rest/web/pe/peOrderProduct";
+    
         window.onload = function () {
             //--轮播按钮--
             $(".slideBox").hover(function () {
@@ -211,29 +226,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             }, function () {
                 $(".prev,.next").hide();
             });
-            //--/轮播按钮--
-            //--自定义下拉框--
-            $(".sel_wrap").on("change", function () {
-                var o;
-                var opt = $(this).find('option');
-                opt.each(function (i) {
-                    if (opt[i].selected == true) {
-                        o = opt[i].innerHTML;
-                    }
+          	//--自定义下拉框--
+            $(".sel_wrap").click(function () {
+                $(".select").toggle();
+                /* if($(".select").css("display")=="none" || $(".select").css("display")=="NONE"){
+                	$(".select").css("display", "block");
+                }else{
+                	$(".select").css("display", "none");
+                } */
+                $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
+                $(".select>li").each(function (index) {
+                    $(this).click(function () {
+                        var opt = $(this).html();
+                        $(".lbl").html(opt);
+                        var params = "?peType="+$(this).attr("type");
+                        $("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+                    })
+                });
+                
                 })
-                $(this).find('label').html(o);
-            }).trigger('change');
             //--/自定义下拉框--
             //--表格单行变色--
             $("tr:even").css("background", "#EEEDEB");
             //--/表格单行变色--
         }
         
-      	//--预约--
-        function alertbox() {
-            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-        }
-        //--/预约--
+      	//--预约--                   
+		$("a.tjs_btn").click(function(event){	
+			event.preventDefault();
+			
+		    alertMsg($(this).attr("data_id"),'20', 1);  
+		    
+			if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+		        $('[placeholder]').focus(function() {
+		            var input = $(this);
+		            if (input.val() == input.attr('placeholder')) {
+		                input.val('');
+		                input.removeClass('placeholder');
+		            }
+		        }).blur(function() {
+		            var input = $(this);
+		            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+		                input.addClass('placeholder');
+		                input.val(input.attr('placeholder'));
+		            }
+		        }).blur();
+		    };
+		});
+      	
+		
     </script>
     
     

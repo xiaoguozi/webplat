@@ -1,29 +1,20 @@
 package com.tjs.web.pe.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tjs.admin.order.model.Order;
-import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
-import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
-import com.tjs.admin.xintuo.model.ProductXtcp;
 
 /**
- * 私募首页控制器
+ * 私募经理控制器
  * 
  *@author duanyujun
  *@since 2015年5月2日
@@ -32,61 +23,26 @@ import com.tjs.admin.xintuo.model.ProductXtcp;
 
 @Controller
 @RequestMapping(value = "/web/pe/")
-public class PEIndexController {
+public class PEIndexPDetailController {
 
 	@Resource
 	private PEProductService peProductService;
 	
-	@Resource
-	private IOrderService iOrderService;
 	
-	
-	@RequestMapping("/peIndex")
-    public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
-		//查询4个顶级私募
-		List<PETopProduct> showData = new ArrayList<PETopProduct>();
-    	showData = peProductService.getTop4PEProductList();
+	@RequestMapping("/peIndexProductDetail")
+    public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
+//		//查询4个顶级私募
+//		List<PETopProduct> showData = new ArrayList<PETopProduct>();
+//    	showData = peProductService.getTop4AnyPEProductList();
+//    	model.addAttribute("top4Data", showData);
+//    	
+//    	//全部产品
+//    	peProductCtrlModel.setPageSize(10);
+//    	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
+//    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
+//    	model.addAttribute("lstAll", lstAll);
     	
-    	//查询私募收益排行
-    	List<PETopProduct> top10Data = new ArrayList<PETopProduct>();
-    	top10Data = peProductService.getTop10PEProductList(peSearchCtrlVO);
-    	
-    	model.addAttribute("top4Data", showData);
-    	model.addAttribute("top10Data", top10Data);
-    	model.addAttribute("simuSearchVO", peSearchCtrlVO);
-    	
-        return "web/pe/peIndex";
-    }
-	
-	/**
-    * 
-    * @return
-    */
-    @RequestMapping("/peOrderProduct")
-    @ResponseBody
-    public Map<String, String> orderProduct(@RequestParam(value="productId",required=false) Long productId,@RequestParam(value="productType") String productType,@RequestParam(value="alert_name") String userName,@RequestParam(value="alert_tel") String  userTel) {
-    	Order order = new Order();
-    	order.setCreateDate(new Date());
-    	//未处理
-    	order.setOperateStatus("10");
-    	order.setProductType(productType);
-    	order.setProductId(productId);
-    	if(productId!=null){
-    		PEProduct peProduct = peProductService.getPEProductById(productId);
-    		order.setProductName(peProduct.getSimpleName());
-    	}   	
-    	order.setTelphone(userTel);;
-    	order.setUserName(userName);    	
-//	    	Subject subject = SecurityUtils.getSubject();
-//		     if(subject!=null){
-//		    	 User user= iUserService.selectByUsername( (String)subject.getPrincipal());
-//		    	 order.setUserID(user!=null?user.getId():null);
-//		     }
-    	    			 
-    	iOrderService.insertOrder(order);
-    	Map<String, String> result = new HashMap<String, String>();
-    	result.put("result", "true");
-    	return result;
+        return "web/pe/peProductDetail";
     }
 	
 //	@RequestMapping("/insert")

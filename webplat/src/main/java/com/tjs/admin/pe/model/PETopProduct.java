@@ -11,13 +11,13 @@ public class PETopProduct {
 	private String name; 
 	
 	/** 累计收益 */
-	private String accumulatedIncome;
+	private BigDecimal accumulatedIncome;
 	
 	/** 最新净值 */
-	private String netWorth;
+	private BigDecimal netWorth;
 	
 	/** 运行时间 */
-	private String runTime;
+	private Integer runTime;
 	
 	/** 年收益率 */
 	private BigDecimal yearRate;
@@ -62,13 +62,7 @@ public class PETopProduct {
 		this.name = name;
 	}
 
-	public String getAccumulatedIncome() {
-		return accumulatedIncome;
-	}
-
-	public void setAccumulatedIncome(String accumulatedIncome) {
-		this.accumulatedIncome = accumulatedIncome;
-	}
+	
 
 	public String getManagerId() {
 		return managerId;
@@ -110,19 +104,27 @@ public class PETopProduct {
 		this.companyName = companyName;
 	}
 
-	public String getNetWorth() {
+	public BigDecimal getAccumulatedIncome() {
+		return accumulatedIncome;
+	}
+
+	public void setAccumulatedIncome(BigDecimal accumulatedIncome) {
+		this.accumulatedIncome = accumulatedIncome;
+	}
+
+	public BigDecimal getNetWorth() {
 		return netWorth;
 	}
 
-	public void setNetWorth(String netWorth) {
+	public void setNetWorth(BigDecimal netWorth) {
 		this.netWorth = netWorth;
 	}
 
-	public String getRunTime() {
+	public Integer getRunTime() {
 		return runTime;
 	}
 
-	public void setRunTime(String runTime) {
+	public void setRunTime(Integer runTime) {
 		this.runTime = runTime;
 	}
 

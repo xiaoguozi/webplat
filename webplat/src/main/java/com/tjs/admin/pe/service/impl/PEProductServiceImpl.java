@@ -134,9 +134,9 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public List<PETopProduct> getTop10PEProductList() {
+	public List<PETopProduct> getTop10PEProductList(PESearchCtrlVO peSearchCtrlVO) {
 		List<PETopProduct> result = new ArrayList<PETopProduct>();
-		result = peIndexMapper.getTop10PEProductList();
+		result = peIndexMapper.getTop10PEProductList(peSearchCtrlVO);
 		return result;
 	}
 	

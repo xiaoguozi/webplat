@@ -4,9 +4,9 @@
 	<resultMap id="peIndexProductMap" type="com.tjs.admin.pe.model.PETopProduct">
         <id column="id" property="id" jdbcType="BIGINT" />
    		<result property="name" column="name" jdbcType="VARCHAR"  />
-   		<result property="accumulatedIncome" column="accumulated_income" jdbcType="VARCHAR"  />
-   		<result property="netWorth" column="net_worth" jdbcType="VARCHAR"  />
-   		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
+   		<result property="accumulatedIncome" column="accumulated_income" javaType="java.math.BigDecimal"  />
+   		<result property="netWorth" column="net_worth" javaType="java.math.BigDecimal"  />
+   		<result property="runTime" column="run_time" javaType="java.lang.Integer"  />
    		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
    		<result property="managerName" column="manager_name"  jdbcType="VARCHAR" />
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
  	 <select id="getTop4PEProductList" resultMap="peIndexProductMap" >
         SELECT 
 		  P.id,
-		  P.name,
+		  P.simple_name name,
 		  P.accumulated_income,
 		  M.ID manager_id,
 		  M.NAME manager_name,
@@ -36,6 +36,7 @@
 		WHERE P.id = MP.product_id 
 		  AND MP.MANAGER_ID = M.ID 
 		  AND P.recommend_location = 2
+		  AND P.status = 2
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,4
     </select>
@@ -43,7 +44,7 @@
  	 <select id="getTop4AnyPEProductList" resultMap="peIndexProductMap" >
         SELECT 
 		  P.id,
-		  P.name,
+		  P.simple_name name,
 		  P.accumulated_income,
 		  M.ID manager_id,
 		  M.NAME manager_name,
@@ -55,14 +56,15 @@
 		  PE_MANAGER M 
 		WHERE P.id = MP.product_id 
 		  AND MP.MANAGER_ID = M.ID 
+		  AND P.status = 2
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,4
     </select>
     
- 	 <select id="getTop10PEProductList" resultMap="peIndexProductMap" >
+ 	 <select id="getTop10PEProductList" resultMap="peIndexProductMap" parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
 		  P.id,
-		  P.name,
+		  P.simple_name name,
 		  P.accumulated_income,
 		  M.ID manager_id,
 		  M.NAME manager_name,
@@ -80,6 +82,12 @@
 		WHERE P.id = MP.product_id 
 		  AND MP.MANAGER_ID = M.ID 
 		  AND M.company_id = C.id
+		  AND P.status = 2
+		  
+		 <if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		 </if>
+		
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,10
     </select>
@@ -88,7 +96,7 @@
  	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
 		  P.id,
-		  P.name,
+		  P.simple_name name,
 		  P.accumulated_income,
 		  P.net_worth,
 		  P.run_time,

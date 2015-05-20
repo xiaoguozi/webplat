@@ -12,6 +12,9 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	/** 关键字 */
 	private String keyword;
 	
+	/** 私募产品Id */
+	private String peProductId;
+	
 	/** 基金经理 */
 	private int peManagerId = 0;
 	
@@ -121,5 +124,15 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	public void setOnLine(int onLine) {
 		this.onLine = onLine;
 	}
+
+	public String getPeProductId() {
+		return peProductId;
+	}
+
+	public void setPeProductId(String peProductId) {
+		this.peProductId = peProductId;
+	}
+	
+	
 	
 }

@@ -19,7 +19,7 @@ public interface PEIndexMapper  {
 	
 	List<PETopProduct> getTop4AnyPEProductList();
 	
-	List<PETopProduct> getTop10PEProductList();
+	List<PETopProduct> getTop10PEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
 	Integer selectListCount(PEProductCtrlModel peProductCtrlModel);
 	

@@ -60,10 +60,10 @@ public interface PEProductService  {
 	
 	/**
 	 * 得到私募首页私募收益排行
-	 * @param peProductCtrlModel
+	 * @param peSearchCtrlVO PESearchCtrlVO
 	 * @return PETopProduct 集合
 	 */
-	List<PETopProduct> getTop10PEProductList();
+	List<PETopProduct> getTop10PEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
 	/**
 	 * 得到私募所有产品
