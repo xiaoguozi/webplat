@@ -1,6 +1,7 @@
 package com.tjs.admin.pe.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,9 +9,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEManagerMapper;
+import com.tjs.admin.pe.model.Lable;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
@@ -107,5 +110,28 @@ public class PEManagerServiceImpl implements PEManagerService {
 	}
 	
 	
+	@Override
+	public Map<String, Object> getOnLinePEManagerByCompanyId(Long companyId) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		PEManagerCtrlModel peManagerCtrlModel = new PEManagerCtrlModel();
+		PEManager peManager = new PEManager();
+		peManager.setStatus(StatusEnum.ON_LINE.getStatus());
+		peManager.setCompanyId(companyId);
+		peManagerCtrlModel.setPeManager(peManager);
+		
+		int count = this.selectListCount(peManagerCtrlModel);
+		List<PEManager> managers = this.getPEManagerList(peManagerCtrlModel);
+		List<Lable> lables = new ArrayList<Lable>();
+		for(PEManager manager : managers) {
+			Lable lable = new Lable();
+			lable.setId(String.valueOf(manager.getId()));
+			lable.setTitle(manager.getName());
+			lables.add(lable);
+		}
+					
+		result.put("total", count);
+    	result.put("data", lables); 
+		return result;
+	}
 
 }

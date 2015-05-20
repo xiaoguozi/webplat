@@ -2,6 +2,7 @@ package com.tjs.admin.pe.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
@@ -38,6 +40,9 @@ public class PEProductServiceImpl implements PEProductService {
 	
 	@Resource
 	private PEIndexMapper peIndexMapper;
+	
+	@Resource
+	private PEManagerService peManagerService;
 	
 	@Override
 	public int insertPEProduct(PEProduct peProduct) {
@@ -146,5 +151,15 @@ public class PEProductServiceImpl implements PEProductService {
 	public int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO) {
 		int count = peIndexMapper.getAnyPEProductListCount(peSearchCtrlVO);
 		return count;
+	}
+
+	@Override
+	public Map<String, Object> getOnLinePEManagerList(PEProductCtrlModel peProductCtrlModel) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		String companyId = peProductCtrlModel.getCompanyId();
+		
+		result = peManagerService.getOnLinePEManagerByCompanyId(Long.valueOf(companyId));
+		
+		return result;
 	}
 }

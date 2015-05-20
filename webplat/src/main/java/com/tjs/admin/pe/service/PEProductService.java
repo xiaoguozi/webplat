@@ -40,6 +40,13 @@ public interface PEProductService  {
 	Map<String, Object> getOnLinePECompanyList();
 	
 	/**
+	 * 依据公司ID获取上线的基金经理列表 
+	 * 
+	 * @return Map值 total：记录数， data：数据集
+	 */
+	Map<String, Object> getOnLinePEManagerList(PEProductCtrlModel peProductCtrlModel);
+	
+	/**
 	 * 得到私募首页顶级私募推荐
 	 * @return PETopProduct 集合
 	 */
@@ -71,5 +78,7 @@ public interface PEProductService  {
 	 * @return PETopProduct 集合
 	 */
 	int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO);
+	
+	
 	
 }

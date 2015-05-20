@@ -45,4 +45,12 @@ public interface PEManagerService  {
 	 * @return 产品清单列表
 	 */
 	List<PEProduct> getOnLinePEProductList(PEManager peManager); 
+	
+	/**
+	 * 通过公司ID获取在线经理清单 
+	 * 
+	 * @param companyId
+	 * @return 基金经理清单列表
+	 */
+	Map<String, Object> getOnLinePEManagerByCompanyId(Long companyId);
 }

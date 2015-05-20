@@ -52,7 +52,7 @@
         last_modify_date
     </sql>
     
-    <select id="getPEManagerById" resultMap="peManagerMap" parameterType="long">
+    <select id="getPEManagerById" resultMap="peManagerMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_select_Column_List" />
         FROM pe_manager 
@@ -64,6 +64,11 @@
         <include refid="Base_select_Column_List" />
          FROM pe_manager
          WHERE 1=1
+         
+         <if test="peManager != null and peManager.companyId != null">
+   			AND company_id = #{peManager.companyId}
+   		</if> 
+   		
          <if test="peManager != null and peManager.status == 2">
    			AND status = #{peManager.status}
    		</if> 

@@ -34,6 +34,9 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	/** 经理ID */
 	private String managerId;
 	
+	/** 公司ID */
+	private String companyId;
+	
 	public String getKeyWord() {
 		return keyWord;
 	}
@@ -91,6 +94,14 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 
 	public void setManagerId(String managerId) {
 		this.managerId = managerId;
+	}
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
 	}
 	
 }

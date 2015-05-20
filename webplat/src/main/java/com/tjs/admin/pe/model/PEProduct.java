@@ -111,6 +111,12 @@ public class PEProduct {
 	
 	/* 私募公司名称 */
 	private String pecompanyName;
+	
+	/* 经理ID */
+	private Long managerId;
+	
+	/* 经理名称 */
+	private Long managerName;
 
 	public long getId() {
 		return id;
@@ -384,6 +390,22 @@ public class PEProduct {
 		this.pecompanyName = pecompanyName;
 	}
 
+	public Long getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(Long managerId) {
+		this.managerId = managerId;
+	}
+
+	public Long getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(Long managerName) {
+		this.managerName = managerName;
+	}
+
 	@Override
 	public String toString() {
 		return "PEProduct [id=" + id + ", name=" + name + ", simpleName="
@@ -406,7 +428,8 @@ public class PEProduct {
 				+ ", recommendLocation=" + recommendLocation
 				+ ", recommendSequence=" + recommendSequence + ", status="
 				+ status + ", pecompanyId=" + pecompanyId + ", pecompanyName="
-				+ pecompanyName + "]";
+				+ pecompanyName + ", managerId=" + managerId + ", managerName="
+				+ managerName + "]";
 	}
 
 }
