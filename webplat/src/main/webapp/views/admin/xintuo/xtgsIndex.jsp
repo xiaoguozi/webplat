@@ -44,14 +44,14 @@
                                 &nbsp;&nbsp;&nbsp;
                             </label>
                         </th>
-                        <th field="xgtsSplname">公司简称 <span class="glyphicon"></span></th>
-                        <th field="xgtsPjsyl">平均收益率 <span class="glyphicon"></span></th>
-                        <th field="xgtsCpdfbl">产品兑付比例<span class="glyphicon"></span></th>
-                        <th field="xgtsZczb">注册资本（万元）<span class="glyphicon"></span></th>
-                        <th field="xgtsGsxz">股东背景<span class="glyphicon"></span></th>
-                        <th field="xgtsFrdb">法人代表<span class="glyphicon"></span></th>
-                        <th field="xgtsCity">所在地区<span class="glyphicon"></span></th>
-                        <th field="xgtsCreatedate">成立时间<span class="glyphicon"></span></th>
+                        <th field="xgts_splname">公司简称 <span class="glyphicon"></span></th>
+                        <th field="xgts_pjsyl">平均收益率 <span class="glyphicon"></span></th>
+                        <th field="xgts_cpdfbl">产品兑付比例<span class="glyphicon"></span></th>
+                        <th field="xgts_zczb">注册资本（万元）<span class="glyphicon"></span></th>
+                        <th field="xgts_gsxz">股东背景<span class="glyphicon"></span></th>
+                        <th field="xgts_frdb">法人代表<span class="glyphicon"></span></th>
+                        <th field="xgts_city">所在地区<span class="glyphicon"></span></th>
+                        <th field="xgts_createdate">成立时间<span class="glyphicon"></span></th>
                         
                     </tr>
                 </thead>
