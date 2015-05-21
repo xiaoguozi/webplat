@@ -182,7 +182,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<div class="mult_name">关&nbsp;&nbsp;键&nbsp;&nbsp;词：</div>
 								<div class="mult_con">
 									<div class="uc_boxhd_search skin_1">
-										<input class="input_txt" name="keyword" value="${simuSearchVO.keyword}" placeholder="关键字" style="border-right: none;"
+										<input class="input_txt" name="keyword" value="${simuSearchVO.keyword}" placeholder="请输入关键词" style="border-right: none;"
 											type="text"> <a id="simu_product_list_search" href=""
 											class="input_search"></a>
 									</div>

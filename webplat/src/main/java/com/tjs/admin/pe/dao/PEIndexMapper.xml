@@ -11,6 +11,7 @@
    		<result property="managerName" column="manager_name"  jdbcType="VARCHAR" />
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
    		<result property="managerReview" column="manager_review" jdbcType="VARCHAR" />
+   		<result property="fundType" column="fund_type" javaType="java.lang.Integer"  />
    		
    		<result property="yearRate" column="year_rate" javaType="java.math.BigDecimal" />
    		<result property="nowRate" column="now_rate" javaType="java.math.BigDecimal" />
@@ -102,6 +103,59 @@
 		LIMIT 0,10
     </select>
     
+    
+    <select id="getAnyPEProductListCount" resultType="int"  
+    	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        SELECT 
+		  count(P.id) c
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M,
+		  PE_COMPANY C
+		WHERE P.id = MP.product_id 
+		  AND MP.MANAGER_ID = M.ID 
+		  AND M.company_id = C.id
+		
+		<choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>
+		
+		<if test="peManagerId!=0">
+		    AND M.ID=#{peManagerId}
+		</if>
+		
+		<if test="peCompanyId!=0">
+		    AND C.ID=#{peCompanyId}
+		</if>
+		
+		<if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		</if>
+		
+		<choose> 
+		     <when test="peYearRate==1">AND P.year_rate &gt;= 50 </when>
+		     <when test="peYearRate==2">AND P.year_rate &gt;= 30 AND P.year_rate &lt; 50</when>
+		     <when test="peYearRate==3">AND P.year_rate &gt;= 10 AND P.year_rate &lt; 30</when>
+		     <when test="peYearRate==4">AND P.year_rate &gt;= 0  AND P.year_rate &lt; 10</when>
+		     <when test="peYearRate==5">AND P.year_rate &lt; 0</when>
+		     <otherwise> </otherwise>
+		 </choose>
+		
+		<if test="keyword!=null and keyword!=''">
+		    AND (P.name like CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+		
+		<!-- 
+		<if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
+         -->
+        
+    </select>
+    
  	 <select id="getAnyPEProductList" resultMap="peIndexProductMap"  
  	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
@@ -170,57 +224,111 @@
         
     </select>
     
-    <select id="getAnyPEProductListCount" resultType="int"  
+    
+    <select id="getRatePEProductListCount" resultType="int"  
     	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
-		  count(P.id) c
+		  count(temp.id) c from
+		(SELECT 
+		  MAX(NET_TIME),
+		  P.id,
+		  P.simple_name NAME,
+		  P.accumulated_income,
+		  P.net_worth,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  pn.total_net now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  C.name company_name,
+		  M.REVIEW manager_review 
 		FROM
+		  PE_PRODUCT_NET pn,
 		  PE_PRODUCT P,
 		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M,
-		  PE_COMPANY C
-		WHERE P.id = MP.product_id 
+		  PE_COMPANY C 
+		WHERE DATE_FORMAT(pn.net_time, '%Y') = #{currentYear}
+		  AND P.id = pn.product_id 
+		  AND P.id = MP.product_id 
 		  AND MP.MANAGER_ID = M.ID 
-		  AND M.company_id = C.id
-		
-		<choose> 
+		  AND M.company_id = C.id 
+		  <choose> 
 		     <when test="onLine==1">AND P.status = 2</when>
 		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
 		     <otherwise> </otherwise>
-		 </choose>
-		
-		<if test="peManagerId!=0">
-		    AND M.ID=#{peManagerId}
-		</if>
-		
-		<if test="peCompanyId!=0">
-		    AND C.ID=#{peCompanyId}
-		</if>
-		
-		<if test="peType!=0">
+		 </choose>	
+		 
+		 <if test="peType!=0">
 		    AND P.fund_type=#{peType}
-		</if>
-		
-		<choose> 
-		     <when test="peYearRate==1">AND P.year_rate &gt;= 50 </when>
-		     <when test="peYearRate==2">AND P.year_rate &gt;= 30 AND P.year_rate &lt; 50</when>
-		     <when test="peYearRate==3">AND P.year_rate &gt;= 10 AND P.year_rate &lt; 30</when>
-		     <when test="peYearRate==4">AND P.year_rate &gt;= 0  AND P.year_rate &lt; 10</when>
-		     <when test="peYearRate==5">AND P.year_rate &lt; 0</when>
-		     <otherwise> </otherwise>
-		 </choose>
-		
-		<if test="keyword!=null and keyword!=''">
-		    AND (P.name like CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
 		 </if>
-		
-		<!-- 
-		<if test="pageNo!= 0">
-           LIMIT #{limitStart} ,#{pageSize}
-        </if>  
-         -->
+		 
+		 <if test="keyword!=null and keyword!=''">
+		    AND (P.name LIKE CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+		 GROUP BY pn.PRODUCT_ID) temp
         
     </select>
+    
+ 	 <select id="getRatePEProductList" resultMap="peIndexProductMap"  
+ 	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        SELECT 
+		  MAX(NET_TIME),
+		  P.id,
+		  P.simple_name NAME,
+		  P.accumulated_income,
+		  P.net_worth,
+		  P.fund_type,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  pn.total_net now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  C.name company_name,
+		  M.REVIEW manager_review 
+		FROM
+		  PE_PRODUCT_NET pn,
+		  PE_PRODUCT P,
+		  PE_MANAGER_PRODUCT MP,
+		  PE_MANAGER M,
+		  PE_COMPANY C 
+		WHERE DATE_FORMAT(pn.net_time, '%Y') = #{currentYear}
+		  AND P.id = pn.product_id 
+		  AND P.id = MP.product_id 
+		  AND MP.MANAGER_ID = M.ID 
+		  AND M.company_id = C.id 
+		  <choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>	
+		 
+		 <if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		 </if>
+		 
+		 <if test="keyword!=null and keyword!=''">
+		    AND (P.name LIKE CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+			
+		GROUP BY pn.PRODUCT_ID 
+		<if test="currentYearPeriod==0">
+		   	ORDER BY pn.total_net DESC 
+		</if>
+		<if test="currentYearPeriod==1">
+		   	ORDER BY P.one_rate DESC 
+		</if>
+		<if test="currentYearPeriod==2">
+		   	ORDER BY P.tow_rate DESC
+		</if>
+		
+		LIMIT #{limitStart} ,#{pageSize}
+		        
+    </select>
+    
+    
  	 
  	 
  	<select id="getYearAll" resultMap="peIndexCommonMap" >

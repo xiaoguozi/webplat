@@ -39,6 +39,9 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	/** 年以来过滤条件 */
 	private int currentYear = 0;
 	
+	/** 最近一年、两年 */
+	private int currentYearPeriod = 0;
+	
 	private int totalPageSize;
 	
 	private int limitStart;
@@ -142,6 +145,14 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 
 	public void setCurrentYear(int currentYear) {
 		this.currentYear = currentYear;
+	}
+
+	public int getCurrentYearPeriod() {
+		return currentYearPeriod;
+	}
+
+	public void setCurrentYearPeriod(int currentYearPeriod) {
+		this.currentYearPeriod = currentYearPeriod;
 	}
 	
 }

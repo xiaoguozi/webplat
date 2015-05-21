@@ -10,6 +10,9 @@ public class PETopProduct {
 	/** 产品名称 */
 	private String name; 
 	
+	/** 基金类型 */
+	private Integer fundType;
+	
 	/** 累计收益 */
 	private BigDecimal accumulatedIncome;
 	
@@ -174,5 +177,12 @@ public class PETopProduct {
 		this.timeRate = timeRate;
 	}
 
+	public Integer getFundType() {
+		return fundType;
+	}
+
+	public void setFundType(Integer fundType) {
+		this.fundType = fundType;
+	}
 	
 }

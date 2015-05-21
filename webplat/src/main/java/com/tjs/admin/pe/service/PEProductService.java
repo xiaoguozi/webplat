@@ -94,4 +94,18 @@ public interface PEProductService  {
 	 */
 	void updatePEProductShow(PEProduct peProduct);
 	
+	/**
+	 * 得到私募对比产品数量
+	 * @param PESearchCtrlVO
+	 * @return PETopProduct 集合
+	 */
+	int getRatePEProductListCount(PESearchCtrlVO peSearchCtrlVO);
+	
+	/**
+	 * 得到私募对比所有产品
+	 * @param PESearchCtrlVO
+	 * @return PETopProduct 集合
+	 */
+	List<PETopProduct> getRatePEProductList(PESearchCtrlVO peSearchCtrlVO);
+	
 }

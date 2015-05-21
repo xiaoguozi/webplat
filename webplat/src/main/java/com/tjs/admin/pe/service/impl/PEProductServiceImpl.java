@@ -191,4 +191,17 @@ public class PEProductServiceImpl implements PEProductService {
 		peProductMappper.updatePEProductShow(peProduct);
 	}
 	
+	@Override
+	public int getRatePEProductListCount(PESearchCtrlVO peSearchCtrlVO) {
+		int count = peIndexMapper.getRatePEProductListCount(peSearchCtrlVO);
+		return count;
+	}
+
+	@Override
+	public List<PETopProduct> getRatePEProductList(PESearchCtrlVO peSearchCtrlVO) {
+		List<PETopProduct> result = new ArrayList<PETopProduct>();
+		result = peIndexMapper.getRatePEProductList(peSearchCtrlVO);
+		return result;
+	}
+	
 }

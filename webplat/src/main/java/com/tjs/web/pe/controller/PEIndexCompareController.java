@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -26,17 +25,8 @@ public class PEIndexCompareController {
 	
 	
 	@RequestMapping("/peIndexCompare")
-    public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
-//		//查询4个顶级私募
-//		List<PETopProduct> showData = new ArrayList<PETopProduct>();
-//    	showData = peProductService.getTop4AnyPEProductList();
-//    	model.addAttribute("top4Data", showData);
-//    	
-//    	//全部产品
-//    	peProductCtrlModel.setPageSize(10);
-//    	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
-//    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
-//    	model.addAttribute("lstAll", lstAll);
+    public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
+		
     	
         return "web/pe/peCompare";
     }

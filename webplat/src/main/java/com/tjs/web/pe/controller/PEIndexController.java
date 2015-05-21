@@ -49,8 +49,9 @@ public class PEIndexController {
 		List<PETopProduct> showData = new ArrayList<PETopProduct>();
     	showData = peProductService.getTop4PEProductList();
     	
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     	if(peSearchCtrlVO.getCurrentYear()==0){
-    		peSearchCtrlVO.setCurrentYear(Calendar.getInstance().get(Calendar.YEAR));
+    		peSearchCtrlVO.setCurrentYear(currentYear);
     	}
     	
     	//查询私募收益排行
@@ -63,6 +64,7 @@ public class PEIndexController {
     	model.addAttribute("top4Data", showData);
     	model.addAttribute("top10Data", top10Data);
     	model.addAttribute("lstCommon", lstCommon);
+    	model.addAttribute("currentYear", currentYear);
     	model.addAttribute("simuSearchVO", peSearchCtrlVO);
     	
         return "web/pe/peIndex";
