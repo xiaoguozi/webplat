@@ -27,6 +27,37 @@
    		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
     </resultMap>
     
+    
+     <resultMap id="peManagerProductMap" type="com.tjs.admin.pe.model.PEManagerProduct" >
+    	<id column="id" property="managerId" jdbcType="BIGINT" />
+   		<result property="logo" column="logo" jdbcType="VARCHAR" />
+   		<result property="managerName" column="name" jdbcType="VARCHAR" />
+   		<result property="education" column="education" jdbcType="VARCHAR" />
+   		<result property="school" column="school" jdbcType="VARCHAR" />
+   		<result property="workYear" column="work_year" jdbcType="VARCHAR" />
+   		<result property="background" column="background" jdbcType="VARCHAR" />
+   		<result property="institution" column="institution" jdbcType="VARCHAR" />
+   		<result property="level" column="level" jdbcType="INTEGER" />
+   		<result property="manageFund" column="manage_fund" jdbcType="BIGINT" />
+   		<result property="profitProduct" column="profit_product" jdbcType="BIGINT" />
+   		<result property="review" column="review" jdbcType="VARCHAR" />
+   		<result property="introduce" column="introduce" jdbcType="VARCHAR" />
+   		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR" />
+   		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR" />
+   		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="companyId" column="company_id" jdbcType="BIGINT"/>
+   		<result property="companyName" column="company_name" jdbcType="VARCHAR"/>
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+   		<result property="productId" column="productId" jdbcType="BIGINT" />
+   		<result property="productName" column="productName" jdbcType="VARCHAR" />
+   		<result property="productSimpleName" column="productSimpleName" jdbcType="VARCHAR" />
+	    <result property="accumulatedIncome" column="accumulatedIncome" javaType="java.math.BigDecimal"/>
+
+    </resultMap>
+    
     <sql id="Base_select_Column_List">
         id, 
         logo,
@@ -150,10 +181,99 @@
 	 <select id="selectOnLinePEManager" resultMap="peManagerMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_select_Column_List" />
-        FROM pe_manager 
-        
-        
+        FROM pe_manager              
         WHERE id = #{id}
     </select>
+    
+    
+    <select id="selectStarPEManagerList" resultMap="peManagerProductMap" parameterType="com.tjs.admin.pe.controller.PEManagerCtrlModel">
+     	SELECT 
+	    id,
+	    logo,
+	    name,
+	    education,
+	    school,
+	    work_year,
+	    background,
+	    institution,
+	    level,
+	    manage_fund,
+	    profit_product,
+	    review,
+	    introduce,
+	    recommend_location,
+	    recommend_sequence,
+	    status,
+	    company_id,
+	    company_name,
+	    creater_id,
+	    creater_name,
+	    create_date,
+	    last_modify_date,
+	    productId,
+	    productName,
+	    productSimpleName,
+	    accumulatedIncome
+	FROM
+	    tjs.pe_manager left join 
+	    (SELECT 
+	        id productId,
+	            name productName,
+	            simple_name productSimpleName,
+	            accumulated_income accumulatedIncome,
+	            manager_id manager_id
+	    FROM
+	        pe_product ) t
+	on
+	    id = t.manager_id
+   where  1=1
+   <if test="peManager != null and peManager.status == 2">
+   		AND status = #{peManager.status}
+   </if>
+   <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
+   		AND recommend_location = #{peManager.recommendLocation }
+   </if>
    
+   <if test="keyWord!= null and keyWord!= ''">
+      AND (name like CONCAT('%',#{keyWord},'%') or company_name like CONCAT('%',#{keyWord},'%'))
+   </if>
+   
+    <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+    </if>
+     <if test="sortField== null or sortField== ''">
+           ORDER BY recommend_sequence asc
+    </if>
+     <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+     </if>    
+   </select>
+    
+    <select id="selectStarPEManagerCount" resultType="int"  parameterType="com.tjs.admin.pe.controller.PEManagerCtrlModel">
+     	SELECT 
+	    count(*) AS total
+		FROM
+		    tjs.pe_manager left join 
+		    (SELECT 
+		        id productId,
+		            name productName,
+		            simple_name productSimpleName,
+		            accumulated_income accumulatedIncome,
+		            manager_id manager_id
+		    FROM
+		        pe_product) t
+		on
+		    id = t.manager_id
+	   where  1=1
+	   <if test="peManager != null and peManager.status == 2">
+	   		AND status = #{peManager.status}
+	   </if>
+	   <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
+	   		AND recommend_location = #{peManager.recommendLocation }
+	   </if>
+	   
+	    <if test="keyWord!= null and keyWord!= ''">
+          AND (name like CONCAT('%',#{keyWord},'%') or company_name like CONCAT('%',#{keyWord},'%'))
+        </if>
+	   </select>     
 </mapper>

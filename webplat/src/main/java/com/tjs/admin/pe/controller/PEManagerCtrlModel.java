@@ -16,6 +16,8 @@ public class PEManagerCtrlModel extends GenericCtrlModel {
 	private int limitStart;
 	
 	private PEManager peManager;
+	
+	private int totalPageSize;
 
 	public String getKeyWord() {
 		return keyWord;
@@ -40,4 +42,19 @@ public class PEManagerCtrlModel extends GenericCtrlModel {
 	public void setLimitStart(int limitStart) {
 		this.limitStart = limitStart;
 	}
+
+	public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}
+			
+	}
+
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
+	}
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEManagerProduct;
 
 /**
  * 私募经理DAO
@@ -25,6 +26,10 @@ public interface PEManagerMapper  {
 	int selectListCount(PEManagerCtrlModel peManagerCtrlModel);
 
 	PEManager getPEManagerById(long peManagerId);
+	
+	List<PEManagerProduct> selectStarPEManagerList(PEManagerCtrlModel peManagerCtrlModel);
+	
+	int selectStarPEManagerCount(PEManagerCtrlModel peManagerCtrlModel);
 		
 	
 }

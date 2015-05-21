@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEManagerProduct;
 import com.tjs.admin.pe.model.PEProduct;
 
 /**
@@ -62,4 +63,20 @@ public interface PEManagerService  {
 	 * @return 基金经理清单列表
 	 */
 	List<PEManager> selectOnLinePEManager(Long companyId,String keyword);
+	
+	/**
+	 * 查询明星私募经理
+	 * @param peManagerCtrlModel
+	 * @return
+	 */
+    List<PEManagerProduct> selectStarPEManagerList(PEManagerCtrlModel peManagerCtrlModel);
+	
+    /**
+     * 查询明星私募经理
+     * @param peManagerCtrlModel
+     * @return
+     */
+	int selectStarPEManagerCount(PEManagerCtrlModel peManagerCtrlModel);    
+	
+		
 }

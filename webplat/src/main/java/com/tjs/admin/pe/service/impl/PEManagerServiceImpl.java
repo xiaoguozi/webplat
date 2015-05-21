@@ -9,13 +9,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEManagerMapper;
 import com.tjs.admin.pe.model.Lable;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEManagerProduct;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
@@ -149,5 +149,20 @@ public class PEManagerServiceImpl implements PEManagerService {
 		List<PEManager> lstPeManager = peManagerMapper.getPEManagerList(peManagerCtrlModel);
 		return lstPeManager;
 	}
+
+	@Override
+	public List<PEManagerProduct> selectStarPEManagerList(
+			PEManagerCtrlModel peManagerCtrlModel) {
+		// TODO Auto-generated method stub
+		return peManagerMapper.selectStarPEManagerList(peManagerCtrlModel);
+	}
+
+	@Override
+	public int selectStarPEManagerCount(PEManagerCtrlModel peManagerCtrlModel) {
+		// TODO Auto-generated method stub
+		return peManagerMapper.selectStarPEManagerCount(peManagerCtrlModel);
+	}
+
+	
 
 }

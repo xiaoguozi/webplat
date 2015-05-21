@@ -42,12 +42,12 @@ public class PEManagerProductServiceImpl implements PEManagerProductService {
 		
 		for (PEProduct product : products) {
 			PEManagerProduct peManagerProduct = new PEManagerProduct();
-			peManagerProduct.setCompanyId(peManager.getCompanyId());
-			peManagerProduct.setCompanyName(peManager.getCompanyName());
-			peManagerProduct.setManagerId(peManager.getId());
-			peManagerProduct.setManagerName(peManager.getName());
-			peManagerProduct.setProductId(product.getId());
-			peManagerProduct.setProductName(product.getName());
+//			peManagerProduct.setCompanyId(peManager.getCompanyId());
+//			peManagerProduct.setCompanyName(peManager.getCompanyName());
+//			peManagerProduct.setManagerId(peManager.getId());
+//			peManagerProduct.setManagerName(peManager.getName());
+//			peManagerProduct.setProductId(product.getId());
+//			peManagerProduct.setProductName(product.getName());
 			managerProducts.add(peManagerProduct);
 		}
 		
