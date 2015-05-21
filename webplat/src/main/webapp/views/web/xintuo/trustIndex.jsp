@@ -101,7 +101,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr  width="90%" >
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/xintuo/small/${xintuotop.xtcpLog}" width="36" height="30" align="middle"/></a></td>
     <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank" style="font-size:16px">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 </div>
@@ -156,7 +156,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootSmalls}" var="xintuofootsmall" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 	<div class="tjs_float_left tjs_width165px">
-	<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+	<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootsmall.xtcpId}" target="_blank"><img src="assets/img/xintuo/middle/${xintuofootsmall.xtcpLog}" width="108" height="108" /></a></div>
 	</div>
 	
 	<div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
@@ -213,7 +213,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOnes}" var="xintuofootone" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuofootone.xtcpId}" target="_blank"><img src="assets/img/xintuo/middle/${xintuofootone.xtcpLog}" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
@@ -272,7 +272,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootHighs}" var="lstTopfootHighs" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootHighs.xtcpId}" target="_blank"><img src="assets/img/xintuo/middle/${lstTopfootHighs.xtcpLog}" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">
@@ -327,7 +327,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <c:forEach items="${lstTopfootOthers}" var="lstTopfootOthers" varStatus="status">
 <div class="tjs_trust_content <c:if test='${status.index%2==0}'>tjs_bg_gray</c:if>">
 <div class="tjs_float_left tjs_width165px">
-<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank" style="font-size:16px"><img src="assets/img/ui/trust_img002.png" width="108" height="108" /></a></div>
+<div class="tjs_trust_logodiv"><a href="rest/web/xintuo/trust/trustParticulars?id=${lstTopfootOthers.xtcpId}" target="_blank" style="font-size:16px"><img src="assets/img/xintuo/middle/${lstTopfootOthers.xtcpLog}" width="108" height="108" /></a></div>
 </div>
 
 <div class="tjs_float_left tjs_width210px tjs_height145px  tjs_right_1pxdashed">

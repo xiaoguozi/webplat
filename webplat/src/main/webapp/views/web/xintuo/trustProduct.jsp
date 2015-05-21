@@ -70,7 +70,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr>
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/ui/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}"><img src="assets/img/xintuo/small/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" style="font-size:16px">${xintuotop.xtcpSplname}</a></span></td>
   </tr>
 
@@ -169,7 +169,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_pct_title">
   <tr>
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}"><img src="assets/img/ui/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}"><img src="assets/img/xintuo/small/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" class="tjs_pct_titleurl" style="font-size:16px">${xintuoProduct.xtcpSplname}</a></td>
   </tr>
 </div>

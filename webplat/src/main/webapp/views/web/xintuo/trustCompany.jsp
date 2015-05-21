@@ -68,7 +68,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_cpy_typle">
 <c:forEach items="${productXtgsIndex}" var="xtgs" varStatus="status" >
 <div class="tjs_cpy_unit  <c:if test='${status.index!=3}'>tjs_right_1pxdashed</c:if>">
-<div class="tjs_cpy_icodiv"> <a href="rest/web/xintuo/trust/companyProfile?id=${xtgs.xtgsId}"><img src="assets/img/ui/img_005.png" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="rest/web/xintuo/trust/companyProfile?id=${xtgs.xtgsId}"><img src="assets/img/xintuo/big/${xtgs.xtgsLog}" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">${xtgs.xgtsGsxz}</span><br /><br />   注册资本：<span style="color:#333"><fmt:formatNumber value="${xtgs.xgtsZczb}" pattern="#0.####"/>万</span><br /><br />    管理规模：<span style="color:#333">${xtgs.xgtsZcglgm}</span><br />
 </div>
 </div>
@@ -117,7 +117,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
   <tr <c:if test="${status.index%2==0}"> class="tjs_cpy_evenbg"</c:if>>
     <td height="50"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="80" align="right"><a href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank"><img src="assets/img/ui/company_ico01.png" alt="${ProductXtgs.xgtsSplname }" width="36" height="30" align="middle"></a></td>
+    <td width="80" align="right"><a href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank"><img src="assets/img/xintuo/small/${ProductXtgs.xtgsLog}" alt="${ProductXtgs.xgtsSplname}" width="36" height="30" align="middle"></a></td>
     <td align="left">&nbsp;&nbsp;<a title="${ProductXtgs.xgtsSplname }" href="rest/web/xintuo/trust/companyProfile?id=${ProductXtgs.xtgsId}" target="_blank">${ProductXtgs.xgtsSplname }</a></td>
   </tr>
 </table></td>
