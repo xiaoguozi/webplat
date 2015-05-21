@@ -7,15 +7,33 @@
     <div class="col-md-12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title pull-left">私募经理  <small>查看</small></h3>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+
+<div>
+	<ul class="nav nav-tabs" role="tablist" id="myTab">
+	  <li role="presentation" class="active">
+	  	<a href="#manager" aria-controls="manager" role="tab" data-toggle="tab" >
+	  		经理基本信息
+	  	</a>
+	  </li>
+	  <li role="presentation">
+	  	<a href="#productOnly" aria-controls="productOnly" role="tab" data-toggle="tab">
+	  		代表作
+	  	</a>
+	  </li>
+	</ul>
+</div>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="manager">
+  <div class="row">
+    <div class="col-md-12">
         <div class="pull-right">
 		    <button type="button" class="btn btn-primary modalCloseBtn" data-dismiss="modal">关闭</button>
 		</div>
     </div>
 </div>
-<!-- END PAGE HEADER-->
-
-
-
 <div class="modal-body">
     <form id="modalForm" action="" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
      	<input type="hidden" name="id" value="${peManager.id}">
@@ -137,12 +155,31 @@
         </div>
     </form>
 </div>
-
+</div>
+<div role="tabpanel" class="tab-pane" id="productOnly"></div>
+</div>
 
 <script type="text/javascript">
 
 $(function(){
-
+	
+	$('#myTab a').click(function (e) { 
+	      e.preventDefault();//阻止a链接的跳转行为 
+	      $(this).tab('show');//显示当前选中的链接及关联的content 
+	      var sel = $(this).attr("href");
+	      var isload = $(this).attr("data-load");
+	      if("yes" != isload){	
+	    	  var loadUrl = "";
+	    	  if("#productOnly" == sel){
+	    		  loadUrl = "rest/admin/pe/productOnly/index?managerId=" + ${peManager.id};
+	    	  }
+	    	  
+	    	  if(loadUrl){
+	        	  $(""+sel).load(loadUrl);
+	        	  $(this).attr("data-load","yes");
+	    	  }
+	      }
+	    }); 
 	
     Btk.form($("#modalForm"),"view");
 
