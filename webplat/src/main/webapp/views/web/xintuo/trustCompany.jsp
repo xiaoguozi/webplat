@@ -144,16 +144,45 @@ html{ width:100%; height:100%;background:#f5f5f5;}
         <tr>
         <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
         <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${xintuoGsCtrlModel.pageNo-1}"><</a></td>
-        <c:forEach var="item" varStatus="status" begin="1" end="${xintuoGsCtrlModel.totalPageSize}">             
-        <c:choose>  
-          <c:when test="${status.index==xintuoGsCtrlModel.pageNo }"> 
-           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
-          </c:when> 
-          <c:otherwise>
-          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
-          </c:otherwise> 
-        </c:choose>             
-        </c:forEach>
+	      <c:if test="${xintuoGsCtrlModel.totalPageSize<=9||(xintuoGsCtrlModel.totalPageSize>9&&xintuoGsCtrlModel.pageNo<=5)}">
+	       	 <c:forEach var="item" varStatus="status" begin="1" end="${xintuoGsCtrlModel.totalPageSize>9?9:xintuoGsCtrlModel.totalPageSize}">             
+		        <c:choose>  
+		          <c:when test="${status.index==xintuoGsCtrlModel.pageNo }"> 
+		           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+		          </c:when> 
+		          <c:otherwise>
+		          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+		          </c:otherwise> 
+		        </c:choose>             
+	       </c:forEach>
+	       </c:if>
+	       
+	       <c:if test="${xintuoGsCtrlModel.totalPageSize>9&&xintuoGsCtrlModel.pageNo>5&&xintuoGsCtrlModel.totalPageSize>xintuoGsCtrlModel.pageNo+4}">
+	        <c:forEach var="item" varStatus="status" begin="${xintuoGsCtrlModel.pageNo-4}" end="${xintuoGsCtrlModel.pageNo+4}">             
+	        <c:choose>  
+	          <c:when test="${status.index==xintuoGsCtrlModel.pageNo }"> 
+	           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+	          </c:when> 
+	          <c:otherwise>
+	          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+	          </c:otherwise> 
+	        </c:choose>             
+	        </c:forEach>							        
+	       </c:if>
+	       
+	       
+	       <c:if test="${xintuoGsCtrlModel.totalPageSize>9&&xintuoGsCtrlModel.pageNo>5&&xintuoGsCtrlModel.totalPageSize<=xintuoGsCtrlModel.pageNo+4}">
+	        <c:forEach var="item" varStatus="status" begin="${xintuoGsCtrlModel.totalPageSize-8}" end="${xintuoGsCtrlModel.totalPageSize}">             
+	        <c:choose>  
+	          <c:when test="${status.index==xintuoGsCtrlModel.pageNo }"> 
+	           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+	          </c:when> 
+	          <c:otherwise>
+	          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+	          </c:otherwise> 
+	        </c:choose>             
+	        </c:forEach>							        
+	       </c:if>
         <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${xintuoGsCtrlModel.pageNo+1}">></a></td>
         <td class=pagnum><a title=最前一页 href="#" page_no="${xintuoGsCtrlModel.totalPageSize}">>|</a></td>          
         </tr>

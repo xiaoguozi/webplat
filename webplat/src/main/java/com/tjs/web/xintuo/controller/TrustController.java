@@ -110,7 +110,7 @@ public class TrustController {
     	
     	//分页数据
     	//设置每页16条数据,前后台保持一致
-    	xinTuoSeachCtrlVO.setPageSize(8);
+    	xinTuoSeachCtrlVO.setPageSize(12);
     	
     	//把前途对象转换成后台，方便后面分开部署
     	com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO  xinTuoAdminSeachCtrlVO =
@@ -129,9 +129,9 @@ public class TrustController {
         int totalPageNO = xinTuoSeachCtrlVO.getTotalPageSize();//总页数
         int currentPageNo = 1;//当前页
         if(xinTuoSeachCtrlVO.getPageNo()<1){//如果请求的页数小于1，设置成第一页
-        	xinTuoSeachCtrlVO.setPageNo(1);
+        	currentPageNo =1;
         } else if(xinTuoSeachCtrlVO.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
-        	xinTuoSeachCtrlVO.setPageNo(totalPageNO);
+        	currentPageNo =totalPageNO;
         }else{
         	currentPageNo = xinTuoSeachCtrlVO.getPageNo();
         }

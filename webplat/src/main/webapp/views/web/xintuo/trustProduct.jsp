@@ -195,7 +195,21 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
         <tr>
         <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
         <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${xintuoSearVO.pageNo-1}"><</a></td>
-        <c:forEach var="item" varStatus="status" begin="1" end="${xintuoSearVO.totalPageSize}">             
+        <c:if test="${xintuoSearVO.totalPageSize<=9||(xintuoSearVO.totalPageSize>9&&xintuoSearVO.pageNo<=5)}">
+       	 <c:forEach var="item" varStatus="status" begin="1" end="${xintuoSearVO.totalPageSize>9?9:xintuoSearVO.totalPageSize}">             
+	        <c:choose>  
+	          <c:when test="${status.index==xintuoSearVO.pageNo }"> 
+	           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+	          </c:when> 
+	          <c:otherwise>
+	          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+	          </c:otherwise> 
+	        </c:choose>             
+       </c:forEach>
+       </c:if>
+       
+       <c:if test="${xintuoSearVO.totalPageSize>9&&xintuoSearVO.pageNo>5&&xintuoSearVO.totalPageSize>xintuoSearVO.pageNo+4}">
+        <c:forEach var="item" varStatus="status" begin="${xintuoSearVO.pageNo-4}" end="${xintuoSearVO.pageNo+4}">             
         <c:choose>  
           <c:when test="${status.index==xintuoSearVO.pageNo }"> 
            <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
@@ -204,7 +218,22 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
           <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
           </c:otherwise> 
         </c:choose>             
-        </c:forEach>
+        </c:forEach>							        
+       </c:if>
+       
+       
+       <c:if test="${xintuoSearVO.totalPageSize>9&&xintuoSearVO.pageNo>5&&xintuoSearVO.totalPageSize<=xintuoSearVO.pageNo+4}">
+        <c:forEach var="item" varStatus="status" begin="${xintuoSearVO.totalPageSize-8}" end="${xintuoSearVO.totalPageSize}">             
+        <c:choose>  
+          <c:when test="${status.index==xintuoSearVO.pageNo }"> 
+           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+          </c:when> 
+          <c:otherwise>
+          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+          </c:otherwise> 
+        </c:choose>             
+        </c:forEach>							        
+       </c:if>
         <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${xintuoSearVO.pageNo+1}">></a></td>
         <td class=pagnum><a title=最前一页 href="#" page_no="${xintuoSearVO.totalPageSize}">>|</a></td>          
         </tr>
