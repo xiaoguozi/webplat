@@ -90,7 +90,7 @@ public class PassportServiceImpl implements PassportService {
     	String accountSid="6f97d5e6c0510b7605a7470c9316efa9";
 		String authToken="65fcd6178dc9c92b699ee0a0b587cd9f";
 		String appId="e054516603424d1c9e85c1c5be001afc";
-		String templateId="4959";
+		String templateId="6736";
 		String to=userName;
 		String para=smsCode;
 		try {

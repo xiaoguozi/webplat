@@ -28,8 +28,8 @@
 		<result column="xtcp_status" property="xtcpStatus" jdbcType="VARCHAR" />
 		<result column="xtcp_tjw" property="xtcpTjw" jdbcType="VARCHAR" />
 		<result column="xtcp_tjno" property="xtcpTjno" javaType="java.lang.Long"  jdbcType="BIGINT" />
-		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="DATE" />
-		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="xtcp_createDate" property="xtcpCreateDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="xtcp_modifyDate" property="xtcpModifyDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		<result column="xtcp_userId" property="xtcpUserId" javaType="java.lang.Long" jdbcType="BIGINT"  />
 		<result column="xtcp_username" property="xtcpUsername" jdbcType="VARCHAR" />
 		<result column="xtcp_validstatus" property="xtcpvalidStatus" jdbcType="VARCHAR" />
@@ -41,7 +41,7 @@
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
-		xtcp_id, xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
+		xtcp_id, xtgs_log xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
 		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus,
 		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs
@@ -63,17 +63,21 @@
          </if>
 	</select>
 
-	<select id="selectProductXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp" parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
+	<select id="selectProductXtcp"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where xtcp_validstatus='1'
+		from tjs_product_xtcp ,tjs_product_xtgs where   xtgs_id = xtcp_gsId AND xtcp_validstatus='1'
 		
 		 <if test="keyWord!= null and keyWord!= ''">
            AND (xtcp_fullname like CONCAT('%',#{keyWord},'%') OR xtcp_gszhname like CONCAT('%',#{keyWord},'%'))
          </if>
          
          <if test="sortField!= null and sortField!= ''">
-           ORDER BY #{sortField} #{sortType}
+           ORDER BY ${sortField} ${sortType}
+        </if>
+        
+         <if test="sortField== null or sortField== ''">
+           ORDER BY xtcp_modifyDate desc,xtcp_status asc
         </if>
         
          <if test="pageNo!= 0">
@@ -112,8 +116,8 @@
 		#{xtcpStatus},
 		#{xtcpTjw},
 		#{xtcpTjno},
-		#{xtcpCreateDate},
-		#{xtcpModifyDate},
+		#{xtcpCreateDate,jdbcType=TIMESTAMP},
+		#{xtcpModifyDate,jdbcType=TIMESTAMP},
 		#{xtcpUserId},
 		#{xtcpUsername},
 		#{xtcpArea},
@@ -150,8 +154,7 @@
 		xtcp_status=#{xtcpStatus},
 		xtcp_tjw=#{xtcpTjw},
 		xtcp_tjno=#{xtcpTjno},
-		xtcp_createDate=#{xtcpCreateDate},
-		xtcp_modifyDate=#{xtcpModifyDate},
+		xtcp_modifyDate=#{xtcpModifyDate,jdbcType=TIMESTAMP},
 		xtcp_userId=#{xtcpUserId},
 		xtcp_username=#{xtcpUsername},
 		xtcp_area=#{xtcpArea},
@@ -182,15 +185,16 @@
 		resultType="com.tjs.admin.xintuo.model.ProductXtcp">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where xtcp_id=#{xtcpId}
+		from tjs_product_xtcp, tjs_product_xtgs where xtgs_id = xtcp_gsId
+		AND xtcp_id=#{xtcpId}
 	</select>
 	
 	
 	<select id="selectProductXtcpIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where 
-		xtcp_validstatus='1'
+		from tjs_product_xtcp,tjs_product_xtgs where xtgs_id = xtcp_gsId
+		AND xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw like CONCAT('%','10','%') 
 		ORDER BY xtcp_tjno								
@@ -200,8 +204,8 @@
 	parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where 
-		xtcp_validstatus='1'
+		from tjs_product_xtcp,tjs_product_xtgs where xtgs_id = xtcp_gsId
+		AND xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw like CONCAT('%','20','%') 
 		ORDER BY xtcp_tjno
@@ -212,7 +216,9 @@
 	 parameterType="Long">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where xtcp_gsId = #{xtgsId}
+		from tjs_product_xtcp ,tjs_product_xtgs where  
+		xtgs_id = xtcp_gsId
+		AND xtcp_gsId = #{xtgsId}
 		ORDER BY xtcp_tjno
 		limit 0,4								
 	</select>
@@ -222,8 +228,8 @@
 	 parameterType="com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel">
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where 
-		xtcp_validstatus='1'
+		from tjs_product_xtcp,tjs_product_xtgs where xtgs_id = xtcp_gsId
+		AND xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw like CONCAT('%','20','%') 
 		<if test="productXtcp!=null and productXtcp.xtcpXtlx!=null">		
@@ -304,10 +310,10 @@
 	
 		select
 		<include refid="Base_select_Column_List" />
-		from tjs_product_xtcp where 
-		xtcp_validstatus='1'
-		AND xtcp_status='20'
-		
+		from tjs_product_xtcp,tjs_product_xtgs where 
+		 xtgs_id = xtcp_gsId
+		AND xtcp_validstatus='1'
+		AND xtcp_status='20'		
 		<if test="xtcpZdrgje!=0">
 		AND xtcp_zdrgje=#{xtcpZdrgje}*10000
 		</if>

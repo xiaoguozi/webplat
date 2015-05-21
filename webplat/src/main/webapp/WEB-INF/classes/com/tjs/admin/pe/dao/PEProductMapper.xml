@@ -36,6 +36,8 @@
    		<result property="status" column="status" jdbcType="INTEGER" />
    		<result property="pecompanyId" column="pecompany_id" jdbcType="BIGINT" />
    		<result property="pecompanyName" column="pecompany_name" jdbcType="VARCHAR"  />
+   		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
+   		<result property="managerName" column="manager_name" jdbcType="VARCHAR"  />
     </resultMap>
     
     <sql id="Base_select_Column_List">
@@ -46,7 +48,7 @@
         open_time, subscrip_start, subscrip_fee, exit_fee, management_fee,
         recommend_reason, create_date, last_modify_date, creater_id,
         creater_name, recommend_location, recommend_sequence, status,
-        pecompany_id, pecompany_name
+        pecompany_id, pecompany_name, manager_id, manager_name
     </sql>
     
     <select id="getPEProductById" resultMap="peProductMap" parameterType="long">
@@ -126,7 +128,9 @@
                 #{recommendSequence},
                 #{status}, 
                 #{pecompanyId}, 
-                #{pecompanyName})              
+                #{pecompanyName},
+                #{managerId},
+                #{managerName})              
     </insert>
  
  	 <update id="updatePEProduct" parameterType="com.tjs.admin.pe.model.PEProduct">
@@ -160,7 +164,9 @@
 	        recommend_sequence=#{recommendSequence},
 	        status=#{status}, 
 	        pecompany_id=#{pecompanyId}, 
-	        pecompany_name=#{pecompanyName}
+	        pecompany_name=#{pecompanyName},
+	        manager_id=#{managerId},
+	        manager_name=#{managerName}
    		WHERE id=#{id}
    </update>
    
