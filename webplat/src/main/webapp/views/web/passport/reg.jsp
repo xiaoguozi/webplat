@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_register_left">确认密码：</div><div class="tjs_register_right"><input name="rpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确认密码" autofocus x-webkit-speech ></div>
 <div class="tjs_register_left">验证码：</div><div class="tjs_register_right"><input name="verifyCode" id="verifyCode" type="text" class="tjs_register_input  tjs_width176px" tabindex="1" spellcheck="false" placeholder=" 验证码" autofocus x-webkit-speech >&nbsp;&nbsp;<span class="tjs_verificationcode"><a href="#"><img id="verifyCodeImg" src="rest/captcha/img" width="100" height="38"  align="middle"/></a></span>&nbsp;&nbsp;<span><a href="#" id="newVerifyCode" class="tjs_registercode">换一张</a></span></div>
 <div class="clearfloat"></div>
-<div class="tjs_register_agreement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="tnc" type="checkbox" value="" checked="checked" />&nbsp;我已阅读接受&nbsp;<a href="#" class="tjs_registercode">《淘金山用户使用协议》</a></div>
+<div class="tjs_register_agreement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="tnc" type="checkbox" value="" checked="checked" />&nbsp;我已阅读接受&nbsp;<a href="rest/web/passport/agreement" target="_blank" class="tjs_registercode">《淘金山用户使用协议》</a></div>
 <div style="height:60px; width:100%; text-align: center;"><a id="register-submit-btn"  href="#" class="tjs_registerbtn">下一步</a></div>
 <div style="height:60px; width:100%; text-align: center;">已经注册? 前往 <a href="rest/web/login" class="tjs_registercode"><strong>登录</strong></a></div>
 

@@ -97,6 +97,15 @@ public class PassportController {
     }
     
 
+    @RequestMapping("/agreement")
+    public String agreement(User user, PassportCtrlModel ctrlModel, Model model) {
+    	
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+    	
+        return "web/passport/agreement";
+    }
+
     @RequestMapping("/getPwd")
     public String getPwd(User user, PassportCtrlModel ctrlModel, Model model) {
     	
