@@ -3,6 +3,7 @@ package com.tjs.admin.pe.dao;
 import java.util.List;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
 
@@ -26,4 +27,7 @@ public interface PEIndexMapper  {
 	List<PETopProduct> getAnyPEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
 	int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO);
+	
+	List<PECommonVO> getYearAll();
+	
 }

@@ -45,6 +45,9 @@ public class PETopProduct {
 	
 	/** 公司名称 */
 	private String companyName;
+	
+	/** 年以来收益 */
+	private BigDecimal timeRate;
 
 	public long getId() {
 		return id;
@@ -160,5 +163,16 @@ public class PETopProduct {
 		this.towRate = towRate;
 	}
 
+	public BigDecimal getTimeRate() {
+		if(nowRate!=null){
+			timeRate = nowRate.subtract(new BigDecimal(1)).multiply(new BigDecimal(100));
+		}
+		return timeRate;
+	}
 
+	public void setTimeRate(BigDecimal timeRate) {
+		this.timeRate = timeRate;
+	}
+
+	
 }

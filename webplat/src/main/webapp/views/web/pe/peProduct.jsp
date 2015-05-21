@@ -26,6 +26,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	src="assets/scripts/ui/scripts-bottom-min.js"></script>
 
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
+<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 
 </head>
 
@@ -90,7 +92,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								</div>
 								<div class="hotpro_control">
 									<a class="uc_btn_primary uc_btn simu_reserve_btn"
-										href="javascript:void(0)" onclick="alertbox(this)"> <img
+										href="javascript:void(0)" data_id="${peTop4Product.id}"> <img
 										src="assets/img/ui/clock.png" />立即预约
 									</a>
 								</div>
@@ -272,7 +274,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											</div>
 										</td>
 										<td class="c_c"><a
-											class="tb_btn tb_btn_primary simu_reserve_btn" href="javascript:void(0)" onclick="alertbox(this)">预约</a></td>
+											class="tb_btn tb_btn_primary simu_reserve_btn" href="javascript:void(0)" data_id="${peAllProduct.id}">预约</a></td>
 									</tr>
 									</c:forEach>
 									
@@ -358,6 +360,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 	<!-- /home_all -->
 	<script>
+	var IndexPage = {};
+    IndexPage.orderProductUrl="rest/web/pe/peOrderProduct";
+	
 	window.onload = function () {
 		//初始化选择按钮
 	    $("#divPEManager a[tag=${simuSearchVO.peManagerId}]").addClass("mult_checked");
@@ -627,10 +632,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 	
 	
-    //--预约--
-    function alertbox() {
-        alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-    }
+	//--预约--                   
+	$("a.simu_reserve_btn").click(function(event){	
+		event.preventDefault();
+		
+	    alertMsg($(this).attr("data_id"),'20', 1);  
+	    
+		if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+	        $('[placeholder]').focus(function() {
+	            var input = $(this);
+	            if (input.val() == input.attr('placeholder')) {
+	                input.val('');
+	                input.removeClass('placeholder');
+	            }
+	        }).blur(function() {
+	            var input = $(this);
+	            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	                input.addClass('placeholder');
+	                input.val(input.attr('placeholder'));
+	            }
+	        }).blur();
+	    };
+	});
     
         
     </script>

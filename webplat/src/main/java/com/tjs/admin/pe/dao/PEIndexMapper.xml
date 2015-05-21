@@ -20,6 +20,10 @@
    		
     </resultMap>
  
+ 	<resultMap id="peIndexCommonMap" type="com.tjs.admin.pe.model.PECommonVO">
+   		<result property="netYear" column="net_year"  jdbcType="VARCHAR" />
+    </resultMap>
+ 
  	 <select id="getTop4PEProductList" resultMap="peIndexProductMap" >
         SELECT 
 		  P.id,
@@ -62,33 +66,39 @@
     </select>
     
  	 <select id="getTop10PEProductList" resultMap="peIndexProductMap" parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        
         SELECT 
+		  MAX(NET_TIME),
 		  P.id,
 		  P.simple_name name,
 		  P.accumulated_income,
 		  M.ID manager_id,
 		  M.NAME manager_name,
 		  M.LOGO manager_logo,
-		  P.now_rate,
+		  pn.total_net now_rate,
 		  P.one_rate,
 		  P.tow_rate,
 		  C.name company_name,
 		  M.REVIEW manager_review
 		FROM
+		  PE_PRODUCT_NET pn,
 		  PE_PRODUCT P,
 		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M,
 		  PE_COMPANY C
-		WHERE P.id = MP.product_id 
-		  AND MP.MANAGER_ID = M.ID 
-		  AND M.company_id = C.id
-		  AND P.status = 2
-		  
-		 <if test="peType!=0">
-		    AND P.fund_type=#{peType}
-		 </if>
-		
-		ORDER BY P.ACCUMULATED_INCOME DESC
+		WHERE DATE_FORMAT(pn.net_time, '%Y') = #{currentYear}
+			  AND P.id = pn.product_id
+			  AND P.id = MP.product_id 
+			  AND MP.MANAGER_ID = M.ID 
+			  AND M.company_id = C.id
+			  AND P.status = 2
+			  
+			  <if test="peType!=0">
+			    AND P.fund_type=#{peType}
+			 </if>
+			  
+		GROUP BY pn.PRODUCT_ID 
+		ORDER BY pn.total_net DESC
 		LIMIT 0,10
     </select>
     
@@ -212,6 +222,13 @@
         
     </select>
  	 
+ 	 
+ 	<select id="getYearAll" resultMap="peIndexCommonMap" >
+        SELECT DISTINCT(dtable.net_year) FROM
+		(
+			SELECT DATE_FORMAT(net_time,'%Y')  net_year FROM pe_product_net
+		) dtable ORDER BY net_year DESC
+    </select> 
    
     
 </mapper>

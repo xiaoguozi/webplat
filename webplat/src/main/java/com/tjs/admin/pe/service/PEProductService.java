@@ -8,6 +8,7 @@ import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
+import com.tjs.admin.pe.model.PECommonVO;
 
 /**
  * 私募产品服务接口
@@ -80,6 +81,10 @@ public interface PEProductService  {
 	 */
 	int getAnyPEProductListCount(PESearchCtrlVO peSearchCtrlVO);
 	
-	
+	/**
+	 * 得到今年以来的所有年份
+	 * @return PECommonVO集合
+	 */
+	List<PECommonVO> getYearAll();
 	
 }

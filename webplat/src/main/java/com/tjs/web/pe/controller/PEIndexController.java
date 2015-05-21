@@ -1,6 +1,7 @@
 package com.tjs.web.pe.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
@@ -47,12 +49,20 @@ public class PEIndexController {
 		List<PETopProduct> showData = new ArrayList<PETopProduct>();
     	showData = peProductService.getTop4PEProductList();
     	
+    	if(peSearchCtrlVO.getCurrentYear()==0){
+    		peSearchCtrlVO.setCurrentYear(Calendar.getInstance().get(Calendar.YEAR));
+    	}
+    	
     	//查询私募收益排行
     	List<PETopProduct> top10Data = new ArrayList<PETopProduct>();
     	top10Data = peProductService.getTop10PEProductList(peSearchCtrlVO);
     	
+    	List<PECommonVO> lstCommon = new ArrayList<PECommonVO>();
+    	lstCommon = peProductService.getYearAll(); 
+    	
     	model.addAttribute("top4Data", showData);
     	model.addAttribute("top10Data", top10Data);
+    	model.addAttribute("lstCommon", lstCommon);
     	model.addAttribute("simuSearchVO", peSearchCtrlVO);
     	
         return "web/pe/peIndex";

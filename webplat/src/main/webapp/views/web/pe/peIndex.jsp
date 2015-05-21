@@ -117,6 +117,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </div>
                     <!-- /顶级私募推荐 -->
                     <form id="modalForm" action="rest/web/pe/peIndex" method="post" >
+                    <input type="hidden" id="peType" name="peType" value="${simuSearchVO.peType}" />
+                    <input type="hidden" id="currentYear" name="currentYear" value="${simuSearchVO.currentYear}" />
                     <div class="tjs_right_titlediv fcolor">
                         <img class="tjs_img_diamond" src="assets/img/ui/ranklist.png" />私募收益排行 
 				        <div class="sel_wrap">
@@ -152,16 +154,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="tjs_coloreddiv ml0 bgcolorc"></div>
                     <div class="tjs_years">
                         <ul>
-                            <li><a class="jhz_border" href="">今年以来</a></li>
-                            <li><a href="">2014</a></li>
-                            <li><a href="">2013</a></li>
-                            <li><a href="">2012</a></li>
-                            <li><a href="">2011</a></li>
-                            <li><a href="">2010</a></li>
-                            <li><a href="">2009</a></li>
-                            <li><a href="">2008</a></li>
-                            <li><a href="">2007</a></li>
-                            <li><a href="">2006</a></li>
+                        	<c:forEach items="${lstCommon}" varStatus="status" var="common">
+                        		<c:if test="${common.netYear==currentYear}">
+                        			<li><a href="" tag="${common.netYear}">今年以来</a></li>
+                        		</c:if>
+	                            <c:if test="${common.netYear!=currentYear}">
+	                            	<li><a href="" tag="${common.netYear}">${common.netYear}</a></li>
+	                            </c:if>
+                            </c:forEach>
                         </ul>
                     </div>
                     </form>
@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                <div class="tjs_table_div_right">
 	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
 	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname">${peTop10Product.nowRate}%</span></p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.timeRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.timeRate*100%100}" pattern="00"/>%</span></p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">
@@ -226,6 +226,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             }, function () {
                 $(".prev,.next").hide();
             });
+            
+            $(".tjs_years a[tag=${simuSearchVO.currentYear}]").addClass("jhz_border");
+            
           	//--自定义下拉框--
             $(".sel_wrap").click(function () {
                 $(".select").toggle();
@@ -239,8 +242,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     $(this).click(function () {
                         var opt = $(this).html();
                         $(".lbl").html(opt);
-                        var params = "?peType="+$(this).attr("type");
-                        $("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+                        //var currentYear = $(".tjs_years a[class=jhz_border]").attr("tag");
+                        //var params = "?peType="+$(this).attr("type")+"&currentYear="+currentYear;
+                        $("#peType").val($(this).attr("type"));
+                        $("#modalForm").attr("action",$("#modalForm").attr("action")).submit();
                     })
                 });
                 
@@ -249,6 +254,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             //--表格单行变色--
             $("tr:even").css("background", "#EEEDEB");
             //--/表格单行变色--
+            
+            //今年以来查询
+            $(".tjs_years a").click(function(event){
+    	    	event.preventDefault();
+                //var params = "?currentYear="+$(this).attr("tag");
+                $("#currentYear").val($(this).attr("tag"));
+    	    	$("#modalForm").attr("action",$("#modalForm").attr("action")).submit();
+    	    });
         }
         
       	//--预约--                   

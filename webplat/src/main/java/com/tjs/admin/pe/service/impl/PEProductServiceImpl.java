@@ -22,6 +22,7 @@ import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.core.util.DateUtils;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
+import com.tjs.admin.pe.model.PECommonVO;
 
 /**
  * 私募产品服务 
@@ -167,4 +168,11 @@ public class PEProductServiceImpl implements PEProductService {
 	public List<PEManager> selectOnLinePEManager(Long companyId,String keyword) {		
 		return peManagerService.selectOnLinePEManager(companyId,keyword);				
 	}
+	
+	@Override
+	public List<PECommonVO> getYearAll() {
+		List<PECommonVO> lstYear = peIndexMapper.getYearAll();
+		return lstYear;
+	}
+	
 }
