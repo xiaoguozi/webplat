@@ -117,6 +117,9 @@ public class PEProduct {
 	
 	/* 经理名称 */
 	private String managerName;
+	
+	/** 是否代表作 1:是，2：否 */
+	private int isShow;
 
 	public long getId() {
 		return id;
@@ -406,6 +409,14 @@ public class PEProduct {
 		this.managerName = managerName;
 	}
 
+	public int getIsShow() {
+		return isShow;
+	}
+
+	public void setIsShow(int isShow) {
+		this.isShow = isShow;
+	}
+
 	@Override
 	public String toString() {
 		return "PEProduct [id=" + id + ", name=" + name + ", simpleName="
@@ -429,7 +440,6 @@ public class PEProduct {
 				+ ", recommendSequence=" + recommendSequence + ", status="
 				+ status + ", pecompanyId=" + pecompanyId + ", pecompanyName="
 				+ pecompanyName + ", managerId=" + managerId + ", managerName="
-				+ managerName + "]";
+				+ managerName + ", isShow=" + isShow + "]";
 	}
-
 }

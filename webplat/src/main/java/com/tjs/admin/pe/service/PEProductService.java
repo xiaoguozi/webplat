@@ -87,4 +87,11 @@ public interface PEProductService  {
 	 */
 	List<PECommonVO> getYearAll();
 	
+	/**
+	 * 依据产品ID设置产品是否代表作状态
+	 * 
+	 * @param peProduct
+	 */
+	void updatePEProductShow(PEProduct peProduct);
+	
 }

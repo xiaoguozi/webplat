@@ -38,6 +38,7 @@
    		<result property="pecompanyName" column="pecompany_name" jdbcType="VARCHAR"  />
    		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
    		<result property="managerName" column="manager_name" jdbcType="VARCHAR"  />
+   		<result property="isShow" column="is_show" jdbcType="INTEGER"  />
     </resultMap>
     
     <sql id="Base_select_Column_List">
@@ -48,7 +49,7 @@
         open_time, subscrip_start, subscrip_fee, exit_fee, management_fee,
         recommend_reason, create_date, last_modify_date, creater_id,
         creater_name, recommend_location, recommend_sequence, status,
-        pecompany_id, pecompany_name, manager_id, manager_name
+        pecompany_id, pecompany_name, manager_id, manager_name, is_show
     </sql>
     
     <select id="getPEProductById" resultMap="peProductMap" parameterType="long">
@@ -65,6 +66,10 @@
          WHERE 1=1
          <if test="peProduct.pecompanyId != null and peProduct.pecompanyId != 0">
          	AND (pecompany_id = #{peProduct.pecompanyId})
+         </if>
+         
+         <if test="managerId != null and managerId != ''">
+         	AND (manager_id = #{managerId})
          </if>
          
          <if test="peProduct.status != 0">
@@ -87,7 +92,18 @@
      <select id="selectListCount" parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel" resultType="java.lang.Integer">
         SELECT COUNT(*) AS total FROM pe_product
         WHERE 1=1
-        
+        <if test="peProduct.pecompanyId != null and peProduct.pecompanyId != 0">
+         	AND (pecompany_id = #{peProduct.pecompanyId})
+         </if>
+         
+         <if test="managerId != null and managerId != ''">
+         	AND (manager_id = #{managerId})
+         </if>
+         
+         <if test="peProduct.status != 0">
+         	AND (status = #{peProduct.status})
+         </if>
+         
         <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
          </if>
@@ -130,7 +146,8 @@
                 #{pecompanyId}, 
                 #{pecompanyName},
                 #{managerId},
-                #{managerName})              
+                #{managerName},
+                #{isShow})              
     </insert>
  
  	 <update id="updatePEProduct" parameterType="com.tjs.admin.pe.model.PEProduct">
@@ -166,9 +183,22 @@
 	        pecompany_id=#{pecompanyId}, 
 	        pecompany_name=#{pecompanyName},
 	        manager_id=#{managerId},
-	        manager_name=#{managerName}
+	        manager_name=#{managerName},
+	        is_show=#{isShow}
    		WHERE id=#{id}
    </update>
    
-    
+    <update id="updatePEProductShow" parameterType="com.tjs.admin.pe.model.PEProduct">
+   		UPDATE pe_product 
+   		SET is_show=#{isShow}
+   		WHERE id=#{id}
+   </update>
+   
+   
+   <select id="getPEProductShow" resultMap="peProductMap" parameterType="com.tjs.admin.pe.model.PEProduct">
+        SELECT
+        <include refid="Base_select_Column_List" />
+         FROM pe_product
+         WHERE is_show=#{isShow}
+    </select>
 </mapper>

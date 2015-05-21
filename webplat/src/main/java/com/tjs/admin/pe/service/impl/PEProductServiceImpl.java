@@ -20,6 +20,7 @@ import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.pe.util.ShowEnum;
 import com.tjs.core.util.DateUtils;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
 import com.tjs.admin.pe.model.PECommonVO;
@@ -173,6 +174,21 @@ public class PEProductServiceImpl implements PEProductService {
 	public List<PECommonVO> getYearAll() {
 		List<PECommonVO> lstYear = peIndexMapper.getYearAll();
 		return lstYear;
+	}
+
+	@Override
+	public void updatePEProductShow(PEProduct peProduct) {
+		
+		peProduct.setIsShow(ShowEnum.SHOW.getStatus());
+		List<PEProduct> products = peProductMappper.getPEProductShow(peProduct);
+		
+		for (PEProduct product : products) {
+			product.setIsShow(ShowEnum.ON_SHOW.getStatus());
+			peProductMappper.updatePEProduct(product);
+		}
+		
+		
+		peProductMappper.updatePEProductShow(peProduct);
 	}
 	
 }

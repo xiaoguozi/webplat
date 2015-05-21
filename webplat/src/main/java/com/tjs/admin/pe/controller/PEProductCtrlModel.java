@@ -37,6 +37,9 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	/** 公司ID */
 	private String companyId;
 	
+	/** 更新时传入的ids */
+	private String ids;
+	
 	public String getKeyWord() {
 		return keyWord;
 	}
@@ -102,6 +105,14 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
+	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
 	}
 	
 }

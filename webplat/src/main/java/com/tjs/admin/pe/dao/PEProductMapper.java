@@ -26,5 +26,7 @@ public interface PEProductMapper  {
 	
 	List<PEProduct> getPEProductList(PEProductCtrlModel peProductCtrlModel);
 	
+	void updatePEProductShow(PEProduct peProduct);
 	
+	List<PEProduct> getPEProductShow(PEProduct peProduct);
 }
