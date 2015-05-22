@@ -47,10 +47,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</div>
 				<div class="top_wrap_menu menu">
 					<ul>
-						<li><a href="rest/web/pe/peIndex"><span>私募首页</span></a></li>
-						<li><a href="rest/web/pe/peIndexProduct"><span>私募产品</span></a></li>
+						<li><a href="rest/web/pe/peIndex" target="_blank"><span>私募首页</span></a></li>
+						<li><a href="rest/web/pe/peIndexProduct" target="_blank"><span>私募产品</span></a></li>
 						<li><a href="rest/web/pe/peIndexRate"><span class="simu_on">私募排行</span></a></li>
-						<li><a href="rest/web/pe/peIndexManager"><span>私募经理</span></a></li>
+						<li><a href="rest/web/pe/peIndexManager" target="_blank"><span>私募经理</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -59,7 +59,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		<!-- /header_menu -->
 		<div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="#" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item">私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexRate" class="path_item">私募排行</a> <span class="sep">&gt;</span> <span class="txt">筛选条件</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="#" target="_blank" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" target="_blank" class="path_item">私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexRate" class="path_item">私募排行</a> <span class="sep">&gt;</span> <span class="txt">筛选条件</span> </div>
         </div>
 		
 		

@@ -44,9 +44,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="top_wrap_menu menu">
             <ul>
                 <li><a href="rest/web/pe/peIndex"><span class="simu_on">私募首页</span></a></li>
-                <li><a href="rest/web/pe/peIndexProduct"><span>私募产品</span></a></li>
-                <li><a href="rest/web/pe/peIndexRate"><span>私募排行</span></a></li>
-                <li><a href="rest/web/pe/peIndexManager"><span>私募经理</span></a></li>
+                <li><a href="rest/web/pe/peIndexProduct" target="_blank"><span>私募产品</span></a></li>
+                <li><a href="rest/web/pe/peIndexRate" target="_blank"><span>私募排行</span></a></li>
+                <li><a href="rest/web/pe/peIndexManager" target="_blank"><span>私募经理</span></a></li>
             </ul>
         </div>
     </div>
@@ -85,7 +85,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="tjs_1108px center">
                     <div class="tjs_product_right ml0">
                         <div class="tjs_right_titlediv fontcolor">
-                            <img class="tjs_img_diamond" src="assets/img/ui/diamond.png" />顶级私募推荐<span style="float: right;"><a href="rest/web/pe/peIndexProduct" class="tjs_moreurl">更多>></a></span>
+                            <img class="tjs_img_diamond" src="assets/img/ui/diamond.png" />顶级私募推荐<span style="float: right;"><a href="rest/web/pe/peIndexProduct" target="_blank" class="tjs_moreurl">更多>></a></span>
                         </div>
                         <div class="tjs_coloreddiv ml0 bgcolor"></div>
                         <div class="tjs_right_typle border_left">
