@@ -32,6 +32,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 
 <body>
+	<div id="divTemplate"  style="display: none;">
+		<input type="hidden" name="cid" value="#productId" />
+		<img class="del_compare" src="assets/img/ui2/close_compare.png" onclick="clearChoose('#productId');" alt="" />
+		<div class="clear"></div>
+		<p>#productName</p>
+		<p>累计收益</p>
+		<p class="tjs_products_title">
+			#intValue.<span>#decimal%</span>
+		</p>
+	</div>	
 
 	<div class="home_all">
 
@@ -249,8 +259,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<tr class="odd">
 										<td class="c_c c_b c_first_control">
 											<div class="lb_wrap">
-												<span class="lb_b"></span> <input class="tb_chk"
-													type="checkbox">
+												<span class="lb_b"></span> <input class="tb_chk" productId="${peAllProduct.id}" productName="${peAllProduct.name }"  accumulatedIncome="${peAllProduct.accumulatedIncome}" type="checkbox">
 											</div>
 										</td>
 										<td class="c_l"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peAllProduct.id}" target="_blank">${peAllProduct.name }</a></td>
@@ -322,28 +331,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</div>
 				</div>
 				<div class="compare_container_contents">
-					<img class="del_compare" src="assets/img/ui2/close_compare.png" alt="" />
-					<div class="clear"></div>
-					<p>金手指三号</p>
-					<p>累计收益</p>
-					<p class="tjs_products_title">
-						1920.<span>55%</span>
-					</p>
+					<p class="moren_font">您还可以继续添加</p>
 				</div>
 				<div class="compare_container_contents">
-					<img class="del_compare" src="assets/img/ui2/close_compare.png" alt="" />
-					<div class="clear"></div>
-					<p>金手指三号</p>
-					<p>累计收益</p>
-					<p class="tjs_products_title">
-						1920.<span>55%</span>
-					</p>
+					<p class="moren_font">您还可以继续添加</p>
 				</div>
 				<div class="compare_container_contents">
-					<p class="moren_font">你还可以继续添加</p>
+					<p class="moren_font">您还可以继续添加</p>
 				</div>
 				<div class="tjs_comparing">
-					<a class="uc_btn compare_btn" href="simuchanpinduibi.html">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
+					<a class="uc_btn compare_btn" href="rest/web/pe/peIndexProductDetail" target="_blank">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
 					<a id="clear_duibi" class="uc_btn compare_btn">清空对比栏</a>
 				</div>
 			</div>
@@ -362,7 +359,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script>
 	var IndexPage = {};
     IndexPage.orderProductUrl="rest/web/pe/peOrderProduct";
-	
+  	//--对比框数量--
+    var sum = 0;
+  
 	window.onload = function () {
 		//初始化选择按钮
 	    $("#divPEManager a[tag=${simuSearchVO.peManagerId}]").addClass("mult_checked");
@@ -479,8 +478,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    };
 	    
 	    
-        //--对比框--
-        var sum = 0;
         $(".close_compare").click(function () {
             $(".simu_compare_container").hide();
         })
@@ -495,21 +492,48 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).click(function () {
                 if ($(this).is(':checked')) {
                     sum += 1;
+                    
+                    if (sum > 3) {
+	                    sum = 3;
+	                    $(this).removeAttr("checked");
+	                    alert("最多只能选三个进行对比！")
+	                }else{
+	                	if($("input[name=cid][value="+$(this).attr("productId")+"]").size()==0){
+	                		//添加要对比的选项
+	                    	var contentHtml = $("#divTemplate").html();
+	                    	contentHtml = contentHtml.replace(/#productId/g, $(this).attr("productId"));
+	                    	contentHtml = contentHtml.replace("#productName", $(this).attr("productName"));
+	                    	//收益
+	                    	var income = $(this).attr("accumulatedIncome") ;
+	                    	income = parseFloat(income).toFixed(2);
+	                    	var intValue = income.substring(0, income.indexOf("."));
+	                    	var decimal = income.substring(income.indexOf(".")+1);
+	                    	contentHtml = contentHtml.replace("#intValue", intValue);
+	                    	contentHtml = contentHtml.replace("#decimal", decimal);
+	                    	
+	                    	for(var i=0; i<3; i++){
+	                    		if($(".compare_container_contents:eq("+i+")").find("input").size()==0){
+	                    			$(".compare_container_contents:eq("+i+")").html(contentHtml);
+	                    			break;
+	                    		}
+	                    	}
+	                	}
+	                }
+                    
                 } else {
                     sum -= 1;
+                    var obj = $("input[name=cid][value="+$(this).attr("productId")+"]");
+                    if(obj.size()>0){
+	                    obj.eq(0).parent().html(" <p class='moren_font'>您还可以继续添加</p>");
+                    }
                 }
-
-                if (sum > 3) {
-                    sum = 3;
-                    $(this).removeAttr("checked");
-                    alert("最多只能选三个进行对比！")
-                }
+                
                 sum > 0 ? $(".simu_compare_container").show() : $(".simu_compare_container").hide();
             });
         });
         $(".del_compare").each(function (index) {
             $(this).click(function () {
-                $(".compare_container_contents:eq(" + index + ")").html(" <p class='moren_font'>你还可以继续添加</p>");
+                $(".compare_container_contents:eq(" + index + ")").html(" <p class='moren_font'>您还可以继续添加</p>");
             });
         })
         //--/对比框--
@@ -590,6 +614,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         })
         //--/排行图标--
     }
+	
+	//去掉选项
+	function clearChoose(productId){
+		$("input[name=cid][value="+productId+"]").parent().html("<p class='moren_font'>您还可以继续添加</p>");
+	    $("input[class=tb_chk][productId="+productId+"]").removeAttr("checked");
+	    sum -= 1;
+	}
 	
 	function SetPara() { 
 		var peManagerFilter = $("#divPEManager a.mult_checked");

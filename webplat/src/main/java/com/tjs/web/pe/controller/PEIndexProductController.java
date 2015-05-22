@@ -49,7 +49,7 @@ public class PEIndexProductController {
     	model.addAttribute("top4Data", showData);
     	
     	//全部产品
-    	peSearchCtrlVO.setPageSize(3);
+    	peSearchCtrlVO.setPageSize(10);
     	
     	//设置总条数
     	int totalCount = peProductService.getAnyPEProductListCount(peSearchCtrlVO);

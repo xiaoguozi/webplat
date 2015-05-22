@@ -40,7 +40,7 @@ public class PEIndexRateController {
     	}
     	
     	//全部产品
-    	peSearchCtrlVO.setPageSize(4);
+    	peSearchCtrlVO.setPageSize(10);
     	
     	//设置总条数
     	int totalCount = peProductService.getRatePEProductListCount(peSearchCtrlVO);

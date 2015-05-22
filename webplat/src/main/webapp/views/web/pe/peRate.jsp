@@ -32,6 +32,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 
 <body>
+	<div id="divTemplate"  style="display: none;">
+		<input type="hidden" name="cid" value="#productId" />
+		<img class="del_compare" src="assets/img/ui2/close_compare.png" onclick="clearChoose('#productId');" alt="" />
+		<div class="clear"></div>
+		<p>#productName</p>
+		<p>累计收益</p>
+		<p class="tjs_products_title">
+			#intValue.<span>#decimal%</span>
+		</p>
+	</div>
+
 
 	<div class="home_all">
 
@@ -184,7 +195,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                    <tr class="odd">
 											<td class="c_c c_b c_first_control">
 												<div class="lb_wrap">
-													<span class="lb_b"></span> <input class="tb_chk" type="checkbox">
+													<span class="lb_b"></span> <input class="tb_chk" productId="${peAllProduct.id}" productName="${peAllProduct.name }"  accumulatedIncome="${peAllProduct.accumulatedIncome}"  type="checkbox">
 												</div>
 											</td>
 											<td class="tjs_tbl_td_br"><span class='${status.index<3?"orangecolor":"graycolor"}'>${status.index+1}</span></td>
@@ -265,21 +276,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <img src="assets/img/ui2/close_compareicon.png" alt="" />隐藏</div>
                 </div>
                 <div class="compare_container_contents">
-                    <img class="del_compare" src="assets/img/ui2/close_compare.png" alt="" />
-                    <div class="clear"></div>
-                    <p>金手指三号</p>
-                    <p>累计收益</p>
-                    <p class="tjs_products_title">1920.<span>55%</span></p>
+                    <p class="moren_font">您还可以继续添加</p>
                 </div>
                 <div class="compare_container_contents">
-                    <img class="del_compare" src="assets/img/ui2/close_compare.png" alt="" />
-                    <div class="clear"></div>
-                    <p>金手指三号</p>
-                    <p>累计收益</p>
-                    <p class="tjs_products_title">1920.<span>55%</span></p>
+                    <p class="moren_font">您还可以继续添加</p>
                 </div>
                 <div class="compare_container_contents">
-                    <p class="moren_font">你还可以继续添加</p>
+                    <p class="moren_font">您还可以继续添加</p>
                 </div>
                 <div class="tjs_comparing">
                     <a class="uc_btn compare_btn" href="rest/web/pe/peIndexCompare">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
@@ -299,7 +302,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script>
 		var IndexPage = {};
 	    IndexPage.orderProductUrl="rest/web/pe/peOrderProduct";
-	
+		var sum = 0;
 		window.onload = function () {
 			
 			$("#divPEType a[tag=${simuSearchVO.peType}]").addClass("mult_checked");
@@ -329,8 +332,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    });
 			
 	        //--对比框--
-	        var sum = 0;
-	        $(".close_compare").click(function () {
+			$(".close_compare").click(function () {
 	            $(".simu_compare_container").hide();
 	        })
 	        $("#clear_duibi").click(function () {
@@ -338,28 +340,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            $(".simu_compare_container").hide();
 	            sum = 0;
 	        });
-	
+
 	        $(".tb_chk").each(function (index) {
 	            $(".tb_chk").removeAttr("checked");
 	            $(this).click(function () {
 	                if ($(this).is(':checked')) {
 	                    sum += 1;
+	                    if (sum > 3) {
+		                    sum = 3;
+		                    $(this).removeAttr("checked");
+		                    alert("最多只能选三个进行对比！")
+		                }else{
+		                	if($("input[name=cid][value="+$(this).attr("productId")+"]").size()==0){
+		                		//添加要对比的选项
+		                    	var contentHtml = $("#divTemplate").html();
+		                    	contentHtml = contentHtml.replace(/#productId/g, $(this).attr("productId"));
+		                    	contentHtml = contentHtml.replace("#productName", $(this).attr("productName"));
+		                    	//收益
+		                    	var income = $(this).attr("accumulatedIncome") ;
+		                    	income = parseFloat(income).toFixed(2);
+		                    	var intValue = income.substring(0, income.indexOf("."));
+		                    	var decimal = income.substring(income.indexOf(".")+1);
+		                    	contentHtml = contentHtml.replace("#intValue", intValue);
+		                    	contentHtml = contentHtml.replace("#decimal", decimal);
+		                    	
+		                    	for(var i=0; i<3; i++){
+		                    		if($(".compare_container_contents:eq("+i+")").find("input").size()==0){
+		                    			$(".compare_container_contents:eq("+i+")").html(contentHtml);
+		                    			break;
+		                    		}
+		                    	}
+		                	}
+		                }
+	                    
 	                } else {
 	                    sum -= 1;
-	                }
-	                if (sum > 3) {
-	                    sum = 3;
-	                    $(this).removeAttr("checked");
-	                    alert("最多只能选三个进行对比！")
+	                    var obj = $("input[name=cid][value="+$(this).attr("productId")+"]");
+	                    if(obj.size()>0){
+		                    obj.eq(0).parent().html(" <p class='moren_font'>您还可以继续添加</p>");
+	                    }
 	                }
 	                sum > 0 ? $(".simu_compare_container").show() : $(".simu_compare_container").hide();
 	            });
 	        });
 	        $(".del_compare").each(function (index) {
 	            $(this).click(function () {
-	                $(".compare_container_contents:eq(" + index + ")").html(" <p class='moren_font'>你还可以继续添加</p>");
+	                $(".compare_container_contents:eq(" + index + ")").html(" <p class='moren_font'>您还可以继续添加</p>");
 	            });
 	        })
+			
 	        //--对比框--
 	        //--详情框--
 	        $(".trend_viewer").each(function (index) {
@@ -441,6 +470,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 			var params = "?peType=" + peType + "&onLine="+onLine;
 			return params;
+		}
+		
+		//去掉选项
+		function clearChoose(productId){
+			$("input[name=cid][value="+productId+"]").parent().html("<p class='moren_font'>您还可以继续添加</p>");
+		    $("input[class=tb_chk][productId="+productId+"]").removeAttr("checked");
+		    sum -= 1;
 		}
 		
 		//--预约--                   
