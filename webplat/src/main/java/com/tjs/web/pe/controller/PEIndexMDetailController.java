@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
+import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEManagerProduct;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PEProductIncome;
+import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductIncomeService;
@@ -47,6 +52,7 @@ public class PEIndexMDetailController {
 	@Resource
 	private PEProductIncomeService peProductIncomeService ;
 	
+
 	
 	
 	
@@ -70,12 +76,30 @@ public class PEIndexMDetailController {
 	    PECompany peCompany = peCompanyService.getPECompanyById(peManagerProduct.getCompanyId());
 	    model.addAttribute("peCompany", peCompany);
 	    
-       //获取产品信息
-	    if(peManagerProduct.getProductId()!=null){	    	
+       
+	    if(peManagerProduct.getProductId()!=null){
+	    	//获取产品信息
 	    	PEProduct peProduct =peProductService.getPEProductById(peManagerProduct.getProductId());
 	    	model.addAttribute("peProduct", peProduct);
-	    }
-    	
+	    	
+	    	//获取收益表
+		    PEProductIncomeCtrlModel peProductIncomeCtrlModel = new PEProductIncomeCtrlModel();
+		    peProductIncomeCtrlModel.setProductId(peManagerProduct.getProductId().toString());
+		    List<PEProductIncome> lstPEProductIncome = peProductIncomeService.getPEProductIncomeList(peProductIncomeCtrlModel);
+		    model.addAttribute("lstPEProductIncome", lstPEProductIncome);
+		    
+		    
+		    //获取净值标
+		    PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
+		    peProductNetCtrlModel.setProductId(peManagerProduct.getProductId().toString());
+		    List<PEProductNet> lstPEProductNet = peProductNetService.getPEProductNetList(peProductNetCtrlModel);
+		    model.addAttribute("lstPEProductNet", lstPEProductNet);
+	    }	    	   	    
+	    //旗下产品收益 
+	    PEProductCtrlModel peProductCtrlModel = new PEProductCtrlModel();
+	    peProductCtrlModel.setManagerId(managerId.toString());
+	    List<PEProduct> lstPEProduct = peProductService.getPEProductList(peProductCtrlModel);
+	    model.addAttribute("lstPEProduct", lstPEProduct);
         return "web/pe/peManagerDetail";
     }
 	
