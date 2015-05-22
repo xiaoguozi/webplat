@@ -73,7 +73,7 @@ public class PEManagerProduct {
 	private Date lastModifyDate;
 	
 	
-	private long productId;
+	private Long productId;
 	
 	/* 基金名称 */
 	private String productName; 
@@ -260,11 +260,11 @@ public class PEManagerProduct {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-	public long getProductId() {
+	public Long getProductId() {
 		return productId;
 	}
 
-	public void setProductId(long productId) {
+	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
 

@@ -119,7 +119,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">人物介绍</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="introduce" value="${peManager.introduce}"  >
+                <textarea rows="6" cols="100" class="form-control required" maxlength="200" name="introduce">${peManager.introduce}</textarea>
             </div>
         </div>
          <div class="form-group">

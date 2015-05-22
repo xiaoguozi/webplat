@@ -83,7 +83,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label">公司简介</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" name="companyProfile">${peCompany.companyProfile}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" name="companyProfile" maxlength="300">${peCompany.companyProfile}</textarea>
             </div>
         </div>
          <div class="form-group">

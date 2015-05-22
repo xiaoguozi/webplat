@@ -73,13 +73,13 @@
          <div class="form-group">
             <label class="col-md-3 control-label">从业年限</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="workYear" value="${peManager.workYear}"  >
+                <input type="text" class="form-control required" maxlength="5" name="workYear" value="${peManager.workYear}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">从业背景</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="background" value="${peManager.background}"  >
+                <input type="text" class="form-control required" maxlength="6" name="background" value="${peManager.background}"  >
             </div>
         </div>
         <div class="form-group">
@@ -121,7 +121,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">人物介绍</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="introduce" value="${peManager.introduce}"  >
+                <textarea rows="6" cols="100" class="form-control required" maxlength="250"  name="introduce">${peManager.introduce}</textarea>
             </div>
         </div>
          <div class="form-group">
