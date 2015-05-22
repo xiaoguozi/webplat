@@ -200,5 +200,6 @@
         <include refid="Base_select_Column_List" />
          FROM pe_product
          WHERE is_show=#{isShow}
+         AND manager_id=#{managerId}
     </select>
 </mapper>
