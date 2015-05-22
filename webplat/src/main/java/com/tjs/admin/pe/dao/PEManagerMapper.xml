@@ -223,7 +223,7 @@
 	            accumulated_income accumulatedIncome,
 	            manager_id manager_id
 	    FROM
-	        pe_product ) t
+	        pe_product where  is_show=1) t
 	on
 	    id = t.manager_id
    where  1=1
@@ -233,6 +233,10 @@
    <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
    		AND recommend_location = #{peManager.recommendLocation }
    </if>
+   
+    <if test="peManager != null and peManager.id !=null">
+	   AND id = #{peManager.id }
+	</if>
    
    <if test="keyWord!= null and keyWord!= ''">
       AND (name like CONCAT('%',#{keyWord},'%') or company_name like CONCAT('%',#{keyWord},'%'))
@@ -261,7 +265,7 @@
 		            accumulated_income accumulatedIncome,
 		            manager_id manager_id
 		    FROM
-		        pe_product) t
+		        pe_product where  is_show=1) t
 		on
 		    id = t.manager_id
 	   where  1=1
@@ -270,6 +274,10 @@
 	   </if>
 	   <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
 	   		AND recommend_location = #{peManager.recommendLocation }
+	   </if>
+	   
+	    <if test="peManager != null and peManager.id !=null">
+	   		AND id = #{peManager.id }
 	   </if>
 	   
 	    <if test="keyWord!= null and keyWord!= ''">

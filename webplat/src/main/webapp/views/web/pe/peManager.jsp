@@ -46,9 +46,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				</div>
 				<div class="top_wrap_menu menu">
 					<ul>
-						<li><a href="rest/web/pe/peIndex"><span>私募首页</span></a></li>
-						<li><a href="rest/web/pe/peIndexProduct"><span>私募产品</span></a></li>
-						<li><a href="rest/web/pe/peIndexRate"><span>私募排行</span></a></li>
+						<li><a href="rest/web/pe/peIndex" target="_blank"><span>私募首页</span></a></li>
+						<li><a href="rest/web/pe/peIndexProduct" target="_blank"><span>私募产品</span></a></li>
+						<li><a href="rest/web/pe/peIndexRate" target="_blank"><span>私募排行</span></a></li>
 						<li><a href="rest/web/pe/peIndexManager"><span
 								class="simu_on">私募经理</span></a></li>
 					</ul>
@@ -60,9 +60,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<!-- /header_menu -->
 		<div class="mod_breadcrumb">
 			<div class="layout_n clearfix">
-				<span class="home">当前位置 ：</span> <a href="#" class="path_item">首页</a>
-				<span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item">私募</a><span
-					class="sep">&gt;</span> <a href="rest/web/pe/peIndexManager" class="path_item">私募经理</a> <span
+				<span class="home">当前位置 ：</span> <a href="#" class="path_item" target="_blank">首页</a>
+				<span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item" target="_blank">私募</a><span
+					class="sep">&gt;</span> <a href="rest/web/pe/peIndexManager" class="path_item" target="_blank">私募经理</a> <span
 					class="sep">&gt;</span> <span class="txt">全部私募经理</span>
 			</div>
 		</div>
@@ -81,11 +81,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<table class="simujingli_box" <c:if test="${fn:length(lstTopPeManager)==(status.index+1)}">style="border-right:solid  1px #d3d3d3"</c:if>>
 					<tr>
 						<td colspan="2" class="simujingli_box_top bluecolor_font">
-						<a href="rest/web/pe/peIndexMDetail" target="_black">${TopPeManager.managerName}</a>&nbsp;&nbsp;${TopPeManager.productSimpleName}</td>
+						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank">${TopPeManager.managerName}</a>&nbsp;&nbsp;${TopPeManager.productSimpleName}</td>
 					</tr>
 					<tr>
 						<td class="font_tc pd_bottom">
-						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_black"><img width="105"
+						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank"><img width="105"
 							src="assets/img/simu/${TopPeManager.logo}" alt="" /></a></td>
 						<td class="pd_left pd_bottom"><p>
 								基金经理：<span class="bluecolor_font">${TopPeManager.managerName}</span>
@@ -142,7 +142,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<tbody>
 					  <c:forEach items="${lstPeManager}" var="PeManager" varStatus="status">
 						<tr>
-							<td class="tjs_tbl_td_br"><span class="bluecolor_font">${PeManager.managerName}</span></td>
+							<td class="tjs_tbl_td_br"><a href="rest/web/pe/peIndexMDetail?managerId=${PeManager.managerId}" target="_blank"></a><span class="bluecolor_font">${PeManager.managerName}</span></a></td>
 							<td>${PeManager.productSimpleName}</td>
 							<td class="tjs_tbl_td_br"><fmt:formatNumber value="${PeManager.accumulatedIncome.intValue()}" pattern="###0.00"/>%</td>
 							<td>${PeManager.companyName}</td>
