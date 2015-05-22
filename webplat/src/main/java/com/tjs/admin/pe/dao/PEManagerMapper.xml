@@ -215,7 +215,7 @@
 	    productSimpleName,
 	    accumulatedIncome
 	FROM
-	    tjs.pe_manager left join 
+	    pe_manager left join 
 	    (SELECT 
 	        id productId,
 	            name productName,
@@ -257,7 +257,7 @@
      	SELECT 
 	    count(*) AS total
 		FROM
-		    tjs.pe_manager left join 
+		    pe_manager left join 
 		    (SELECT 
 		        id productId,
 		            name productName,
