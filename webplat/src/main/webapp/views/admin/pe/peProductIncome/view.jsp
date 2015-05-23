@@ -19,7 +19,7 @@
 <div class="modal-body">
     <form id="income_modalForm" action="" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="id" value="${peProductIncome.id}">
-     	
+     	<input type="hidden" name="productId" value="${peProductIncome.productId}"/>
         <div class="form-group">
             <label class="col-md-3 control-label">产品名称</label>
             <div class="col-md-6">
