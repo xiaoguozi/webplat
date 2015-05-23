@@ -130,19 +130,18 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[0].xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[0].xtcpSplname}</span></td>
+<div class="tjs_right_title">
+  <tr  width="95%" >
+    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[0].xtcpLog}" width="33" height="30" align="middle"/></td>
+    <td align="left"><span style="font-size:16px">${xtcpData[0].xtcpSplname}</span></td>
   </tr>
-</table>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[0].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[0].xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[0].xtcpZdrgje} 万 | 期限： ${xtcpData[0].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xtcpData[0].xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[0].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[0].xtcpId}" target="_blank" class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -151,19 +150,18 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[1].xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[1].xtcpSplname}</span></td>
+<div class="tjs_right_title">
+  <tr  width="95%" >
+    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[1].xtcpLog}" width="33" height="30" align="middle"/></td>
+    <td align="left"><span style="font-size:16px">${xtcpData[1].xtcpSplname}</span></td>
   </tr>
-</table>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[1].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[1].xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[1].xtcpZdrgje} 万 | 期限： ${xtcpData[1].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xtcpData[1].xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[1].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[1].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -172,19 +170,18 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit ">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="65" align="right"><img src="assets/img/xintuo/small/${xtcpData[2].xtcpLog}" width="36" height="30" align="middle"></td>
-    <td align="left">&nbsp;&nbsp;<span>${xtcpData[2].xtcpSplname}</span></td>
+<div class="tjs_right_title">
+  <tr  width="95%" >
+    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[2].xtcpLog}" width="33" height="30" align="middle"/></td>
+    <td align="left"><span style="font-size:16px">${xtcpData[2].xtcpSplname}</span></td>
   </tr>
-</table>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[2].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[2].xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛： ${xtcpData[2].xtcpZdrgje} 万 | 期限： ${xtcpData[2].xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv"> ${xtcpData[2].xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[2].xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[2].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
 
 </div>

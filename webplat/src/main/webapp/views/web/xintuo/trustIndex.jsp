@@ -110,7 +110,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuotop.xtcpHd}</span></div>
 <div class="tjs_right_textdiv"> 门槛：  <fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/>万 | 期限：${xintuotop.xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv" style="height:40px;> ${xintuotop.xtcpDp}</div>
+<div class="tjs_product_textdiv" style="height:40px;"> ${xintuotop.xtcpDp}</div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
 </div>
 </c:forEach>
