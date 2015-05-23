@@ -76,7 +76,15 @@ public interface PEManagerService  {
      * @param peManagerCtrlModel
      * @return
      */
-	int selectStarPEManagerCount(PEManagerCtrlModel peManagerCtrlModel);    
+	int selectStarPEManagerCount(PEManagerCtrlModel peManagerCtrlModel);   
+	
+	
+	 /**
+     * 查询明星私募经理
+     * @param peManagerCtrlModel
+     * @return
+     */
+	List<PEManagerProduct> selectStarPEManagerIndex();   
 	
 		
 }

@@ -163,6 +163,18 @@ public class PEManagerServiceImpl implements PEManagerService {
 		return peManagerMapper.selectStarPEManagerCount(peManagerCtrlModel);
 	}
 
+	@Override
+	public List<PEManagerProduct> selectStarPEManagerIndex() {
+		PEManagerCtrlModel peManagerCtrlModel = new PEManagerCtrlModel();
+		PEManager peManager = new PEManager();
+		peManager.setStatus(StatusEnum.ON_LINE.getStatus());
+		peManager.setRecommendLocation("1");
+		peManagerCtrlModel.setPeManager(peManager);
+		peManagerCtrlModel.setPageNo(1);
+		peManagerCtrlModel.setPageSize(3);				
+		return peManagerMapper.selectStarPEManagerList(peManagerCtrlModel);
+	}
+
 	
 
 }
