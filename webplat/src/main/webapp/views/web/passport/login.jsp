@@ -37,6 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_contentdiv">
 
 <form class="login-form" action="rest/web/passport/login" method="post">
+<input type="hidden" name="returnUrl" value="${returnUrl }">
 <div class="tjs_login_bgdiv">
 <div class="tjs_login_title">会员登录</div>
 <div class="tjs_topheight12"></div>

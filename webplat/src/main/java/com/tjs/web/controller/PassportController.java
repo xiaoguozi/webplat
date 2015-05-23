@@ -52,8 +52,9 @@ public class PassportController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Valid User user, String verifyCode, BindingResult result, Model model, HttpServletRequest request) {
-        try {
+    public String login(@Valid User user, String verifyCode, String returnUrl, BindingResult result, Model model, HttpServletRequest request) {
+    	//model.addAttribute("returnUrl", returnUrl);
+    	try {
         	//String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
             Subject subject = SecurityUtils.getSubject();
             // 已登陆则 跳到首页
@@ -62,7 +63,7 @@ public class PassportController {
             		final User authUserInfo = userService.selectByUsername((String)subject.getPrincipal());
                     request.getSession().setAttribute("userInfo", authUserInfo);
             	}
-                return "redirect:/";
+                return "redirect:/";//+returnUrl;
             }
             if (result.hasErrors()) {
                 model.addAttribute("error", "参数错误！");
@@ -78,7 +79,7 @@ public class PassportController {
             model.addAttribute("error", "用户名或密码错误 ！");
             return "web/passport/login";
         }
-        return "redirect:/";
+        return "redirect:/";//+returnUrl;
     }
 
     /**

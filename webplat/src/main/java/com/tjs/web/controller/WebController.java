@@ -55,6 +55,16 @@ public class WebController {
                 request.getSession().setAttribute("userInfo", authUserInfo);
         	}
 		}
+		
+
+		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
+	
+		for(int i=xtcp.size(); i<3; i++){
+			xtcp.add(new ProductXtcp());
+		}
+		
+		model.addAttribute("xtcpData", xtcp);
+		
 
 		if (isLogin) {
 			return "web/home";
@@ -108,7 +118,14 @@ public class WebController {
 	 * 登录页
 	 */
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest request, Model model) {
+		String returnUrl = request.getHeader("referer");  
+        if(returnUrl==null || returnUrl.trim().equals("")){  
+            returnUrl = "/";  
+        }
+        
+        model.addAttribute("returnUrl", returnUrl);
+        
 		return "web/passport/login";
 	}
 }
