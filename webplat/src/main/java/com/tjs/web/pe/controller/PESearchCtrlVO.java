@@ -42,6 +42,9 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	/** 最近一年、两年 */
 	private int currentYearPeriod = 0;
 	
+	/** 比较时传过来的id列表 */
+	private String productIdArray;
+	
 	private int totalPageSize;
 	
 	private int limitStart;
@@ -154,5 +157,14 @@ public class PESearchCtrlVO extends GenericCtrlModel {
 	public void setCurrentYearPeriod(int currentYearPeriod) {
 		this.currentYearPeriod = currentYearPeriod;
 	}
+
+	public String getProductIdArray() {
+		return productIdArray;
+	}
+
+	public void setProductIdArray(String productIdArray) {
+		this.productIdArray = productIdArray;
+	}
+	
 	
 }

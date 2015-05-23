@@ -285,7 +285,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="moren_font">您还可以继续添加</p>
                 </div>
                 <div class="tjs_comparing">
-                    <a class="uc_btn compare_btn" href="rest/web/pe/peIndexCompare">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
+                    <a class="uc_btn compare_btn" href="javascript:void(0)" onclick="goCompareDetail();">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
                     <a id="clear_duibi" class="uc_btn compare_btn">清空对比栏</a>
                 </div>
             </div>
@@ -338,6 +338,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	        $("#clear_duibi").click(function () {
 	            $(".tb_chk").removeAttr("checked");
 	            $(".simu_compare_container").hide();
+	            for(var i=0; i<3; i++){
+	            	$(".compare_container_contents:eq("+i+")").html("<p class='moren_font'>您还可以继续添加</p>");
+	            }
 	            sum = 0;
 	        });
 
@@ -477,6 +480,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			$("input[name=cid][value="+productId+"]").parent().html("<p class='moren_font'>您还可以继续添加</p>");
 		    $("input[class=tb_chk][productId="+productId+"]").removeAttr("checked");
 		    sum -= 1;
+		}
+		
+		function goCompareDetail(event){
+			var cids = $(".compare_container input[name=cid]");
+			if(cids.size()<2){
+				alert("请至少选择两个产品");
+			}
+			var ids='';
+			for(var i=0; i<cids.size(); i++){
+				if(i!=0){
+					ids = cids[i].value + ','+ids;
+				}else{
+					ids += cids[i].value;
+				}
+			}
+			window.open("rest/web/pe/peIndexCompare?productIdArray="+ids, "_blank");
 		}
 		
 		//--预约--                   

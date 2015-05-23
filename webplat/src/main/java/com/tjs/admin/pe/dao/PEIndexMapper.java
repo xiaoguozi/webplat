@@ -34,4 +34,6 @@ public interface PEIndexMapper  {
 	
 	List<PETopProduct> getRatePEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
+	List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO);
+	
 }

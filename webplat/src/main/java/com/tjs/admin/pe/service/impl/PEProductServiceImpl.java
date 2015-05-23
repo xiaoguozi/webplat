@@ -203,5 +203,12 @@ public class PEProductServiceImpl implements PEProductService {
 		result = peIndexMapper.getRatePEProductList(peSearchCtrlVO);
 		return result;
 	}
+
+	@Override
+	public List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO) {
+		List<PETopProduct> result = new ArrayList<PETopProduct>();
+		result = peIndexMapper.getCompareYearRate(peSearchCtrlVO);
+		return result;
+	}
 	
 }

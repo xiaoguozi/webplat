@@ -12,12 +12,14 @@
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
    		<result property="managerReview" column="manager_review" jdbcType="VARCHAR" />
    		<result property="fundType" column="fund_type" javaType="java.lang.Integer"  />
+   		<result property="netYear" column="net_year" jdbcType="VARCHAR"  />
+   		<result property="manageFund" column="manage_fund" jdbcType="BIGINT" />
    		
    		<result property="yearRate" column="year_rate" javaType="java.math.BigDecimal" />
    		<result property="nowRate" column="now_rate" javaType="java.math.BigDecimal" />
    		<result property="oneRate" column="one_rate" javaType="java.math.BigDecimal" />
    		<result property="towRate" column="tow_rate" javaType="java.math.BigDecimal" />
-   		<result property="companyName" column="company_name" jdbcType="VARCHAR" />
+   		<result property="companyName" column="pecompany_name" jdbcType="VARCHAR" />
    		
     </resultMap>
  
@@ -328,6 +330,40 @@
 		        
     </select>
     
+    
+    <select id="getCompareYearRate" resultMap="peIndexProductMap"  
+ 	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+			SELECT 
+			  MAX(pn.net_time) max_net_time,
+			  DATE_FORMAT(pn.net_time, '%Y') net_year,
+			  pn.product_id id,
+			  p.name,
+			  p.accumulated_income,
+			  p.run_time,
+			  p.fund_type,
+			  p.year_rate,
+			  p.net_worth,
+			  p.manager_id,
+			  p.manager_name,
+			  p.pecompany_name,
+			  p.manage_fund,
+			  pn.total_net nowRate 
+			FROM
+			  (SELECT 
+			    pp.*,
+			    pm.manage_fund 
+			  FROM
+			    PE_PRODUCT pp,
+			    PE_MANAGER pm 
+			  WHERE pp.manager_id = pm.id) p,
+			  PE_PRODUCT_NET pn 
+			WHERE p.id = pn.product_id 
+			  AND pn.PRODUCT_ID = #{peProductId}
+			  AND p.id = p.manager_id 
+			GROUP BY net_year 
+			ORDER BY net_year DESC
+			
+    </select>
     
  	 
  	 

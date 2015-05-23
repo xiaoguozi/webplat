@@ -108,4 +108,10 @@ public interface PEProductService  {
 	 */
 	List<PETopProduct> getRatePEProductList(PESearchCtrlVO peSearchCtrlVO);
 	
+	/**
+	 * 查询对比产品的每年收益
+	 * @param productId
+	 * @return
+	 */
+	List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO);
 }

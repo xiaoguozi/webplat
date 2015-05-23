@@ -51,6 +51,12 @@ public class PETopProduct {
 	
 	/** 年以来收益 */
 	private BigDecimal timeRate;
+	
+	/** 年份  */
+	private String netYear;
+	
+	/** 管理基金数 */
+	private Long manageFund;
 
 	public long getId() {
 		return id;
@@ -184,5 +190,22 @@ public class PETopProduct {
 	public void setFundType(Integer fundType) {
 		this.fundType = fundType;
 	}
+
+	public String getNetYear() {
+		return netYear;
+	}
+
+	public void setNetYear(String netYear) {
+		this.netYear = netYear;
+	}
+
+	public Long getManageFund() {
+		return manageFund;
+	}
+
+	public void setManageFund(Long manageFund) {
+		this.manageFund = manageFund;
+	}
+	
 	
 }
