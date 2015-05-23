@@ -81,7 +81,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <li class="attr_item">
             <table class="jinglixinxi">
                   <tr>
-                      <td>带便产品：</td>
+                      <td>代表作：</td>
                       <td class="txt_a_left"><span class="bluecolor_font">${peManagerProduct.productSimpleName}</span></td>
                   </tr>
                   <tr>
@@ -164,7 +164,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </div> 
     <div class="liuchengxinxi">
         <ul>
-            <li><span>在线预约</span><br />或拨打400-888-896</li>
+            <li><span>在线预约</span><br />或拨打4006-114-088</li>
             <li><span>确定意向</span><br />额度和打款时间</li>
             <li><span>完成打款</span><br />制定监管账号</li>
             <li><span>成功购买</span><br />按签署合同收取返现</li>
@@ -180,6 +180,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <div  class="mod_left_item simu_side_nav_box">
         <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>徐翔代表作 </span><span class="dbzuo_fc">泽熙三期</span> </div>
         <div class="simu_detailwrap_2 simu_detailwrap">
+          <!-- 
           <div class="sub_item">
             <div class="sub_hd f_s14">收益测算</div>
             <div class="sub_bd_1">
@@ -213,18 +214,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               </table>
             </div>
           </div>
+           -->
+           
           <div class="sub_item">
             <div class="sub_hd f_s14">净值走势</div>
             <div class="sub_bd_1">
                 <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />
             </div>
           </div>
+          
+          
           <div class="sub_item">
             <div class="sub_hd clearfix">
               <div class="sub_hd_left f_s14">收益排名</div>
               <div class="sub_hd_right f_s14">净值</div>
             </div>
             <div class="sub_bd_3 clearfix">
+            
               <div class="sub_left">
                 <table class="detail_tb_2" width="100%">
                   <thead>
@@ -241,26 +247,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="detail_tb_oyb">
                   <table class="detail_tb_2" width="100%">
                     <tbody>
+                    <c:forEach items="${lstPEProductIncome}" var="peProductIncome">
                       <tr>
-                        <td width="75">近一月</td>
-                        <td width="75">70.30%</td>
-                        <td width="75">---</td>
-                        <td width="75">---</td>
-                        <td width="75">5/8781</td>
-                        <td width="*">1%</td>
+                        <td width="75">${ peProductIncome.year}</td>
+                        <td width="75"><c:if test="${empty peProductIncome.durationIncome}">---</c:if><c:if test="${not empty peProductIncome.durationIncome}"><fmt:formatNumber value="${peProductIncome.durationIncome}" pattern="#0.##"/>%</c:if></td>                        
+                        <td width="75"><c:if test="${empty peProductIncome.industryAverage}">---</c:if><c:if test="${not empty peProductIncome.industryAverage}"><fmt:formatNumber value="${peProductIncome.industryAverage}" pattern="#0.##"/>%</c:if></td>
+                        <td width="75"><c:if test="${empty peProductIncome.hs300}">---</c:if><c:if test="${not empty peProductIncome.hs300}"><fmt:formatNumber value="${peProductIncome.hs300}" pattern="#0.##"/>%</c:if></td>
+                        <td width="75"><c:if test="${empty peProductIncome.rank}">---</c:if><c:if test="${not empty peProductIncome.rank}">${ peProductIncome.rank}</c:if></td>
+                        <td width="*"><c:if test="${empty peProductIncome.rankInterval}">---</c:if><c:if test="${not empty peProductIncome.rankInterval}"><fmt:formatNumber value="${peProductIncome.rankInterval}" pattern="#0.##"/>%</c:if></td>
                       </tr>
-                      <tr>
-                        <td width="75">2015年</td>
-                        <td width="75">837.74%</td>
-                        <td width="75">---</td>
-                        <td width="75">35.82%</td>
-                        <td width="75">2/5888</td>
-                        <td width="*">1%</td>
-                      </tr>
+                    </c:forEach>                                       
                     </tbody>
                   </table>
                 </div>
               </div>
+              
               <div class="sub_right">
                 <table class="detail_tb_2" width="100%">
                   <thead>
@@ -275,48 +276,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="detail_tb_oyb">
                   <table class="detail_tb_2" width="100%">
                     <tbody>
-                      <tr class="even">
-                        <td width="125">2015.04.21</td>
-                        <td width="125">9.3774</td>
-                        <td width="125">9.3774</td>
-                        <td width="*">70.3%</td>
+                     <c:forEach items="${lstPEProductNet}" var="peProductNet" varStatus="status">
+                      <tr class="${status.index%2==0?'even':'odd'}">
+                        <td width="125"><fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy.MM.dd"/></td>
+                        <td width="125"><c:if test="${empty peProductNet.unitNet}">---</c:if><c:if test="${not empty peProductNet.unitNet}"><fmt:formatNumber value="${peProductNet.unitNet}" pattern="#0.####"/></c:if></td>
+                        <td width="125"><c:if test="${empty peProductNet.totalNet}">---</c:if><c:if test="${not empty peProductNet.totalNet}"><fmt:formatNumber value="${peProductNet.totalNet}" pattern="#0.####"/></c:if></td>
+                        <td width="*"><c:if test="${empty peProductNet.increaseRate}">---</c:if><c:if test="${not empty peProductNet.increaseRate}"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="#0.##"/>%</c:if></td>
                       </tr>
-                      <tr class="odd">
-                        <td width="125">2015.03.31</td>
-                        <td width="125">5.5064</td>
-                        <td width="125">5.5064</td>
-                        <td width="*">-0.49%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.03.02</td>
-                        <td width="125">5.5337</td>
-                        <td width="125">5.5337</td>
-                        <td width="*">23.53%</td>
-                      </tr>
-                      <tr class="odd">
-                        <td width="125">2015.02.27</td>
-                        <td width="125">4.4796</td>
-                        <td width="125">4.4796</td>
-                        <td width="*">52.79%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.01.30</td>
-                        <td width="125">2.9318</td>
-                        <td width="125">2.9318</td>
-                        <td width="*">193.18%</td>
-                      </tr>
-                      <tr class="odd">
-                        <td width="125">2015.01.12</td>
-                        <td width="125">1</td>
-                        <td width="125">1</td>
-                        <td width="*">0%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.01.02</td>
-                        <td width="125">1</td>
-                        <td width="125">1</td>
-                        <td width="*">0.00%</td>
-                      </tr>
+                      </c:forEach>                   
                     </tbody>
                   </table>
                 </div>
@@ -348,83 +315,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </tr>
           </thead>
           <tbody>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="好运来巨牛一号"> 好运来巨牛一号 </a></td>
-              <td class="c_l c_b">9.38</td>
-              <td class="c_r c_b">837.74%</td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b">837.74%</td>
-              <td class="c_r c_b">---</td>
-              <td class="c_r c_b">---</td>
-              <td class="c_r c_b">374.22%</td>
-              <td class="c_c">股票策略</td>
+            <c:forEach items="${lstPEProduct}" var="peProduct" varStatus="status">
+             <tr class="${status.index%2==0?'even':'odd'}">
+              <td class="c_l c_b"><a href="" target="_blank" title="好运来巨牛一号"> ${peProduct.simpleName } </a></td>
+              <td class="c_l c_b"><c:if test="${empty peProduct.netWorth}">---</c:if><c:if test="${not empty peProduct.netWorth}"><fmt:formatNumber value="${peProduct.netWorth}" pattern="#0.####"/></c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.accumulatedIncome}">---</c:if><c:if test="${not empty peProduct.accumulatedIncome}"><fmt:formatNumber value="${peProduct.accumulatedIncome}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_c c_b"><c:if test="${empty peProduct.runTime}">---</c:if><c:if test="${not empty peProduct.runTime}">${ peProduct.runTime}</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.nowRate}">---</c:if><c:if test="${not empty peProduct.nowRate}"><fmt:formatNumber value="${peProduct.nowRate}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.towRate}">---</c:if><c:if test="${not empty peProduct.towRate}"><fmt:formatNumber value="${peProduct.towRate}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.oneRate}">---</c:if><c:if test="${not empty peProduct.oneRate}"><fmt:formatNumber value="${peProduct.oneRate}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.yearRate}">---</c:if><c:if test="${not empty peProduct.yearRate}"><fmt:formatNumber value="${peProduct.yearRate}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_c">
+	             <c:choose>  
+	                <c:when test="${peProduct.productLevel =='1'}">股票</c:when>
+	                <c:when test="${peProduct.productLevel =='2'}">期货基金</c:when>
+	                <c:when test="${peProduct.productLevel =='3'}">股票量化</c:when>
+	                <c:when test="${peProduct.productLevel =='4'}">债券型</c:when>
+	                <c:when test="${peProduct.productLevel =='5'}">定向增发</c:when>
+	                <c:when test="${peProduct.productLevel =='3'}">宏观对冲</c:when>
+	                <c:when test="${peProduct.productLevel =='4'}">组合基金</c:when>
+	                <c:when test="${peProduct.productLevel =='5'}">其他</c:when>
+	                 <c:otherwise>---</c:otherwise>  
+	            </c:choose>                                                    
+              </td>
             </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛保盈1号"> 巨牛保盈1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">管理期货</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天字一号"> 巨牛天字一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">管理期货</td>
-            </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="天子期货1号"> 天子期货1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">1月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">组合基金</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天子国际期货1号"> 巨牛天子国际期货1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">2月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">组合基金</td>
-            </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天子港股一号"> 巨牛天子港股一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">---</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">股票策略</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛华南一号"> 巨牛华南一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">1月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">股票策略</td>
-            </tr>
+            </c:forEach>           
           </tbody>
         </table>
       </div>
