@@ -100,7 +100,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</tr>
 					<tr>
 						<td colspan="2">
-							<div class="br_top jingli_miaoxu">
+							<div class="br_top jingli_miaoxu" style="height:40px">
 								<img style="vertical-align: middle" src="assets/img/ui2/dianping.png"
 									alt="" />&nbsp;${TopPeManager.review}
 							</div>
