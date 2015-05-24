@@ -61,7 +61,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="index.html" class="path_item">配资</a> <span class="sep">&gt;</span> <a href="tjmuji.html" class="path_item">淘金募集</a> <span class="sep">&gt;</span> <span class="txt">产品明细</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/raise" class="path_item">淘金募集</a> <span class="sep">&gt;</span> <span class="txt">产品明细</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
