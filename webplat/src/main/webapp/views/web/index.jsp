@@ -155,7 +155,6 @@ document.all(imgg).style.display='block'}}
     <td align="left"><span style="font-size:16px">${xtcpData[0].xtcpSplname}</span></td>
   </tr>
 </div>
-
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[0].xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
 <div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[0].xtcpHd}</span></div>
@@ -251,14 +250,14 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/ui/user01.png" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[0].logo}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
+<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[0].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">罗林正</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">泽熙3期</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[0].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[0].productSimpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  私募一哥，风格犀利，踩点精准， 业绩遥遥领先！  </div>
+<div class="tjs_product_textdiv">  ${smcpData[0].review}  </div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -267,14 +266,14 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/ui/user02.png" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[1].logo}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
+<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[1].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">黄浩平</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">创势翔1号</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[1].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[1].productSimpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  连续两年股票私募冠军，成就私募历史第一人！   </div>
+<div class="tjs_product_textdiv">  ${smcpData[1].review}   </div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -284,14 +283,14 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/ui/user03.png" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[2].logo}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">486.67</span>%</div>
+<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[2].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">孙海宣</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">和聚1期</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[2].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[2].productSimpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  专注成长股，长牛私募，所有产品年化收益29%！  </div>
+<div class="tjs_product_textdiv">  ${smcpData[2].review}  </div>
 <div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
 
 </div>
@@ -344,7 +343,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">盈利全归您</span>亏损算我们</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/freeActivity" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
@@ -359,7 +358,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">4倍</span> 杠杆 <span class="tjs_shalloworange">4倍</span> 利润</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/dayCapital" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
@@ -374,7 +373,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">1倍</span> 杠杆，风险超低</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/lowCapital" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 

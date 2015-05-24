@@ -13,10 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.pe.model.PEManagerProduct;
+import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
-import com.tjs.admin.xintuo.service.impl.ProductXtcpServiceImpl;
 
 /**
  * 公共视图控制器
@@ -32,6 +33,8 @@ public class WebController {
     private UserService userService;
     @Resource
     private IProductXtcpService productXtcpService;
+    @Resource
+    private PEManagerService pEManagerService;
     
 	/**
 	 * 首页－默认
@@ -55,7 +58,7 @@ public class WebController {
                 request.getSession().setAttribute("userInfo", authUserInfo);
         	}
 		}
-		
+
 
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
 	
@@ -64,6 +67,15 @@ public class WebController {
 		}
 		
 		model.addAttribute("xtcpData", xtcp);
+
+
+		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+	
+		for(int i=smcp.size(); i<3; i++){
+			smcp.add(new PEManagerProduct());
+		}
+		
+		model.addAttribute("smcpData", smcp);
 		
 
 		if (isLogin) {
@@ -90,6 +102,15 @@ public class WebController {
 		}
 		
 		model.addAttribute("xtcpData", xtcp);
+
+		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+	
+		for(int i=smcp.size(); i<3; i++){
+			smcp.add(new PEManagerProduct());
+		}
+		
+		model.addAttribute("smcpData", smcp);
+		
 		
 		return "web/index";
 	}
@@ -110,6 +131,15 @@ public class WebController {
 		}
 		
 		model.addAttribute("xtcpData", xtcp);
+
+		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+	
+		for(int i=smcp.size(); i<3; i++){
+			smcp.add(new PEManagerProduct());
+		}
+		
+		model.addAttribute("smcpData", smcp);
+		
 		
 		return "web/home";
 	}
