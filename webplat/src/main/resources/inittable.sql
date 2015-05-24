@@ -46,7 +46,7 @@ CREATE TABLE `tjs_order` (
   `order_operate_date` datetime DEFAULT NULL COMMENT '订单处理时间',
   `order_remark` varchar(2000) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='预定信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='预定信息表';
 
 DROP TABLE IF EXISTS `tjs_product_xtcp`;
 CREATE TABLE `tjs_product_xtcp` (
@@ -187,7 +187,6 @@ CREATE TABLE `pe_manager_product` (
 
 
 DROP TABLE IF EXISTS `pe_product`;
-
 CREATE TABLE `pe_product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `name` varchar(100) DEFAULT NULL COMMENT '基金名称',
@@ -225,6 +224,7 @@ CREATE TABLE `pe_product` (
   `pecompany_name` varchar(100) DEFAULT NULL COMMENT '私募公司名称',
   `manager_id` bigint(20) DEFAULT NULL COMMENT '经理ID',
   `manager_name` varchar(100) DEFAULT NULL COMMENT '经理名称',
+  `is_show` int(11) DEFAULT NULL COMMENT '是否代表作: 1:是,  2:否',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品';
 
