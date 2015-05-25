@@ -13,8 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
-import com.tjs.admin.pe.model.PEManagerProduct;
-import com.tjs.admin.pe.service.PEManagerService;
+import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
@@ -34,7 +34,7 @@ public class WebController {
     @Resource
     private IProductXtcpService productXtcpService;
     @Resource
-    private PEManagerService pEManagerService;
+    private PEProductService pEProductService;
     
 	/**
 	 * 首页－默认
@@ -69,10 +69,10 @@ public class WebController {
 		model.addAttribute("xtcpData", xtcp);
 
 
-		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
 	
 		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEManagerProduct());
+			smcp.add(new PEProduct());
 		}
 		
 		model.addAttribute("smcpData", smcp);
@@ -103,10 +103,10 @@ public class WebController {
 		
 		model.addAttribute("xtcpData", xtcp);
 
-		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
 	
 		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEManagerProduct());
+			smcp.add(new PEProduct());
 		}
 		
 		model.addAttribute("smcpData", smcp);
@@ -132,10 +132,10 @@ public class WebController {
 		
 		model.addAttribute("xtcpData", xtcp);
 
-		List<PEManagerProduct> smcp =  pEManagerService.selectStarPEManagerIndex();
+		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
 	
 		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEManagerProduct());
+			smcp.add(new PEProduct());
 		}
 		
 		model.addAttribute("smcpData", smcp);

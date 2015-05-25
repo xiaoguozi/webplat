@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEManagerProduct;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
@@ -128,5 +129,12 @@ public interface PEProductService  {
 	 * @return
 	 */
 	List<PETopProduct> getMinCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int  yearCount);
+	
+	/**
+    * 查询明星私募经理
+    * @param peManagerCtrlModel
+    * @return
+    */
+	List<PEProduct> selectStarPEProductIndex();   
 	
 }

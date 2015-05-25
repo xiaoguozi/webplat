@@ -324,5 +324,20 @@ public class PEProductServiceImpl implements PEProductService {
 		}
 		return lstRateVO;
 	}
+
+	@Override
+	public List<PEProduct> selectStarPEProductIndex() {
+		PEProductCtrlModel peProductCtrlModel = new PEProductCtrlModel();
+		peProductCtrlModel.setPageNo(1);
+		peProductCtrlModel.setPageSize(3);
+		peProductCtrlModel.setSortField("recommend_sequence");
+		peProductCtrlModel.setSortType("asc");
+		PEProduct peProduct = new PEProduct();
+		peProduct.setStatus(2);
+		peProduct.setRecommendLocation("1");
+		peProductCtrlModel.setPeProduct(peProduct);		
+		List<PEProduct> result  = peProductMappper.selectStarPEProductIndex(peProductCtrlModel);
+		return result;
+	}
 	
 }

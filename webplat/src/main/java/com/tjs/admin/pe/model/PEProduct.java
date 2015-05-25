@@ -125,9 +125,23 @@ public class PEProduct {
 	
 	/** 是否代表作 1:是，2：否 */
 	private int isShow;
+	
+	/* 经理Log */
+	private String managerLog;
 
+	/**经理点评*/
+	private String managerReview;
+	
 	public long getId() {
 		return id;
+	}
+
+	public String getManagerReview() {
+		return managerReview;
+	}
+
+	public void setManagerReview(String managerReview) {
+		this.managerReview = managerReview;
 	}
 
 	public void setId(long id) {
@@ -421,6 +435,16 @@ public class PEProduct {
 	public void setIsShow(int isShow) {
 		this.isShow = isShow;
 	}
+	
+
+	public String getManagerLog() {
+		return managerLog;
+	}
+
+	public void setManagerLog(String managerLog) {
+		this.managerLog = managerLog;
+	}
+
 
 	@Override
 	public String toString() {
