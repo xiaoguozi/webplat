@@ -1296,7 +1296,7 @@
 }
 .wypz {
     background: url(../../img/peizi/mypz.png) no-repeat 15px 8px;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 2px 0;
     font-size: 16px;
     text-indent: 1em;
@@ -1339,7 +1339,7 @@
 .bor_dashed {
     border-bottom:1px dashed #d3d3d3;
 }
-.moneymx,mmxg,.wypz_div span {
+.moneymx,.mmxg,.wypz_div span {
     height:40px;
     line-height:40px;
     display:block;
