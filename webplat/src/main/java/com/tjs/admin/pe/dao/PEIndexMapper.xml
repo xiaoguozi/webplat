@@ -38,10 +38,8 @@
 		  M.REVIEW manager_review
 		FROM
 		  PE_PRODUCT P,
-		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M 
-		WHERE P.id = MP.product_id 
-		  AND MP.MANAGER_ID = M.ID 
+		WHERE p.manager_id = m.id
 		  AND P.recommend_location = 2
 		  AND P.status = 2
 		ORDER BY P.ACCUMULATED_INCOME DESC
@@ -59,15 +57,41 @@
 		  M.REVIEW manager_review
 		FROM
 		  PE_PRODUCT P,
-		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M 
-		WHERE P.id = MP.product_id 
-		  AND MP.MANAGER_ID = M.ID 
+		WHERE p.manager_id = m.id
 		  AND P.status = 2
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,4
     </select>
     
+    <select id="getTop10PEProductList" resultMap="peIndexProductMap" parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        
+        SELECT 
+		  P.id,
+		  P.simple_name name,
+		  P.accumulated_income,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  M.REVIEW manager_review,	
+		  p.now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  p.pecompany_name company_name
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER M
+		WHERE P.manager_id = M.id
+			  AND P.status = 2
+		  <if test="peType!=0">
+		      AND P.fund_type=#{peType}
+		  </if>
+			  
+		ORDER BY p.accumulated_income DESC
+		LIMIT 0,10
+		
+    </select>
+    <!-- 
  	 <select id="getTop10PEProductList" resultMap="peIndexProductMap" parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         
         SELECT 
@@ -104,6 +128,7 @@
 		ORDER BY pn.total_net DESC
 		LIMIT 0,10
     </select>
+     -->
     
     
     <select id="getAnyPEProductListCount" resultType="int"  
@@ -112,11 +137,9 @@
 		  count(P.id) c
 		FROM
 		  PE_PRODUCT P,
-		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M,
 		  PE_COMPANY C
-		WHERE P.id = MP.product_id 
-		  AND MP.MANAGER_ID = M.ID 
+		WHERE p.manager_id = m.id
 		  AND M.company_id = C.id
 		
 		<choose> 
@@ -177,11 +200,9 @@
 		  M.REVIEW manager_review
 		FROM
 		  PE_PRODUCT P,
-		  PE_MANAGER_PRODUCT MP,
 		  PE_MANAGER M,
 		  PE_COMPANY C
-		WHERE P.id = MP.product_id 
-		  AND MP.MANAGER_ID = M.ID 
+		WHERE p.manager_id = m.id
 		  AND M.company_id = C.id
 		
 		<choose> 
@@ -226,7 +247,85 @@
         
     </select>
     
+    <select id="getRatePEProductListCount" resultType="int"  
+    	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        SELECT 
+		  count(P.id)
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER M,
+		  PE_COMPANY C 
+		WHERE p.manager_id = m.id
+		  AND p.pecompany_id = c.id
+		  <choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>	
+		 
+		 <if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		 </if>
+		 
+		 <if test="keyword!=null and keyword!=''">
+		    AND (P.name LIKE CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+		 
+        
+    </select>
     
+ 	 <select id="getRatePEProductList" resultMap="peIndexProductMap"  
+ 	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+        SELECT 
+		  P.id,
+		  P.simple_name NAME,
+		  P.accumulated_income,
+		  P.net_worth,
+		  P.fund_type,
+		  M.ID manager_id,
+		  M.NAME manager_name,
+		  M.LOGO manager_logo,
+		  p.now_rate,
+		  P.one_rate,
+		  P.tow_rate,
+		  C.name company_name,
+		  M.REVIEW manager_review 
+		FROM
+		  PE_PRODUCT P,
+		  PE_MANAGER M,
+		  PE_COMPANY C 
+		WHERE p.manager_id = m.id
+		  AND p.pecompany_id = c.id
+		  <choose> 
+		     <when test="onLine==1">AND P.status = 2</when>
+		     <when test="onLine==0">AND (P.status = 2 OR P.status = 3)</when>
+		     <otherwise> </otherwise>
+		 </choose>	
+		 
+		 <if test="peType!=0">
+		    AND P.fund_type=#{peType}
+		 </if>
+		 
+		 <if test="keyword!=null and keyword!=''">
+		    AND (P.name LIKE CONCAT('%',#{keyword},'%') OR C.name like CONCAT('%',#{keyword},'%'))
+		 </if>
+			
+		<if test="currentYearPeriod==0">
+		   	ORDER BY p.now_rate DESC 
+		</if>
+		<if test="currentYearPeriod==1">
+		   	ORDER BY P.one_rate DESC 
+		</if>
+		<if test="currentYearPeriod==2">
+		   	ORDER BY P.tow_rate DESC
+		</if>
+		
+		LIMIT #{limitStart} ,#{pageSize}
+		        
+    </select>
+    
+    
+    <!-- 
     <select id="getRatePEProductListCount" resultType="int"  
     	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
         SELECT 
@@ -329,6 +428,7 @@
 		LIMIT #{limitStart} ,#{pageSize}
 		        
     </select>
+    -->
     
     <!-- get the max rate in one year -->
     <select id="getMaxCompareYearRate" resultMap="peIndexProductMap"  

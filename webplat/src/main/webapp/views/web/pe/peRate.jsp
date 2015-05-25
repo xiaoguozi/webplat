@@ -92,7 +92,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <input type="hidden" id="currentYearPeriod" name="currentYearPeriod" value="${simuSearchVO.currentYearPeriod}" />
                             
                              </form>
-                            <div class="mult_item">
+                            <div class="mult_item" style="display:none;">
                                 <div class="mult_name">年度收益排名</div>
                                 <div class="mult_con" id="tjs_years">
                                 	<a href="" tag="0" class="mult_lk">不限</a>
@@ -216,7 +216,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											
 											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span>${peAllProduct.netWorth }</span></td>
 											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span><fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
-											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span class="f_f80">${peAllProduct.timeRate }%</span></td>
+											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span class="f_f80">${peAllProduct.nowRate }%</span></td>
 											<td class="c_r_s" style="text-align: right;padding-right: 0px;">${peAllProduct.oneRate }%</td>
 											<td class="c_r_s" style="text-align: right;padding-right: 0px;">${peAllProduct.towRate }%</td>
 											<td class="c_b">
