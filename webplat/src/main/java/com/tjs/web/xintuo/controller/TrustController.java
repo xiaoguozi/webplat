@@ -128,7 +128,7 @@ public class TrustController {
     	//判断请求页
         int totalPageNO = xinTuoSeachCtrlVO.getTotalPageSize();//总页数
         int currentPageNo = 1;//当前页
-        if(xinTuoSeachCtrlVO.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        if(xinTuoSeachCtrlVO.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
         	currentPageNo =1;
         } else if(xinTuoSeachCtrlVO.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
         	currentPageNo =totalPageNO;
