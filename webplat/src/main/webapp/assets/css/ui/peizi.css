@@ -1307,6 +1307,24 @@
         color:#3EAFE9;
         cursor:pointer;
     }
+    
+    
+.zlsz {
+	background: url(../../img/peizi/zlsz.png) no-repeat 15px 8px;
+    margin-top: 0px;
+    padding: 2px 0;
+    font-size: 16px;
+    text-indent: 1em;
+    border-bottom:1px solid #d3d3d3;
+    border-top:1px solid #d3d3d3;
+}
+
+.zlsz:hover{
+        color:#3EAFE9;
+        cursor:pointer;
+  }
+    
+        
 /*.moneymx ,.ttp, .yyp, .dxp {
     display:none;
 }*/
@@ -1321,7 +1339,7 @@
 .bor_dashed {
     border-bottom:1px dashed #d3d3d3;
 }
-.moneymx,.wypz_div span {
+.moneymx,mmxg,.wypz_div span {
     height:40px;
     line-height:40px;
     display:block;
