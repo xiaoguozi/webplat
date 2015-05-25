@@ -134,15 +134,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				            	<c:if test="${simuSearchVO.peType==8}">其他</c:if>
 				            </label>
 				            <ul class="select" style="filter:alpha(opacity=100);">
-				            	<li type="0">全部策略</li>
-				                <li type="1">股票</li>
-				                <li type="2">期货基金</li>
-				                <li type="3">股票量化</li>
-				                <li type="4">债券型</li>
-				                <li type="5">定向增发</li>
-				                <li type="6">宏观对冲</li>
-				                <li type="7">组合基金</li>
-				                <li type="8">其他</li>
+				            	<li type="0" style="list-style-type:none;">全部策略</li>
+				                <li type="1" style="list-style-type:none;">股票</li>
+				                <li type="2" style="list-style-type:none;">期货基金</li>
+				                <li type="3" style="list-style-type:none;">股票量化</li>
+				                <li type="4" style="list-style-type:none;">债券型</li>
+				                <li type="5" style="list-style-type:none;">定向增发</li>
+				                <li type="6" style="list-style-type:none;">宏观对冲</li>
+				                <li type="7" style="list-style-type:none;">组合基金</li>
+				                <li type="8" style="list-style-type:none;">其他</li>
 				            </ul>
 				        </div>
                         <!--<select class="tjs_select">
