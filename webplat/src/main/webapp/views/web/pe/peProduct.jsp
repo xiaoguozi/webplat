@@ -89,7 +89,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<c:forEach items="${top4Data}" var="peTop4Product">
 							<li class="hotpro_item bg_hover">
 								<div class="hotpro_hd">
-									<a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop4Product.managerId}" target="_blank"><span class="txt_1">${peTop4Product.managerName}</span></a>&nbsp;
+									<a href="rest/web/pe/peIndexMDetail?managerId=${peTop4Product.managerId}" target="_blank"><span class="txt_1">${peTop4Product.managerName}</span></a>&nbsp;
 									<a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop4Product.id}" target="_blank"><span class="txt_2">${peTop4Product.name}</span> </a>
 								</div>
 								<div class="hotpro_income">
@@ -295,13 +295,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 			
 			<!-- 翻页开始 -->
-			<div class="pages pgbtn" id="divPages" style="margin-top: 30px;">
+			<div class="pages pgbtn">
 			    <table class=pagetb cellspacing=0>
 			      <tbody>
 			        <tr>
-			        <td class=pagnum><a title=首页 href="#" page_no="1">|<</a></td>
+			        <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
 			        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${simuSearchVO.pageNo-1}"><</a></td>
-			        <c:forEach var="item" varStatus="status" begin="1" end="${simuSearchVO.totalPageSize}">             
+			        <c:if test="${simuSearchVO.totalPageSize<=9||(simuSearchVO.totalPageSize>9&&simuSearchVO.pageNo<=5)}">
+			       	 <c:forEach var="item" varStatus="status" begin="1" end="${simuSearchVO.totalPageSize>9?9:simuSearchVO.totalPageSize}">             
+				        <c:choose>  
+				          <c:when test="${status.index==simuSearchVO.pageNo }"> 
+				           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+				          </c:when> 
+				          <c:otherwise>
+				          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+				          </c:otherwise> 
+				        </c:choose>             
+			       </c:forEach>
+			       </c:if>
+			       
+			       <c:if test="${simuSearchVO.totalPageSize>9&&simuSearchVO.pageNo>5&&simuSearchVO.totalPageSize>simuSearchVO.pageNo+4}">
+			        <c:forEach var="item" varStatus="status" begin="${simuSearchVO.pageNo-4}" end="${simuSearchVO.pageNo+4}">             
 			        <c:choose>  
 			          <c:when test="${status.index==simuSearchVO.pageNo }"> 
 			           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
@@ -310,9 +324,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
 			          </c:otherwise> 
 			        </c:choose>             
-			        </c:forEach>
+			        </c:forEach>							        
+			       </c:if>
+			       
+			       
+			       <c:if test="${simuSearchVO.totalPageSize>9&&simuSearchVO.pageNo>5&&simuSearchVO.totalPageSize<=simuSearchVO.pageNo+4}">
+			        <c:forEach var="item" varStatus="status" begin="${simuSearchVO.totalPageSize-8}" end="${simuSearchVO.totalPageSize}">             
+			        <c:choose>  
+			          <c:when test="${status.index==simuSearchVO.pageNo }"> 
+			           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+			          </c:when> 
+			          <c:otherwise>
+			          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
+			          </c:otherwise> 
+			        </c:choose>             
+			        </c:forEach>							        
+			       </c:if>
 			        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${simuSearchVO.pageNo+1}">></a></td>
-			        <td class=pagnum><a title=尾页 href="#" page_no="${simuSearchVO.totalPageSize}">>|</a></td>          
+			        <td class=pagnum><a title=最前一页 href="#" page_no="${simuSearchVO.totalPageSize}">>|</a></td>          
 			        </tr>
 			      </tbody>
 			    </table>

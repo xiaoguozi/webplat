@@ -99,7 +99,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
                                     <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTop4Product.accumulatedIncome}</span>%</div>
-                                    <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop4Product.managerId}" target="_blank">${peTop4Product.managerName}</a></div>
+                                    <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${peTop4Product.managerId}" target="_blank">${peTop4Product.managerName}</a></div>
                                     <div class="tjs_private_textdiv">产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop4Product.id}" target="_blank">${peTop4Product.name}</a></div>
                                 </div>
                                 <div class="tjs_product_textdiv">${peTop4Product.managerReview} </div>
@@ -133,7 +133,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				            	<c:if test="${simuSearchVO.peType==7}">组合基金</c:if>
 				            	<c:if test="${simuSearchVO.peType==8}">其他</c:if>
 				            </label>
-				            <ul class="select">
+				            <ul class="select" style="filter:alpha(opacity=100);">
 				            	<li type="0">全部策略</li>
 				                <li type="1">股票</li>
 				                <li type="2">期货基金</li>
@@ -184,7 +184,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <td class="tjs_table_td_two">
 	                                <div class="tjs_table_div_right">
 	                                    <p class="tjs_table_ptitle"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop10Product.id}" target="_blank" >${peTop10Product.name}</a></p>
-	                                    <p class="tjs_table_pname"><a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop10Product.managerId}" target="_blank" style="color: #FE6700;">${peTop10Product.managerName}</a></p>
+	                                    <p class="tjs_table_pname"><a href="rest/web/pe/peIndexMDetail?managerId=${peTop10Product.managerId}" target="_blank" style="color: #FE6700;">${peTop10Product.managerName}</a></p>
 	                                    <p>${peTop10Product.companyName}</p>
 	                                </div>
 	                            </td>
@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                <div class="tjs_table_div_right">
 	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
 	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.timeRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.timeRate*100%100}" pattern="00"/>%</span></p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.nowRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.nowRate*100%100}" pattern="00"/>%</span></p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">
@@ -262,6 +262,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $("#currentYear").val($(this).attr("tag"));
     	    	$("#modalForm").attr("action",$("#modalForm").attr("action")).submit();
     	    });
+            
         }
         
       	//--预约--                   
