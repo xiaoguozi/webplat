@@ -89,15 +89,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                		<tr >
 		                		<td class="f_090"><a href="rest/web/pe/peIndexProductDetail?peProductId=${yearList[0].id}" target="_blank">${yearList[0].name}</a></td>
 		                		<td>
-		                			${yearList[0].timeRate}${yearVO.timeRate!=null?'%':''}
+		                			<c:if test="${yearList[0].timeRate!=null && yearList[0].timeRate!='0.00' && yearList[0].timeRate!=0}">
+		                				${yearList[0].timeRate}%
+		                			</c:if>
 		                		</td>
 		                		<td>
-		                			${yearList[status.index].yearRate}${yearList[status.index].yearRate!=null?'%':''}
+		                			<c:if test="${yearList[status.index].yearRate!=null && yearList[status.index].yearRate!='0.00' && yearList[status.index].yearRate!=0}">
+			                			${yearList[status.index].yearRate}${yearList[status.index].yearRate!=null?'%':''}
+		                			</c:if>
 		                		</td>
 		                		
 		                		<c:forEach items="${yearList}" var="yearVO">
 		                			<td>
-		                				 ${yearVO.timeRate}${yearVO.timeRate!=null?'%':''}
+		                				<c:if test="${yearVO.timeRate!=null && yearVO.timeRate!='0.00' && yearVO.timeRate!=0}">
+		                				 	${yearVO.timeRate}${yearVO.timeRate!=null?'%':''}
+		                				</c:if>
 		                			</td>
 		                		</c:forEach>
 		                		
