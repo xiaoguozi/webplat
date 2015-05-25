@@ -601,7 +601,7 @@ a.tjs_footer_qq:hover{
 
 
 .tjs_register_left{ float:left; width:370px; height:56px; line-height:36px; color:#666;text-align:right; font-weight:bold;}
-.tjs_register_right{ margin-left:378px; height:66px;text-align:left;width: auto;position: relative;}
+.tjs_register_right{ margin-left:20px; height:66px;text-align:left;width: auto;position: relative;}
 .tjs_register_rror{display: inline-block;
 	width:240px;
 	height:24px;
