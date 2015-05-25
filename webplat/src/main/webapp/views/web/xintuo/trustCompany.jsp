@@ -68,7 +68,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_cpy_typle">
 <c:forEach items="${productXtgsIndex}" var="xtgs" varStatus="status" >
 <div class="tjs_cpy_unit  <c:if test='${status.index!=3}'>tjs_right_1pxdashed</c:if>">
-<div class="tjs_cpy_icodiv"> <a href="rest/web/xintuo/trust/companyProfile?id=${xtgs.xtgsId}"><img src="assets/img/xintuo/big/${xtgs.xtgsLog}" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
+<div class="tjs_cpy_icodiv"> <a href="rest/web/xintuo/trust/companyProfile?id=${xtgs.xtgsId}"><img src="assets/img/xintuo/middle/${xtgs.xtgsLog}" width="106" height="95"  class="tjs_cpy_logoimg"/></a></div>
 <div class="tjs_cpy_textdiv">股东背景：<span style="color:#333">${xtgs.xgtsGsxz}</span><br /><br />   注册资本：<span style="color:#333"><fmt:formatNumber value="${xtgs.xgtsZczb}" pattern="#0.####"/>万</span><br /><br />    管理规模：<span style="color:#333">${xtgs.xgtsZcglgm}</span><br />
 </div>
 </div>
