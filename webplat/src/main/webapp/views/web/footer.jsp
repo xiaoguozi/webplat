@@ -29,7 +29,7 @@
         <div class="foot_about_box">
             <ul class="about_box1">
                 <li><img class="addr_home" src="assets/img/ui2/home.png" alt=""></li><li><span>联系地址</span></li><li class="w217">深圳市福田区福强路4001号文化创意园A座6层
-（地铁龙岗线益田站D出口）。</li>
+（地铁龙岗线益田站D出口）</li>
             </ul>
             <ul class="about_box1">
                 <li><img class="addr_home" src="assets/img/ui2/phone.png" alt=""></li><li><span>热线电话</span></li><li class="w217 lh40">4006-114-088</li>
