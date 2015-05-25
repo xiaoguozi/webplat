@@ -133,7 +133,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				            	<c:if test="${simuSearchVO.peType==7}">组合基金</c:if>
 				            	<c:if test="${simuSearchVO.peType==8}">其他</c:if>
 				            </label>
-				            <ul class="select">
+				            <ul class="select" style="filter:alpha(opacity=100);">
 				            	<li type="0">全部策略</li>
 				                <li type="1">股票</li>
 				                <li type="2">期货基金</li>
@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                <div class="tjs_table_div_right">
 	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
 	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.timeRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.timeRate*100%100}" pattern="00"/>%</span></p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.nowRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.nowRate*100%100}" pattern="00"/>%</span></p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">
@@ -262,6 +262,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $("#currentYear").val($(this).attr("tag"));
     	    	$("#modalForm").attr("action",$("#modalForm").attr("action")).submit();
     	    });
+            
         }
         
       	//--预约--                   
