@@ -41,6 +41,49 @@
    		<result property="isShow" column="is_show" jdbcType="INTEGER"  />
     </resultMap>
     
+    
+    <resultMap id="peProductManagerMap" type="com.tjs.admin.pe.model.PEProduct">
+        <id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="name" column="name" jdbcType="VARCHAR"  />
+   		<result property="simpleName" column="simple_name" jdbcType="VARCHAR"  />
+   		<result property="netWorth" column="net_worth"  />
+   		<result property="accumulatedIncome" column="accumulated_income"  />
+   		<result property="netWorthTime" column="net_worth_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="setupTime" column="setup_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="runTime" column="run_time"  jdbcType="VARCHAR"  />
+   		<result property="nowRate" column="now_rate"   />
+   		<result property="towRate" column="tow_rate"  />
+   		<result property="oneRate" column="one_rate"   />
+   		<result property="yearRate" column="year_rate"  />
+   		<result property="fundType" column="fund_type" jdbcType="INTEGER" />
+   		<result property="productLevel" column="product_level" jdbcType="INTEGER" />
+   		<result property="distributionPlatform" column="distribution_platform" jdbcType="VARCHAR"  />
+   		<result property="custodianBank" column="custodian_bank" jdbcType="VARCHAR"  />
+   		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
+   		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
+   		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
+   		<result property="openTime" column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="subscripStart" column="subscrip_start" />
+   		<result property="subscripFee" column="subscrip_fee"  />
+   		<result property="exitFee" column="exit_fee"  />
+   		<result property="managementFee" column="management_fee"  />
+   		<result property="recommendReason" column="recommend_reason" jdbcType="VARCHAR"  />
+   		<result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+   		<result property="lastModifyDate" column="last_modify_date" jdbcType="TIMESTAMP" />
+   		<result property="createrId" column="creater_id" jdbcType="BIGINT"  />
+   		<result property="createrName" column="creater_name" jdbcType="VARCHAR" />
+   		<result property="recommendLocation" column="recommend_location" jdbcType="VARCHAR"  />
+   		<result property="recommendSequence" column="recommend_sequence" jdbcType="VARCHAR"  />
+   		<result property="status" column="status" jdbcType="INTEGER" />
+   		<result property="pecompanyId" column="pecompany_id" jdbcType="BIGINT" />
+   		<result property="pecompanyName" column="pecompany_name" jdbcType="VARCHAR"  />
+   		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
+   		<result property="managerName" column="manager_name" jdbcType="VARCHAR"  />
+   		<result property="isShow" column="is_show" jdbcType="INTEGER"  />
+   		<result property="managerLog" column="manager_log" jdbcType="VARCHAR"  />
+   		<result property="managerReview" column="manager_review" jdbcType="VARCHAR"  />
+    </resultMap>
+    
     <sql id="Base_select_Column_List">
         id, name, simple_name, net_worth, accumulated_income,
         net_worth_time, setup_time, run_time, now_rate, tow_rate,
@@ -76,6 +119,10 @@
          	AND (status = #{peProduct.status})
          </if>
          
+         <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
+         	AND (recommend_location = #{peProduct.recommendLocation})
+         </if>
+         
          <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
          </if>
@@ -104,6 +151,9 @@
          	AND (status = #{peProduct.status})
          </if>
          
+          <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
+         	AND (recommend_location = #{peProduct.recommendLocation})
+           </if>        
         <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
          </if>
@@ -201,5 +251,33 @@
          FROM pe_product
          WHERE is_show=#{isShow}
          AND manager_id=#{managerId}
+    </select>
+    
+   
+    
+    <select id="selectStarPEProductIndex" resultMap="peProductManagerMap" parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel">
+        SELECT
+          pe_product.id, pe_product.name, simple_name, net_worth, accumulated_income,
+        net_worth_time, setup_time, run_time, now_rate, tow_rate,
+        one_rate, year_rate, fund_type, product_level, distribution_platform,
+        custodian_bank, stockbrokers, fund_property, whether_structure,
+        open_time, subscrip_start, subscrip_fee, exit_fee, management_fee,
+        recommend_reason, pe_product.create_date, pe_product.last_modify_date, pe_product.creater_id,
+        pe_product.creater_name, pe_product.recommend_location, pe_product.recommend_sequence, pe_product.status,
+        pecompany_id, pecompany_name, manager_id, manager_name, is_show,pe_manager.logo manager_log,pe_manager.review manager_review
+         FROM pe_product,pe_manager
+         WHERE manager_id = pe_manager.id        
+         <if test="peProduct.status != 0">
+         	AND (pe_product.status = #{peProduct.status})
+         </if>        
+         <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
+         	AND (pe_product.recommend_location = #{peProduct.recommendLocation})
+         </if>                     
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>        
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>  
     </select>
 </mapper>

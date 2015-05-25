@@ -29,4 +29,7 @@ public interface PEProductMapper  {
 	void updatePEProductShow(PEProduct peProduct);
 	
 	List<PEProduct> getPEProductShow(PEProduct peProduct);
+	
+	
+	List<PEProduct> selectStarPEProductIndex(PEProductCtrlModel peProductCtrlModel); 
 }
