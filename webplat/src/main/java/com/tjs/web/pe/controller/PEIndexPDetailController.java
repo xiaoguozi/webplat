@@ -85,9 +85,9 @@ public class PEIndexPDetailController {
 		PEProductCtrlModel productModel = new PEProductCtrlModel(); 
 		productModel.setManagerId(String.valueOf(peProduct.getManagerId()));
 		List<PEProduct> lstManageProducts = peProductService.getPEProductList(productModel);
-		for(int i=0; i<lstManageProducts.size(); i++){
-			lstManageProducts.get(i).setRunTime(Integer.valueOf(lstManageProducts.get(i).getRunTime())/30+"");
-		}
+//		for(int i=0; i<lstManageProducts.size(); i++){
+//			lstManageProducts.get(i).setRunTime(Integer.valueOf(lstManageProducts.get(i).getRunTime())/30+"");
+//		}
 		
 		model.addAttribute("lstYear", lstCommonVO);
 		model.addAttribute("peProduct", peProduct);
