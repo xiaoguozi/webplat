@@ -1,5 +1,6 @@
 package com.tjs.admin.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author StarZou
  * @since 2014年7月5日 下午12:07:20
  **/
-public class User {
+public class User implements Serializable {
     private Long id;
 
     private String username;

@@ -1,5 +1,6 @@
 package com.tjs.admin.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,8 +9,10 @@ import java.util.Date;
  * @author swpan
  * @since 2014年7月5日 下午12:07:20
  **/
-public class UserInfo {
-    private Long id;
+public class UserInfo implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     private Long userId;
     private String nickName;

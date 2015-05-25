@@ -1,12 +1,14 @@
 package com.tjs.admin.model;
 
+import java.io.Serializable;
+
 /**
  * 角色模型
  * 
  * @author StarZou
  * @since 2014年7月17日 下午1:02:25
  **/
-public class Role {
+public class Role implements Serializable{
     private Long id;
 
     private String roleName;
