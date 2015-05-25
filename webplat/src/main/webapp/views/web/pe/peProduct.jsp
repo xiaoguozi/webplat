@@ -89,7 +89,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<c:forEach items="${top4Data}" var="peTop4Product">
 							<li class="hotpro_item bg_hover">
 								<div class="hotpro_hd">
-									<a href="rest/web/pe/peIndexMDetail?peManagerId=${peTop4Product.managerId}" target="_blank"><span class="txt_1">${peTop4Product.managerName}</span></a>&nbsp;
+									<a href="rest/web/pe/peIndexMDetail?managerId=${peTop4Product.managerId}" target="_blank"><span class="txt_1">${peTop4Product.managerName}</span></a>&nbsp;
 									<a href="rest/web/pe/peIndexProductDetail?peProductId=${peTop4Product.id}" target="_blank"><span class="txt_2">${peTop4Product.name}</span> </a>
 								</div>
 								<div class="hotpro_income">
