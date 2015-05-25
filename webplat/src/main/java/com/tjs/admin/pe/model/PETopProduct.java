@@ -173,9 +173,9 @@ public class PETopProduct {
 	}
 
 	public BigDecimal getTimeRate() {
-		if(nowRate!=null){
-			timeRate = nowRate.subtract(new BigDecimal(1)).multiply(new BigDecimal(100));
-		}
+//		if(nowRate!=null){
+//			timeRate = nowRate.subtract(new BigDecimal(1)).multiply(new BigDecimal(100));
+//		}
 		return timeRate;
 	}
 

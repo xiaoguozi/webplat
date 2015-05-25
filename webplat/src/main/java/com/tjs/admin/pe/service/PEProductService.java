@@ -113,5 +113,20 @@ public interface PEProductService  {
 	 * @param productId
 	 * @return
 	 */
-	List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO);
+	List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int yearCount);
+	
+	/**
+	 * 查询对比产品的每年最低的收益
+	 * @param productId
+	 * @return
+	 */
+	List<PETopProduct> getMaxCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int yearCount);
+	
+	/**
+	 * 查询对比产品的每年最低的收益
+	 * @param productId
+	 * @return
+	 */
+	List<PETopProduct> getMinCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int  yearCount);
+	
 }

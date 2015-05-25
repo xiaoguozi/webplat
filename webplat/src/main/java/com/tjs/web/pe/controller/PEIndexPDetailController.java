@@ -1,6 +1,8 @@
 package com.tjs.web.pe.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,8 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
+import com.tjs.admin.pe.model.PECommonVO;
+import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.model.PETopProduct;
+import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.admin.pe.service.PEManagerService;
+import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -28,98 +38,54 @@ public class PEIndexPDetailController {
 	@Resource
 	private PEProductService peProductService;
 	
+	@Resource
+	private PEProductNetService PEProductNetService;
+	
+	@Resource
+	private PEManagerService peManagerService;
+	
+	@Resource
+	private PECompanyService peCompanyService;
+	
 	
 	@RequestMapping("/peIndexProductDetail")
-    public String index(PEProductCtrlModel peProductCtrlModel, Model model) {
-//		//查询4个顶级私募
-//		List<PETopProduct> showData = new ArrayList<PETopProduct>();
-//    	showData = peProductService.getTop4AnyPEProductList();
-//    	model.addAttribute("top4Data", showData);
-//    	
-//    	//全部产品
-//    	peProductCtrlModel.setPageSize(10);
-//    	List<PETopProduct> lstAll = new ArrayList<PETopProduct>();
-//    	lstAll = peProductService.getAnyPEProductList(peProductCtrlModel);
-//    	model.addAttribute("lstAll", lstAll);
-    	
+    public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
+		List<PECommonVO> lstCommonVO = new ArrayList<PECommonVO>();
+		//年份
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    	for(int i=0; i<4; i++){
+    		PECommonVO c1 = new PECommonVO();
+        	c1.setNetYear(String.valueOf(currentYear - i));
+        	lstCommonVO.add(c1);
+    	}
+		
+		PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
+		peProductNetCtrlModel.setProductId(peSearchCtrlVO.getPeProductId());
+		PEProduct peProduct = peProductService.getPEProductById(Long.valueOf(peSearchCtrlVO.getPeProductId()));
+		//收益测算
+		List<PETopProduct> lstProductRate = peProductService.getCompareYearRate(peSearchCtrlVO, 4);
+		//乘以100万
+		for(PETopProduct product:lstProductRate){
+			product.setNowRate(product.getNowRate().multiply(new BigDecimal(1000000)));
+		}
+		//净值
+		List<PEProductNet> lstPeProductNet = PEProductNetService.getPEProductNetList(peProductNetCtrlModel);
+		
+		//基金经理信息
+		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+		
+		//基金公司
+		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
+		
+		model.addAttribute("lstYear", lstCommonVO);
+		model.addAttribute("peProduct", peProduct);
+		model.addAttribute("peManager", peManager);
+		model.addAttribute("peCompany", peCompany);
+		model.addAttribute("lstProductRate", lstProductRate);
+		model.addAttribute("lstPeProductNet", lstPeProductNet);
+		model.addAttribute("currentYear", currentYear+"");
+		
         return "web/pe/peProductDetail";
     }
-	
-//	@RequestMapping("/insert")
-//    public String insert(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/main";
-//    }
-//	
-//
-//    @RequestMapping("/insertData")
-//    @ResponseBody
-//    public Map<String, Object> insertData(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	int id = peProductService.insertPEProduct(peProduct, peProductCtrlModel);
-//    	result.put("code", "0");
-//    	result.put("bizData", peProduct);
-//    	
-//        return result;
-//    }
-//	
-//	
-//	@RequestMapping("/listData")
-//    public String listData(PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	List<PEProduct> showData = new ArrayList<PEProduct>();
-//    	showData = peProductService.getPEProductList(peProductCtrlModel);
-//    	
-//    	model.addAttribute("showData", showData);
-//		model.addAttribute("ctrlData", peProductCtrlModel);
-//    	
-//        return "admin/pe/peProduct/listData";
-//    }
-//	
-//	@RequestMapping("/listDataCount")
-//    @ResponseBody
-//    public Map<String, Integer> listDataCount(PEIndexCtrlModel peProductCtrlModel) {
-//    	Map<String, Integer> result = new HashMap<String, Integer>();
-//    	
-//    	Integer total = peProductService.selectListCount(peProductCtrlModel);
-//    	
-//    	result.put("total", total);
-//    	
-//        return result;
-//    }
-//	
-//	@RequestMapping("/update")
-//    public String update(PEProduct paraPEProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//		PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/update";
-//    }
-//	
-//	@RequestMapping("/updateData")
-//    @ResponseBody
-//    public Map<String, Object> updateData(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	int id = peProductService.updatePEProduct(peProduct, peProductCtrlModel);               
-//    	result.put("code", "0");
-//    	result.put("bizData", peProduct);
-//    	
-//        return result;
-//    }
-//
-//    @RequestMapping("/view")
-//    public String view(PEProduct paraPEProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/view";
-//    }
-//    
-//    @RequestMapping("/getOnLinePECompanyList")
-//    @ResponseBody
-//    public  Map<String, Object> getOnLinePECompanyList() {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	result = peProductService.getOnLinePECompanyList(); 
-//        return result;
-//    }
+
 }

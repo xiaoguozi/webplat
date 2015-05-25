@@ -24,8 +24,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	src="assets/scripts/ui/jquery.plugins-min.js"></script>
 <script type="text/javascript"
 	src="assets/scripts/ui/scripts-bottom-min.js"></script>
-
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
+<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 
 </head>
 
@@ -66,7 +67,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <!-- hot -->
   <div id="detail_info" class="layout_n simu_side_nav_box">
     <div class="simu_detailtop_box clearfix">
-      <div class="detail_box_1"> <span class="box_tit"> <a target="_blank" href=""><img width="35" height="35" src="assets/img/ui2/txicon.png" alt="" /> 曾学钦</a> - 好运来巨牛一号 </span>
+      <div class="detail_box_1"> <span class="box_tit"> <a target="_blank" href=""><img width="35" height="35" src="assets/img/ui2/txicon.png" alt="" />${peProduct.managerName}</a> - ${peProduct.name} </span>
         <ul class="assess_list">
         </ul>
       </div>
@@ -76,18 +77,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <!-- 有收益 -->
           <li class="attr_item">            
             <div class="attr_name">最新净值</div>
-            <div class="attr_val">9<span class="small">.38</span></div>
-            <div class="attr_info">净值日期：2015-04-21</div>
+            <div class="attr_val"><fmt:formatNumber value="${peProduct.netWorth.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${peProduct.netWorth*100%100}" pattern="00"/></span></div>
+            <div class="attr_info">净值日期：<fmt:formatDate value="${peProduct.netWorthTime}" pattern="yyyy-MM-dd"/></div>
           </li>
           <li class="attr_item">
             <div class="attr_name">累计收益</div>
-            <div class="attr_val"> 837<span class="small percent">.74%</span> </div>
-            <div class="attr_info">成立日期：2015-01-02</div>
+            <div class="attr_val"><fmt:formatNumber value="${peProduct.accumulatedIncome.intValue()}" pattern="#0"/><span class="small percent">.<fmt:formatNumber value="${peProduct.accumulatedIncome*100%100}" pattern="00"/>%</span> </div>
+            <div class="attr_info">成立日期： <fmt:formatDate value="${peProduct.setupTime}" pattern="yyyy-MM-dd"/></div>
           </li>
           <li class="attr_item attr_item_last" style="border-right:1px solid #d3d3d3;">
             <div class="attr_name">认购起点</div>
-            <div class="attr_val"> ---<span class="small"> </span> </div>
-            <div class="attr_info">私募公司： <a target="_blank" href="" title="巨牛投资">巨牛投资</a> </div>
+            <div class="attr_val"><fmt:formatNumber value="${peProduct.subscripStart.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${peProduct.subscripStart*100%100}" pattern="00"/> </span> </div>
+            <div class="attr_info">私募公司：${peProduct.pecompanyName}</div>
           </li>
         </ul>
       </div>
@@ -96,7 +97,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <div class="form_bd">
             <div class="submit_wrap">
                 <div class="input_control"> <b style="color:#FF6600;font-size:26px;">4006-114-088</b></div>
-              <div class="input_control"> <a class="input_btn tjsinput_btn" href="javascript:void(0)" onclick="alertbox(this)"><img class="clockicon" src="assets/img/ui/clock.png" />立即预约</a> </div>
+              <div class="input_control"> <a class="input_btn tjsinput_btn" href="#" data_id="${peProduct.id}"><img class="clockicon" src="assets/img/ui/clock.png" />立即预约</a> </div>
             </div>
           </div>
         </form>
@@ -109,7 +110,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <!-- 推荐理由 --> 
       <!-- 基金收益 -->
       <div  class="mod_left_item simu_side_nav_box">
-        <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>基金收益 </span> </div>
+        <div class="left_hd clearfix" > <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>基金收益 </span> </div>
         <div class="simu_detailwrap_2 simu_detailwrap">
           <div class="sub_item">
             <div class="sub_hd f_s14">收益测算</div>
@@ -119,32 +120,44 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <thead>
                   <tr>
                     <th width="20%">收益</th>
-                    <th width="20%">今年以来</th>
-                    <th width="20%">2014年</th>
-                    <th width="20%">2013年</th>
-                    <th width="20%">2012年</th>
+                  	<c:forEach items="${lstYear}" var="yearVO">
+                    	<c:if test="${yearVO.netYear==currentYear}">
+	                    	<th width="20%">今年以来</th>
+                    	</c:if>
+                    	<c:if test="${yearVO.netYear!=currentYear}">
+	                    	<th width="20%">${yearVO.netYear}年</th>
+                    	</c:if>
+                    </c:forEach>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="f_f80">
                     <td>赚</td>
-                    <td>8377400</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <c:forEach items="${lstProductRate}" var="rateVO">
+                    	<c:if test="${rateVO.nowRate>=0}">
+                    		<td>${rateVO.nowRate.intValue()}</td>
+                    	</c:if>
+                    	<c:if test="${rateVO.nowRate<0}">
+                    		<td></td>
+                    	</c:if>
+                    </c:forEach>
                   </tr>
                   <tr class="f_090">
                     <td>亏</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <c:forEach items="${lstProductRate}" var="rateVO">
+                    	<c:if test="${rateVO.nowRate<0}">
+                    		<td>${rateVO.nowRate.intValue()}</td>
+                    	</c:if>
+                    	<c:if test="${rateVO.nowRate>=0}">
+                    		<td></td>
+                    	</c:if>
+                    </c:forEach>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="sub_item">
+          <div class="sub_item" style="display:none;">
             <div class="sub_hd f_s14">净值走势</div>
             <div class="sub_bd_1">
                 <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />
@@ -206,48 +219,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="detail_tb_oyb">
                   <table class="detail_tb_2" width="100%">
                     <tbody>
-                      <tr class="even">
-                        <td width="125">2015.04.21</td>
-                        <td width="125">9.3774</td>
-                        <td width="125">9.3774</td>
-                        <td width="*">70.3%</td>
-                      </tr>
-                      <tr class="odd">
-                        <td width="125">2015.03.31</td>
-                        <td width="125">5.5064</td>
-                        <td width="125">5.5064</td>
-                        <td width="*">-0.49%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.03.02</td>
-                        <td width="125">5.5337</td>
-                        <td width="125">5.5337</td>
-                        <td width="*">23.53%</td>
-                      </tr>
-                      <tr class="odd">
-                        <td width="125">2015.02.27</td>
-                        <td width="125">4.4796</td>
-                        <td width="125">4.4796</td>
-                        <td width="*">52.79%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.01.30</td>
-                        <td width="125">2.9318</td>
-                        <td width="125">2.9318</td>
-                        <td width="*">193.18%</td>
-                      </tr>
-                      <tr class="odd">
-                        <td width="125">2015.01.12</td>
-                        <td width="125">1</td>
-                        <td width="125">1</td>
-                        <td width="*">0%</td>
-                      </tr>
-                      <tr class="even">
-                        <td width="125">2015.01.02</td>
-                        <td width="125">1</td>
-                        <td width="125">1</td>
-                        <td width="*">0.00%</td>
-                      </tr>
+                    	<c:forEach items="${lstPeProductNet}" var="peProductNet">
+                    		<tr class="even">
+		                        <td width="125"><fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy-MM-dd"/></td>
+		                        <td width="125"><fmt:formatNumber value="${peProductNet.unitNet.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.unitNet*100%100}" pattern="00"/></td>
+		                        <td width="125"><fmt:formatNumber value="${peProductNet.totalNet.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.totalNet*100%100}" pattern="00"/></td>
+		                        <td width="*"><fmt:formatNumber value="${peProductNet.increaseRate.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.increaseRate*100%100}" pattern="00"/>%</td>
+		                     </tr>
+                    	</c:forEach>
                     </tbody>
                   </table>
                 </div>
@@ -277,19 +256,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="tab_mgr_wrap clearfix">
               <div class="mgr_img"> <img src="assets/img/ui2/morentxicon.png"  alt="">
               </div>
-              <div class="mgr_con">1993年毕业于大连理工大学工程力学系，93年进入股票市场，2008年开始专职投资股票，经历了四次特大的起落，对市场有深刻的经历和理解，综合政策面、基本面、板块、市场热点、市场心态、技术图形、主力资金、概率、盘感去把握市场的机会。比较成功的经历95年2月全仓买入000035转配股到2000年2月上市卖出赚了20倍，2003年11月95%资金买入000638到2009年复牌上市第一天冲高时卖出赚了7倍，短线最成功的经历是2008年6月时在20天内资金翻了一倍，2009年赚了约一倍，2010年四倍，2011年近一倍。2011底到2014年初主要研究和投资股指期货。</div>
+              <div class="mgr_con">${peManager.review}</div>
             </div>
             <!-- 私募公司 -->
             <div class="tab_mgr_wrap clearfix dp_none">
-            <div class="">1993年毕业于大连理工大学工程力学系，93年进入股票市场，2008年开始专职投资股票，2003年11月95%资金买入000638到2009年复牌上市第一天冲高时卖出赚了7倍，短线最成功的经历是2008年6月时在20天内资金翻了一倍，2009年赚了约一倍，2010年四倍，2011年近一倍。2011底到2014年初主要研究和投资股指期货。</div>
+            <div class="">${peCompany.companyProfile}</div>
             </div>
             <!-- 投资理念 -->
             <div class="tab_mgr_wrap clearfix dp_none">
-            <div class="">经历了四次特大的起落，对市场有深刻的经历和理解，综合政策面、基本面、板块、市场热点、市场心态、技术图形、主力资金、概率、盘感去把握市场的机会。比较成功的经历95年2月全仓买入000035转配股到2000年2月上市卖出赚了20倍，2003年11月95%资金买入000638到2009年复牌上市第一天冲高时卖出赚了7倍，短线最成功的经历是2008年6月时在20天内资金翻了一倍，2009年赚了约一倍，2010年四倍，2011年近一倍。2011底到2014年初主要研究和投资股指期货。</div>
+            <div class="">${peCompany.investmentPhilosophy}</div>
             </div>
               <!-- 投研团队 -->
             <div class="tab_mgr_wrap clearfix dp_none">
-            <div class="">经历95年2月全仓买入000035转配股到2000年2月上市卖出赚了20倍，2003年11月95%资金买入000638到2009年复牌上市第一天冲高时卖出赚了7倍，短线最成功的经历是2008年6月时在20天内资金翻了一倍，2009年赚了约一倍，2010年四倍，2011年近一倍。2011底到2014年初主要研究和投资股指期货。</div>
+            <div class="">${peCompany.investmentTeam}</div>
             </div>
           </div>
           <!-- tc_4 --> 
@@ -307,21 +286,33 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               <tbody>
                 <tr>
                   <th width="94">发行平台：</th>
-                  <td width="318">---</td>
+                  <td width="318">${peProduct.distributionPlatform }</td>
                   <th width="94">基金性质：</th>
-                  <td width="*">主基金</td>
+                  <td width="*">主基金
+                  			<c:if test="${peProduct.fundProperty==1}">主基金</c:if>
+                       		<c:if test="${peProduct.fundProperty==2}">子基金</c:if>
+                  </td>
                 </tr>
                 <tr>
                   <th>托管银行：</th>
-                  <td>---</td>
+                  <td>${peProduct.custodianBank }</td>
                   <th>基金类型：</th>
-                  <td>股票策略</td>
+                  <td>
+							<c:if test="${peProduct.fundType==1}">股票</c:if>
+                       		<c:if test="${peProduct.fundType==2}">期货基金</c:if>
+                       		<c:if test="${peProduct.fundType==3}">股票量化</c:if>
+                       		<c:if test="${peProduct.fundType==4}">债券型</c:if>
+                       		<c:if test="${peProduct.fundType==5}">定向增发</c:if>
+                       		<c:if test="${peProduct.fundType==6}">宏观对冲</c:if>
+                       		<c:if test="${peProduct.fundType==7}">组合基金</c:if>
+                       		<c:if test="${peProduct.fundType==8}">其他</c:if>
+				 </td>
                 </tr>
                 <tr>
                   <th>证券经纪：</th>
-                  <td>---</td>
+                  <td>${peProduct.stockbrokers }</td>
                   <th>是否结构化：</th>
-                  <td>否</td>
+                  <td>${peProduct.whetherStructure }</td>
                 </tr>
               </tbody>
             </table>
@@ -332,7 +323,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               <tbody>
                 <tr>
                   <th width="94">开  放  日：</th>
-                  <td width="318">---</td>
+                  <td width="318"> <fmt:parseDate value="${peProduct.openTime}" pattern="yyyy-MM-dd" /> 
+                  </td>
                   <th width="94">退出费用：</th>
                   <td width="*">---</td>
                 </tr>
@@ -361,7 +353,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </div> 
     <div class="liuchengxinxi">
         <ul>
-            <li><span>在线预约</span><br />或拨打400-888-896</li>
+            <li><span>在线预约</span><br />或拨打4006-114-088</li>
             <li><span>确定意向</span><br />额度和打款时间</li>
             <li><span>完成打款</span><br />制定监管账号</li>
             <li><span>成功购买</span><br />按签署合同收取返现</li>
@@ -488,6 +480,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		<!-- /home_all -->
 		<script>
+			var IndexPage = {};
+		    IndexPage.orderProductUrl="rest/web/pe/peOrderProduct";
+		
 			//切换经理，公司，理念，团队
 		    window.onload = function () {
 		        $(".tab_control_item").each(function (index) {
@@ -505,7 +500,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		        alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
 		    }
 		    //--/预约--
-        
+		    $("a.tjsinput_btn").click(function(event){	
+				event.preventDefault();
+				
+			    alertMsg($(this).attr("data_id"),'20', 1);  
+			    
+				if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+			        $('[placeholder]').focus(function() {
+			            var input = $(this);
+			            if (input.val() == input.attr('placeholder')) {
+			                input.val('');
+			                input.removeClass('placeholder');
+			            }
+			        }).blur(function() {
+			            var input = $(this);
+			            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+			                input.addClass('placeholder');
+			                input.val(input.attr('placeholder'));
+			            }
+			        }).blur();
+			    };
+			});
+		    //--预约--                   
+	
     </script>
 </body>
 </html>

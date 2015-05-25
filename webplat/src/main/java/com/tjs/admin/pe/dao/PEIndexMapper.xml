@@ -330,8 +330,8 @@
 		        
     </select>
     
-    
-    <select id="getCompareYearRate" resultMap="peIndexProductMap"  
+    <!-- get the max rate in one year -->
+    <select id="getMaxCompareYearRate" resultMap="peIndexProductMap"  
  	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
 			SELECT 
 			  MAX(pn.net_time) max_net_time,
@@ -362,8 +362,43 @@
 			  AND p.id = p.manager_id 
 			GROUP BY net_year 
 			ORDER BY net_year DESC
-			
     </select>
+    
+    <!-- get the min rate in one year -->
+    <select id="getMinCompareYearRate" resultMap="peIndexProductMap"  
+ 	 	parameterType="com.tjs.web.pe.controller.PESearchCtrlVO">
+			SELECT 
+			  MIN(pn.net_time) min_net_time,
+			  DATE_FORMAT(pn.net_time, '%Y') net_year,
+			  pn.product_id id,
+			  p.name,
+			  p.accumulated_income,
+			  p.run_time,
+			  p.fund_type,
+			  p.year_rate,
+			  p.net_worth,
+			  p.manager_id,
+			  p.manager_name,
+			  p.pecompany_name,
+			  p.manage_fund,
+			  pn.total_net nowRate 
+			FROM
+			  (SELECT 
+			    pp.*,
+			    pm.manage_fund 
+			  FROM
+			    PE_PRODUCT pp,
+			    PE_MANAGER pm 
+			  WHERE pp.manager_id = pm.id) p,
+			  PE_PRODUCT_NET pn 
+			WHERE p.id = pn.product_id 
+			  AND pn.PRODUCT_ID = #{peProductId}
+			  AND p.id = p.manager_id 
+			GROUP BY net_year 
+			ORDER BY net_year DESC
+    </select>
+    
+    
     
  	 
  	 

@@ -7,9 +7,9 @@
    		<result property="simpleName" column="simple_name" jdbcType="VARCHAR"  />
    		<result property="netWorth" column="net_worth"  />
    		<result property="accumulatedIncome" column="accumulated_income"  />
-   		<result property="netWorthTime" column="net_worth_time" jdbcType="TIMESTAMP" />
-   		<result property="setupTime" column="setup_time" jdbcType="TIMESTAMP" />
-   		<result property="runTime" column="run_time" jdbcType="VARCHAR"  />
+   		<result property="netWorthTime" column="net_worth_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="setupTime" column="setup_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="runTime" column="run_time"  jdbcType="VARCHAR"  />
    		<result property="nowRate" column="now_rate"   />
    		<result property="towRate" column="tow_rate"  />
    		<result property="oneRate" column="one_rate"   />
@@ -21,7 +21,7 @@
    		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
    		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
    		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
-   		<result property="openTime" column="open_time" jdbcType="TIMESTAMP" />
+   		<result property="openTime" column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
    		<result property="subscripStart" column="subscrip_start" />
    		<result property="subscripFee" column="subscrip_fee"  />
    		<result property="exitFee" column="exit_fee"  />

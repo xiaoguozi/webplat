@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              </table>
 	            </div>
 	          </div>
-	          <div class="sub_item">
+	          <div class="sub_item" style="display:none;">
 	            <div class="sub_hd">净值走势对比</div>
 	            <div class="sub_bd_1">
 	                <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />

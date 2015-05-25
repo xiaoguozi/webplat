@@ -1,6 +1,9 @@
 package com.tjs.admin.pe.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +11,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.converters.BigDecimalConverter;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
@@ -46,6 +52,8 @@ public class PEProductServiceImpl implements PEProductService {
 	
 	@Resource
 	private PEManagerService peManagerService;
+	
+	private static final BigDecimal BIGDECIMAL_ZERO = new BigDecimal("0");  
 	
 	
 	@Override
@@ -205,10 +213,116 @@ public class PEProductServiceImpl implements PEProductService {
 	}
 
 	@Override
-	public List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO) {
-		List<PETopProduct> result = new ArrayList<PETopProduct>();
-		result = peIndexMapper.getCompareYearRate(peSearchCtrlVO);
-		return result;
+	public List<PETopProduct> getCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int yearCount) {
+		List<PETopProduct> lstMaxRate = getMaxCompareYearRate(peSearchCtrlVO, yearCount);
+		List<PETopProduct> lstMinRate = getMinCompareYearRate(peSearchCtrlVO, yearCount);
+		
+		List<PETopProduct> lstRate =new ArrayList<PETopProduct>(lstMaxRate.size());
+		try {
+			for(int i=0; i<lstMaxRate.size(); i++){
+				PETopProduct newProduct = new PETopProduct();
+				BigDecimalConverter bd = new BigDecimalConverter(BIGDECIMAL_ZERO);   
+				ConvertUtils.register(bd, java.math.BigDecimal.class);    
+				BeanUtils.copyProperties(newProduct, lstMaxRate.get(i));
+				if(lstMaxRate.get(i).getNowRate()!=null){
+					newProduct.setTimeRate(lstMaxRate.get(i).getNowRate().subtract(
+							lstMinRate.get(i).getNowRate()==null?BIGDECIMAL_ZERO:lstMinRate.get(i).getNowRate()));
+				}
+				lstRate.add(newProduct);
+			}
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return lstRate;
+	}
+
+	@Override
+	public List<PETopProduct> getMaxCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int yearCount) {
+		List<PECommonVO> lstCommonVO = new ArrayList<PECommonVO>();
+		//年份
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    	for(int i=0; i<yearCount; i++){
+    		PECommonVO c1 = new PECommonVO();
+        	c1.setNetYear(String.valueOf(currentYear - i));
+        	lstCommonVO.add(c1);
+    	}
+		
+    	PETopProduct tempProduct = new PETopProduct();
+		//peSearchCtrlVO.setPeProductId(peSearchCtrlVO.getPeProductId());
+		List<PETopProduct> lstRateVO = peIndexMapper.getMaxCompareYearRate(peSearchCtrlVO);
+		Map<String, PETopProduct> map = new HashMap<String, PETopProduct>();
+		for(PETopProduct peVO : lstRateVO){
+			map.put(peVO.getNetYear(), peVO);
+		}
+		//循环年份
+		for(PECommonVO peCommonVO : lstCommonVO){
+			if(map.get(peCommonVO.getNetYear())==null){
+				PEProduct peProduct = null;
+				if(lstRateVO.size()==0){
+    				peProduct = getPEProductById(Long.valueOf(peSearchCtrlVO.getPeProductId()));
+    				tempProduct.setId(Long.valueOf(peSearchCtrlVO.getPeProductId()));
+    				tempProduct.setName(peProduct.getName());
+    				tempProduct.setManagerId(String.valueOf(peProduct.getManagerId()));
+    				tempProduct.setManagerName(peProduct.getManagerName());
+    				PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+    				tempProduct.setManageFund(peManager.getManageFund());
+    			}else{
+    				tempProduct.setId(lstRateVO.get(0).getId());
+    				tempProduct.setName(lstRateVO.get(0).getName());
+    				tempProduct.setManagerId(lstRateVO.get(0).getManagerId());
+    				tempProduct.setManagerName(lstRateVO.get(0).getManagerName());
+    				PEManager peManager = peManagerService.getPEManagerById(Long.valueOf(lstRateVO.get(0).getManagerId()));
+    				tempProduct.setManageFund(peManager.getManageFund());
+    			}
+				lstRateVO.add(tempProduct);
+			}
+		}
+		return lstRateVO;
+	}
+
+	@Override
+	public List<PETopProduct> getMinCompareYearRate(PESearchCtrlVO peSearchCtrlVO, int yearCount) {
+		List<PECommonVO> lstCommonVO = new ArrayList<PECommonVO>();
+		
+		//年份
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    	for(int i=0; i<yearCount; i++){
+    		PECommonVO c1 = new PECommonVO();
+        	c1.setNetYear(String.valueOf(currentYear - i));
+        	lstCommonVO.add(c1);
+    	}
+		
+    	PETopProduct tempProduct = new PETopProduct();
+		//peSearchCtrlVO.setPeProductId(peSearchCtrlVO.getPeProductId());
+		List<PETopProduct> lstRateVO = peIndexMapper.getMinCompareYearRate(peSearchCtrlVO);
+		Map<String, PETopProduct> map = new HashMap<String, PETopProduct>();
+		for(PETopProduct peVO : lstRateVO){
+			map.put(peVO.getNetYear(), peVO);
+		}
+		//循环年份
+		for(PECommonVO peCommonVO : lstCommonVO){
+			if(map.get(peCommonVO.getNetYear())==null){
+				PEProduct peProduct = null;
+				if(lstRateVO.size()==0){
+    				peProduct = getPEProductById(Long.valueOf(peSearchCtrlVO.getPeProductId()));
+    				tempProduct.setId(Long.valueOf(peSearchCtrlVO.getPeProductId()));
+    				tempProduct.setName(peProduct.getName());
+    				tempProduct.setManagerId(String.valueOf(peProduct.getManagerId()));
+    				tempProduct.setManagerName(peProduct.getManagerName());
+    				PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+    				tempProduct.setManageFund(peManager.getManageFund());
+    			}else{
+    				tempProduct.setId(lstRateVO.get(0).getId());
+    				tempProduct.setName(lstRateVO.get(0).getName());
+    				tempProduct.setManagerId(lstRateVO.get(0).getManagerId());
+    				tempProduct.setManagerName(lstRateVO.get(0).getManagerName());
+    				PEManager peManager = peManagerService.getPEManagerById(Long.valueOf(lstRateVO.get(0).getManagerId()));
+    				tempProduct.setManageFund(peManager.getManageFund());
+    			}
+				lstRateVO.add(tempProduct);
+			}
+		}
+		return lstRateVO;
 	}
 	
 }

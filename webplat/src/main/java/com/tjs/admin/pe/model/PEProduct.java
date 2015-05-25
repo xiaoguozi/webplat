@@ -3,6 +3,8 @@ package com.tjs.admin.pe.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 私募产品实体
  * 
@@ -26,9 +28,11 @@ public class PEProduct {
 	private BigDecimal accumulatedIncome;
 	
 	/* 净值日期 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date netWorthTime;
 	
 	/* 成立日期 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date setupTime;
 	
 	/* 运行时间 */
@@ -68,6 +72,7 @@ public class PEProduct {
 	private String whetherStructure;
 	
 	/* 开放日期 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date openTime;
 	
 	/* 认购起点 */

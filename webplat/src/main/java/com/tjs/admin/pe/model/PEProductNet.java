@@ -3,6 +3,8 @@ package com.tjs.admin.pe.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * 私募产品净值表
  * 
@@ -14,6 +16,7 @@ public class PEProductNet {
 	private long id;
 	
 	/** 净值时间 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date netTime;
 	
 	/**  单位净值 */
