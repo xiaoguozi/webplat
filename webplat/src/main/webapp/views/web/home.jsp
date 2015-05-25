@@ -231,15 +231,15 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[0].logo}" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[0].managerLog}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
 <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[0].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[0].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[0].productSimpleName}</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[0].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[0].simpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  ${smcpData[0].review}  </div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv">  ${smcpData[0].managerReview}  </div>
+<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
@@ -247,15 +247,15 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[1].logo}" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[1].managerLog}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
 <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[1].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[1].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[1].productSimpleName}</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[1].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[1].simpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  ${smcpData[1].review}   </div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv">  ${smcpData[1].managerReview}   </div>
+<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
@@ -264,15 +264,15 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[2].logo}" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[2].managerLog}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
 <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[2].accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="#">${smcpData[2].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="#">${smcpData[2].productSimpleName}</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[2].managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[2].simpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  ${smcpData[2].review}  </div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn">了解详情</a></div>
+<div class="tjs_product_textdiv">  ${smcpData[2].managerReview}  </div>
+<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 03 -->

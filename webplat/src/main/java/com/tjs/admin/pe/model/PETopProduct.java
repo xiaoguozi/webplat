@@ -57,6 +57,9 @@ public class PETopProduct {
 	
 	/** 管理基金数 */
 	private Long manageFund;
+	
+	/** 运行年月 */
+	private String runYearOrMonth;
 
 	public long getId() {
 		return id;
@@ -205,6 +208,14 @@ public class PETopProduct {
 
 	public void setManageFund(Long manageFund) {
 		this.manageFund = manageFund;
+	}
+
+	public String getRunYearOrMonth() {
+		return runYearOrMonth;
+	}
+
+	public void setRunYearOrMonth(String runYearOrMonth) {
+		this.runYearOrMonth = runYearOrMonth;
 	}
 	
 	

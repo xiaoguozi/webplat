@@ -3,7 +3,10 @@ package com.tjs.web.pe.controller;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 import javax.annotation.Resource;
 
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PECompany;
@@ -77,6 +81,14 @@ public class PEIndexPDetailController {
 		//基金公司
 		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
 		
+		//旗下产品收益，先查出所有与产品
+		PEProductCtrlModel productModel = new PEProductCtrlModel(); 
+		productModel.setManagerId(String.valueOf(peProduct.getManagerId()));
+		List<PEProduct> lstManageProducts = peProductService.getPEProductList(productModel);
+		for(int i=0; i<lstManageProducts.size(); i++){
+			lstManageProducts.get(i).setRunTime(Integer.valueOf(lstManageProducts.get(i).getRunTime())/30+"");
+		}
+		
 		model.addAttribute("lstYear", lstCommonVO);
 		model.addAttribute("peProduct", peProduct);
 		model.addAttribute("peManager", peManager);
@@ -84,8 +96,21 @@ public class PEIndexPDetailController {
 		model.addAttribute("lstProductRate", lstProductRate);
 		model.addAttribute("lstPeProductNet", lstPeProductNet);
 		model.addAttribute("currentYear", currentYear+"");
+		model.addAttribute("lstManageProducts", lstManageProducts);
 		
         return "web/pe/peProductDetail";
     }
+	
+//	private int calcYearOrgMonth(Date date){
+//		Calendar calendarNow = Calendar.getInstance();
+//		
+//		Calendar calendarDate = Calendar.getInstance();
+//		calendarDate.setTime(date);
+//		
+//		long betweenDays=(calendarNow.getTimeInMillis()-calendarDate.getTimeInMillis())/(1000*3600*24); 
+//		
+//		int allMonth = (int)betweenDays/30;
+//		return allMonth;
+//	}
 
 }

@@ -185,20 +185,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="detail_tb_oyb">
                   <table class="detail_tb_2" width="100%">
                     <tbody>
-                      <tr>
+                      <tr style="display: none;">
                         <td width="75">近一月</td>
                         <td width="75">70.30%</td>
                         <td width="75">---</td>
                         <td width="75">---</td>
                         <td width="75">5/8781</td>
-                        <td width="*">1%</td>
-                      </tr>
-                      <tr>
-                        <td width="75">2015年</td>
-                        <td width="75">837.74%</td>
-                        <td width="75">---</td>
-                        <td width="75">35.82%</td>
-                        <td width="75">2/5888</td>
                         <td width="*">1%</td>
                       </tr>
                     </tbody>
@@ -323,20 +315,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               <tbody>
                 <tr>
                   <th width="94">开  放  日：</th>
-                  <td width="318"> <fmt:parseDate value="${peProduct.openTime}" pattern="yyyy-MM-dd" /> 
+                  <td width="318"><fmt:formatDate value="${peProduct.openTime}" pattern="yyyy-MM-dd"/>
                   </td>
                   <th width="94">退出费用：</th>
-                  <td width="*">---</td>
+                  <td width="*">
+                  	<c:if test="${peProduct.exitFee!=null}">
+                  		${peProduct.exitFee}%
+                  		</c:if>
+                  	</td>
                 </tr>
                 <tr>
                   <th>认购起点：</th>
-                  <td>---</td>
+                  <td>${peProduct.subscripStart}</td>
                   <th>浮动管理费：</th>
-                  <td>---</td>
+                  <td>
+                  	<c:if test="${peProduct.managementFee!=null}">
+                  		${peProduct.managementFee}%
+                  	</c:if>
+                  </td>
                 </tr>
                 <tr>
                   <th>认  购  费：</th>
-                  <td>1.00%</td>
+                  <td>
+                  		<c:if test="${peProduct.subscripFee!=null}">
+	                  		${peProduct.subscripFee}%
+	                  	</c:if>
+                  </td>
                   <th></th>
                   <td></td>
                 </tr>
@@ -383,83 +387,48 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </tr>
           </thead>
           <tbody>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="好运来巨牛一号"> 好运来巨牛一号 </a></td>
-              <td class="c_l c_b">9.38</td>
-              <td class="c_r c_b">837.74%</td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b">837.74%</td>
-              <td class="c_r c_b">---</td>
-              <td class="c_r c_b">---</td>
-              <td class="c_r c_b">374.22%</td>
-              <td class="c_c">股票策略</td>
-            </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛保盈1号"> 巨牛保盈1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">管理期货</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天字一号"> 巨牛天字一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">3月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">管理期货</td>
-            </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="天子期货1号"> 天子期货1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">1月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">组合基金</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天子国际期货1号"> 巨牛天子国际期货1号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">2月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">组合基金</td>
-            </tr>
-            <tr class="even">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛天子港股一号"> 巨牛天子港股一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">---</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">股票策略</td>
-            </tr>
-            <tr class="odd">
-              <td class="c_l c_b"><a href="" target="_blank" title="巨牛华南一号"> 巨牛华南一号 </a></td>
-              <td class="c_l c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_c c_b">1月</td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b"></td>
-              <td class="c_r c_b">%</td>
-              <td class="c_c">股票策略</td>
-            </tr>
+            <c:forEach items="${lstManageProducts}" var="manageProduct">
+	            <tr class="odd">
+	              <td class="c_l c_b"><a href="rest/web/pe/peIndexProductDetail?peProductId=${manageProduct.id}" target="_blank" title="${manageProduct.name}">${manageProduct.name}</a></td>
+	              <td class="c_l c_b">${manageProduct.netWorth }</td>
+	              <td class="c_r c_b">
+						<c:if test="${manageProduct.accumulatedIncome!=null}">
+	                  		${manageProduct.accumulatedIncome}%
+	                  	</c:if>
+				  </td>
+	              <td class="c_c c_b">${manageProduct.runTime}月</td>
+	              <td class="c_r c_b">
+	              	<c:if test="${manageProduct.nowRate!=null}">
+	                  		${manageProduct.nowRate}%
+	                  	</c:if>
+	              </td>
+	              <td class="c_r c_b">
+						<c:if test="${manageProduct.towRate!=null}">
+	                  		${manageProduct.towRate}%
+	                  	</c:if>
+				</td>
+	              <td class="c_r c_b">
+						<c:if test="${manageProduct.oneRate!=null}">
+	                  		${manageProduct.oneRate}%
+	                  	</c:if>
+				</td>
+	              <td class="c_r c_b">
+	              		<c:if test="${manageProduct.yearRate!=null}">
+	                  		${manageProduct.yearRate}%
+	                  	</c:if>
+	              </td>
+	              <td class="c_c">
+							<c:if test="${manageProduct.fundType==1}">股票</c:if>
+                       		<c:if test="${manageProduct.fundType==2}">期货基金</c:if>
+                       		<c:if test="${manageProduct.fundType==3}">股票量化</c:if>
+                       		<c:if test="${manageProduct.fundType==4}">债券型</c:if>
+                       		<c:if test="${manageProduct.fundType==5}">定向增发</c:if>
+                       		<c:if test="${manageProduct.fundType==6}">宏观对冲</c:if>
+                       		<c:if test="${manageProduct.fundType==7}">组合基金</c:if>
+                       		<c:if test="${manageProduct.fundType==8}">其他</c:if>
+				</td>
+	            </tr>
+            </c:forEach>
           </tbody>
         </table>
       </div>
