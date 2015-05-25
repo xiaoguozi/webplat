@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
-import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
-import com.tjs.admin.xintuo.model.ProductXtcp;
 
 /**
  * 私募首页控制器
