@@ -127,64 +127,27 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="product_div tjs_right_unit tjs_right_2border">
+<c:forEach items="${xtcpData}" var="xtcp" end="2" varStatus="status">
+<div class="product_div tjs_right_unit  <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 <div class="tjs_right_icodiv">
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr  width="95%" >
-    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[0].xtcpLog}" width="33" height="30" align="middle"/></td>
-    <td align="left"><span style="font-size:16px">${xtcpData[0].xtcpSplname}</span></td>
+    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcp.xtcpLog}" width="33" height="30" align="middle"/></td>
+    <td align="left"><span style="font-size:16px">${xtcp.xtcpSplname}</span></td>
   </tr>
 </div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[0].xtcpNsyl}</span>%</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcp.xtcpNsyl}</span>%</div>
 <div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[0].xtcpHd}</span></div>
-<div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xtcpData[0].xtcpZdrgje}" pattern="#0.####"/>  万 | 期限： ${xtcpData[0].xtcpCxq} 个月 </div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcp.xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xtcp.xtcpZdrgje}" pattern="#0.####"/>  万 | 期限： ${xtcp.xtcpCxq} 个月 </div>
 </div>
-<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[0].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[0].xtcpId}" target="_blank" class="tjs_btn">了解详情</a></div>
-
+<div class="tjs_product_textdiv" style="height:40px;"> ${xtcp.xtcpDp}</div>
+<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcp.xtcpId}" target="_blank" class="tjs_btn">了解详情</a></div>
 </div>
+</c:forEach>
 <!-- /tjs_right_unit 01 -->
 
-<div class="product_div tjs_right_unit tjs_right_2border">
-<div class="tjs_right_icodiv">
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title">
-  <tr  width="95%" >
-    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[1].xtcpLog}" width="33" height="30" align="middle"/></td>
-    <td align="left"><span style="font-size:16px">${xtcpData[1].xtcpSplname}</span></td>
-  </tr>
-</div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[1].xtcpNsyl}</span>%</div>
-<div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[1].xtcpHd}</span></div>
-<div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xtcpData[1].xtcpZdrgje}" pattern="#0.####"/>万 | 期限： ${xtcpData[1].xtcpCxq} 个月 </div>
-</div>
-<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[1].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[1].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
-
-</div>
-<!-- /tjs_right_unit 02 -->
-
-<div class="product_div tjs_right_unit ">
-<div class="tjs_right_icodiv">
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title">
-  <tr  width="95%" >
-    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcpData[2].xtcpLog}" width="33" height="30" align="middle"/></td>
-    <td align="left"><span style="font-size:16px">${xtcpData[2].xtcpSplname}</span></td>
-  </tr>
-</div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcpData[2].xtcpNsyl}</span>%</div>
-<div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">${xtcpData[2].xtcpHd}</span></div>
-<div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xtcpData[2].xtcpZdrgje}" pattern="#0.####"/> 万 | 期限： ${xtcpData[2].xtcpCxq} 个月 </div>
-</div>
-<div class="tjs_product_textdiv" style="height:40px;"> ${xtcpData[2].xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="rest/web/xintuo/trust/trustParticulars?id=${xtcpData[2].xtcpId}" target="_blank"  class="tjs_btn">了解详情</a></div>
-
-</div>
 <!-- /tjs_right_unit 03 -->
 <div class="clearfloat"></div>
 
@@ -228,53 +191,24 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<div class="product_div tjs_right_unit tjs_right_2border">
+<c:forEach items="${smcpData}" var="smcp" end="2" varStatus="status">
+<div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[0].managerLog}" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcp.managerLog}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[0].accumulatedIncome}</span>%</div>
+<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcp.accumulatedIncome}</span>%</div>
 
-<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[0].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[0].simpleName}</a></div>
+<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcp.managerId}" target="_blank">${smcp.managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" target="_blank">${smcp.simpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">  ${smcpData[0].managerReview}  </div>
-<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
+<div class="tjs_product_textdiv">${smcp.managerReview}  </div>
+<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
+</c:forEach>
 <!-- /tjs_right_unit 01 -->
 
-<div class="product_div tjs_right_unit tjs_right_2border">
-<div class="tjs_private_icodiv">
-<div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[1].managerLog}" width="128" height="128" /></div>
-<div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[1].accumulatedIncome}</span>%</div>
-
-<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[1].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[1].simpleName}</a></div>
-</div>
-<div class="tjs_product_textdiv">  ${smcpData[1].managerReview}   </div>
-<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
-
-</div>
-<!-- /tjs_right_unit 02 -->
-
-
-<div class="product_div tjs_right_unit">
-<div class="tjs_private_icodiv">
-<div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcpData[2].managerLog}" width="128" height="128" /></div>
-<div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcpData[2].accumulatedIncome}</span>%</div>
-
-<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcpData[0].managerId}" target="_blank">${smcpData[2].managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" target="_blank">${smcpData[2].simpleName}</a></div>
-</div>
-<div class="tjs_product_textdiv">  ${smcpData[2].managerReview}  </div>
-<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcpData[0].id}" class="tjs_btn" target="_blank">了解详情</a></div>
-
-</div>
 <!-- /tjs_right_unit 03 -->
 <div class="clearfloat"></div>
 
