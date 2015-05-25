@@ -191,7 +191,7 @@ document.all(imgg).style.display='block'}}
 
 <div class="tjs_right_typle">
 
-<c:forEach items="${smcpData}" var="smcp" end="2" varStatus="status">
+<c:forEach items="${smcpData}" var="smcp"  end="2" varStatus="status">
 <div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>

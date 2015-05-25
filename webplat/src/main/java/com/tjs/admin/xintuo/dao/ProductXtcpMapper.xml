@@ -197,7 +197,8 @@
 		AND xtcp_validstatus='1'
 		AND xtcp_status='20'
 		AND xtcp_tjw like CONCAT('%','10','%') 
-		ORDER BY xtcp_tjno								
+		ORDER BY xtcp_tjno
+		limit 0,3								
 	</select>
 	
 	<select id="selectProductXtcpTrustTopIndex" resultType="com.tjs.admin.xintuo.model.ProductXtcp"

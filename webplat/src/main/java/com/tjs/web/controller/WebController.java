@@ -62,18 +62,14 @@ public class WebController {
 
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
 	
-		for(int i=xtcp.size(); i<3; i++){
-			xtcp.add(new ProductXtcp());
-		}
+		
 		
 		model.addAttribute("xtcpData", xtcp);
 
 
 		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
 	
-		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEProduct());
-		}
+		
 		
 		model.addAttribute("smcpData", smcp);
 		
@@ -96,19 +92,11 @@ public class WebController {
 	public String index(HttpServletRequest request, Model model) {
 		
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
-
-		for(int i=xtcp.size(); i<3; i++){
-			xtcp.add(new ProductXtcp());
-		}
-		
+				
 		model.addAttribute("xtcpData", xtcp);
 
 		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
-	
-		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEProduct());
-		}
-		
+					
 		model.addAttribute("smcpData", smcp);
 		
 		
@@ -125,19 +113,11 @@ public class WebController {
 	public String home(HttpServletRequest request, Model model) {
 
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
-	
-		for(int i=xtcp.size(); i<3; i++){
-			xtcp.add(new ProductXtcp());
-		}
-		
+					
 		model.addAttribute("xtcpData", xtcp);
 
 		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
-	
-		for(int i=smcp.size(); i<3; i++){
-			smcp.add(new PEProduct());
-		}
-		
+					
 		model.addAttribute("smcpData", smcp);
 		
 		
