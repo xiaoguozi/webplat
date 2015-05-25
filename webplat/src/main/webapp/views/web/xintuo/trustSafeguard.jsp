@@ -102,6 +102,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- 投资管理 结束-->
 <!-- 实力保障 开始-->
 
+<!-- 
 <div class="tjs_1108px center">
 <div style=" height:20px; width:100%;"></div>
 <div  class="trust_flowtitle"><span style="color:#418ac7">实力保障</span></div>
@@ -110,19 +111,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="trust_safety_left tjs_border_2">
 
 </div>
-<!--//trust_asc_left-->
 <div class="trust_safety_right"><img src="assets/img/ui/strength_ico.png" width="525" height="383" /></div>
-<!--//trust_asc_right-->
 <div class="clearfloat"></div>
 <div style=" height:20px; width:100%;"></div>
 </div>
 </div>
+ -->
 <!-- /tjs_content_div tjs_1108px -->
 
 <!-- 实力保障 结束-->
 
 <!-- 信息安全保障 开始-->
-<div class="tjs_pcs_flow">
+<!-- <div class="tjs_pcs_flow"> -->
 <div class="tjs_1108px center">
 <div style=" height:20px; width:100%;"></div>
 <div  class="trust_flowtitle"><span style="color:#418ac7">信息安全保障</span></div>
@@ -157,7 +157,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 </div>
 <!-- /tjs_content_div tjs_1108px -->
+<!--  
 </div>
+-->
 <!-- 信息安全保障 结束-->
 
 <div class="clearfloat"></div>
