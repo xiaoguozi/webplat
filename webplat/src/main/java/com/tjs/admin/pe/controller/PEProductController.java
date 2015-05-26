@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.model.Lable;
 import com.tjs.admin.xintuo.model.ProductXtgs;
 
@@ -60,7 +62,12 @@ public class PEProductController {
 	
 	
 	@RequestMapping("/listData")
-    public String listData(PEProductCtrlModel peProductCtrlModel, Model model) {
+    public String listData(PEProductCtrlModel peProductCtrlModel, Model model) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peProductCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peProductCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peProductCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	List<PEProduct> showData = new ArrayList<PEProduct>();
     	showData = peProductService.getPEProductList(peProductCtrlModel);
     	

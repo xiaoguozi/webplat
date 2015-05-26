@@ -188,7 +188,7 @@ $(function(){
         $("#searchForm input[name='pageNo']").val("0");
         $.post(
             listDataCountUrl, 
-            $('#searchForm').formSerialize(),
+            encodeURI(encodeURI(decodeURIComponent($('#searchForm').formSerialize(),true))),
             function(data){
                 if(data && data.total){
                     //分页数据
