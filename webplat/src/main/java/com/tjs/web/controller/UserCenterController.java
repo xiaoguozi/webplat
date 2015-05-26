@@ -1,24 +1,13 @@
 package com.tjs.web.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.model.User;
@@ -38,9 +27,47 @@ public class UserCenterController {
     private UserService userService;
 
     @RequestMapping("/index")
-    public String index() {
-        return "web/userCenter/index";
+    public String index(Model model) {
+    	model.addAttribute("isLog", "true");
+        return "web/userCenter/userInfoModify";
     }
+    
+    @RequestMapping("/userModify")
+    public String userModify(Model model) {
+    	model.addAttribute("isLog", "true");
+        return "web/userCenter/userInfoModify";
+    }
+    
+    
+    @RequestMapping("/userModifyData")
+    @ResponseBody
+    public boolean userModifyData(@RequestParam(value="password") String  password,@RequestParam(value="newpassword") String  newpassword) {    	
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user= userService.selectByUsername(username);
+		if(password.equalsIgnoreCase(user.getPassword())){
+			user.setPassword(newpassword);
+			userService.update(user);
+			return true;
+		}else{
+			return false;
+		}		
+    }
+    
+    @RequestMapping("/valiadPassword")
+    @ResponseBody
+    public boolean valiadPassword(@RequestParam(value="password") String  password) {
+    	boolean isValid = false;   
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user= userService.selectByUsername(username);
+		if(password.equalsIgnoreCase(user.getPassword())){
+			isValid = true;
+		}
+        return isValid;
+    }
+  
   
 
 }
+ 
