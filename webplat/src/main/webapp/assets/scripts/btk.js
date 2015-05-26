@@ -407,7 +407,7 @@ var Btk = {};
                         "quietMillis": 100,
                         "data": function(term, page) {
                             return {
-                                "keyword": term,
+                                "keyword": encodeURI(term),
                                 "pageSize": pageSize,
                                 "pageNo": page
                             };

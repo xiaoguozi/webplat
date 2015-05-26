@@ -19,7 +19,6 @@ import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.model.Lable;
-import com.tjs.admin.xintuo.model.ProductXtgs;
 
 /**
  * 私募产品控制器
@@ -126,7 +125,12 @@ public class PEProductController {
     
     @RequestMapping("getOnLinePEManagerList")
     @ResponseBody
-    public  Map<String, Object> getOnLinePEManagerList(@RequestParam(value="companyId",required=false) Long companyId, @RequestParam(value="keyword",required=false) String keyword) {
+    public  Map<String, Object> getOnLinePEManagerList(@RequestParam(value="companyId",required=false) Long companyId, @RequestParam(value="keyword",required=false) String keyword) throws UnsupportedEncodingException {
+    	
+    	if(StringUtils.isNotBlank(keyword)){
+    		String paramsTrans = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
+    		keyword =java.net.URLDecoder.decode(paramsTrans , "UTF-8");
+    	}
     	
     	Map<String, Object> result = new HashMap<String, Object>();    	
     	List<PEManager> lstPeManager =  peProductService.selectOnLinePEManager(companyId,keyword);     	
