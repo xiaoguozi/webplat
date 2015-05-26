@@ -44,7 +44,9 @@
 </div>
 <div class="footers">
     <p class="pt25">投资有风险，理财需谨慎</p>
-    <p>淘金山互联网在线理财 版权所有 © 2015-2018 粤ICP备 15026551号-1</p>
+    <p>淘金山互联网在线理财 版权所有 © 2015-2018 粤ICP备 15026551号-1
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255221274'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1255221274%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
 </div>
 </footer>
 
