@@ -10,6 +10,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>淘金山—跟我淘金山</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet"
 	media="screen" type="text/css" />
