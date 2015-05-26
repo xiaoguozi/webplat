@@ -265,6 +265,11 @@ CREATE TABLE `pe_product_net` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品净值表';
 
 
+ALTER TABLE `tjs_product_xtcp` 
+CHANGE COLUMN `xtcp_hkly` `xtcp_hkly` VARCHAR(4000) NULL DEFAULT NULL COMMENT '还款来源' ;
+
+
+
 
 
 
