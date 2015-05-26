@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEManagerProductService;
 import com.tjs.admin.pe.service.PEManagerService;
+import com.tjs.admin.utils.StringUtils;
 
 /**
  * 私募经理控制器
@@ -62,7 +64,12 @@ public class PEManagerController {
 	
 	
 	@RequestMapping("/listData")
-    public String listData(PEManagerCtrlModel peManagerCtrlModel, Model model) {
+    public String listData(PEManagerCtrlModel peManagerCtrlModel, Model model) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peManagerCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peManagerCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peManagerCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	List<PEManager> showData = new ArrayList<PEManager>();
     	showData = peManagerService.getPEManagerList(peManagerCtrlModel);
     	
@@ -74,7 +81,12 @@ public class PEManagerController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(PEManagerCtrlModel peManagerCtrlModel) {
+    public Map<String, Integer> listDataCount(PEManagerCtrlModel peManagerCtrlModel) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peManagerCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peManagerCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peManagerCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
     	Integer total = peManagerService.selectListCount(peManagerCtrlModel);

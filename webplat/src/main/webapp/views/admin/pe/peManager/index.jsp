@@ -1,5 +1,6 @@
 <%@ include file="/views/admin/include.jsp"%>
 <%@page contentType="text/html;charset=UTF-8"%>
+<%@page language="java" pageEncoding="UTF-8"%>
 
 <div class="row" >
     <div class="col-md-12">
@@ -186,7 +187,7 @@ $(function(){
         $("#searchForm input[name='pageNo']").val("0");
         $.post(
             listDataCountUrl, 
-            $('#searchForm').formSerialize(),
+            encodeURI(encodeURI(decodeURIComponent($('#searchForm').formSerialize(),true))),
             function(data){
                 if(data && "undefined"!= typeof data.total){
                     //分页数据
@@ -211,7 +212,7 @@ $(function(){
         Btk.loading("show");
         $("#list-data > tbody").load(
             listDataUrl, 
-            $('#searchForm').formSerialize(), 
+            encodeURI(encodeURI(decodeURIComponent($('#searchForm').formSerialize(),true))),
             function(){
                 updateEvent();
                 viewEvent();
