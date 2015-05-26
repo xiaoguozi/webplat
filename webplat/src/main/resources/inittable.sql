@@ -266,7 +266,7 @@ CREATE TABLE `pe_product_net` (
 
 
 ALTER TABLE `tjs_product_xtcp` 
-CHANGE COLUMN `xtcp_hkly` `xtcp_hkly` VARCHAR(4000) NULL DEFAULT NULL COMMENT '还款来源' ;
+CHANGE COLUMN `xtcp_hkly` `xtcp_hkly` VARCHAR(2000) NULL DEFAULT NULL COMMENT '还款来源' ;
 
 
 
