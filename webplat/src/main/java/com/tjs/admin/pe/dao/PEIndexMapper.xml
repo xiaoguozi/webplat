@@ -6,7 +6,7 @@
    		<result property="name" column="name" jdbcType="VARCHAR"  />
    		<result property="accumulatedIncome" column="accumulated_income" javaType="java.math.BigDecimal"  />
    		<result property="netWorth" column="net_worth" javaType="java.math.BigDecimal"  />
-   		<result property="runTime" column="run_time" javaType="java.lang.Integer"  />
+   		<result property="runTime" column="run_time" javaType="VARCHAR"  />
    		<result property="managerId" column="manager_id" jdbcType="BIGINT" />
    		<result property="managerName" column="manager_name"  jdbcType="VARCHAR" />
    		<result property="managerLogo" column="manager_logo" jdbcType="VARCHAR" />
