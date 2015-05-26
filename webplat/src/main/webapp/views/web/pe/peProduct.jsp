@@ -266,7 +266,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_l">${peAllProduct.managerName }</td>
 										<td class="c_c_s c_b">${peAllProduct.companyName }</td>
 										<td class="c_r_s"><span>${peAllProduct.netWorth }</span></td>
-										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
+										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peAllProduct.accumulatedIncome.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
 										<td class="c_c_s c_b">${peAllProduct.runTime }天</td>
 										<td class="c_r_s">${peAllProduct.towRate }%</td>
 										<td class="c_r_s">${peAllProduct.oneRate }%</td>

@@ -185,14 +185,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="detail_tb_oyb">
                   <table class="detail_tb_2" width="100%">
                     <tbody>
-                      <tr style="display: none;">
-                        <td width="75">近一月</td>
-                        <td width="75">70.30%</td>
-                        <td width="75">---</td>
-                        <td width="75">---</td>
-                        <td width="75">5/8781</td>
-                        <td width="*">1%</td>
-                      </tr>
+                    	<c:forEach items="${lstProductIncome}" var="peProductIncome">
+	                      <tr >
+	                        <td width="75">
+	                        	${peProductIncome.year}
+	                        </td>
+	                        <td width="75">
+	                        	<c:if test="${peProductIncome.durationIncome!=null || peProductIncome.durationIncome!=0 || peProductIncome.durationIncome!='0.00'}">
+	                        		${peProductIncome.durationIncome}%
+	                        	</c:if>
+	                        </td>
+	                        <td width="75">
+	                        	<c:if test="${peProductIncome.industryAverage!=null || peProductIncome.industryAverage!=0 || peProductIncome.industryAverage!='0.00'}">
+	                        		${peProductIncome.industryAverage}%
+	                        	</c:if>
+	                        </td>
+	                        <td width="75">
+	                        	<c:if test="${peProductIncome.hs300!=null || peProductIncome.hs300!=0 || peProductIncome.hs300!='0.00'}">
+	                        		${peProductIncome.hs300}%
+	                        	</c:if>
+	                        </td>
+	                        <td width="75">
+	                        	<c:if test="${peProductIncome.rank!=null || peProductIncome.rank!=0 || peProductIncome.rank!='0.00'}">
+	                        		${peProductIncome.rank}
+	                        	</c:if>
+	                        </td>
+	                        <td width="*">
+	                        	<c:if test="${peProductIncome.rankInterval!=null || peProductIncome.rankInterval!=0 || peProductIncome.rankInterval!='0.00'}">
+	                        		<fmt:formatNumber value="${peProductIncome.rankInterval.intValue()}" pattern="#0"/>%
+	                        	</c:if>
+	                        </td>
+	                      </tr>
+                        </c:forEach>
                     </tbody>
                   </table>
                 </div>
@@ -396,7 +420,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  		${manageProduct.accumulatedIncome}%
 	                  	</c:if>
 				  </td>
-	              <td class="c_c c_b">${manageProduct.runTime}月</td>
+	              <td class="c_c c_b">${manageProduct.runTime}</td>
 	              <td class="c_r c_b">
 	              	<c:if test="${manageProduct.nowRate!=null}">
 	                  		${manageProduct.nowRate}%

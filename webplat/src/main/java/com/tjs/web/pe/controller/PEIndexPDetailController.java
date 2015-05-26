@@ -15,15 +15,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PEProductIncome;
 import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
+import com.tjs.admin.pe.service.PEProductIncomeService;
 import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
 
@@ -51,6 +54,8 @@ public class PEIndexPDetailController {
 	@Resource
 	private PECompanyService peCompanyService;
 	
+	@Resource
+	private PEProductIncomeService peProductIncomeService;
 	
 	@RequestMapping("/peIndexProductDetail")
     public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
@@ -89,6 +94,13 @@ public class PEIndexPDetailController {
 //			lstManageProducts.get(i).setRunTime(Integer.valueOf(lstManageProducts.get(i).getRunTime())/30+"");
 //		}
 		
+		//收益排名
+		PEProductIncomeCtrlModel incomeCtrlModel = new PEProductIncomeCtrlModel();
+		incomeCtrlModel.setProductId(peSearchCtrlVO.getPeProductId());
+		incomeCtrlModel.setSortField("year");
+		incomeCtrlModel.setSortType("desc");
+		List<PEProductIncome> lstProductIncome = peProductIncomeService.getPEProductIncomeList(incomeCtrlModel);
+		
 		model.addAttribute("lstYear", lstCommonVO);
 		model.addAttribute("peProduct", peProduct);
 		model.addAttribute("peManager", peManager);
@@ -97,6 +109,7 @@ public class PEIndexPDetailController {
 		model.addAttribute("lstPeProductNet", lstPeProductNet);
 		model.addAttribute("currentYear", currentYear+"");
 		model.addAttribute("lstManageProducts", lstManageProducts);
+		model.addAttribute("lstProductIncome", lstProductIncome);
 		
         return "web/pe/peProductDetail";
     }
