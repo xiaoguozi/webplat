@@ -1,4 +1,4 @@
-﻿
+
 
     .footer_bg{
     width: 100%;
@@ -232,6 +232,10 @@
     width:50%;
     vertical-align:top;
 }
+.tdh40 td
+{
+    height:50px;    
+}
 	    .gywm_title.shhz {
         background: url(../images/shhz.png) no-repeat 0px ;
     }
@@ -242,11 +246,11 @@
 	.hea{ font-size:22px; color:#FF6600}
 	.hea span{ font-weight:bolder;}
 	.intro{padding: 0 0 46px;border-bottom: 1px solid #eee;}
-	.intro p{ margin: 30px 95px;line-height: 24px;}
-	.d_left{ width:500px; float:left; padding-left:30px}
+	.intro p{ margin: 30px 47px;line-height: 24px;}
+	.d_left{ width:487px; float:left; padding-left:48px}
 	.d_right{ width:385px; float:left;}
 	.d_left img{ vertical-align:middle}
-	.d_left em{ font-style:normal; padding-right:100px;}
+	.d_left em{ font-style:normal; padding-right:65px;}
 	.d_left p{ line-height:60px;}
 	.jianjie{background: url(../images/jianjie.png) no-repeat 0px ;height: 150px;margin-left: 70px;}
 	.jjnr{ margin-right:50px; line-height:24px;}
