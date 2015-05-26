@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.dao.PEIndexMapper;
 import com.tjs.admin.pe.dao.PEProductMapper;
-import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
@@ -29,7 +29,6 @@ import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.admin.pe.util.ShowEnum;
 import com.tjs.core.util.DateUtils;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
-import com.tjs.admin.pe.model.PECommonVO;
 
 /**
  * 私募产品服务 
@@ -114,10 +113,10 @@ public class PEProductServiceImpl implements PEProductService {
 	private void str2Date(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel) {
 		Date netWorthTime = DateUtils.str2Date(peProductCtrlModel.getNetWorthTimeStr());
 		Date setupTime = DateUtils.str2Date(peProductCtrlModel.getSetupTimeStr());
-		Date openTime = DateUtils.str2Date(peProductCtrlModel.getOpenTimeStr());
+		//Date openTime = DateUtils.str2Date(peProductCtrlModel.getOpenTimeStr());
 		peProduct.setNetWorthTime(netWorthTime);
 		peProduct.setSetupTime(setupTime);
-		peProduct.setOpenTime(openTime);
+		peProduct.setOpenTime(peProductCtrlModel.getOpenTimeStr());
 	}
 
 	@Override

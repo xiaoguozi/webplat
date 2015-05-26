@@ -72,8 +72,7 @@ public class PEProduct {
 	private String whetherStructure;
 	
 	/* 开放日期 */
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date openTime;
+	private String openTime;
 	
 	/* 认购起点 */
 	private BigDecimal subscripStart;
@@ -292,11 +291,11 @@ public class PEProduct {
 		this.whetherStructure = whetherStructure;
 	}
 
-	public Date getOpenTime() {
+	public String getOpenTime() {
 		return openTime;
 	}
 
-	public void setOpenTime(Date openTime) {
+	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
 	}
 

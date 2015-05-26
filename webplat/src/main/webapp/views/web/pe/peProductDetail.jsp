@@ -339,7 +339,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               <tbody>
                 <tr>
                   <th width="94">开  放  日：</th>
-                  <td width="318"><fmt:formatDate value="${peProduct.openTime}" pattern="yyyy-MM-dd"/>
+                  <td width="318">${peProduct.openTime}
                   </td>
                   <th width="94">退出费用：</th>
                   <td width="*">

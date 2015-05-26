@@ -200,11 +200,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">开放日期</label>
             <div class="col-md-6">
-            	<div class="input-group date form_date" data-date-format="yyyy-mm-dd" startview="1" minview="0">
-                    <input type="text" class="form-control" name="openTimeStr" value="<fmt:formatDate value="${peProduct.openTime}" pattern="yyyy-MM-dd"/>">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
+                    <input type="text" class="form-control" name="openTimeStr" maxlength="20" value="${peProduct.openTime}">
             </div>
         </div>
          <div class="form-group">

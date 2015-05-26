@@ -242,8 +242,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											href="javascript:void(0)" sortField="net_worth" sortType="">最新净值<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
 											href="javascript:void(0)" sortField="accumulated_income" sortType="">累计收益<em></em></a></td>
-										<td class="c_c_s c_b"><a class="uc_sort"
-											href="javascript:void(0)" sortField="run_time" sortType="">运行时间<em></em></a></td>
+										<td class="c_c_s c_b">运行时间</td>
 										<td class="c_r_s"><a class="uc_sort"
 											href="javascript:void(0)" sortField="tow_rate" sortType="">近2年<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
@@ -267,7 +266,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_c_s c_b">${peAllProduct.companyName }</td>
 										<td class="c_r_s"><span>${peAllProduct.netWorth }</span></td>
 										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peAllProduct.accumulatedIncome.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
-										<td class="c_c_s c_b">${peAllProduct.runTime }天</td>
+										<td class="c_c_s c_b">${peAllProduct.runTime}</td>
 										<td class="c_r_s">${peAllProduct.towRate }%</td>
 										<td class="c_r_s">${peAllProduct.oneRate }%</td>
 										<td class="c_r_s c_b ">${peAllProduct.yearRate}%</td>
