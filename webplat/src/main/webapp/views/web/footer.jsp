@@ -6,10 +6,11 @@
         <div class="foot_menu">
             <p class="menu_title">关于我们</p>
             <ul class="foot_menu1">
-                <li><a href="">><span>公司简介</span></a></li>
-                <li><a href="">><span>股东背景</span></a></li>
-                <li><a href="">><span>媒体报道</span></a></li>
-                <li><a href="">><span>最新动态</span></a></li>
+                <li><a href="rest/web/aboutUs/index" target="_blank">><span>公司简介</span></a></li>
+                <li><a href="rest/web/aboutUs/team" target="_blank">><span>管理团队</span></a></li>
+                <li><a href="rest/web/aboutUs/jobs" target="_blank">><span>人才招聘</span></a></li>
+                <li><a href="rest/web/aboutUs/contact" target="_blank">><span>联系我们</span></a></li>
+                <li><a href="rest/web/aboutUs/partner" target="_blank">><span>商户合作</span></a></li>
             </ul>
         </div>
         <div class="foot_menu">
