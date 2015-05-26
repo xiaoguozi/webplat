@@ -216,7 +216,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           </div>
            -->
            
-          <div class="sub_item">
+          <div class="sub_item" style="display:none;">
             <div class="sub_hd f_s14">净值走势</div>
             <div class="sub_bd_1">
                 <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />
@@ -317,7 +317,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <tbody>
             <c:forEach items="${lstPEProduct}" var="peProduct" varStatus="status">
              <tr class="${status.index%2==0?'even':'odd'}">
-              <td class="c_l c_b"><a href="" target="_blank" title="好运来巨牛一号"> ${peProduct.simpleName } </a></td>
+              <td class="c_l c_b"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peProduct.id}" target="_blank" title="好运来巨牛一号"> ${peProduct.simpleName } </a></td>
               <td class="c_l c_b"><c:if test="${empty peProduct.netWorth}">---</c:if><c:if test="${not empty peProduct.netWorth}"><fmt:formatNumber value="${peProduct.netWorth}" pattern="#0.####"/></c:if></td>
               <td class="c_r c_b"><c:if test="${empty peProduct.accumulatedIncome}">---</c:if><c:if test="${not empty peProduct.accumulatedIncome}"><fmt:formatNumber value="${peProduct.accumulatedIncome}" pattern="#0.####"/>%</c:if></td>
               <td class="c_c c_b"><c:if test="${empty peProduct.runTime}">---</c:if><c:if test="${not empty peProduct.runTime}">${ peProduct.runTime}</c:if></td>
