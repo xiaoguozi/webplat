@@ -71,25 +71,35 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="content">
                         <div class="con">
                             <div class="intro">
-                                <p class="hea"><span>固定收益：</span>信托、资管等</p>
+                                <p class="hea">信托、资管等</p>
                                 <p>信托类产品高端人群首选，适合资金稳健 增值，收益高且稳健，30倍银行活期存款 利息，信托迄今为止本息100%兑付。</p>
                             </div>
                             <div class="detial">
                                 <div class="d_left">
-                                    <p style="font-size: 20px;">固定收益</p>
-                                    <p><em style="margin-right: 55px;">
-                                        <img src="assets/img/about/name.png" />
-                                        &nbsp;罗经理</em><em><img src="assets/img/about/mail.png" />
-                                            &nbsp; 810008703@qq.com</em></p>
-                                    <p><em>
+                                    <p style="font-size: 20px;">联系方式</p>
+                                    <table class="tbl3 tdh40" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td><img src="assets/img/about/name.png" />
+                                        &nbsp; 罗经理</td>
+                                            <td><img src="assets/img/about/mail.png" />
+                                            &nbsp; 810008703@qq.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                         <img src="assets/img/about/tellphone.png" />
-                                        &nbsp; 18813982100</em><em><img src="assets/img/about/qqlink.png" />
-                                            &nbsp; 810008703</em></p>
+                                        &nbsp; 18813982100</td>
+                                            <td><img src="assets/img/about/qqlink.png" />
+                                            &nbsp; 810008703</td>
+                                        </tr>
+                                    </table>
+                                   
                                 </div>
                                 <div class="d_right">
+                                <!-- 
                                     <div class="jianjie"></div>
                                     <p style="padding: 15px 130px;">简介</p>
                                     <p class="jjnr">与国内众多财富管理机构、券商、银行及商会有较紧密的合作关系，善于洞察高净值客户理财需求，为客户定制专业的资产配置计划。</p>
+                                 -->
                                 </div>
                             </div>
                         </div>
