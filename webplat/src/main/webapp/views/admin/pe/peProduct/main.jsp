@@ -310,7 +310,8 @@ $(function () {
     Btk.form($("#modalForm"),"insert",function(data){
         if("0"==data.code){
           //  $("#searchBtn").click();
-            productId = data.bizData.id;
+            productId = data.bizData.id;            
+            $("input[name=id]").val(productId);                     
         }
         
     });

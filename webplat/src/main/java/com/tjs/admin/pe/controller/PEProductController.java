@@ -52,10 +52,15 @@ public class PEProductController {
     @ResponseBody
     public Map<String, Object> insertData(PEProduct peProduct, PEProductCtrlModel peProductCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	int id = peProductService.insertPEProduct(peProduct, peProductCtrlModel);
-    	result.put("code", "0");
-    	result.put("bizData", peProduct);
-    	
+    	if(peProduct.getId()==0){    		
+        	int id = peProductService.insertPEProduct(peProduct, peProductCtrlModel);
+        	result.put("code", "0");
+        	result.put("bizData", peProduct);
+    	}else{    		
+    		peProductService.updatePEProduct(peProduct, peProductCtrlModel); 
+    		result.put("code", "0");
+        	result.put("bizData", peProduct);
+    	}       	    	
         return result;
     }
 	
