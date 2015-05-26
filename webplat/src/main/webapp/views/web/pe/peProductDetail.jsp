@@ -272,7 +272,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="tab_mgr_wrap clearfix">
               <div class="mgr_img"> <img src="assets/img/ui2/morentxicon.png"  alt="">
               </div>
-              <div class="mgr_con">${peManager.review}</div>
+              <div class="mgr_con">${peManager.introduce}</div>
             </div>
             <!-- 私募公司 -->
             <div class="tab_mgr_wrap clearfix dp_none">
