@@ -77,18 +77,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <ul class="mc_lbox">
                     	<li >可用余额</li>                                             
                         <li class="colorf06 font18 lh10 ">0.00元</li>
-                        <li><a class="tjs_btn pzbtn" href="rest/web/peizi/recharge"><b>¥</b> 充值</a></li>
+                        <li><a class="tjs_btn pzbtn" href="javascript:void()"><b>¥</b> 充值</a></li>
                     	   
                                          
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" style="display:none">
-                            <span class="bor_dashed"><a href="rest/web/peizi/personalCenter">天天配</a></span>
-                            <span class="bor_dashed"><a href="rest/web/peizi/monthCenterCapital">月月配</a></span>
-                            <span><a href="rest/web/peizi/lowCenterCapital">低息配</a></span>
+                            <span class="bor_dashed"><a href="javascript:void()">天天配</a></span>
+                            <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
+                            <span><a href="javascript:void()">低息配</a></span>
                         </div>
                         
                         <li class="wdzj">我的资金</li>
-                        <div class="bor_dashed moneymx" style="display:none"><a href="rest/web/peizi/moneyDetail">资金明细</a></div>
+                        <div class="bor_dashed moneymx" style="display:none"><a href="javascript:void()">资金明细</a></div>
                         
                         <li class="zlsz">资料设置</li>
                         <div class="bor_dashed  mmxg"><a href="rest//web/userCenter/userModify">密码修改</a></div>
