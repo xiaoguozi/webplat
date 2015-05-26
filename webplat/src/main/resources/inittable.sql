@@ -207,7 +207,7 @@ CREATE TABLE `pe_product` (
   `stockbrokers` varchar(100) DEFAULT NULL COMMENT '证券经纪',
   `fund_property` int(11) DEFAULT NULL COMMENT '基金性质:1、主基金，2、子基金',
   `whether_structure` varchar(100) DEFAULT NULL COMMENT '是否结构化',
-  `open_time` datetime DEFAULT NULL COMMENT '开放日期 ',
+  `open_time` varchar(100) DEFAULT NULL COMMENT '开放时间',
   `subscrip_start` decimal(18,2) DEFAULT NULL COMMENT '认购起点',
   `subscrip_fee` decimal(18,2) DEFAULT NULL COMMENT '认 购 费',
   `exit_fee` decimal(18,2) DEFAULT NULL COMMENT '退出费用',
