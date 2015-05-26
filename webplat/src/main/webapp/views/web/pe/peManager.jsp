@@ -81,17 +81,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<table class="simujingli_box" <c:if test="${fn:length(lstTopPeManager)==(status.index+1)}">style="border-right:solid  1px #d3d3d3"</c:if>>
 					<tr>
 						<td colspan="2" class="simujingli_box_top bluecolor_font">
-						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank">${TopPeManager.managerName}</a>&nbsp;&nbsp;${TopPeManager.productSimpleName}</td>
+						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank">${TopPeManager.managerName}</a>&nbsp;&nbsp;
+						<a href="rest/web/pe/peIndexProductDetail?peProductId=${TopPeManager.productId}" target="_blank">
+						${TopPeManager.productSimpleName}</a></td>
 					</tr>
 					<tr>
 						<td class="font_tc pd_bottom">
 						<a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank"><img width="105"
 							src="assets/img/simu/${TopPeManager.logo}" alt="" /></a></td>
 						<td class="pd_left pd_bottom"><p>
-								基金经理：<span class="bluecolor_font">${TopPeManager.managerName}</span>
+								基金经理：<span class="bluecolor_font"><a href="rest/web/pe/peIndexMDetail?managerId=${TopPeManager.managerId}" target="_blank">${TopPeManager.managerName}</a></span>
 							</p>
 							<p>
-								代&nbsp;表&nbsp;作：<span class="bluecolor_font">${TopPeManager.productSimpleName}</span>
+								代&nbsp;表&nbsp;作：<span class="bluecolor_font"><a href="rest/web/pe/peIndexProductDetail?peProductId=${TopPeManager.productId}" target="_blank">${TopPeManager.productSimpleName}</a></span>
 							</p>
 							<p>
 								累计收益<br />
@@ -142,8 +144,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<tbody>
 					  <c:forEach items="${lstPeManager}" var="PeManager" varStatus="status">
 						<tr>
-							<td class="tjs_tbl_td_br"><a href="rest/web/pe/peIndexMDetail?managerId=${PeManager.managerId}" target="_blank"></a><span class="bluecolor_font">${PeManager.managerName}</span></a></td>
-							<td>${PeManager.productSimpleName}</td>
+							<td class="tjs_tbl_td_br"><a href="rest/web/pe/peIndexMDetail?managerId=${PeManager.managerId}" target="_blank"><span class="bluecolor_font">${PeManager.managerName}</a></span></td>
+							<td><a href="rest/web/pe/peIndexProductDetail?peProductId=${PeManager.productId}" target="_blank">${PeManager.productSimpleName}</a></td>
 							<td class="tjs_tbl_td_br"><fmt:formatNumber value="${PeManager.accumulatedIncome.intValue()}" pattern="###0.00"/>%</td>
 							<td>${PeManager.companyName}</td>
 							<td>${PeManager.manageFund}</td>

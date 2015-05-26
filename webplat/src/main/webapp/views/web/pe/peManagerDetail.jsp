@@ -56,7 +56,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <!-- hot -->
   <div id="detail_info" class="layout_n simu_side_nav_box">
     <div class="simu_detailtop_box clearfix box_top_color">
-      <div class="detail_box_1"> <span class="box_tit"> ${peManagerProduct.managerName}<span class="small_fontcolor"> - ${peManagerProduct.productSimpleName} </span></span>
+      <div class="detail_box_1"> <span class="box_tit"> ${peManagerProduct.managerName}<span class="small_fontcolor"> - 
+      <a href="rest/web/pe/peIndexProductDetail?peProductId=${peManagerProduct.productId}" target="_blank">
+      ${peManagerProduct.productSimpleName}
+      </a> 
+      
+      
+      </span></span>
       </div>
       <div class="detail_box_2">
         <ul class="attr_list clearfix">
@@ -82,7 +88,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <table class="jinglixinxi">
                   <tr>
                       <td>代表作：</td>
-                      <td class="txt_a_left"><span class="bluecolor_font">${peManagerProduct.productSimpleName}</span></td>
+                      <td class="txt_a_left"><span class="bluecolor_font"> 
+                      <a href="rest/web/pe/peIndexProductDetail?peProductId=${peManagerProduct.productId}" target="_blank">
+                        ${peManagerProduct.productSimpleName}
+                      </a>                    
+                      </span></td>
                   </tr>
                   <tr>
                       <td>累计收益：</td>
@@ -98,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <table class="jinglixinxi">
                   <tr>
                       <td>所在公司：</td>
-                      <td class="txt_a_left"><span class="bluecolor_font">${peCompany.name}</span></td>
+                      <td class="txt_a_left"><span class="font_color_b">${peCompany.name}</span></td>
                   </tr>
                   <tr>
                       <td>从业年限：</td>
