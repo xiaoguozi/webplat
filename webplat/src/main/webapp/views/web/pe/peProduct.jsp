@@ -242,8 +242,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											href="javascript:void(0)" sortField="net_worth" sortType="">最新净值<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
 											href="javascript:void(0)" sortField="accumulated_income" sortType="">累计收益<em></em></a></td>
-										<td class="c_c_s c_b"><a class="uc_sort"
-											href="javascript:void(0)" sortField="run_time" sortType="">运行时间<em></em></a></td>
+										<td class="c_c_s c_b">运行时间</td>
 										<td class="c_r_s"><a class="uc_sort"
 											href="javascript:void(0)" sortField="tow_rate" sortType="">近2年<em></em></a></td>
 										<td class="c_r_s"><a class="uc_sort"
