@@ -1,5 +1,6 @@
 package com.tjs.admin.pe.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.admin.utils.StringUtils;
 
 /**
  * 私募公司控制器
@@ -55,7 +57,12 @@ public class PECompanyController {
 	
 	
 	@RequestMapping("/listData")
-    public String listData(PECompanyCtrlModel peCompanyCtrlModel, Model model) {
+    public String listData(PECompanyCtrlModel peCompanyCtrlModel, Model model) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peCompanyCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peCompanyCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peCompanyCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	List<PECompany> showData = new ArrayList<PECompany>();
     	showData = peCompanyService.getPECompanyList(peCompanyCtrlModel);
     	
@@ -67,7 +74,12 @@ public class PECompanyController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(PECompanyCtrlModel peCompanyCtrlModel) {
+    public Map<String, Integer> listDataCount(PECompanyCtrlModel peCompanyCtrlModel) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peCompanyCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peCompanyCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peCompanyCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
     	Integer total = peCompanyService.selectListCount(peCompanyCtrlModel);

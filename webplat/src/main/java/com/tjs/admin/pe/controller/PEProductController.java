@@ -83,7 +83,12 @@ public class PEProductController {
 	
 	@RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(PEProductCtrlModel peProductCtrlModel) {
+    public Map<String, Integer> listDataCount(PEProductCtrlModel peProductCtrlModel) throws UnsupportedEncodingException {
+		if(StringUtils.isNotBlank(peProductCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(peProductCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peProductCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+		
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
     	Integer total = peProductService.selectListCount(peProductCtrlModel);
