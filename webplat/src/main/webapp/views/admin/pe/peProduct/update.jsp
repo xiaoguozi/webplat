@@ -63,7 +63,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">基金简称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="simpleName" value="${peProduct.simpleName}"  >
+                <input type="text" class="form-control required" name="simpleName" maxlength="6" value="${peProduct.simpleName}"  >
             </div>
         </div>
         
