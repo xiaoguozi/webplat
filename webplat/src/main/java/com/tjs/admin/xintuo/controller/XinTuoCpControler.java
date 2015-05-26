@@ -1,5 +1,7 @@
 package com.tjs.admin.xintuo.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.model.Lable;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.model.ProductXtgs;
@@ -57,8 +60,13 @@ public class XinTuoCpControler {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
+    public Map<String, Integer> listDataCount(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) throws UnsupportedEncodingException {
     	Map<String, Integer> result = new HashMap<String, Integer>();
+    	
+    	if(StringUtils.isNotBlank(xintuoCpCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(xintuoCpCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		xintuoCpCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
     	
     	Integer total = iProductXtService.countProductXtcp(xintuoCpCtrlModel);
     	
@@ -69,8 +77,14 @@ public class XinTuoCpControler {
 
     
     @RequestMapping("/listData")
-    public String listData(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) {
+    public String listData(XinTuoCpCtrlModel xintuoCpCtrlModel, Model model) throws UnsupportedEncodingException {
     	List<ProductXtcp> showData = new ArrayList<ProductXtcp>();
+    	
+    	if(StringUtils.isNotBlank(xintuoCpCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(xintuoCpCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		xintuoCpCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+    	
     	showData = iProductXtService.selectProductXtcp(xintuoCpCtrlModel);
     	
     	model.addAttribute("showData", showData);
