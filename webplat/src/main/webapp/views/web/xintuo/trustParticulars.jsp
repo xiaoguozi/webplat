@@ -191,7 +191,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--// tjs_pcs_box 01-->
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div  class="tjs_padding_width24px">
+<div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">融资方是谁？<a name="B" id="B"></a></div>
   ${productXtcp.xtcpRzf}
 <!--// tjs_pcs_box 02-->
@@ -199,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--// tjs_padding_width24px 02-->
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div  class="tjs_padding_width24px">
+<div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">资金用途是什么？<a name="C" id="C"></a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
    ${productXtcp.xtcpZjyt}
@@ -209,7 +209,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--// tjs_padding_width24px 03-->
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div  class="tjs_padding_width24px">
+<div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">风控措施如何？<a name="D" id="D"></a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpFkcs}
@@ -221,7 +221,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <!--// tjs_padding_width24px 04-->
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div  class="tjs_padding_width24px">
+<div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">还款来源有哪些？<a name="E" id="E"></a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpHkly}
@@ -231,7 +231,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
-<div  class="tjs_padding_width24px">
+<div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">管理机构是谁？<a name="F" id="F"></a></div>
 
  ${productXtcp.xtcpZcglr}
