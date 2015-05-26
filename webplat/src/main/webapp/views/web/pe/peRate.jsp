@@ -200,7 +200,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 												</div>
 											</td>
 											<td class="tjs_tbl_td_br"><span class='${status.index<3?"orangecolor":"graycolor"}'>${status.index+1}</span></td>
-											<td class="c_l" style="text-align: left"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peAllProduct.id}" target="_blank">${peAllProduct.name }</a></td>
+											<td class="c_l" style="text-align: left">
+												<a href="rest/web/pe/peIndexProductDetail?peProductId=${peAllProduct.id}" target="_blank" title="${peAllProduct.name }">
+												 	${peAllProduct.name } 
+												 </a></td>
 											<td class="c_l" style="text-align: left;padding-left: 0px;">${peAllProduct.managerName }</td>
 											<td class="c_c_s">${peAllProduct.companyName }</td>
 											

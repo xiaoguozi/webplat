@@ -21,7 +21,7 @@
    		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
    		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
    		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
-   		<result property="openTime" column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="openTime" column="open_time" jdbcType="VARCHAR" />
    		<result property="subscripStart" column="subscrip_start" />
    		<result property="subscripFee" column="subscrip_fee"  />
    		<result property="exitFee" column="exit_fee"  />
@@ -62,7 +62,7 @@
    		<result property="stockbrokers" column="stockbrokers" jdbcType="VARCHAR"  />
    		<result property="fundProperty" column="fund_property" jdbcType="INTEGER" />
    		<result property="whetherStructure" column="whether_structure" jdbcType="VARCHAR"  />
-   		<result property="openTime" column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="openTime" column="open_time"  jdbcType="VARCHAR" />
    		<result property="subscripStart" column="subscrip_start" />
    		<result property="subscripFee" column="subscrip_fee"  />
    		<result property="exitFee" column="exit_fee"  />
