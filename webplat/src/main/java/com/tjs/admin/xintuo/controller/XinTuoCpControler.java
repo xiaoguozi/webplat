@@ -168,9 +168,14 @@ public class XinTuoCpControler {
     
     @RequestMapping("/queryGsData")
     @ResponseBody
-    public  Map<String, Object> queryGsData() {
+    public  Map<String, Object> queryGsData(@RequestParam(value="keyword",required=false) String keyword) throws UnsupportedEncodingException {
     	Map<String, Object> result = new HashMap<String, Object>();
     	XinTuoGsCtrlModel xintuoGsCtrlModel = new XinTuoGsCtrlModel();
+    	if(StringUtils.isNotBlank(keyword)){
+    		String paramsTrans = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
+    		keyword =java.net.URLDecoder.decode(paramsTrans , "UTF-8");
+    	}
+    	xintuoGsCtrlModel.setKeyWord(keyword);
     	xintuoGsCtrlModel.setPageNo(0);
     	ProductXtgs productXtgs = new ProductXtgs();
     	productXtgs.setXgtsStatus("20");
