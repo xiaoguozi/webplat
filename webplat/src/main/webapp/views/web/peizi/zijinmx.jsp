@@ -191,7 +191,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).click(function () {
                 $(".cpbox1").removeClass("on")
                 $(this).addClass("on");
-                sum = $(".cpmoney:eq('" + i + "')").text();
+                sum = $(".cpmoney:eq(" + i + ")").text();
                 $("#capital").text(sum);
                 $("#assure").text(sum * 0.25);
                 $("#loss").text(sum * 0.9);

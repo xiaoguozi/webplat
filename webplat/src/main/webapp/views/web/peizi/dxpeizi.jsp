@@ -192,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
                 $(".cpbox1").removeClass("on")
                 $(this).addClass("on");
-                a = $(".cpbox1>span:eq('" + i + "')").text();
+                a = $(".cpbox1>span:eq(" + i + ")").text();
                 $("#lixi").text(sum * lv * (a / 12));
             });
         });
