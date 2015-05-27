@@ -3,10 +3,7 @@ package com.tjs.web.pe.controller;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
 
 import javax.annotation.Resource;
 
@@ -100,6 +97,9 @@ public class PEIndexPDetailController {
 		incomeCtrlModel.setSortField("year");
 		incomeCtrlModel.setSortType("desc");
 		List<PEProductIncome> lstProductIncome = peProductIncomeService.getPEProductIncomeList(incomeCtrlModel);
+		
+		//认购起点
+		peProduct.setSubscripStart(peProduct.getSubscripStart().divide(new BigDecimal(10000)));
 		
 		model.addAttribute("lstYear", lstCommonVO);
 		model.addAttribute("peProduct", peProduct);
