@@ -195,7 +195,7 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 <div class="tjs_private_icodiv">
 <div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/sm/small/${smcp.managerLog}" width="128" height="128" /></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/simu/${smcp.managerLog}" width="128" height="128" /></div>
 <div class="tjs_private_textbgdiv">累计收益</div>
 <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcp.accumulatedIncome}</span>%</div>
 
