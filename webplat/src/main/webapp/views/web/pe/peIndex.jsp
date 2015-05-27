@@ -95,7 +95,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <div class="tjs_private_icodiv">
                                     <div style="height: 23px; width: 100%;"></div>
                                     <div class="tjs_right_privatetitle chanpinjingli">
-                                        <img src="assets/img/${peTop4Product.managerLogo}" width="128" height="128" />
+                                        <img src="assets/img/simu/${peTop4Product.managerLogo}" width="128" height="128" />
                                     </div>
                                     <div class="tjs_private_textbgdiv">累计收益</div>
                                     <div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${peTop4Product.accumulatedIncome}</span>%</div>
