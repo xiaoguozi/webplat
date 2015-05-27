@@ -724,7 +724,7 @@
     padding-top: 25px;
 }
 
-/*------------------Ô¤Ô¼µ¯¿ò------------------------*/
+/*------------------Ô¤Ô¼ï¿½ï¿½ï¿½ï¿½------------------------*/
         #alertMsg {
             display: none;
             width: 400px;
@@ -808,7 +808,7 @@
             width: 230px;
             color: #82B1E0;
             padding-left: 10px;
-            font-family: "Î¢ÈíÑÅºÚ";
+            font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";
             font-size: 16px;
         }
     .remark {
@@ -824,7 +824,7 @@
         line-height: 70px;
     }
 
-/*-----------------/-Ô¤Ô¼µ¯¿ò------------------------*/
+/*-----------------/-Ô¤Ô¼ï¿½ï¿½ï¿½ï¿½------------------------*/
 .w945 {
     width:985px;
     background:url(../../img/peizi/step1.png) no-repeat;
@@ -945,7 +945,7 @@
     padding:40px 10px 20px 45px;
     font-size:16px;
 }
-/*------×Ô¶¨ÒåÏÂÀ­¿ò----------*/
+/*------ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½----------*/
 .sel_wrap {
     height: 30px;
     background: #fff url(../../img/peizi/upicon.png) no-repeat 120px 5px;
@@ -1005,7 +1005,7 @@
             background:#FF8B00;
             color: #fff;
         }
-/*------/-×Ô¶¨ÒåÏÂÀ­¿ò----------*/
+/*------/-ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½----------*/
 .qcimg {
     font-size:14px;
     color: #696969;
@@ -1528,4 +1528,17 @@
     width:180px;
     display:block;
     float:left;
+}
+.input_btn {
+    border:none;
+    background:#0280CC;
+    width:172px;
+    height:44px;
+    border-radius:4px;
+    font-size:16px;
+    color:#fff;
+    cursor:pointer;
+}
+.input_btn:hover {
+    background:#ff6600;
 }
