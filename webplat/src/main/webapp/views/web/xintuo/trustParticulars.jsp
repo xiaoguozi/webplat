@@ -28,7 +28,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;" >
 
-     <div class="logo_wrap"><a href="index.html"><img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+     <div class="logo_wrap"><a href="<%=basePath%>"><img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
     <li><a href="<%=basePath%>rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
