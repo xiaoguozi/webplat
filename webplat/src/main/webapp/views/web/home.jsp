@@ -122,7 +122,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_colorblue">信托<span style="float:right;"><a href="rest/web/xintuo/trust/trustIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_colorblue"><span style="float:left;font-size:28px">信托</span><span style="float:right;"><a href="rest/web/xintuo/trust/trustIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
 
 <div class="tjs_right_typle">
@@ -186,7 +186,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_colorshallowgreen">私募<span style="float:right;"><a href="rest/web/pe/peIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_colorshallowgreen"><span style="float:left;font-size:28px">私募</span><span style="float:right;"><a href="rest/web/pe/peIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
 
 <div class="tjs_right_typle">
@@ -243,7 +243,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_shalloworange">配资<span style="float:right;"><a href="#" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">配资</span><span style="float:right;"><a href="#" class="tjs_moreurl">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
 
 <div class="tjs_right_typle">
@@ -330,7 +330,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_shalloworange">海外保险<span style="float:right;"><a href="#" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">海外保险</span><span style="float:right;"><a href="#" class="tjs_moreurl">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange" style=" width:180px;"></div></div>
 
 <div class="tjs_right_typle">
