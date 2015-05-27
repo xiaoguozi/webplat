@@ -60,8 +60,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <span class="txt">淘金活动</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <span class="txt">淘金活动</span> </div>
         </div>
+    
     <div class="w100bg">
         <div class="tjs_1108px center">
             <div class="pz_produce">
@@ -69,14 +70,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
             <div class="bgcolor">
                 <ul class="hd_xiangqing">
-                    <li class="hd_1">周一 八折 <a class="btn_sq" href="#">申请配资</a></li>
-                    <li class="hd_3">2000元免费配资<a class="btn_sq" href="rest/web/peizi/freeActivity">申请配资</a></li>
-                    <li class="hd_2">代理配资<a class="btn_sq" href="#">申请配资</a></li>
+                    <li class="hd_1"><span style="float: left">周一 八折</span> <a class="btn_sq">申请配资</a></li>
+                    <li class="hd_3"><span style="float: left">2000元免费配资</span><a class="btn_sq" href="rest/web/peizi/freeActivity">申请配资</a></li>
+                    <li class="hd_2"><span style="float: left">代理配资</span><a class="btn_sq">申请配资</a></li>
                     <li class="hd_4">
                         <div style="width:300px;float:left">
                         <p style="padding-top:35px;">配资送艺术品</p><p>您敢配我敢送</p>
                         </div>
-                        <a class="btn_sq" href="#">申请配资</a></li>
+                        <a class="btn_sq">申请配资</a></li>
                 </ul>
             </div>
         </div>

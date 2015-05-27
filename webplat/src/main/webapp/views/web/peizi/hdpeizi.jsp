@@ -41,9 +41,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li><a href="rest/web/peizi/activity"><span class="simu_on">淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
-                        <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
-                        <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        <li><span>淘金募集</span></li>
+                        <li><span>淘金自营</span></li>
+                        <li><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a><span class="sep">&gt;</span> <a href="rest/web/peizi/activity" class="path_item">淘金活动</a> <span class="sep">&gt;</span> <span class="txt">淘金详情</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a><span class="sep">&gt;</span> <a href="rest/web/peizi/activity" class="path_item">淘金活动</a> <span class="sep">&gt;</span> <span class="txt">淘金详情</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
@@ -81,7 +81,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon05.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left">淘金山掏出<b class="color158">20000 元</b>（完全免费）</td>
+                        <td class="tbl_w500_b t-left">淘金山掏出<b class="color158">2000 元</b>（完全免费）</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon04.png" alt="" /></td>
@@ -174,15 +174,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+
 	})
 </script>
 </body>
