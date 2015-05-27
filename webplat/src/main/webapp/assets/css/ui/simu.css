@@ -32,7 +32,7 @@
         overflow: hidden;
         position: absolute;
         left: 50%;
-        bottom: 15px;
+        bottom: 115px;
         z-index: 1;
     }
 
@@ -78,30 +78,17 @@
     top: -200px;
 }
 .inter_cutimg {
-    background: url(../../img/ui2/images01.jpg) no-repeat center center;
+    background: url(../images/images01.jpg) no-repeat center center;
     width:100%;
     height:400px;
     display:block;
 }
-.inter_cutimg img02 {
-        background: url(../../img/ui2/images02.jpg) no-repeat center center;
+    .inter_cutimg img02 {
+        background: url(../images/images02.jpg) no-repeat center center;
     }
-.inter_cutimg img03 {
-        background: url(../../img/ui2/images03.jpg) no-repeat center center;
+    .inter_cutimg img03 {
+        background: url(../images/images03.jpg) no-repeat center center;
     }
-    
-    
- .xintuo_cutimg {
-    background: url(../../img/ui/banner/xintu1.jpg) no-repeat center center;
-    width:100%;
-    height:400px;
-    display:block;
-}
-.xintuo_cutimg img02 {
-        background: url(../../img/ui/banner/xintu2.jpg) no-repeat center center;
-    }
-
-       
     .slideBox .prev,
     .slideBox .next {
         position: absolute;
@@ -111,7 +98,7 @@
         display: none;
         width: 32px;
         height: 40px;
-        background: url(../../img/ui2/slider-arrow.png) -110px 5px no-repeat;
+        background: url(../images/slider-arrow.png) -110px 5px no-repeat;
         filter: alpha(opacity=50);
         opacity: 0.5;
     }
@@ -146,12 +133,14 @@
     -moz-opacity: 0.15;
     opacity: 0.15;
     min-width: 1108px;
+	left:0;
+	right:0;
 }
 
 .tjs_liucheng {
     position: absolute;
     top: 435px;
-    background: url(../../img/ui2/tjs_liucheng.png) no-repeat 50% 50%;
+    background: url(../images/tjs_liucheng.png) no-repeat 50% 50%;
     width: 1108px;
     height: 100px;
 }
@@ -534,7 +523,7 @@
 }
 .left_icon {
     position:absolute;
-    background:url(../../img/ui2/left_icon.png) no-repeat;
+    background:url(../images/left_icon.png) no-repeat;
     width:13px;
     height: 25px;
     display:block;
@@ -679,7 +668,7 @@
 
 .sel_wrap {
     height: 30px;
-    background: #fff url(../../img/ui2/upicon.png) no-repeat right 5px;
+    background: #fff url(../images/upicon.png) no-repeat right 5px;
     color: #a1a1a1;
     width: 145px;
     font-size: 14px;
@@ -795,7 +784,7 @@
     width: 32px;
     height: 32px;
     display:block;
-    background:url(../../img/ui2/close_albox.png) no-repeat;
+    background:url(../images/close_albox.png) no-repeat;
     position:absolute;
     right: 25px;
     top: 18px;
@@ -818,7 +807,7 @@
             color: #3B4E77;
             text-align:center;
             margin-left: 20px;
-            padding-bottom: 0px;
+            padding-bottom: 10px;
         }
         .alert_in_box input {
             border: 1px solid #BED1E4;
@@ -968,7 +957,7 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui2/zhibiao.png) no-repeat;
+        background: url(../images/zhibiao.png) no-repeat;
         vertical-align: -2px;
         *zoom: 1;
         *display: inline;
@@ -977,7 +966,7 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui2/zhibiaoc.png) no-repeat;
+        background: url(../images/zhibiaoc.png) no-repeat;
         vertical-align: -2px;
         *zoom: 1;
         *display: inline;
@@ -986,7 +975,7 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui2/zhibiaos.png) no-repeat;
+        background: url(../images/zhibiaos.png) no-repeat;
         vertical-align: -2px;
         *zoom: 1;
         *display: inline;
@@ -1010,7 +999,7 @@ a.uc_sort {
         float: right;
         width: 20px;
         height: 26px;
-        background: url(../../img/ui2/search.png) no-repeat;
+        background: url(../images/search.png) no-repeat;
         background-position: 0px 4px;
         border: 1px solid #0280CC;
         border-left: none;
@@ -1399,7 +1388,7 @@ a.uc_sort {
     border-left: none;
     height: 25px;
     width: 25px;
-    background: url(../../img/ui2/searchbig.png) no-repeat 0 1px;
+    background: url(../images/searchbig.png) no-repeat 0 1px;
     display: block;
     position: relative;
     left: 196px;
@@ -2561,7 +2550,7 @@ a.uc_sort {
         *zoom: 1;
         width: 28px;
         height: 24px;
-        background: url(../../img/ui2/zoushi.png) no-repeat;
+        background: url(../images/zoushi.png) no-repeat;
     }
 
 .trend_viewer_hd {
