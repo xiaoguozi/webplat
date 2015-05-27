@@ -93,8 +93,8 @@ public class PEManagerServiceImpl implements PEManagerService {
 	}
 
 	@Override
-	public Map<String, Object> getOnLinePECompanyList() {
-		return peCompanyService.getOnLinePECompany();
+	public Map<String, Object> getOnLinePECompanyList(String keyword) {
+		return peCompanyService.getOnLinePECompany(keyword);
 	}
 
 	@Override

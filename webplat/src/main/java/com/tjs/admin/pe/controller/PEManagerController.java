@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.pe.model.PEManager;
@@ -125,9 +126,14 @@ public class PEManagerController {
     
     @RequestMapping("/getOnLinePECompanyList")
     @ResponseBody
-    public  Map<String, Object> getOnLinePECompanyList() {
+    public  Map<String, Object> getOnLinePECompanyList(@RequestParam(value="keyword",required=false) String keyword) throws UnsupportedEncodingException {
+    	if(StringUtils.isNotBlank(keyword)){
+    		String paramsTrans = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
+    		keyword =java.net.URLDecoder.decode(paramsTrans , "UTF-8");
+    	}
+    	
     	Map<String, Object> result = new HashMap<String, Object>();
-    	result = peManagerService.getOnLinePECompanyList(); 
+    	result = peManagerService.getOnLinePECompanyList(keyword); 
         return result;
     }
     

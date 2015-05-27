@@ -37,7 +37,7 @@ public interface PEManagerService  {
 	 * 
 	 * @return Map值 total：记录数， data：数据集
 	 */
-	Map<String, Object> getOnLinePECompanyList();
+	Map<String, Object> getOnLinePECompanyList(String keyword);
 	
 	/**
 	 * 获取对应私募公司在线的产品清单 

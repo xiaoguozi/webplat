@@ -95,12 +95,13 @@ public class PECompanyServiceImpl implements PECompanyService {
 	}
 
 	@Override
-	public Map<String, Object> getOnLinePECompany() {
+	public Map<String, Object> getOnLinePECompany(String keyword) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		PECompanyCtrlModel peCompanyCtrlModel = new PECompanyCtrlModel();
 		PECompany peCompany = new PECompany(); 
 		peCompany.setStatus(PECompanyServiceImpl.ON_LINE);
 		peCompanyCtrlModel.setPeCompany(peCompany);
+		peCompanyCtrlModel.setKeyWord(keyword);
 		int count = this.selectListCount(peCompanyCtrlModel);
 		List<PECompany> peCompanys = this.getPECompanyList(peCompanyCtrlModel);          
 		List<Lable> lables = new ArrayList<Lable>();

@@ -121,7 +121,7 @@ public class PEProductServiceImpl implements PEProductService {
 
 	@Override
 	public Map<String, Object> getOnLinePECompanyList() {
-		return peCompanyService.getOnLinePECompany();
+		return peCompanyService.getOnLinePECompany(null);
 	}
 
 	@Override

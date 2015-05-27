@@ -37,5 +37,5 @@ public interface PECompanyService  {
 	 * 
 	 * @return Map值 total：记录数， data：数据集
 	 */
-	Map<String, Object> getOnLinePECompany();
+	Map<String, Object> getOnLinePECompany(String keyword);
 }
