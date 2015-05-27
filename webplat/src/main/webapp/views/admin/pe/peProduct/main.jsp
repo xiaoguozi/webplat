@@ -217,21 +217,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label">认 购 费（%）</label>
+            <label class="col-md-3 control-label">认 购 费</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required number" name="subscripFee" value="${peProduct.subscripFee}"  >
+                <input type="text" class="form-control required" name="subscripFee" value="${peProduct.subscripFee}"  >
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label">退出费用（%）</label>
+            <label class="col-md-3 control-label">退出费用</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required number" name="exitFee" value="${peProduct.exitFee}"  >
+                <input type="text" class="form-control required" name="exitFee" value="${peProduct.exitFee}"  >
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label">浮动管理费（%）</label>
+            <label class="col-md-3 control-label">浮动管理费</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required number" name="managementFee" value="${peProduct.managementFee}"  >
+                <input type="text" class="form-control required" name="managementFee" value="${peProduct.managementFee}"  >
             </div>
         </div>
         <div class="form-group">
