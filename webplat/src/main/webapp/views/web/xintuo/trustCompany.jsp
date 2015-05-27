@@ -10,7 +10,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山——信托公司</title>
+<title>淘金山—跟我淘金山</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
@@ -38,7 +38,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;">
 
-     <div class="logo_wrap"><a href="#"><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+     <div class="logo_wrap"><a href=""><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
@@ -55,7 +55,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="#">首页</a> > <a href="rest/web/xintuo/trust/trustCompany">信托公司</a></div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="">首页</a> &gt;<a href="rest/web/xintuo/trust/trustIndex">信托</a>&gt;信托公司</div></div>
 
 <!-- 精选推荐 开始-->
 

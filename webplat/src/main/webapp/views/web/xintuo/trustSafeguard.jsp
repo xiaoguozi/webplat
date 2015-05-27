@@ -12,7 +12,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山——信托公司</title>
+<title>淘金山—跟我淘金山</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 </head>
@@ -43,7 +43,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="">首页</a> > 安全保障</div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="">首页</a> &gt;<a href="rest/web/xintuo/trust/trustIndex">信托</a>&gt; 安全保障</div></div>
 
 <!-- 产品审核 开始-->
 

@@ -10,7 +10,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>${productXtcp.xtcpSplname}</title>
+<title>淘金山—跟我淘金山</title>
 <link href="<%=basePath%>assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
  <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/jquery.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/alert_box.js"></script>
@@ -43,7 +43,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- /header_menu -->
 
 
-<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center" >当前位置： <a href="<%=basePath%>">首页</a> > <a href="<%=basePath%>rest/web/xintuo/trust/trustProduct">信托产品</a> > ${productXtcp.xtcpSplname}</div></div>
+<div class="tjs_trust_positiondiv"> <div class="tjs_1108px center" >当前位置： <a href="<%=basePath%>">首页</a> &gt;<a href="<%=basePath%>rest/web/xintuo/trust/trustIndex">信托</a>&gt; <a href="<%=basePath%>rest/web/xintuo/trust/trustProduct">信托产品</a> &gt; ${productXtcp.xtcpSplname}</div></div>
 
 <!-- 产品基本信息 开始-->
 
