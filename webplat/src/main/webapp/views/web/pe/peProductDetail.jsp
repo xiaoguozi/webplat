@@ -344,7 +344,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <th width="94">退出费用：</th>
                   <td width="*">
                   	<c:if test="${peProduct.exitFee!=null}">
-                  		${peProduct.exitFee}%
+                  		${peProduct.exitFee}
                   		</c:if>
                   	</td>
                 </tr>
@@ -354,7 +354,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <th>浮动管理费：</th>
                   <td>
                   	<c:if test="${peProduct.managementFee!=null}">
-                  		${peProduct.managementFee}%
+                  		${peProduct.managementFee}
                   	</c:if>
                   </td>
                 </tr>
@@ -362,7 +362,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <th>认  购  费：</th>
                   <td>
                   		<c:if test="${peProduct.subscripFee!=null}">
-	                  		${peProduct.subscripFee}%
+	                  		${peProduct.subscripFee}
 	                  	</c:if>
                   </td>
                   <th></th>
