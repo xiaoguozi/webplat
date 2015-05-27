@@ -41,9 +41,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li><a href="rest/web/peizi/activity"><span>淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
+                        <!--  
                         <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
                         <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
                         <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        -->
+                        <li><span>淘金募集</span></li>
+                        <li><span>淘金自营</span></li>
+                        <li><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -60,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
@@ -133,14 +138,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5">8750</span>元</li>
                         <li>账户管理费<img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span id="fee" class="colorf06 font26 mlr5">7.5</span>元/天</li>
                         <li style="position:relative">开始交易时间<img class="curser" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" src="assets/img/peizi/qcmark.png" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（2015.07.08）</span></li>
+                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                    <a class="tjs_btn" href="rest/web/peizi/dayNextCapital">我要配资</a>
+                    <!--  <a class="tjs_btn" href="rest/web/peizi/dayNextCapital">我要配资</a>-->
+                    <a class="tjs_btn">我要配资</a>
                 </div>
             </div>
             <div class="pz_produce">
@@ -216,7 +222,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).click(function () {
                 $(".cpbox1").removeClass("on")
                 $(this).addClass("on");
-                sum = $(".cpmoney:eq('" + i + "')").text();
+                sum = $(".cpmoney:eq(" + i + ")").text();
                 $("#capital").text(sum);
                 $("#assure").text(sum * 0.25);
                 $("#loss").text(sum * 0.9);
@@ -226,15 +232,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             });
         });
         /*--/操盘金额--*/
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+
 	    //--自定义下拉框--
 		$(".sel_wrap").click(function () {
 		    var money = "7.5";

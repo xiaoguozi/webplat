@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="w100bg">
         <div class="tjs_1108px center">
             <div class="pz_produce">
-				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送20000元 配资申请</b>
+				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送2000元 配资申请</b>
 			</div>
             <div class="bgcolor">
                 <div class="w945">
@@ -77,7 +77,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <table class="tbl_w500">
                     <tr>
                         <td style="width:200px;"><img src="assets/img/peizi/icon06.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left"><b class="color158">购买过票据</b>的用户有一次体验机会</td>
+                        <td class="tbl_w500_b t-left"><b class="color158">首次注册</b>的用户有一次体验机会</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon05.png" alt="" /></td>

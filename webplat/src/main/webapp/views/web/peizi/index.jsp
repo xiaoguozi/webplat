@@ -41,9 +41,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><a href="rest/web/peizi/index"><span class="simu_on">配资首页</span></a></li>
                         <li><a href="rest/web/peizi/activity"><span>淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
+                        <!--  
                         <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
                         <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
                         <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        -->
+                        <li><span>淘金募集</span></li>
+                        <li><span>淘金自营</span></li>
+                        <li><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                     
@@ -96,13 +101,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             		<img src="assets/img/peizi/safety.png" alt=""><p>安全保障<br/><span class="font14">最安全的网上配资</span></p>
             	</span>
             	<span class="data_box2">
-            		<em>7.4</em>万位<br/><span class="font14">已累计服务投资人</span>
+            		<em>5.8</em>万位<br/><span class="font14">已累计服务投资人</span>
             	</span>
             	<span class="data_box2">
-            		<em>38</em>亿元<br/><span class="font14">送出实盘操盘资金</span>
+            		<em>8</em>亿元<br/><span class="font14">送出实盘操盘资金</span>
             	</span>
             	<span class="data_box2">
-            		<em>1.8</em>亿元<br/><span class="font14">为投资人赚取收益</span>
+            		<em>0.8</em>亿元<br/><span class="font14">为投资人赚取收益</span>
             	</span>
             </div>
 			<!-- 新手导航 结束 -->    
@@ -114,23 +119,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div style="position:relative;display:block;height:750px;">
 			<div class="pro_box ml0 top20">
 				<h1 class="pro_title">淘金活动</h1>
-				<p class="wbl pt80"><b class="colorf06">免费赠送20000元</b> 实盘资金</p>
+				<p class="wbl pt80"><b class="colorf06">免费赠送2000元</b> 实盘资金</p>
 				<p><b class="colorf06">盈利全归您</b> 亏损算我们</p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/freeActivity">我要爽</a>
+				
 			</div>
 			<div class="pro_box top20" style="left:349px;">
 				<h1 class="pro_title">淘金募集</h1>
-				<p class="wbl pt20"><span class="color158">镇江交投<span><span class="colorf06"> <span class="fsize">10</span>.89%</span></p>
+				<p class="wbl pt20"><span class="color158">淘金山一号<span><span class="colorf06"> <span class="fsize">10</span>.89%</span></p>
 				<p class="wbl lh30">门槛：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
 				<p class="w230">一年半期限，高收益，还款来源足，风控完善，交易对手强劲！</p>
-				<a class="tjs_btn mtb29" href="rest/web/peizi/recommandRaise">我要预约</a>
+				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandRaise">我要预约</a> -->
+				<a class="tjs_btn mtb29">我要预约</a>
 			</div>
 			<div class="pro_box top20" style="left:728px;">
 				<h1 class="pro_title">淘金自营</h1>
-				<p class="wbl pt20"><span class="color158">清水源1号<span><span class="colorf06"> <span class="fsize">700</span>.50%</span></p>
-				<p class="wbl lh30">基金经理：<b class="colorf06">张小川 </b></p>
+				<p class="wbl pt20"><span class="color158">淘金山二号<span><span class="colorf06"> <span class="fsize">528</span>.00%</span></p>
+				<p class="wbl lh30">基金经理：<b class="colorf06">罗忠山</b></p>
 				<p class="w230">擅长趋势投资策略，精研个股，风控严谨产品回撤幅度小！</p>
-				<a class="tjs_btn mtb29" href="rest/web/peizi/recommandSelf">我要预约</a>
+				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandSelf">我要预约</a>-->
+				<a class="tjs_btn mtb29">我要预约</a>
 			</div>
             <div class="clear"></div>
 			<div class="pro_box ml0 top380 top370">

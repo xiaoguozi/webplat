@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="w100bg">
         <div class="tjs_1108px center">
             <div class="pz_produce">
-				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送20000元 配资申请</b>
+				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送2000元 配资申请</b>
 			</div>
             <div class="bgcolor">
                 <div class="w945 step2">
@@ -80,20 +80,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p><span class="colorf06 font26">10000</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">2500</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">7500</span>元</p>
+                            <p><span class="colorf06 font26">2001</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">1</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">2000</span>元</p>
                             <p><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
                         </div>
                         <table class="pz_tbl">
                             <tr>
-                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">10000</span> 元</td>
-                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26">8750</span> 元</td>
+                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">2001</span> 元</td>
+                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26">0</span> 元</td>
                             </tr>
                             <tr>
-                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26">9000</span> 元</td>
+                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26">0</span> 元</td>
                                 <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按30天计算，如使用1个月，12月16日到1月15日" alt="" />：2 天</td>
                             </tr>
                             <tr>
-                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">7.5</span> 元/天</td>
+                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">0</span> 元/天</td>
                                 <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始交易。14:40以后只能选择下个交易日" alt="" />：下个交易日</td>
                             </tr>
                         </table>
@@ -105,21 +105,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <table class="zhifu_boxtbl">
                             <tr>
                                 <td class="t-left">投资本金：</td>
-                                <td class="t-right">2500 元</td>
+                                <td class="t-right">1 元</td>
                             </tr>
                             <tr>
                                 <td class="t-left">预存2天账户管理费</td>
-                                <td class="t-right">22.5 元</td>
+                                <td class="t-right">0 元</td>
                             </tr>
                             <tr>
                                 <td class="t-left">总金额</td>
-                                <td class="colorf06 font26 t-right">25225.5 元</td>
+                                <td class="colorf06 font26 t-right">2001 元</td>
                             </tr>
                         </table>
                         <a class="tjs_btndiv btnbox" href="rest/web/peizi/activity">重选操盘方案</a>
                     </div>
                     <a class="tjs_next_btn mbl" href="rest/web/peizi/freeLastActivity">确定配资</a>
-                    <p class="t-right ptr">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">2522.5</span>元，请先<a href="rest/web/peizi/recharge">充值</a></p>
+                    <p class="t-right ptr">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">1</span>元，请先<a href="rest/web/peizi/recharge">充值</a></p>
                 </div>
                 <hr class="pc"/>
             </div>

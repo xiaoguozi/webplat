@@ -130,14 +130,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>借款利息&nbsp;&nbsp;&nbsp;<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Dinterests" class="colorf06 font26 mlr5">0</span> 元</li>
                         <li>借款月利息<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Minterests" class="colorf06 font26 mlr5">0</span> 元/月</li>
                         <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（2015.07.08）</span></li>
+                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                    <a class="tjs_btn" href="rest/web/peizi/monthNextCapital">我要配资</a>
+                   <!--   <a class="tjs_btn" href="rest/web/peizi/monthNextCapital">我要配资</a>-->
+                   <a class="tjs_btn">我要配资</a>
                 </div>
             </div>
             <div class="pz_produce">

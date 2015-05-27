@@ -79,7 +79,7 @@ document.all(imgg).style.display='block'}}
        <p class="profit-hd">淘金山预期年化收益</p>
        <p class="profit-hb orange">高达 <big>15%</big></p>
      </div>
-     <p class="security-tip">账户资金安全由银行和PICC共同保障</p>
+   <!--   <p class="security-tip">账户资金安全由银行和PICC共同保障</p>--> 
      <p>
        <a href="rest/web/passport/reg" class="btn btn-danger btn-larger btn-register">立即注册</a>
      </p>
