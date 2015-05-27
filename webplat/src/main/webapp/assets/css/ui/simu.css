@@ -957,8 +957,8 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui/zhibiao.png) no-repeat;
-        vertical-align: -2px;
+        background: url(../../img/ui2/zhibiao.png) no-repeat;
+        vertical-align: 0px;
         *zoom: 1;
         *display: inline;
     }
@@ -966,8 +966,8 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui/zhibiaoc.png) no-repeat;
-        vertical-align: -2px;
+        background: url(../../img/ui2/zhibiaoc.png) no-repeat;
+        vertical-align: 0px;
         *zoom: 1;
         *display: inline;
     }
@@ -975,8 +975,8 @@ a.uc_sort {
         display: inline-block;
         width: 15px;
         height: 15px;
-        background: url(../../img/ui/zhibiaos.png) no-repeat;
-        vertical-align: -2px;
+        background: url(../../img/ui2/zhibiaos.png) no-repeat;
+        vertical-align: 0px;
         *zoom: 1;
         *display: inline;
     }
