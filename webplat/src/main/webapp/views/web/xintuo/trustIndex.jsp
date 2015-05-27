@@ -399,12 +399,12 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 
 <div class="tjs_dominant_contentdiv">
 <div class="tjs_dominant_contentleft tjs_quick_bg"></div>
-<div class="tjs_dominant_contentright"><span style=" margin-top:20px;display:inline-block;font-size:18px; color:#0280cc">期限固定</span><br /><span style="color:#8f8f8f;">一般在1~3年</span></div>
+<div class="tjs_dominant_contentright"><span style=" margin-top:20px;display:inline-block;font-size:18px; color:#0280cc">募集迅速</span><br /><span style="color:#8f8f8f;">一般1-2周募集完</span></div>
 </div>
 
 <div class="tjs_dominant_contentdiv">
 <div class="tjs_dominant_contentleft tjs_major_bg"></div>
-<div class="tjs_dominant_contentright"><span style=" margin-top:20px;display:inline-block;font-size:18px; color:#0280cc">期限固定</span><br /><span style="color:#8f8f8f;">一般在1~3年</span></div>
+<div class="tjs_dominant_contentright"><span style=" margin-top:20px;display:inline-block;font-size:18px; color:#0280cc">专款专用</span><br /><span style="color:#8f8f8f;">财产独立，专款专用</span></div>
 </div>
 <div  style=" height:36px; width:100%;"></div>
 </div>
