@@ -238,9 +238,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     	<c:forEach items="${lstPeProductNet}" var="peProductNet">
                     		<tr class="even">
 		                        <td width="125"><fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy-MM-dd"/></td>
-		                        <td width="125"><fmt:formatNumber value="${peProductNet.unitNet.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.unitNet*100%100}" pattern="00"/></td>
-		                        <td width="125"><fmt:formatNumber value="${peProductNet.totalNet.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.totalNet*100%100}" pattern="00"/></td>
-		                        <td width="*"><fmt:formatNumber value="${peProductNet.increaseRate.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peProductNet.increaseRate*100%100}" pattern="00"/>%</td>
+		                        <td width="125"><fmt:formatNumber value="${peProductNet.unitNet}" pattern="###0.##"/></td>
+		                        <td width="125"><fmt:formatNumber value="${peProductNet.totalNet}" pattern="###0.##"/></td>
+		                        <td width="*"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</td>
 		                     </tr>
                     	</c:forEach>
                     </tbody>
