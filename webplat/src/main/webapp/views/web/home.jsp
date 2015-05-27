@@ -202,7 +202,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcp.managerId}" target="_blank">${smcp.managerName}</a></div>
 <div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" target="_blank">${smcp.simpleName}</a></div>
 </div>
-<div class="tjs_product_textdiv">${smcp.managerReview}  </div>
+<div class="tjs_product_textdiv" style="height:40px;">${smcp.managerReview}  </div>
 <div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
