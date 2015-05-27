@@ -120,7 +120,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <input type="hidden" id="peType" name="peType" value="${simuSearchVO.peType}" />
                     <input type="hidden" id="currentYear" name="currentYear" value="${simuSearchVO.currentYear}" />
                     <div class="tjs_right_titlediv fcolor">
-                        <img class="tjs_img_diamond" src="assets/img/ui/ranklist.png" />私募收益排行 
+                        <img class="tjs_img_diamond" src="assets/img/ui/ranklist.png" /><span style="float:left;font-size:20px;">私募收益排行</span> 
 				        <div class="sel_wrap">
 				            <label class="lbl">
 				            	<c:if test="${simuSearchVO.peType==0}">全部策略</c:if>
@@ -145,10 +145,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                <li type="8" style="list-style-type:none;">其他</li>
 				            </ul>
 				        </div>
-                        <!--<select class="tjs_select">
-            
-
-        </select>-->
+                    
                         <span style="float: right;"><a href="rest/web/pe/peIndexProduct" class="tjs_moreurl">更多>></a></span>
                     </div>
                     <div class="tjs_coloreddiv ml0 bgcolorc"></div>
