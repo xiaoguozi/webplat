@@ -121,7 +121,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<input name="pageSize" type="hidden" value="${SearchCtrlModel.pageSize }"/>
 				<div class="tjs_right_titlediv fcolor">
 					<img class="tjs_img_diamond" style="top: 10px;"src="assets/img/ui2/all.png" />
-					全部私募经理<span style="position: absolute; top: 13px">
+					全部私募经理<span style="display: block; position: relative; left: 115px; top: -40px;*left:130px;*top:-53px">
 					<input name="keyWord" class="input_txt1" type="text" placeholder="请输入关键字" value="${SearchCtrlModel.keyWord }" />
 					<a class="input_btn1" href=""><img src="assets/img/ui/searchbig.png" alt="" /></a></span>
 				</div>

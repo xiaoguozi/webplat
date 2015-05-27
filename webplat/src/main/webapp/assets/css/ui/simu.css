@@ -1393,6 +1393,7 @@ a.uc_sort {
     position: relative;
     left: 196px;
     top: -27px;
+    *top:-40px;
 }
 
 .tjs_tbl_td_brm {
