@@ -25,13 +25,13 @@
         <div class="form-group">
             <label class="col-md-3 control-label">公司名称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="name" value="${peCompany.name}" >
+                <input type="text" class="form-control required" name="name" maxlength="100" value="${peCompany.name}" >
             </div>
         </div>
         <div class="form-group">
              <label class="col-md-3 control-label">公司LOGO</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="logo" value="${peCompany.logo}"  >
+                <input type="text" class="form-control required" name="logo" maxlength="100" value="${peCompany.logo}"  >
             </div>
         </div>
         <div class="form-group">
@@ -47,55 +47,55 @@
         <div class="form-group">
              <label class="col-md-3 control-label">所在地区</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="area" value="${peCompany.area}"  >
+                <input type="text" class="form-control required" maxlength="100" name="area" value="${peCompany.area}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">管理规模</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="managementScale" value="${peCompany.managementScale}"  >
+                <input type="text" class="form-control required" name="managementScale" maxlength="100" value="${peCompany.managementScale}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">投研人数</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="investmentNumber" value="${peCompany.investmentNumber}"  >
+                <input type="text" class="form-control required" name="investmentNumber" maxlength="100" value="${peCompany.investmentNumber}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">产品线</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="productLine" value="${peCompany.productLine}"  >
+                <input type="text" class="form-control required" name="productLine" maxlength="100" value="${peCompany.productLine}"  >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">点评</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="review" value="${peCompany.review}"  >
+                <input type="text" class="form-control required" name="review" maxlength="100" value="${peCompany.review}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">核心人物</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" name="coreCharacter">${peCompany.coreCharacter}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="coreCharacter">${peCompany.coreCharacter}</textarea>
             </div>
         </div>
           <div class="form-group">
             <label class="col-md-3 control-label">公司简介</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" name="companyProfile" maxlength="300">${peCompany.companyProfile}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="companyProfile" maxlength="300">${peCompany.companyProfile}</textarea>
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">投资理念</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" name="investmentPhilosophy">${peCompany.investmentPhilosophy}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="investmentPhilosophy">${peCompany.investmentPhilosophy}</textarea>
             </div>
         </div>
           <div class="form-group">
             <label class="col-md-3 control-label">投研团队</label>
             <div class="col-md-6">
-               <textarea rows="6" cols="100" class="form-control required" name="investmentTeam">${peCompany.investmentTeam}</textarea>
+               <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="investmentTeam">${peCompany.investmentTeam}</textarea>
             </div>
         </div>
          <div class="form-group">

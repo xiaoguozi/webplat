@@ -49,25 +49,25 @@
         <div class="form-group">
             <label class="col-md-3 control-label">头像</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="logo" value="${peManager.logo}" >
+                <input type="text" class="form-control required" name="logo" maxlength="100" value="${peManager.logo}" >
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">姓名</label>
             <div class="col-md-6">
-                   <input type="text" class="form-control required" name="name" value="${peManager.name}" >
+                   <input type="text" class="form-control required" name="name" maxlength="100" value="${peManager.name}" >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">文化程度</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="education" value="${peManager.education}"  >
+                <input type="text" class="form-control required" name="education" maxlength="100" value="${peManager.education}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">毕业院校 </label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="school" value="${peManager.school}"  >
+                <input type="text" class="form-control required" name="school" maxlength="100" value="${peManager.school}"  >
             </div>
         </div>
          <div class="form-group">
@@ -85,7 +85,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">过往从业机构</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="institution" value="${peManager.institution}"  >
+                <input type="text" class="form-control required" name="institution" maxlength="100" value="${peManager.institution}"  >
             </div>
         </div>
          <div class="form-group">
@@ -115,7 +115,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">点评</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="review" value="${peManager.review}"  >
+                <input type="text" class="form-control required" name="review" maxlength="100" value="${peManager.review}"  >
             </div>
         </div>
          <div class="form-group">

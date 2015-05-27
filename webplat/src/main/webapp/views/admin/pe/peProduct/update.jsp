@@ -57,7 +57,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">基金名称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="name" value="${peProduct.name}" >
+                <input type="text" class="form-control required" name="name" maxlength="100" value="${peProduct.name}" >
             </div>
         </div>
         <div class="form-group">
@@ -110,7 +110,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">运行时间</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="runTime" value="${peProduct.runTime}"  >
+                <input type="text" class="form-control required" name="runTime" maxlength="20" value="${peProduct.runTime}"  >
             </div>
         </div>
          <div class="form-group">
@@ -167,19 +167,19 @@
          <div class="form-group">
             <label class="col-md-3 control-label">发行平台</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="distributionPlatform" value="${peProduct.distributionPlatform}"  >
+                <input type="text" class="form-control required" name="distributionPlatform" maxlength="100"  value="${peProduct.distributionPlatform}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">托管银行</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="custodianBank" value="${peProduct.custodianBank}"  >
+                <input type="text" class="form-control required" name="custodianBank" maxlength="100"  value="${peProduct.custodianBank}"  >
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">证券经纪 </label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="stockbrokers" value="${peProduct.stockbrokers}"  >
+                <input type="text" class="form-control required" name="stockbrokers" maxlength="100"  value="${peProduct.stockbrokers}"  >
             </div>
         </div>
          <div class="form-group">
@@ -194,7 +194,7 @@
          <div class="form-group">
             <label class="col-md-3 control-label">是否结构化</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="whetherStructure" value="${peProduct.whetherStructure}"  >
+                <input type="text" class="form-control required" name="whetherStructure" maxlength="10"  value="${peProduct.whetherStructure}"  >
             </div>
         </div>
          <div class="form-group">
@@ -230,7 +230,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">推荐理由</label>
             <div class="col-md-6">
-                 <textarea rows="6" cols="100" class="form-control required" name="recommendReason">${peProduct.recommendReason}</textarea>
+                 <textarea rows="6" cols="100" class="form-control required" maxlength="200" name="recommendReason">${peProduct.recommendReason}</textarea>
             </div>
         </div>
         <div class="form-group">
