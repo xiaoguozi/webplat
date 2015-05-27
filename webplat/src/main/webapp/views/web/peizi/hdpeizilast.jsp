@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="w100bg">
             <div class="tjs_1108px center">
                 <div class="pz_produce">
-                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送20000元 配资申请</b>
+                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送2000元 配资申请</b>
                 </div>
                 <div class="bgcolor">
                     <div class="w945 step3">

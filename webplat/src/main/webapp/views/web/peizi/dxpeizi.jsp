@@ -41,9 +41,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li><a href="rest/web/peizi/activity"><span>淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
-                        <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
-                        <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        <li><span>淘金募集</span></li>
+                        <li>><span>淘金自营</span></li>
+                        <li><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -109,7 +109,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                    <a class="tjs_btn" href="rest/web/peizi/lowNextCapital">我要配资</a>
+                    <!--  <a class="tjs_btn" href="rest/web/peizi/lowNextCapital">我要配资</a>-->
+                    <a class="tjs_btn">我要配资</a>
                 </div>
             </div>
             <div class="pz_produce">

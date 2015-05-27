@@ -64,7 +64,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
             </div>
             <div class="bd">           
                 <ul>                
-                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu1.jpg"/></a></li>
+                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu1.png"/></a></li>
                     <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu2.jpg"/></a></li>
                 </ul>
             </div>

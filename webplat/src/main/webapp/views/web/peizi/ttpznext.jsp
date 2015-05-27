@@ -41,9 +41,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li><a href="rest/web/peizi/activity"><span>淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
-                        <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
-                        <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        <li><span>淘金募集</span></li>
+                        <li><span>淘金自营</span></li>
+                        <li>><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -196,7 +196,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).click(function () {
                 $(".cpbox1").removeClass("on")
                 $(this).addClass("on");
-                sum = $(".cpmoney:eq('" + i + "')").text();
+                sum = $(".cpmoney:eq(" + i + ")").text();
                 $("#capital").text(sum);
                 $("#assure").text(sum * 0.25);
                 $("#loss").text(sum * 0.9);
@@ -206,15 +206,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             });
         });
         /*--/操盘金额--*/
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+
 	    //--自定义下拉框--
 		$(".sel_wrap").click(function () {
 		    var money = "7.5";
