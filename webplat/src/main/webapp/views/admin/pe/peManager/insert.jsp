@@ -191,6 +191,8 @@ $(function(){
             // IndexPage.togglePage('list');
             // $("#searchBtn").click();
     		 managerId = data.bizData.id;
+    		 
+    		 $('input[name=id]').val(data.bizData.id);
          }
     });
 

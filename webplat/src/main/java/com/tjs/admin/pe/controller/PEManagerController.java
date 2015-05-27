@@ -54,12 +54,16 @@ public class PEManagerController {
     @ResponseBody
     public Map<String, Object> insertData(PEManager peManager, PEManagerCtrlModel peManagerCtrlModel, Model model) {
     	Map<String, Object> result = new HashMap<String, Object>();
-    	peManagerService.insertPEManager(peManager, peManagerCtrlModel);
+    	if(peManager.getId()==null||peManager.getId().equals(0)){
+    		peManagerService.insertPEManager(peManager, peManagerCtrlModel);
+    	}else{
+    		peManagerService.updatePEManager(peManager, peManagerCtrlModel);   
+    	}   	
     	result.put("code", "0");
     	result.put("bizData", peManager);
-    	List<PEProduct> peProducts = peManagerService.getOnLinePEProductList(peManager);
-    	result.put("peProducts", peProducts);
-    	peManagerProductService.insert(peManager, peProducts);
+//    	List<PEProduct> peProducts = peManagerService.getOnLinePEProductList(peManager);
+//    	result.put("peProducts", peProducts);
+//    	peManagerProductService.insert(peManager, peProducts);
         return result;
     }
 	
