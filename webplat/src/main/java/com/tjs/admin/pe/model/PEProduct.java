@@ -78,13 +78,13 @@ public class PEProduct {
 	private BigDecimal subscripStart;
 	
 	/* 认 购 费 */
-	private BigDecimal subscripFee;
+	private String subscripFee;
 	
 	/* 退出费用 */
-	private BigDecimal exitFee;
+	private String exitFee;
 	
 	/* 浮动管理费 */
-	private BigDecimal managementFee;
+	private String managementFee;
 	
 	/* 推荐理由 */
 	private String recommendReason;
@@ -307,27 +307,27 @@ public class PEProduct {
 		this.subscripStart = subscripStart;
 	}
 
-	public BigDecimal getSubscripFee() {
+	public String getSubscripFee() {
 		return subscripFee;
 	}
 
-	public void setSubscripFee(BigDecimal subscripFee) {
+	public void setSubscripFee(String subscripFee) {
 		this.subscripFee = subscripFee;
 	}
 
-	public BigDecimal getExitFee() {
+	public String getExitFee() {
 		return exitFee;
 	}
 
-	public void setExitFee(BigDecimal exitFee) {
+	public void setExitFee(String exitFee) {
 		this.exitFee = exitFee;
 	}
 
-	public BigDecimal getManagementFee() {
+	public String getManagementFee() {
 		return managementFee;
 	}
 
-	public void setManagementFee(BigDecimal managementFee) {
+	public void setManagementFee(String managementFee) {
 		this.managementFee = managementFee;
 	}
 
