@@ -97,7 +97,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</p>
 							<p>
 								累计收益<br />
-								<span class="num_big"><fmt:formatNumber value="${TopPeManager.accumulatedIncome.intValue()}" pattern="#0"/>.</span><span class="small small_color"><fmt:formatNumber value="${TopPeManager.xtcpNsyl*100%100}" pattern="00"/>%</span>
+								<span class="num_big"><fmt:formatNumber value="${TopPeManager.accumulatedIncome.intValue()}" pattern="#0"/>.</span><span class="small small_color"><fmt:formatNumber value="${TopPeManager.accumulatedIncome*100%100}" pattern="00"/>%</span>
 							</p></td>
 					</tr>
 					<tr>
