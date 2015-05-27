@@ -8,12 +8,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>淘金山-跟我淘金山</title>
-    <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-    <link href="assets/css/ui/taojinshan_about.css" rel="stylesheet" media="screen" type="text/css" />
-	<link href="assets/css/ui/about.css" rel="stylesheet" />
+    <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/jquery.js"></script>
+    <link href="<%=basePath%>assets/css/ui/taojinshan_about.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="<%=basePath%>assets/css/ui/about.css" rel="stylesheet" />
 </head>
 <body>
 <div class="home_all">
@@ -23,17 +22,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="header_menu">
             <div class="tjs_1108px center" style="position: relative;">
                 <div class="logo_wrap">
-                    <a href="http://www.taojinshan.com.cn">
-                        <img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a>
+                    <a href="<%=basePath%>">
+                        <img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a>
                 </div>
                 <div class="top_wrap_menu menu">
                     <ul>
-                        <li><a href="">首页</a></li>
-					    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
-					    <li><a href="rest/web/pe/peIndex" target="_blank">私募</a></li>
-					    <li><a href="rest/web/peizi/index" target="_blank">配资</a></li>
+                        <li><a href="<%=basePath%>">首页</a></li>
+					    <li><a href="<%=basePath%>rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
+					    <li><a href="<%=basePath%>rest/web/pe/peIndex" target="_blank">私募</a></li>
+					    <li><a href="<%=basePath%>rest/web/peizi/index" target="_blank">配资</a></li>
 					    <li><a href="#" target="_blank">海外保险</a></li>
-					    <li><a href="rest/web/aboutUs/index" target="_blank">关于我们</a></li>
+					    <li><a href="<%=basePath%>rest/web/aboutUs/index" target="_blank">关于我们</a></li>
                     </ul>                    
                 </div>
             </div>
@@ -41,19 +40,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 <!--/  导航-->
 <!-- 内容-->
-    <img src="assets/img/about/imgbg.jpg" style="display: block; overflow: hidden;width:100%" alt="" />
+    <img src="<%=basePath%>assets/img/about/imgbg.jpg" style="display: block; overflow: hidden;width:100%" alt="" />
     <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/aboutUs/index" class="path_item">关于我们</a> <span class="sep">&gt;</span> <span class="txt">人才招聘</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="<%=basePath%>" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="<%=basePath%>rest/web/aboutUs/index" class="path_item">关于我们</a> <span class="sep">&gt;</span> <span class="txt">人才招聘</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
             <div class="gywm_left">
                 <ul>
-                    <li><a href="rest/web/aboutUs/index">公司简介</a></li>
-                    <li><a href="rest/web/aboutUs/team">管理团队</a></li>
-                    <li><a href="rest/web/aboutUs/jobs" class="on">人才招聘</a></li>
-                    <li><a href="rest/web/aboutUs/contact">联系我们</a></li>
-                    <li><a href="rest/web/aboutUs/partner">商户合作</a></li>
+                    <li><a href="<%=basePath%>rest/web/aboutUs/index">公司简介</a></li>
+                    <li><a href="<%=basePath%>rest/web/aboutUs/team">管理团队</a></li>
+                    <li><a href="<%=basePath%>rest/web/aboutUs/jobs" class="on">人才招聘</a></li>
+                    <li><a href="<%=basePath%>rest/web/aboutUs/contact">联系我们</a></li>
+                    <li><a href="<%=basePath%>rest/web/aboutUs/partner">商户合作</a></li>
                 </ul>
             </div>
             <div class="gywm_right">
@@ -77,9 +76,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <table class="tbl1 rczpin">
                     <thead>
                     <tr>
-                        <td class="color158"><img src="assets/img/about/cpyy.png" alt="" />产品运营类</td>
-                        <td class="color158"><img src="assets/img/about/yfl.png" alt="" />研发类</td>
-                        <td class="color158"><img src="assets/img/about/kfqt.png" alt="" />客服及其他</td>
+                        <td class="color158"><img src="<%=basePath%>assets/img/about/cpyy.png" alt="" />产品运营类</td>
+                        <td class="color158"><img src="<%=basePath%>assets/img/about/yfl.png" alt="" />研发类</td>
+                        <td class="color158"><img src="<%=basePath%>assets/img/about/kfqt.png" alt="" />客服及其他</td>
                     </tr>
                    </thead>
                     <tbody>
@@ -95,9 +94,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     </tbody>
                 </table>
-                <table id="zp1" class="tbl3 zp_list">
+                <table class="tbl3 zp_list">
                     <tr>
-                        <td colspan="2"><span class="font18" style="color:#000">产品运营类</span><br /><span>金融产品经理</span></td>
+                        <td colspan="2"><span class="font18" style="color:#000">产品运营类</span><br /><a id="zp1" name="zp1">金融产品经理</a></td>
                     </tr>
                     <tr>
                         <td class="colorf06">岗位职责</td>
@@ -171,6 +170,54 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="clear"></div>
 <!--/ 内容-->
 <!--  页脚-->
-<%@ include file="/views/web/footer.jsp"%>
+<footer>
+<div class="footer_bg">
+    <div class="tjs_1108px center">
+        <div class="foot_menu">
+            <p class="menu_title">关于我们</p>
+            <ul class="foot_menu1">
+                <li><a href="<%=basePath%>rest/web/aboutUs/index" target="_blank">><span>公司简介</span></a></li>
+                <li><a href="<%=basePath%>rest/web/aboutUs/team" target="_blank">><span>管理团队</span></a></li>
+                <li><a href="<%=basePath%>rest/web/aboutUs/jobs" target="_blank">><span>人才招聘</span></a></li>
+                <li><a href="<%=basePath%>rest/web/aboutUs/contact" target="_blank">><span>联系我们</span></a></li>
+                <li><a href="<%=basePath%>rest/web/aboutUs/partner" target="_blank">><span>商户合作</span></a></li>
+            </ul>
+        </div>
+        <div class="foot_menu">
+            <p class="menu_title">帮助中心</p>
+            <ul class="foot_menu1">
+                <li><a href="">><span>新手入门</span></a></li>
+                <li><a href="">><span>理财问答</span></a></li>
+                <li><a href="">><span>试用帮助</span></a></li>
+            </ul>
+        </div>
+        <div class="foot_menu">
+            <p class="menu_title">关注我们</p>
+            <ul class="foot_menu1">
+                <img src="<%=basePath%>assets/img/ui2/aboutimg.png" alt=""/>
+            </ul>
+        </div>
+        <div class="foot_about_box">
+            <ul class="about_box1">
+                <li><img class="addr_home" src="<%=basePath%>assets/img/ui2/home.png" alt=""></li><li><span>联系地址</span></li><li class="w217">深圳市福田区福强路4001号文化创意园A座6层
+（地铁龙岗线益田站D出口）</li>
+            </ul>
+            <ul class="about_box1">
+                <li><img class="addr_home" src="<%=basePath%>assets/img/ui2/phone.png" alt=""></li><li><span>热线电话</span></li><li class="w217 lh40">4006-114-088</li>
+            </ul>
+            <ul class="about_box1">
+                <li><img class="addr_home qq" src="<%=basePath%>assets/img/ui2/qq.png" alt=""></li><li><span class="zx">在线咨询</span></li><li class="w217 lh40">08:00-23:00</li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="footers">
+    <p class="pt25">投资有风险，理财需谨慎</p>
+    <p>淘金山互联网在线理财 版权所有 © 2015-2018 粤ICP备 15026551号-1
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255221274'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1255221274%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+	</p>
+</div>
+</footer>
 </body>
 </html>
