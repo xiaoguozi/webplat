@@ -20,7 +20,7 @@ public class PETopProduct {
 	private BigDecimal netWorth;
 	
 	/** 运行时间 */
-	private Integer runTime;
+	private String runTime;
 	
 	/** 年收益率 */
 	private BigDecimal yearRate;
@@ -135,11 +135,11 @@ public class PETopProduct {
 		this.netWorth = netWorth;
 	}
 
-	public Integer getRunTime() {
+	public String getRunTime() {
 		return runTime;
 	}
 
-	public void setRunTime(Integer runTime) {
+	public void setRunTime(String runTime) {
 		this.runTime = runTime;
 	}
 
