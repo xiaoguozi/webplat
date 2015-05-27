@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		<!-- /header_menu -->
 		  <div class="mod_breadcrumb">
-		  <div class="layout_n clearfix"> <span class="home">当前位置 ：</span> <a href="#" target="_blank" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item" target="_blank">私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexProduct" target="_blank" class="path_item">私募产品</a> <span class="sep">&gt;</span> <span class="txt">产品明细</span> </div>
+		  <div class="layout_n clearfix"> <span class="home">当前位置 ：</span> <a href=""  class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item" >私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexProduct" class="path_item">私募产品</a> <span class="sep">&gt;</span> <span class="txt">产品明细</span> </div>
 		</div>
 		
 
@@ -350,7 +350,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </tr>
                 <tr>
                   <th>认购起点：</th>
-                  <td>${peProduct.subscripStart}</td>
+                  <td>${peProduct.subscripStart}万元</td>
                   <th>浮动管理费：</th>
                   <td>
                   	<c:if test="${peProduct.managementFee!=null}">

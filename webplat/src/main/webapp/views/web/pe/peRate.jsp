@@ -71,7 +71,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		<!-- /header_menu -->
 		<div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="#" target="_blank" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" target="_blank" class="path_item">私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexRate" class="path_item">私募排行</a> <span class="sep">&gt;</span> <span class="txt">筛选条件</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href=""  class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndex"  class="path_item">私募</a> <span class="sep">&gt;</span> <a href="rest/web/pe/peIndexRate" class="path_item">私募排行</a> <span class="sep">&gt;</span> <span class="txt">筛选条件</span> </div>
         </div>
 		
 		

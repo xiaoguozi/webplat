@@ -79,7 +79,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!-- 焦点广告 结束 -->
         <div class="tjs_liuchengbg"></div>
         <div class="tjs_1108px center">
-            <div class="tjs_liucheng">
+            <div class="tjs_liucheng" >
             </div>
             <div class="tjs_product_div">
                 <div class="tjs_1108px center">

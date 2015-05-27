@@ -60,9 +60,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<!-- /header_menu -->
 		<div class="mod_breadcrumb">
 			<div class="layout_n clearfix">
-				<span class="home">当前位置 ：</span> <a href="#" class="path_item" target="_blank">首页</a>
-				<span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item" target="_blank">私募</a><span
-					class="sep">&gt;</span> <a href="rest/web/pe/peIndexManager" class="path_item" target="_blank">私募经理</a> <span
+				<span class="home">当前位置 ：</span> <a href="" class="path_item" >首页</a>
+				<span class="sep">&gt;</span> <a href="rest/web/pe/peIndex" class="path_item" >私募</a><span
+					class="sep">&gt;</span> <a href="rest/web/pe/peIndexManager" class="path_item" >私募经理</a> <span
 					class="sep">&gt;</span> <span class="txt">全部私募经理</span>
 			</div>
 		</div>
