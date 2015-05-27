@@ -181,6 +181,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <tr>
     <td height="150" class="tjs_pcs_titleevenbg">募集进度/账号：</td>
     <td colspan="3" class="tjs_pcs_textevenbg">
+     <c:choose>  
+         <c:when test="${productXtcp.xtcpStatus=='20'}">  
+           		  募集中<br/>
+         </c:when>    
+         <c:otherwise>  
+              	募集完毕<br/>
+         </c:otherwise>  
+     </c:choose>          
     ${productXtcp.xtcpMjzh}
     </td>
     </tr>
@@ -193,7 +201,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">融资方是谁？<a name="B" id="B"></a></div>
+<div class="tjs_pcs_box tjs_padding_height16px">
   ${productXtcp.xtcpRzf}
+ </div>
 <!--// tjs_pcs_box 02-->
 </div>
 <!--// tjs_padding_width24px 02-->
@@ -233,8 +243,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
 <div class="tjs_pcs_title">管理机构是谁？<a name="F" id="F"></a></div>
-
+<div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpZcglr}
+ </div>
 <!--// tjs_pcs_box 05-->
 </div>
 <!--// tjs_padding_width24px 05-->
