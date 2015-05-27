@@ -189,7 +189,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                <div class="tjs_table_div_right">
 	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
 	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.nowRate}" pattern="#0"/>.<fmt:formatNumber value="${peTop10Product.nowRate*100%100}" pattern="00"/>%</span></p>
+	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.nowRate}" pattern="###0.##"/>%</span></p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">
