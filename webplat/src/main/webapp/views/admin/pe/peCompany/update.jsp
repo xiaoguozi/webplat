@@ -77,25 +77,25 @@
          <div class="form-group">
             <label class="col-md-3 control-label">核心人物</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="coreCharacter">${peCompany.coreCharacter}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="2000" name="coreCharacter">${peCompany.coreCharacter}</textarea>
             </div>
         </div>
           <div class="form-group">
             <label class="col-md-3 control-label">公司简介</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="companyProfile" maxlength="300">${peCompany.companyProfile}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="2000" name="companyProfile" maxlength="300">${peCompany.companyProfile}</textarea>
             </div>
         </div>
          <div class="form-group">
             <label class="col-md-3 control-label">投资理念</label>
             <div class="col-md-6">
-                <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="investmentPhilosophy">${peCompany.investmentPhilosophy}</textarea>
+                <textarea rows="6" cols="100" class="form-control required" maxlength="2000" name="investmentPhilosophy">${peCompany.investmentPhilosophy}</textarea>
             </div>
         </div>
           <div class="form-group">
             <label class="col-md-3 control-label">投研团队</label>
             <div class="col-md-6">
-               <textarea rows="6" cols="100" class="form-control required" maxlength="1000" name="investmentTeam">${peCompany.investmentTeam}</textarea>
+               <textarea rows="6" cols="100" class="form-control required" maxlength="2000" name="investmentTeam">${peCompany.investmentTeam}</textarea>
             </div>
         </div>
          <div class="form-group">
