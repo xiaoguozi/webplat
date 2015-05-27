@@ -217,7 +217,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(".tjpz>a>span").removeClass("tspan");
         });
         /*--操盘金额--*/
-        var sum = 0;
+          var sum = 0;
         $(".cpbox1").each(function (i) {
             $(this).click(function () {
                 $(".cpbox1").removeClass("on")
@@ -228,6 +228,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $("#loss").text(sum * 0.9);
                 $("#close").text(sum * 0.875);
                 $("#fee").text(sum * 0.00075);
+				$("#manageFee").text(sum * 0.00075);
                 
             });
         });
@@ -235,7 +236,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	    //--自定义下拉框--
 		$(".sel_wrap").click(function () {
-		    var money = "7.5";
+		    var money = $("#fee").text();
 		    $(".select").toggle();
 		    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
 		    $(".select>li").each(function (index) {
@@ -247,6 +248,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		        })
 		    })
 		})
+
 	    //--/自定义下拉框--
 	})
 	function alertbox() {
