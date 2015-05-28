@@ -78,7 +78,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/> 
                 <div class="caopanjine">
                     <span class="box1">1</span><div class="font_word18">输入您的投资本金</div>
-                    <input class="input_txt1" id="principal" onkeyup="arithmetic()" type="text"  /><span class="pos_d">元</span>
+                    <input class="input_txt1" id="principal" onkeyup="arithmetic()" type="text" maxlength="7" /><span class="pos_d">元</span>
                     <div class="clear"></div>
                     <p class="bzj"><img src="assets/img/peizi/zhuyi.png" alt="" />保证金最低2000元</p>
                     <hr class="pc"/>
@@ -192,118 +192,115 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
 
-    function arithmetic() {
-        var sum = 0;//投资本金
-        var num = "1.3%";//借款利息
-        var wan = "万";
-        sum = $("#principal").val();//获取键盘输入的投资本金
-        if (sum==""||sum==null||sum<0) {
-            sum = 0;
-        }
-        if (sum >= 10000) {
-            sum = sum / 10000;
-            $(".wan").text(wan);
-            $(".cpbox1").each(function (i) {
-                $(".cpmoney:eq(0)").text(sum);
-                $(".cpmoney:eq(1)").text(sum * 2);
-                $(".cpmoney:eq(2)").text(sum * 3);
-                $(".cpmoney:eq(3)").text(sum * 4);
-                $(".cpmoney:eq(4)").text(sum * 5);
-                $("#capital").text(sum * 20000);
-                $("#loss").text(sum * 16000);
-                $("#close").text(sum * 15000);
-                $("#Dinterests").text(sum * 130);
-                $("#Minterests").text(num);
-            });
-        } else {
-            $(".cpbox1").each(function (i) {
-                $(".wan").text("");
-                $(".cpmoney:eq(0)").text(sum);
-                $(".cpmoney:eq(1)").text(sum * 2);
-                $(".cpmoney:eq(2)").text(sum * 3);
-                $(".cpmoney:eq(3)").text(sum * 4);
-                $(".cpmoney:eq(4)").text(sum * 5);
-                $("#capital").text(sum * 2);
-                $("#loss").text(sum * 1.6);
-                $("#close").text(sum * 1.5);
-                $("#Dinterests").text(sum * 0.013);
-                $("#Minterests").text(num);
-            });
-        }
+function arithmetic() {
+    var reg = new RegExp("[0-9]+");
+    if (!reg.test($("#principal").val()))
+    {
+        $("#principal").val("");
+        return;
     }
-    arithmetic()
-    $(document).ready(function () {
-
-        /*-二级导航-*/
-        $(".tjpz").hover(function () {
-            $(".nav_menu").show();
-            $(".tjpz>a>span").addClass("tspan");
-        }, function () {
-            $(".nav_menu").hide();
-            $(".tjpz>a>span").removeClass("tspan");
-        });
-        $(".nav_menu").hover(function () {
-            $(this).show();
-            $(".tjpz>a>span").addClass("tspan");
-        });
-        $(".nav_menu").mouseleave(function () {
-            $(this).hide();
-            $(".tjpz>a>span").removeClass("tspan");
-        });
-        /*--操盘金额--*/
-        var sum = 0;
+    var sum = 0;//投资本金
+    var num = "1.3%";//借款利息
+    var wan = "万";
+    sum = $("#principal").val();//获取键盘输入的投资本金
+    if (sum==""||sum==null||sum<0) {
+        sum = 0;
+    }
+    if (sum >= 10000) {
+        sum = sum / 10000;
+        $(".wan").text(wan);
         $(".cpbox1").each(function (i) {
-            $(this).click(function () {
-                $(".cpbox1").removeClass("on")
-                $(this).addClass("on");
-                sum = $(".cpmoney:eq(" + i + ")").text();
-                var str=$(".wan").text();
-                if (str != "") {
-                    $("#capital").text(sum * 20000);
-                    $("#loss").text(sum * 16000);
-                    $("#close").text(sum * 15000);
-                    $("#Dinterests").text(sum * 130);
-                    $("#Minterests").text(num);
-                } else {
-                    $("#capital").text(sum * 2);
-                    $("#loss").text(sum * 1.6);
-                    $("#close").text(sum * 1.5);
-                    $("#Dinterests").text(sum * 0.013);
-                    $("#Minterests").text(num);
-                }
-                
-            });
+            $(".cpmoney:eq(0)").text(sum);
+            $(".cpmoney:eq(1)").text((sum * 2).toFixed(0));
+            $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
+            $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
+            $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
+            $("#capital").text((sum * 20000).toFixed(0));
+            $("#loss").text((sum * 16000).toFixed(1));
+            $("#close").text((sum * 15000).toFixed(1));
+            $("#Dinterests").text((sum * 130).toFixed(2));
+            $("#Minterests").text(num);
         });
-        /*--/操盘金额--*/
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
-	    //--自定义下拉框--
-		$(".sel_wrap").click(function () {
-		    $(".select").toggle();
-		    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
-		    $(".select>li").each(function (index) {
-		        $(this).click(function () {
-		            var opt = $(this).html();
-		            $(".lbl").html(opt);
-		            var sum = $("#principal").val();
-		            var min = "0.013";
-		            var num = opt.substring(0, 1);
-		            $("#Dinterests").text(num * sum * min);
-		        })
-		    })
-		})
-	    //--/自定义下拉框--
+    } else {
+        $(".cpbox1").each(function (i) {
+            $(".wan").text("");
+            $(".cpmoney:eq(0)").text(sum);
+            $(".cpmoney:eq(1)").text((sum * 2).toFixed(0));
+            $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
+            $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
+            $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
+            $("#capital").text((sum * 2).toFixed(0));
+            $("#loss").text((sum * 1.6).toFixed(1));
+            $("#close").text((sum * 1.5).toFixed(1));
+            $("#Dinterests").text((sum * 0.013).toFixed(2));
+            $("#Minterests").text(num);
+        });
+    }
+}
+arithmetic()
+$(document).ready(function () {
+    /*-二级导航-*/
+    $(".tjpz").hover(function () {
+        $(".nav_menu").show();
+        $(".tjpz>a>span").addClass("tspan");
+    }, function () {
+        $(".nav_menu").hide();
+        $(".tjpz>a>span").removeClass("tspan");
+    });
+    $(".nav_menu").hover(function () {
+        $(this).show();
+        $(".tjpz>a>span").addClass("tspan");
+    });
+    $(".nav_menu").mouseleave(function () {
+        $(this).hide();
+        $(".tjpz>a>span").removeClass("tspan");
+    });
+    /*--操盘金额--*/
+    var sum = 0;
+    var num = "1.3%"
+    $(".cpbox1").each(function (i) {
+        $(this).click(function () {
+            $(".cpbox1").removeClass("on")
+            $(this).addClass("on");
+            sum = $(".cpmoney:eq('" + i + "')").text();
+            var str=$(".wan").text();
+            if (str != "") {
+                $("#capital").text((sum * 20000).toFixed(0));
+                $("#loss").text((sum * 16000).toFixed(0));
+                $("#close").text((sum * 15000).toFixed(1));
+                $("#Dinterests").text((sum * 130).toFixed(1));
+                $("#Minterests").text((num).toFixed(0));
+            } else {
+                $("#capital").text((sum * 2).toFixed(0));
+                $("#loss").text((sum * 1.6).toFixed(1));
+                $("#close").text((sum * 1.5).toFixed(1));
+                $("#Dinterests").text((sum * 0.013).toFixed(2));
+                $("#Minterests").text(num);
+            }
+            
+        });
+    });
+    /*--/操盘金额--*/
+    //--自定义下拉框--
+	$(".sel_wrap").click(function () {
+	    $(".select").toggle();
+	    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
+	    $(".select>li").each(function (index) {
+	        $(this).click(function () {
+	            var opt = $(this).html();
+	            $(".lbl").html(opt);
+	            var sum = $("#principal").val();
+	            var min = "0.013";
+	            var num = opt.substring(0, 1);
+	            $("#Dinterests").text(num * sum * min);
+	        })
+	    })
 	})
-	function alertbox() {
-	    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-	}
+    //--/自定义下拉框--
+})
+function alertbox() {
+    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
+}
 </script>
 </body>
 </html>
