@@ -193,9 +193,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript">
 
 function arithmetic() {
-    var reg = new RegExp("[0-9]+");
-    if (!reg.test($("#principal").val()))
-    {
+	if (isNaN($("#principal").val())) {
         $("#principal").val("");
         return;
     }
@@ -262,7 +260,7 @@ $(document).ready(function () {
         $(this).click(function () {
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");
-            sum = $(".cpmoney:eq('" + i + "')").text();
+            sum = $(".cpmoney:eq(" + i + ")").text();
             var str=$(".wan").text();
             if (str != "") {
                 $("#capital").text((sum * 20000).toFixed(0));
