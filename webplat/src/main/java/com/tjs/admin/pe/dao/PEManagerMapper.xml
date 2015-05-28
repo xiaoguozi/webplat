@@ -231,7 +231,7 @@
    		AND status = #{peManager.status}
    </if>
    <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
-   		AND recommend_location = #{peManager.recommendLocation }
+   		AND (recommend_location  like  CONCAT('%',#{peManager.recommendLocation},'%'))
    </if>
    
     <if test="peManager != null and peManager.id !=null">
@@ -273,7 +273,7 @@
 	   		AND status = #{peManager.status}
 	   </if>
 	   <if test="peManager != null and peManager.recommendLocation !=null and peManager.recommendLocation!=''">
-	   		AND recommend_location = #{peManager.recommendLocation }
+	   		AND (recommend_location  like  CONCAT('%',#{peManager.recommendLocation},'%'))
 	   </if>
 	   
 	    <if test="peManager != null and peManager.id !=null">

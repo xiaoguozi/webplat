@@ -101,11 +101,9 @@
          <div class="form-group">
             <label class="col-md-3 control-label">推荐位置</label>
             <div class="col-md-6">
-                 <select name="recommendLocation"  style="width: 200px; height: 30px " class="form-control required">  
-                         <option value="0" <c:if test="${peCompany.recommendLocation == '0'}">selected</c:if>>无推荐</option> 
-                         <option value="1" <c:if test="${peCompany.recommendLocation == '1'}">selected</c:if>>平台首页</option>  
-                         <option value="2" <c:if test="${peCompany.recommendLocation == '2'}">selected</c:if>>版块首页</option>
-                </select> 
+                <input type="checkbox" name="recommendLocation" value="1" <c:if test="${fn:contains(peCompany.recommendLocation,'1')}">checked="checked"</c:if>>平台首页
+                <input type="checkbox" name="recommendLocation" value="2" <c:if test="${fn:contains(peCompany.recommendLocation,'2')}">checked="checked"</c:if>>版块首页 
+                <input type="checkbox" name="recommendLocation" value="0" <c:if test="${fn:contains(peCompany.recommendLocation,'0')}">checked="checked"</c:if>>无推荐               
             </div>
         </div>
         <div class="form-group">
