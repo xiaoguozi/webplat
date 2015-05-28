@@ -22,7 +22,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
 <div class="tis_pcs_all">
 
-<%@ include file="/views/web/header.jsp"%>
+<div class="header_top">
+ <div class="tjs_1108px center">
+     <span class="time">欢迎您来到淘金山，投资有风险，选择需谨慎！</span>
+     <div class="topservice">4006-114-088</div>
+	    <div class="toplinks">
+			<c:if test="${empty sessionScope.userInfo.username}">  
+			     <a href="<%=basePath%>rest/web/login" class="log_link">登录</a> | <a href="<%=basePath%>rest/web/passport/reg">注册</a> 
+			</c:if>  
+			<c:if test="${not empty sessionScope.userInfo.username}">  
+			     <a href="<%=basePath%>rest/web/userCenter/index" class="log_link">欢迎您：${sessionScope.userInfo.username }</a> | <a href="<%=basePath%>rest/web/passport/logout">退出</a> 
+			</c:if>      	    	    
+	    </div>    
+  </div>
+</div>
 <!-- /header_top -->
 
 <div class="header_menu">

@@ -152,8 +152,8 @@ document.all(imgg).style.display='block'}}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_right_title">
   <tr  width="95%" >
-    <td width="45" align="right"><img src="assets/img/xintuo/small/${xtcp.xtcpLog}" width="33" height="30" align="middle"/></td>
-    <td align="left"><span style="font-size:16px">${xtcp.xtcpSplname}</span></td>
+    <td width="45" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xtcp.xtcpId}" target="_blank"><img src="assets/img/xintuo/small/${xtcp.xtcpLog}" width="33" height="30" align="middle"/></a></td>
+    <td align="left"><span style="font-size:16px"><a href="rest/web/xintuo/trust/trustParticulars?id=${xtcp.xtcpId}" target="_blank">${xtcp.xtcpSplname}</a></span></td>
   </tr>
 </div>
 <div class="tjs_right_earningsdiv"><span class="tjs_font36px">${xtcp.xtcpNsyl}</span>%</div>
