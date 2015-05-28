@@ -104,7 +104,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     免费体验“股票交易账户”会在下个交易日9点30分前开出<br />
-                    <a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/freeNextActivity">免费体验</a>
+                   <!--   <a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/freeNextActivity">免费体验</a>-->
+                   <a class="tjs_btn disabled" style="margin-top:30px;">免费体验</a>
                 </div>
             </div>
             <div class="pz_produce">

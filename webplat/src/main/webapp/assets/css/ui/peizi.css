@@ -593,6 +593,14 @@
     height:30px;
     line-height:30px
 }
+
+.tjs_btn.disabled{
+    background:#dbdbdb;
+}
+.tjs_btn.disabled:hover{
+    background:#dbdbdb;
+}
+
 .mz_tbl {
     width:100%;
     border:1px solid #d3d3d3;
@@ -1483,6 +1491,13 @@
         background:#007ECF;
         color:#fff;
     }
+.btn_sq.disabled{
+    background:#dbdbdb;
+}
+.btn_sq.disabled:hover{
+    background:#dbdbdb;
+}
+    
 .tbl_w500 {
     width:500px;
     display:block;

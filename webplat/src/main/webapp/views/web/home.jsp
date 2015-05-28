@@ -324,7 +324,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_left_icodiv"><img src="assets/img/ui/foreign_ico.png" width="172" height="150" />
 <div class="tjs_left_earningsdiv">&nbsp;&nbsp;<span>6%-17%</span>&nbsp;收益</div>
 </div>
-<div class="tjs_product_textdiv">信托类产品高端人群首选，适合资金稳健增值，收益高且稳健，30倍银行活期存款利息，信托迄今为止本息100%兑付。</div>
+<div class="tjs_product_textdiv">保障全面、保费低、分红返利;回报高、投保简单、环球医疗援助。</div>
 </div>
 </div>
 <!-- /tjs_product_left -->
@@ -338,13 +338,13 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
+<div class="tjs_rightforeign_title"><span>至尊环球明珠医疗</span>
   <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
   </div>
 
-<div class="tjs_foreign_textdiv">保险公司：英国保诚<br />
-产品类型：危疾保障<br />
-承保年龄：0周岁~100周岁</div>
+<div class="tjs_foreign_textdiv">保险公司：友邦保险<br />
+产品类型：医疗保障<br />
+承保年龄：0周岁~99周岁</div>
 
 
 <div  style=" height:36px; width:100%;"></div>
@@ -356,13 +356,13 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
+<div class="tjs_rightforeign_title"><span>简爱延续</span>
   <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
   </div>
 
-<div class="tjs_foreign_textdiv">保险公司：英国保诚<br />
-产品类型：危疾保障<br />
-承保年龄：0周岁~100周岁</div>
+<div class="tjs_foreign_textdiv">保险公司：友邦保险<br />
+产品类型：储蓄保险<br />
+承保年龄：0周岁~60周岁</div>
 
 
 <div  style=" height:36px; width:100%;"></div>
