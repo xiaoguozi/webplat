@@ -47,7 +47,7 @@ document.all(imgg).style.display='block'}}
     <li><a href="rest/web/pe/peIndex" target="_blank">私募</a></li>
     <li><a href="rest/web/peizi/index" target="_blank">配资</a></li>
     <li><a href="#" target="_blank">海外保险</a></li>
-    <li><a href="#" target="_blank">关于我们</a></li>
+    <li><a href="rest/web/aboutUs/index" target="_blank">关于我们</a></li>
     </ul>
     </div>    
   </div>
