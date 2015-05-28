@@ -135,7 +135,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<div class="pro_box top20" style="left:728px;">
 				<h1 class="pro_title">淘金自营</h1>
 				<p class="wbl pt20"><span class="color158">淘金山二号<span><span class="colorf06"> <span class="fsize">528</span>.00%</span></p>
-				<p class="wbl lh30">基金经理：<b class="colorf06">罗忠山</b></p>
+				<p class="wbl lh30">基金经理：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
 				<p class="w230">擅长趋势投资策略，精研个股，风控严谨产品回撤幅度小！</p>
 				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandSelf">我要预约</a>-->
 				<a class="tjs_btn mtb29">我要预约</a>
