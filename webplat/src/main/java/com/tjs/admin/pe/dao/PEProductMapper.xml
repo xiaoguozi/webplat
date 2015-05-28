@@ -120,7 +120,7 @@
          </if>
          
          <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
-         	AND (recommend_location = #{peProduct.recommendLocation})
+         	  AND (recommend_location  like  CONCAT('%',#{peProduct.recommendLocation},'%'))
          </if>
          
          <if test="keyWord!= null and keyWord!= ''">
@@ -152,7 +152,7 @@
          </if>
          
           <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
-         	AND (recommend_location = #{peProduct.recommendLocation})
+             AND (recommend_location  like  CONCAT('%',#{peProduct.recommendLocation},'%'))
            </if>        
         <if test="keyWord!= null and keyWord!= ''">
            AND (name like CONCAT('%',#{keyWord},'%'))
@@ -271,7 +271,7 @@
          	AND (pe_product.status = #{peProduct.status})
          </if>        
          <if test="peProduct!=null and peProduct.recommendLocation!=null and  peProduct.recommendLocation!= ''">
-         	AND (pe_product.recommend_location = #{peProduct.recommendLocation})
+         	AND (pe_product.recommend_location  like  CONCAT('%',#{peProduct.recommendLocation},'%'))
          </if>                     
          <if test="sortField!= null and sortField!= ''">
            ORDER BY ${sortField} ${sortType}

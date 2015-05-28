@@ -40,7 +40,7 @@
 		  PE_PRODUCT P,
 		  PE_MANAGER M 
 		WHERE p.manager_id = m.id
-		  AND P.recommend_location = 2
+		  AND P.recommend_location like CONCAT ('%','2','%')
 		  AND P.status = 2
 		ORDER BY P.ACCUMULATED_INCOME DESC
 		LIMIT 0,4
