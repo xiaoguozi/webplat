@@ -120,7 +120,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="mult_item">
 								<div class="mult_name">基金经理：</div>
 								<div class="mult_con" id="divPEManager">
-									<a href="#" class="mult_lk" tag="0" title="不限">不限</a> 
+									<a href="rest/web/pe/peIndexProduct" class="mult_lk" tag="0" title="不限">不限</a> 
 										<c:forEach items="${lstManager}" var="peManager" end="9">
 											<a class="mult_lk" href="#" tag="${peManager.id}" tagmore="0" title="${peManager.name}">${peManager.name}</a> 
 										</c:forEach>
@@ -141,7 +141,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="mult_item">
 								<div class="mult_name">基金公司：</div>
 								<div class="mult_con" id="divPECompany">
-										<a href="" class="mult_lk" tag="0" title="不限">不限</a> 
+										<a href="rest/web/pe/peIndexProduct" class="mult_lk" tag="0" title="不限">不限</a> 
 										<c:forEach items="${lstCompany}" var="peCompany" end="7">
 											<a href="" class="mult_lk" tag="${peCompany.id}" tagmore="0"  title="${peCompany.name}">${peCompany.name}</a>
 										</c:forEach>
@@ -162,7 +162,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="mult_item">
 								<div class="mult_name">基金类型：</div>
 								<div class="mult_con" id="divPEType">
-									<a class="mult_lk" href="#" tag="0" title="不限">不限</a>
+									<a class="mult_lk" href="rest/web/pe/peIndexProduct" tag="0" title="不限">不限</a>
 									<a class="mult_lk" href="#" tag="1" title="股票">股票</a>
 									<a class="mult_lk" href="#" tag="2" title="期货基金">期货基金</a>
 									<a class="mult_lk" href="#" tag="3" title="股票量化">股票量化</a>
@@ -176,7 +176,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="mult_item">
 								<div class="mult_name">年化收益：</div>
 								<div class="mult_con" id="divPEYearRate">
-									<a class="mult_lk" href="" tag="0" title="不限">不限</a> <a
+									<a class="mult_lk" href="rest/web/pe/peIndexProduct" tag="0" title="不限">不限</a> <a
 										class="mult_lk" href="" tag="1" title="50%以上">50%以上</a> <a class="mult_lk" href="" tag="2" title="30%-50%">30%-50%</a>
 									<a class="mult_lk" href="" tag="3" title="10%-30%">10%-30%</a> <a class="mult_lk"
 										href="" tag="4" title="0%-10%">0%-10%</a> <a class="mult_lk" href="" tag="5" title="0%以下">0%以下</a>
