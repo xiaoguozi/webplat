@@ -86,8 +86,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="attr_info">成立日期： <fmt:formatDate value="${peProduct.setupTime}" pattern="yyyy-MM-dd"/></div>
           </li>
           <li class="attr_item attr_item_last" style="border-right:1px solid #d3d3d3;">
-            <div class="attr_name">认购起点</div>
-            <div class="attr_val"><fmt:formatNumber value="${peProduct.subscripStart.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${peProduct.subscripStart*100%100}" pattern="00"/> </span> </div>
+            <div class="attr_name">认购起点（万）</div>
+            <div class="attr_val"><fmt:formatNumber value="${peProduct.subscripStart.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${peProduct.subscripStart*100%100}" pattern="00"/> </span></div>
             <div class="attr_info">私募公司：${peProduct.pecompanyName}</div>
           </li>
         </ul>
