@@ -146,7 +146,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
                     <!--  <a class="tjs_btn" href="rest/web/peizi/dayNextCapital">我要配资</a>-->
-                    <a class="tjs_btn">我要配资</a>
+                    <a class="tjs_btn disabled">我要配资</a>
                 </div>
             </div>
             <div class="pz_produce">
