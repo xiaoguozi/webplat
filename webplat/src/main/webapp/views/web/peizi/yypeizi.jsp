@@ -193,14 +193,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript">
 
 function arithmetic() {
-	if (isNaN($("#principal").val())) {
-        $("#principal").val("");
-        return;
+    if (isNaN($("#principal").val()))
+    {
+        $("#principal").val("0");
     }
     var sum = 0;//投资本金
     var num = "1.3%";//借款利息
     var wan = "万";
     sum = $("#principal").val();//获取键盘输入的投资本金
+    if (sum.substring(0, 1) == 0) {
+        $("#principal").val("")
+        sum = 0;
+    }
     if (sum==""||sum==null||sum<0) {
         sum = 0;
     }
@@ -208,11 +212,11 @@ function arithmetic() {
         sum = sum / 10000;
         $(".wan").text(wan);
         $(".cpbox1").each(function (i) {
-            $(".cpmoney:eq(0)").text(sum);
-            $(".cpmoney:eq(1)").text((sum * 2).toFixed(0));
-            $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
-            $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
-            $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
+            $(".cpmoney:eq(0)").text(sum.toFixed(1));
+            $(".cpmoney:eq(1)").text((sum * 2).toFixed(1));
+            $(".cpmoney:eq(2)").text((sum * 3).toFixed(1));
+            $(".cpmoney:eq(3)").text((sum * 4).toFixed(1));
+            $(".cpmoney:eq(4)").text((sum * 5).toFixed(1));
             $("#capital").text((sum * 20000).toFixed(0));
             $("#loss").text((sum * 16000).toFixed(1));
             $("#close").text((sum * 15000).toFixed(1));
@@ -260,7 +264,7 @@ $(document).ready(function () {
         $(this).click(function () {
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");
-            sum = $(".cpmoney:eq(" + i + ")").text();
+            sum = $(".cpmoney:eq('" + i + "')").text();
             var str=$(".wan").text();
             if (str != "") {
                 $("#capital").text((sum * 20000).toFixed(0));

@@ -102,7 +102,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>亏损警告线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span id="loss" class="colorf06 font26 mlr5">0</span>元</li>
                         <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5">0</span>元</li>
                         <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始交易。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（2015.07.08）</span></li>
+                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
@@ -164,21 +164,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
 function arithmetic() {
-	if (isNaN($("#principal").val())) {
-        $("#principal").val("");
-        return;
+
+    if (isNaN($("#principal").val())) {
+        $("#principal").val("0");
     }
-	
     var sum = 0;
     var num = "1.3%";
     var lv = "0.0828";
     sum = $("#principal").val();
+    if (sum.substring(0, 1) == 0) {
+        $("#principal").val("");
+        sum = 0;
+    }
     if (sum==""||sum==null||sum<0) {
         sum = 0;
     }
-    
-    
-    
     $(".cpbox1").each(function (i) {
         $(".cpmoney:eq(0)").text(sum);
         $(".cpmoney:eq(1)").text(sum * 2);
@@ -198,7 +198,7 @@ function arithmetic() {
 
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");
-            a = $(".cpbox1>span:eq(" + i + ")").text();
+            a = $(".cpbox1>span:eq('" + i + "')").text();
             $("#lixi").text((sum * lv * (a / 12)).toFixed(2));
         });
     });
