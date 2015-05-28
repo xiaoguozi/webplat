@@ -69,11 +69,13 @@ public class PEIndexPDetailController {
 		peProductNetCtrlModel.setProductId(peSearchCtrlVO.getPeProductId());
 		PEProduct peProduct = peProductService.getPEProductById(Long.valueOf(peSearchCtrlVO.getPeProductId()));
 		//收益测算
-		List<PETopProduct> lstProductRate = peProductService.getCompareYearRate(peSearchCtrlVO, 4);
+//		List<PETopProduct> lstProductRate = peProductService.getCompareYearRate(peSearchCtrlVO, 4);
+		
+		
 		//乘以100万
-		for(PETopProduct product:lstProductRate){
-			product.setNowRate(product.getNowRate().multiply(new BigDecimal(1000000)));
-		}
+//		for(PETopProduct product:lstProductRate){
+//			product.setNowRate(product.getNowRate().multiply(new BigDecimal(1000000)));
+//		}
 		//净值
 		List<PEProductNet> lstPeProductNet = PEProductNetService.getPEProductNetList(peProductNetCtrlModel);
 		
@@ -98,6 +100,29 @@ public class PEIndexPDetailController {
 		incomeCtrlModel.setSortType("desc");
 		List<PEProductIncome> lstProductIncome = peProductIncomeService.getPEProductIncomeList(incomeCtrlModel);
 		
+		List<PETopProduct> lstProductRate = new ArrayList<PETopProduct>();
+		int iCount = 0;
+		//收益测算（从收益排名测算） lstProductRate
+		for(PEProductIncome income : lstProductIncome){
+			if("近一个月".equals(income.getYear()) || "近一月".equals(income.getYear())){
+				continue;
+			}
+			iCount++;
+			PETopProduct peNewProduct = new PETopProduct();
+			peNewProduct.setNowRate(income.getDurationIncome().multiply(new BigDecimal(10000)));
+			lstProductRate.add(peNewProduct);
+			if(iCount==4){
+				break;
+			}
+		}
+		if(iCount<4){
+			for(int i=0; i<4-iCount; i++){
+				PETopProduct peEmptyProduct = new PETopProduct();
+				peEmptyProduct.setNowRate(new BigDecimal(0));
+				lstProductRate.add(peEmptyProduct);
+			}
+		}
+		
 		//认购起点
 		peProduct.setSubscripStart(peProduct.getSubscripStart().divide(new BigDecimal(10000)));
 		
@@ -110,6 +135,9 @@ public class PEIndexPDetailController {
 		model.addAttribute("currentYear", currentYear+"");
 		model.addAttribute("lstManageProducts", lstManageProducts);
 		model.addAttribute("lstProductIncome", lstProductIncome);
+		model.addAttribute("rateMax", lstProductRate.get(0).getNowRate());
+		model.addAttribute("rateMin", lstProductRate.get(1).getNowRate());
+		
 		
         return "web/pe/peProductDetail";
     }

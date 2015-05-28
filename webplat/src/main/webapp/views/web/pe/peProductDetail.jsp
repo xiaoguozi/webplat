@@ -115,7 +115,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <div class="sub_item">
             <div class="sub_hd f_s14">收益测算</div>
             <div class="sub_bd_1">
-              <div class="tit">历史业绩来看,以投入一年，100万元为例 ( <span class="f_f60">赚8377400元</span> ~ <span class="f_f60">赚8377400元</span> )</div>
+              <div class="tit">历史业绩来看,以投入一年，100万元为例 ( <span class="f_f60">赚${rateMax.intValue()}元</span> ~ <span class="f_f60">赚${rateMin.intValue()}元</span> )</div>
               <table class="detail_tb_2 tjstbl" width="80%">
                 <thead>
                   <tr>
