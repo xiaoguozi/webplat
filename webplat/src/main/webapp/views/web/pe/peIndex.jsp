@@ -187,9 +187,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            </td>
 	                            <td class="tjs_table_td_three">
 	                                <div class="tjs_table_div_right">
-	                                    <p>近一年收益：${peTop10Product.oneRate}%</p>
-	                                    <p>近二年收益：${peTop10Product.towRate}%</p>
-	                                    <p>今年以来收益：<span class="tjs_table_pname"><fmt:formatNumber value="${peTop10Product.nowRate}" pattern="###0.##"/>%</span></p>
+	                                    <p>近一年收益：
+	                                    	<c:if test="${peTop10Product.oneRate>0}">
+					                  			<span class="f_f80">${peTop10Product.oneRate}%</span>
+					                  		</c:if>
+					                  		<c:if test="${peTop10Product.oneRate<0}">
+					                  			<span style="color: #090;">${peTop10Product.oneRate}%</span>
+					                  		</c:if>
+	                                    </p>
+	                                    <p>近二年收益：
+	                                    	<c:if test="${peTop10Product.towRate>0}">
+					                  			<span class="f_f80">${peTop10Product.towRate}%</span>
+					                  		</c:if>
+					                  		<c:if test="${peTop10Product.towRate<0}">
+					                  			<span style="color: #090;">${peTop10Product.towRate}%</span>
+					                  		</c:if>
+	                                    </p>
+	                                    <p>今年以来收益：
+	                                    	<c:if test="${peTop10Product.nowRate>0}">
+					                  			<span class="f_f80">${peTop10Product.nowRate}%</span>
+					                  		</c:if>
+					                  		<c:if test="${peTop10Product.nowRate<0}">
+					                  			<span style="color: #090;">${peTop10Product.nowRate}%</span>
+					                  		</c:if>
+	                                    </p>
 	                                </div>
 	                            </td>
 	                            <td class="tjs_table_td_four">

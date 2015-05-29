@@ -97,9 +97,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										class="small"><fmt:formatNumber value="${peTop4Product.accumulatedIncome*100%100}" pattern="00"/>%</em>
 									</span>
 								</div>
-								<div class="hotpro_comment">
-									<span class="comment_tit"></span>${peTop4Product.managerReview}
-								</div>
+								
+								<c:if test="${peTop4Product.managerReview!=null && peTop4Product.managerReview!='--'}">
+									<div class="hotpro_comment">
+										<span class="comment_tit">${peTop4Product.managerReview}</span>
+									</div>
+								</c:if>
+								<c:if test="${peTop4Product.managerReview==null || peTop4Product.managerReview=='--'}">
+									<div class="hotpro_comment" style="text-align: center;">
+										<span class="comment_tit">--</span>
+									</div>
+								</c:if>
+								
+								
 								<div class="hotpro_control">
 									<a class="uc_btn_primary uc_btn simu_reserve_btn"
 										href="javascript:void(0)" data_id="${peTop4Product.id}"> <img
@@ -265,11 +275,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_l">${peAllProduct.managerName }</td>
 										<td class="c_c_s c_b">${peAllProduct.companyName }</td>
 										<td class="c_r_s"><span>${peAllProduct.netWorth }</span></td>
-										<td class="c_r_s"><span class="f_f80 "><fmt:formatNumber value="${peAllProduct.accumulatedIncome.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
+										<td class="c_r_s">
+											<c:if test="${peAllProduct.accumulatedIncome>0}">
+					                  			<span class="f_f80">
+					                  				<fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+					                  		<c:if test="${peAllProduct.accumulatedIncome<0}">
+					                  			<span style="color: #090;">
+					                  				<fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+										</td>
 										<td class="c_c_s c_b">${peAllProduct.runTime}</td>
-										<td class="c_r_s">${peAllProduct.towRate }%</td>
-										<td class="c_r_s">${peAllProduct.oneRate }%</td>
-										<td class="c_r_s c_b ">${peAllProduct.yearRate}%</td>
+										<td class="c_r_s">
+											<c:if test="${peAllProduct.towRate>0}">
+					                  			<span class="f_f80">
+					                  				<fmt:formatNumber value="${peAllProduct.towRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+					                  		<c:if test="${peAllProduct.towRate<0}">
+					                  			<span style="color: #090;">
+					                  				<fmt:formatNumber value="${peAllProduct.towRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+										</td>
+										<td class="c_r_s">
+											<c:if test="${peAllProduct.oneRate>0}">
+					                  			<span class="f_f80">
+					                  				<fmt:formatNumber value="${peAllProduct.oneRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+					                  		<c:if test="${peAllProduct.oneRate<0}">
+					                  			<span style="color: #090;">
+					                  				<fmt:formatNumber value="${peAllProduct.oneRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+										</td>
+										<td class="c_r_s c_b ">
+											<c:if test="${peAllProduct.yearRate>0}">
+					                  			<span class="f_f80">
+					                  				<fmt:formatNumber value="${peAllProduct.yearRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+					                  		<c:if test="${peAllProduct.yearRate<0}">
+					                  			<span style="color: #090;">
+					                  				<fmt:formatNumber value="${peAllProduct.yearRate}" pattern="###0.00"/>%
+					                  			</span>
+					                  		</c:if>
+										</td>
 										<td class="c_b">
 											<div class="trend_viewer">
 												<div class="trend_viewer_hd">

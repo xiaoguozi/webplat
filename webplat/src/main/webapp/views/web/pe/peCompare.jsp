@@ -79,36 +79,41 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  	<td>&nbsp;</td>
 	                  	<td>今年以来</td>
 	                  	<td>年化收益</td>
-	                  	<c:forEach items="${maxYearList}" var="maxYear">
+	                  	<c:forEach items="${maxYearList}" var="maxYear" begin="1">
 	                  		<td >${maxYear.netYear}年</td>
 	                  	</c:forEach>
 	                  </tr>
 	                </thead>
 	                <tbody>
-	                	<c:forEach items="${lstYearAll}" varStatus="status" var="yearList">
-	                		<tr >
-		                		<td class="f_090"><a href="rest/web/pe/peIndexProductDetail?peProductId=${yearList[0].id}" target="_blank">${yearList[0].name}</a></td>
-		                		<td>
-		                			<c:if test="${yearList[0].timeRate!=null && yearList[0].timeRate!='0.00' && yearList[0].timeRate!=0}">
-		                				${yearList[0].timeRate}%
-		                			</c:if>
-		                		</td>
-		                		<td>
-		                			<c:if test="${yearList[status.index].yearRate!=null && yearList[status.index].yearRate!='0.00' && yearList[status.index].yearRate!=0}">
-			                			${yearList[status.index].yearRate}${yearList[status.index].yearRate!=null?'%':''}
-		                			</c:if>
-		                		</td>
-		                		
-		                		<c:forEach items="${yearList}" var="yearVO">
-		                			<td>
-		                				<c:if test="${yearVO.timeRate!=null && yearVO.timeRate!='0.00' && yearVO.timeRate!=0}">
-		                				 	${yearVO.timeRate}${yearVO.timeRate!=null?'%':''}
-		                				</c:if>
-		                			</td>
-		                		</c:forEach>
-		                		
-	                		</tr>
-	                	</c:forEach>
+	                	<c:forEach items="${lstYearAll}"  var="yearList">
+		                	<tr >
+			                		<c:forEach items="${yearList}" var="yearVO" varStatus="status">
+			                			<c:if test="${status.index==0}">
+			                					<td class="f_090"><a href="rest/web/pe/peIndexProductDetail?peProductId=${yearVO.id}" target="_blank">${yearVO.name}</a></td>
+			                					<c:if test="${yearVO.nowRate>0}">
+					                        		<td><span class="f_f80"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.00"/>%</span></td>	
+					                        	</c:if>
+					                        	<c:if test="${yearVO.nowRate<0}">
+					                        		<td><span style="color: #090;"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.##"/>%</span></td>	
+					                        	</c:if>
+					                        	<c:if test="${yearVO.nowRate==null || yearVO.nowRate==0 || yearVO.nowRate=='0.00'}">
+					                        		<td></td>
+					                        	</c:if>
+			                			</c:if>
+			                			<c:if test="${status.index!=0}">
+			                					<c:if test="${yearVO.nowRate>0}">
+					                        		<td><span class="f_f80"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.00"/>%</span></td>	
+					                        	</c:if>
+					                        	<c:if test="${yearVO.nowRate<0}">
+					                        		<td><span style="color: #090;"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.##"/>%</span></td>	
+					                        	</c:if>
+					                        	<c:if test="${yearVO.nowRate==null || yearVO.nowRate==0 || yearVO.nowRate=='0.00'}">
+					                        		<td></td>
+					                        	</c:if>
+			                			</c:if>
+			                		</c:forEach>
+			                </tr>
+		                </c:forEach>
 	                </tbody>
 	              </table>
 	            </div>
@@ -128,17 +133,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                       <td class="tdbgcolor pos_r"><span class="product_title_color">${lstYearAll[0][0].name}</span></td>
 	                       <td class="pos_r"><span class="product_title_color">${lstYearAll[1][0].name}</span></td>
 	                       <c:if test="${fn:length(lstYearAll)==3}">
-		                       <td class="tdbgcolor pos_r"><span class="product_addtitle_color">${lstYearAll[2][0].name}</span></td>
+		                       <td class="tdbgcolor pos_r"><span class="product_title_color">${lstYearAll[2][0].name}</span></td>
 	                       </c:if>
 	                       <c:if test="${fn:length(lstYearAll)==2}">
-		                       <td class="tdbgcolor pos_r"><span class="product_addtitle_color"></span></td>
+		                       <td class="tdbgcolor pos_r"><span class="product_title_color"></span></td>
 	                       </c:if>
 	                   </tr>
 	               </thead>
 	               <tbody>
 	                   <tr>
 	                       <td class="tjs_tbl_compare_all_tb1 txt_align_left"><b class="bfont_color">基金净值</b></td>
-	                       <td>${lstYearAll[0][0].netWorth}</td><td>${lstYearAll[1][0].netWorth}</td>
+	                       <td>${lstYearAll[0][0].netWorth}</td>
+	                       <td>${lstYearAll[1][0].netWorth}</td>
 	                       <td>
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].netWorth}
@@ -147,8 +153,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">最新净值:</span></td>
-	                       <td class="tdbgcolor">${lstYearAll[0][0].nowRate}</td><td>${lstYearAll[1][0].nowRate}</td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].nowRate}</td><td style="color: #000;">${lstYearAll[1][0].nowRate}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].nowRate}
 	                       		</c:if>
@@ -156,8 +162,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">累计净值:</span></td>
-	                       <td class="tdbgcolor">${lstYearAll[0][0].accumulatedIncome}</td><td>${lstYearAll[1][0].accumulatedIncome}</td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].accumulatedIncome}</td><td style="color: #000;">${lstYearAll[1][0].accumulatedIncome}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].accumulatedIncome}
 	                       		</c:if>
@@ -165,8 +171,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">运行时长:</span></td>
-	                       <td class="tdbgcolor">${lstYearAll[0][0].runTime}</td><td>${lstYearAll[1][0].runTime}</td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].runTime}</td><td style="color: #000;">${lstYearAll[1][0].runTime}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].runTime}
 	                       		</c:if>
@@ -177,12 +183,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                       <td></td><td></td><td></td>
 	                   </tr>
 	                   <tr>
+	                       <td class="txt_align_left"><span class="sfont_color">认购起点:</span></td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].subscripStart}万元</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].subscripStart}万元</td>
+	                       <td class="tdbgcolor" style="color: #000;">
+	                       		<c:if test="${fn:length(lstYearAll)==3}">
+	                       			${lstYearAll[2][0].subscripStart}万元
+	                       		</c:if>
+	                       </td>
+	                   </tr>
+	                   <tr>
+	                       <td class="txt_align_left"><span class="sfont_color">浮动管理费:</span></td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].subscripFee}</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].subscripFee}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
+	                       		<c:if test="${fn:length(lstYearAll)==3}">
+	                       			${lstYearAll[2][0].subscripFee}
+	                       		</c:if>
+	                       </td>
+	                   </tr>
+	                   <tr>
+	                       <td class="txt_align_left"><span class="sfont_color">开放日期:</span></td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].openTime}</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].openTime}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
+	                       		<c:if test="${fn:length(lstYearAll)==3}">
+	                       			${lstYearAll[2][0].openTime}
+	                       		</c:if>
+	                       </td>
+	                   </tr>
+	                   <tr>
 	                       <td class="txt_align_left"><b class="bfont_color">基金风险</b></td>
 	                       <td></td><td></td><td></td>
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">基金类型：</span></td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${lstYearAll[0][0].fundType==1}">股票</c:if>
 	                       		<c:if test="${lstYearAll[0][0].fundType==2}">期货基金</c:if>
 	                       		<c:if test="${lstYearAll[0][0].fundType==3}">股票量化</c:if>
@@ -192,7 +228,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                       		<c:if test="${lstYearAll[0][0].fundType==7}">组合基金</c:if>
 	                       		<c:if test="${lstYearAll[0][0].fundType==8}">其他</c:if>
 	                       	</td>
-	                       <td><c:if test="${lstYearAll[1][0].fundType==1}">股票</c:if>
+	                       <td style="color: #000;"><c:if test="${lstYearAll[1][0].fundType==1}">股票</c:if>
 	                       		<c:if test="${lstYearAll[1][0].fundType==2}">期货基金</c:if>
 	                       		<c:if test="${lstYearAll[1][0].fundType==3}">股票量化</c:if>
 	                       		<c:if test="${lstYearAll[1][0].fundType==4}">债券型</c:if>
@@ -200,7 +236,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                       		<c:if test="${lstYearAll[1][0].fundType==6}">宏观对冲</c:if>
 	                       		<c:if test="${lstYearAll[1][0].fundType==7}">组合基金</c:if>
 	                       		<c:if test="${lstYearAll[1][0].fundType==8}">其他</c:if></td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			<c:if test="${lstYearAll[2][0].fundType==1}">股票</c:if>
 	                       		<c:if test="${lstYearAll[2][0].fundType==2}">期货基金</c:if>
@@ -221,19 +257,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">基金经理：</span></td>
-	                       <td class="tdbgcolor txt_fcolor">${lstYearAll[0][0].managerName}</td>
-	                       <td class="txt_fcolor">${lstYearAll[1][0].managerName}</td>
+	                       <td class="tdbgcolor txt_fcolor"><a href="rest/web/pe/peIndexMDetail?managerId=${lstYearAll[0][0].managerId}" target="_blank">${lstYearAll[0][0].managerName}</a></td>
+	                       <td class="txt_fcolor"><a href="rest/web/pe/peIndexMDetail?managerId=${lstYearAll[1][0].managerId}" target="_blank">${lstYearAll[1][0].managerName}</a></td>
 	                       <td class="tdbgcolor txt_fcolor">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
-	                       			${lstYearAll[2][0].managerName}
+	                       			<a href="rest/web/pe/peIndexMDetail?managerId=${lstYearAll[2][0].managerId}" target="_blank">${lstYearAll[2][0].managerName}</a>
 	                       		</c:if>
 	                       </td>
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">管理产品数：</span></td>
-	                       <td class="tdbgcolor">${lstYearAll[0][0].manageFund}</td>
-	                       <td>${lstYearAll[1][0].manageFund}</td>
-	                       <td class="tdbgcolor">
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].manageFund}</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].manageFund}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].manageFund}
 	                       		</c:if>
@@ -241,13 +277,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">产品赢利占比：</span></td>
-	                       <td class="tdbgcolor"></td><td></td><td class="tdbgcolor"></td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].profitRate}%</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].profitRate}%</td>
+	                       <td class="tdbgcolor" style="color: #000;">
+	                       		<c:if test="${fn:length(lstYearAll)==3}">
+	                       			${lstYearAll[2][0].profitRate}%
+	                       		</c:if>
+	                       </td>
 	                   </tr>
 	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">所在公司：</span></td>
-	                       <td class="tdbgcolor txt_zcolor">${lstYearAll[0][0].companyName}</td>
-	                       <td class="txt_zcolor">${lstYearAll[1][0].companyName}</td>
-	                       <td class="tdbgcolor txt_zcolor">
+	                       <td class="tdbgcolor " style="color: #000;">${lstYearAll[0][0].companyName}</td>
+	                       <td style="color: #000;">${lstYearAll[1][0].companyName}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].companyName}
 	                       		</c:if>

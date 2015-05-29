@@ -58,8 +58,20 @@ public class PETopProduct {
 	/** 管理基金数 */
 	private Long manageFund;
 	
+	/** 盈利占比 */
+	private BigDecimal profitRate;
+	
 	/** 运行年月 */
 	private String runYearOrMonth;
+	
+	/** 认购起点 */
+	private BigDecimal subscripStart;
+	
+	/** 认购费 */
+	private String subscripFee;
+	
+	/** 开放日期 */
+	private String openTime;
 
 	public long getId() {
 		return id;
@@ -217,6 +229,38 @@ public class PETopProduct {
 	public void setRunYearOrMonth(String runYearOrMonth) {
 		this.runYearOrMonth = runYearOrMonth;
 	}
-	
+
+	public BigDecimal getProfitRate() {
+		return profitRate;
+	}
+
+	public void setProfitRate(BigDecimal profitRate) {
+		this.profitRate = profitRate;
+	}
+
+	public BigDecimal getSubscripStart() {
+		return subscripStart;
+	}
+
+	public void setSubscripStart(BigDecimal subscripStart) {
+		this.subscripStart = subscripStart;
+	}
+
+	public String getSubscripFee() {
+		return subscripFee;
+	}
+
+	public void setSubscripFee(String subscripFee) {
+		this.subscripFee = subscripFee;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
 	
 }

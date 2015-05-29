@@ -96,7 +96,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   </tr>
                   <tr>
                       <td>累计收益：</td>
-                      <td class="txt_a_left"><span class="font_color_b"><fmt:formatNumber value="${peManagerProduct.accumulatedIncome}" pattern="#0.00"/>%</span></td>
+                      <td class="txt_a_left">
+                      		<c:if test="${peManagerProduct.accumulatedIncome>0}">
+                        		<span class="f_f80"><fmt:formatNumber value="${peManagerProduct.accumulatedIncome}" pattern="###0.00"/>%</span>
+                        	</c:if>
+                        	<c:if test="${peManagerProduct.accumulatedIncome<0}">
+                        		<span style="color: #090;"><fmt:formatNumber value="${peManagerProduct.accumulatedIncome}" pattern="###0.00"/>%</span>
+                        	</c:if>
+                      </td>
                   </tr>
                   <tr>
                       <td>净值日期：</td>
@@ -260,9 +267,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <c:forEach items="${lstPEProductIncome}" var="peProductIncome">
                       <tr>
                         <td width="75">${ peProductIncome.year}</td>
-                        <td width="75"><c:if test="${empty peProductIncome.durationIncome}">---</c:if><c:if test="${not empty peProductIncome.durationIncome}"><fmt:formatNumber value="${peProductIncome.durationIncome}" pattern="#0.##"/>%</c:if></td>                        
-                        <td width="75"><c:if test="${empty peProductIncome.industryAverage}">---</c:if><c:if test="${not empty peProductIncome.industryAverage}"><fmt:formatNumber value="${peProductIncome.industryAverage}" pattern="#0.##"/>%</c:if></td>
-                        <td width="75"><c:if test="${empty peProductIncome.hs300}">---</c:if><c:if test="${not empty peProductIncome.hs300}"><fmt:formatNumber value="${peProductIncome.hs300}" pattern="#0.##"/>%</c:if></td>
+                        <td width="75">
+                        	<c:if test="${empty peProductIncome.durationIncome}">---</c:if>
+                        	<c:if test="${not empty peProductIncome.durationIncome}">
+                        		<c:if test="${peProductIncome.durationIncome>0}">
+	                        		<span class="f_f80"><fmt:formatNumber value="${peProductIncome.durationIncome}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+	                        	<c:if test="${peProductIncome.durationIncome<0}">
+	                        		<span style="color: #090;"><fmt:formatNumber value="${peProductIncome.durationIncome}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+                        	</c:if>
+                        </td>                        
+                        <td width="75">
+	                        <c:if test="${empty peProductIncome.industryAverage}">---</c:if>
+	                        <c:if test="${not empty peProductIncome.industryAverage}">
+	                        	<c:if test="${peProductIncome.industryAverage>0}">
+	                        		<span class="f_f80"><fmt:formatNumber value="${peProductIncome.industryAverage}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+	                        	<c:if test="${peProductIncome.industryAverage<0}">
+	                        		<span style="color: #090;"><fmt:formatNumber value="${peProductIncome.industryAverage}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+	                        </c:if>
+	                    </td>
+                        <td width="75">
+                        	<c:if test="${empty peProductIncome.hs300}">---</c:if>
+                        	<c:if test="${not empty peProductIncome.hs300}">
+                        		<c:if test="${peProductIncome.hs300>0}">
+	                        		<span class="f_f80"><fmt:formatNumber value="${peProductIncome.hs300}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+	                        	<c:if test="${peProductIncome.hs300<0}">
+	                        		<span style="color: #090;"><fmt:formatNumber value="${peProductIncome.hs300}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+                        	</c:if>
+                        </td>
                         <td width="75"><c:if test="${empty peProductIncome.rank}">---</c:if><c:if test="${not empty peProductIncome.rank}">${ peProductIncome.rank}</c:if></td>
                         <td width="*"><c:if test="${empty peProductIncome.rankInterval}">---</c:if><c:if test="${not empty peProductIncome.rankInterval}"><fmt:formatNumber value="${peProductIncome.rankInterval}" pattern="#0.##"/>%</c:if></td>
                       </tr>
@@ -291,7 +328,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <td width="125"><fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy.MM.dd"/></td>
                         <td width="125"><c:if test="${empty peProductNet.unitNet}">---</c:if><c:if test="${not empty peProductNet.unitNet}"><fmt:formatNumber value="${peProductNet.unitNet}" pattern="#0.####"/></c:if></td>
                         <td width="125"><c:if test="${empty peProductNet.totalNet}">---</c:if><c:if test="${not empty peProductNet.totalNet}"><fmt:formatNumber value="${peProductNet.totalNet}" pattern="#0.####"/></c:if></td>
-                        <td width="*"><c:if test="${empty peProductNet.increaseRate}">---</c:if><c:if test="${not empty peProductNet.increaseRate}"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="#0.##"/>%</c:if></td>
+                        <td width="*">
+                        	<c:if test="${empty peProductNet.increaseRate}">---</c:if>
+                        	<c:if test="${not empty peProductNet.increaseRate}">
+                        		<c:if test="${peProductNet.increaseRate>0}">
+	                        		<span class="f_f80"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+	                        	<c:if test="${peProductNet.increaseRate<0}">
+	                        		<span style="color: #090;"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</span>
+	                        	</c:if>
+                        	</c:if>
+                        </td>
                       </tr>
                       </c:forEach>                   
                     </tbody>
@@ -329,12 +376,57 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <tr class="${status.index%2==0?'even':'odd'}">
               <td class="c_l c_b"><a href="rest/web/pe/peIndexProductDetail?peProductId=${peProduct.id}" target="_blank" title="好运来巨牛一号"> ${peProduct.simpleName } </a></td>
               <td class="c_l c_b"><c:if test="${empty peProduct.netWorth}">---</c:if><c:if test="${not empty peProduct.netWorth}"><fmt:formatNumber value="${peProduct.netWorth}" pattern="#0.####"/></c:if></td>
-              <td class="c_r c_b"><c:if test="${empty peProduct.accumulatedIncome}">---</c:if><c:if test="${not empty peProduct.accumulatedIncome}"><fmt:formatNumber value="${peProduct.accumulatedIncome}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.accumulatedIncome}">---</c:if>
+              	<c:if test="${not empty peProduct.accumulatedIncome}">
+              		<c:if test="${peProduct.accumulatedIncome>0}">
+                   		<span class="f_f80"><fmt:formatNumber value="${peProduct.accumulatedIncome}" pattern="###0.##"/>%</span>
+                   	</c:if>
+                   	<c:if test="${peProduct.accumulatedIncome<0}">
+                   		<span style="color: #090;"><fmt:formatNumber value="${peProduct.accumulatedIncome}" pattern="###0.##"/>%</span>
+                   	</c:if>
+              	</c:if>
+              </td>
               <td class="c_c c_b"><c:if test="${empty peProduct.runTime}">---</c:if><c:if test="${not empty peProduct.runTime}">${ peProduct.runTime}</c:if></td>
-              <td class="c_r c_b"><c:if test="${empty peProduct.nowRate}">---</c:if><c:if test="${not empty peProduct.nowRate}"><fmt:formatNumber value="${peProduct.nowRate}" pattern="#0.####"/>%</c:if></td>
-              <td class="c_r c_b"><c:if test="${empty peProduct.towRate}">---</c:if><c:if test="${not empty peProduct.towRate}"><fmt:formatNumber value="${peProduct.towRate}" pattern="#0.####"/>%</c:if></td>
-              <td class="c_r c_b"><c:if test="${empty peProduct.oneRate}">---</c:if><c:if test="${not empty peProduct.oneRate}"><fmt:formatNumber value="${peProduct.oneRate}" pattern="#0.####"/>%</c:if></td>
-              <td class="c_r c_b"><c:if test="${empty peProduct.yearRate}">---</c:if><c:if test="${not empty peProduct.yearRate}"><fmt:formatNumber value="${peProduct.yearRate}" pattern="#0.####"/>%</c:if></td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.nowRate}">---</c:if>
+              	<c:if test="${not empty peProduct.nowRate}">
+              		<c:if test="${peProduct.nowRate>0}">
+                   		<span class="f_f80"><fmt:formatNumber value="${peProduct.nowRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+                   	<c:if test="${peProduct.nowRate<0}">
+                   		<span style="color: #090;"><fmt:formatNumber value="${peProduct.nowRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+              	</c:if>
+              </td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.towRate}">---</c:if>
+              	<c:if test="${not empty peProduct.towRate}">
+              		<c:if test="${peProduct.towRate>0}">
+                   		<span class="f_f80"><fmt:formatNumber value="${peProduct.towRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+                   	<c:if test="${peProduct.towRate<0}">
+                   		<span style="color: #090;"><fmt:formatNumber value="${peProduct.towRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+              	</c:if>
+              </td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.oneRate}">---</c:if>
+              	<c:if test="${not empty peProduct.oneRate}">
+              		<c:if test="${peProduct.oneRate>0}">
+                   		<span class="f_f80"><fmt:formatNumber value="${peProduct.oneRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+                   	<c:if test="${peProduct.oneRate<0}">
+                   		<span style="color: #090;"><fmt:formatNumber value="${peProduct.oneRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+              	</c:if>
+              </td>
+              <td class="c_r c_b"><c:if test="${empty peProduct.yearRate}">---</c:if>
+              	<c:if test="${not empty peProduct.yearRate}">
+              		<c:if test="${peProduct.yearRate>0}">
+                   		<span class="f_f80"><fmt:formatNumber value="${peProduct.yearRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+                   	<c:if test="${peProduct.yearRate<0}">
+                   		<span style="color: #090;"><fmt:formatNumber value="${peProduct.yearRate}" pattern="###0.##"/>%</span>
+                   	</c:if>
+              	</c:if>
+              </td>
               <td class="c_c">
 	             <c:choose>  
 	                <c:when test="${peProduct.productLevel =='1'}">股票</c:when>

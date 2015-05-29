@@ -219,10 +219,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 											</td>
 											
 											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span>${peAllProduct.netWorth }</span></td>
-											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span><fmt:formatNumber value="${peAllProduct.accumulatedIncome}" pattern="#0"/>.<fmt:formatNumber value="${peAllProduct.accumulatedIncome*100%100}" pattern="00"/>%</span></td>
-											<td class="c_r_s" style="text-align: right;padding-right: 0px;"><span class="f_f80">${peAllProduct.nowRate }%</span></td>
-											<td class="c_r_s" style="text-align: right;padding-right: 0px;">${peAllProduct.oneRate }%</td>
-											<td class="c_r_s" style="text-align: right;padding-right: 0px;">${peAllProduct.towRate }%</td>
+											<td class="c_r_s" style="text-align: right;padding-right: 0px;">
+												<c:if test="${peAllProduct.accumulatedIncome>0}">
+						                  			<span class="f_f80">${peAllProduct.accumulatedIncome}%</span>
+						                  		</c:if>
+						                  		<c:if test="${peAllProduct.accumulatedIncome<0}">
+						                  			<span style="color: #090;">${peAllProduct.accumulatedIncome}%</span>
+						                  		</c:if>
+											</td>
+											<td class="c_r_s" style="text-align: right;padding-right: 0px;">
+												<c:if test="${peAllProduct.nowRate>0}">
+						                  			<span class="f_f80">${peAllProduct.nowRate}%</span>
+						                  		</c:if>
+						                  		<c:if test="${peAllProduct.nowRate<0}">
+						                  			<span style="color: #090;">${peAllProduct.nowRate}%</span>
+						                  		</c:if>
+											</td>
+											<td class="c_r_s" style="text-align: right;padding-right: 0px;">
+												<c:if test="${peAllProduct.oneRate>0}">
+						                  			<span class="f_f80">${peAllProduct.oneRate}%</span>
+						                  		</c:if>
+						                  		<c:if test="${peAllProduct.oneRate<0}">
+						                  			<span style="color: #090;">${peAllProduct.oneRate}%</span>
+						                  		</c:if>
+											</td>
+											<td class="c_r_s" style="text-align: right;padding-right: 0px;">
+												<c:if test="${peAllProduct.towRate>0}">
+						                  			<span class="f_f80">${peAllProduct.towRate}%</span>
+						                  		</c:if>
+						                  		<c:if test="${peAllProduct.towRate<0}">
+						                  			<span style="color: #090;">${peAllProduct.towRate}%</span>
+						                  		</c:if>
+											</td>
 											<td class="c_b">
 												<div class="trend_viewer">
 													<div class="trend_viewer_hd">
