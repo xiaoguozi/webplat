@@ -97,7 +97,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					                        		<td><span style="color: #090;"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.##"/>%</span></td>	
 					                        	</c:if>
 					                        	<c:if test="${yearVO.nowRate==null || yearVO.nowRate==0 || yearVO.nowRate=='0.00'}">
-					                        		<td></td>
+					                        		<td>--</td>
 					                        	</c:if>
 			                			</c:if>
 			                			<c:if test="${status.index!=0}">
@@ -108,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					                        		<td><span style="color: #090;"><fmt:formatNumber value="${yearVO.nowRate}" pattern="###0.##"/>%</span></td>	
 					                        	</c:if>
 					                        	<c:if test="${yearVO.nowRate==null || yearVO.nowRate==0 || yearVO.nowRate=='0.00'}">
-					                        		<td></td>
+					                        		<td>--</td>
 					                        	</c:if>
 			                			</c:if>
 			                		</c:forEach>
