@@ -115,7 +115,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           <div class="sub_item">
             <div class="sub_hd f_s14">收益测算</div>
             <div class="sub_bd_1">
-              <div class="tit">历史业绩来看,以投入一年，100万元为例 ( <span class="f_f60">赚${rateMax.intValue()}元</span> ~ <span class="f_f60">赚${rateMin.intValue()}元</span> )</div>
+              <div class="tit">历史业绩来看,以投入一年，100万元为例 ( <span class="f_f80">赚${rateMax.intValue()}元</span> ~ <span class="f_f80">赚${rateMin.intValue()}元</span> )</div>
               <table class="detail_tb_2 tjstbl" width="80%">
                 <thead>
                   <tr>
@@ -142,7 +142,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     	</c:if>
                     </c:forEach>
                   </tr>
-                  <tr class="f_090">
+                  <tr class="f_090" style="color: #090;">
                     <td>亏</td>
                     <c:forEach items="${lstProductRate}" var="rateVO">
                     	<c:if test="${rateVO.nowRate<0}">
@@ -192,17 +192,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        </td>
 	                        <td width="75">
 	                        	<c:if test="${peProductIncome.durationIncome!=null || peProductIncome.durationIncome!=0 || peProductIncome.durationIncome!='0.00'}">
-	                        		${peProductIncome.durationIncome}%
+	                        		<c:if test="${peProductIncome.durationIncome>0}">
+	                        			<span class="f_f80">${peProductIncome.durationIncome}%</span>
+	                        		</c:if>
+	                        		<c:if test="${peProductIncome.durationIncome<0}">
+		                        		<span style="color: #090;">${peProductIncome.durationIncome}%</span>
+	                        		</c:if>
 	                        	</c:if>
 	                        </td>
 	                        <td width="75">
 	                        	<c:if test="${peProductIncome.industryAverage!=null || peProductIncome.industryAverage!=0 || peProductIncome.industryAverage!='0.00'}">
-	                        		${peProductIncome.industryAverage}%
+	                        		<c:if test="${peProductIncome.industryAverage>0}">
+	                        			<span class="f_f80">${peProductIncome.industryAverage}%</span>
+	                        		</c:if>
+	                        		<c:if test="${peProductIncome.industryAverage<0}">
+	                        			<span style="color: #090;">${peProductIncome.industryAverage}%</span>
+	                        		</c:if>
 	                        	</c:if>
 	                        </td>
 	                        <td width="75">
 	                        	<c:if test="${peProductIncome.hs300!=null || peProductIncome.hs300!=0 || peProductIncome.hs300!='0.00'}">
-	                        		${peProductIncome.hs300}%
+	                        		<c:if test="${peProductIncome.hs300>0}">
+	                        			<span class="f_f80">${peProductIncome.hs300}%</span>
+	                        		</c:if>
+	                        		<c:if test="${peProductIncome.hs300<0}">
+	                        			<span style="color: #090;">${peProductIncome.hs300}%</span>
+	                        		</c:if>
 	                        	</c:if>
 	                        </td>
 	                        <td width="75">
@@ -240,7 +255,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                        <td width="125"><fmt:formatDate value="${peProductNet.netTime}" pattern="yyyy-MM-dd"/></td>
 		                        <td width="125"><fmt:formatNumber value="${peProductNet.unitNet}" pattern="###0.##"/></td>
 		                        <td width="125"><fmt:formatNumber value="${peProductNet.totalNet}" pattern="###0.##"/></td>
-		                        <td width="*"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</td>
+		                        <td width="*">
+		                        	<c:if test="${peProductNet.increaseRate>0}">
+		                        		<span class="f_f80"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</span>
+		                        	</c:if>
+		                        	<c:if test="${peProductNet.increaseRate<0}">
+		                        		<span style="color: #090;"><fmt:formatNumber value="${peProductNet.increaseRate}" pattern="###0.##"/>%</span>
+		                        	</c:if>
+		                        </td>
 		                     </tr>
                     	</c:forEach>
                     </tbody>
@@ -417,28 +439,53 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              <td class="c_l c_b">${manageProduct.netWorth }</td>
 	              <td class="c_r c_b">
 						<c:if test="${manageProduct.accumulatedIncome!=null}">
-	                  		${manageProduct.accumulatedIncome}%
+	                  		<c:if test="${manageProduct.accumulatedIncome>0}">
+	                  			<span class="f_f80">${manageProduct.accumulatedIncome}%</span>
+	                  		</c:if>
+	                  		<c:if test="${manageProduct.accumulatedIncome<0}">
+	                  			<span style="color: #090;">${manageProduct.accumulatedIncome}%</span>
+	                  		</c:if>
 	                  	</c:if>
 				  </td>
 	              <td class="c_c c_b">${manageProduct.runTime}</td>
 	              <td class="c_r c_b">
-	              	<c:if test="${manageProduct.nowRate!=null}">
-	                  		${manageProduct.nowRate}%
+	              		<c:if test="${manageProduct.nowRate!=null}">
+	                  		<c:if test="${manageProduct.nowRate>0}">
+	                  			<span class="f_f80">${manageProduct.nowRate}%</span>
+	                  		</c:if>
+	                  		<c:if test="${manageProduct.nowRate<0}">
+	                  			<span style="color: #090;">${manageProduct.nowRate}%</span>
+	                  		</c:if>
 	                  	</c:if>
 	              </td>
 	              <td class="c_r c_b">
 						<c:if test="${manageProduct.towRate!=null}">
-	                  		${manageProduct.towRate}%
+	                  		<c:if test="${manageProduct.towRate>0}">
+	                  			<span class="f_f80">${manageProduct.towRate}%</span>
+	                  		</c:if>
+	                  		<c:if test="${manageProduct.towRate<0}">
+	                  			<span style="color: #090;">${manageProduct.towRate}%</span>
+	                  		</c:if>
 	                  	</c:if>
 				</td>
 	              <td class="c_r c_b">
 						<c:if test="${manageProduct.oneRate!=null}">
-	                  		${manageProduct.oneRate}%
+	                  		<c:if test="${manageProduct.oneRate>0}">
+	                  			<span class="f_f80">${manageProduct.oneRate}%</span>
+	                  		</c:if>
+	                  		<c:if test="${manageProduct.oneRate<0}">
+	                  			<span style="color: #090;">${manageProduct.oneRate}%</span>
+	                  		</c:if>
 	                  	</c:if>
 				</td>
 	              <td class="c_r c_b">
 	              		<c:if test="${manageProduct.yearRate!=null}">
-	                  		${manageProduct.yearRate}%
+	                  		<c:if test="${manageProduct.yearRate>0}">
+	                  			<span class="f_f80">${manageProduct.yearRate}%</span>
+	                  		</c:if>
+	                  		<c:if test="${manageProduct.yearRate<0}">
+	                  			<span style="color: #090;">${manageProduct.yearRate}%</span>
+	                  		</c:if>
 	                  	</c:if>
 	              </td>
 	              <td class="c_c">
