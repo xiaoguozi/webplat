@@ -178,7 +178,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_left_cdiv">
 <div  style=" height:26px; width:100%;"></div>
 <div class="tjs_product_left_icodiv"><img src="assets/img/ui/private_ico.png" width="172" height="150" />
-<div class="tjs_left_earningsdiv">&nbsp;负收益至&nbsp;<span>10倍</span>&nbsp;收益</div>
+<div class="tjs_left_earningsdiv">&nbsp;收益至&nbsp;<span>10倍</span>&nbsp;收益</div>
 </div>
 <div class="tjs_product_textdiv">私募适合追求超高收益，承 担高风险投 资者。收益可无 限放大无上限，但也可 能出 现亏损，选择时需优中选优。</div>
 </div>
@@ -235,7 +235,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_left_cdiv">
 <div  style=" height:26px; width:100%;"></div>
 <div class="tjs_product_left_icodiv"><img src="assets/img/ui/match_ico.png" width="132" height="160" />
-<div class="tjs_left_earningsdiv">&nbsp;&nbsp;负收益至&nbsp;<span>6倍</span>&nbsp;收益</div>
+<div class="tjs_left_earningsdiv">&nbsp;&nbsp;收益至&nbsp;<span>6倍</span>&nbsp;收益</div>
 </div>
 <div class="tjs_product_textdiv">配资包赚不赔，新手体验；短线投资 , 4 倍杠杆；中长线投资 , 5倍杠杆；长线投 资，月息仅0.69%</div>
 </div>
