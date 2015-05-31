@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <span class="txt">淘金配资</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <span class="txt">淘金配资</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
@@ -77,14 +77,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 			<div class="pro_box bbn  top20" style="left:349px;">
 				<h1 class="pro_title">月月配</h1>
-				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，日息低至 <span class="colorf06"><b class="fsize">1.25</b>%</span></p>
+				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">1.3</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
 				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/monthCapital">我要配资</a>
 			</div>
 			<div class="pro_box bbn  top20" style="left:728px;">
 				<h1 class="pro_title">低息配</h1>
-				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，日息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
+				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">3个月</span>起配</p>
 				<p class="w230">最高<span class="colorf06"> 1倍 </span>杠杆，风险超低</p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/lowCapital">我要配资</a>

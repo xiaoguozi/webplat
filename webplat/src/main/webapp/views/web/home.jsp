@@ -243,7 +243,7 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">配资</span><span style="float:right;"><a href="rest/web/peizi/index" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">配资</span><span style="float:right;"><a href="rest/web/peizi/index" class="tjs_moreurl" target="_blank">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
 
 <div class="tjs_right_typle">
@@ -266,9 +266,9 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>天天赚</span><br />短线投资 , 4倍杠杆
+<div class="tjs_rightmatch_title"><span>天天配</span><br />短线投资 , 4倍杠杆
 </div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">5000元</span> 起配，日息低至<span class="tjs_shalloworange">0.1%</span></div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">10000元</span> 起配，日息低至<span class="tjs_shalloworange">0.1%</span></div>
 
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">4倍</span> 杠杆 <span class="tjs_shalloworange">4倍</span> 利润</div>
 
@@ -281,14 +281,14 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>低息1配1</span><br />长线投资，月息仅0.69%
+<div class="tjs_rightmatch_title"><span>月月配</span><br />长线投资，最高5倍 杠杆
 </div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">3个月</span> 起配，月息低至 <span class="tjs_shalloworange">0.69%</span></div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">2000元</span> 起配，月息低至 <span class="tjs_shalloworange">1.3%</span></div>
 
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">1倍</span> 杠杆，风险超低</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">5倍</span> 杠杆，最高可配<span class="tjs_shalloworange">500万</span><</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/lowCapital" target="_blank" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 
