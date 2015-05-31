@@ -258,7 +258,26 @@ $(function() {
 	        $('.modify-form input').keypress(function(e) {
 	            if (e.which == 13) {
 	                if ($('.modify-form').validate().form()) {	                	                	
-	                    $('.modify-form').submit();
+			    		var passwordInput = $('[name="password"]');
+				        passwordInput.val(sha256_digest(passwordInput.val()));			        
+				        var newPasswordInput = $('[name=newpassword]');
+				        newPasswordInput.val(sha256_digest(newPasswordInput.val()));			        
+				        var rpaConfirmssword = $('[name=rpaConfirmssword]');
+				        rpaConfirmssword.val(sha256_digest(newPasswordInput.val()));							    		
+			    		$.post('rest/web/userCenter/userModifyData', 
+			    		            $('.modify-form').formSerialize(),
+			    		            function(data){		    			
+			    			 			passwordInput.val("");
+			    						newPasswordInput.val("");
+			    						rpaConfirmssword.val("");
+			    						if(data){
+			    							$("#modify_tip").text("修改成功");
+			    						}else{
+			    							$("#modify_tip").text("修改失败");
+			    						}
+			    						$("#modify_data").toggle(1000);
+			    						$("#modify_data").toggle(1000);		    								    			
+			    		            });
 	                }
 	                return false;
 	            }
