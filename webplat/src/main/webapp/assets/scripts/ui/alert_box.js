@@ -93,7 +93,7 @@
     btn1.innerHTML = '<cite>我要预约</cite>';
     btn1.onclick = function () {
     	if(document.getElementById("alert_name").value==document.getElementById("alert_name").getAttribute("placeholder")||document.getElementById("alert_tel").value==document.getElementById("alert_tel").getAttribute("placeholder")
-    	    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""||!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(document.getElementById("alert_tel").value.replace(/^\s+|\s+$/g, '')))){
+    	    	  ||document.getElementById("alert_name").value==""||document.getElementById("alert_tel").value==""||!(/^1[3|4|5|7|8]\d{9}$/.test(document.getElementById("alert_tel").value.replace(/^\s+|\s+$/g, '')))){
 			$("#tip_01").css('display',"none");
 			$("#tip_02").css('display',"block");
 			$("#tip_03").css('display',"block");   		
