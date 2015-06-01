@@ -547,6 +547,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			var cids = $(".compare_container input[name=cid]");
 			if(cids.size()<2){
 				alert("请至少选择两个产品");
+				return;
 			}
 			var ids='';
 			for(var i=0; i<cids.size(); i++){

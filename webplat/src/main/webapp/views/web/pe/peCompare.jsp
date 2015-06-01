@@ -26,6 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	src="assets/scripts/ui/scripts-bottom-min.js"></script>
 
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+<script type="text/javascript" src="assets/widget/highcharts4/js/highcharts.js"></script>
 
 </head>
 
@@ -118,10 +119,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              </table>
 	            </div>
 	          </div>
-	          <div class="sub_item" style="display:none;">
+	          <div class="sub_item" style="display: none;">
 	            <div class="sub_hd">净值走势对比</div>
-	            <div class="sub_bd_1">
-	                <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />
+	            <div id="chartContainer" class="sub_bd_1" style="min-width: 800px;height: 365px;">
+	               
 	            </div>
 	          </div>
 	        </div>
@@ -143,29 +144,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	               <tbody>
 	                   <tr>
 	                       <td class="tjs_tbl_compare_all_tb1 txt_align_left"><b class="bfont_color">基金净值</b></td>
-	                       <td>${lstYearAll[0][0].netWorth}</td>
-	                       <td>${lstYearAll[1][0].netWorth}</td>
+	                       <td></td>
+	                       <td></td>
 	                       <td>
+	                       		
+	                       </td>
+	                   </tr>
+	                   <tr>
+	                       <td class="txt_align_left"><span class="sfont_color">最新净值:</span></td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].netWorth}</td><td style="color: #000;">${lstYearAll[1][0].netWorth}</td>
+	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
 	                       			${lstYearAll[2][0].netWorth}
 	                       		</c:if>
 	                       </td>
 	                   </tr>
 	                   <tr>
-	                       <td class="txt_align_left"><span class="sfont_color">最新净值:</span></td>
-	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].nowRate}</td><td style="color: #000;">${lstYearAll[1][0].nowRate}</td>
-	                       <td class="tdbgcolor" style="color: #000;">
-	                       		<c:if test="${fn:length(lstYearAll)==3}">
-	                       			${lstYearAll[2][0].nowRate}
-	                       		</c:if>
-	                       </td>
-	                   </tr>
-	                   <tr>
 	                       <td class="txt_align_left"><span class="sfont_color">累计净值:</span></td>
-	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].accumulatedIncome}</td><td style="color: #000;">${lstYearAll[1][0].accumulatedIncome}</td>
+	                       <td class="tdbgcolor" style="color: #000;">${lstYearAll[0][0].netWorth}</td><td style="color: #000;">${lstYearAll[1][0].netWorth}</td>
 	                       <td class="tdbgcolor" style="color: #000;">
 	                       		<c:if test="${fn:length(lstYearAll)==3}">
-	                       			${lstYearAll[2][0].accumulatedIncome}
+	                       			${lstYearAll[2][0].netWorth}
 	                       		</c:if>
 	                       	</td>
 	                   </tr>
@@ -310,12 +309,49 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	<!-- /home_all -->
 	<script>
-		
+		/**
+		$(function () {
+			$('#chartContainer').highcharts({
+				title: {
+					text: '净值走势对比',
+					x: -20 //center
+				},
+				xAxis: {
+					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+				},
+				yAxis: {
+					title: {
+						text: ''
+					},
+					plotLines: [{
+						value: 0,
+						width: 1,
+						color: '#808080'
+					}],
+					lineColor: '#808080',
+		            lineWidth: 1
+				},
+				tooltip: {
+					valueSuffix: 'буC'
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'middle',
+					borderWidth: 0
+				},
+				series: [{
+					name: 'Tokyo',
+					data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+				}, {
+					name: 'London',
+					data: [null, null, null, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+				}]
+			});
+		});
         
+		*/
     </script>
-
-
-
 
 </body>
 </html>

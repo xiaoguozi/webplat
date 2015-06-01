@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,13 +15,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
+import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductIncome;
+import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductIncomeService;
+import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -43,6 +48,9 @@ public class PEIndexCompareController {
 	@Resource
 	private PEProductIncomeService peProductIncomeService;
 	
+	@Resource
+	private PEProductNetService PEProductNetService;
+	
 	
 	@RequestMapping("/peIndexCompare")
     public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
@@ -56,14 +64,6 @@ public class PEIndexCompareController {
     	}
 		
 		List<List<PETopProduct>> lstYearAll = new ArrayList<List<PETopProduct>>();
-//    	String productIdArray = peSearchCtrlVO.getProductIdArray();
-//    	String[] ids = productIdArray.split(",");
-//    	for(String id : ids){
-//    		peSearchCtrlVO.setPeProductId(id);
-//    		List<PETopProduct> lstRateVO = peProductService.getCompareYearRate(peSearchCtrlVO, 3);
-//    		lstYearAll.add(lstRateVO);
-//    	}
-    	
     	
     	String productIdArray = peSearchCtrlVO.getProductIdArray();
     	String[] ids = productIdArray.split(",");
@@ -115,11 +115,25 @@ public class PEIndexCompareController {
 			lstProductRate.get(0).setSubscripStart(peProduct.getSubscripStart().divide(new BigDecimal(10000)));
 			lstProductRate.get(0).setSubscripFee(peProduct.getSubscripFee());
 			lstProductRate.get(0).setOpenTime(peProduct.getOpenTime());
+			lstProductRate.get(0).setNetWorth(peProduct.getNetWorth());
 			
 			lstProductRate.get(0).setProfitRate(new BigDecimal(peManager.getProfitProduct()).divide(
 					new BigDecimal(peManager.getManageFund()), 2, RoundingMode.FLOOR).multiply(new BigDecimal(100)));
     		lstProductRate.add(1, peNewProduct);
     		lstYearAll.add(lstProductRate);
+    		
+    		//净值走势对比
+//    		PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
+//    		peProductNetCtrlModel.setProductId(id);
+//    		peProductNetCtrlModel.setSortField("netTime");
+//    		peProductNetCtrlModel.setSortType("desc");
+//    		List<PEProductNet> lstPeProductNet = PEProductNetService.getPEProductNetList(peProductNetCtrlModel);
+    		
+//    		for(PEProductNet peProductNet : lstPeProductNet){
+//    			
+//    		}
+    		
+    		
     	}
     	
     	
