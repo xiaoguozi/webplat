@@ -259,6 +259,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <SCRIPT type=text/javascript>
 var IndexPage = {};
 IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
+IndexPage.formActionUrl="rest/web/xintuo/trust/trustProduct";
 	$(function () {  
 		//初始化选择按钮
 	    $("#xtcpZdrgje a[tag=${xintuoSearVO.xtcpZdrgje}]").addClass("tjs_condition_selected");
@@ -306,7 +307,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    	$("#"+$(this).attr("condition_name")+" a").removeClass("tjs_condition_selected");
 	    	$("#"+$(this).attr("condition_name")+" a[tag=0]").addClass("tjs_condition_selected");	    		    	
 	    	var params =SetPara();	    	    	
-	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    	$("#modalForm").attr("action",IndexPage.formActionUrl+params).submit();
 
 	    });
 	    
@@ -323,7 +324,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    	
 	    	$("#more_gs_condition").css("display","none");
 	    	var params =SetPara();
-	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    	$("#modalForm").attr("action",IndexPage.formActionUrl+params).submit();
 
 	    });
 	    
@@ -350,7 +351,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 	    $(".tjs_dashed_bottom a").click(function(event){
 	    	event.preventDefault();	    	
 	    	var params =SetPara();	    	    	
-	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    	$("#modalForm").attr("action",IndexPage.formActionUrl+params).submit();
 
 	    });
 	    
@@ -360,7 +361,7 @@ IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
             $("input[name=pageNo]").val($(this).attr("page_no"));
 	    	//获取查询条件
 	    	var params =SetPara();	    	    	
-	    	$("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	    	$("#modalForm").attr("action",IndexPage.formActionUrl+params).submit();
 
 	    });
 	   
