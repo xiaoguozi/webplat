@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.peizi.dao.PeiziMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.peizi.model.Peizi">
+		<id column="data_id" property="dataId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="data_zcpzj" property="dataZcpzj" javaType="java.math.BigDecimal" />
+		<result column="data_tzbzj" property="dataTzbzj" javaType="java.math.BigDecimal" />
+		<result column="data_jjx" property="dataJjx" javaType="java.math.BigDecimal" />
+		<result column="data_pcx" property="dataPcx" javaType="java.math.BigDecimal" />
+		<result column="data_type" property="dataType" jdbcType="VARCHAR" />		
+		<result column="data_type_sylx" property="dataTypeSylx" jdbcType="VARCHAR" />
+		<result column="data_zjsyqx" property="dataZjsyqx" jdbcType="INTEGER" />
+		<result column="data_zfglf" property="dataZfglf" javaType="java.math.BigDecimal" />
+		<result column="data_yll" property="dataYll" javaType="java.math.BigDecimal" />
+		<result column="data_nll" property="datanll" javaType="java.math.BigDecimal" />
+		<result column="data_jklx_total" property="dataJklxTotal" javaType="java.math.BigDecimal" />
+		<result column="data_submit_date" property="dataSubmitDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />	
+		
+		<result column="data_jyks_date" property="dataJyksDate" jdbcType="VARCHAR" />
+		<result column="data_step" property="dataStep" jdbcType="VARCHAR" />
+		<result column="data_create_date" property="dataCreateDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="data_modify_date" property="dataModifyDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="data_use_name" property="dataUserName" jdbcType="VARCHAR" />	
+		
+		<result column="data_user_id" property="dataUserId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="data_user_tel" property="dataUserTel" jdbcType="VARCHAR" />
+		<result column="data_remark" property="dataRemark" jdbcType="VARCHAR" />
+		<result column="data_opera_status" property="dataOperaStatus" jdbcType="VARCHAR" />	
+		
+		<result column="data_opera_user_name" property="dataOperaUserName" jdbcType="VARCHAR" />	
+		
+		<result column="data_opera_user_id" property="dataOperaUserId" javaType="java.lang.Long"  jdbcType="BIGINT" />											
+	</resultMap>
+
+	<sql id="Base_select_Column_List">
+		data_id,data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
+		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
+		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+		data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
+		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
+		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id
+	</sql>
+
+	<select id="countPeizi" resultType="int"
+		parameterType="com.tjs.admin.peizi.controller.PeiziCtrlModel">
+		select count(*) c from tjs_peizi_data  where 1=1				
+	</select>
+
+	<select id="selectPeizi"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.peizi.controller.PeiziCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_peizi_data where   1=1	
+					      
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+	</select>
+	
+	
+	<select id="findByPeiziId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_peizi_data where   data_Id=#{peiziId}							                  
+	</select>
+	
+	<insert id="insertPeizi" useGeneratedKeys="true"
+		keyProperty="ruleId" parameterType="com.tjs.admin.peizi.model.Peizi">
+		insert into tjs_peizi_data(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{dataZcpzj},
+		#{dataTzbzj},
+		#{dataJjx},
+		#{dataPcx},
+		#{dataType},
+		#{dataTypeSylx},
+		#{dataZjsyqx},
+		#{dataZfglf},
+		#{dataYll},
+		#{datanll},
+		#{dataJklxTotal},
+		#{dataSubmitDate},
+		#{dataJyksDate},
+		#{dataStep},
+		#{dataCreateDate},
+		#{dataModifyDate},
+		#{dataUserName},
+		#{dataUserId},
+		#{dataUserTel},
+		#{dataRemark},
+		#{dataOperaStatus},
+		#{dataOperaUserName},
+		#{dataOperaUserId}				
+		)
+	</insert>
+	
+	<update id="updatePeizi" parameterType="com.tjs.admin.peizi.model.Peizi">
+		update tjs_peizi_data set		
+		data_modify_date=#{dataModifyDate},
+		data_use_name=#{dataUserName},		
+		data_remark=#{dataRemark},
+		data_opera_status=#{dataOperaStatus},
+		data_opera_user_name=#{dataOperaUserName},
+		data_opera_user_id=#{dataOperaUserId}		
+		where data_id=#{dataId}		
+	</update>
+	
+	
+	<delete id="deletePeizi" parameterType="Long">
+	    delete from tjs_peizi_data  where  data_id=#{peiziId}
+	</delete>
+	
+	
+	<delete id="deleteBatchPeizi" parameterType="Long">
+	  delete from tjs_peizi_data  where data_id in 
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+	     </foreach>
+	</delete>	
+</mapper>
