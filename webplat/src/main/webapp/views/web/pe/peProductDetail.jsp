@@ -19,9 +19,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
-<script type="text/javascript"
-	src="assets/scripts/ui/jquery.plugins-min.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/highstock.js"></script>
+
 <script type="text/javascript"
 	src="assets/scripts/ui/scripts-bottom-min.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
@@ -159,8 +158,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
           </div>
           <div class="sub_item" style="display:none;">
             <div class="sub_hd f_s14">净值走势</div>
-            <div class="sub_bd_1">
-                <img src="assets/img/ui2/zoushi.jpg" alt="Alternate Text" />
+            <div id="chartContainer" class="sub_bd_1">
             </div>
           </div>
           <div class="sub_item">
@@ -561,7 +559,66 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			        }).blur();
 			    };
 			});
-		    //--预约--                   
+		    //--预约--    
+		    
+		    
+		    $(function () {
+					createChart = function () {
+						
+			            $('#chartContainer').highcharts('StockChart', {
+			            	xAxis: {
+			            	   tickPixelInterval: 150,
+			                   type: 'datetime',
+	                           title: {
+	                               text: null
+	                           },
+	                           
+	                           formatter: function() {
+
+	                        	   var vDate=new Date(this.value);
+
+	                        	   return vDate.getFullYear()+"-"+(vDate.getMonth()+1)+"-"+vDate.getDate();
+
+	                        	} 
+			                },
+			                yAxis: {
+			                    labels: {
+			                        formatter: function () {
+			                            return  this.value;
+			                        }
+			                    },
+			                    plotLines: [{
+			                        value: 0,
+			                        width: 1,
+			                        color: 'silver'
+			                    }],
+			                    gridLineWidth: 1 ,
+			                    lineWidth : 1,
+			                    minorTickInterval: 'auto',
+			                    minorTickLength: 10,
+			                    minorTickWidth: 1
+			                },
+			
+			                plotOptions: {
+			                    series: {
+			                        compare: 'percent'
+			                    }
+			                },
+			
+			                tooltip: {
+			                    pointFormat: '<span style="color:{series.color}">{series.name}: {point.y}</span><br/>',
+			                    valueDecimals: 2
+			                },
+			
+			                series: eval("(" +'${valueSeries}'+ ")")
+			            });
+			            
+			          	//去掉版权
+				    	$("text[text-anchor=end]").html("");
+			        };
+			
+				createChart();
+			});
 	
     </script>
 </body>

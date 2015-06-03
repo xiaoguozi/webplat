@@ -19,7 +19,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/highstock.js"></script>
+
 <script type="text/javascript"
 	src="assets/scripts/ui/jquery.plugins-min.js"></script>
 <script type="text/javascript"
@@ -264,7 +265,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${lstAll}" var="peAllProduct">
+									<c:forEach items="${lstAll}" varStatus="status" var="peAllProduct">
 									<tr class="odd">
 										<td class="c_c c_b c_first_control">
 											<div class="lb_wrap">
@@ -325,13 +326,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					                  		</c:if>
 										</td>
 										<td class="c_b">
-											<div class="trend_viewer">
+											<div class="trend_viewer" productId="${peAllProduct.id}">
 												<div class="trend_viewer_hd">
 													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
 												</div>
 												<div class="details_show">
 													<em class="left_icon"></em>
-													<div class="details_boxes"></div>
+													<div class="details_boxes" id="chartContainer_${status.index}"></div>
 												</div>
 											</div>
 										</td>
@@ -626,12 +627,71 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         $(".trend_viewer").each(function (index) {
             $(this).hover(function () {
                 $(".details_show:eq(" + index + ")").show();
+                /**
+            	var needLoad = true;
+            	var pId = $(this).attr("productId");
+                for(var i=0; i<productIdArray.length; i++){
+                	if(productIdArray[i]==pId){
+                		needLoad = false;
+                		break;
+                	}
+                }
+                if(needLoad===true){
+	                queryProductChart(pId, index)
+                }
+                */
             }, function () {
                 $(".details_show:eq(" + index + ")").hide();
             });
         });
-        //--/详情框--
         
+        /**
+        var productIdArray = new Array();
+       
+		function queryProductChart(pId, index){
+			$.ajax({
+			     type: 'POST',
+			     url: "<%=basePath%>rest/web/pe/peProductChart" ,
+			     data: {
+			    	 productId:pId
+			     } ,
+			     success: function(data){
+			    	 $('#chartContainer_'+index).highcharts('StockChart', {
+			            	
+			                yAxis: {
+			                    labels: {
+			                        formatter: function () {
+			                            return  this.value;
+			                        }
+			                    },
+			                    plotLines: [{
+			                        value: 0,
+			                        width: 1,
+			                        color: 'silver'
+			                    }]
+			                },
+			
+			                plotOptions: {
+			                    series: {
+			                        compare: 'percent'
+			                    }
+			                },
+			
+			                tooltip: {
+			                    pointFormat: '<span style="color:{series.color}">{series.name}: {point.y}</span><br/>',
+			                    valueDecimals: 2
+			                },
+			
+			                series: data
+			            });
+			    	 productIdArray.push(pId);
+			    	
+			    	 $("text[text-anchor=end]").html("");
+			    	 
+			     } ,
+			     dataType: 'json'
+			});
+        } */       
         
         //--点击更多js--
         function packUp(btn, i) {

@@ -1,22 +1,33 @@
 package com.tjs.web.pe.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tjs.admin.pe.controller.PECompanyCtrlModel;
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
-import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
 import com.tjs.admin.pe.model.PECompany;
 import com.tjs.admin.pe.model.PEManager;
+import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
+import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
 
 /**
@@ -39,6 +50,11 @@ public class PEIndexProductController {
 	
 	@Resource
 	private PECompanyService peCompanyService;
+	
+	@Resource
+	private PEProductNetService peProductNetService;
+	
+	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 	
 	
 	@RequestMapping("/peIndexProduct")
@@ -86,81 +102,44 @@ public class PEIndexProductController {
         return "web/pe/peProduct";
     }
 	
-//	@RequestMapping("/insert")
-//    public String insert(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/main";
-//    }
-//	
-//
-//    @RequestMapping("/insertData")
-//    @ResponseBody
-//    public Map<String, Object> insertData(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	int id = peProductService.insertPEProduct(peProduct, peProductCtrlModel);
-//    	result.put("code", "0");
-//    	result.put("bizData", peProduct);
-//    	
-//        return result;
-//    }
-//	
-//	
-//	@RequestMapping("/listData")
-//    public String listData(PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	List<PEProduct> showData = new ArrayList<PEProduct>();
-//    	showData = peProductService.getPEProductList(peProductCtrlModel);
-//    	
-//    	model.addAttribute("showData", showData);
-//		model.addAttribute("ctrlData", peProductCtrlModel);
-//    	
-//        return "admin/pe/peProduct/listData";
-//    }
-//	
-//	@RequestMapping("/listDataCount")
-//    @ResponseBody
-//    public Map<String, Integer> listDataCount(PEIndexCtrlModel peProductCtrlModel) {
-//    	Map<String, Integer> result = new HashMap<String, Integer>();
-//    	
-//    	Integer total = peProductService.selectListCount(peProductCtrlModel);
-//    	
-//    	result.put("total", total);
-//    	
-//        return result;
-//    }
-//	
-//	@RequestMapping("/update")
-//    public String update(PEProduct paraPEProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//		PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/update";
-//    }
-//	
-//	@RequestMapping("/updateData")
-//    @ResponseBody
-//    public Map<String, Object> updateData(PEProduct peProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	int id = peProductService.updatePEProduct(peProduct, peProductCtrlModel);               
-//    	result.put("code", "0");
-//    	result.put("bizData", peProduct);
-//    	
-//        return result;
-//    }
-//
-//    @RequestMapping("/view")
-//    public String view(PEProduct paraPEProduct, PEIndexCtrlModel peProductCtrlModel, Model model) {
-//    	PEProduct peProduct = peProductService.getPEProductById(paraPEProduct.getId());
-//    	model.addAttribute("peProduct", peProduct);
-//    	model.addAttribute("ctrlData", peProductCtrlModel);
-//        return "admin/pe/peProduct/view";
-//    }
-//    
-//    @RequestMapping("/getOnLinePECompanyList")
-//    @ResponseBody
-//    public  Map<String, Object> getOnLinePECompanyList() {
-//    	Map<String, Object> result = new HashMap<String, Object>();
-//    	result = peProductService.getOnLinePECompanyList(); 
-//        return result;
-//    }
+	
+	@RequestMapping("/peProductChart")
+    @ResponseBody
+    public String productChart(@RequestParam(value="productId") String productId) {
+		PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
+		peProductNetCtrlModel.setProductId(productId);
+		peProductNetCtrlModel.setSortField("netTime");
+		peProductNetCtrlModel.setSortType("desc");
+		PEProduct peProduct = peProductService.getPEProductById(Long.valueOf(productId));
+
+		List<PEChartVO> lstChartVO = new ArrayList<PEChartVO>();
+		//净值
+		List<PEProductNet> lstPeProductNet = peProductNetService.getPEProductNetList(peProductNetCtrlModel);
+		PEChartVO peChartVO = new PEChartVO();
+		peChartVO.setName(peProduct.getName());
+		for(PEProductNet peProductNet : lstPeProductNet){
+			//lstData.add(peProductNet.getTotalNet());
+			Object[] dateValue = new Object[2];
+			dateValue[0] =  calcTime(peProductNet.getNetTime());
+			dateValue[1] = peProductNet.getTotalNet();
+			peChartVO.getData().add(dateValue);
+		}
+		lstChartVO.add(peChartVO);
+		
+		String series = gson.toJson(lstChartVO);
+		
+		return series;
+	}
+	
+	private Long calcTime(Date dateSource){
+		if(dateSource==null){
+			return 0L;
+		}
+		
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		cal.setTime(dateSource);
+		
+		return dateSource.getTime()+cal.getTimeZone().getRawOffset();
+	}
+	
 }

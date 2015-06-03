@@ -19,14 +19,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
-<script type="text/javascript"
-	src="assets/scripts/ui/jquery.plugins-min.js"></script>
-<script type="text/javascript"
-	src="assets/scripts/ui/scripts-bottom-min.js"></script>
-
-<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
-<script type="text/javascript" src="assets/widget/highcharts4/js/highcharts.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/highstock.js"></script>
 
 </head>
 
@@ -119,10 +112,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              </table>
 	            </div>
 	          </div>
-	          <div class="sub_item" style="display: none;">
+	          <div class="sub_item" style="display:none;">
 	            <div class="sub_hd">净值走势对比</div>
 	            <div id="chartContainer" class="sub_bd_1" style="min-width: 800px;height: 365px;">
-	               
+	               	
 	            </div>
 	          </div>
 	        </div>
@@ -309,16 +302,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	<!-- /home_all -->
 	<script>
+		//alert('${series}');
 		/**
 		$(function () {
 			$('#chartContainer').highcharts({
+				chart:{
+					type:'line'
+				},
 				title: {
 					text: '净值走势对比',
 					x: -20 //center
 				},
 				xAxis: {
-					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-				},
+		            type: 'datetime',
+		            dateTimeLabelFormats: { 
+		            	day:"%m-%e",
+		                month:"%Y-%m-%d"
+		            },
+		            title: {
+		                text: ''
+		            }
+		        },
 				yAxis: {
 					title: {
 						text: ''
@@ -332,25 +336,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		            lineWidth: 1
 				},
 				tooltip: {
-					valueSuffix: 'буC'
+					 headerFormat: '<b>{point.x:%Y-%m-%d}</b><br>',
+			         pointFormat: '{series.name}: {point.y:.2f}'
 				},
-				legend: {
-					layout: 'vertical',
-					align: 'right',
-					verticalAlign: 'middle',
-					borderWidth: 0
-				},
-				series: [{
-					name: 'Tokyo',
-					data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-				}, {
-					name: 'London',
-					data: [null, null, null, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-				}]
+				
+				series: eval("(" +'${series}'+ ")")
 			});
+			
+			//删除highChart文字
+			$("text[text-anchor='end']").html("");
 		});
-        
 		*/
+		
+		$(function () {
+				createChart = function () {
+					
+		            $('#chartContainer').highcharts('StockChart', {
+		            	
+		                yAxis: {
+		                    labels: {
+		                        formatter: function () {
+		                            return  this.value;
+		                        }
+		                    },
+		                    plotLines: [{
+		                        value: 0,
+		                        width: 1,
+		                        color: 'silver'
+		                    }]
+		                },
+		
+		                plotOptions: {
+		                    series: {
+		                        compare: 'percent'
+		                    }
+		                },
+		
+		                tooltip: {
+		                    pointFormat: '<span style="color:{series.color}">{series.name}: {point.y}</span><br/>',
+		                    valueDecimals: 2
+		                },
+		
+		                series: eval("(" +'${valueSeries}'+ ")")
+		            });
+		          	//去掉版权
+			    	$("text[text-anchor=end]").html("");
+		        };
+		
+			createChart();
+		});
     </script>
 
 </body>
