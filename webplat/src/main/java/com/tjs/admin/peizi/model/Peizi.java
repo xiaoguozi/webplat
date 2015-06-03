@@ -50,13 +50,19 @@ public class Peizi {
 	
 	private String dataOperaStatus;
 	
-	
 	/** 处理人用户名称*/
 	private String dataOperaUserName;
+	
 	/** 处理人用户ID*/
 	private Long dataOperaUserId;
 	
+	/**配资平仓线（%）*/
+	private BigDecimal dataRulePcx;
 	
+	/**配资警戒线(%) */
+	private BigDecimal dataRuleJjx;
+	
+		
 	public Long getDataId() {
 		return dataId;
 	}
@@ -200,6 +206,18 @@ public class Peizi {
 	}
 	public void setDataOperaUserId(Long dataOperaUserId) {
 		this.dataOperaUserId = dataOperaUserId;
+	}
+	public BigDecimal getDataRulePcx() {
+		return dataRulePcx;
+	}
+	public void setDataRulePcx(BigDecimal dataRulePcx) {
+		this.dataRulePcx = dataRulePcx;
+	}
+	public BigDecimal getDataRuleJjx() {
+		return dataRuleJjx;
+	}
+	public void setDataRuleJjx(BigDecimal dataRuleJjx) {
+		this.dataRuleJjx = dataRuleJjx;
 	}
 	
 	

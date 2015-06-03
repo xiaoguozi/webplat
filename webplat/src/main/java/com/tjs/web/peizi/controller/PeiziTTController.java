@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
+import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
@@ -30,7 +31,7 @@ public class PeiziTTController {
 	@Resource
 	IPeiziRule iPeiziRule;
 	/**
-	 * 天天配
+	 * 天天配第一步
 	 * @return
 	 */
 	@RequestMapping("/dayCapital")
@@ -43,10 +44,33 @@ public class PeiziTTController {
 		if(lstPeiziRule==null||lstPeiziRule.size()==0){
 			throw new  RuntimeException("天天配资规则没有找到");
 		}
-		
-		model.addAttribute("peiziRule",lstPeiziRule.get(0));
-		
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		Peizi peizi = new Peizi();
+		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
+		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
+		peizi.setDataZfglf(peiziRule.getRuleZhglf());
+		peizi.setDatanll(peiziRule.getRuleNll());
+		peizi.setDataYll(peiziRule.getRuleYll());
+		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
+		peizi.setDataRulePcx(peiziRule.getRulePcx());	
+		peizi.setDataJyksDate("2");
+		peizi.setDataZjsyqx(1);
+		peizi.setDataStep("1");
+		model.addAttribute("peizi",peizi);		
 		return "web/peizi/ttp/ttpeizi";
 	}
+	
+	
+	/**
+	 * 天天配下一步
+	 * @return
+	 */
+	@RequestMapping("/dayNextCapital")
+	public String  dayNextCapital(Peizi peizi,Model model) {
+		peizi.setDataStep("2");
+		iPeizi.insertPeizi(peizi);
+		return "web/peizi/ttpznext";
+	}
+	
 
 }

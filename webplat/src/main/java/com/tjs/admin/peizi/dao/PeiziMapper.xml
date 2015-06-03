@@ -25,23 +25,25 @@
 		<result column="data_user_id" property="dataUserId" javaType="java.lang.Long"  jdbcType="BIGINT" />
 		<result column="data_user_tel" property="dataUserTel" jdbcType="VARCHAR" />
 		<result column="data_remark" property="dataRemark" jdbcType="VARCHAR" />
-		<result column="data_opera_status" property="dataOperaStatus" jdbcType="VARCHAR" />	
-		
-		<result column="data_opera_user_name" property="dataOperaUserName" jdbcType="VARCHAR" />	
-		
-		<result column="data_opera_user_id" property="dataOperaUserId" javaType="java.lang.Long"  jdbcType="BIGINT" />											
+		<result column="data_opera_status" property="dataOperaStatus" jdbcType="VARCHAR" />			
+		<result column="data_opera_user_name" property="dataOperaUserName" jdbcType="VARCHAR" />			
+		<result column="data_opera_user_id" property="dataOperaUserId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="data_rule_pcx" property="dataRulePcx" javaType="java.math.BigDecimal" />
+		<result column="data_rule_jjx" property="dataRuleJjx" javaType="java.math.BigDecimal" />											
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
 		data_id,data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
-		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id
+		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
+		data_rule_pcx,data_rule_jjx
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
-		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id
+		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
+		data_rule_pcx,data_rule_jjx
 	</sql>
 
 	<select id="countPeizi" resultType="int"
@@ -99,7 +101,9 @@
 		#{dataRemark},
 		#{dataOperaStatus},
 		#{dataOperaUserName},
-		#{dataOperaUserId}				
+		#{dataOperaUserId},
+		#{dataRulePcx},
+		#{dataRuleJjx}				
 		)
 	</insert>
 	

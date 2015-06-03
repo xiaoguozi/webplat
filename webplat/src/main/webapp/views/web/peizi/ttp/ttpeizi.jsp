@@ -64,18 +64,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="mod_breadcrumb">
             <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
         </div>
-       
+     
+  
     <div class="w100bg">
+      <form id="modalForm" action="rest/web/peizitt/dayNextCapital" method="post" >
         <div class="tjs_1108px center">
             <div class="pz_produce">
 				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
 			</div>
-			<input type="hidden" name="zfglf" value="${peiziRule.ruleZhglf }"/>
-			<input type="hidden" name="yll" value="${peiziRule.ruleYll }"/>
-			<input type="hidden" name="nll" value="${peiziRule.ruleNll }"/>
-			<input type="hidden" name="pcx" value="${peiziRule.rulePcx }"/>
-			<input type="hidden" name="jjx" value="${peiziRule.ruleJjx }"/>
-			<input type="hidden" name="glsyType" value="${peiziRule.ruleGlsyType }"/>
+			
+			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
+			<input type="hidden" name="dataZfglf" value="${peizi.dataZfglf }"/>
+			<input type="hidden" name="dataYll" value="${peizi.dataYll }"/>
+			<input type="hidden" name="datanll" value="${peizi.datanll }"/>
+			<input type="hidden" name="dataRulePcx" value="${peizi.dataRulePcx }"/>
+			<input type="hidden" name="dataRuleJjx" value="${peizi.dataRuleJjx }"/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			
+			<input type="hidden" name="dataZcpzj" value="${peizi.dataZcpzj }"/>
+			<input type="hidden" name="dataTzbzj" value="${peizi.dataTzbzj }"/>
+			<input type="hidden" name="dataJjx" value="${peizi.dataJjx }"/>
+			<input type="hidden" name="dataPcx" value="${peizi.dataPcx }"/>
+			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
+			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
+			
+			
+			
 			
             <div class="bgcolor">
                 <div class="w945">
@@ -119,8 +133,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span class="box1">2</span><div class="font_word18">支付配资管理费</div>
                     <div class="qixian">
                         <span class="fleft">期限：</span><div class="sel_wrap fleft">
-                                <label class="lbl">1天</label>
-                                <ul class="select">
+                                <label class="lbl">${peizi.dataZjsyqx}天</label>
+                                <ul class="select" style="filter: alpha(opacity=100);">
                                     <li>1天</li>
                                     <li>2天</li>
                                     <li>3天</li>
@@ -129,7 +143,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <li>6天</li>
                                 </ul>
                             </div>
-                        <div class=" lh20 pl220">总账户管理费：<span id="manageFee" class="colorf06 font26">${peiziRule.ruleZhglf }</span>元</div>
+                        <div class=" lh20 pl220">总账户管理费：<span id="manageFee" class="colorf06 font26">${peizi.dataJklxTotal}</span>元</div>
                         <div class="clear"></div>
                         <div class="mt30 qcimg"><img src="assets/img/peizi/qcmark.png" alt="" />按天收取，周末、节假日免费。到期后，如账户余额充足，默认自动延期；如不需要自动续约，可以在方案详情中关闭该功能。</div>
                     </div>
@@ -137,21 +151,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="caopanjine1">
                     <span class="box1">3</span><div class="font_word18">确认操盘信息</div>
                     <ul class="cpxinxi">
-                        <li>总操盘资金<img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span id="capital" class="colorf06 font26 mlr5">10000</span>元</li>
-                        <li>投资保证金<img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金" alt="" />：<span id="assure" class="colorf06 font26 mlr5">2500</span>元</li>
-                        <li>亏损警告线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span id="loss" class="colorf06 font26 mlr5">9000</span>元</li>
-                        <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5">8750</span>元</li>
-                        <li>账户管理费<img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span id="fee" class="colorf06 font26 mlr5">7.5</span>元/天</li>
-                        <li style="position:relative">开始交易时间<img class="curser" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" src="assets/img/peizi/qcmark.png" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
+                        <li>总操盘资金<img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span id="capital" class="colorf06 font26 mlr5"></span>元</li>
+                        <li>投资保证金<img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金" alt="" />：<span id="assure" class="colorf06 font26 mlr5"></span>元</li>
+                        <li>亏损警告线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span id="loss" class="colorf06 font26 mlr5"></span>元</li>
+                        <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5"></span>元</li>
+                        <li>账户管理费<img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span id="fee" class="colorf06 font26 mlr5">${peizi.dataZfglf}</span>元/天</li>
+                        <li style="position:relative">开始交易时间<img class="curser" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" src="assets/img/peizi/qcmark.png" alt="" />：<span class="nextday"><input id="Radio1" name="dataJyksDate" value="1" type="radio" <c:if test="${peizi.dataJyksDate== '1'}">checked="checked"</c:if>/>今天<br />
+                            <input name="dataJyksDate" id="Radio2" value="2" type="radio" <c:if test="${peizi.dataJyksDate== '2'}">checked="checked"</c:if> />下一个交易日</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                    <!--  <a class="tjs_btn" href="rest/web/peizi/dayNextCapital">我要配资</a>-->
-                    <a class="tjs_btn disabled">我要配资</a>
+                    <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br />
+                    <span id="danger_tip" style="display:none;color:red" >请先阅读并同意《合作操盘协议》</span>
+                    <br />
+                     <a class="tjs_btn" href="">我要配资</a>
+                     
+                   
                 </div>
             </div>
             <div class="pz_produce">
@@ -198,6 +215,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
         </div>
+       </form>
         <hr class="pc"/>
     </div>
 <!-- 配资页尾 -->
@@ -223,18 +241,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         });
         
         /*--操盘金额--*/
-          var sum = 0;
+        var sum = ${peizi.dataZcpzj==null?0:peizi.dataZcpzj};
         $(".cpbox1").each(function (i) {
-            $(this).click(function () {
+            $(this).click(function () {            	
                 $(".cpbox1").removeClass("on")
                 $(this).addClass("on");
                 sum = parseFloat($(".cpmoney:eq(" + i + ")").text());
                 $("#capital").text(sum);
                 $("#assure").text(sum * 0.25);
-                $("#loss").text(sum * $('input[name=jjx]').val());
-                $("#close").text(sum * 0.875);
-                $("#fee").text(sum * 0.00075);
-				$("#manageFee").text(((sum/10000)*$('input[name=zfglf]').val()).toFixed(2));
+                $("#loss").text((sum*0.75/100 *$('input[name=dataRuleJjx]').val()).toFixed(0));
+                $("#close").text((sum*0.75/100 * $('input[name=dataRulePcx]').val()).toFixed(0));
+               // $("#fee").text(((sum/10000)*$('input[name=zfglf]').val()).toFixed(2));
+                var syqx=$('.lbl').html().substring(0,1);
+				$("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*syqx).toFixed(2));
                 
             });
         });
@@ -242,7 +261,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	    //--自定义下拉框--
 		$(".sel_wrap").click(function () {
-		    var money = $("#fee").text();
+		    var money = $("input[name=dataZfglf]").val();
 		    $(".select").toggle();
 		    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
 		    $(".select>li").each(function (index) {
@@ -250,12 +269,33 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		            var opt = $(this).html();
 		            $(".lbl").html(opt);
 		            var num = opt.substring(0, 1);
-		            $("#manageFee").text(num*money);
+		            $("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*num).toFixed(2));
 		        })
 		    })
-		})
-
-	    //--/自定义下拉框--
+		});
+		
+		 //--/自定义下拉框--
+		 
+		   //--配资按钮--
+		$(".tjs_btn").click(function(event){
+			event.preventDefault();	 
+			if($('#Checkbox1').attr("checked")){
+				$("input[name=dataZcpzj]").val($("#capital").text());
+				$("input[name=dataTzbzj]").val($("#assure").text());
+				$("input[name=dataJjx]").val($("#loss").text());
+				$("input[name=dataPcx]").val($("#close").text());
+				$("input[name=dataJklxTotal]").val($("#manageFee").text());
+				$("input[name=dataZjsyqx]").val($('.lbl').html().substring(0,1));
+				$("#modalForm").submit();				
+			}else{
+				$('#danger_tip').toggle();
+			}
+		});
+		//--配资按钮---
+		
+		 //--默认选中1：1--		
+		$('.cpbox1:eq(${peizi.dataZcpzj==null?0:(peizi.dataZcpzj/10000)})').click();
+		//--/自定义下拉框--	                 
 	})
 	
 </script>
