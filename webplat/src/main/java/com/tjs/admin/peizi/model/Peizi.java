@@ -10,7 +10,9 @@ public class Peizi {
 	/**总超盘资金 */
 	private BigDecimal dataZcpzj;
 	/**投资保证金 */
-	private BigDecimal dataTzbzj;
+	private BigDecimal dataTzbzj;	
+	/**配资金额 */
+	private BigDecimal dataPzje;
 	/**警戒线 */
 	private BigDecimal dataJjx;
 	/**平仓线 */
@@ -61,6 +63,11 @@ public class Peizi {
 	
 	/**配资警戒线(%) */
 	private BigDecimal dataRuleJjx;
+	
+	
+	/**页面段显示支付总金额*/
+	
+	private BigDecimal zfzje;
 	
 		
 	public Long getDataId() {
@@ -218,6 +225,18 @@ public class Peizi {
 	}
 	public void setDataRuleJjx(BigDecimal dataRuleJjx) {
 		this.dataRuleJjx = dataRuleJjx;
+	}
+	public BigDecimal getDataPzje() {
+		return dataPzje;
+	}
+	public void setDataPzje(BigDecimal dataPzje) {
+		this.dataPzje = dataPzje;
+	}
+	public BigDecimal getZfzje() {
+		return zfzje;
+	}
+	public void setZfzje(BigDecimal zfzje) {
+		this.zfzje = zfzje;
 	}
 	
 	

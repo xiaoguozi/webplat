@@ -69,10 +69,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="w100bg">
       <form id="modalForm" action="rest/web/peizitt/dayNextCapital" method="post" >
         <div class="tjs_1108px center">
+        
             <div class="pz_produce">
 				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
 			</div>
 			
+			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
 			<input type="hidden" name="dataZfglf" value="${peizi.dataZfglf }"/>
 			<input type="hidden" name="dataYll" value="${peizi.dataYll }"/>
@@ -82,6 +84,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
 			
 			<input type="hidden" name="dataZcpzj" value="${peizi.dataZcpzj }"/>
+			<input type="hidden" name="dataPzje" value="${peizi.dataPzje }"/>
 			<input type="hidden" name="dataTzbzj" value="${peizi.dataTzbzj }"/>
 			<input type="hidden" name="dataJjx" value="${peizi.dataJjx }"/>
 			<input type="hidden" name="dataPcx" value="${peizi.dataPcx }"/>

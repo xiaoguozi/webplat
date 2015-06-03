@@ -64,6 +64,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
+            <input type="hidden" name="dataId" value="${peizi.dataId}"/>
+			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
+			<input type="hidden" name="dataZfglf" value="${peizi.dataZfglf }"/>
+			<input type="hidden" name="dataYll" value="${peizi.dataYll }"/>
+			<input type="hidden" name="datanll" value="${peizi.datanll }"/>
+			<input type="hidden" name="dataRulePcx" value="${peizi.dataRulePcx }"/>
+			<input type="hidden" name="dataRuleJjx" value="${peizi.dataRuleJjx }"/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			
+			<input type="hidden" name="dataZcpzj" value="${peizi.dataZcpzj }"/>
+			<input type="hidden" name="dataPzje" value="${peizi.dataPzje }"/>
+			<input type="hidden" name="dataTzbzj" value="${peizi.dataTzbzj }"/>
+			<input type="hidden" name="dataJjx" value="${peizi.dataJjx }"/>
+			<input type="hidden" name="dataPcx" value="${peizi.dataPcx }"/>
+			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
+			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
+		     <input type="hidden" name="dataJyksDate" value="${peizi.dataJyksDate }"/>
+        
             <div class="pz_produce">
 				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
 			</div>
@@ -80,21 +98,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p><span class="colorf06 font26">10000</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">2500</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">7500</span>元</p>
+                            <p><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元</p>
                             <p><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
                         </div>
                         <table class="pz_tbl">
                             <tr>
-                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">10000</span> 元</td>
-                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26">8750</span> 元</td>
+                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="######.##" /></span> 元</td>
+                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
                             </tr>
                             <tr>
-                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26">9000</span> 元</td>
-                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：2 天</td>
+                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataJjx}" pattern="######.##" /></span> 元</td>
+                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：${peizi.dataZjsyqx }天</td>
                             </tr>
                             <tr>
-                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">7.5</span> 元/天</td>
-                                <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：下个交易日</td>
+                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">${peizi.dataZfglf }</span> 元/天</td>
+                                <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：
+                              		<c:if test="${peizi.dataJyksDate=='1'}" >今日</c:if>
+                              		<c:if test="${peizi.dataJyksDate=='2'}" >下个交易日   </c:if>                             		                         
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -105,21 +126,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <table class="zhifu_boxtbl">
                             <tr>
                                 <td class="t-left">投资本金：</td>
-                                <td class="t-right">2500 元</td>
+                                <td class="t-right"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /> 元</td>
                             </tr>
                             <tr>
-                                <td class="t-left">预存2天账户管理费</td>
-                                <td class="t-right">22.5 元</td>
+                                <td class="t-left">预存${peizi.dataZjsyqx}天账户管理费</td>
+                                <td class="t-right"><fmt:formatNumber value="${peizi.dataJklxTotal}" pattern="######.##" /> 元</td>
                             </tr>
                             <tr>
                                 <td class="t-left">总金额</td>
-                                <td class="colorf06 font26 t-right">2525.5 元</td>
+                                <td class="colorf06 font26 t-right"> <fmt:formatNumber value="${peizi.zfzje}" pattern="######.##" />元</td>
                             </tr>
                         </table>
                         <a class="tjs_btndiv btnbox" href="ttpeizi.html">重选操盘方案</a>
                     </div>
                     <a class="tjs_next_btn mbl" href="rest/web/peizi/dayLastCapital">确定配资</a>
+                    <!--  
                     <p class="t-right ptr">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">2522.5</span>元，请先<a href="chongzhi.html">充值</a></p>
+                    -->
                 </div>
                 <hr class="pc"/>
             </div>
@@ -190,22 +213,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-        /*--操盘金额--*/
-        var sum = 0;
-        $(".cpbox1").each(function (i) {
-            $(this).click(function () {
-                $(".cpbox1").removeClass("on")
-                $(this).addClass("on");
-                sum = $(".cpmoney:eq(" + i + ")").text();
-                $("#capital").text(sum);
-                $("#assure").text(sum * 0.25);
-                $("#loss").text(sum * 0.9);
-                $("#close").text(sum * 0.875);
-                $("#fee").text(sum * 0.00075);
-                
-            });
-        });
-        /*--/操盘金额--*/
+     
 
 	    //--自定义下拉框--
 		$(".sel_wrap").click(function () {
@@ -223,9 +231,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		})
 	    //--/自定义下拉框--
 	})
-	function alertbox() {
-	    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-	}
+	
 </script>
 </body>
 </html>
