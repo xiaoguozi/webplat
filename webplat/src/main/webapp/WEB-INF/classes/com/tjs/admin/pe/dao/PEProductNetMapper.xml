@@ -4,7 +4,7 @@
     
     <resultMap id="peProductNetMap" type="com.tjs.admin.pe.model.PEProductNet" >
     	<id column="id" property="id" jdbcType="BIGINT" />
-    	<result property="netTime" column="net_time" jdbcType="TIMESTAMP" />
+    	<result property="netTime" column="net_time" javaType="java.util.Date"  jdbcType="TIMESTAMP" />
     	<result property="unitNet" column="unit_net"  />
    		<result property="totalNet" column="total_net"  />
    	    <result property="increaseRate" column="increase_rate" />

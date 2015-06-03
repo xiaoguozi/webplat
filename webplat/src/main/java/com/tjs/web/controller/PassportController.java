@@ -274,6 +274,22 @@ public class PassportController {
         return isValid;
     }
 
+    @RequestMapping("/sendMobileVerifyCode")
+    @ResponseBody
+    public boolean sendMobileVerifyCode(String mobileNo, Model model, HttpServletRequest request) {
+    	boolean isValid = false;
+    	if(StringExtUtils.checkMobileNumber(mobileNo)){
+    		request.getSession().setAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY, mobileNo);
+        	String smsCode = passportService.sendSmsCode(mobileNo);
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, smsCode);
+        	request.getSession().setAttribute(WebConstants.SMS_RESEND_COUNT_SESSION_KEY, 0);
+        	request.getSession().setAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY, 0);
+        	isValid = true;
+    	}
+    	
+    	return isValid;
+    }
+
     @RequestMapping("/reSendMobileVerifyCode")
     @ResponseBody
     public boolean reSendMobileVerifyCode(String mobileNo, Model model, HttpServletRequest request) {
@@ -414,6 +430,78 @@ public class PassportController {
 		return "web/passport/regS2";
     	
     }
-  
+
+
+    @RequestMapping("/mreg")
+    public String mreg(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+        return "web/passport/mreg";
+    }
+
+
+
+    @RequestMapping("/mregS2")
+    public String mregS2(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	//验证手机号，验证短信验证码（session是否匹配，数据库中是否存在）
+    	//新增帐号到数据库，清除session中的手机号和短信验证码
+    	model.addAttribute("ctrlData", ctrlModel);
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword())){
+    		dataValid = false;
+    		errorMsg = "密码验证错误";
+    	}else if(!passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号已注册";
+    	}
+    	
+    	if(dataValid){
+    		User user = new User();
+        	user.setUsername(ctrlModel.getUserName());
+        	user.setPassword(ctrlModel.getPassword());
+        	user.setCreateTime(new Date());
+        	UserInfo userInfo = new UserInfo();
+        	userInfo.setMobileNo(ctrlModel.getUserName());
+        	userInfo.setNickName(ctrlModel.getUserName());
+        	userInfo.setRegTime(new Date());
+        	userInfo.setUserStatus(UserConstants.USER_STATUS_REG);
+        	Long userId = passportService.regUser(user, userInfo);
+			if (userId > 0) {
+				// 注册成功，登录后回到首页
+				// 清除session中的短信验证码
+				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
+				try {
+					Subject subject = SecurityUtils.getSubject();
+					subject.login(new UsernamePasswordToken(ctrlModel.getUserName(), ctrlModel.getPassword()));
+					// 验证成功在Session中保存用户信息
+					final User authUserInfo = userService.selectByUsername(user.getUsername());
+					request.getSession().setAttribute("userInfo", authUserInfo);
+				} catch (AuthenticationException e) {
+					// 身份验证失败，需重新登录
+					//dataValid = false;
+		    		//errorMsg = "注册成功，立即登录！";
+				}
+	    		return "web/passport/mregSuccess";
+			}
+
+			dataValid = false;
+    		errorMsg = "注册服务发生错误，请稍后再试！";
+    	}
+
+		model.addAttribute("error", errorMsg);
+		return "web/passport/mreg";
+    }
+
 
 }

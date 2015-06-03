@@ -138,4 +138,18 @@ public class WebController {
         
 		return "web/passport/login";
 	}
+	/**
+	 * 登录页
+	 */
+	@RequestMapping("/mlogin")
+	public String mlogin(HttpServletRequest request, Model model) {
+//		String returnUrl = request.getHeader("referer");  
+//        if(returnUrl==null || returnUrl.trim().equals("")){  
+//            returnUrl = "/";  
+//        }
+//        
+//        model.addAttribute("returnUrl", returnUrl);
+        
+		return "web/passport/mlogin";
+	}
 }
