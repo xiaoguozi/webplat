@@ -75,7 +75,7 @@ document.writeln("                <img src=\"assets/img/qqimages/float_qqicon1.p
 document.writeln("            </a>");
 document.writeln("        </div>");
 document.writeln("        <div _w=\"126px\" style=\"top:51px;\">");
-document.writeln("            <a href=\"http://wpa.qq.com/msgrd?v=3&amp;uin=156752514&amp;Menu=yes\" target=\"_blank\">");
+document.writeln("            <a href=\"http://wpa.qq.com/msgrd?v=3&amp;uin=429803697&amp;Menu=yes\" target=\"_blank\">");
 document.writeln("                <img src=\"assets/img/qqimages/float_qqicon2.png\">");
 document.writeln("                <span>QQ咨询</span>");
 document.writeln("            </a>");
