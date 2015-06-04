@@ -70,7 +70,7 @@ document.writeln("            }");
 document.writeln("    </style>");
 document.writeln("    <div class=\"rigFlotItem\">");
 document.writeln("        <div _top=\"1\" style=\"text-align:center;\">");
-document.writeln("            <a href=\"#top\" style=\"position: relative;\">");
+document.writeln("            <a href=\"#top\" id=\"aTop\" style=\"position: relative;\">");
 document.writeln("                <img src=\"assets/img/qqimages/float_qqicon1.png\">");
 document.writeln("            </a>");
 document.writeln("        </div>");

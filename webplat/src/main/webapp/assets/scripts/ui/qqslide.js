@@ -131,4 +131,12 @@
 			}
 		}
 	};
+	
+	$("#aTop").click(function(event){
+		event.preventDefault();
+		var location = window.location.href;
+		window.location.href = location + "#top";
+	});
 })(jQuery);
+
+
