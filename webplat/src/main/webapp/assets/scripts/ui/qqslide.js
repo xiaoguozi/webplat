@@ -135,7 +135,13 @@
 	$("#aTop").click(function(event){
 		event.preventDefault();
 		var location = window.location.href;
-		window.location.href = location + "#top";
+		if(location.indexOf("#top") != -1 ) {
+			window.location.href = location;
+		} else {
+			window.location.href = location + "#top";
+		}
+		
+		
 	});
 })(jQuery);
 
