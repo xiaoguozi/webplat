@@ -13,6 +13,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>淘金山—跟我淘金山</title>
+<script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 </head>
