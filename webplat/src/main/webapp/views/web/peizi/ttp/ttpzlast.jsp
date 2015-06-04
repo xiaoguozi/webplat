@@ -29,7 +29,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="home_all">
         <%@ include file="/views/web/header.jsp"%>
         <!-- /header_top -->
-
+    <input type="hidden" name="dataId" value="${peizi.dataId}"/>
         <div class="header_menu">
             <div class="tjs_1108px center" style="position: relative;">
                 <div class="logo_wrap">
@@ -53,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!--二级导航-->
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
-                    <li><a href="rest/web/peizi/dayCapital">天天配</a></li>
+                    <li><a href="rest/web/peizitt/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
@@ -77,7 +77,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="datastep3">
                         <h1 class="color54a">操盘申请成功！</h1>
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您！</p>
-                        <a class="tjs_next_btn mt30" href="rest/web/peizi/dayScheduleCapital">查看方案进度</a>
+                        <a class="tjs_next_btn mt30" href="rest/web/peizitt/dayScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
                     </div>
                     <div class="w985">
                         <p class="color158 font18">配资进度</p>
@@ -167,50 +167,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $(this).hide();
                 $(".tjpz>a>span").removeClass("tspan");
             });
-            /*--操盘金额--*/
-            var sum = 0;
-            $(".cpbox1").each(function (i) {
-                $(this).click(function () {
-                    $(".cpbox1").removeClass("on")
-                    $(this).addClass("on");
-                    sum = $(".cpmoney:eq(" + i + ")").text();
-                    $("#capital").text(sum);
-                    $("#assure").text(sum * 0.25);
-                    $("#loss").text(sum * 0.9);
-                    $("#close").text(sum * 0.875);
-                    $("#fee").text(sum * 0.00075);
-
-                });
-            });
-            /*--/操盘金额--*/
-            /*--QQ咨询--*/
-            $(".about_box1:eq(2)").hover(function () {
-                $(".qq").attr("src", "assets/img/peizi/qqhove.png");
-                $(".zx").css("color", "#1682CA");
-            }, function () {
-                $(".qq").attr("src", "assets/img/peizi/qq.png");
-                $(".zx").css("color", "#8c969d");
-            })
-            /*--/QQ咨询--*/
-            //--自定义下拉框--
-            $(".sel_wrap").click(function () {
-                var money = "7.5";
-                $(".select").toggle();
-                $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
-                $(".select>li").each(function (index) {
-                    $(this).click(function () {
-                        var opt = $(this).html();
-                        $(".lbl").html(opt);
-                        var num = opt.substring(0, 1);
-                        $("#manageFee").text(num * money);
-                    })
-                })
-            })
-            //--/自定义下拉框--
+           
+           
+           
         })
-        function alertbox() {
-            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-        }
+      
     </script>
 </body>
 </html>

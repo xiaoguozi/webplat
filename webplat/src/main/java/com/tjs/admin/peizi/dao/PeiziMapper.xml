@@ -76,7 +76,7 @@
 	</select>
 	
 	<insert id="insertPeizi" useGeneratedKeys="true"
-		keyProperty="ruleId" parameterType="com.tjs.admin.peizi.model.Peizi">
+		keyProperty="dataId" parameterType="com.tjs.admin.peizi.model.Peizi">
 		insert into tjs_peizi_data(
 		<include refid="Base_insert_Column_List" />
 		) values

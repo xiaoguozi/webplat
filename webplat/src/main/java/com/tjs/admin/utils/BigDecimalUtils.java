@@ -471,6 +471,21 @@ public final class BigDecimalUtils {
         }
         return strDesignFeeSum;
     }
+    
+    
+
+    /**
+     *判断是否为空
+     *
+     * @param amount
+     * @return
+     */
+    public static boolean isNull(BigDecimal amount) {
+        if (amount == null || BigDecimalUtils.isEquals(BigDecimalUtils.ZERO, amount)) {
+        	return true;
+        }          
+        return false;
+    }
 
     
 }

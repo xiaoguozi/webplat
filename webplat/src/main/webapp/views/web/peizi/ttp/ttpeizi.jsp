@@ -55,7 +55,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!--二级导航-->
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
-                    <li><a href="rest/web/peizi/dayCapital">天天配</a></li>
+                    <li><a href="rest/web/peizitt/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
@@ -76,18 +76,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
-			<input type="hidden" name="dataZfglf" value="${peizi.dataZfglf }"/>
-			<input type="hidden" name="dataYll" value="${peizi.dataYll }"/>
-			<input type="hidden" name="datanll" value="${peizi.datanll }"/>
-			<input type="hidden" name="dataRulePcx" value="${peizi.dataRulePcx }"/>
-			<input type="hidden" name="dataRuleJjx" value="${peizi.dataRuleJjx }"/>
+			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
+			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
+			<input type="hidden" name="datanll" value="<fmt:formatNumber value="${peizi.datanll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
 			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
 			
-			<input type="hidden" name="dataZcpzj" value="${peizi.dataZcpzj }"/>
-			<input type="hidden" name="dataPzje" value="${peizi.dataPzje }"/>
-			<input type="hidden" name="dataTzbzj" value="${peizi.dataTzbzj }"/>
-			<input type="hidden" name="dataJjx" value="${peizi.dataJjx }"/>
-			<input type="hidden" name="dataPcx" value="${peizi.dataPcx }"/>
+			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
+			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
+			<input type="hidden" name="dataTzbzj" value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJjx" value="<fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataPcx" value="<fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" />"/>
 			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
 			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
 			
@@ -296,8 +296,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		});
 		//--配资按钮---
 		
-		 //--默认选中1：1--		
-		$('.cpbox1:eq(${peizi.dataZcpzj==null?0:(peizi.dataZcpzj/10000)})').click();
+		 //--默认选中1：1--	
+		var index=0;
+		if($('input[name=dataZcpzj]').val()!=''){
+			index=parseInt($('input[name=dataZcpzj]').val())/10000-1;		
+		}		
+		$('.cpbox1:eq('+index+')').click();
 		//--/自定义下拉框--	                 
 	})
 	

@@ -15,9 +15,8 @@ import java.util.List;
 /**
  * 金额转换帮助类
  *
- * @author 李兴群
+ * @author hzg
  * @since JDK1.6
- * @history 2014-09-19 liujun modify
  */
 public final class BigDecimalUtils {
 

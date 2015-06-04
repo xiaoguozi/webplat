@@ -121,9 +121,9 @@
          <div class="form-group">
             <label class="col-md-2 control-label">处理状态</label>
             <div class="col-md-6">
-                   <input type="radio" name="dataOperaStatus" value="10" <c:if test="${peizi.dataOperaStatus== '10'}">checked="checked"</c:if>>申请配资
-                   <input type="radio" name="dataOperaStatus" value="20" <c:if test="${peizi.dataOperaStatus== '20'}">checked="checked"</c:if>>配资中
-                   <input type="radio" name="dataOperaStatus" value="30" <c:if test="${peizi.dataOperaStatus== '30'}">checked="checked"</c:if>>配资完成    
+                   <input type="radio" name="dataOperaStatus" value="10" <c:if test="${peizi.dataOperaStatus== '10'}">checked="checked"</c:if>>验资中
+                   <input type="radio" name="dataOperaStatus" value="20" <c:if test="${peizi.dataOperaStatus== '20'}">checked="checked"</c:if>>操盘中
+                   <input type="radio" name="dataOperaStatus" value="30" <c:if test="${peizi.dataOperaStatus== '30'}">checked="checked"</c:if>>已完结 
             </div>            
         </div>
         

@@ -176,32 +176,52 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <ul class="sub-menu">
                                 <li>
                                     <a href="rest/admin/xintuo/xintuogs/xtgsIndex">
-                                        信托公司
+                                       	 信托公司
                                     </a>
                                 </li>
                                 <li>
                                     <a href="rest/admin/xintuo/xintuocp/xtcpIndex">
-                                        信托产品
+                                      	  信托产品
                                     </a>
                                 </li>
                                 <li>
                                     <a href="rest/admin/pe/peCompany/index">
-                                        私募公司
+                                       	 私募公司
                                     </a>
                                 </li>
                                   <li>
                                     <a href="rest/admin/pe/peManager/index">
-                                        私募经理 
+                                       	 私募经理 
                                     </a>
                                 </li>
                                  <li>
                                     <a href="rest/admin/pe/peProduct/index">
-                                        私募产品
+                                      	 私募产品
                                     </a>
                                 </li>
                                
                             </ul>
-                        </li>
+                          </li>
+                          
+                          
+                          <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-gears"></i><span class="title"> 配资管理 </span><span
+                                class="arrow "> </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="rest/admin/peizi/peizirule/ruleIndex">
+                                        	配资规则配资
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="rest/admin/peizi/peizi/index">
+                                      	        配资预约管理
+                                    </a>
+                                </li>                                                            
+                            </ul>
+                         </li>
                         
                         
                         
