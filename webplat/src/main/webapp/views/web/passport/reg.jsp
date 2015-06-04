@@ -84,7 +84,7 @@ $(function() {
 	var handleRegister = function() {
 
 		jQuery.validator.addMethod("mobileCN", function(value, element) {
-			return this.optional(element) || /^0?(13[0-9]|15[012356789]|18[02346789]|14[57]|17[78])[0-9]{8}$/.test(value);
+			return this.optional(element) || /^0?(13[0-9]|15[0123456789]|18[012346789]|14[57]|17[78])[0-9]{8}$/.test(value);
 		}, "手机号码格式不正确");
 
 
