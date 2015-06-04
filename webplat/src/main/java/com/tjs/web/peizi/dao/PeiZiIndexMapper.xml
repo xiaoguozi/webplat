@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.web.peizi.dao.PeiZiIndexMapper">
+		
+   <resultMap id="pzResultMap" type="com.tjs.web.peizi.model.FreePeiziDetailVO">
+   		<id column="id" property="id" jdbcType="BIGINT" />
+   		<result property="peiziDate" column="peizi_date" jdbcType="DATE" />
+   		<result property="peiziType" column="peizi_type" jdbcType="INTEGER" />
+   		<result property="peiziCount" column="peizi_count" jdbcType="INTEGER" />
+   </resultMap>
+   
+   <resultMap id="pzUserInfoExtendResultMap" type="com.tjs.web.peizi.model.UserInfoExtendVO">
+   		<id column="id" property="id" jdbcType="BIGINT" />
+   		<id column="user_id" property="userId" jdbcType="BIGINT" />
+   		<result column="peizi_type" property="peiziType" jdbcType="INTEGER" />
+   		<result column="isUsed" property="is_used" jdbcType="INTEGER" />
+   		<result column="isOwnResource" property="is_own_resource" jdbcType="INTEGER" />
+   </resultMap>
+   
+   <sql id="Base_select_Column_List">
+		    id, peizi_date, peizi_type, peizi_count
+	</sql>
+    
+   <insert id="insertFreePeiziDetailVO"  useGeneratedKeys="true" parameterType="com.tjs.web.peizi.model.FreePeiziDetailVO"
+    keyProperty="id">
+   		INSERT INTO  free_peizi_detail (<include refid="Base_select_Column_List" />)
+   		VALUES (#{id}, 
+   		        #{peiziDate}, 
+   		        #{peiziType}, 
+   		        #{peiziCount})
+   </insert>
+   
+   <update id="updateFreePeiziDetailVO" parameterType="com.tjs.web.peizi.model.FreePeiziDetailVO">
+   		UPDATE free_peizi_detail 
+   		SET id=#{id}, 
+   		    peizi_date=#{peiziDate}, 
+   		    peizi_type=#{peiziType}, 
+   		    peizi_count=#{peiziCount}
+   		WHERE id=#{id}
+   </update>
+   
+   <select id="getFreePeiziDetailList" parameterType="java.lang.String" resultMap="pzResultMap">
+       SELECT 
+       		id, peizi_date, peizi_type, peizi_count
+       FROM free_peizi_detail
+       WHERE 1=1
+   		 AND date_format(peizi_date,'%Y-%m-%d') = #{value}
+   </select>
+	
+	
+	<insert id="insertUserInfoExtendVO"  useGeneratedKeys="true" parameterType="com.tjs.web.peizi.model.UserInfoExtendVO"
+    keyProperty="id">
+   		INSERT INTO  user_info_extend (id, user_id, peizi_type, is_used, is_own_resource)
+   		VALUES (#{id},
+   			    #{userId}, 
+   		        #{peiziType}, 
+   		        #{isUsed},
+   		        #{isOwnResource})
+   </insert>
+   
+    <select id="getUserInfoExtendList" parameterType="com.tjs.web.peizi.controller.PZIndexCtrlModel" resultMap="pzUserInfoExtendResultMap">
+       SELECT 
+       		id, user_id, peizi_type, is_used, is_own_resource
+       FROM user_info_extend
+       WHERE 1=1
+   		 AND user_id = #{userId}
+   		 AND peizi_type = #{peiziType}
+   </select>
+	
+</mapper>

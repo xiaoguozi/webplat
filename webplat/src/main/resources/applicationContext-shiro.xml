@@ -18,6 +18,7 @@
                  /rest/admin/** = authc,roles[admin] 
                <!--  /rest/admin/** = authc -->
                 /rest/web/userCenter/** = user
+                /rest/web/peizi/freeNextActivity/** = user
                 <!-- 其他资源不需要认证 -->
                 /** = anon
             </value>

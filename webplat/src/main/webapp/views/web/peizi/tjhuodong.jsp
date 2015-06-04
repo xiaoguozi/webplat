@@ -71,7 +71,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="bgcolor">
                 <ul class="hd_xiangqing">
                     <li class="hd_1"><span style="float: left">周一 八折</span> <a class="btn_sq">申请配资</a></li>
-                    <li class="hd_3"><span style="float: left">2000元免费配资</span><a class="btn_sq" href="rest/web/peizi/freeActivity">申请配资</a></li>
+                    <li class="hd_3"><span style="float: left">10000元免费配资</span><a class="btn_sq" href="rest/web/peizi/freeActivity">申请配资</a></li>
                     <li class="hd_2"><span style="float: left">代理配资</span><a class="btn_sq">申请配资</a></li>
                     <li class="hd_4">
                         <div style="width:300px;float:left">
