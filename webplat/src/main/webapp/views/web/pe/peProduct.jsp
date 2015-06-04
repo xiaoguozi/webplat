@@ -781,7 +781,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				ids += cids[i].value;
 			}
 		}
-		window.open("rest/web/pe/peIndexCompare?productIdArray="+ids, "_blank");
+		window.open("<%=basePath%>rest/web/pe/peIndexCompare?productIdArray="+ids, "_blank");
 	}
 	
 	function SetPara() { 
