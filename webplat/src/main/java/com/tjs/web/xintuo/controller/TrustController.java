@@ -160,6 +160,7 @@ public class TrustController {
     	model.addAttribute("productXtgsIndex", productXtgs);
     	
     	//查询列表
+    	xintuoGsCtrlModel.setPageSize(15);
     	xintuoGsCtrlModel.getProductXtgs().setXgtsStatus("20");
     	   	
     	int totalcount = iProductgsService.countProductXtgs(xintuoGsCtrlModel);

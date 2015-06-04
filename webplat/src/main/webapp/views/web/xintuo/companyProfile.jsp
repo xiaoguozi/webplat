@@ -61,7 +61,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_pfe_box tjs_234border">
 <div class="tjs_product_coloreddiv"></div>
 
-<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="assets/img/xintuo/small/${productXtgs.xtgsLog}" width="32" height="32" /></span>${productXtgs.xgtsSplname}</div>
+<div class="tjs_pfe_title center"><span class="tjs_pfe_img"><img src="assets/img/xintuo/small/${productXtgs.xtgsLog}" width="36" height="30" /></span>${productXtgs.xgtsSplname}</div>
 <div class="tjs_pfe_text tjs_padding_height16px">
 <ul>
 <li class="tjs_right_2border"><span style="font-size:32px; color:#ff6600; margin-top:20px; font-weight:bold;display:inline-block;">${productXtgs.xgtsGsxz}</span><br />股东背景</li>
