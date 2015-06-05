@@ -258,6 +258,12 @@
 .pro_box:hover.top380.top370 {
     top:370px;
 }
+.top760 {
+    top:760px;
+}
+.pro_box:hover.top760.top750 {
+    top:750px;
+}
 .pro_box p{
     line-height: 25px;
 }
