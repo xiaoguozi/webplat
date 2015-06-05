@@ -254,7 +254,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $("#assure").text(sum * 0.25);
                 $("#loss").text((sum*0.75/100 *$('input[name=dataRuleJjx]').val()).toFixed(0));
                 $("#close").text((sum*0.75/100 * $('input[name=dataRulePcx]').val()).toFixed(0));
-               // $("#fee").text(((sum/10000)*$('input[name=zfglf]').val()).toFixed(2));
+                $("#fee").text(((sum/10000)*$('input[name=dataZfglf]').val()).toFixed(2));
                 var syqx=$('.lbl').html().substring(0,1);
 				$("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*syqx).toFixed(2));
                 

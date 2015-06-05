@@ -113,7 +113,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：${peizi.dataZjsyqx }天</td>
                             </tr>
                             <tr>
-                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">${peizi.dataZfglf }</span> 元/天</td>
+                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.zfglf}" pattern="########.##" /></span> 元/天</td>
                                 <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：
                               		<c:if test="${peizi.dataJyksDate=='1'}" >今日</c:if>
                               		<c:if test="${peizi.dataJyksDate=='2'}" >下个交易日   </c:if>                             		                         

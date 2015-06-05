@@ -69,6 +69,11 @@ public class Peizi {
 	
 	private BigDecimal zfzje;
 	
+	
+	/**页面段显示账户管理费*/
+	
+	private BigDecimal zfglf;
+	
 		
 	public Long getDataId() {
 		return dataId;
@@ -237,6 +242,12 @@ public class Peizi {
 	}
 	public void setZfzje(BigDecimal zfzje) {
 		this.zfzje = zfzje;
+	}
+	public BigDecimal getZfglf() {
+		return zfglf;
+	}
+	public void setZfglf(BigDecimal zfglf) {
+		this.zfglf = zfglf;
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.tjs.web.peizi.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -91,12 +92,13 @@ public class TTPController {
 	@RequestMapping("/dayNextCapital")
 	public String  dayNextCapital(Peizi peizi,Model model) {		
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
-			 return "redirect:/rest/web/peizitt/dayCapital";  
+			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		
 		peizi.setDataStep("2");
 		peizi.setDataPzje(BigDecimalUtils.subtract(peizi.getDataZcpzj(), peizi.getDataTzbzj()));		
 		peizi.setZfzje(BigDecimalUtils.add(peizi.getDataTzbzj(), peizi.getDataJklxTotal()));
+		peizi.setZfglf(BigDecimalUtils.div(BigDecimalUtils.multiply(peizi.getDataZfglf(), peizi.getDataZcpzj()), new BigDecimal(10000)));
 		return "web/peizi/ttp/ttpznext";
 	}
 	
@@ -120,7 +122,7 @@ public class TTPController {
 	@RequestMapping("/dayLastCapital")
 	public String  dayLastCapital(Peizi peizi,Model model) {
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
-			return "redirect:/rest/web/peizitt/dayCapital";  
+			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		peizi.setDataStep("3");
 		peizi.setDataOperaStatus("10");//正在验资中
