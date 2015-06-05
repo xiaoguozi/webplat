@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="w100bg">
             <div class="tjs_1108px center">
                 <div class="pz_produce">
-                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送20000元 配资申请</b>
+                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送10000元 配资申请</b>
                 </div>
                 <div class="bgcolor">
                     <div class="programbox">
@@ -73,9 +73,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="mf_box">
                             <table class="ty_tbl" style="width:70%;margin:0 auto;">
                                 <tr>
-                                    <td><span class="colorf06 font26">10000</span> 元<br />总操盘金额</td>
+                                    <td><span class="colorf06 font26">10001</span> 元<br />总操盘金额</td>
                                     <td style="width:10px"><b class="font26">=</b></td>
-                                    <td><span class="colorf06 font26">0</span> 元<br />投资本金</td>
+                                    <td><span class="colorf06 font26">1</span> 元<br />投资本金</td>
                                     <td style="width:10px"><b class="font26">+</b></td>
                                     <td><span class="colorf06 font26">10000</span> 元<br />配资金额</td>
                                 </tr>

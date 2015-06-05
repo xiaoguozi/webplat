@@ -85,11 +85,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon04.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left">您交<b class="color158">0 元</b>（体验费，结束后全额退还给您）</td>
+                        <td class="tbl_w500_b t-left">您交<b class="color158">1 元</b>（体验费，结束后全额退还给您）</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon03.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left">总共<b class="color158">10000 元</b>（由您操盘）</td>
+                        <td class="tbl_w500_b t-left">总共<b class="color158">10001 元</b>（由您操盘）</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon02.png" alt="" /></td>
@@ -111,7 +111,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                    		<a class="tjs_btn disabled" style="margin-top:10px;" href="javascript:void(0);">免费体验</a>
                    </c:if>
                    <c:if test="${result!=-1}">
-                   		<a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/mfp/freeNextActivity">免费体验</a>
+                   		<c:if test="${result==-2}">
+                   			<span style="color: red;">您已经参加过该活动</span>
+	                   		<br/>
+	                   		<a class="tjs_btn disabled" style="margin-top:10px;" href="javascript:void(0);">免费体验</a>
+                   		</c:if>
+                   		<c:if test="${result!=-2}">
+	                   		<a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/mfp/freeNextActivity">免费体验</a>
+                   		</c:if>
                    </c:if>
                 </div>
             </div>

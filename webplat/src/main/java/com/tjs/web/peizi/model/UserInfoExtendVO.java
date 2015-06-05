@@ -17,6 +17,9 @@ public class UserInfoExtendVO {
 	/** 是否占有了免费名额 */
 	private int isOwnResource = 0;
 	
+	/** 手机 */
+	private String phone;
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +59,13 @@ public class UserInfoExtendVO {
 	public void setIsOwnResource(int isOwnResource) {
 		this.isOwnResource = isOwnResource;
 	}
-	
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	
 }

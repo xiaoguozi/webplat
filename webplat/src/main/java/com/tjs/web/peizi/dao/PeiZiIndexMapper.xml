@@ -58,6 +58,16 @@
    		        #{isOwnResource})
    </insert>
    
+   <update id="updateUserInfoExtendVO" parameterType="com.tjs.web.peizi.model.UserInfoExtendVO">
+   		UPDATE user_info_extend 
+   		SET id=#{id}, 
+   			user_id=#{userId},
+   		    peizi_type=#{peiziType}, 
+   		    is_used=#{isUsed}, 
+   		    is_own_resource=#{isOwnResource}
+   		WHERE id=#{id}
+   </update>
+   
     <select id="getUserInfoExtendList" parameterType="com.tjs.web.peizi.controller.PZIndexCtrlModel" resultMap="pzUserInfoExtendResultMap">
        SELECT 
        		id, user_id, peizi_type, is_used, is_own_resource
