@@ -111,7 +111,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                    		<a class="tjs_btn disabled" style="margin-top:10px;" href="javascript:void(0);">免费体验</a>
                    </c:if>
                    <c:if test="${result!=-1}">
-                   		<a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/freeNextActivity">免费体验</a>
+                   		<a class="tjs_btn" style="margin-top:30px;" href="rest/web/peizi/mfp/freeNextActivity">免费体验</a>
                    </c:if>
                 </div>
             </div>
