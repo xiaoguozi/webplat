@@ -116,41 +116,8 @@ public class PeiZiIndexController {
 		return "web/peizi/tjpeizi";
 	}
 	
-	/**
-	 * 天天配
-	 * @return
-	 */
-	@RequestMapping("/dayCapital")
-	public String  dayCapital() {
-		return "web/peizi/ttpeizi";
-	}
 	
-	/**
-	 * 天天配下一步
-	 * @return
-	 */
-	@RequestMapping("/dayNextCapital")
-	public String  dayNextCapital() {
-		return "web/peizi/ttpznext";
-	}
 	
-	/**
-	 * 天天配最后一步
-	 * @return
-	 */
-	@RequestMapping("/dayLastCapital")
-	public String  dayLastCapital() {
-		return "web/peizi/ttpzlast";
-	}
-	
-	/**
-	 * 天天配查看方案进度
-	 * @return
-	 */
-	@RequestMapping("/dayScheduleCapital")
-	public String  dayScheduleCapital() {
-		return "web/peizi/ttpzyanzi";
-	}
 	
 	/**
 	 * 月月配
