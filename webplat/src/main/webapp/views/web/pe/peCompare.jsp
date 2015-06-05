@@ -112,7 +112,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              </table>
 	            </div>
 	          </div>
-	          <div class="sub_item" style="display:none;">
+	          <div class="sub_item" >
 	            <div class="sub_hd">净值走势对比</div>
 	            <div id="chartContainer" class="sub_bd_1" style="min-width: 800px;height: 365px;">
 	               	
@@ -352,29 +352,140 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				createChart = function () {
 					
 		            $('#chartContainer').highcharts('StockChart', {
-		            	
-		                yAxis: {
-		                    labels: {
-		                        formatter: function () {
-		                            return  this.value;
-		                        }
-		                    },
-		                    plotLines: [{
-		                        value: 0,
-		                        width: 1,
-		                        color: 'silver'
-		                    }]
+		            	colors: ['#FF6600', '#3DADEA', '#009900', '#B33133'],
+		            	chart: {
+		                     renderTo: chartObj.renderTo,
+		                     width: chartObj.width,
+		                     height: chartObj.height
 		                },
-		
-		                plotOptions: {
-		                    series: {
-		                        compare: 'percent'
+		                credits: {
+		                     enabled: true,
+		                     href: null,
+		                     text: ''
+		                },
+		                exporting: {enabled: false},
+		                title: {text: null, style: {color: '#004789'}},
+		                rangeSelector: {enabled: false},
+		                tooltip: {
+		                    enabled: true,
+		                    crosshairs: true,
+		                    formatter: function () {
+		                        var date = new Date(this.x);
+		                        var header = '<b>时间: ' + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + '</b>';
+		                        $.each(this.points, function (i, point) {
+		                            if(i==0 && chartObj.renderTo !== "compare_chart_container"){
+		                                header += '<br/><span style="color:' + this.point.series.color + '">累计净值:'   + '</span>';
+		                            }else{
+		                                header += '<br/><span style="color:' + this.point.series.color + '">' + this.point.series.name + ':' +  '</span>';
+		                            }
+		                        });
+		                        return header;
 		                    }
 		                },
-		
-		                tooltip: {
-		                    pointFormat: '<span style="color:{series.color}">{series.name}: {point.y}</span><br/>',
-		                    valueDecimals: 2
+		                xAxis: {
+		                    type: 'datetime',
+		                    gridLineDashStyle: 'longdash',
+		                    dateTimeLabelFormats: {
+		                        second: '%Y-%m-%d<br/>%H:%M:%S',
+		                        minute: '%Y-%m-%d<br/>%H:%M',
+		                        hour: '%Y-%m-%d<br/>%H:%M',
+		                        day: '%Y<br/>%m-%d',
+		                        week: '%Y<br/>%m-%d',
+		                        month: '%Y-%m',
+		                        year: '%Y'
+		                    },
+		                    gridLineWidth: 1,
+		                    lineColor: '#999',
+		                    tickColor: '#999',
+		                    showFirstLabel: true,
+		                    showLastLabel: true,
+		                    labels: {
+		                        style: {
+		                            color: '#000',
+		                            font: '11px Trebuchet MS, Verdana, sans-serif',
+		                            align: 'right',
+		                            style: {font: 'normal 13px 宋体'}
+		                        },
+		                        formatter: function () {
+		                            return Highcharts.dateFormat('%Y-%m-%d', this.value);
+		                        }
+		                    },
+		                    title: {
+		                        style: {
+		                            color: '#333',
+		                            fontWeight: 'bold',
+		                            fontSize: '12px',
+		                            fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+		                        }
+		                    }
+		                },
+
+		                yAxis: {
+
+		                    showLastLabel: true,
+		                    tickPixelInterval: 40,
+		                    lineColor: '#999',
+		                    lineWidth: 1,
+		                    tickWidth: 1,
+
+		                    tickColor: '#999',
+		                    labels: {
+		                        align: 'right',
+		                        x: -10,
+		                        y: 5,
+		                        style: {
+		                            color: '#000',
+		                            font: '11px Trebuchet MS, Verdana, sans-serif'
+		                        }
+		                    },
+		                    title: {
+		                        style: {
+		                            color: '#333',
+		                            fontWeight: 'bold',
+		                            fontSize: '12px',
+		                            fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+		                        }
+		                    }
+		                },
+
+		                legend: {
+		                    enabled: true,
+		                    itemStyle: {
+		                        font: '9pt Trebuchet MS, Verdana, sans-serif',
+		                        color: '#004789'
+
+		                    },
+		                    itemHoverStyle: {
+		                        color: '#004789'
+		                    }
+
+		                },
+		                scrollbar: {enabled: false},
+		                navigator: {
+		                    enabled: true,
+		                    top: (chartObj.height-80),
+		                    height: 30,
+		                    xAxis: {
+		                        labels: {
+		                            enabled: false
+		                        }
+		                    }
+
+		                },
+
+		                plotOptions: {
+		                    series: {lineWidth: 2},
+		                    line: {
+		                        cursor: 'pointer',
+		                        shadow: false,
+		                        states: {
+		                            /*状态*/
+		                            hover: {
+		                                /*(鼠标)悬浮状态*/
+		                                lineWidth: 2    /*曲线宽*/
+		                            }
+		                        }
+		                    }
 		                },
 		
 		                series: eval("(" +'${valueSeries}'+ ")")
