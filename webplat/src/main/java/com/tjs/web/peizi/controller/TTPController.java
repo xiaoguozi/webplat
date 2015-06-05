@@ -26,8 +26,8 @@ import com.tjs.admin.utils.StringUtils;
  *
  **/
 @Controller
-@RequestMapping(value = "/web/peizitt")
-public class PeiziTTController {
+@RequestMapping(value = "/web/peizi/ttp")
+public class TTPController {
 		
 	@Resource
 	IPeizi iPeizi;

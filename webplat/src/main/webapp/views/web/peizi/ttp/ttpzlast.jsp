@@ -53,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!--二级导航-->
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
-                    <li><a href="rest/web/peizitt/dayCapital">天天配</a></li>
+                    <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
@@ -77,7 +77,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="datastep3">
                         <h1 class="color54a">操盘申请成功！</h1>
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您！</p>
-                        <a class="tjs_next_btn mt30" href="rest/web/peizitt/dayScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
+                        <a class="tjs_next_btn mt30" href="rest/web/peizi/ttp/dayScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
                     </div>
                     <div class="w985">
                         <p class="color158 font18">配资进度</p>

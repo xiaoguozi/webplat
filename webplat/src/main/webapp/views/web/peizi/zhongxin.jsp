@@ -53,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!--二级导航-->
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
-                    <li><a href="rest/web/peizi/dayCapital">天天配</a></li>
+                    <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
@@ -130,7 +130,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <!--无产品状态-->
                 <table class="my_tbl2">
                     <tr>
-                        <td colspan="5"><a class="my_add" href="rest/web/peizi/dayCapital" title="添加配资"></a></td>
+                        <td colspan="5"><a class="my_add" href="rest/web/peizi/ttp/dayCapital" title="添加配资"></a></td>
                     </tr>
                 </table>
                 <!--/无产品状态-->
