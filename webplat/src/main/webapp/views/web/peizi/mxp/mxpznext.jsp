@@ -1,5 +1,5 @@
 <%@ include file="/views/web/include.jsp"%>
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
@@ -40,9 +40,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <ul>
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
-                        <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
-                        <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/personalCenter"><span>个人中心</span></a></li>
+                        <li><span>淘金募集</span></li>
+                        <li><span>淘金自营</span></li>
+                        <li>><span>个人中心</span></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -61,12 +61,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a><span class="sep">&gt;</span> <a href="rest/web/peizi/activity" class="path_item">淘金活动</a> <span class="sep">&gt;</span> <span class="txt">淘金详情</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
         </div>
     <div class="w100bg">
-        <div class="tjs_1108px center">
+    <form id="modalForm" action="rest/web/peizi/ttp/dayLastCapital" method="post" >
+        <div class="tjs_1108px center">  
+        
+        	<input type="hidden" name="dataId" value="${peizi.dataId}"/>
+			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
+			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
+			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
+			<input type="hidden" name="datanll" value="<fmt:formatNumber value="${peizi.datanll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			
+			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
+			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
+			<input type="hidden" name="dataTzbzj" value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJjx" value="<fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataPcx" value="<fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
+			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
+			 <input type="hidden" name="dataJyksDate" value="${peizi.dataJyksDate }"/>
+			           
             <div class="pz_produce">
-				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免费赠送10000元 配资申请</b>
+				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
 			</div>
             <div class="bgcolor">
                 <div class="w945 step2">
@@ -81,21 +101,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p><span class="colorf06 font26">10001</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">1</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">10000</span>元</p>
+                            <p><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元</p>
                             <p><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
                         </div>
                         <table class="pz_tbl">
                             <tr>
-                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">10001</span> 元</td>
-                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26">0</span> 元</td>
+                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="######.##" /></span> 元</td>
+                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
                             </tr>
                             <tr>
-                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26">0</span> 元</td>
-                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按30天计算，如使用1个月，12月16日到1月15日" alt="" />：2 天</td>
+                                <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataJjx}" pattern="######.##" /></span> 元</td>
+                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：${peizi.dataZjsyqx }天</td>
                             </tr>
                             <tr>
-                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26">0</span> 元/天</td>
-                                <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始交易。14:40以后只能选择下个交易日" alt="" />：下个交易日</td>
+                                <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.zfglf}" pattern="########.##" /></span> 元/天</td>
+                                <td>开始交易时间 <img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：
+                              		<c:if test="${peizi.dataJyksDate=='1'}" >今日</c:if>
+                              		<c:if test="${peizi.dataJyksDate=='2'}" >下个交易日   </c:if>                             		                         
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -106,21 +129,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <table class="zhifu_boxtbl">
                             <tr>
                                 <td class="t-left">投资本金：</td>
-                                <td class="t-right">1 元</td>
+                                <td class="t-right"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /> 元</td>
                             </tr>
                             <tr>
-                                <td class="t-left">预存2天账户管理费</td>
-                                <td class="t-right">0 元</td>
+                                <td class="t-left">预存${peizi.dataZjsyqx}天账户管理费</td>
+                                <td class="t-right"><fmt:formatNumber value="${peizi.dataJklxTotal}" pattern="########.##" /> 元</td>
                             </tr>
                             <tr>
                                 <td class="t-left">总金额</td>
-                                <td class="colorf06 font26 t-right">1 元</td>
+                                <td class="colorf06 font26 t-right"> <fmt:formatNumber value="${peizi.zfzje}" pattern="########.##" />元</td>
                             </tr>
                         </table>
-                        <a class="tjs_btndiv btnbox" href="rest/web/peizi/index">重选操盘方案</a>
+                        <a class="tjs_btndiv btnbox" href="">重选操盘方案</a>
                     </div>
-                    <a class="tjs_next_btn mbl" href="rest/web/peizi/mfp/freeLastActivity">确定配资</a>
-                    <p class="t-right ptr" style="display:none;">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">0</span>元，请先<a href="rest/web/peizi/recharge">充值</a></p>
+                    <a class="tjs_next_btn mbl" href="">确定配资</a>
+                    <!--  
+                    <p class="t-right ptr">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">2522.5</span>元，请先<a href="chongzhi.html">充值</a></p>
+                    -->
                 </div>
                 <hr class="pc"/>
             </div>
@@ -168,6 +193,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
         </div>
+      
+        </form>
         <hr class="pc"/>
     </div>
 <!-- 配资页尾 -->
@@ -191,16 +218,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
+     
+
+	
+	    
+	    
+	     //--确定配资--
+		$(".tjs_next_btn").click(function (event) {
+			event.preventDefault();	
+			$("#modalForm").attr("action","rest/web/peizi/ttp/dayLastCapital");
+			$("#modalForm").submit();			   
 		})
-	/*--/QQ咨询--*/
+	    //--确定配资--
+	    
+	    
+	     //--返回上一步--
+		$(".tjs_btndiv").click(function (event) {
+			event.preventDefault();
+			$("#modalForm").attr("action","rest/web/peizi/ttp/dayCapital?dataId=${peizi.dataId}");
+			$("#modalForm").submit();			   
+		})
+	    //--确定配资--
 	})
+	
 </script>
 </body>
 </html>
