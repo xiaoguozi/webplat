@@ -18,17 +18,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 </head>
 <body >
-<div class="za-header-info za-logo-info-bt za-body-bg-white">
-        <ul id="myAccount"  class="za-logo-info za-l-w za-margin-auto za-clearfix">
-             <li >
-                <a class="za-logo-1" href="/index.html"></a>
-                 <div class="za-logo-title">
-                 	<p>CLAUSES</p>
-                    <p class="za-ins-c-green">保险条款</p>
-                 </div>
-             </li>
-        </ul>
-    </div>
 
 <div  class="za-buy-product2 za-body-bg-gray">
     <div class=" za-l-w za-margin-auto za-body-bg-white">
