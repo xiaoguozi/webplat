@@ -255,4 +255,14 @@ public class PeiZiIndexController {
 	}
 	
 	
+	/**
+	 * 配资协议 
+	 * @return
+	 */
+	@RequestMapping("/agreement")
+	public String agreement() {
+		return "web/peizi/stackAgreement";            
+	}
+	
+	
 }
