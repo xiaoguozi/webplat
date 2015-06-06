@@ -129,8 +129,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p class="wbl pt20"><b class="colorf06">免息配</b>日息为 <span class="colorf06"><b class="fsize">0</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">15天</span>免利息</p>
 				<p class="w230">最高<span class="colorf06"> 3倍 </span>杠杆，最高可配<span class="colorf06">3万</span></p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/freeActivity">我要爽</a>
-				
+				<a class="tjs_btn mtb54" href="rest/web/peizi/mxp/dayCapital">我要爽</a>
 			</div>
 			<div class="pro_box top20" style="left:728px;">
 				<h1 class="pro_title">天天配</h1>
