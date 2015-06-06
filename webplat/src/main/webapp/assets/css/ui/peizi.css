@@ -1563,3 +1563,9 @@
 .input_btn:hover {
     background:#ff6600;
 }
+
+
+.ui_face_err {
+	 width:100px;
+	 background:url(../../img/103.png) no-repeat left #F0F0F0;
+}

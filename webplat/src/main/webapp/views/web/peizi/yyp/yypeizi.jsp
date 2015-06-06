@@ -14,16 +14,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet" media="screen" type="text/css" />
 	
 	<!--配资页面样式--> 
-	<link href="assets/css/ui/peizi.css" rel="stylesheet" />
-	
+	<link href="assets/css/ui/peizi.css?1=1" rel="stylesheet" />	
 	<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/slide.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
-	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
+	<script src="assets/widget/form/jquery.form.min.js"></script>
 </head>
 <body>
 	<div class="home_all">
@@ -63,10 +61,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">月月配</span> </div>
         </div>
     <div class="w100bg">
+        <form id="modalForm" action="rest/web/peizi/yyp/monthNextCapital" method="post" >
         <div class="tjs_1108px center">
             <div class="pz_produce">
 				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>月月配 配资申请</b>
 			</div>
+			
+			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
+			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
+			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
+			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
+			<input type="hidden" name="datanll" value="<fmt:formatNumber value="${peizi.datanll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			
+			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
+			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJjx" value="<fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataPcx" value="<fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
+			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
+			
             <div class="bgcolor">
                 <div class="w945">
                     <span class="under_font">选择配资方案</span>
@@ -78,31 +94,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/> 
                 <div class="caopanjine">
                     <span class="box1">1</span><div class="font_word18">输入您的投资本金</div>
-                    <input class="input_txt1" id="principal" onkeyup="arithmetic()" type="text" maxlength="7" /><span class="pos_d">元</span>
+                    <input class="input_txt1" id="principal" name="dataTzbzj"  onkeyup="arithmetic()" onblur="" type="text" maxlength="7" value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########" />"/><span class="pos_d">元</span>
                     <div class="clear"></div>
                     <p class="bzj"><img src="assets/img/peizi/zhuyi.png" alt="" />保证金最低2000元</p>
                     <hr class="pc"/>
                     <span class="box1">2</span><div class="font_word18">选择您的配资金额</div>
                     <div class="caopanbox">
                         <div class="cpbox1 on">
-                            <span class="cpmoney">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <div class="goubox"></div>
+                        </div>
+                                                
+                        <div class="cpbox1">
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">0</span> <span class="wan"></span>元<br />配资金额
-                            <div class="goubox"></div>
-                        </div>
-                        <div class="cpbox1">
-                            <span class="cpmoney">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="clear"></div> 
                         <div class="cpbox1" style="margin-left: 97px;">
-                            <span class="cpmoney">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <hr class="pc"/>
@@ -113,14 +130,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <ul class="cpxinxi">
                         <li style="position:relative;"> <span class="fleft">资金使用期限<img class="curser" src="assets/img/peizi/qcmark.png" title="每月按30天计算，如使用1个月，11月16日至12月15日" alt="" />：</span>
                             <div class="sel_wrap fleft" style="top:25px;left:125px;">
-                                <label class="lbl">1个月</label>
-                                <ul class="select">
-                                    <li>1个月</li>
-                                    <li>2个月</li>
-                                    <li>3个月</li>
-                                    <li>4个月</li>
-                                    <li>5个月</li>
-                                    <li>6个月</li>
+                                <label class="lbl" month="1">1个月</label>
+                                <ul class="select" style="filter: alpha(opacity=100);">
+                                    <li month="1">1个月</li>
+                                    <li month="2">2个月</li>
+                                    <li month="3">3个月</li>
+                                    <li month="4">4个月</li>
+                                    <li month="5">5个月</li>
+                                    <li month="6">6个月</li>
                                 </ul>
                             </div>
                         </li>
@@ -128,17 +145,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>亏损警告线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span id="loss" class="colorf06 font26 mlr5">0</span>元</li>
                         <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5">0</span>元</li>
                         <li>借款利息&nbsp;&nbsp;&nbsp;<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Dinterests" class="colorf06 font26 mlr5">0</span> 元</li>
-                        <li>借款月利息<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Minterests" class="colorf06 font26 mlr5">0</span> 元/月</li>
-                        <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
+                        <li>借款月利息<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Minterests" class="colorf06 font26 mlr5"></span>/月</li>
+                        <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="dataJyksDate" value="1" type="radio" <c:if test="${peizi.dataJyksDate== '1'}">checked="checked"</c:if>/>今天<br />
+                             <input name="dataJyksDate" id="Radio2" value="2" type="radio" <c:if test="${peizi.dataJyksDate== '2'}">checked="checked"</c:if> />下一个交易日（）</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
-                    如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                   <!--   <a class="tjs_btn" href="rest/web/peizi/monthNextCapital">我要配资</a>-->
-                   <a class="tjs_btn disabled">我要配资</a>
+                     <div style="height:85px">
+                 	   如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
+                    <input id="Checkbox1" type="checkbox"  checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br />
+                    </div>                 
+                   <a class="tjs_btn" href="">我要配资</a>
                 </div>
             </div>
             <div class="pz_produce">
@@ -184,7 +202,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <hr class="pc"/>
                 </div>
             </div>
+            
         </div>
+       </form>
         <hr class="pc"/>
     </div>
 <!-- 配资页尾 -->
@@ -198,7 +218,6 @@ function arithmetic() {
         $("#principal").val("0");
     }
     var sum = 0;//投资本金
-    var num = "1.3%";//借款利息
     var wan = "万";
     sum = $("#principal").val();//获取键盘输入的投资本金
     if (sum.substring(0, 1) == 0) {
@@ -209,19 +228,29 @@ function arithmetic() {
         sum = 0;
     }
     if (sum >= 10000) {
-        sum = sum / 10000;
+        var wsum = sum / 10000;
         $(".wan").text(wan);
         $(".cpbox1").each(function (i) {
-            $(".cpmoney:eq(0)").text(sum.toFixed(1));
-            $(".cpmoney:eq(1)").text((sum * 2).toFixed(1));
-            $(".cpmoney:eq(2)").text((sum * 3).toFixed(1));
-            $(".cpmoney:eq(3)").text((sum * 4).toFixed(1));
-            $(".cpmoney:eq(4)").text((sum * 5).toFixed(1));
-            $("#capital").text((sum * 20000).toFixed(0));
-            $("#loss").text((sum * 16000).toFixed(1));
-            $("#close").text((sum * 15000).toFixed(1));
-            $("#Dinterests").text((sum * 130).toFixed(2));
-            $("#Minterests").text(num);
+            $(".cpmoney:eq(0)").text(wsum.toFixed(1));
+            $(".cpmoney:eq(1)").text((wsum * 2).toFixed(1));
+            $(".cpmoney:eq(2)").text((wsum * 3).toFixed(1));
+            $(".cpmoney:eq(3)").text((wsum * 4).toFixed(1));
+            $(".cpmoney:eq(4)").text((wsum * 5).toFixed(1));           
+            if($(this).hasClass("on")){
+            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text())*10000;
+            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
+            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            	var qx =  parseInt($(".lbl").attr("month"));
+         	    var tzbzj = parseFloat(sum);
+            	$("#capital").text((tzbzj+pzje).toFixed(0));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
+	            $("#close").text((pzje*yll*qx/100).toFixed(1));
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Minterests").text(yll+"%");
+	             
+            	
+            }                       
         });
     } else {
         $(".cpbox1").each(function (i) {
@@ -231,15 +260,25 @@ function arithmetic() {
             $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
             $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
             $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
-            $("#capital").text((sum * 2).toFixed(0));
-            $("#loss").text((sum * 1.6).toFixed(1));
-            $("#close").text((sum * 1.5).toFixed(1));
-            $("#Dinterests").text((sum * 0.013).toFixed(2));
-            $("#Minterests").text(num);
+            if($(this).hasClass("on")){
+            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text());
+            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
+            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            	var qx =  parseInt($(".lbl").attr("month"));
+         	    var tzbzj = parseFloat(sum);
+            	$("#capital").text((tzbzj+pzje).toFixed(0));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
+	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Minterests").text(yll+"%");	                        	
+            }                         
         });
     }
 }
-arithmetic()
+
+
+
 $(document).ready(function () {
     /*-二级导航-*/
     $(".tjpz").hover(function () {
@@ -257,32 +296,8 @@ $(document).ready(function () {
         $(this).hide();
         $(".tjpz>a>span").removeClass("tspan");
     });
-    /*--操盘金额--*/
-    var sum = 0;
-    var num = "1.3%"
-    $(".cpbox1").each(function (i) {
-        $(this).click(function () {
-            $(".cpbox1").removeClass("on")
-            $(this).addClass("on");
-            sum = $(".cpmoney:eq('" + i + "')").text();
-            var str=$(".wan").text();
-            if (str != "") {
-                $("#capital").text((sum * 20000).toFixed(0));
-                $("#loss").text((sum * 16000).toFixed(0));
-                $("#close").text((sum * 15000).toFixed(1));
-                $("#Dinterests").text((sum * 130).toFixed(1));
-                $("#Minterests").text((num).toFixed(0));
-            } else {
-                $("#capital").text((sum * 2).toFixed(0));
-                $("#loss").text((sum * 1.6).toFixed(1));
-                $("#close").text((sum * 1.5).toFixed(1));
-                $("#Dinterests").text((sum * 0.013).toFixed(2));
-                $("#Minterests").text(num);
-            }
-            
-        });
-    });
-    /*--/操盘金额--*/
+    
+    
     //--自定义下拉框--
 	$(".sel_wrap").click(function () {
 	    $(".select").toggle();
@@ -290,19 +305,101 @@ $(document).ready(function () {
 	    $(".select>li").each(function (index) {
 	        $(this).click(function () {
 	            var opt = $(this).html();
-	            $(".lbl").html(opt);
-	            var sum = $("#principal").val();
-	            var min = "0.013";
-	            var num = opt.substring(0, 1);
-	            $("#Dinterests").text(num * sum * min);
+	            $(".lbl").attr("month",$(this).attr("month"));
+	            $(".lbl").html(opt);	            
+	            var qx =parseInt($(".lbl").attr("month"));
+	            var pzje = 0;
+	            if($('.on .wan').text()!=''){
+	            	pzje = 	parseFloat($('.on .cpmoney').text())*10000;
+	            }else{
+	            	pzje = 	parseFloat($('.on .cpmoney').text());
+	            }	        	
+	            var yll = parseFloat($('.on .cpmoney').attr('yll'));
+	           $("#Dinterests").text(pzje*qx*yll/100);
+	        
 	        })
 	    })
 	})
     //--/自定义下拉框--
+    
+    
+    
+    
+    /*--操盘金额--*/
+    $(".cpbox1").each(function (i) {
+        $(this).click(function () {
+            $(".cpbox1").removeClass("on")
+            $(this).addClass("on");
+            var str=$(".wan").text();
+            if (str != "") {
+            	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
+            	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text())*10000;
+            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
+            	var yll =  parseFloat($(".cpmoney:eq(" + i + ")").attr('yll'));
+            	var qx =  parseInt($(".lbl").attr("month"));           	 
+         	    var tzbzj = parseFloat(strtzbzj);
+            	$("#capital").text((tzbzj+pzje).toFixed(0));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
+	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Minterests").text(yll+"%");	                                      
+            } else {
+            	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
+            	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text());
+            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
+            	var yll =  parseFloat($(".cpmoney:eq(" + i + ")").attr('yll'));
+            	var qx =  parseInt($(".lbl").attr("month"));           	 
+         	    var tzbzj = parseFloat(strtzbzj);
+            	$("#capital").text((tzbzj+pzje).toFixed(0));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
+	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Minterests").text(yll+"%");	    
+            }
+            
+        });
+    });
+    /*--/操盘金额--*/
+    
+   
+	 //--配资按钮--
+	$(".tjs_btn").click(function(event){
+		event.preventDefault();	
+		//判断投资保证金是否是1000的整数倍
+		var strTzbzj= $.trim($("#principal").val()).replace('/,/g','');
+		
+		if(strTzbzj==''){strTzbzj="0"}
+		var iTzbzj = parseInt(strTzbzj,'10');
+		
+		if(iTzbzj<2000){
+			errTip("保证金最低2000元 ", 1);
+			return ;
+		}
+
+		if(iTzbzj%1000!=0){
+			errTip("投资本金必须为1000的整数倍 ", 1);
+			return;
+		}
+		
+		if(!$('#Checkbox1').attr("checked")){
+			errTip("请先阅读并同意《合作操盘协议》", 1);
+			return ;
+		}
+	
+		$("input[name=dataZcpzj]").val($("#capital").text());
+		$("input[name=dataJjx]").val($("#loss").text());
+		$("input[name=dataPcx]").val($("#close").text());
+		$("input[name=dataJklxTotal]").val($("#Dinterests").text());
+		$("input[name=dataZjsyqx]").val($(".lbl").attr("month"));
+		$("#modalForm").submit();						
+	});
+    
+    
+	arithmetic();
 })
-function alertbox() {
-    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-}
+
 </script>
 </body>
 </html>

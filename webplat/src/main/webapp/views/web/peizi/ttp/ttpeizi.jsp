@@ -20,6 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/slide.js"></script>
+	 <script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
 	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -165,13 +166,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
-                    如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br />
-                    <span id="danger_tip" style="display:none;color:red" >请先阅读并同意《合作操盘协议》</span>
-                    <br />
-                     <a class="tjs_btn" href="">我要配资</a>
-                     
-                   
+                	<div style="height:85px">
+                  	  如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
+                    <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br/>
+                    </div>
+                     <a class="tjs_btn" href="">我要配资</a>                  
                 </div>
             </div>
             <div class="pz_produce">
@@ -279,7 +278,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 		 //--/自定义下拉框--
 		 
-		   //--配资按钮--
+		 
+		//--配资按钮--
 		$(".tjs_btn").click(function(event){
 			event.preventDefault();	 
 			if($('#Checkbox1').attr("checked")){
@@ -291,17 +291,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				$("input[name=dataZjsyqx]").val($('.lbl').html().substring(0,1));
 				$("#modalForm").submit();				
 			}else{
-				$('#danger_tip').toggle();
+				errTip("请先阅读并同意《合作操盘协议》", 1);
 			}
 		});
 		//--配资按钮---
 		
 		 //--默认选中1：1--	
-		var index=0;
-		if($('input[name=dataZcpzj]').val()!=''){
-			index=parseInt($('input[name=dataZcpzj]').val())/10000-1;		
-		}		
-		$('.cpbox1:eq('+index+')').click();
+		//var index=0;
+		//if($('input[name=dataZcpzj]').val()!=''){
+		//	index=parseInt($('input[name=dataZcpzj]').val())/10000-1;		
+		//}		
+		//$('.cpbox1:eq('+index+')').click();
 		//--/自定义下拉框--	                 
 	})
 	

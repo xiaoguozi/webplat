@@ -27,8 +27,8 @@ import com.tjs.admin.utils.StringUtils;
  *
  **/
 @Controller
-@RequestMapping(value = "/web/peizi/ttp")
-public class TTPController {
+@RequestMapping(value = "/web/peizi/yyp")
+public class YYPController {
 		
 	@Resource
 	IPeizi iPeizi;
@@ -38,29 +38,29 @@ public class TTPController {
 	 * 天天配第一步
 	 * @return
 	 */
-	@RequestMapping("/dayCapital")
+	@RequestMapping("/monthCapital")
 	public String  dayCapital(Peizi peizio,Model model) {
 		
 		//如果dataId不为空，从数据库里面读取记录
 		if(null!=peizio.getDataId()&&!peizio.getDataId().equals(new Long(0))){
 			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
 			model.addAttribute("peizi",peizi);		
-			return "web/peizi/ttp/ttpeizi";
+			return "web/peizi/yyp/yypeizi";
 		}
 		
 		//获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
-		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.TTPEIZI.getKey());
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.YYPEIZI.getKey());
 		
 		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
 		if(lstPeiziRule==null||lstPeiziRule.size()==0){
-			throw new  RuntimeException("天天配资规则没有找到");
+			throw new  RuntimeException("月月配资规则没有找到");
 		}
 		PeiziRule peiziRule = lstPeiziRule.get(0);
 		Peizi peizi = new Peizi();
 		//规则信息
 		peizi.setDataId(peizio.getDataId());
-		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
+		peizi.setDataType(PeiziTypeEnum.YYPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
 		peizi.setDataZfglf(peiziRule.getRuleZhglf());
 		peizi.setDatanll(peiziRule.getRuleNll());
@@ -81,7 +81,7 @@ public class TTPController {
 		peizi.setDataZjsyqx(dataZjsyqx);
 		
 		model.addAttribute("peizi",peizi);		
-		return "web/peizi/ttp/ttpeizi";
+		return "web/peizi/yyp/yypeizi";
 	}
 	
 	
@@ -89,17 +89,17 @@ public class TTPController {
 	 * 天天配下一步
 	 * @return
 	 */
-	@RequestMapping("/dayNextCapital")
-	public String  dayNextCapital(Peizi peizi,Model model) {		
+	@RequestMapping("/monthNextCapital")
+	public String  monthNextCapital(Peizi peizi,Model model) {		
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
-			return "redirect:/rest/web/peizi/ttp/dayCapital";  
+			return "redirect:/rest/web/peizi/yyp/monthCapital";  
 		}
 		
 		peizi.setDataStep("2");
 		peizi.setDataPzje(BigDecimalUtils.subtract(peizi.getDataZcpzj(), peizi.getDataTzbzj()));		
 		peizi.setZfzje(BigDecimalUtils.add(peizi.getDataTzbzj(), peizi.getDataJklxTotal()));
 		peizi.setZfglf(BigDecimalUtils.div(BigDecimalUtils.multiply(peizi.getDataZfglf(), peizi.getDataZcpzj()), new BigDecimal(10000)));
-		return "web/peizi/ttp/ttpznext";
+		return "web/peizi/yyp/yypznext";		
 	}
 	
 	
@@ -107,12 +107,12 @@ public class TTPController {
 	 * 重新选择配资方案
 	 * @return
 	 */
-	@RequestMapping("/dayFirstCapital")
-	public String  dayFirstCapital(Peizi peizi,Model model) {
+	@RequestMapping("/monthFirstCapital")
+	public String  monthFirstCapital(Peizi peizi,Model model) {
 		peizi.setDataStep("1");
 		peizi = new Peizi();
 		model.addAttribute("peizi",peizi);	
-		return "web/peizi/ttp/ttpznext";
+		return "web/peizi/yyp/yypeizi";
 	}
 	
 	
@@ -120,10 +120,10 @@ public class TTPController {
 	 * 天天配最后一步
 	 * @return
 	 */
-	@RequestMapping("/dayLastCapital")
-	public String  dayLastCapital(Peizi peizi,Model model) {
+	@RequestMapping("/monthLastCapital")
+	public String  monthLastCapital(Peizi peizi,Model model) {
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
-			return "redirect:/rest/web/peizi/ttp/dayCapital";  
+			return "redirect:/rest/web/peizi/yyp/monthCapital";  
 		}
 		peizi.setDataStep("3");
 		peizi.setDataOperaStatus("10");//正在验资中
@@ -133,7 +133,7 @@ public class TTPController {
 			iPeizi.updatePeizi(peizi);
 		}
 		model.addAttribute("peizi",peizi);	
-		return "web/peizi/ttp/ttpzlast";
+		return "web/peizi/yyp/yypzlast";
 	}
 	
 	
@@ -142,15 +142,18 @@ public class TTPController {
 	 * 天天配查看方案进度
 	 * @return
 	 */
-	@RequestMapping("/dayScheduleCapital")
-	public String  dayScheduleCapital(@RequestParam(value="dataId",required=true) Long dataId,Model model) {
+	@RequestMapping("/monthScheduleCapital")
+	public String  monthScheduleCapital(@RequestParam(value="dataId",required=true) Long dataId,Model model) {
 		//如果dataId不为空，从数据库里面读取记录
 		if(null!=dataId&&!dataId.equals(new Long(0))){
 			Peizi peizi = iPeizi.findByPeiziId(dataId);
 			model.addAttribute("peizi",peizi);					
 		}		
-		return "web/peizi/ttp/ttpzyanzi";
+		return "web/peizi/yyp/yypzyanzi";
 	}
+	
+	
+	
 	
 	
 }
