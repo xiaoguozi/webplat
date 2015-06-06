@@ -116,15 +116,45 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<div class="pz_produce">
 				<img src="assets/img/peizi/pro_ico.png" alt=""><b>配资产品</b>
 			</div>
-            <div style="position:relative;display:block;height:750px;">
+            <div style="position:relative;display:block;height:1125px;">
 			<div class="pro_box ml0 top20">
 				<h1 class="pro_title">淘金活动</h1>
-				<p class="wbl pt80"><b class="colorf06">免费赠送2000元</b> 实盘资金</p>
+				<p class="wbl pt80"><b class="colorf06">免费赠送10000元</b> 实盘资金</p>
 				<p><b class="colorf06">盈利全归您</b> 亏损算我们</p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/freeActivity">我要爽</a>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/mfp/freeActivity">我要爽</a>
 				
 			</div>
 			<div class="pro_box top20" style="left:349px;">
+				<h1 class="pro_title">淘金活动</h1>
+				<p class="wbl pt20"><b class="colorf06">免息配</b>日息为 <span class="colorf06"><b class="fsize">0</b>%</span></p>
+				<p class="wbl lh30"><span class="colorf06">15天</span>免利息</p>
+				<p class="w230">最高<span class="colorf06"> 3倍 </span>杠杆，最高可配<span class="colorf06">3万</span></p>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/freeActivity">我要爽</a>
+				
+			</div>
+			<div class="pro_box top20" style="left:728px;">
+				<h1 class="pro_title">天天配</h1>
+				<p class="wbl pt20"><b class="colorf06">10000</b>元起配，日息低至 <span class="colorf06"><b class="fsize">0.1</b>%</span></p>
+				<p class="wbl lh30"><span class="colorf06">2~30天</span>任意配</p>
+				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/ttp/dayCapital">我要配资</a>
+			</div>
+            <div class="clear"></div>
+			<div class="pro_box ml0 top380 top370">
+				<h1 class="pro_title">月月配</h1>
+				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.3</b>%</span></p>
+				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
+				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/monthCapital">我要配资</a>
+			</div>
+			<div class="pro_box top380 top370" style="left:349px;">
+				<h1 class="pro_title">低息配</h1>
+				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
+				<p class="wbl lh30"><span class="colorf06">3个月</span>起配</p>
+				<p class="w230">最高<span class="colorf06"> 1倍 </span>杠杆，风险超低</p>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/lowCapital">我要配资</a>
+			</div>
+			<div class="pro_box top380 top370"style="left:728px;">
 				<h1 class="pro_title">淘金募集</h1>
 				<p class="wbl pt20"><span class="color158">淘金山一号<span><span class="colorf06"> <span class="fsize">10</span>.89%</span></p>
 				<p class="wbl lh30">门槛：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
@@ -132,7 +162,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandRaise">我要预约</a> -->
 				<a class="tjs_btn mtb29">我要预约</a>
 			</div>
-			<div class="pro_box top20" style="left:728px;">
+			<div class="clear"></div>
+			<div class="pro_box ml0 top760 top750">
 				<h1 class="pro_title">淘金自营</h1>
 				<p class="wbl pt20"><span class="color158">淘金山二号<span><span class="colorf06"> <span class="fsize">528</span>.00%</span></p>
 				<p class="wbl lh30">基金经理：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
@@ -140,28 +171,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandSelf">我要预约</a>-->
 				<a class="tjs_btn mtb29">我要预约</a>
 			</div>
-            <div class="clear"></div>
-			<div class="pro_box ml0 top380 top370">
-				<h1 class="pro_title">天天配</h1>
-				<p class="wbl pt20"><b class="colorf06">10000</b>元起配，日息低至 <span class="colorf06"><b class="fsize">0.1</b>%</span></p>
-				<p class="wbl lh30"><span class="colorf06">2~30天</span>任意配</p>
-				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/ttp/dayCapital">我要配资</a>
-			</div>
-			<div class="pro_box top380 top370" style="left:349px;">
-				<h1 class="pro_title">月月配</h1>
-				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.3</b>%</span></p>
-				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
-				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/monthCapital">我要配资</a>
-			</div>
-			<div class="pro_box top380 top370"style="left:728px;">
-				<h1 class="pro_title">低息配</h1>
-				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
-				<p class="wbl lh30"><span class="colorf06">3个月</span>起配</p>
-				<p class="w230">最高<span class="colorf06"> 1倍 </span>杠杆，风险超低</p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/lowCapital">我要配资</a>
-			</div>
+			
            </div>
 			<hr class="pc"/>
 			<!-- 配资产品 结束 -->

@@ -67,7 +67,7 @@
         
         
          <div class="form-group">
-            <label class="col-md-2 control-label">使用期限（<c:if test="peizi.dataTypeSylx=='10'">天</c:if><c:if test="peizi.dataTypeSylx!='10'">月</c:if>）</label>
+            <label class="col-md-2 control-label">使用期限（<c:if test="${peizi.dataTypeSylx=='10' }">天</c:if><c:if test="${peizi.dataTypeSylx!='10'}">月</c:if>）</label>
             <div class="col-md-6">
                 <input type="text" class="form-control  number" name="dataZjsyqx" value="${peizi.dataZjsyqx}" readonly="readonly">
             </div>            

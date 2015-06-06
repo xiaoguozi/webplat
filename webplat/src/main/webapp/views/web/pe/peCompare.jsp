@@ -112,7 +112,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	              </table>
 	            </div>
 	          </div>
-	          <div class="sub_item" style="display:none;">
+	          <div class="sub_item" >
 	            <div class="sub_hd">净值走势对比</div>
 	            <div id="chartContainer" class="sub_bd_1" style="min-width: 800px;height: 365px;">
 	               	

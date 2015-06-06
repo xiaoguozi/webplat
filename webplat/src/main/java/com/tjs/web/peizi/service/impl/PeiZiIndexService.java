@@ -1,6 +1,8 @@
 package com.tjs.web.peizi.service.impl;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +12,9 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.peizi.constants.PeiziTypeEnum;
+import com.tjs.admin.peizi.model.Peizi;
+import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.controller.PZIndexCtrlModel;
@@ -27,6 +32,9 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	@Resource
 	private UserService userService;
 	
+	@Resource
+	private IPeizi peiziService;
+	
 	@Override
 	public int checkFreePeiZiIsValid(PZIndexCtrlModel pzIndexCtrlModel) {
 		
@@ -37,6 +45,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		
 		//查询用户
 		pzIndexCtrlModel.setUserId(user.getId());
+		pzIndexCtrlModel.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
 		List<UserInfoExtendVO> lstUserVO = peiZiIndexMapper.getUserInfoExtendList(pzIndexCtrlModel);
 		
 	    List<FreePeiziDetailVO> lstPZVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel.getDateString());
@@ -104,5 +113,34 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		
 		return lstVO;
 	}
+
+	@Override
+	public List<UserInfoExtendVO> getUserInfoExtendList(
+			PZIndexCtrlModel pzIndexCtrlModel) {
+		return peiZiIndexMapper.getUserInfoExtendList(pzIndexCtrlModel);
+	}
+
+	@Override
+	public void createFreePeiziOrder(UserInfoExtendVO userInfoExtendVO) {
+		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
+		Date date = Calendar.getInstance().getTime();
+		//插入配资订单
+		Peizi peizi = new Peizi();
+		peizi.setDataZcpzj(new BigDecimal(10001));
+		peizi.setDataTzbzj(new BigDecimal(1));
+		peizi.setDataPzje(new BigDecimal(10000));
+		peizi.setDataType(PeiziTypeEnum.MFPEIZI.getKey());
+		peizi.setDataTypeSylx("10");
+		peizi.setDataZjsyqx(2);
+		peizi.setDataSubmitDate(date);
+		peizi.setDataJyksDate("2");
+		peizi.setDataCreateDate(date);
+		peizi.setDataUserId(userInfoExtendVO.getUserId());
+		peizi.setDataUserTel(Long.valueOf(userInfoExtendVO.getPhone()));
+		peizi.setDataOperaStatus("10");
+		peiziService.insertPeizi(peizi);
+	}
+	
+	
 
 }

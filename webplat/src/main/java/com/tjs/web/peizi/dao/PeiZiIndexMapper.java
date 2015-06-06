@@ -16,6 +16,8 @@ public interface PeiZiIndexMapper {
 	
 	int insertUserInfoExtendVO(UserInfoExtendVO userInfoExtendVO);
 	
+	int updateUserInfoExtendVO(UserInfoExtendVO userInfoExtendVO);
+	
 	List<UserInfoExtendVO> getUserInfoExtendList(PZIndexCtrlModel pzIndexCtrlModel);
 	
 }
