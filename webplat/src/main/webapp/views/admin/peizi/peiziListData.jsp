@@ -71,9 +71,22 @@
         <td>
           <fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd HH:mm"/>        
         </td>
-        
         <td>
-                  
+              <c:choose>  
+                <c:when test="${peizi.dataJyksDate=='1'}">  
+                  		提交配资申请当天
+                </c:when>
+                 <c:when test="${peizi.dataJyksDate=='2'}">  
+                  		提交配资申请下一个交易日
+                </c:when>                               
+                <c:otherwise>  
+                     	提交配资申请下一个交易日
+                </c:otherwise>  
+            </c:choose>         
+        </td>
+        
+        <td title="${peizi.dataRemark}">
+             ${peizi.dataRemark}     
         </td>       
     </tr>
 

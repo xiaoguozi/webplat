@@ -95,7 +95,7 @@
         
         
         <div class="form-group">
-            <label class="col-md-2 control-label">配置开始时间</label>
+            <label class="col-md-2 control-label">配资开始时间</label>
             <div class="col-md-6">
                 <input type="text" class="form-control  number" name="dataZjsyqx" value="<fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd HH:mm"/>  " readonly="readonly">
             </div>            
@@ -106,13 +106,13 @@
             <div class="col-md-6">
                  <c:choose>  
 	                <c:when test="${peizi.dataJyksDate=='1'}">  
-	                  		当天
+	                  	提交配资申请当天
 	                </c:when>
 	                 <c:when test="${peizi.dataJyksDate=='2'}">  
-	                  		下一个交易日
+	                  		提交配资申请下一个交易日
 	                </c:when>	                              
 	                <c:otherwise>  
-	                     	错误
+	                    	 提交配资申请下一个交易日
 	                </c:otherwise>  
                 </c:choose>             
             </div>            
