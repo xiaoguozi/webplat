@@ -287,11 +287,11 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>天天配</span><br />短线投资 , 4倍杠杆
+<div class="tjs_rightmatch_title"><span>天天配</span><br />短线投资 , 3倍杠杆
 </div>
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">10000元</span> 起配，日息低至<span class="tjs_shalloworange">0.1%</span></div>
 
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">4倍</span> 杠杆 <span class="tjs_shalloworange">4倍</span> 利润</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">3倍</span> 杠杆 <span class="tjs_shalloworange">3倍</span> 利润</div>
 
 <div  style=" height:45px; width:100%;"></div>
 <div class="tjs_right_btndiv"> <a href="rest/web/peizi/ttp/dayCapital" target="_blank" class="tjs_btn">我要配资</a></div>
