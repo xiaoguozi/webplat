@@ -46,7 +46,7 @@ public class Peizi {
 	/** 用户ID*/
 	private Long dataUserId;
 	/** 用户电话*/
-	private Long dataUserTel;
+	private String dataUserTel;
 	/** 备注*/
 	private String dataRemark;
 	
@@ -190,11 +190,11 @@ public class Peizi {
 	}
 	public void setDataUserId(Long dataUserId) {
 		this.dataUserId = dataUserId;
-	}
-	public Long getDataUserTel() {
+	}		
+	public String getDataUserTel() {
 		return dataUserTel;
 	}
-	public void setDataUserTel(Long dataUserTel) {
+	public void setDataUserTel(String dataUserTel) {
 		this.dataUserTel = dataUserTel;
 	}
 	public String getDataRemark() {

@@ -1,21 +1,28 @@
 package com.tjs.web.peizi.controller;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
+import com.tjs.admin.service.UserInfoService;
+import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.StringUtils;
 
@@ -34,6 +41,12 @@ public class TTPController {
 	IPeizi iPeizi;
 	@Resource
 	IPeiziRule iPeiziRule;
+	
+	 @Resource
+	 private UserService userService;
+	 
+	 @Resource
+	 private UserInfoService UserInfoService;
 	/**
 	 * 天天配第一步  或者重新 选择重新选择配资方案
 	 * @return
@@ -100,9 +113,24 @@ public class TTPController {
 		}
 		peizi.setDataStep("3");
 		peizi.setDataOperaStatus("10");//正在验资中
-		if(peizi.getDataId()==null){			
+		if(peizi.getDataId()==null){
+			Date nowDate = new Date();
+			peizi.setDataCreateDate(nowDate);
+			peizi.setDataModifyDate(nowDate);
+			
+			Subject subject = SecurityUtils.getSubject();
+			String username = (String)subject.getPrincipal(); 	
+			if(StringUtils.isNotBlank(username)){
+				User user = userService.selectByUsername(username);
+	    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+	    		peizi.setDataUserName(userInfo==null?"":userInfo.getNickName());
+				peizi.setDataUserTel(username);
+				peizi.setDataUserId(user.getId());	
+			}   			
 			iPeizi.insertPeizi(peizi);
 		}else{
+			Date nowDate = new Date();
+			peizi.setDataModifyDate(nowDate);
 			iPeizi.updatePeizi(peizi);
 		}
 		model.addAttribute("peizi",peizi);	

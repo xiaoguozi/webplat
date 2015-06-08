@@ -135,7 +135,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataJyksDate("2");
 		peizi.setDataCreateDate(date);
 		peizi.setDataUserId(userInfoExtendVO.getUserId());
-		peizi.setDataUserTel(Long.valueOf(userInfoExtendVO.getPhone()));
+		peizi.setDataUserTel(userInfoExtendVO.getPhone());
 		peizi.setDataOperaStatus("10");
 		peiziService.insertPeizi(peizi);
 	}
