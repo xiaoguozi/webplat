@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
             </div>        
@@ -297,11 +297,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		//--配资按钮---
 		
 		 //--默认选中1：1--	
-		//var index=0;
-		//if($('input[name=dataZcpzj]').val()!=''){
-		//	index=parseInt($('input[name=dataZcpzj]').val())/10000-1;		
-		//}		
-		//$('.cpbox1:eq('+index+')').click();
+		var index=0;
+		if($('input[name=dataZcpzj]').val()!=''){
+			index=parseInt($('input[name=dataZcpzj]').val())/10000-1;		
+		}		
+		$('.cpbox1:eq('+index+')').click();
 		//--/自定义下拉框--	                 
 	})
 	

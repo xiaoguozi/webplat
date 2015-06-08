@@ -309,7 +309,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">5倍</span> 杠杆，最高可配<span class="tjs_shalloworange">500万</span></div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/yyp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 

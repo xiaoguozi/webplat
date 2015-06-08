@@ -39,14 +39,8 @@ public class YYPController {
 	 * @return
 	 */
 	@RequestMapping("/monthCapital")
-	public String  dayCapital(Peizi peizio,Model model) {
+	public String  monthCapital(Model model) {
 		
-		//如果dataId不为空，从数据库里面读取记录
-		if(null!=peizio.getDataId()&&!peizio.getDataId().equals(new Long(0))){
-			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
-			model.addAttribute("peizi",peizi);		
-			return "web/peizi/yyp/yypeizi";
-		}
 		
 		//获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
@@ -59,7 +53,6 @@ public class YYPController {
 		PeiziRule peiziRule = lstPeiziRule.get(0);
 		Peizi peizi = new Peizi();
 		//规则信息
-		peizi.setDataId(peizio.getDataId());
 		peizi.setDataType(PeiziTypeEnum.YYPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
 		peizi.setDataZfglf(peiziRule.getRuleZhglf());
@@ -69,16 +62,9 @@ public class YYPController {
 		peizi.setDataRulePcx(peiziRule.getRulePcx());
 		peizi.setDataStep("1");
 		
-		//用户点击上一步选择信息		
-		peizi.setDataZcpzj(peizio.getDataZcpzj());
-		peizi.setDataTzbzj(peizio.getDataTzbzj());
-		peizi.setDataJjx(peizio.getDataJjx());
-		peizi.setDataPcx(peizio.getDataPcx());
-		peizi.setDataJklxTotal(peizio.getDataJklxTotal());
-		peizi.setDataZjsyqx(peizio.getDataZjsyqx());
-		peizi.setDataJyksDate(StringUtils.isBlank(peizio.getDataJyksDate())?"2":peizio.getDataJyksDate());
-		Integer dataZjsyqx = ((null==peizio.getDataZjsyqx()||new Integer(0).equals(peizio.getDataZjsyqx())) ?1:peizio.getDataZjsyqx());
-		peizi.setDataZjsyqx(dataZjsyqx);
+
+		peizi.setDataJyksDate("2");
+		peizi.setDataZjsyqx(1);
 		
 		model.addAttribute("peizi",peizi);		
 		return "web/peizi/yyp/yypeizi";
@@ -103,17 +89,7 @@ public class YYPController {
 	}
 	
 	
-	/**
-	 * 重新选择配资方案
-	 * @return
-	 */
-	@RequestMapping("/monthFirstCapital")
-	public String  monthFirstCapital(Peizi peizi,Model model) {
-		peizi.setDataStep("1");
-		peizi = new Peizi();
-		model.addAttribute("peizi",peizi);	
-		return "web/peizi/yyp/yypeizi";
-	}
+	
 	
 	
 	/**
@@ -139,7 +115,7 @@ public class YYPController {
 	
 
 	/**
-	 * 天天配查看方案进度
+	 * 月月配查看方案进度
 	 * @return
 	 */
 	@RequestMapping("/monthScheduleCapital")

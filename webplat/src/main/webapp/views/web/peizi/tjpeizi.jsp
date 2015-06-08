@@ -80,7 +80,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">1.3</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
 				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/monthCapital">我要配资</a>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/yyp/monthCapital">我要配资</a>
 			</div>
 			<div class="pro_box bbn  top20" style="left:728px;">
 				<h1 class="pro_title">低息配</h1>

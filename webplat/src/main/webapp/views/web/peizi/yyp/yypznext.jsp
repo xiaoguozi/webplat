@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
             </div>        
@@ -63,7 +63,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">月月配</span> </div>
         </div>
     <div class="w100bg">
-      <form id="modalForm" action="rest/web/peizi/yyp/monthLastCapital method="post" >
+      <form id="modalForm" action="rest/web/peizi/yyp/monthLastCapital" method="post">
         <div class="tjs_1108px center">          
            <input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
@@ -231,7 +231,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	     //--返回上一步--
 		$(".tjs_btndiv").click(function (event) {
 			event.preventDefault();
-			$("#modalForm").attr("action","rest/web/peizi/yyp/monthCapital?dataId=${peizi.dataId}");
+			$("#modalForm").attr("action","rest/web/peizi/yyp/monthCapital");
 			$("#modalForm").submit();			   
 		})
 	    //--确定配资--

@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
             </div>        
@@ -73,19 +73,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="mf_box">
                             <table class="ty_tbl" style="width:70%;margin:0 auto;">
                                 <tr>
-                                    <td><span class="colorf06 font26">2001</span> 元<br />总操盘金额</td>
+                                    <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘金额</td>
                                     <td style="width:10px"><b class="font26">=</b></td>
-                                    <td><span class="colorf06 font26">1</span> 元<br />投资本金</td>
+                                    <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########.##" /></span> 元<br />投资本金</td>
                                     <td style="width:10px"><b class="font26">+</b></td>
-                                    <td><span class="colorf06 font26">2000</span> 元<br />配资金额</td>
+                                    <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" /></span> 元<br />配资金额</td>
                                 </tr>
                             </table>
                             <div class="pros_box bord_d" style="width:92%;">
                                 <table class="mf_tbl" style="width:100%">
                                     <tr>
-                                        <td>亏损警告线：<span class="font26 colorf06">无</span></td>
-                                        <td>亏损平仓线：<span class="font26 colorf06">无</span></td>
-                                        <td>账户管理费:<span class="font26 colorf06">无</span></td>
+                                        <td>亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" /></span>元</td>
+                                        <td>亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" /></span>元</td>
+                                        <td>账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
                                     </tr>
                                     
                                     <tr>
@@ -96,7 +96,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </table>
                             </div>
                             <div class="pros_box bord_d" style="width:92%;">
-                                <b class="color158 font26">正在验资......</b>
+                                <b class="color158 font26">                              
+                                <c:choose>  
+					                <c:when test="${peizi.dataOperaStatus=='10'}">  
+					                  		正在验资......
+					                </c:when>
+					                 <c:when test="${peizi.dataOperaStatus=='20'}">  
+					                  		  操盘中......
+					                </c:when>
+					                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+					                  		  已完结
+					                </c:when>					                
+					                <c:otherwise>  
+					                     	正在验资......
+					                </c:otherwise>  
+            					</c:choose>                                                                         
+                                </b>
                                 <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
                             </div>
                        </div>
@@ -126,50 +141,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $(this).hide();
                 $(".tjpz>a>span").removeClass("tspan");
             });
-            /*--操盘金额--*/
-            var sum = 0;
-            $(".cpbox1").each(function (i) {
-                $(this).click(function () {
-                    $(".cpbox1").removeClass("on")
-                    $(this).addClass("on");
-                    sum = $(".cpmoney:eq(" + i + ")").text();
-                    $("#capital").text(sum);
-                    $("#assure").text(sum * 0.25);
-                    $("#loss").text(sum * 0.9);
-                    $("#close").text(sum * 0.875);
-                    $("#fee").text(sum * 0.00075);
-
-                });
-            });
-            /*--/操盘金额--*/
-            /*--QQ咨询--*/
-            $(".about_box1:eq(2)").hover(function () {
-                $(".qq").attr("src", "assets/img/peizi/qqhove.png");
-                $(".zx").css("color", "#1682CA");
-            }, function () {
-                $(".qq").attr("src", "assets/img/peizi/qq.png");
-                $(".zx").css("color", "#8c969d");
-            })
-            /*--/QQ咨询--*/
-            //--自定义下拉框--
-            $(".sel_wrap").click(function () {
-                var money = "7.5";
-                $(".select").toggle();
-                $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
-                $(".select>li").each(function (index) {
-                    $(this).click(function () {
-                        var opt = $(this).html();
-                        $(".lbl").html(opt);
-                        var num = opt.substring(0, 1);
-                        $("#manageFee").text(num * money);
-                    })
-                })
-            })
-            //--/自定义下拉框--
+          
+           
         })
-        function alertbox() {
-            alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-        }
+      
     </script>
 </body>
 </html>

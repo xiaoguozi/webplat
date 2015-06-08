@@ -35,19 +35,11 @@ public class TTPController {
 	@Resource
 	IPeiziRule iPeiziRule;
 	/**
-	 * 天天配第一步
+	 * 天天配第一步  或者重新 选择重新选择配资方案
 	 * @return
 	 */
 	@RequestMapping("/dayCapital")
-	public String  dayCapital(Peizi peizio,Model model) {
-		
-		//如果dataId不为空，从数据库里面读取记录
-		if(null!=peizio.getDataId()&&!peizio.getDataId().equals(new Long(0))){
-			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
-			model.addAttribute("peizi",peizi);		
-			return "web/peizi/ttp/ttpeizi";
-		}
-		
+	public String  dayCapital(Model model) {		
 		//获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
 		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.TTPEIZI.getKey());
@@ -59,7 +51,6 @@ public class TTPController {
 		PeiziRule peiziRule = lstPeiziRule.get(0);
 		Peizi peizi = new Peizi();
 		//规则信息
-		peizi.setDataId(peizio.getDataId());
 		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
 		peizi.setDataZfglf(peiziRule.getRuleZhglf());
@@ -69,16 +60,9 @@ public class TTPController {
 		peizi.setDataRulePcx(peiziRule.getRulePcx());
 		peizi.setDataStep("1");
 		
-		//用户点击上一步选择信息		
-		peizi.setDataZcpzj(peizio.getDataZcpzj());
-		peizi.setDataTzbzj(peizio.getDataTzbzj());
-		peizi.setDataJjx(peizio.getDataJjx());
-		peizi.setDataPcx(peizio.getDataPcx());
-		peizi.setDataJklxTotal(peizio.getDataJklxTotal());
-		peizi.setDataZjsyqx(peizio.getDataZjsyqx());
-		peizi.setDataJyksDate(StringUtils.isBlank(peizio.getDataJyksDate())?"2":peizio.getDataJyksDate());
-		Integer dataZjsyqx = ((null==peizio.getDataZjsyqx()||new Integer(0).equals(peizio.getDataZjsyqx())) ?1:peizio.getDataZjsyqx());
-		peizi.setDataZjsyqx(dataZjsyqx);
+
+		peizi.setDataJyksDate("2");
+		peizi.setDataZjsyqx(1);
 		
 		model.addAttribute("peizi",peizi);		
 		return "web/peizi/ttp/ttpeizi";
@@ -102,18 +86,7 @@ public class TTPController {
 		return "web/peizi/ttp/ttpznext";
 	}
 	
-	
-	/**
-	 * 重新选择配资方案
-	 * @return
-	 */
-	@RequestMapping("/dayFirstCapital")
-	public String  dayFirstCapital(Peizi peizi,Model model) {
-		peizi.setDataStep("1");
-		peizi = new Peizi();
-		model.addAttribute("peizi",peizi);	
-		return "web/peizi/ttp/ttpznext";
-	}
+
 	
 	
 	/**

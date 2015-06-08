@@ -55,7 +55,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 	<li><a href="rest/web/peizi/mfp/freeActivity">免费配</a></li>
                 	<li><a href="rest/web/peizi/mxp/dayCapital">免息配</a></li>
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
             </div>        

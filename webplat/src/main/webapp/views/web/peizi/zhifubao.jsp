@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
                 </ul>
             </div>        
@@ -74,7 +74,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div">
                             <span class="bor_dashed"><a href="rest/web/peizi/ttp/dayCapital">天天配</a></span>
-                            <span class="bor_dashed"><a href="rest/web/peizi/monthCapital">月月配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/yyp/monthCapital">月月配</a></span>
                             <span><a href="rest/web/peizi/lowCapital">低息配</a></span>
                         </div>
                         <li class="wdzj">我的资金</li>
