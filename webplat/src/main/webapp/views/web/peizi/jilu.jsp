@@ -55,7 +55,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
-                    <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
+                    <li><a href="rest/web/peizi/lowCapital">低息1配1</a></li>
                 </ul>
             </div>        
         <!--/二级导航-->
@@ -75,7 +75,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="ttp wypz_div">
                             <span class="bor_dashed"><a href="zhongxin.html">天天配</a></span>
                             <span class="bor_dashed"><a href="yyzhongxin.html">月月配</a></span>
-                            <span><a href="dxzhongxin.html">低息配</a></span>
+                            <span><a href="dxzhongxin.html">低息1配1</a></span>
                         </div>
                         <li class="wdzj">我的资金</li>
                         <div class="bor_dashed moneymx"><a href="rest/web/peizi/moneyDetail">资金明细</a></div>

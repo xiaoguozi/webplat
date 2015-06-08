@@ -55,17 +55,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <ul class="nav_menu" style="width:98px;">
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
-                    <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
+                    <li><a href="rest/web/peizi/lowCapital">低息1配1</a></li>
                 </ul>
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">低息配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">低息1配1</span> </div>
         </div>
     <div class="w100bg">
         <div class="tjs_1108px center">
             <div class="pz_produce">
-				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>低息配 配资申请</b>
+				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>低息1配1 配资申请</b>
 			</div>
             <div class="bgcolor">
                 <div class="w945">

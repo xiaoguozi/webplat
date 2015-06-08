@@ -56,7 +56,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<li><a href="rest/web/peizi/mxp/monthCapital">免息配</a></li>
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
-                    <li><a href="rest/web/peizi/lowCapital">低息配</a></li>
+                    <li><a href="rest/web/peizi/lowCapital">低息1配1</a></li>
                 </ul>
             </div>        
         <!--/二级导航-->
@@ -76,7 +76,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="ttp wypz_div">
                             <span class="bor_dashed"><a href="rest/web/peizi/personalCenter">天天配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/monthCenterCapital">月月配</a></span>
-                            <span><a href="rest/web/peizi/lowCenterCapital">低息配</a></span>
+                            <span><a href="rest/web/peizi/lowCenterCapital">低息1配1</a></span>
                         </div>
                         <li class="wdzj">我的资金</li>
                         <div class="bor_dashed moneymx"><a href="rest/web/peizi/moneyDetail">资金明细</a></div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     </tbody>
                 </table>
-                <b class="my_tit tit1">低息配 <span class="tit_span">进行中<span class="colorf06">0</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
+                <b class="my_tit tit1">低息1配1 <span class="tit_span">进行中<span class="colorf06">0</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
                 <!--<table class="my_tbl2">
                     <tr>
                         <td><span class="colorf06 font30">2001</span> 元<br />总操盘资金</td>
