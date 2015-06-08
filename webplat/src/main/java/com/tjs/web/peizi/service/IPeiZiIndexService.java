@@ -2,6 +2,7 @@ package com.tjs.web.peizi.service;
 
 import java.util.List;
 
+import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.web.peizi.controller.PZIndexCtrlModel;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
 import com.tjs.web.peizi.model.UserInfoExtendVO;
@@ -19,6 +20,8 @@ public interface IPeiZiIndexService {
 	
 	public List<UserInfoExtendVO> getUserInfoExtendList(PZIndexCtrlModel pzIndexCtrlModel);
 	
-	public void createFreePeiziOrder(UserInfoExtendVO userInfoExtendVO);
+	public void createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType);
+	
+	public void createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi);
 	
 }

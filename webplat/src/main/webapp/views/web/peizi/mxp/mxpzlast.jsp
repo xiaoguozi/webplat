@@ -29,7 +29,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="home_all">
         <%@ include file="/views/web/header.jsp"%>
         <!-- /header_top -->
-    <input type="hidden" name="dataId" value="${peizi.dataId}"/>
+
         <div class="header_menu">
             <div class="tjs_1108px center" style="position: relative;">
                 <div class="logo_wrap">
@@ -61,12 +61,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">月月配</span> </div>
         </div>
         <div class="w100bg">
+         <input type="hidden" name="dataId" value="${peizi.dataId}"/>
             <div class="tjs_1108px center">
                 <div class="pz_produce">
-                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
+                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免息配 配资申请</b>
                 </div>
                 <div class="bgcolor">
                     <div class="w945 step3">
@@ -78,7 +79,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="datastep3">
                         <h1 class="color54a">操盘申请成功！</h1>
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您！</p>
-                        <a class="tjs_next_btn mt30" href="rest/web/peizi/ttp/dayScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
+                        <a class="tjs_next_btn mt30" href="rest/web/peizi/mxp/monthScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
                     </div>
                     <div class="w985">
                         <p class="color158 font18">配资进度</p>
@@ -168,11 +169,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $(this).hide();
                 $(".tjpz>a>span").removeClass("tspan");
             });
-           
-           
-           
+         
+         
         })
-      
+       
     </script>
 </body>
 </html>

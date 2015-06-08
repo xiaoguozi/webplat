@@ -19,6 +19,7 @@
                <!--  /rest/admin/** = authc -->
                 /rest/web/userCenter/** = user
                 /rest/web/peizi/mfp/freeNextActivity/** = user
+                /rest/web/peizi/mxp/monthNextCapital/** = user
                 <!-- 其他资源不需要认证 -->
                 /** = anon
             </value>

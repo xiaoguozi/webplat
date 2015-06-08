@@ -8,11 +8,11 @@ public class PeiZiConstants {
 	/** 免息配总数量 */
 	public static final int FREE_CHARGE_COUNT = 100;
 	
-	/** 免费配 */
-	public static final int TYPE_FREE_ALL = 1;
-	
-	/** 免息配 */
-	public static final int TYPE_FREE_CHARGE = 2;
+//	/** 免费配 */
+//	public static final int TYPE_FREE_ALL = 1;
+//	
+//	/** 免息配 */
+//	public static final int TYPE_FREE_CHARGE = 2;
 	
 	/** 是否已经使用过了  */
 	public static final int IS_USED = 1;

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.service.UserService;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
@@ -59,12 +60,12 @@ public class PeiZiMFIndexController {
 				if(username!=null){
 					User user = userService.selectByUsername(username);
 					pzIndexCtrlModel.setUserId(user.getId());
-					pzIndexCtrlModel.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+					pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MFPEIZI.getIntegerKey());
 					List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
 					if(lstUser!=null 
 							&& lstUser.size()>0){
 						UserInfoExtendVO userInfoExtendVO = lstUser.get(0);
-						if(userInfoExtendVO.getPeiziType()==PeiZiConstants.TYPE_FREE_ALL
+						if(userInfoExtendVO.getPeiziType()==PeiziTypeEnum.MFPEIZI.getIntegerKey()
 								&& userInfoExtendVO.getIsOwnResource()==0){
 							model.addAttribute("result", PeiZiConstants.RESULT_ALREADY_USED);
 						}
@@ -84,6 +85,7 @@ public class PeiZiMFIndexController {
 	@RequestMapping("/freeNextActivity")
 	public String  freeNextActivity(Model model) {
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
+		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MFPEIZI.getIntegerKey());
 		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
 		int result = iPeiZiIndexService.checkFreePeiZiIsValid(pzIndexCtrlModel);
 		if(PeiZiConstants.RESULT_ALREADY_USED==result){
@@ -114,7 +116,7 @@ public class PeiZiMFIndexController {
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		User user = userService.selectByUsername(username);
 		pzIndexCtrlModel.setUserId(user.getId());
-		pzIndexCtrlModel.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MFPEIZI.getIntegerKey());
 		List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
 		if(lstUser!=null && lstUser.size()>0){
 			UserInfoExtendVO userInfoExtendVO = lstUser.get(0);
@@ -125,7 +127,7 @@ public class PeiZiMFIndexController {
 				//1、更新状态并产生订单
 				userInfoExtendVO.setIsOwnResource(0);
 				userInfoExtendVO.setPhone(username);
-				iPeiZiIndexService.createFreePeiziOrder(userInfoExtendVO);
+				iPeiZiIndexService.createFreeAllPeiziOrder(userInfoExtendVO, PeiziTypeEnum.MFPEIZI.getKey());
 			}
 		}
 		

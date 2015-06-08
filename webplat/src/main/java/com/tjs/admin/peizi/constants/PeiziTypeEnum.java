@@ -2,7 +2,7 @@ package com.tjs.admin.peizi.constants;
 
 public enum PeiziTypeEnum {
 	/**免费配资*/
-	MFPEIZI("10","免费配资"),
+	MFPEIZI("10","免费配"),
 	
 	/**免费配资*/
 	TTPEIZI("20","天天配"),

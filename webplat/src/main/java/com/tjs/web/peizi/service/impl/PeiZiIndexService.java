@@ -12,7 +12,6 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.model.User;
-import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
@@ -45,7 +44,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		
 		//查询用户
 		pzIndexCtrlModel.setUserId(user.getId());
-		pzIndexCtrlModel.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+		pzIndexCtrlModel.setPeiziType(pzIndexCtrlModel.getPeiziType());
 		List<UserInfoExtendVO> lstUserVO = peiZiIndexMapper.getUserInfoExtendList(pzIndexCtrlModel);
 		
 	    List<FreePeiziDetailVO> lstPZVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel.getDateString());
@@ -54,7 +53,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 			FreePeiziDetailVO vo = new FreePeiziDetailVO();
 			vo.setPeiziDate(Calendar.getInstance().getTime());
 			vo.setPeiziCount(1);
-			vo.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+			vo.setPeiziType(pzIndexCtrlModel.getPeiziType());
 			peiZiIndexMapper.insertFreePeiziDetailVO(vo);
 			
 			if(lstUserVO==null || lstUserVO.size()==0){
@@ -62,7 +61,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 				UserInfoExtendVO userInfoExtendVO = new UserInfoExtendVO();
 				userInfoExtendVO.setUserId(user.getId());
 				userInfoExtendVO.setIsOwnResource(PeiZiConstants.IS_OWN_RESOURCE);
-				userInfoExtendVO.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+				userInfoExtendVO.setPeiziType(pzIndexCtrlModel.getPeiziType());
 				peiZiIndexMapper.insertUserInfoExtendVO(userInfoExtendVO);
 			}else{
 				//查询该用户是否参加过该活动
@@ -83,7 +82,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 					UserInfoExtendVO userInfoExtendVO = new UserInfoExtendVO();
 					userInfoExtendVO.setUserId(user.getId());
 					userInfoExtendVO.setIsOwnResource(PeiZiConstants.IS_OWN_RESOURCE);
-					userInfoExtendVO.setPeiziType(PeiZiConstants.TYPE_FREE_ALL);
+					userInfoExtendVO.setPeiziType(pzIndexCtrlModel.getPeiziType());
 					peiZiIndexMapper.insertUserInfoExtendVO(userInfoExtendVO);
 					
 					//更新计数
@@ -121,7 +120,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	}
 
 	@Override
-	public void createFreePeiziOrder(UserInfoExtendVO userInfoExtendVO) {
+	public void createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
 		Date date = Calendar.getInstance().getTime();
 		//插入配资订单
@@ -129,7 +128,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataZcpzj(new BigDecimal(10001));
 		peizi.setDataTzbzj(new BigDecimal(1));
 		peizi.setDataPzje(new BigDecimal(10000));
-		peizi.setDataType(PeiziTypeEnum.MFPEIZI.getKey());
+		peizi.setDataType(peiziType);
 		peizi.setDataTypeSylx("10");
 		peizi.setDataZjsyqx(2);
 		peizi.setDataSubmitDate(date);
@@ -141,6 +140,14 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peiziService.insertPeizi(peizi);
 	}
 	
+	@Override
+	public void createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi) {
+		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
+		Date date = Calendar.getInstance().getTime();
+		peizi.setDataSubmitDate(date);
+		
+		peiziService.insertPeizi(peizi);
+	}
 	
 
 }

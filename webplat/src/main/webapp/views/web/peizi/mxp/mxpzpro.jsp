@@ -61,12 +61,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <a href="ttpeizi.html" class="path_item">天天配</a> <span class="sep">&gt;</span> <span class="txt">方案进度</span></div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <a href="ttpeizi.html" class="path_item">免息配</a> <span class="sep">&gt;</span> <span class="txt">方案进度</span></div>
         </div>
         <div class="w100bg">
             <div class="tjs_1108px center">
                 <div class="pz_produce">
-                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 方案进度</b>
+                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免息配 方案进度</b>
                 </div>
                 <div class="bgcolor">
                     <div class="programbox">
@@ -74,13 +74,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="pros_box">
                             <p>交易账户： <span class="color158">99787</span></p>
                             <p>交易密码： <span class="color158">2567</span>（为了您的资金安全，请妥善保管好密码）</p>
-                            <p>重点提醒： 交易前请先阅读 <a href="#">天天配合作操盘协议</a></p>
+                            <p>重点提醒： 交易前请先阅读 <a href="#">免息配合作操盘协议</a></p>
                             <p>交易软件： <a href="rest/web/peizi/trade">进入交易软件下载页面</a>（恒生系统每晚20:00进行维护，这段时间无法进行操作）</p>
                         </div>
                         <h3>方案详情</h3>
                         <div class="pros_box">
                             <p>开始时间： 2015-8-18</p>
-                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="#">天天配合作操盘协议</a></p>
+                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="#">免息配合作操盘协议</a></p>
                         </div>
                         <table class="ty_tbl">
                             <tr>

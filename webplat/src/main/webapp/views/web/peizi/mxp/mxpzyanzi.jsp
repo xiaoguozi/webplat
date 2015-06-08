@@ -27,7 +27,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 <body>
     <div class="home_all">
-       <%@ include file="/views/web/header.jsp"%>
+        <%@ include file="/views/web/header.jsp"%>
         <!-- /header_top -->
 
         <div class="header_menu">
@@ -61,15 +61,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">免息配</span> </div>
         </div>
         <div class="w100bg">
             <div class="tjs_1108px center">
                 <div class="pz_produce">
-                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
+                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免息配 配资申请</b>
                 </div>
                 <div class="bgcolor">
                     <div class="programbox">
+                        <h3>免费体验</h3>
                         <div class="mf_box">
                             <table class="ty_tbl" style="width:70%;margin:0 auto;">
                                 <tr>
@@ -85,7 +86,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <tr>
                                         <td>亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" /></span>元</td>
                                         <td>亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" /></span>元</td>
-                                        <td>账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
+                                        <td>账户管理费:<span class="font26 colorf06">0</span>元</td>
                                     </tr>
                                     
                                     <tr>
@@ -96,8 +97,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 </table>
                             </div>
                             <div class="pros_box bord_d" style="width:92%;">
-                                <b class="color158 font26">
-                                 <c:choose>  
+                                <b class="color158 font26">                              
+                                <c:choose>  
 					                <c:when test="${peizi.dataOperaStatus=='10'}">  
 					                  		正在验资......
 					                </c:when>
@@ -110,8 +111,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					                <c:otherwise>  
 					                     	正在验资......
 					                </c:otherwise>  
-            					</c:choose>                                        
-                                	</b>
+            					</c:choose>                                                                         
+                                </b>
                                 <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
                             </div>
                        </div>
@@ -121,7 +122,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
     </div>
     <!-- 配资页尾 -->
- <%@ include file="/views/web/footer.jsp"%>
+    <%@ include file="/views/web/footer.jsp"%>
     <!-- 配资页尾 结束 -->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -141,8 +142,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $(this).hide();
                 $(".tjpz>a>span").removeClass("tspan");
             });
-            
+          
            
+        })
+      
     </script>
 </body>
 </html>
