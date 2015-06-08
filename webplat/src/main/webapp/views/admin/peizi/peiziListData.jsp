@@ -61,7 +61,7 @@
                   		月利率:${peizi.dataYll}% 
                 </c:when>
                  <c:when test="${peizi.dataTypeSylx=='30'}">  
-                  		年利率:${peizi.datanll}%
+                  		年利率:${peizi.dataNll}%
                 </c:when>                
                 <c:otherwise>  
                      	错误

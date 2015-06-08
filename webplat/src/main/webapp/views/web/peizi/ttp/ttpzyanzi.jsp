@@ -85,7 +85,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <tr>
                                         <td>亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" /></span>元</td>
                                         <td>亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" /></span>元</td>
-                                        <td>账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
+                                        <td>利息费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
                                     </tr>
                                     
                                     <tr>

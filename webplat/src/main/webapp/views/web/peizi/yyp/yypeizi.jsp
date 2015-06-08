@@ -251,7 +251,7 @@ function arithmetic() {
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
 	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*yll*qx/100).toFixed(1));
+	            $("#close").text((pzje*rulepcx/100).toFixed(1));
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");
 	             

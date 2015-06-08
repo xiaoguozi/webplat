@@ -21,8 +21,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/slide.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
+    <script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
 	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -99,16 +98,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="clear"></div>
                     <span class="box1">2</span><div class="font_word18">选择您的配资期限</div>
                     <div class="caopanbox">
-                        <div class="cpbox1 on" style="width:125px; height:72px;"><span>3</span>个月<div class="goubox"></div>
+                        <div class="cpbox1 on" style="width:125px; height:72px;" month="3"><span>3</span>个月<div class="goubox"></div>
                         </div>
-                        <div class="cpbox1" style="width:125px; height:72px;"><span>6</span>个月<div class="goubox"></div>
+                        <div class="cpbox1" style="width:125px; height:72px;" month="6"><span>6</span>个月<div class="goubox"></div>
                         </div>
-                        <div class="cpbox1" style="width:125px; height:72px;"><span>9</span>个月<div class="goubox"></div>
+                        <div class="cpbox1" style="width:125px; height:72px;" month="9"><span>9</span>个月<div class="goubox"></div>
                         </div>
-                        <div class="cpbox1" style="width:125px; height:72px;"><span>12</span>个月<div class="goubox"></div>
+                        <div class="cpbox1" style="width:125px; height:72px;" month="12"><span>12</span>个月<div class="goubox"></div>
                         </div>
                         <hr class="pc"/> 
-                        <p style="font-size:16px;">借款年利率<span class="colorf06">8.28%</span>,借款利息 <span id="lixi" class="colorf06"></span> 元</p>
+                        <p style="font-size:16px;">借款年利率<span class="colorf06"><fmt:formatNumber value="${peizi.dataNll}" pattern="########.00" />%</span>,借款利息 <span id="lixi" class="colorf06"></span> 元</p>
                         <hr class="pc"/>
                     </div>
                 </div>  
@@ -193,23 +192,25 @@ function arithmetic(){
         strTzbzj = 0;
     }
     //--获取键盘输入的投资本金--
-    var sum = parseFloat(strTzbzj);
+    var sum = parseInt(strTzbzj);
     if (sum==null||sum<0) {
         sum = 0;
     }
     //--年利率--
     var strlv = $('input[name=dataNll]').val();
-    alert(strlv);
     strlv=(strlv==''?'0':strlv);
     var lv = parseFloat(strlv);
-    
-    alert(lv);
-   
+    var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
 
-    //$("#lixi").text((lv * sum * (3 / 12)).toFixed(2));  
+     var month = parseInt($('.on').attr('month'));   
+     $("#lixi").text(((lv*sum*month)/(100*12)).toFixed(2)); 
+     $("#capital").text(sum*2);
+   	 $("#loss").text((sum*rulejjx/100).toFixed(2));
+     $("#close").text((sum*rulepcx/100).toFixed(2));
 }
 
-arithmetic();
+
 
 $(document).ready(function () {
     /*-二级导航-*/
@@ -234,9 +235,60 @@ $(document).ready(function () {
         $(this).click(function () {            
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");
+           
+            //--年利率--
+            var strlv = $('input[name=dataNll]').val();
+            strlv=(strlv==''?'0':strlv);
+            var lv = parseFloat(strlv);
+            var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
+        	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
+        	var month = parseInt($('.on').attr('month')); 
+        	var strTzbzj=$.trim($("#principal").val()).replace('/,/g','');
+        	strTzbzj =(strTzbzj==''?'0':strTzbzj);
+        	var sum = parseInt(strTzbzj);
+        	
+            $("#lixi").text(((lv*sum*month)/(100*12)).toFixed(2)); 
+            $("#capital").text(sum*2);
+          	$("#loss").text((sum*rulejjx/100).toFixed(2));
+            $("#close").text((sum*rulepcx/100).toFixed(2));
+            
+            
         });
     });
     /*--/操盘金额--*/
+    
+    //--配资按钮--
+	$(".tjs_btn").click(function(event){
+		event.preventDefault();	
+		//判断投资保证金是否是1000的整数倍
+		var strTzbzj= $.trim($("#principal").val()).replace('/,/g','');		
+		if(strTzbzj==''){strTzbzj="0"}
+		var iTzbzj = parseInt(strTzbzj,'10');
+		
+		if(iTzbzj<10000){
+			errTip("保证金最低10000元 ", 1);
+			return ;
+		}
+
+		if(iTzbzj%1000!=0){
+			errTip("投资本金必须为1000的整数倍 ", 1);
+			return;
+		}
+		
+		if(!$('#Checkbox1').attr("checked")){
+			errTip("请先阅读并同意《合作操盘协议》", 1);
+			return ;
+		}
+	
+		$("input[name=dataZcpzj]").val($("#capital").text());
+		$("input[name=dataJjx]").val($("#loss").text());
+		$("input[name=dataPcx]").val($("#close").text());
+		$("input[name=dataJklxTotal]").val($("#lixi").text());
+		$("input[name=dataZjsyqx]").val($('.on').attr('month'));
+		$("#modalForm").submit();						
+	});
+    
+	arithmetic();  
  
 })
 </script>

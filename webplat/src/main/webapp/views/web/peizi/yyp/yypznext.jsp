@@ -132,7 +132,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <td class="t-right"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /> 元</td>
                             </tr>
                             <tr>
-                                <td class="t-left">预存${peizi.dataZjsyqx}个月账户管理费</td>
+                                <td class="t-left">预付${peizi.dataZjsyqx}个月利息费</td>
                                 <td class="t-right"><fmt:formatNumber value="${peizi.dataJklxTotal}" pattern="########.##" />元</td>
                             </tr>
                             <tr>
