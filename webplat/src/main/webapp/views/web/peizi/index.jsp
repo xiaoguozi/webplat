@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<li><a href="rest/web/peizi/mxp/dayCapital">免息配</a></li>
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
-                    <li><a href="rest/web/peizi/lowCapital">低息1配1</a></li>
+                    <li><a href="rest/web/peizi/dxp/lowCapital">低息1配1</a></li>
                 </ul>
             </div>        
         <!--/二级导航-->
@@ -147,7 +147,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">3个月</span>起配</p>
 				<p class="w230">最高<span class="colorf06"> 1倍 </span>杠杆，风险超低</p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/lowCapital">我要配资</a>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/dxp/lowCapital">我要配资</a>
 			</div>
 			<div class="pro_box top380 top370"style="left:728px;">
 				<h1 class="pro_title">淘金募集</h1>
