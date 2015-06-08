@@ -108,8 +108,9 @@ public class PEIndexProductController {
     public String productChart(@RequestParam(value="productId") String productId) {
 		PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
 		peProductNetCtrlModel.setProductId(productId);
-		peProductNetCtrlModel.setSortField("netTime");
-		peProductNetCtrlModel.setSortType("desc");
+		peProductNetCtrlModel.setSortField("net_time");
+		peProductNetCtrlModel.setSortType("asc");
+		peProductNetCtrlModel.setPageNo(0);
 		PEProduct peProduct = peProductService.getPEProductById(Long.valueOf(productId));
 
 		List<PEChartVO> lstChartVO = new ArrayList<PEChartVO>();
@@ -136,10 +137,16 @@ public class PEIndexProductController {
 			return 0L;
 		}
 		
-		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		Calendar cal = Calendar.getInstance();
 		cal.setTime(dateSource);
 		
-		return dateSource.getTime()+cal.getTimeZone().getRawOffset();
+		int zoneOffset = cal.get(Calendar.ZONE_OFFSET);
+		int dstOffset = cal.get(Calendar.DST_OFFSET);
+		
+		cal.add(Calendar.MILLISECOND, -(zoneOffset + dstOffset));
+		
+		return cal.getTimeInMillis();
+		
 	}
 	
 }

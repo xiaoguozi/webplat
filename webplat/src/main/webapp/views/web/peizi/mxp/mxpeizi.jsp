@@ -58,7 +58,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a><span class="sep">&gt;</span> <a href="rest/web/peizi/activity" class="path_item">淘金活动</a> <span class="sep">&gt;</span> <span class="txt">免息配</span> </div>
         </div>
      
   
@@ -67,7 +67,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="tjs_1108px center">
         
             <div class="pz_produce">
-				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 配资申请</b>
+				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>免息配 配资申请</b>
 			</div>
 			
 			<input type="hidden" name="dataId" value="${peizi.dataId}"/>

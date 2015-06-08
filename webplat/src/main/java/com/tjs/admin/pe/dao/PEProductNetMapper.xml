@@ -43,7 +43,7 @@
          FROM pe_product_net
          WHERE  product_id = #{productId}
          <if test="sortField!= null and sortField!= ''">
-           ORDER BY #{sortField} #{sortType}
+           ORDER BY ${sortField} ${sortType}
         </if>
         
          <if test="pageNo!= 0">
