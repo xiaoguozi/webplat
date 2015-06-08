@@ -72,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
 			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
 			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.datanll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.dataNll}" pattern="########.##" />"/>
 			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
 			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
 			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
