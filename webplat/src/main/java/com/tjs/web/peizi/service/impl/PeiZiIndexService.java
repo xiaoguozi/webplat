@@ -145,8 +145,12 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
 		Date date = Calendar.getInstance().getTime();
 		peizi.setDataSubmitDate(date);
-		
-		peiziService.insertPeizi(peizi);
+		if (peizi.getDataId() == null) {
+			//设置用户信息
+			peiziService.insertPeizi(peizi);
+		} else {
+			peiziService.updatePeizi(peizi);
+		}
 	}
 	
 
