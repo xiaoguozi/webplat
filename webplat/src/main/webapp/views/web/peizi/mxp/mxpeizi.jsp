@@ -141,7 +141,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
-                     <div style="height:85px">
+                     <div style="height:65px">
                  	   如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox"  checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br />
                     </div>                 

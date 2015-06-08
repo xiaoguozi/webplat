@@ -67,37 +67,6 @@ public class PeiZiMXController {
 			return "web/peizi/mxp/mxpeizi";
 		}
 		
-		//查询当天免费配活动是否有名额
-		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
-		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
-		List<FreePeiziDetailVO> lstPZVO = iPeiZiIndexService.getFreePeiziDetailList(pzIndexCtrlModel);
-		if(lstPZVO!=null 
-				&& lstPZVO.size()>0){
-			if(lstPZVO.get(0).getPeiziCount()>=PeiZiConstants.FREE_CHARGE_COUNT){
-				model.addAttribute("result", PeiZiConstants.RESULT_NO_AMOUNT);
-				return "web/peizi/mxp/mxpeizi";
-			}else{
-				Subject subject = SecurityUtils.getSubject();
-				String username = (String)subject.getPrincipal();
-				if(username!=null){
-					User user = userService.selectByUsername(username);
-					pzIndexCtrlModel.setUserId(user.getId());
-					pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());
-					List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
-					if(lstUser!=null 
-							&& lstUser.size()>0){
-						UserInfoExtendVO userInfoExtendVO = lstUser.get(0);
-						if(userInfoExtendVO.getPeiziType()==PeiziTypeEnum.MXPEIZI.getIntegerKey()
-								&& userInfoExtendVO.getIsOwnResource()==0){
-							model.addAttribute("result", PeiZiConstants.RESULT_ALREADY_USED);
-							return "web/peizi/mxp/mxpeizi";
-						}
-					}
-				}
-			}
-		}
-		
-
 		// 获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
 		peiziRuleCtrlModel.getPeiziRule().setRuleType(
@@ -136,6 +105,39 @@ public class PeiZiMXController {
 		peizi.setDataZjsyqx(dataZjsyqx);
 
 		model.addAttribute("peizi", peizi);
+		
+		
+		//查询当天免费配活动是否有名额
+		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
+		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
+		List<FreePeiziDetailVO> lstPZVO = iPeiZiIndexService.getFreePeiziDetailList(pzIndexCtrlModel);
+		if(lstPZVO!=null 
+				&& lstPZVO.size()>0){
+			if(lstPZVO.get(0).getPeiziCount()>=PeiZiConstants.FREE_CHARGE_COUNT){
+				model.addAttribute("result", PeiZiConstants.RESULT_NO_AMOUNT);
+				return "web/peizi/mxp/mxpeizi";
+			}else{
+				Subject subject = SecurityUtils.getSubject();
+				String username = (String)subject.getPrincipal();
+				if(username!=null){
+					User user = userService.selectByUsername(username);
+					pzIndexCtrlModel.setUserId(user.getId());
+					pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());
+					List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
+					if(lstUser!=null 
+							&& lstUser.size()>0){
+						UserInfoExtendVO userInfoExtendVO = lstUser.get(0);
+						if(userInfoExtendVO.getPeiziType()==PeiziTypeEnum.MXPEIZI.getIntegerKey()
+								&& userInfoExtendVO.getIsOwnResource()==0){
+							model.addAttribute("result", PeiZiConstants.RESULT_ALREADY_USED);
+							return "web/peizi/mxp/mxpeizi";
+						}
+					}
+				}
+			}
+		}
+		
+
 		return "web/peizi/mxp/mxpeizi";
 	}
 
@@ -218,21 +220,16 @@ public class PeiZiMXController {
 				//1、更新状态并产生订单
 				userInfoExtendVO.setIsOwnResource(0);
 				userInfoExtendVO.setPhone(username);
+				
+				peizi.setDataStep("3");
+				peizi.setDataOperaStatus("10");// 正在验资中
+				peizi.setDataUserId(user.getId());
+				peizi.setDataUserId(Long.valueOf(username));
+				
 				iPeiZiIndexService.createFreeChargePeiziOrder(userInfoExtendVO, peizi);
 			}
 		}
 		
-		peizi.setDataStep("3");
-		peizi.setDataOperaStatus("10");// 正在验资中
-		peizi.setDataUserId(user.getId());
-		peizi.setDataUserId(Long.valueOf(username));
-		
-		if (peizi.getDataId() == null) {
-			//设置用户信息
-			iPeizi.insertPeizi(peizi);
-		} else {
-			iPeizi.updatePeizi(peizi);
-		}
 		model.addAttribute("peizi", peizi);
 		return "web/peizi/mxp/mxpzlast";
 	}
