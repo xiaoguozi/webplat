@@ -28,7 +28,7 @@ public class Peizi {
 	/**月利率 */
 	private BigDecimal dataYll;
 	/**年利率 */
-	private BigDecimal datanll;
+	private BigDecimal dataNll;
 	/**借款利息\n如果是账户管理费用：   借款利息 =资金使用期限 *每天账户管理费\n如果是月利率     借款利息 = 资金使用期限*月利率*配资金额\n如果是年利率     借款利息 =  资金使用期限/12*年利率*配资金额 */
 	private BigDecimal dataJklxTotal;
 	/**配资提交时间 */
@@ -135,11 +135,13 @@ public class Peizi {
 	public void setDataYll(BigDecimal dataYll) {
 		this.dataYll = dataYll;
 	}
-	public BigDecimal getDatanll() {
-		return datanll;
+
+	
+	public BigDecimal getDataNll() {
+		return dataNll;
 	}
-	public void setDatanll(BigDecimal datanll) {
-		this.datanll = datanll;
+	public void setDataNll(BigDecimal dataNll) {
+		this.dataNll = dataNll;
 	}
 	public BigDecimal getDataJklxTotal() {
 		return dataJklxTotal;

@@ -12,7 +12,7 @@
 		<result column="data_zjsyqx" property="dataZjsyqx" jdbcType="INTEGER" />
 		<result column="data_zfglf" property="dataZfglf" javaType="java.math.BigDecimal" />
 		<result column="data_yll" property="dataYll" javaType="java.math.BigDecimal" />
-		<result column="data_nll" property="datanll" javaType="java.math.BigDecimal" />
+		<result column="data_nll" property="dataNll" javaType="java.math.BigDecimal" />
 		<result column="data_jklx_total" property="dataJklxTotal" javaType="java.math.BigDecimal" />
 		<result column="data_submit_date" property="dataSubmitDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />	
 		
@@ -89,7 +89,7 @@
 		#{dataZjsyqx},
 		#{dataZfglf},
 		#{dataYll},
-		#{datanll},
+		#{dataNll},
 		#{dataJklxTotal},
 		#{dataSubmitDate},
 		#{dataJyksDate},

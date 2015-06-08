@@ -54,7 +54,7 @@ public class TTPController {
 		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
 		peizi.setDataZfglf(peiziRule.getRuleZhglf());
-		peizi.setDatanll(peiziRule.getRuleNll());
+		peizi.setDataNll(peiziRule.getRuleNll());
 		peizi.setDataYll(peiziRule.getRuleYll());
 		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
 		peizi.setDataRulePcx(peiziRule.getRulePcx());

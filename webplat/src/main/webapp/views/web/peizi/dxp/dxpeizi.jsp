@@ -182,46 +182,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <%@ include file="/views/web/footer.jsp"%>
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
-function arithmetic() {
-    if (isNaN($("#principal")).val()) {
+function arithmetic(){
+	var strTzbzj=$.trim($("#principal").val()).replace('/,/g','');
+	strTzbzj =(strTzbzj==''?'0':strTzbzj);
+    if (isNaN(strTzbzj)) {
         $("#principal").val("0");
     }
-    var sum = 0;
-    var num = "1.3%";
-    var lv = "0.0828";
-    sum = $("#principal").val();
-    if (sum.substring(0, 1) == 0) {
+    if (strTzbzj.substring(0, 1) == '0') {
         $("#principal").val("");
+        strTzbzj = 0;
+    }
+    //--获取键盘输入的投资本金--
+    var sum = parseFloat(strTzbzj);
+    if (sum==null||sum<0) {
         sum = 0;
     }
-    if (sum==""||sum==null||sum<0) {
-        sum = 0;
-    }
+    //--年利率--
+    var strlv = $('input[name=datanll]').val();
+    alert(strlv);
+    strlv=(strlv==''?'0':strlv);
+    var lv = parseFloat(strlv);
     
-    
-    $(".cpbox1").each(function (i) {
-        $(".cpmoney:eq(0)").text(sum);
-        $(".cpmoney:eq(1)").text(sum * 2);
-        $(".cpmoney:eq(2)").text(sum * 3);
-        $(".cpmoney:eq(3)").text(sum * 4);
-        $(".cpmoney:eq(4)").text(sum * 5);
-        $("#capital").text((sum*2).toFixed(0));
-        $("#loss").text((sum * 1.6).toFixed(0));
-        $("#close").text((sum * 1.5).toFixed(0));
-        $("#Dinterests").text(sum * 0.013);
-        $("#Minterests").text(num);
-    });
-    $("#lixi").text((lv * sum * (3 / 12)).toFixed(2));
+    alert(lv);
+   
 
-    $(".cpbox1").each(function (i) {
-        $(this).click(function () {
-
-            $(".cpbox1").removeClass("on")
-            $(this).addClass("on");
-            a = $(".cpbox1>span:eq('" + i + "')").text();
-            $("#lixi").text((sum * lv * (a / 12)).toFixed(2));
-        });
-    });
+    //$("#lixi").text((lv * sum * (3 / 12)).toFixed(2));  
 }
 
 arithmetic();
