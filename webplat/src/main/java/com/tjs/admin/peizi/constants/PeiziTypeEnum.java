@@ -11,7 +11,10 @@ public enum PeiziTypeEnum {
 	YYPEIZI("30","月月配"),
 	
 	/**免费配资*/
-	DXPEIZI("40","低息配");
+	DXPEIZI("40","低息配"),
+	
+	/** 免息配 */
+	MXPEIZI("50","免息配");
 	
 	
 	
