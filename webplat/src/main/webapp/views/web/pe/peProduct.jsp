@@ -813,7 +813,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            //设置3条线宽度也可以在下面单独设置
 	            series: chart_data
 	        }, function (chart) { // on complete
-	            chart.renderer.image('assets/img/ui2/tjs_logo.png', chartObj.width/2-115, 30, 230, 100)
+	            chart.renderer.image('assets/img/logo_watermark.png', chartObj.width/2-115, 30, 230, 100)
 	                .add();
 
 	        });
