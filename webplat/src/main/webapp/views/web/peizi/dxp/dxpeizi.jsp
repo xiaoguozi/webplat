@@ -64,7 +64,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">低息1配1</span> </div>
         </div>
     <div class="w100bg">
-        <div class="tjs_1108px center">
+    <form id="modalForm" action="rest/web/peizi/dxp/lowNextCapital" method="post" >
+    		<input type="hidden" name="dataId" value="${peizi.dataId}"/>
+			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
+			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
+			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
+			<input type="hidden" name="datanll" value="<fmt:formatNumber value="${peizi.datanll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			
+			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
+			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJjx" value="<fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataPcx" value="<fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
+			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
+        <div class="tjs_1108px center">        
             <div class="pz_produce">
 				<img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>低息1配1配资申请</b>
 			</div>
@@ -79,7 +95,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/> 
                 <div class="caopanjine">
                     <span class="box1">1</span><div class="font_word18">输入您的投资保障金</div>
-                    <input class="input_txt1" id="principal" onkeyup="arithmetic()" type="text" maxlength="7" /><span class="pos_d">元</span>
+                    <input class="input_txt1" id="principal" onkeyup="arithmetic()" name="dataTzbzj" type="text" maxlength="7"  value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########" />"/><span class="pos_d">元</span>
                     <div class="clear"></div>
                     <span class="box1">2</span><div class="font_word18">选择您的配资期限</div>
                     <div class="caopanbox">
@@ -102,16 +118,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>总操盘资金<img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span id="capital" class="colorf06 font26 mlr5">0</span>元</li>
                         <li>亏损警告线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span id="loss" class="colorf06 font26 mlr5">0</span>元</li>
                         <li>亏损平仓线<img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span id="close" class="colorf06 font26 mlr5">0</span>元</li>
-                        <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始交易。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="radio" type="radio" />今天<br />
-                            <input name="radio" id="Radio2" type="radio" />下一个交易日（）</span></li>
+                        <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始交易。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="dataJyksDate" value="1" type="radio" <c:if test="${peizi.dataJyksDate== '1'}">checked="checked"</c:if>/>今天<br />
+                            <input name="dataJyksDate" id="Radio2" value="2" type="radio" <c:if test="${peizi.dataJyksDate== '2'}">checked="checked"</c:if> />下一个交易日
+						</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br /><br />
-                    <!--  <a class="tjs_btn" href="rest/web/peizi/lowNextCapital">我要配资</a>-->
-                    <a class="tjs_btn disabled">我要配资</a>
+                     <a class="tjs_btn" href="rest/web/peizi/dxp/lowNextCapital">我要配资</a>
+                  
                 </div>
             </div>
             <div class="pz_produce">
@@ -158,6 +175,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
         </div>
+       </form>
         <hr class="pc"/>
     </div>
 <!-- 配资页尾 -->
@@ -165,8 +183,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
 function arithmetic() {
-
-    if (isNaN($("#principal").val())) {
+    if (isNaN($("#principal")).val()) {
         $("#principal").val("0");
     }
     var sum = 0;
@@ -180,6 +197,8 @@ function arithmetic() {
     if (sum==""||sum==null||sum<0) {
         sum = 0;
     }
+    
+    
     $(".cpbox1").each(function (i) {
         $(".cpmoney:eq(0)").text(sum);
         $(".cpmoney:eq(1)").text(sum * 2);
@@ -204,7 +223,9 @@ function arithmetic() {
         });
     });
 }
-arithmetic()
+
+arithmetic();
+
 $(document).ready(function () {
     /*-二级导航-*/
     $(".tjpz").hover(function () {
@@ -225,29 +246,14 @@ $(document).ready(function () {
 
     /*--操盘金额--*/
     $(".cpbox1").each(function (i) {
-        $(this).click(function () {
-            
+        $(this).click(function () {            
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");
         });
     });
     /*--/操盘金额--*/
-    //--自定义下拉框--
-	$(".sel_wrap").click(function () {
-	    $(".select").toggle();
-	    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
-	    $(".select>li").each(function (index) {
-	        $(this).click(function () {
-	            var opt = $(this).html();
-	        })
-	    })
-	})
-    //--/自定义下拉框--
+ 
 })
-function alertbox() {
-    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-}
-
 </script>
 </body>
 </html>

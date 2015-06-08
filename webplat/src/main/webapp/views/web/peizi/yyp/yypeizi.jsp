@@ -148,7 +148,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li>借款利息&nbsp;&nbsp;&nbsp;<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Dinterests" class="colorf06 font26 mlr5">0</span> 元</li>
                         <li>借款月利息<img class="curser" src="assets/img/peizi/qcmark.png" title="提前付息，如12月16日配资，于12月16日提前支付12月16日到1月15日的利息" alt="" />：<span id="Minterests" class="colorf06 font26 mlr5"></span>/月</li>
                         <li style="position:relative">开始交易时间<img class="curser" src="assets/img/peizi/qcmark.png" title="一般选择下个交易日，如看中行情急需交易，可直接选择今天开始。14:40以后只能选择下个交易日" alt="" />：<span class="nextday"><input id="Radio1" name="dataJyksDate" value="1" type="radio" <c:if test="${peizi.dataJyksDate== '1'}">checked="checked"</c:if>/>今天<br />
-                             <input name="dataJyksDate" id="Radio2" value="2" type="radio" <c:if test="${peizi.dataJyksDate== '2'}">checked="checked"</c:if> />下一个交易日（）</span></li>
+                             <input name="dataJyksDate" id="Radio2" value="2" type="radio" <c:if test="${peizi.dataJyksDate== '2'}">checked="checked"</c:if> />下一个交易日</span></li>
                     </ul>
                 </div>
                 <hr class="pc"/>
@@ -214,20 +214,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript">
 
 function arithmetic() {
-    if (isNaN($("#principal").val()))
+	var strTzbzj=$.trim($("#principal").val()).replace('/,/g','');
+	strTzbzj =(strTzbzj==''?'0':strTzbzj);
+    if (isNaN(strTzbzj))
     {
         $("#principal").val("0");
     }
-    var sum = 0;//投资本金
-    var wan = "万";
-    sum = $("#principal").val();//获取键盘输入的投资本金
-    if (sum.substring(0, 1) == 0) {
+    
+    if (strTzbzj.substring(0, 1) == 0) {
         $("#principal").val("")
+        strTzbzj = '0';
+    }
+    
+    var wan = "万";
+    var sum = parseFloat(strTzbzj);//获取键盘输入的投资本金
+   
+    if (sum==null||sum<0) {
         sum = 0;
     }
-    if (sum==""||sum==null||sum<0) {
-        sum = 0;
-    }
+    
     if (sum >= 10000) {
         var wsum = sum / 10000;
         $(".wan").text(wan);
@@ -333,7 +338,8 @@ $(document).ready(function () {
             $(this).addClass("on");
             var str=$(".wan").text();
             if (str != "") {
-            	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
+            	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
+            	strtzbzj =(strtzbzj==''?'0':strtzbzj);
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text())*10000;
             	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
             	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
@@ -346,7 +352,8 @@ $(document).ready(function () {
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");	                                      
             } else {
-            	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
+            	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
+            	strtzbzj =(strtzbzj==''?'0':strtzbzj);
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text());
             	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
             	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
@@ -369,8 +376,7 @@ $(document).ready(function () {
 	$(".tjs_btn").click(function(event){
 		event.preventDefault();	
 		//判断投资保证金是否是1000的整数倍
-		var strTzbzj= $.trim($("#principal").val()).replace('/,/g','');
-		
+		var strTzbzj= $.trim($("#principal").val()).replace('/,/g','');		
 		if(strTzbzj==''){strTzbzj="0"}
 		var iTzbzj = parseInt(strTzbzj,'10');
 		

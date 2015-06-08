@@ -42,54 +42,7 @@ public class PeiZiIndexController {
 	public String  capital() {
 		return "web/peizi/tjpeizi";
 	}
-	
-	
 		
-	/**
-	 * 低息配
-	 * @return
-	 */
-	@RequestMapping("/lowCapital")
-	public String  lowCapital() {
-		return "web/peizi/dxpeizi";
-	}
-	
-	/**
-	 * 低息配下一步
-	 * @return
-	 */
-	@RequestMapping("/lowNextCapital")
-	public String  lowNextCapital() {
-		return "web/peizi/dxpznext";
-	}
-	
-	/**
-	 * 低息配最后一步
-	 * @return
-	 */
-	@RequestMapping("/lowLastCapital")
-	public String  lowLastCapital() {
-		return "web/peizi/dxpzlast";
-	}
-	
-	
-	/**
-	 * 低息配查看方案进度
-	 * @return
-	 */
-	@RequestMapping("/lowScheduleCapital")
-	public String  lowScheduleCapital() {
-		return "web/peizi/dxpzyanzi";
-	}
-	
-	/**
-	 * 低息配个人中心信息
-	 * @return
-	 */
-	@RequestMapping("/lowCenterCapital")
-	public String  lowCenterCapital() {
-		return "web/peizi/dxzhongxin";
-	}
 	
 	/**
 	 * 淘金募集页
@@ -154,6 +107,16 @@ public class PeiZiIndexController {
 	@RequestMapping("/monthCenterCapital")
 	public String  monthCenterCapital() {
 		return "web/peizi/yyzhongxin";
+	}
+	
+
+	/**
+	 * 低息配个人中心信息
+	 * @return
+	 */
+	@RequestMapping("/lowCenterCapital")
+	public String  lowCenterCapital() {
+		return "web/peizi/dxzhongxin";
 	}
 	
 	/**
