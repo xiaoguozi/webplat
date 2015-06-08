@@ -120,7 +120,7 @@ public class DXPController {
 			Date nowDate = new Date();
 			peizi.setDataCreateDate(nowDate);
 			peizi.setDataModifyDate(nowDate);
-			
+			peizi.setDataSubmitDate(nowDate);
 			Subject subject = SecurityUtils.getSubject();
 			String username = (String)subject.getPrincipal(); 	
 			if(StringUtils.isNotBlank(username)){
@@ -133,6 +133,7 @@ public class DXPController {
 			iPeizi.insertPeizi(peizi);
 		}else{
 			Date nowDate = new Date();
+			peizi.setDataModifyDate(nowDate);
 			iPeizi.updatePeizi(peizi);
 		}
 		model.addAttribute("peizi",peizi);	

@@ -51,7 +51,7 @@
                        <th field="data_jklx_total">借款总利息<span class="glyphicon"></span></th>
                        <th field="data_zjsyqx">使用期限<span class="glyphicon"></span></th>
                        <th field="data_id">借款利率<span class="glyphicon"></span></th>
-                       <th field="data_submit_date">配资开始时间<span class="glyphicon"></span></th>
+                       <th field="data_submit_date">配资申请时间<span class="glyphicon"></span></th>
                        <th field="data_id">配资交易开始时间<span class="glyphicon"></span></th>
                        <th field="data_id">备注<span class="glyphicon"></span></th>                                                      
                     </tr>

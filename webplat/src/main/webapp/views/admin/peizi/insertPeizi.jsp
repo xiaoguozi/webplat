@@ -69,7 +69,7 @@
          <div class="form-group">
             <label class="col-md-2 control-label">使用期限（<c:if test="peizi.dataTypeSylx=='10'">天</c:if><c:if test="peizi.dataTypeSylx!='10'">月</c:if>）</label>
             <div class="col-md-6">
-                <input type="text" class="form-control  number" name="dataZjsyqx" value="${peizi.dataZjsyqx}" readonly="readonly">
+                <input type="text" class="form-control  number" name="dataZjsyqx" value="" readonly="readonly">
             </div>            
         </div>
         
@@ -95,9 +95,9 @@
         
         
         <div class="form-group">
-            <label class="col-md-2 control-label">配资开始时间</label>
+            <label class="col-md-2 control-label">配资申请时间</label>
             <div class="col-md-6">
-                <input type="text" class="form-control  number" name="dataZjsyqx" value="<fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd HH:mm"/>  " readonly="readonly">
+                  <fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd HH:mm"/>
             </div>            
         </div>
         
