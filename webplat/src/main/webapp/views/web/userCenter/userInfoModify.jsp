@@ -35,7 +35,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <ul>
                        <c:if test="${isLog!='true'}">
                         <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
-                        <li><a href="rest/web/peizi/activity"><span>淘金活动</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
                         <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
                         <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
@@ -60,6 +59,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!--二级导航-->
            <div class="nav_box1">
                 <ul class="nav_menu" style="width:98px;">
+                	<li><a href="rest/web/peizi/mfp/freeActivity">免费配</a></li>
+					<li><a href="rest/web/peizi/mxp/monthCapital">免息配</a></li>
                     <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
                     <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
                     <li><a href="rest/web/peizi/lowCapital">低息1配1</a></li>
