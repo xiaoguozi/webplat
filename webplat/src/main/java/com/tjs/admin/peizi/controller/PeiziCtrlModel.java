@@ -38,7 +38,7 @@ public class PeiziCtrlModel extends GenericCtrlModel {
 	}
 
 	public int getLimitStart() {
-		return limitStart;
+		return (this.getPageNo()-1)*this.getPageSize();
 	}
 
 	public void setLimitStart(int limitStart) {

@@ -54,6 +54,7 @@ public class PeiziController {
     	
     	if(StringUtils.isNotBlank(peiziCtrlModel.getKeyWord())){
     		String paramsTrans = new String(peiziCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		peiziCtrlModel.setKeyWord(paramsTrans);
     	}
     	int totalCount = iPeizi.countPeizi(peiziCtrlModel);
     	
@@ -69,6 +70,7 @@ public class PeiziController {
 	    	
 	    	if(StringUtils.isNotBlank(peiziCtrlModel.getKeyWord())){
 	    		String paramsTrans = new String(peiziCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+	    		peiziCtrlModel.setKeyWord(paramsTrans);
 	    	}
 	    	
 	    	showData = iPeizi.selectPeizi(peiziCtrlModel);
