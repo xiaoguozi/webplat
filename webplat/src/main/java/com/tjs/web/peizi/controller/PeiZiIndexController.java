@@ -33,14 +33,6 @@ public class PeiZiIndexController {
 		return "web/peizi/tjhuodong";
 	}
 	
-	/**
-	 * 免费配资查看方案进度
-	 * @return
-	 */
-	@RequestMapping("/freeScheduleActivity")
-	public String  freeScheduleActivity() {
-		return "web/peizi/hdpeizipro";
-	}
 	
 	/**
 	 * 淘金配资主页
@@ -52,53 +44,7 @@ public class PeiZiIndexController {
 	}
 	
 	
-	
-	
-	/**
-	 * 月月配
-	 * @return
-	 */
-	@RequestMapping("/monthCapital")
-	public String  monthCapital() {
-		return "web/peizi/yypeizi";
-	}
-	
-	/**
-	 * 月月配下一步
-	 * @return
-	 */
-	@RequestMapping("/monthNextCapital")
-	public String  monthNextCapital() {
-		return "web/peizi/yypznext";
-	}
-	
-	/**
-	 * 月月配最后一步
-	 * @return
-	 */
-	@RequestMapping("/monthLastCapital")
-	public String  monthLastCapital() {
-		return "web/peizi/yypzlast";
-	}
-	
-	/**
-	 * 月月配查看方案进度
-	 * @return
-	 */
-	@RequestMapping("/monthScheduleCapital")
-	public String  monthScheduleCapital() {
-		return "web/peizi/yypzyanzi";
-	}
-	
-	/**
-	 * 月月配个人中心信息
-	 * @return
-	 */
-	@RequestMapping("/monthCenterCapital")
-	public String  monthCenterCapital() {
-		return "web/peizi/yyzhongxin";
-	}
-	
+		
 	/**
 	 * 低息配
 	 * @return
@@ -198,6 +144,16 @@ public class PeiZiIndexController {
 	@RequestMapping("/centerDaySchedule")
 	public String centerDaySchedule() {
 		return "web/peizi/ttpzpro";
+	}
+	
+	
+	/**
+	 * 月月配个人中心信息
+	 * @return
+	 */
+	@RequestMapping("/monthCenterCapital")
+	public String  monthCenterCapital() {
+		return "web/peizi/yyzhongxin";
 	}
 	
 	/**
