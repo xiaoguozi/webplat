@@ -1,5 +1,8 @@
 package com.tjs.web.pe.controller;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tjs.admin.pe.controller.PEManagerCtrlModel;
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
 import com.tjs.admin.pe.controller.PEProductIncomeCtrlModel;
@@ -52,8 +57,7 @@ public class PEIndexMDetailController {
 	@Resource
 	private PEProductIncomeService peProductIncomeService ;
 	
-
-	
+	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 	
 	
 	@RequestMapping("/peIndexMDetail")
@@ -76,7 +80,8 @@ public class PEIndexMDetailController {
 	    PECompany peCompany = peCompanyService.getPECompanyById(peManagerProduct.getCompanyId());
 	    model.addAttribute("peCompany", peCompany);
 	    
-       
+	   
+	    
 	    if(peManagerProduct.getProductId()!=null){
 	    	//获取产品信息
 	    	PEProduct peProduct =peProductService.getPEProductById(peManagerProduct.getProductId());
@@ -92,8 +97,25 @@ public class PEIndexMDetailController {
 		    //获取净值标
 		    PEProductNetCtrlModel peProductNetCtrlModel = new PEProductNetCtrlModel();
 		    peProductNetCtrlModel.setProductId(peManagerProduct.getProductId().toString());
+		    peProductNetCtrlModel.setSortField("net_time");
+			peProductNetCtrlModel.setSortType("asc");
+			peProductNetCtrlModel.setPageNo(0);
 		    List<PEProductNet> lstPEProductNet = peProductNetService.getPEProductNetList(peProductNetCtrlModel);
 		    model.addAttribute("lstPEProductNet", lstPEProductNet);
+		    
+		    List<PEChartVO> lstChartVO = new ArrayList<PEChartVO>();
+		    PEChartVO peChartVO = new PEChartVO();
+			peChartVO.setName(peProduct.getName());
+			for(PEProductNet peProductNet : lstPEProductNet){
+				//lstData.add(peProductNet.getTotalNet());
+				Object[] dateValue = new Object[2];
+				dateValue[0] =  calcTime(peProductNet.getNetTime());
+				dateValue[1] = peProductNet.getTotalNet();
+				peChartVO.getData().add(dateValue);
+			}
+			lstChartVO.add(peChartVO);
+			String series = gson.toJson(lstChartVO);
+			model.addAttribute("valueSeries", series);
 	    }	    	   	    
 	    //旗下产品收益 
 	    PEProductCtrlModel peProductCtrlModel = new PEProductCtrlModel();
@@ -102,5 +124,22 @@ public class PEIndexMDetailController {
 	    model.addAttribute("lstPEProduct", lstPEProduct);
         return "web/pe/peManagerDetail";
     }
+	
+	private Long calcTime(Date dateSource){
+		if(dateSource==null){
+			return 0L;
+		}
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateSource);
+		
+		int zoneOffset = cal.get(Calendar.ZONE_OFFSET);
+		int dstOffset = cal.get(Calendar.DST_OFFSET);
+		
+		cal.add(Calendar.MILLISECOND, -(zoneOffset + dstOffset));
+		
+		return cal.getTimeInMillis();
+		
+	}
 	
 }
