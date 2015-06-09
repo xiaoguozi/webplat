@@ -269,6 +269,43 @@ ALTER TABLE `tjs_product_xtcp`
 CHANGE COLUMN `xtcp_hkly` `xtcp_hkly` VARCHAR(2000) NULL DEFAULT NULL COMMENT '还款来源' ;
 
 
+DROP TABLE IF EXISTS `free_peizi_detail`;
+
+CREATE TABLE `free_peizi_detail` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '配资活动主键',
+  `peizi_date` date NOT NULL COMMENT '配资活动日期',
+  `peizi_type` int(2) NOT NULL DEFAULT '1' COMMENT '配资类型',
+  `peizi_count` int(8) unsigned NOT NULL COMMENT '配资计数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='配资活动计数表';
+
+DROP TABLE IF EXISTS `user_info_extend`;
+
+CREATE TABLE `user_info_extend` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` bigint(20) unsigned DEFAULT '0' COMMENT '用户id',
+  `peizi_type` int(2) unsigned DEFAULT '1' COMMENT '配资类型：1、免费配；2、免息配',
+  `is_used` int(2) unsigned DEFAULT '0' COMMENT '是否已经使用过：0为未使用过；1为使用过',
+  `is_own_resource` int(2) unsigned DEFAULT '0' COMMENT '用户点击免费体验的时候占有一个活动名额计数，默认为0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户扩展信息表（参加活动记录）';
+
+DROP TABLE IF EXISTS `tjs_peizi_rule`;
+
+CREATE TABLE `tjs_peizi_rule` (
+  `rule_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规则ID',
+  `rule_type` varchar(5) NOT NULL COMMENT '规则类型：1：配置活动，例如：免费配\n                     2：天天配\n                     3：月月配\n                     4：低息配\n',
+  `rule_pcx` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线',
+  `rule_jjx` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线',
+  `rule_zjsyqx` int(11) DEFAULT NULL COMMENT '资金使用期限',
+  `rule_glsy_type` varchar(3) DEFAULT NULL COMMENT '配资管理收益：\n 1：借款账户管理费/天\n 2：借款月利率\n 3：借款年利率',
+  `rule_zhglf` decimal(6,2) DEFAULT NULL COMMENT '配资借款收益：\n1.如果是天天陪，单位是元\n2.如果是',
+  `rule_nll` decimal(6,2) DEFAULT NULL COMMENT '年利率',
+  `rule_yll` decimal(6,2) DEFAULT NULL COMMENT '月利率',
+  PRIMARY KEY (`rule_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='配置规则';
+
+
 
 
 
