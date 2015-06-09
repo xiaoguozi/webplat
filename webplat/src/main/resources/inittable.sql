@@ -292,53 +292,7 @@ CREATE TABLE `user_info_extend` (
 
 DROP TABLE IF EXISTS `tjs_peizi_rule`;
 
-CREATE TABLE `tjs_peizi_rule` (
-  `rule_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规则ID',
-  `rule_type` varchar(5) NOT NULL COMMENT '规则类型：1：配置活动，例如：免费配\n                     2：天天配\n                     3：月月配\n                     4：低息配\n',
-  `rule_pcx` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线',
-  `rule_jjx` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线',
-  `rule_zjsyqx` int(11) DEFAULT NULL COMMENT '资金使用期限',
-  `rule_glsy_type` varchar(3) DEFAULT NULL COMMENT '配资管理收益：\n 1：借款账户管理费/天\n 2：借款月利率\n 3：借款年利率',
-  `rule_zhglf` decimal(6,2) DEFAULT NULL COMMENT '配资借款收益：\n1.如果是天天陪，单位是元\n2.如果是',
-  `rule_nll` decimal(6,2) DEFAULT NULL COMMENT '年利率',
-  `rule_yll` decimal(6,2) DEFAULT NULL COMMENT '月利率',
-  PRIMARY KEY (`rule_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配置规则';
-
 DROP TABLE IF EXISTS `tjs_peizi_data`;
-
-CREATE TABLE `tjs_peizi_data` (
-  `data_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '业务流水号',
-  `data_zcpzj` decimal(18,2) DEFAULT NULL COMMENT '总超盘资金',
-  `data_tzbzj` decimal(18,2) DEFAULT NULL COMMENT '投资保证金',
-  `data_pzje` decimal(18,2) DEFAULT NULL COMMENT '配资金额',
-  `data_jjx` decimal(18,2) DEFAULT NULL COMMENT '警戒线',
-  `data_pcx` decimal(18,2) DEFAULT NULL COMMENT '平仓线',
-  `data_type` varchar(45) DEFAULT NULL COMMENT '配资类型：10 配资活动 20 天天配 30 月月配 40 低息配',
-  `data_type_sylx` varchar(45) DEFAULT NULL COMMENT '收益类型：10借款账户管理费/天\n                    20借款月利率\n                    30借款年利率',
-  `data_zjsyqx` int(11) DEFAULT NULL COMMENT '资金使用期限 ：根据收益类型（data_type_sylx）\n10借款账户管理费/天\n20借款月利率 存月\n 30借款年利率  存月',
-  `data_zfglf` decimal(18,2) DEFAULT NULL COMMENT '每天账户管理费',
-  `data_yll` decimal(18,2) DEFAULT NULL COMMENT '月利率',
-  `data_nll` decimal(18,2) DEFAULT NULL COMMENT '年利率',
-  `data_jklx_total` decimal(18,2) DEFAULT NULL COMMENT '借款利息\n如果是账户管理费用：   借款利息 =资金使用期限 *每天账户管理费\n如果是月利率     借款利息 = 资金使用期限*月利率*配资金额\n如果是年利率     借款利息 =  资金使用期限/12*年利率*配资金额\n\n',
-  `data_submit_date` datetime DEFAULT NULL COMMENT '配资提交时间',
-  `data_jyks_date` varchar(45) DEFAULT NULL COMMENT '1：当天；2下一个交易日',
-  `data_step` varchar(3) DEFAULT '1' COMMENT '步骤',
-  `data_create_date` datetime DEFAULT NULL COMMENT '创建时间',
-  `data_modify_date` datetime DEFAULT NULL COMMENT '修改时间',
-  `data_use_name` varchar(200) DEFAULT NULL COMMENT '用户名称',
-  `data_user_id` bigint(20) DEFAULT NULL COMMENT 'user的流水号',
-  `data_user_tel` varchar(45) DEFAULT NULL COMMENT '用户电话',
-  `data_remark` varchar(2000) DEFAULT NULL COMMENT '备注',
-  `data_opera_status` varchar(45) DEFAULT NULL COMMENT '处理状态',
-  `data_opera_user_id` bigint(20) DEFAULT NULL COMMENT '处理人ID',
-  `data_opera_user_name` varchar(200) DEFAULT NULL COMMENT '处理人名称',
-  `data_rule_pcx` decimal(18,2) DEFAULT NULL COMMENT '平仓线',
-  `data_rule_jjx` decimal(18,2) DEFAULT NULL COMMENT '警戒线',
-  PRIMARY KEY (`data_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配资业务表';
-
-
 
 CREATE TABLE `tjs_peizi_data` (
   `data_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '业务流水号',
