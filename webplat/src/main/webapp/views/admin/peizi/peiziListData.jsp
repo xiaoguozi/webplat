@@ -6,14 +6,11 @@
 <c:forEach items="${showData}" var="peizi">
     <tr>
         <td class="data-operator">
-            <label class="checkbox-inline">
-                <input type="checkbox" name="data-id" value="${peizi.dataId}"> 
-                &nbsp;&nbsp;&nbsp;
-            </label>
             <a data-id="${peizi.dataId}" href="" class="edit invisible" title="修改">
                 <span class="glyphicon glyphicon-edit"></span> 修改
             </a>
-        </td>      
+        </td> 
+        <td>${peizi.dataId}</td>     
         <td>
               <c:choose>  
                 <c:when test="${peizi.dataType=='10'}">  

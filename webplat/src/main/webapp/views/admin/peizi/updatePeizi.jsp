@@ -20,6 +20,13 @@
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/peizi/peizi/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="dataId" value="${peizi.dataId}">
+        
+         <div class="form-group">
+            <label class="col-md-2 control-label">订单号</label>
+            <div class="col-md-6">
+                ${peizi.dataId}
+            </div>            
+        </div>
         <div class="form-group">
             <label class="col-md-2 control-label">配资类型</label>
             <div class="col-md-6">
@@ -118,6 +125,7 @@
             </div>            
         </div>
         
+               
          <div class="form-group">
             <label class="col-md-2 control-label">处理状态</label>
             <div class="col-md-6">
@@ -127,7 +135,46 @@
             </div>            
         </div>
         
+        <div class="form-group">
+            <label class="col-md-2 control-label">恒生账户账号</label>
+            <div class="col-md-6">
+                   <input type="text" class="form-control" name="dataJyzf" value="${peizi.dataJyzf}" >
+            </div>            
+        </div> 
+        
+        
          <div class="form-group">
+            <label class="col-md-2 control-label">恒生账户密码</label>
+            <div class="col-md-6">
+            	<input type="text" class="form-control  " name="dataJymm" value="${peizi.dataJymm}" >
+            </div>            
+        </div>
+        
+        
+        <div class="form-group">
+            <label class="col-md-2 control-label">发送恒生账户时间</label>
+	        <div class="col-md-6">  
+	            <div class="input-group date form_date" data-date-format="yyyy-mm-dd hh:ii" minView="0" >
+	                  <input type="text" class="form-control  " name="dataJyzfDate" value="<fmt:formatDate value="${peizi.dataJyzfDate}" pattern="yyyy-MM-dd HH:mm"/>" >
+	                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	            </div>
+	        </div>            
+        </div>
+        
+        
+        
+         <div class="form-group">
+            <label class="col-md-2 control-label">操盘完成时间</label>
+            <div class="col-md-6">  
+	            <div class="input-group date form_date" data-date-format="yyyy-mm-dd hh:ii">
+	                  <input type="text" class="form-control  " name="dataJyfcDate" value="<fmt:formatDate value="${peizi.dataJyfcDate}" pattern="yyyy-MM-dd HH:mm"/>" >
+	                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	            </div>  
+            </div>         
+        </div>
+        
+        
+          <div class="form-group">
             <label class="col-md-2 control-label">备注</label>
             <div class="col-md-6">
                  <textarea rows="6" cols="100" class="form-control" name="dataRemark">${peizi.dataRemark}</textarea>
@@ -154,6 +201,7 @@ $(function(){
     $("button.modalCloseBtn").unbind('click').click(function(event) {
         IndexPage.togglePage('list');
     });
+    
 
 });
 

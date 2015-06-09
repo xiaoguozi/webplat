@@ -3,6 +3,8 @@ package com.tjs.admin.peizi.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Peizi {
 	
 	/**业务流水号 */
@@ -64,6 +66,20 @@ public class Peizi {
 	/**配资警戒线(%) */
 	private BigDecimal dataRuleJjx;
 	
+	/**恒生账户 */
+	private String dataJyzf;
+	
+	/**恒生密码 */
+	private String dataJymm;
+		
+	/**发送恒生账户时间*/
+	 @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+	private Date dataJyzfDate;
+	
+	/**操盘完成时间*/
+	 @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+	private Date dataJyfcDate;
+	
 	
 	/**页面段显示支付总金额*/
 	
@@ -73,6 +89,9 @@ public class Peizi {
 	/**页面段显示账户管理费*/
 	
 	private BigDecimal zfglf;
+	
+	
+	
 	
 		
 	public Long getDataId() {
@@ -251,9 +270,28 @@ public class Peizi {
 	public void setZfglf(BigDecimal zfglf) {
 		this.zfglf = zfglf;
 	}
-	
-	
-
-
-
+	public String getDataJyzf() {
+		return dataJyzf;
+	}
+	public void setDataJyzf(String dataJyzf) {
+		this.dataJyzf = dataJyzf;
+	}
+	public String getDataJymm() {
+		return dataJymm;
+	}
+	public void setDataJymm(String dataJymm) {
+		this.dataJymm = dataJymm;
+	}
+	public Date getDataJyzfDate() {
+		return dataJyzfDate;
+	}
+	public void setDataJyzfDate(Date dataJyzfDate) {
+		this.dataJyzfDate = dataJyzfDate;
+	}
+	public Date getDataJyfcDate() {
+		return dataJyfcDate;
+	}
+	public void setDataJyfcDate(Date dataJyfcDate) {
+		this.dataJyfcDate = dataJyfcDate;
+	}
 }

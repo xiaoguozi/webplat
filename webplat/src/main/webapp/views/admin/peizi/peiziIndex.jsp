@@ -27,7 +27,6 @@
                 <input type="hidden" name="pageSize" value="">
             </div>&nbsp;&nbsp;
             <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right" style="display:none"><span class="glyphicon glyphicon-search"></span> </button>
-            <button type="button" id="insertBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</button>
         </form>
     </div>
 </div>
@@ -38,11 +37,9 @@
                 <thead>
                     <tr>
                         <th class="data-operator">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value=""/> 
-                                &nbsp;&nbsp;&nbsp;
-                            </label>
-                        </th>                      
+                            
+                        </th>
+                       <th field="data_id">订单号<span class="glyphicon"></span></th>                      
                        <th field="data_type">配资类型  <span class="glyphicon"></span></th>
                        <th field="data_zcpzj">总超盘资金<span class="glyphicon"></span></th>
                        <th field="data_tzbzj">保证金<span class="glyphicon"></span></th>
