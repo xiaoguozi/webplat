@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">低息1配1</span> </div>
         </div>
     <div class="w100bg">
-      <form id="modalForm" action="rest/web/peizi/yyp/monthLastCapital" method="post">
+      <form id="modalForm" action="rest/web/peizi/dxp/lowLastCapital" method="post">
          <input type="hidden" name="springMVC_token"  value="${springMVC_token}"/>
         <input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
