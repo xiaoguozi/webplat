@@ -328,7 +328,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 										<td class="c_b">
 											<div class="trend_viewer" productId="${peAllProduct.id}">
 												<div class="trend_viewer_hd">
-													<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
+													<a href="rest/web/pe/peIndexProductDetail?peProductId=${peAllProduct.id}" target="_blank" title="点击查看详情"><em class="uc_trend"></em></a>
 												</div>
 												<div class="details_show">
 													<em class="left_icon"></em>
@@ -974,6 +974,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    };
 	});
     
+	
+	 document.onkeydown=function(){
+	        if (event.keyCode == 13){
+	     	   var params =SetPara();	    
+		   	   $("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	        }
+	 }
         
     </script>
 

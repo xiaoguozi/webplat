@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="assets/css/ui/simu.css" rel="stylesheet" />
 
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
+<script type="text/javascript" src="assets/scripts/ui/highstock-1.3.9.js"></script>
 <script type="text/javascript"
 	src="assets/scripts/ui/jquery.plugins-min.js"></script>
 <script type="text/javascript"
@@ -29,6 +29,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
 <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
+
 
 </head>
 
@@ -92,7 +93,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<input type="hidden" id="currentYear" name="currentYear" value="${simuSearchVO.currentYear}" />
                             <input type="hidden" id="currentYearPeriod" name="currentYearPeriod" value="${simuSearchVO.currentYearPeriod}" />
                             
-                             </form>
                             <div class="mult_item" style="display:none;">
                                 <div class="mult_name">年度收益排名</div>
                                 <div class="mult_con" id="tjs_years">
@@ -137,7 +137,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <div class="mult_name">关&nbsp;&nbsp;键&nbsp;&nbsp;词：</div>
                                 <div class="mult_con">
                                     <div class="uc_boxhd_search skin_1">
-                                        <input class="input_txt" placeholder="请输入关键词" id="simu_product_list_search_input" style="border-right: none;" type="text">
+                                        <input class="input_txt" placeholder="请输入关键词" name="keyword"  id="simu_product_list_search_input" value="${simuSearchVO.keyword}" style="border-right: none;" type="text">
                                         <a id="simu_product_list_search" href="" data-href="" class="input_search"></a>
                                     </div>
                                     <div class="fast_search" style="display:none;"><a target="_blank" href="">泽熙3期</a> <a target="_blank" href="">清水源1号</a> <a target="_blank" href="">淡水泉成长一期</a> </div>
@@ -155,7 +155,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									</label>
                                 </div>
                             </div>
-                           
+                           </form>
                         </div>
                         <div class="simu_mainprolist_result">
                             <table class="simu_pro_tb_2 tjs_simu_tbl" width="100%">
@@ -252,13 +252,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						                  		</c:if>
 											</td>
 											<td class="c_b">
-												<div class="trend_viewer">
+												<div class="trend_viewer" productId="${peAllProduct.id}">
 													<div class="trend_viewer_hd">
-														<a href="" title="点击查看详情"><em class="uc_trend"></em></a>
+														<a href="rest/web/pe/peIndexProductDetail?peProductId=${peAllProduct.id}" target="_blank" title="点击查看详情"><em class="uc_trend"></em></a>
 													</div>
 													<div class="details_show">
 														<em class="left_icon"></em>
-														<div class="details_boxes"></div>
+														<div class="details_boxes" id="chartContainer_${status.index}"></div>
 													</div>
 												</div>
 											</td>
@@ -455,9 +455,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 	        //--对比框--
 	        //--详情框--
-	        $(".trend_viewer").each(function (index) {
+	         $(".trend_viewer").each(function (index) {
 	            $(this).hover(function () {
 	                $(".details_show:eq(" + index + ")").show();
+	            	var needLoad = true;
+	            	var pId = $(this).attr("productId");
+	                for(var i=0; i<productIdArray.length; i++){
+	                	if(productIdArray[i]==pId){
+	                		needLoad = false;
+	                		break;
+	                	}
+	                }
+	                if(needLoad===true){
+		                queryProductChart(pId, index)
+	                }
 	            }, function () {
 	                $(".details_show:eq(" + index + ")").hide();
 	            });
@@ -582,6 +593,189 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		        }).blur();
 		    };
 		});
+		
+		
+		var productIdArray = new Array();
+	       
+		function queryProductChart(pId, index){
+			$.ajax({
+			     type: 'POST',
+			     url: "<%=basePath%>rest/web/pe/peProductChart" ,
+			     data: {
+			    	 productId:pId
+			     } ,
+			     success: function(data){
+			    	 var chartObj = {
+			 				renderTo: 'chartContainer_' + index,
+			 				width: 450,
+			 				height: 280,
+			 				style: 'text-align:center;margin:0px auto;'
+			 		 };
+			    	 
+			    	 drawChart(data, chartObj);
+			    	 
+			    	 productIdArray.push(pId);
+			    	
+			    	 $("text[text-anchor=end]").html("");
+			    	 
+			     } ,
+			     dataType: 'json'
+			});
+        } 
+		
+		function drawChart(chart_data, chartObj)
+	    {
+	        var chart1 = new Highcharts.StockChart({
+	            colors: ['#FF6600', '#3DADEA', '#009900', '#B33133'],
+	            chart: {
+	                renderTo: chartObj.renderTo,
+	                width: chartObj.width,
+	                height: chartObj.height
+	            },
+	            credits: {
+	                enabled: true,
+	                href: null,
+	                text: ''
+	            },
+	            exporting: {enabled: false},
+	            title: {text: null, style: {color: '#004789'}},
+	            rangeSelector: {enabled: false},
+	            tooltip: {
+	                enabled: true,
+	                crosshairs: true,
+	                formatter: function () {
+	                    var date = new Date(this.x);
+	                    var header = '<b>时间: ' + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + '</b>';
+	                    $.each(this.points, function (i, point) {
+	                        if(i==0 && chartObj.renderTo !== "compare_chart_container"){
+	                            header += '<br/><span style="color:' + this.point.series.color + '">累计净值:' + Highcharts.numberFormat(this.y, 4) + '</span>';
+	                        }else{
+	                            header += '<br/><span style="color:' + this.point.series.color + '">' + this.point.series.name + ':' + Highcharts.numberFormat(this.y, 4) + '</span>';
+	                        }
+	                    });
+	                    return header;
+	                }
+	            },
+	            xAxis: {
+	                type: 'datetime',
+	                gridLineDashStyle: 'longdash',
+	                dateTimeLabelFormats: {
+	                    second: '%Y-%m-%d<br/>%H:%M:%S',
+	                    minute: '%Y-%m-%d<br/>%H:%M',
+	                    hour: '%Y-%m-%d<br/>%H:%M',
+	                    day: '%Y<br/>%m-%d',
+	                    week: '%Y<br/>%m-%d',
+	                    month: '%Y-%m',
+	                    year: '%Y'
+	                },
+	                gridLineWidth: 1,
+	                lineColor: '#999',
+	                tickColor: '#999',
+	                showFirstLabel: true,
+	                showLastLabel: true,
+	                labels: {
+	                    style: {
+	                        color: '#000',
+	                        font: '11px Trebuchet MS, Verdana, sans-serif',
+	                        align: 'right',
+	                        style: {font: 'normal 13px 宋体'}
+	                    },
+	                    formatter: function () {
+	                        return Highcharts.dateFormat('%Y-%m-%d', this.value);
+	                    }
+	                },
+	                title: {
+	                    style: {
+	                        color: '#333',
+	                        fontWeight: 'bold',
+	                        fontSize: '12px',
+	                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+	                    }
+	                }
+	            },
+
+	            yAxis: {
+
+	                showLastLabel: true,
+	                tickPixelInterval: 40,
+	                lineColor: '#999',
+	                lineWidth: 1,
+	                tickWidth: 1,
+
+	                tickColor: '#999',
+	                labels: {
+	                    align: 'right',
+	                    x: -10,
+	                    y: 5,
+	                    style: {
+	                        color: '#000',
+	                        font: '11px Trebuchet MS, Verdana, sans-serif'
+	                    }
+	                },
+	                title: {
+	                    style: {
+	                        color: '#333',
+	                        fontWeight: 'bold',
+	                        fontSize: '12px',
+	                        fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+	                    }
+	                }
+	            },
+
+	            legend: {
+	                enabled: true,
+	                itemStyle: {
+	                    font: '9pt Trebuchet MS, Verdana, sans-serif',
+	                    color: '#004789'
+
+	                },
+	                itemHoverStyle: {
+	                    color: '#004789'
+	                }
+
+	            },
+	            scrollbar: {enabled: false},
+	            navigator: {
+	                enabled: true,
+	                top: (chartObj.height-80),
+	                height: 30,
+	                xAxis: {
+	                    labels: {
+	                        enabled: false
+	                    }
+	                }
+
+	            },
+
+	            plotOptions: {
+	                series: {lineWidth: 2},
+	                line: {
+	                    cursor: 'pointer',
+	                    shadow: false,
+	                    states: {
+	                        /*状态*/
+	                        hover: {
+	                            /*(鼠标)悬浮状态*/
+	                            lineWidth: 2    /*曲线宽*/
+	                        }
+	                    }
+	                }
+	            },
+	            //设置3条线宽度也可以在下面单独设置
+	            series: chart_data
+	        }, function (chart) { // on complete
+	            chart.renderer.image('assets/img/logo_watermark.png', chartObj.width/2-115, 30, 230, 100)
+	                .add();
+
+	        });
+	    }
+		
+		document.onkeydown=function(){
+	           if (event.keyCode == 13){
+	        	   var params =SetPara();	    
+		   	       $("#modalForm").attr("action",$("#modalForm").attr("action")+params).submit();
+	           }
+	    }
         
     </script>
 
