@@ -23,6 +23,7 @@
                 /rest/web/peizi/ttp/dayNextCapital/** = user
                 /rest/web/peizi/yyp/monthNextCapital/** = user
                 /rest/web/peizi/dxp/lowNextCapital/** = user
+                /rest/web/peizi/usercenter/** = user
                 <!-- 其他资源不需要认证 -->
                 /** = anon
             </value>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
+import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
@@ -34,6 +35,9 @@ public class PeiZiMFIndexController {
 	
 	@Resource
 	private IPeiZiIndexService iPeiZiIndexService;
+	
+	@Resource
+	private IPeizi iPeiziService;
 	
 	@Resource
 	private UserService userService;
