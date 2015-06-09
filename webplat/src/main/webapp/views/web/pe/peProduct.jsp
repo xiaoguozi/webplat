@@ -697,9 +697,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                    var header = '<b>时间: ' + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + '</b>';
 	                    $.each(this.points, function (i, point) {
 	                        if(i==0 && chartObj.renderTo !== "compare_chart_container"){
-	                            header += '<br/><span style="color:' + this.point.series.color + '">累计净值:' + Highcharts.numberFormat(this.y, 4) + '</span>';
+	                            header += '<br/><span style="color:' + this.point.series.color + '">累计净值:' + Highcharts.numberFormat(this.y, 2) + '</span>';
 	                        }else{
-	                            header += '<br/><span style="color:' + this.point.series.color + '">' + this.point.series.name + ':' + Highcharts.numberFormat(this.y, 4) + '</span>';
+	                            header += '<br/><span style="color:' + this.point.series.color + '">' + this.point.series.name + ':' + Highcharts.numberFormat(this.y, 2) + '</span>';
 	                        }
 	                    });
 	                    return header;

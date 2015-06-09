@@ -1,5 +1,7 @@
 package com.tjs.web.peizi.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
@@ -9,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziCtrlModel;
+import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
 
@@ -36,7 +40,7 @@ public class PeiZiUserCenter {
 	 * @return
 	 */
 	@RequestMapping("/mfp")
-	public String  mfpUserCenter(Model modle) {
+	public String  mfpUserCenter(Model model) {
 		//已经配置需要先登录
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
@@ -44,10 +48,12 @@ public class PeiZiUserCenter {
 		
 		PeiziCtrlModel peiziCtrlModel = new PeiziCtrlModel();
 		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
-		//peiziCtrlModel.getPeizi().set
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.MFPEIZI.getKey());
 		//查询配资记录
-		iPeiziService.selectPeizi(peiziCtrlModel);
-		
+		List<Peizi> lstPeizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		if(lstPeizi!=null && lstPeizi.size()>0){
+			model.addAttribute("peizi", lstPeizi.get(0));
+		}
 		
 		return "web/peizi/mfp/hdpeiziuser";
 	}

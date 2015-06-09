@@ -107,29 +107,42 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </script>
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
-		                	<b class="my_tit tit1">免费配 <span class="tit_span">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
-			                <table class="my_tbl2" >
-			                    <tr>
-			                        <td><span class="colorf06 font30">2001</span> 元<br />总操盘资金</td>
-			                        <td><span class="colorf06 font30">无</span><br />亏损警告线</td>
-			                        <td><span class="colorf06 font30">无</span><br />亏损平仓线</td>
-			                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
-			                        <td><b class="color158 font18">操盘中</b></td>
-			                    </tr>
-			                    <tr>
-			                        <td>已交易天数：<span class="colorf06">1</span> 天</td>
-			                        <td colspan="3" style="text-align:left;text-indent:3em;">发起时间：<span class="color158">2015-5-16</span></td>
-			                        <td><a class="tjs_next_btn" href="ttpzpro.html">查询方案详情</a></td>
-			                    </tr>
-			                </table>
-			                
-			                <!--无产品状态-->
-			                <table class="my_tbl2">
-			                    <tr>
-			                        <td colspan="5"><a class="my_add" href="ttpeizi.html" title="添加配资"></a></td>
-			                    </tr>
-			                </table>
-			                <!--/无产品状态-->
+	                  		<c:if test="${!empty peizi}">
+	                  			<b class="my_tit tit1">免费配 <span class="tit_span">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
+				                <table class="my_tbl2" >
+				                    <tr>
+				                        <td><span class="colorf06 font30">${peizi.dataZcpzj}</span> 元<br />总操盘资金</td>
+				                        <td><span class="colorf06 font30">无</span><br />亏损警告线</td>
+				                        <td><span class="colorf06 font30">无</span><br />亏损平仓线</td>
+				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
+				                        <td>
+				                        	<c:if test="${peizi.dataOperaStatus=='10'}">
+				                        		<b class="color158 font18">验资中</b>
+				                        	</c:if>
+				                        	<c:if test="${peizi.dataOperaStatus=='20'}">
+				                        		<b class="color158 font18">操盘中</b>
+				                        	</c:if>
+				                        	<c:if test="${peizi.dataOperaStatus=='30'}">
+				                        		<b class="color158 font18">已完结</b>
+				                        	</c:if>
+				                        </td>
+				                    </tr>
+				                    <tr>
+				                        <td>已交易天数：<span class="colorf06">1</span> 天</td>
+				                        <td colspan="3" style="text-align:left;text-indent:3em;">发起时间：<span class="color158">2015-5-16</span></td>
+				                        <td><a class="tjs_next_btn" href="ttpzpro.html">查询方案详情</a></td>
+				                    </tr>
+				                </table>
+	                  		</c:if>
+			                <c:if test="${empty peizi}">
+			                	<!--无产品状态-->
+				                <table class="my_tbl2">
+				                    <tr>
+				                        <td colspan="5"><a class="my_add" href="ttpeizi.html" title="添加配资"></a></td>
+				                    </tr>
+				                </table>
+				                <!--/无产品状态-->
+			                </c:if>
 	                  </div>
 	                <!--/无产品状态-->
 	            </div>
