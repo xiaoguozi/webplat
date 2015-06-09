@@ -26,6 +26,7 @@ import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.web.peizi.token.TokenConstants;
 import com.tjs.web.peizi.token.TokenHandler;
 
 /**
@@ -89,8 +90,11 @@ public class TTPController {
 	 * @return
 	 */
 	@RequestMapping("/dayNextCapital")
-	public String  dayNextCapital(Peizi peizi,Model model,HttpServletRequest request) {		
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+	public String  dayNextCapital(Peizi peizi,Model model,HttpServletRequest request) {				
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();			
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())				
+				||StringUtils.isBlank(username)){
 			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		String token = TokenHandler.generateGUID(request.getSession());
@@ -98,6 +102,7 @@ public class TTPController {
 		peizi.setDataPzje(BigDecimalUtils.subtract(peizi.getDataZcpzj(), peizi.getDataTzbzj()));		
 		peizi.setZfzje(BigDecimalUtils.add(peizi.getDataTzbzj(), peizi.getDataJklxTotal()));
 		peizi.setZfglf(BigDecimalUtils.div(BigDecimalUtils.multiply(peizi.getDataZfglf(), peizi.getDataZcpzj()), new BigDecimal(10000)));
+		model.addAttribute(TokenConstants.DEFAULT_TOKEN_NAME, token);
 		return "web/peizi/ttp/ttpznext";
 	}
 	
@@ -110,7 +115,11 @@ public class TTPController {
 	 */
 	@RequestMapping("/dayLastCapital")
 	public String  dayLastCapital(Peizi peizi,Model model,HttpServletRequest request) {
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();			
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())
+				||StringUtils.isBlank(username)){
 			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		
@@ -124,9 +133,7 @@ public class TTPController {
 			Date nowDate = new Date();
 			peizi.setDataCreateDate(nowDate);
 			peizi.setDataModifyDate(nowDate);
-			peizi.setDataSubmitDate(nowDate);
-			Subject subject = SecurityUtils.getSubject();
-			String username = (String)subject.getPrincipal(); 	
+			peizi.setDataSubmitDate(nowDate);			
 			if(StringUtils.isNotBlank(username)){
 				User user = userService.selectByUsername(username);
 	    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());

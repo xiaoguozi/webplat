@@ -92,8 +92,11 @@ public class YYPController {
 	 * @return
 	 */
 	@RequestMapping("/monthNextCapital")
-	public String  monthNextCapital(Peizi peizi,Model model,HttpServletRequest request) {		
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+	public String  monthNextCapital(Peizi peizi,Model model,HttpServletRequest request) {
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal(); 
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())
+				||StringUtils.isBlank(username)){
 			return "redirect:/rest/web/peizi/yyp/monthCapital";  
 		}		
 		String token = TokenHandler.generateGUID(request.getSession());
@@ -116,7 +119,10 @@ public class YYPController {
 	 */
 	@RequestMapping("/monthLastCapital")
 	public String  monthLastCapital(Peizi peizi,Model model,HttpServletRequest request) {
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal(); 
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())
+				||StringUtils.isBlank(username)){
 			return "redirect:/rest/web/peizi/yyp/monthCapital";  
 		}
 		
@@ -130,9 +136,7 @@ public class YYPController {
 			Date nowDate = new Date();
 			peizi.setDataCreateDate(nowDate);
 			peizi.setDataModifyDate(nowDate);
-			peizi.setDataSubmitDate(nowDate);
-			Subject subject = SecurityUtils.getSubject();
-			String username = (String)subject.getPrincipal(); 	
+			peizi.setDataSubmitDate(nowDate);				
 			if(StringUtils.isNotBlank(username)){
 				User user = userService.selectByUsername(username);
 	    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());

@@ -26,6 +26,7 @@ import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.web.peizi.token.TokenConstants;
 import com.tjs.web.peizi.token.TokenHandler;
 
 /**
@@ -92,7 +93,10 @@ public class DXPController {
 	 */
 	@RequestMapping("/lowNextCapital")
 	public String  lowNextCapital(Peizi peizi,Model model,HttpServletRequest request) {		
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();	
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())
+				||StringUtils.isBlank(username)){//判断是否等率
 			return "redirect:/rest/web/peizi/dxp/lowCapital";  
 		}
 		String token = TokenHandler.generateGUID(request.getSession());
@@ -100,6 +104,7 @@ public class DXPController {
 		peizi.setDataPzje(BigDecimalUtils.subtract(peizi.getDataZcpzj(), peizi.getDataTzbzj()));		
 		peizi.setZfzje(BigDecimalUtils.add(peizi.getDataTzbzj(), peizi.getDataJklxTotal()));
 		peizi.setZfglf(BigDecimalUtils.div(BigDecimalUtils.multiply(peizi.getDataZfglf(), peizi.getDataZcpzj()), new BigDecimal(10000)));
+		model.addAttribute(TokenConstants.DEFAULT_TOKEN_NAME, token);
 		return "web/peizi/dxp/dxpznext";		
 	}
 	
@@ -113,11 +118,13 @@ public class DXPController {
 	 */
 	@RequestMapping("/lowLastCapital")
 	public String  lowLastCapital(Peizi peizi,Model model,HttpServletRequest request) {
-		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();			
+		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())
+				||StringUtils.isBlank(username)){
 			return "redirect:/rest/web/peizi/dxp/lowCapital";  
 		}
-		
-		
+				
 		if(!TokenHandler.validToken(request)){
 			return "redirect:/rest/web/peizi/dxp/lowCapital"; 
 		}
@@ -129,9 +136,7 @@ public class DXPController {
 			Date nowDate = new Date();
 			peizi.setDataCreateDate(nowDate);
 			peizi.setDataModifyDate(nowDate);
-			peizi.setDataSubmitDate(nowDate);
-			Subject subject = SecurityUtils.getSubject();
-			String username = (String)subject.getPrincipal(); 	
+			peizi.setDataSubmitDate(nowDate);			
 			if(StringUtils.isNotBlank(username)){
 				User user = userService.selectByUsername(username);
 	    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());

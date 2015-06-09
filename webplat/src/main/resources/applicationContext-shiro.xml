@@ -20,6 +20,9 @@
                 /rest/web/userCenter/** = user
                 /rest/web/peizi/mfp/freeNextActivity/** = user
                 /rest/web/peizi/mxp/monthNextCapital/** = user
+                /rest/web/peizi/ttp/dayNextCapital/** = user
+                /rest/web/peizi/yyp/monthNextCapital/** = user
+                /rest/web/peizi/dxp/lowNextCapital/** = user
                 <!-- 其他资源不需要认证 -->
                 /** = anon
             </value>
