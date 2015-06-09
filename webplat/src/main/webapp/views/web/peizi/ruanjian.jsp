@@ -72,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="jybox" style="width: 488px;">
                     <img src="assets/img/peizi/rjlogo.jpg" alt="" />
                     <ul class="czimg">
-                        <li><a href="#" style="color:#474747"><img class="dnxz" src="assets/img/peizi/down.png" width="106" alt="" /><br />电脑下载</a></li>
+                        <li><a target="_blank" href="http://www.ihoms.com/file/xunlei/downloadxunlei/HOMS_QiJian/ZhengShi/DuLi/homs_duli.exe?fileCode=10&sourceType=4" style="color:#474747"><img class="dnxz" src="assets/img/peizi/down.png" width="106" alt="" /><br />电脑下载</a></li>
                         <li><img src="assets/img/peizi/iPhone.png" width="106" alt="" /><br />iPhone版下载</li>
                         <li style="padding-right:0px;"><img src="assets/img/peizi/Android.png" width="106" alt="" /><br />Android版下载</li>
                     </ul>
@@ -80,6 +80,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="jybox_right">
                     <h1 class="color158">HOMS交易软件</h1>
                     <p class="font_box">恒生电子（股票交易代码：600570）是中国最专业的证券交易系统服务商，其系统与各大证券公司进行了无缝对接。 2014年04月04日马云33亿入主恒生电子扩张金融版图， 增财易与恒生电子股份有限公司强强联合，为客户提供更加专业、高效、安全的投资管理服务。增财易的客户可通过下载恒生电子提供的客户端进行股票交易，交易单子通过恒生电子交易系统实时进入合作券商在市场上成交。</p>
+                </div>
+                <div class="jybox" style="width: 488px;">
+                	<p><span>也可以到恒生电子的官网下载：</span><br/>
+                	<a  href="http://www.ihoms.com/www/download.do">http://www.ihoms.com/www/download.do</a></p>
                 </div>
             </div>
         </div>
@@ -112,15 +116,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+	
 	})
 </script>
 </body>
