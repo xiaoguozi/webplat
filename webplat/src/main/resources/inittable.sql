@@ -336,7 +336,7 @@ CREATE TABLE `tjs_peizi_data` (
   `data_rule_pcx` decimal(18,2) DEFAULT NULL COMMENT '平仓线',
   `data_rule_jjx` decimal(18,2) DEFAULT NULL COMMENT '警戒线',
   PRIMARY KEY (`data_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配资业务表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配资业务表';
 
 
 
