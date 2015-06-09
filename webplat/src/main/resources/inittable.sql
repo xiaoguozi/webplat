@@ -277,7 +277,7 @@ CREATE TABLE `free_peizi_detail` (
   `peizi_type` int(2) NOT NULL DEFAULT '1' COMMENT '配资类型',
   `peizi_count` int(8) unsigned NOT NULL COMMENT '配资计数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='配资活动计数表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配资活动计数表';
 
 DROP TABLE IF EXISTS `user_info_extend`;
 
@@ -288,7 +288,7 @@ CREATE TABLE `user_info_extend` (
   `is_used` int(2) unsigned DEFAULT '0' COMMENT '是否已经使用过：0为未使用过；1为使用过',
   `is_own_resource` int(2) unsigned DEFAULT '0' COMMENT '用户点击免费体验的时候占有一个活动名额计数，默认为0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户扩展信息表（参加活动记录）';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户扩展信息表（参加活动记录）';
 
 DROP TABLE IF EXISTS `tjs_peizi_rule`;
 
@@ -303,7 +303,7 @@ CREATE TABLE `tjs_peizi_rule` (
   `rule_nll` decimal(6,2) DEFAULT NULL COMMENT '年利率',
   `rule_yll` decimal(6,2) DEFAULT NULL COMMENT '月利率',
   PRIMARY KEY (`rule_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='配置规则';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配置规则';
 
 
 
