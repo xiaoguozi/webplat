@@ -112,7 +112,7 @@
 		#{dataPzje},
 		#{dataJymm},
 		#{dataJyzf},
-		#{dataJyzfDate}	
+		#{dataJyzfDate},	
 		#{dataJyfcDate}				
 		)
 	</insert>
