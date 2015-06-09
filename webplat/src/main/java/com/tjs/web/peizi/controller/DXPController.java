@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -25,6 +26,7 @@ import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.web.peizi.token.TokenHandler;
 
 /**
  * 配资首页控制器
@@ -89,11 +91,11 @@ public class DXPController {
 	 * @return
 	 */
 	@RequestMapping("/lowNextCapital")
-	public String  lowNextCapital(Peizi peizi,Model model) {		
+	public String  lowNextCapital(Peizi peizi,Model model,HttpServletRequest request) {		
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
 			return "redirect:/rest/web/peizi/dxp/lowCapital";  
 		}
-		
+		String token = TokenHandler.generateGUID(request.getSession());
 		peizi.setDataStep("2");
 		peizi.setDataPzje(BigDecimalUtils.subtract(peizi.getDataZcpzj(), peizi.getDataTzbzj()));		
 		peizi.setZfzje(BigDecimalUtils.add(peizi.getDataTzbzj(), peizi.getDataJklxTotal()));
@@ -110,10 +112,17 @@ public class DXPController {
 	 * @return
 	 */
 	@RequestMapping("/lowLastCapital")
-	public String  lowLastCapital(Peizi peizi,Model model) {
+	public String  lowLastCapital(Peizi peizi,Model model,HttpServletRequest request) {
 		if(BigDecimalUtils.isNull(peizi.getDataZcpzj())||BigDecimalUtils.isNull(peizi.getDataTzbzj())){
 			return "redirect:/rest/web/peizi/dxp/lowCapital";  
 		}
+		
+		
+		if(!TokenHandler.validToken(request)){
+			return "redirect:/rest/web/peizi/dxp/lowCapital"; 
+		}
+		
+		
 		peizi.setDataStep("3");
 		peizi.setDataOperaStatus("10");//正在验资中
 		if(peizi.getDataId()==null){

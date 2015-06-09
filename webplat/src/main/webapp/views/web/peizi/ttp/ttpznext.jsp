@@ -66,7 +66,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="w100bg">
     <form id="modalForm" action="rest/web/peizi/ttp/dayLastCapital" method="post" >
         <div class="tjs_1108px center">  
-        
+           <input type="hidden" name="springMVC_token"  value="${springMVC_token}"/>
         	<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
 			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
