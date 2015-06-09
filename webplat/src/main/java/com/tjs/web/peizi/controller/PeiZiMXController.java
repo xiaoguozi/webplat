@@ -60,12 +60,12 @@ public class PeiZiMXController {
 	public String dayCapital(Peizi peizio, Model model) {
 
 		// 如果dataId不为空，从数据库里面读取记录
-		if (null != peizio.getDataId()
-				&& !peizio.getDataId().equals(new Long(0))) {
-			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
-			model.addAttribute("peizi", peizi);
-			return "web/peizi/mxp/mxpeizi";
-		}
+//		if (null != peizio.getDataId()
+//				&& !peizio.getDataId().equals(new Long(0))) {
+//			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
+//			model.addAttribute("peizi", peizi);
+//			return "web/peizi/mxp/mxpeizi";
+//		}
 		
 		// 获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
