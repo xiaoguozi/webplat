@@ -10,6 +10,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="淘金配资,配资网,股票配资,配资公司,期货配资,配资平台,配资炒股" />
+<meta name="description" content="淘金配资网为您提供安全、可靠、高效的股票配资平台，新人注册免费配，优惠活动免息配，不同的体验低息配、天天配、月月配，月息低至1.2%,专业的投资达人为您 	
+在线配资" />
 	<title>淘金山-跟我淘金山</title>
 	<link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet" media="screen" type="text/css" />
 	
