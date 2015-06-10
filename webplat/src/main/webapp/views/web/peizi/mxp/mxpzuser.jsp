@@ -37,7 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
                         <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
                         <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/usercenter/mfp"><span class="simu_on">个人中心</span></a></li>
+                        <li><a href="rest/web/peizi/usercenter/mxp"><span class="simu_on">个人中心</span></a></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
