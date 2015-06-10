@@ -12,7 +12,7 @@ public interface PeiZiIndexMapper {
 	
 	int updateFreePeiziDetailVO(FreePeiziDetailVO freePeiziDetailVO);
 	
-	List<FreePeiziDetailVO> getFreePeiziDetailList(String dateString);
+	List<FreePeiziDetailVO> getFreePeiziDetailList(PZIndexCtrlModel pzIndexCtrlModel);
 	
 	int insertUserInfoExtendVO(UserInfoExtendVO userInfoExtendVO);
 	

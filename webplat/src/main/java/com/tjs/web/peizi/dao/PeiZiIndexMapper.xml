@@ -39,12 +39,13 @@
    		WHERE id=#{id}
    </update>
    
-   <select id="getFreePeiziDetailList" parameterType="java.lang.String" resultMap="pzResultMap">
+   <select id="getFreePeiziDetailList" parameterType="com.tjs.web.peizi.controller.PZIndexCtrlModel" resultMap="pzResultMap">
        SELECT 
        		id, peizi_date, peizi_type, peizi_count
        FROM free_peizi_detail
        WHERE 1=1
-   		 AND date_format(peizi_date,'%Y-%m-%d') = #{value}
+   		 AND date_format(peizi_date,'%Y-%m-%d') = #{dateString}
+   		 AND peizi_type = #{peiziType}
    </select>
 	
 	
