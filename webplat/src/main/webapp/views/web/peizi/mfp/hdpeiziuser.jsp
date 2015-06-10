@@ -73,7 +73,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="ttp wypz_div" >
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" style="color:#ff6600">免费配</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
-                            <span class="bor_dashed"><a href="javascript:void()">天天配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
                             <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
                             <span><a href="javascript:void()">低息1配1</a></span>
                         </div>
