@@ -137,6 +137,7 @@ public class PeiZiUserCenter {
 			lstPeizi= iPeiziService.selectPeizi(peiziCtrlModel);
 		}
 		model.addAttribute("lstPeizi", lstPeizi);
+		model.addAttribute("peiziCtrlModel", peiziCtrlModel);
 		
 		return "web/peizi/ttp/ttpzusercenter";
 	}
