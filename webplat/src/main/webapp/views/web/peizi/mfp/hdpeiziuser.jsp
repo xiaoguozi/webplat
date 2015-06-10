@@ -33,14 +33,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
                 <div class="top_wrap_menu menu">
                     <ul>
-                      
-                        <li><a href="#">首页</a></li>
-					    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
-					    <li><a href="rest/web/pe/peIndex" target="_blank">私募</a></li>
-					    <li><a href="rest/web/peizi/index" target="_blank" class="tjpz">配资</a></li>
-					    <li><a href="#" target="_blank">海外保险</a></li>
-					    <li><a href="rest/web/aboutUs/index" target="_blank">关于我们</a></li>
-                                               
+					    <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
+                        <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
+                        <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
+                        <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
+                        <li><a href="rest/web/peizi/usercenter/mfp"><span class="simu_on">个人中心</span></a></li>
+                        <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -73,7 +71,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                          
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" >
-                        	<span class="bor_dashed"><a href="javascript:void()">免费配</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" style="color:#ff6600">免费配</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
                             <span class="bor_dashed"><a href="javascript:void()">天天配</a></span>
                             <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
@@ -81,10 +79,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                         
                         <li class="wdzj">我的资金</li>
-                        <div class="bor_dashed moneymx" style="display:none"><a href="javascript:void()">资金明细</a></div>
+                        <div class="bor_dashed moneymx" style="display:none;"><a href="javascript:void()">资金明细</a></div>
                         
                         <li class="zlsz">资料设置</li>
-                        <div class="bor_dashed  mmxg"><a href="rest/web/userCenter/userModify">密码修改</a></div>
+                        <div class="bor_dashed  mmxg" style="display: none;"><a href="rest/web/userCenter/userModify">密码修改</a></div>
                         
                         
                     </ul>

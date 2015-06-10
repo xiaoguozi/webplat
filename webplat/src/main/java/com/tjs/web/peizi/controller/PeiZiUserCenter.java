@@ -81,4 +81,19 @@ public class PeiZiUserCenter {
 		return "web/peizi/mxp/mxpzuser";
 	}
 	
+	/**
+	 * 配资明细
+	 * @return
+	 */
+	@RequestMapping("/pzdetail")
+	public String  pzDetail(Model model) {
+		//已经配置需要先登录
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		
+		
+		return "web/peizi/peiziDetail";
+	}
+	
 }
