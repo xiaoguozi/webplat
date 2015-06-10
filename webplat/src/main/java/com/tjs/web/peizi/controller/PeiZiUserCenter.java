@@ -58,4 +58,27 @@ public class PeiZiUserCenter {
 		return "web/peizi/mfp/hdpeiziuser";
 	}
 	
+	/**
+	 * 免费配资用户中心
+	 * @return
+	 */
+	@RequestMapping("/mxp")
+	public String  mxpUserCenter(Model model) {
+		//已经配置需要先登录
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		
+		PeiziCtrlModel peiziCtrlModel = new PeiziCtrlModel();
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.MXPEIZI.getKey());
+		//查询配资记录
+		List<Peizi> lstPeizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		if(lstPeizi!=null && lstPeizi.size()>0){
+			model.addAttribute("peizi", lstPeizi.get(0));
+		}
+		
+		return "web/peizi/mxp/mxpzuser";
+	}
+	
 }

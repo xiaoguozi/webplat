@@ -108,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
 	                  		<c:if test="${!empty peizi}">
-	                  			<b class="my_tit tit1">免费配 <span class="tit_span">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
+	                  			<b class="my_tit tit1">免息配 <span class="tit_span">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <table class="my_tbl2" >
 				                    <tr>
 				                        <td><span class="colorf06 font30">${peizi.dataZcpzj}</span> 元<br />总操盘资金</td>
