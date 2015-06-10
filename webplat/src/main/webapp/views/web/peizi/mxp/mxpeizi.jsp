@@ -22,6 +22,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script type="text/javascript" src="assets/scripts/slide.js"></script>
     <script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
 	<script src="assets/widget/form/jquery.form.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/peizi.js"></script>
+	
 </head>
 <body>
 	<div class="home_all">
@@ -143,7 +145,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="xuyaopeizibox">
                      <div style="height:65px">
                  	   如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox"  checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br />
+                    <input id="Checkbox1" type="checkbox"  checked="checked" />&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br />
                     </div>                 
                     
                   	<c:if test="${result==-1}">

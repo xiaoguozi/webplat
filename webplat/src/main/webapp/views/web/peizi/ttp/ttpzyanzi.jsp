@@ -90,7 +90,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     
                                     <tr>
                                         <td>利益分配：<b class="font26">全部归你</b></td>
-                                        <td>投资方向：<b class="font26">深泸A股</b></td>
+                                        <td>投资方向：<b class="font26">深沪A股</b></td>
                                         <td>仓位要求: <b class="font26">无要求</b></td>
                                     </tr>
                                 </table>
