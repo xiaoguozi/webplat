@@ -16,7 +16,20 @@ public class PeiziCtrlModel extends GenericCtrlModel {
 	private int limitStart;
 		
 	private Peizi peizi;
+	
+	 private int totalPageSize;
 
+	 public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}			
+	}
+	 
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
+	} 
 	
 	public String getKeyWord() {
 		return keyWord;

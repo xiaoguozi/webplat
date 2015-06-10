@@ -74,7 +74,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="pros_box">
                             <p>交易账户： <span class="color158">99787</span></p>
                             <p>交易密码： <span class="color158">2567</span>（为了您的资金安全，请妥善保管好密码）</p>
-                            <p>重点提醒： 交易前请先阅读 <a href="#">天天配合作操盘协议</a></p>
+                            <p>重点提醒： 交易前请先阅读 <a href="#" target="_black">天天配合作操盘协议</a></p>
                             <p>交易软件： <a href="rest/web/peizi/trade">进入交易软件下载页面</a>（恒生系统每晚20:00进行维护，这段时间无法进行操作）</p>
                         </div>
                         <h3>方案详情</h3>
@@ -92,6 +92,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <td><span class="colorf06 font26">2000</span> 元<br />配资金额</td>
                             </tr>
                         </table>
+                        
+                        
+                        
                         <div class="pros_box bord_d">
                             <b class="color158 font26">操盘中</b>
                             <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>

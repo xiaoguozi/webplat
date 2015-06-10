@@ -53,7 +53,16 @@
 
 	<select id="countPeizi" resultType="int"
 		parameterType="com.tjs.admin.peizi.controller.PeiziCtrlModel">
-		select count(*) c from tjs_peizi_data  where 1=1				
+		select count(*) c from tjs_peizi_data  where 1=1
+		
+		<if test="peizi!= null and peizi.dataUserId!=null">
+         and  data_user_id = #{peizi.dataUserId}
+        </if>	
+        
+        <if test="peizi!= null and peizi.dataType!=null">
+         and data_type = #{peizi.dataType}
+        </if>
+        					
 	</select>
 
 	<select id="selectPeizi"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.peizi.controller.PeiziCtrlModel">
@@ -61,6 +70,14 @@
 		<include refid="Base_select_Column_List" />
 				
 		from tjs_peizi_data where   1=1	
+		
+		<if test="peizi!= null and peizi.dataUserId!=null">
+           and data_user_id = #{peizi.dataUserId}
+        </if>	
+        
+        <if test="peizi!= null and peizi.dataType!=null">
+          and data_type = #{peizi.dataType}
+        </if>			  
 					      
          <if test="sortField!= null and sortField!= ''">
            ORDER BY ${sortField} ${sortType}

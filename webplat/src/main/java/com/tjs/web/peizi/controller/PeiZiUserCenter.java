@@ -96,4 +96,49 @@ public class PeiZiUserCenter {
 		return "web/peizi/peiziDetail";
 	}
 	
+	
+	
+	/**
+	 * 天天配中心
+	 * @return
+	 */
+	@RequestMapping("/ttpUserCenter")
+	public String  ttpUserCenter(PeiziCtrlModel peiziCtrlModel,Model model) {
+		//已经配置需要先登录
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.TTPEIZI.getKey());
+		peiziCtrlModel.setPageSize(5);
+		peiziCtrlModel.setSortField("data_submit_date");
+		peiziCtrlModel.setSortType("desc");;
+		
+		int icount = iPeiziService.countPeizi(peiziCtrlModel);
+		peiziCtrlModel.setTotalCount(icount);
+		
+		//判断请求页
+        int totalPageNO = peiziCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(peiziCtrlModel.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+        	currentPageNo =1;
+        } else if(peiziCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	currentPageNo =totalPageNO;
+        }else{
+        	currentPageNo = peiziCtrlModel.getPageNo();
+        }
+        peiziCtrlModel.setPageNo(currentPageNo);
+		
+		
+		//查询配资记录
+		List<Peizi> lstPeizi = null;
+		if(icount>0){
+			lstPeizi= iPeiziService.selectPeizi(peiziCtrlModel);
+		}
+		model.addAttribute("lstPeizi", lstPeizi);
+		
+		return "web/peizi/ttp/ttpzusercenter";
+	}
+	
 }
