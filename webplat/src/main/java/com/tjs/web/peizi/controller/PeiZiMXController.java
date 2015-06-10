@@ -225,7 +225,7 @@ public class PeiZiMXController {
 				peizi.setDataStep("3");
 				peizi.setDataOperaStatus("10");// 正在验资中
 				peizi.setDataUserId(user.getId());
-				peizi.setDataUserId(Long.valueOf(username));
+				peizi.setDataUserTel(username);
 				
 				iPeiZiIndexService.createFreeChargePeiziOrder(userInfoExtendVO, peizi);
 			}
