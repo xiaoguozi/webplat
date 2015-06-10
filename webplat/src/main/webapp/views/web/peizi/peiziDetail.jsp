@@ -62,43 +62,115 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
    	 	<div class="w100bg">
 	            <div class="tjs_1108px center">
 	                <div class="pz_produce">
-	                    <img src="assets/img/peizi/peizisq.png" width="34" alt=""><b>天天配 方案进度</b>
+	                    <img src="assets/img/peizi/peizisq.png" width="34" alt="">
+	                    <c:if test="${peizi.dataType=='10'}">
+		                    <b>免费配 方案进度</b>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='20'}">
+		                    <b>天天配 方案进度</b>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='30'}">
+		                    <b>月月配 方案进度</b>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='40'}">
+		                    <b>低息1配1 方案进度</b>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='50'}">
+		                    <b>免息配 方案进度</b>
+	                    </c:if>
 	                </div>
 	                <div class="bgcolor">
 	                    <div class="programbox">
 	                        <h3>账号密码</h3>
 	                        <div class="pros_box">
-	                            <p>交易账户： <span class="color158">99787</span></p>
-	                            <p>交易密码： <span class="color158">2567</span>（为了您的资金安全，请妥善保管好密码）</p>
+	                        	<c:if test="${peizi.dataOperaStatus=='10'}">
+		                            <p>交易账户： <span class="color158">暂无</span></p>
+	                        	</c:if>
+	                        	<c:if test="${peizi.dataOperaStatus=='20'}">
+		                            <p>交易账户： <span class="color158">${peizi.dataJyzf}</span></p>
+	                        	</c:if>
+	                        	<c:if test="${peizi.dataOperaStatus=='30'}">
+		                            <p>交易账户： <span class="color158">已回收</span></p>
+	                        	</c:if>
+	                            <c:if test="${peizi.dataOperaStatus=='10'}">
+	                            	<p>交易密码： <span class="color158">暂无</span>（为了您的资金安全，请妥善保管好密码）</p>
+	                            </c:if>
+	                            <c:if test="${peizi.dataOperaStatus=='20'}">
+	                            	<p>交易密码： <span class="color158">${peizi.dataJymm}</span>（为了您的资金安全，请妥善保管好密码）</p>
+	                            </c:if>
+	                            <c:if test="${peizi.dataOperaStatus=='30'}">
+	                            	<p>交易密码： <span class="color158">已回收</span>（为了您的资金安全，请妥善保管好密码）</p>
+	                            </c:if>
 	                            <p>重点提醒： 交易前请先阅读 <a href="#">天天配合作操盘协议</a></p>
 	                            <p>交易软件： <a href="ruanjian.html">进入交易软件下载页面</a>（恒生系统每晚20:00进行维护，这段时间无法进行操作）</p>
 	                        </div>
-	                        <h3>方案详情</h3>
-	                        <div class="pros_box">
+	                        <h3 style="display: none;">方案详情</h3>
+	                        <div class="pros_box" style="display: none;">
 	                            <p>开始时间： 2015-8-18</p>
 	                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="#">天天配合作操盘协议</a></p>
 	                        </div>
 	                        <div class="pros_box">
-	                        <table class="ty_tbl">
+	                        <table class="ty_tbl" style="width: 98%">
 	                            <tr>
-	                                <td class="color158 font26">免费体验</td>
-	                                <td><span class="colorf06 font26">2001</span> 元<br />总操盘金额</td>
+	                            	<c:if test="${peizi.dataType=='10'}">
+	                                	<td class="color158 font26">免费体验</td>
+	                                </c:if>
+	                                <c:if test="${peizi.dataType=='20'}">
+	                                	<td class="color158 font26">月月配</td>
+	                                </c:if>
+	                                <c:if test="${peizi.dataType=='30'}">
+	                                	<td class="color158 font26">天天配</td>
+	                                </c:if>
+	                                <c:if test="${peizi.dataType=='40'}">
+	                                	<td class="color158 font26">低息1配1</td>
+	                                </c:if>
+	                                <c:if test="${peizi.dataType=='50'}">
+	                                	<td class="color158 font26">免息体验</td>
+	                                </c:if>
+	                                
+	                                <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘金额</td>
 	                                <td style="width:10px"><b class="font26">=</b></td>
-	                                <td><span class="colorf06 font26">1</span> 元<br />投资本金</td>
+	                                <td colspan="1"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /></span> 元<br />投资本金</td>
 	                                <td style="width:10px"><b class="font26">+</b></td>
-	                                <td><span class="colorf06 font26">2000</span> 元<br />配资金额</td>
+	                                <td colspan="1"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="########.##" /></span> 元<br />配资金额</td>
+	                                <td colspan="2" style="width: 1px"></td>
 	                            </tr>
-	                            <tr style="height: 50px;"><td colspan="6"></td></tr>
+	                            
+	                        </table>
+	                        <table class="ty_tbl" style="width: 98%">
 	                            <tr>
-                                     <td colspan="2">亏损警告线：<span class="font26 colorf06">300</span>元</td>
-                                     <td colspan="2">亏损平仓线：<span class="font26 colorf06">300</span>元</td>
-                                     <td colspan="2">账户管理费:<span class="font26 colorf06">0</span>元</td>
+                                     <td >亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span>元</td>
+                                     <td >亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span>元</td>
+                                     
+                                     <c:if test="${peizi.dataType=='30' || peizi.dataType=='40'}">
+                                     		<td >利息:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
+                                     </c:if>
+                                     <c:if test="${peizi.dataType=='10' || peizi.dataType=='20' || peizi.dataType=='50'}">
+                                     		<td >账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
+                                     </c:if>
+                                     
+                                     <c:if test="${peizi.dataType=='30' || peizi.dataType=='40'}">
+                                     	<td  >资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>月</td>
+                                     </c:if>
+                                     <c:if test="${peizi.dataType=='10' || peizi.dataType=='20' || peizi.dataType=='50'}">
+                                     	<td >资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>天</td>
+                                     </c:if>
+                                     
                                  </tr>
 	                        </table>
 	                        
                             </div>  
 	                        <div class="pros_box bord_d">
-	                            <b class="color158 font26">操盘中</b>
+	                            <c:if test="${peizi.dataOperaStatus=='10'}">
+		                            <b class="color158 font26">验资中</b>
+	                        	</c:if>
+	                        	<c:if test="${peizi.dataOperaStatus=='20'}">
+		                            <b class="color158 font26">操盘中</b>
+	                        	</c:if>
+	                        	<c:if test="${peizi.dataOperaStatus=='30'}">
+		                            <b class="color158 font26">已完结</b>
+	                        	</c:if>
+	                            
 	                            <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
 	                        </div>
 	                    </div>

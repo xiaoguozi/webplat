@@ -125,19 +125,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                        	</c:if>
 				                        </td>
 				                    </tr>
-				                    <tr style="display: none;">
-				                        <c:if test="${peizi.dataOperaStatus=='10'}">
-				                        	<td>已交易天数：<span class="colorf06">0</span> 天</td>
-				                        </c:if>
-				                        <c:if test="${peizi.dataOperaStatus=='20'}">
-				                        	<td>已交易天数：<span class="colorf06"></span> 天</td>
-				                        </c:if>
-				                        <c:if test="${peizi.dataOperaStatus=='30'}">
-				                        	<td>已交易天数：<span class="colorf06">2</span> 天</td>
-				                        </c:if>
-				                        
-				                        <td colspan="3" style="text-align:left;text-indent:3em;">发起时间：<span class="color158"><fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td>
-				                        <td><a class="tjs_next_btn" href="ttpzpro.html">查询方案详情</a></td>
+				                    <tr >
+				                        <td colspan="4" style="text-align:left;text-indent:3em;">发起时间：<span class="color158"><fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td>
+				                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}">查询方案详情</a></td>
 				                    </tr>
 				                </table>
 	                  		</c:if>
@@ -145,7 +135,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                	<!--无产品状态-->
 				                <table class="my_tbl2">
 				                    <tr>
-				                        <td colspan="5"><a class="my_add" href="rest/web/peizi/usercenter/pzdetail" title="添加配资"></a></td>
+				                        <td colspan="5"><a class="my_add" href="rest/web/peizi/mfp/freeActivity" target="_self" title="添加配资"></a></td>
 				                    </tr>
 				                </table>
 				                <!--/无产品状态-->

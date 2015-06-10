@@ -86,12 +86,20 @@ public class PeiZiUserCenter {
 	 * @return
 	 */
 	@RequestMapping("/pzdetail")
-	public String  pzDetail(Model model) {
+	public String  pzDetail(PZIndexCtrlModel pzIndexCtrlModel, Model model) {
 		//已经配置需要先登录
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
+	
+		PeiziCtrlModel peiziCtrlModel = new PeiziCtrlModel();
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.getPeizi().setDataId(pzIndexCtrlModel.getDataId());
 		
+		List<Peizi> peizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		if(peizi!=null && peizi.size()>0){
+			model.addAttribute("peizi", peizi.get(0));
+		}
 		
 		return "web/peizi/peiziDetail";
 	}

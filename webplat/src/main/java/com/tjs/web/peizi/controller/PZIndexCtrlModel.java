@@ -18,6 +18,9 @@ public class PZIndexCtrlModel extends GenericCtrlModel {
 	
 	/** 配资类型  */
 	private int peiziType = 0;
+	
+	/** 流水Id */
+	private Long dataId = 0L;
 
 	public String getDateString() {
 		return dateString;
@@ -42,5 +45,13 @@ public class PZIndexCtrlModel extends GenericCtrlModel {
 	public void setPeiziType(int peiziType) {
 		this.peiziType = peiziType;
 	}
-	
+
+	public Long getDataId() {
+		return dataId;
+	}
+
+	public void setDataId(Long dataId) {
+		this.dataId = dataId;
+	}
+
 }
