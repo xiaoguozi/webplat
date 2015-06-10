@@ -723,3 +723,44 @@ top:85px; right:0px; position: absolute;
     text-align: left;
     color:#df4223;
 }
+
+
+/*pages CSS*/
+.pgbtn A:link {COLOR: #686868;BORDER: #ccc 1px solid;DISPLAY: block;LINE-HEIGHT: 24px;FONT-FAMILY:Arial; TEXT-DECORATION: none}
+.pgbtn A:visited {COLOR: #686868;BORDER: #ccc 1px solid;DISPLAY: block;LINE-HEIGHT: 24px;FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.pgbtn A:active {COLOR: #686868;BORDER: #ccc 1px solid;DISPLAY: block;LINE-HEIGHT: 24px;FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.pgbtn A:hover{COLOR: #686868;BORDER: #ccc 1px solid;DISPLAY: block;LINE-HEIGHT: 24px;FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.pagnum A:link {
+	MARGIN: 0px 2px; WIDTH: 26px
+}
+.pagnum A:visited {
+	MARGIN: 0px 2px; WIDTH: 26px
+}
+.pagnum A:active {
+	MARGIN: 0px 2px; WIDTH: 26px
+}
+.pagnum A:hover {
+	MARGIN: 0px 2px; WIDTH: 26px
+}
+#pagnum_click {
+	MARGIN: 0px 2px; WIDTH: 26px; background-color:#DCF1FF; border:solid 1px #06F; color:#06F; display:inline-block;
+}
+#pagnum_click{MARGIN: 0px 2px;width:26px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block;background-color:#DCF1FF;text-align:center;color:#2388CC;border:solid 1px #2388CC;cursor:pointer;}
+.pages {
+	MARGIN: 5px 0px 5px 0px; WIDTH:100%; TEXT-ALIGN: center
+}
+.pagetb {
+	MARGIN: 0px auto
+}
+.pregro {
+	WIDTH: 60px; PADDING-TOP: 2px; HEIGHT: 20px
+}
+.nxtgro {
+	WIDTH: 60px; PADDING-TOP: 2px; HEIGHT: 20px
+}
+.pregro {
+	DISPLAY: inline; FLOAT: left; MARGIN: 5px 0px 5px 15px;text-align:center;
+}
+.nxtgro {
+	DISPLAY: inline; FLOAT: right; MARGIN: 5px 15px 5px 0px;text-align:center;
+}

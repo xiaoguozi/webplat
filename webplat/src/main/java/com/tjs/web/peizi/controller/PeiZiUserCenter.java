@@ -142,4 +142,97 @@ public class PeiZiUserCenter {
 		return "web/peizi/ttp/ttpzusercenter";
 	}
 	
+	
+	
+	/**
+	 * 月月配中心
+	 * @return
+	 */
+	@RequestMapping("/yypUserCenter")
+	public String  yypUserCenter(PeiziCtrlModel peiziCtrlModel,Model model) {
+		//已经配置需要先登录
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.YYPEIZI.getKey());
+		peiziCtrlModel.setPageSize(3);
+		peiziCtrlModel.setSortField("data_submit_date");
+		peiziCtrlModel.setSortType("desc");;
+		
+		int icount = iPeiziService.countPeizi(peiziCtrlModel);
+		peiziCtrlModel.setTotalCount(icount);
+		
+		//判断请求页
+        int totalPageNO = peiziCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(peiziCtrlModel.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+        	currentPageNo =1;
+        } else if(peiziCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	currentPageNo =totalPageNO;
+        }else{
+        	currentPageNo = peiziCtrlModel.getPageNo();
+        }
+        peiziCtrlModel.setPageNo(currentPageNo);
+		
+		
+		//查询配资记录
+		List<Peizi> lstPeizi = null;
+		if(icount>0){
+			lstPeizi= iPeiziService.selectPeizi(peiziCtrlModel);
+		}
+		model.addAttribute("lstPeizi", lstPeizi);
+		model.addAttribute("peiziCtrlModel", peiziCtrlModel);
+		
+		return "web/peizi/yyp/yypzusercenter";
+	}
+	
+	
+	
+	/**
+	 * 低息配中心
+	 * @return
+	 */
+	@RequestMapping("/dxpUserCenter")
+	public String  dxpUserCenter(PeiziCtrlModel peiziCtrlModel,Model model) {
+		//已经配置需要先登录
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.DXPEIZI.getKey());
+		peiziCtrlModel.setPageSize(3);
+		peiziCtrlModel.setSortField("data_submit_date");
+		peiziCtrlModel.setSortType("desc");;
+		
+		int icount = iPeiziService.countPeizi(peiziCtrlModel);
+		peiziCtrlModel.setTotalCount(icount);
+		
+		//判断请求页
+        int totalPageNO = peiziCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(peiziCtrlModel.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+        	currentPageNo =1;
+        } else if(peiziCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	currentPageNo =totalPageNO;
+        }else{
+        	currentPageNo = peiziCtrlModel.getPageNo();
+        }
+        peiziCtrlModel.setPageNo(currentPageNo);
+		
+		
+		//查询配资记录
+		List<Peizi> lstPeizi = null;
+		if(icount>0){
+			lstPeizi= iPeiziService.selectPeizi(peiziCtrlModel);
+		}
+		model.addAttribute("lstPeizi", lstPeizi);
+		model.addAttribute("peiziCtrlModel", peiziCtrlModel);
+		
+		return "web/peizi/dxp/dxpzusercenter";
+	}
+	
+	
 }

@@ -73,8 +73,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="ttp wypz_div" >
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" >免费配</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
-                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter" style="color:#ff6600">天天配</a></span>
-                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter" >天天配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter" style="color:#ff6600">月月配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>
                         </div>
                         
@@ -106,7 +106,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
 	                  		<c:if test="${peiziCtrlModel.totalCount>0}">
-	                  			<b class="my_tit tit1">天天配 <span class="tit_span">共<span class="colorf06">${peiziCtrlModel.totalCount}</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
+	                  			<b class="my_tit tit1">月月配 <span class="tit_span">共<span class="colorf06">${peiziCtrlModel.totalCount}</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                
 				                <c:forEach items="${lstPeizi}" var="peizi" varStatus="status">
 				                <div style="border-bottom:solid 1px #d3d3d3">
@@ -115,7 +115,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${peizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataPcx}" pattern="#0.####"/></span>元<br />亏损平仓线</td>
-				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJklxTotal}" pattern="#0.####"/></span>元<br />账户管理费</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJklxTotal}" pattern="#0.####"/></span>元<br />借款利息费</td>
 				                        <td>
 				                        	<c:if test="${peizi.dataOperaStatus=='10'}">
 				                        		<b class="color158 font18">验资中</b>
@@ -141,16 +141,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							    <table class=pagetb cellspacing=0>
 							      <tbody>
 							        <tr>
-							        <td class=pagnum><a title=最前一页 href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=1" page_no="1">|<</a></td>
-							        <td class=pagnum><a class=currentpg title=上一页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${peiziCtrlModel.pageNo-1}" page_no="${peiziCtrlModel.pageNo-1}"><</a></td>
+							        <td class=pagnum><a title=最前一页 href="rest/web/peizi/usercenter/yypUserCenter?pageNo=1" page_no="1">|<</a></td>
+							        <td class=pagnum><a class=currentpg title=上一页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${peiziCtrlModel.pageNo-1}" page_no="${peiziCtrlModel.pageNo-1}"><</a></td>
 							        <c:if test="${peiziCtrlModel.totalPageSize<=9||(peiziCtrlModel.totalPageSize>9&&peiziCtrlModel.pageNo<=5)}">
 							       	 <c:forEach var="item" varStatus="status" begin="1" end="${peiziCtrlModel.totalPageSize>9?9:peiziCtrlModel.totalPageSize}">             
 								        <c:choose>  
 								          <c:when test="${status.index==peiziCtrlModel.pageNo }"> 
-								           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+								           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 								          </c:when> 
 								          <c:otherwise>
-								          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
+								          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
 								          </c:otherwise> 
 								        </c:choose>             
 							       </c:forEach>
@@ -160,10 +160,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							        <c:forEach var="item" varStatus="status" begin="${peiziCtrlModel.pageNo-4}" end="${peiziCtrlModel.pageNo+4}">             
 							        <c:choose>  
 							          <c:when test="${status.index==peiziCtrlModel.pageNo }"> 
-							           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+							           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
-							          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
+							          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
 							          </c:otherwise> 
 							        </c:choose>             
 							        </c:forEach>							        
@@ -174,16 +174,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							        <c:forEach var="item" varStatus="status" begin="${peiziCtrlModel.totalPageSize-8}" end="${peiziCtrlModel.totalPageSize}">             
 							        <c:choose>  
 							          <c:when test="${status.index==peiziCtrlModel.pageNo }"> 
-							           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
+							           <td class=pagnum><a class=currentpg title=当前页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
-							          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
+							          <td class=pagnum><a title=第${status.index}页  href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${status.index}" page_no="${status.index}">${status.index}</a></td>   
 							          </c:otherwise> 
 							        </c:choose>             
 							        </c:forEach>							        
 							       </c:if>
-							        <td class=pagnum><a class=currentpg title=下一页 href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${peiziCtrlModel.pageNo+1}" page_no="${peiziCtrlModel.pageNo+1}">></a></td>
-							        <td class=pagnum><a title=最前一页 href="rest/web/peizi/usercenter/ttpUserCenter?pageNo=${peiziCtrlModel.totalPageSize}" page_no="${peiziCtrlModel.totalPageSize}">>|</a></td>          
+							        <td class=pagnum><a class=currentpg title=下一页 href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${peiziCtrlModel.pageNo+1}" page_no="${peiziCtrlModel.pageNo+1}">></a></td>
+							        <td class=pagnum><a title=最前一页 href="rest/web/peizi/usercenter/yypUserCenter?pageNo=${peiziCtrlModel.totalPageSize}" page_no="${peiziCtrlModel.totalPageSize}">>|</a></td>          
 							        </tr>
 							      </tbody>
 							    </table>
