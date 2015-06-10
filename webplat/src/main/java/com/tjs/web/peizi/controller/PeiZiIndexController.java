@@ -1,7 +1,18 @@
 package com.tjs.web.peizi.controller;
 
+import javax.annotation.Resource;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.service.UserInfoService;
+import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 
 /**
  * 配资首页控制器
@@ -14,7 +25,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/web/peizi")
 public class PeiZiIndexController {
-	
+	 @Resource
+	 private UserService userService;
+	 
+	 @Resource
+	 private UserInfoService UserInfoService;
 	/**
 	 * 配资首页
 	 * @return
@@ -90,34 +105,6 @@ public class PeiZiIndexController {
 	}
 	
 	
-	/**
-	 * 个人中心天天配跟踪
-	 * @return
-	 */
-	@RequestMapping("/centerDaySchedule")
-	public String centerDaySchedule() {
-		return "web/peizi/ttpzpro";
-	}
-	
-	
-	/**
-	 * 月月配个人中心信息
-	 * @return
-	 */
-	@RequestMapping("/monthCenterCapital")
-	public String  monthCenterCapital() {
-		return "web/peizi/yyzhongxin";
-	}
-	
-
-	/**
-	 * 低息配个人中心信息
-	 * @return
-	 */
-	@RequestMapping("/lowCenterCapital")
-	public String  lowCenterCapital() {
-		return "web/peizi/dxzhongxin";
-	}
 	
 	/**
 	 * 交易软件
@@ -179,7 +166,17 @@ public class PeiZiIndexController {
 	 * @return
 	 */
 	@RequestMapping("/agreement")
-	public String agreement() {
+	public String agreement(Model model) {
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal(); 
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+    		model.addAttribute("userName", (userInfo==null?"":userInfo.getNickName()));
+    		model.addAttribute("tjsName", (userInfo==null?username:userInfo.getNickName()));				
+		}  
+		
+		
 		return "web/peizi/stackAgreement";            
 	}
 	

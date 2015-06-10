@@ -20,7 +20,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
 	<script type="text/javascript" src="assets/scripts/slide.js"></script>
-	 <script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/peizi.js"></script>
 	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -36,8 +37,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
                 <div class="top_wrap_menu menu">
                     <ul>
-                        <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
-                        <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
+                        <li><a href="rest/web/peizi/index" target="_blank"><span>配资首页</span></a></li>
+                        <li class="tjpz"><a href="rest/web/peizi/capital" target="_blank"><span class="simu_on">淘金配资</span></a></li>
                         <li><span>淘金募集</span></li>
                         <li><span>淘金自营</span></li>
                         <li><span>个人中心</span></li>
@@ -164,7 +165,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="xuyaopeizibox">
                 	<div style="height:85px">
                   	  如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="#">《合作操盘协议》</a><br/>
+                    <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br/>
                     </div>
                      <a class="tjs_btn" href="">我要配资</a>                  
                 </div>

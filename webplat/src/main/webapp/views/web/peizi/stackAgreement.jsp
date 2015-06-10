@@ -50,13 +50,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <strong style="font-weight:600;"><span>乙方(操盘方)&nbsp;</span></strong>
 </p>
 <p style="text-indent:27px;line-height:200%">
-    <strong style="font-weight:600;"><span>真实姓名：&nbsp;</span></strong><span></span>
+    <strong style="font-weight:600;"><span>真实姓名：&nbsp;</span></strong><span>${userName}</span>
 </p>
 <p style="text-indent:27px;line-height:200%">
     <strong style="font-weight:600;"><span>身份证号：&nbsp;</span></strong><span></span>
 </p>
 <p style="text-indent:27px;line-height:200%">
-    <strong style="font-weight:600;"><span>淘金山用户名：&nbsp;</span></strong><span><span>
+    <strong style="font-weight:600;"><span>淘金山用户名：&nbsp;</span></strong><span>${tjsName}<span>
 </p>
 
 <p style="text-indent:27px;line-height:200%">
