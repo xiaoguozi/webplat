@@ -47,7 +47,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		//pzIndexCtrlModel.setPeiziType(pzIndexCtrlModel.getPeiziType());
 		List<UserInfoExtendVO> lstUserVO = peiZiIndexMapper.getUserInfoExtendList(pzIndexCtrlModel);
 		
-	    List<FreePeiziDetailVO> lstPZVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel.getDateString());
+	    List<FreePeiziDetailVO> lstPZVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel);
 		if(lstPZVO==null || lstPZVO.size()==0){
 			//1、新增当日活动计数记录
 			FreePeiziDetailVO vo = new FreePeiziDetailVO();
@@ -108,7 +108,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	@Override
 	public List<FreePeiziDetailVO> getFreePeiziDetailList(
 			PZIndexCtrlModel pzIndexCtrlModel) {
-		List<FreePeiziDetailVO> lstVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel.getDateString());
+		List<FreePeiziDetailVO> lstVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel);
 		
 		return lstVO;
 	}

@@ -48,6 +48,4 @@ public class FreePeiziDetailVO {
 		this.peiziCount = peiziCount;
 	}
 	
-	
-	
 }

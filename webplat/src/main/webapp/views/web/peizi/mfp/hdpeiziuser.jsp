@@ -125,7 +125,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                        	</c:if>
 				                        </td>
 				                    </tr>
-				                    <tr>
+				                    <tr style="display: none;">
 				                        <c:if test="${peizi.dataOperaStatus=='10'}">
 				                        	<td>已交易天数：<span class="colorf06">0</span> 天</td>
 				                        </c:if>

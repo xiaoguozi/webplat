@@ -110,6 +110,7 @@ public class PeiZiMXController {
 		//查询当天免费配活动是否有名额
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
+		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());
 		List<FreePeiziDetailVO> lstPZVO = iPeiZiIndexService.getFreePeiziDetailList(pzIndexCtrlModel);
 		if(lstPZVO!=null 
 				&& lstPZVO.size()>0){
