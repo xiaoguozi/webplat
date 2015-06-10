@@ -111,7 +111,7 @@ public class PeiZiUserCenter {
 		
 		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
 		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.TTPEIZI.getKey());
-		peiziCtrlModel.setPageSize(5);
+		peiziCtrlModel.setPageSize(3);
 		peiziCtrlModel.setSortField("data_submit_date");
 		peiziCtrlModel.setSortType("desc");;
 		
