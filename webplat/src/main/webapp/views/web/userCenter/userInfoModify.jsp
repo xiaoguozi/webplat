@@ -83,16 +83,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                          
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" style="display:none">
-                            <span class="bor_dashed"><a href="javascript:void()">天天配</a></span>
-                            <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
-                            <span><a href="javascript:void()">低息1配1</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" >免费配</a></span>
+                        	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>
                         </div>
                         
                         <li class="wdzj">我的资金</li>
                         <div class="bor_dashed moneymx" style="display:none"><a href="javascript:void()">资金明细</a></div>
                         
                         <li class="zlsz">资料设置</li>
-                        <div class="bor_dashed  mmxg"><a href="rest//web/userCenter/userModify">密码修改</a></div>
+                        <div class="bor_dashed  mmxg"><a href="rest//web/userCenter/userModify" style="color:#ff6600">密码修改</a></div>
                         
                         
                     </ul>
@@ -154,46 +156,9 @@ $(function() {
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-        /*--操盘金额--*/
-        var sum = 0;
-        $(".cpbox1").each(function (i) {
-            $(this).click(function () {
-                $(".cpbox1").removeClass("on")
-                $(this).addClass("on");
-                sum = $(".cpmoney:eq('" + i + "')").text();
-                $("#capital").text(sum);
-                $("#assure").text(sum * 0.25);
-                $("#loss").text(sum * 0.9);
-                $("#close").text(sum * 0.875);
-                $("#fee").text(sum * 0.00075);
-                
-            });
-        });
-        /*--/操盘金额--*/
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
-	    //--自定义下拉框--
-		$(".sel_wrap").click(function () {
-		    var money = "7.5";
-		    $(".select").toggle();
-		    $('.select>li').filter(":last").css("border-bottom", "1px solid #d3d3d3");
-		    $(".select>li").each(function (index) {
-		        $(this).click(function () {
-		            var opt = $(this).html();
-		            $(".lbl").html(opt);
-		            var num = opt.substring(0, 1);
-		            $("#manageFee").text(num*money);
-		        })
-		    })
-		})
-	    //--/自定义下拉框--
+       
+      
+	  
 		var handleRegister = function() {						
 	        $('.modify-form').validate({
 	            errorElement : 'span', // default input error message container

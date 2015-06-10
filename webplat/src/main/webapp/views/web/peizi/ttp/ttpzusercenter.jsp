@@ -105,9 +105,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </script>
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
-	                  		<c:if test="${peiziCtrlModel.totalCount>0}">
+	                  		
 	                  			<b class="my_tit tit1">天天配 <span class="tit_span">共<span class="colorf06">${peiziCtrlModel.totalCount}</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
-				                
+				                <c:if test="${peiziCtrlModel.totalCount>0}">
 				                <c:forEach items="${lstPeizi}" var="peizi" varStatus="status">
 				                <div style="border-bottom:solid 1px #d3d3d3">
 				                <table class="my_tbl2"  >
