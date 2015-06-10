@@ -78,6 +78,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <p>开始时间： 2015-8-18</p>
 	                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="#">天天配合作操盘协议</a></p>
 	                        </div>
+	                        <div class="pros_box">
 	                        <table class="ty_tbl">
 	                            <tr>
 	                                <td class="color158 font26">免费体验</td>
@@ -87,7 +88,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                <td style="width:10px"><b class="font26">+</b></td>
 	                                <td><span class="colorf06 font26">2000</span> 元<br />配资金额</td>
 	                            </tr>
+	                            <tr style="height: 50px;"><td colspan="6"></td></tr>
+	                            <tr>
+                                     <td colspan="2">亏损警告线：<span class="font26 colorf06">300</span>元</td>
+                                     <td colspan="2">亏损平仓线：<span class="font26 colorf06">300</span>元</td>
+                                     <td colspan="2">账户管理费:<span class="font26 colorf06">0</span>元</td>
+                                 </tr>
 	                        </table>
+	                        
+                            </div>  
 	                        <div class="pros_box bord_d">
 	                            <b class="color158 font26">操盘中</b>
 	                            <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>

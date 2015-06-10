@@ -72,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" >
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" style="color:#ff6600">免费配</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mxp">免息配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
                             <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
                             <span><a href="javascript:void()">低息1配1</a></span>
@@ -106,7 +106,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
 	                  		<c:if test="${!empty peizi}">
-	                  			<b class="my_tit tit1">免费配 <span class="tit_span">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
+	                  			<b class="my_tit tit1">免费配 <span class="tit_span" style="display: none;">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <table class="my_tbl2" >
 				                    <tr>
 				                        <td><span class="colorf06 font30">${peizi.dataZcpzj}</span> 元<br />总操盘资金</td>
@@ -145,7 +145,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                	<!--无产品状态-->
 				                <table class="my_tbl2">
 				                    <tr>
-				                        <td colspan="5"><a class="my_add" href="ttpeizi.html" title="添加配资"></a></td>
+				                        <td colspan="5"><a class="my_add" href="rest/web/peizi/usercenter/pzdetail" title="添加配资"></a></td>
 				                    </tr>
 				                </table>
 				                <!--/无产品状态-->

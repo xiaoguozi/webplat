@@ -45,6 +45,7 @@
        FROM free_peizi_detail
        WHERE 1=1
    		 AND date_format(peizi_date,'%Y-%m-%d') = #{value}
+   		 AND peizi_type = #{peiziType}
    </select>
 	
 	

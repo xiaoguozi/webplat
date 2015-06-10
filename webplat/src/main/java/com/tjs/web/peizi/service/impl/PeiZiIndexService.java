@@ -44,7 +44,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		
 		//查询用户
 		pzIndexCtrlModel.setUserId(user.getId());
-		pzIndexCtrlModel.setPeiziType(pzIndexCtrlModel.getPeiziType());
+		//pzIndexCtrlModel.setPeiziType(pzIndexCtrlModel.getPeiziType());
 		List<UserInfoExtendVO> lstUserVO = peiZiIndexMapper.getUserInfoExtendList(pzIndexCtrlModel);
 		
 	    List<FreePeiziDetailVO> lstPZVO = peiZiIndexMapper.getFreePeiziDetailList(pzIndexCtrlModel.getDateString());
