@@ -1,7 +1,10 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
+<script charset="utf-8" src="http://wpa.b.qq.com/cgi/wpa.php"></script>
 <script type="text/javascript" src="assets/scripts/ui/qqright.js"></script>
 <script type="text/javascript" src="assets/scripts/ui/qqslide.js"></script>
-
+<script>
+	BizQQWPA.addCustom({aty: '0', a: '0', nameAccount: 4006114088, selector: 'BizQQWPA'});
+</script>
 
 <div class="header_top">
 <div class="tjs_1108px center">
