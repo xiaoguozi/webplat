@@ -72,7 +72,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" >
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" >免费配</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">免息配</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mxp">免息配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter" style="color:#ff6600">天天配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>
@@ -193,7 +193,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                	<!--无产品状态-->
 				                <table class="my_tbl2">
 				                    <tr>
-				                        <td colspan="5"><a class="my_add" href="" title="添加配资"></a></td>
+				                        <td colspan="5"><a class="my_add" href="rest/web/peizi/ttp/dayCapital" title="添加配资"></a></td>
 				                    </tr>
 				                </table>
 				                <!--/无产品状态-->

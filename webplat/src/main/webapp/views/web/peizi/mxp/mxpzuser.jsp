@@ -72,9 +72,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="ttp wypz_div" >
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp">免费配</a></span>
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mxp" style="color:#ff6600">免息配</a></span>
-                            <span class="bor_dashed"><a href="javascript:void()">天天配</a></span>
-                            <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
-                            <span><a href="javascript:void()">低息1配1</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
+                            <span><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>
                         </div>
                         
                         <li class="wdzj">我的资金</li>
@@ -104,13 +104,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </script>
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
+	                  		<b class="my_tit tit1">免息配 <span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 	                  		<c:if test="${!empty peizi}">
-	                  			<b class="my_tit tit1">免息配 <span class="tit_span" style="display: none;">进行中<span class="colorf06" style="display: none;">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <table class="my_tbl2" >
 				                    <tr>
-				                        <td><span class="colorf06 font30">${peizi.dataZcpzj}</span> 元<br />总操盘资金</td>
-				                        <td><span class="colorf06 font30">无</span><br />亏损警告线</td>
-				                        <td><span class="colorf06 font30">无</span><br />亏损平仓线</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span><br />亏损警告线</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span><br />亏损平仓线</td>
 				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
 				                        <td>
 				                        	<c:if test="${peizi.dataOperaStatus=='10'}">
@@ -207,127 +207,6 @@ $(function() {
 		        })
 		    })
 		})
-	    //--/自定义下拉框--
-		var handleRegister = function() {						
-	        $('.modify-form').validate({
-	            errorElement : 'span', // default input error message container
-	            errorClass : 'tjs_reg_error', // default input error message class
-	            focusInvalid : false, // do not focus the last invalid input
-	            ignore : "",
-	            rules : {	               
-	                password : {
-	                    required : true,
-	                    rangelength:[6,16],
-	                    remote:{
-	                        url: "rest/web/userCenter/valiadPassword",
-	                        type: "post",
-	                        data: {
-	                        	password: function () { return sha256_digest($("#register_password").val()); }
-	                        }
-	                    }
-	                },
-	                newpassword : {
-	                    required : true,
-	                    rangelength:[6,16]
-	                },
-	                rpaConfirmssword : {
-	                    equalTo : "#register_newpassword"
-	                }
-	            },
-
-	            messages : { // custom messages for radio buttons and checkboxes		           
-		            password : {
-		                required : "原密码不能为空.",
-		                remote:"原密码错误"
-		            },
-	               newpassword : {
-	                   required : "新密码不能为空."
-	               }
-	            },
-
-	            invalidHandler : function(event, validator) { 
-	            	$('.alert-danger', $('.modify-form')).show();
-	            },
-
-	            highlight : function(element) { // hightlight error inputs
-	                $(element).closest('.form-group').addClass('has-error');
-	            },
-
-	            success : function(label) {
-	                label.closest('.form-group').removeClass('has-error');
-	                label.remove();
-	            },
-
-	            errorPlacement : function(error, element) {	               
-	                   error.insertAfter(element);
-	            },
-
-	            submitHandler : function(form) {
-	            	//var passwordInput = $('[name="password"]');
-		           // passwordInput.val(sha256_digest(passwordInput.val()));
-		            
-	               // form.submit();
-	            }
-	        });
-
-	        $('.modify-form input').keypress(function(e) {
-	            if (e.which == 13) {
-	                if ($('.modify-form').validate().form()) {	                	                	
-			    		var passwordInput = $('[name="password"]');
-				        passwordInput.val(sha256_digest(passwordInput.val()));			        
-				        var newPasswordInput = $('[name=newpassword]');
-				        newPasswordInput.val(sha256_digest(newPasswordInput.val()));			        
-				        var rpaConfirmssword = $('[name=rpaConfirmssword]');
-				        rpaConfirmssword.val(sha256_digest(newPasswordInput.val()));							    		
-			    		$.post('rest/web/userCenter/userModifyData', 
-			    		            $('.modify-form').formSerialize(),
-			    		            function(data){		    			
-			    			 			passwordInput.val("");
-			    						newPasswordInput.val("");
-			    						rpaConfirmssword.val("");
-			    						if(data){
-			    							$("#modify_tip").text("修改成功");
-			    						}else{
-			    							$("#modify_tip").text("修改失败");
-			    						}
-			    						$("#modify_data").toggle(1000);
-			    						$("#modify_data").toggle(1000);		    								    			
-			    		            });
-	                }
-	                return false;
-	            }
-	        });
-	        
-
-		    $('#register-submit-btn').click(function(e){
-		    	e.preventDefault();
-		    	if ($('.modify-form').validate().form()) {
-		    		var passwordInput = $('[name="password"]');
-			        passwordInput.val(sha256_digest(passwordInput.val()));			        
-			        var newPasswordInput = $('[name=newpassword]');
-			        newPasswordInput.val(sha256_digest(newPasswordInput.val()));			        
-			        var rpaConfirmssword = $('[name=rpaConfirmssword]');
-			        rpaConfirmssword.val(sha256_digest(newPasswordInput.val()));							    		
-		    		$.post('rest/web/userCenter/userModifyData', 
-		    		            $('.modify-form').formSerialize(),
-		    		            function(data){		    			
-		    			 			passwordInput.val("");
-		    						newPasswordInput.val("");
-		    						rpaConfirmssword.val("");
-		    						if(data){
-		    							$("#modify_tip").text("修改成功");
-		    						}else{
-		    							$("#modify_tip").text("修改失败");
-		    						}
-		    						$("#modify_data").toggle(1000);
-		    						$("#modify_data").toggle(1000);		    								    			
-		    		            });
-	            }
-		    	return false;
-		    });
-	        
-		}			   
-		handleRegister();
 						
 	});
        

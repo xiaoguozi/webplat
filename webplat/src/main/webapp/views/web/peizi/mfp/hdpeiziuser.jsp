@@ -74,8 +74,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" style="color:#ff6600">免费配</a></span>
                         	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mxp">免息配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
-                            <span class="bor_dashed"><a href="javascript:void()">月月配</a></span>
-                            <span><a href="javascript:void()">低息1配1</a></span>
+                            <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
+                            <span><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>
                         </div>
                         
                         <li class="wdzj">我的资金</li>
@@ -105,11 +105,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </script>
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
+                  			<b class="my_tit tit1">免费配 <span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 	                  		<c:if test="${!empty peizi}">
-	                  			<b class="my_tit tit1">免费配 <span class="tit_span" style="display: none;">进行中<span class="colorf06">1</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <table class="my_tbl2" >
 				                    <tr>
-				                        <td><span class="colorf06 font30">${peizi.dataZcpzj}</span> 元<br />总操盘资金</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30">无</span><br />亏损警告线</td>
 				                        <td><span class="colorf06 font30">无</span><br />亏损平仓线</td>
 				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>

@@ -37,7 +37,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
                         <li><a href="rest/web/peizi/raise"><span>淘金募集</span></a></li>
                         <li><a href="rest/web/peizi/self"><span>淘金自营</span></a></li>
-                        <li><a href="rest/web/peizi/usercenter/mfp"><span class="simu_on">个人中心</span></a></li>
+                        <c:if test="${peizi.dataType=='10'}">
+	                        <li><a href="rest/web/peizi/usercenter/mfp"><span class="simu_on">个人中心</span></a></li>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='20'}">
+		                    <li><a href="rest/web/peizi/usercenter/ttpUserCenter"><span class="simu_on">个人中心</span></a></li>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='30'}">
+		                    <li><a href="rest/web/peizi/usercenter/yypUserCenter"><span class="simu_on">个人中心</span></a></li>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='40'}">
+		                    <li><a href="rest/web/peizi/usercenter/dxpUserCenter"><span class="simu_on">个人中心</span></a></li>
+	                    </c:if>
+	                    <c:if test="${peizi.dataType=='50'}">
+		                    <li><a href="rest/web/peizi/usercenter/mxp"><span class="simu_on">个人中心</span></a></li>
+	                    </c:if>
+                        
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
