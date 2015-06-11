@@ -87,11 +87,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <!-- 焦点广告 结束 -->
                             
 
-        <div class="tjs_liuchengbg"></div>
+       <!--   <div class="tjs_liuchengbg"></div>-->
         <div class="tjs_1108px center">
         	<!-- 新手导航 -->
-            <div class="tjs_liucheng">
-            </div>
+           <!-- <div class="tjs_liucheng">
+            </div>-->
             <div class="peizi_data_box">
             	<span class="data_box1">
             		<img src="assets/img/peizi/help.png" alt=""><p>新手指引<br/><span class="font14">一分钟了解配资</span></p>
@@ -195,15 +195,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-    /*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+   
 	})
 	
 	function alertbox() {
