@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
                         <li><span>淘金募集</span></li>
                         <li><span>淘金自营</span></li>
-                        <li><span>个人中心</span></li>
+                        <li><a href="rest/web/peizi/usercenter/dxpUserCenter"><span>个人中心</span></a></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="datastep3">
                         <h1 class="color54a">操盘申请成功！</h1>
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您！</p>
-                        <a class="tjs_next_btn mt30" href="rest/web/peizi/dxp/lowScheduleCapital">查看方案进度</a>
+                        <a class="tjs_next_btn mt30" href="rest/web/peizi/dxp/lowScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
                     </div>
                     <div class="w985">
                         <p class="color158 font18">配资进度</p>
