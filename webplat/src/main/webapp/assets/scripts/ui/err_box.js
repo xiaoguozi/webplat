@@ -70,14 +70,14 @@
     document.body.insertBefore(shadowDiv, document.body.firstChild); //遮罩层加入文档
     //弹出框
     var styleStr1 = 'display:block;position:fixed;_position:absolute;left:' + (winSize.windowWidth / 2 - 200) + 'px;top:' + (winSize.windowHeight / 2 - 200) + 'px;_top:' + (winSize.windowHeight / 2 + top - 150) + 'px;'; //弹出框的位置
-    styleStr1=styleStr1+"height:300px;"
+    styleStr1=styleStr1+"height:300px;text-align:center;"
     var alertBox = document.createElement('div');
     alertBox.id = 'alertMsg';
     alertBox.style.cssText = styleStr1;
     //创建弹出框里面的内容div标签
     var alertMsg_info = document.createElement('div');
     alertMsg_info.id = 'alertMsg_info';
-    alertMsg_info.innerHTML = "<div class='capacity'>温馨提示</div><div class='alert_in_box'><p style='color:red;heigh:200px'><img src='assets/img/103.png' align='middle'><span>"+msg+"</span></img></p></div><div class='remark'>如有疑问请咨询4006-114-088</div>";
+    alertMsg_info.innerHTML = "<div class='capacity'>温馨提示</div><div class='alert_in_box' style='width:88%'><p style='color:red;heigh:200px'><img src='assets/img/103.png' align='middle'><span>"+msg+"</span></img></p></div><div class='remark'>如有疑问请咨询4006-114-088</div>";
     alertBox.appendChild(alertMsg_info);
     if (mode === 1) {
         var btn2 = document.createElement('a');
