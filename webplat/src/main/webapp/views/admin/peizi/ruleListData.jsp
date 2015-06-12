@@ -27,34 +27,81 @@
                 </c:when>
                  <c:when test="${rule.ruleType=='40'}">  
                   		低息配   
-                </c:when>    
+                </c:when>
+                 <c:when test="${rule.ruleType=='50'}">  
+                  		免息配资
+                </c:when>     
                 <c:otherwise>  
                      	错误
                 </c:otherwise>  
             </c:choose>                 
         </td>
          <td>
-           ${rule.ruleJjx}%              
+         <c:choose>  
+                <c:when test="${rule.ruleType=='10'}">  
+                  		
+                </c:when>
+                 <c:when test="${rule.ruleType=='20'}">  
+                  		 ${rule.ruleJjx3}%  
+                </c:when>
+                 <c:when test="${rule.ruleType=='30'}">  
+                  		
+                </c:when>
+                 <c:when test="${rule.ruleType=='40'}">  
+                  		 ${rule.ruleJjx}%     
+                </c:when>
+                 <c:when test="${rule.ruleType=='50'}">  
+                </c:when>     
+                <c:otherwise>  
+                     	错误
+                </c:otherwise>  
+            </c:choose>       
+                      
         </td>
         
          <td>
-           ${rule.rulePcx}%                   
-        </td>
-        <td>
-              <c:choose>  
-                <c:when test="${rule.ruleGlsyType=='10'}">  
-                  		${rule.ruleZhglf}元/天
+         <c:choose>  
+                <c:when test="${rule.ruleType=='10'}">  
+                  		
                 </c:when>
-                 <c:when test="${rule.ruleGlsyType=='20'}">  
-                  		月利率:${rule.ruleYll}% 
+                 <c:when test="${rule.ruleType=='20'}">  
+                  		 ${rule.rulePcx3}%  
                 </c:when>
-                 <c:when test="${rule.ruleGlsyType=='30'}">  
-                  		年利率:${rule.ruleNll}%
-                </c:when>                
+                 <c:when test="${rule.ruleType=='30'}">  
+                  		  
+                </c:when>
+                 <c:when test="${rule.ruleType=='40'}">  
+                  		 ${rule.rulePcx}%  
+                </c:when>
+                 <c:when test="${rule.ruleType=='50'}">  
+                  		
+                </c:when>     
                 <c:otherwise>  
                      	错误
                 </c:otherwise>  
-            </c:choose>                 
+            </c:choose>                                 
+        </td>
+        <td>
+              <c:choose>  
+                <c:when test="${rule.ruleType=='10'}">  
+                  		
+                </c:when>
+                 <c:when test="${rule.ruleType=='20'}">  
+                  		账户管理费：${rule.ruleZhglf}/天  
+                </c:when>
+                 <c:when test="${rule.ruleType=='30'}">  
+                  		  
+                </c:when>
+                 <c:when test="${rule.ruleType=='40'}">  
+                  		年利率：${rule.ruleNll}%   
+                </c:when>
+                 <c:when test="${rule.ruleType=='50'}">  
+                  		
+                </c:when>     
+                <c:otherwise>  
+                     	错误
+                </c:otherwise>  
+            </c:choose>            
         </td>      
     </tr>
 

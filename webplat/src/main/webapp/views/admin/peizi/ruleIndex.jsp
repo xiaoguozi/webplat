@@ -17,8 +17,8 @@
 </div>
 <!-- END PAGE HEADER-->
 
-<div class="row">
-    <div class="col-md-12">
+<div class="row" style="heigh:40px;">
+    <div class="col-md-5">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
                 <input type="hidden" name="sortField" value="">
@@ -27,8 +27,25 @@
                 <input type="hidden" name="pageSize" value="">
             </div>&nbsp;&nbsp;
             <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right" style="display:none"><span class="glyphicon glyphicon-search"></span> </button>
-            <button type="button" id="insertBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</button>
-        </form>
+             <div class="container-fluid">
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">		    	    
+		      <ul class="nav navbar-nav navbar-left ">
+		        <li class="dropdown">
+		          <a href="#" class="btn  ladda-button dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="line-height:15px">新增<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#" class="insertBtn" ruleType="10">免费配资  </a></li>
+		            <li><a href="#" class="insertBtn" ruleType="50">免息配资  </a></li>
+		            <li><a href="#" class="insertBtn" ruleType="20">天天配 </a></li>
+		            <li><a href="#" class="insertBtn" ruleType="30">月月配</a></li>
+		            <li><a href="#" class="insertBtn" ruleType="40">低息配</a></li>              
+		          </ul>
+		        </li>
+		      </ul>
+		      <ul>&nbsp;&nbsp;<button type="button" id="deleteBtn" class="btn  ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-trash"></span> 删除</button></ul>
+		    </div>		     
+		    </div>
+        
+        </form>              	 			
     </div>
 </div>
 <div class="row">
@@ -44,9 +61,9 @@
                             </label>
                         </th>                      
                        <th field="rule_type">配资类型  <span class="glyphicon"></span></th>
-                        <th field="rule_type">警戒线<span class="glyphicon"></span></th>
-                        <th field="rule_pcx">平仓线<span class="glyphicon"></span></th>
-                        <th field="rule_id">借款利率<span class="glyphicon"></span></th>                                                 
+                       <th field="rule_type">警戒线<span class="glyphicon"></span></th>
+                       <th field="rule_pcx">平仓线<span class="glyphicon"></span></th>
+                       <th field="rule_id">借款利率<span class="glyphicon"></span></th>                                                 
                     </tr>
                 </thead>
                 <tbody>
@@ -94,15 +111,44 @@ $(function(){
 
 
     //新增事件
-    $("#insertBtn").click(function() {
+    $(".insertBtn").click(function(event) {
+    	event.preventDefault();
         $("#modalDiv").load(
             insertUrl, 
             {
+            	ruleType:$(this).attr("ruleType")
             },
             function(){
                 togglePage('modal');
             });
   
+    });
+    
+    //删除事件
+    $("#deleteBtn").click(function() {
+        var ids = Btk.tableCheckedIds($("#list-data"));
+        if(!ids){
+            Btk.message("请选择记录进行操作！");
+            return false;
+        }else{
+            var $this = this;
+            confirm("确定要<strong class='text-danger'>删除</strong>选中的数据吗？您只能删除本人创建的数据。", function(confirm){
+                if(confirm){
+                    var l = Ladda.create($this);
+                    l.start();
+                    $.post(
+                        deleteDataUrl, 
+                        { 
+                            "ids": ids
+                        },
+                        function(data){
+                            Btk.messageData(data);
+                            loadList();
+                        }, "json")
+                    .always(function() { l.stop(); });
+                }
+            });
+        }
     });
    
 

@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeiziRule;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 /**
  * 系统产品//http://127.0.0.1:8080/webplat/product/xt/list?method=getXtList
  * 
@@ -83,6 +85,13 @@ public class PeiziRuleController {
 	    @RequestMapping("/insert")
 	    public String insert(PeiziRule peiziRule, PeiziRuleCtrlModel PeiziCtrlModel, Model model) {	    	
 	    	model.addAttribute(peiziRule);
+	    	if(PeiziTypeEnum.DXPEIZI.getKey().equals(peiziRule.getRuleType())){
+	    		peiziRule.setRuleGlsyType("30");
+	    	}else if(PeiziTypeEnum.YYPEIZI.getKey().equals(peiziRule.getRuleType())){
+	    		peiziRule.setRuleGlsyType("20");
+	    	}else{
+	    		peiziRule.setRuleGlsyType("10");
+	    	}
 	    	model.addAttribute("ctrlData", PeiziCtrlModel);
 	        return "admin/peizi/insertRule";
 	    }
@@ -116,6 +125,15 @@ public class PeiziRuleController {
 	    	int id = iPeiziRule.updatePeiziRule(peiziRule);
 	    	result.put("code", "0");
 	    	result.put("bizData", peiziRule);	    	
+	        return result;
+	    }
+	    
+	    @RequestMapping("/deleteData")
+	    public  Map<String, Object> deleteData(@RequestParam(value="ids",required=false) Long[] ruleIds, PeiziRuleCtrlModel PeiziCtrlModel, Model model) {
+	    	Map<String, Object> result = new HashMap<String, Object>();
+	    	iPeiziRule.deleteBatchPeiziRule(ruleIds);
+	    	result.put("code", "0");
+	    	model.addAttribute("ctrlData", PeiziCtrlModel);
 	        return result;
 	    }
 }

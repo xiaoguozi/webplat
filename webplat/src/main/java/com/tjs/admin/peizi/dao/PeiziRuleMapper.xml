@@ -10,15 +10,39 @@
 		<result column="rule_glsy_type" property="ruleGlsyType" jdbcType="VARCHAR" />
 		<result column="rule_zhglf" property="ruleZhglf" javaType="java.math.BigDecimal" />
 		<result column="rule_nll" property="ruleNll" javaType="java.math.BigDecimal" />
-		<result column="rule_yll" property="ruleYll" javaType="java.math.BigDecimal" />						
+		<result column="rule_yll" property="ruleYll" javaType="java.math.BigDecimal" />
+			
+		<result column="rule_yll2" property="ruleYll2" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx2" property="rulePcx2" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx2" property="ruleJjx2" javaType="java.math.BigDecimal" />
+		
+		<result column="rule_yll3" property="ruleYll3" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx3" property="rulePcx3" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx3" property="ruleJjx3" javaType="java.math.BigDecimal" />
+		
+		
+		<result column="rule_yll4" property="ruleYll4" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx4" property="rulePcx4" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx4" property="ruleJjx4" javaType="java.math.BigDecimal" />
+		
+		
+		<result column="rule_yll5" property="ruleYll5" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx5" property="rulePcx5" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx5" property="ruleJjx5" javaType="java.math.BigDecimal" />
+		
+		<result column="rule_yll6" property="ruleYll6" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx6" property="rulePcx6" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx6" property="ruleJjx6" javaType="java.math.BigDecimal" />					
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
-		rule_id,rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll
+		rule_id,rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6
 	</sql>
 
 	<sql id="Base_insert_Column_List">
-		rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll
+		rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6
 	</sql>
 
 	<select id="countPeiziRule" resultType="int"
@@ -70,7 +94,22 @@
 		#{ruleGlsyType},
 		#{ruleZhglf},
 		#{ruleNll},
-		#{ruleYll}	
+		#{ruleYll},
+		#{ruleYll2},
+		#{rulePcx2},
+		#{ruleJjx2},
+		#{ruleYll3},
+		#{rulePcx3},
+		#{ruleJjx3},
+		#{ruleYll4},
+		#{rulePcx4},
+		#{ruleJjx4},
+		#{ruleYll5},
+		#{rulePcx5},
+		#{ruleJjx5},
+		#{ruleYll6},
+		#{rulePcx6},
+		#{ruleJjx6}		
 		)
 	</insert>
 	
@@ -83,11 +122,25 @@
 		rule_glsy_type=#{ruleGlsyType},
 		rule_zhglf=#{ruleZhglf},
 		rule_nll=#{ruleNll},
-		rule_yll=#{ruleYll}
+		rule_yll=#{ruleYll},		
+		rule_yll2=#{ruleYll2},
+		rule_pcx2=#{rulePcx2},
+		rule_jjx2=#{ruleJjx2},
+		rule_yll3=#{ruleYll3},
+		rule_pcx3=#{rulePcx3},
+		rule_jjx3=#{ruleJjx3},
+		rule_yll4=#{ruleYll4},
+		rule_pcx4=#{rulePcx4},
+		rule_jjx4=#{ruleJjx4},
+		rule_yll5=#{ruleYll5},
+		rule_pcx5=#{rulePcx5},
+		rule_jjx5=#{ruleJjx5},
+		rule_yll6=#{ruleYll6},
+		rule_pcx6=#{rulePcx6},
+		rule_jjx6=#{ruleJjx6}					
 		where rule_id=#{ruleId}		
 	</update>
-	
-	
+		
 	<delete id="deletePeiziRule" parameterType="Long">
 	    delete from tjs_peizi_rule  where  rule_id=#{ruleId}
 	</delete>

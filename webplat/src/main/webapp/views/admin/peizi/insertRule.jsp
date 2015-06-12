@@ -20,68 +20,331 @@
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/peizi/peizirule/insertData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="ruleId" value="${peiziRule.ruleId}">
+        <input type="hidden" name="ruleType" value="${peiziRule.ruleType}">
+        <input type="hidden" name="ruleGlsyType" value="${peiziRule.ruleGlsyType}">
         <div class="form-group">
             <label class="col-md-2 control-label">配资类型</label>
             <div class="col-md-6">
-                 <input type="radio" name="ruleType" class="required" value="10" <c:if test="${peiziRule.ruleType== '10'}">checked="checked"</c:if>>免费配资
-                 <input type="radio" name="ruleType" class="required" value="20" <c:if test="${peiziRule.ruleType== '20'}">checked="checked"</c:if>>天天配
-                 <input type="radio" name="ruleType" class="required" value="30" <c:if test="${peiziRule.ruleType== '30'}">checked="checked"</c:if>>月月配  
-                 <input type="radio" name="ruleType" class="required" value="40" <c:if test="${peiziRule.ruleType== '40'}">checked="checked"</c:if>>低息配          
+                 <c:choose>  
+                <c:when test="${peiziRule.ruleType=='10'}">  
+                  		免费配资
+                </c:when>
+                 <c:when test="${peiziRule.ruleType=='20'}">  
+                  		  天天配
+                </c:when>
+                 <c:when test="${peiziRule.ruleType=='30'}">  
+                  		  月月配  
+                </c:when>
+                 <c:when test="${peiziRule.ruleType=='40'}">  
+                  		低息配   
+                </c:when>
+                 <c:when test="${peiziRule.ruleType=='50'}">  
+                  		免息配资
+                </c:when>     
+                <c:otherwise>  
+                     	错误
+                </c:otherwise>  
+            </c:choose>       
             </div>            
         </div>
         
-        <div class="form-group">
-            <label class="col-md-2 control-label">警戒线(%)</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
-            </div>            
-        </div>
-        
-        <div class="form-group">
-            <label class="col-md-2 control-label">平仓线(%)</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
-            </div>            
-        </div>
-        
-        
-        <div class="form-group">
-            <label class="col-md-2 control-label">配资管理收益</label>
-            <div class="col-md-6">
-                 <input type="radio" name="ruleGlsyType" class="required" value="10" <c:if test="${peiziRule.ruleGlsyType== '10'}">checked="checked"</c:if>>借款账户管理费/天
-                 <input type="radio" name="ruleGlsyType" class="required" value="20" <c:if test="${peiziRule.ruleGlsyType== '20'}">checked="checked"</c:if>>借款月利率
-                 <input type="radio" name="ruleGlsyType" class="required"  value="30" <c:if test="${peiziRule.ruleGlsyType== '30'}">checked="checked"</c:if>>借款年利率  
-            </div>            
-        </div>
-       
-        
-         <div class="form-group">
-            <label class="col-md-2 control-label">账户管理费(元)</label>
-            <div class="col-md-6">
-            	<input type="text" class="form-control required number" max="999" name="ruleZhglf" value="${peiziRule.ruleZhglf}" >           	
-            </div>
-             
-        </div>
+         <c:if test="${peiziRule.ruleType=='10'}">
+	          <div class="form-group">
+	            <label class="col-md-2 control-label">账户管理费(元)/天</label>
+	            <div class="col-md-6">           
+	            	<input type="text" class="form-control required number" max="999" name="ruleZhglf" value="${peiziRule.ruleZhglf}" >           	
+	            </div>             
+		      </div>
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+	            </div>            
+	        </div>	        	         
+         </c:if>       
         
         
-         <div class="form-group">
-            <label class="col-md-2 control-label">年利率(%)</label>
-            <div class="col-md-6">
-            	<input type="text" class="form-control required number" name="ruleNll" value="${peiziRule.ruleNll}" >           	
-            </div>
-             
-        </div>
+         <c:if test="${peiziRule.ruleType=='20'}">                   
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">账户管理费(元)/天</label>
+	            <div class="col-md-6">           
+	            	<input type="text" class="form-control required number" max="999" name="ruleZhglf" value="${peiziRule.ruleZhglf}" >           	
+	            </div>             
+	         </div>
+	          <div class="form-group">
+	            <label class="col-md-2 control-label">一倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">一倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+	            </div>            
+	        </div>
+	        
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">2倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx2" value="${peiziRule.ruleJjx2}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">2倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx2" value="${peiziRule.rulePcx2}" >
+	            </div>            
+	        </div>
+	        
+	        
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">3倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx3" value="${peiziRule.ruleJjx3}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">3倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx3" value="${peiziRule.rulePcx3}" >
+	            </div>            
+	        </div>
+	        
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">4倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx4" value="${peiziRule.ruleJjx4}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">4倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx4" value="${peiziRule.rulePcx4}" >
+	            </div>            
+	        </div>
+	        
+	        
+	          <div class="form-group">
+	            <label class="col-md-2 control-label">5倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx5" value="${peiziRule.ruleJjx5}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">5倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx5" value="${peiziRule.rulePcx5}" >
+	            </div>            
+	        </div>
+	        
+	        
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">6倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx6" value="${peiziRule.ruleJjx6}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">6倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx6" value="${peiziRule.rulePcx6}" >
+	            </div>            
+	        </div>
+        </c:if>
         
         
-         <div class="form-group">
-            <label class="col-md-2 control-label">月利率(%)</label>
+         <c:if test="${peiziRule.ruleType=='30'}">    
+                        
+	        <div class="form-group">
+            <label class="col-md-2 control-label">一倍杠杆月利率(%)</label>
             <div class="col-md-6">
             	<input type="text" class="form-control required number" name="ruleYll" value="${peiziRule.ruleYll}" >           	
+            </div>                        
             </div>
-             
-        </div>
+            
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">一倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+	            </div>            
+	        </div>	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">一倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+	            </div>            
+	        </div>
+	        
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">2倍杠杆月利率(%)</label>
+	            <div class="col-md-6">
+	            	<input type="text" class="form-control required number" name="ruleYll2" value="${peiziRule.ruleYll2}" >           	
+	            </div>
+            </div> 
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">2倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx2" value="${peiziRule.ruleJjx2}" >
+	            </div>            
+	        </div>	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">2倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx2" value="${peiziRule.rulePcx2}" >
+	            </div>            
+	        </div>
+	        
+	        
+	        <div class="form-group">
+            <label class="col-md-2 control-label">3倍杠杆月利率(%)</label>
+            <div class="col-md-6">
+            	<input type="text" class="form-control required number" name="ruleYll3" value="${peiziRule.ruleYll3}" >           	
+            </div>
+            </div>
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">3倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx3" value="${peiziRule.ruleJjx3}" >
+	            </div>            
+	        </div>	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">3倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx3" value="${peiziRule.rulePcx3}" >
+	            </div>            
+	        </div>
+	        
+	        
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">4倍杠杆月利率(%)</label>
+	            <div class="col-md-6">
+	            	<input type="text" class="form-control required number" name="ruleYll4" value="${peiziRule.ruleYll4}" >           	
+	            </div>
+            </div>
+	         <div class="form-group">
+	            <label class="col-md-2 control-label">4倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx4" value="${peiziRule.ruleJjx4}" >
+	            </div>            
+	        </div>	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">4倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx4" value="${peiziRule.rulePcx4}" >
+	            </div>            
+	        </div>
+	        
+	        
+	          <div class="form-group">
+	            <label class="col-md-2 control-label">5倍杠杆月利率(%)</label>
+	            <div class="col-md-6">
+	            	<input type="text" class="form-control required number" name="ruleYll5" value="${peiziRule.ruleYll5}" >           	
+	            </div>
+              </div>
+	          <div class="form-group">
+	            <label class="col-md-2 control-label">5倍杠杆警戒线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx5" value="${peiziRule.ruleJjx5}" >
+	            </div>            
+	        </div>
+	        
+	        <div class="form-group">
+	            <label class="col-md-2 control-label">5倍杠杆平仓线(%)</label>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control required number" max="999" name="rulePcx5" value="${peiziRule.rulePcx5}" >
+	            </div>            
+	        </div>	        	                 
+        </c:if>
         
-                                         
+     
+        
+        
+        
+	         <c:if test="${peiziRule.ruleType=='40'}">
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">年利率(%)</label>
+		            <div class="col-md-6">
+		            	<input type="text" class="form-control required number" name="ruleNll" value="${peiziRule.ruleNll}" >           	
+		            </div>                                
+		        </div>
+	        
+	           <div class="form-group">
+		            <label class="col-md-2 control-label">一倍杠杆警戒线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+		            </div>            
+		        </div>
+		        
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">一倍杠杆平仓线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+		            </div>            
+		        </div>         
+	        </c:if>
+        
+          <c:if test="${peiziRule.ruleType=='50'}">
+	             <div class="form-group">
+		            <label class="col-md-2 control-label">一倍杠杆警戒线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+		            </div>            
+	            </div>
+	        
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">一倍杠杆平仓线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+		            </div>            
+		        </div>
+	        
+	        
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">2倍杠杆警戒线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="ruleJjx2" value="${peiziRule.ruleJjx2}" >
+		            </div>            
+		        </div>
+		        
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">2倍杠杆平仓线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="rulePcx2" value="${peiziRule.rulePcx2}" >
+		            </div>            
+		        </div>
+	        
+	        
+		         <div class="form-group">
+		            <label class="col-md-2 control-label">3倍杠杆警戒线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="ruleJjx3" value="${peiziRule.ruleJjx3}" >
+		            </div>            
+		        </div>
+		        
+		        <div class="form-group">
+		            <label class="col-md-2 control-label">3倍杠杆平仓线(%)</label>
+		            <div class="col-md-6">
+		                <input type="text" class="form-control required number" max="999" name="rulePcx3" value="${peiziRule.rulePcx3}" >
+		            </div>            
+		        </div> 	       
+        </c:if>
+                                        
                                                                                                
     </form>
 </div>
