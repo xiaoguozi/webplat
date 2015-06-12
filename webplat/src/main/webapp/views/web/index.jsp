@@ -64,11 +64,10 @@ document.all(imgg).style.display='block'}}
                 </ul>
             </div>
             <div class="bd">
-              
                  <ul>
-                    <li><a class="header_banner" href="javascript:void(0)"></a></li>
-                    <li><a class="header_banner img02" href="javascript:void(0)"></a></li>
-                    <li><a class="header_banner img03" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner1" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner2" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner3" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>

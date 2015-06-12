@@ -91,18 +91,39 @@
         background: url(../../img/ui/images03.jpg) no-repeat center center;
     }
    
- .header_banner {
+ .header_banner1 {
     background: url(../../img/ui/banner/minsheng18.png) no-repeat center center;
     width:100%;
     height:400px;
     display:block;
 }
-    .header_banner img02 {
-        background: url(../../img/ui/banner/main2.jpg) no-repeat center center;
-    }
-    .header_banner img03 {
+    .header_banner2 {
         background: url(../../img/ui/banner/main1.jpg) no-repeat center center;
+        width:100%;
+    	height:400px;
+    	display:block;
     }
+    .header_banner3 {
+        background: url(../../img/ui/banner/main2.jpg) no-repeat center center;
+        width:100%;
+    	height:400px;
+    	display:block;
+    }
+    
+  .xintuo_banner1 {
+    background: url(../../img/ui/banner/xintu1.png) no-repeat center center;
+    width:100%;
+    height:400px;
+    display:block;
+}
+    .xintuo_banner2 {
+        background: url(../../img/ui/banner/xintu2.jpg) no-repeat center center;
+        width:100%;
+    	height:400px;
+    	display:block;
+    }
+   
+    
        
     .slideBox .prev,
     .slideBox .next {
