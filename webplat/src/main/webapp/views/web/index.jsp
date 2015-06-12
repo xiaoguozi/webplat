@@ -1,5 +1,5 @@
 <%@ include file="/views/web/include.jsp"%>
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
@@ -60,12 +60,14 @@ document.all(imgg).style.display='block'}}
                 <ul>
                     <li>1</li>
                     <li>2</li>
+                    <li>3</li>
                 </ul>
             </div>
             <div class="bd">
                 <ul>
                     <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main1.jpg"/></a></li>
                     <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main2.jpg"/></a></li>
+                     <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/minsheng18.png"/></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>

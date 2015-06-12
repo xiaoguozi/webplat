@@ -32,7 +32,7 @@
         overflow: hidden;
         position: absolute;
         left: 50%;
-        bottom: 115px;
+        bottom: 0px;
         z-index: 1;
     }
 
