@@ -64,10 +64,11 @@ document.all(imgg).style.display='block'}}
                 </ul>
             </div>
             <div class="bd">
-                <ul>
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main1.jpg"/></a></li>
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main2.jpg"/></a></li>
-                     <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/minsheng18.png"/></a></li>
+              
+                 <ul>
+                    <li><a class="header_banner" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner img02" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner img03" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>

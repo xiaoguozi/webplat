@@ -63,15 +63,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
             <div class="bd">
                 <ul>
-                    <li><a href="rest/web/pe/peIndex" >
-                        <img src="assets/img/ui/images01.jpg" /></a></li>
-                    <li><a href="rest/web/pe/peIndex" >
-                        <img src="assets/img/ui/images01.jpg" /></a></li>
-                    <li><a href="rest/web/pe/peIndex" >
-                        <img src="assets/img/ui/images01.jpg" /></a></li>
+                    <li><a class="inter_cutimg" href="javascript:void(0)"></a></li>
+                    <li><a class="inter_cutimg img02" href="javascript:void(0)"></a></li>
+                    <li><a class="inter_cutimg img03" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
-            <a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a>
+            <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
         </div>
         <script type="text/javascript">
             jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, delayTime: 700 });
