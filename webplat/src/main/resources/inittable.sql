@@ -332,18 +332,34 @@ CREATE TABLE `tjs_peizi_data` (
 
 
 
+
 CREATE TABLE `tjs_peizi_rule` (
   `rule_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '规则ID',
   `rule_type` varchar(5) NOT NULL COMMENT '规则类型：1：配置活动，例如：免费配\n                     2：天天配\n                     3：月月配\n                     4：低息配\n',
-  `rule_pcx` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线',
-  `rule_jjx` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线',
   `rule_zjsyqx` int(11) DEFAULT NULL COMMENT '资金使用期限',
   `rule_glsy_type` varchar(3) DEFAULT NULL COMMENT '配资管理收益：\n 1：借款账户管理费/天\n 2：借款月利率\n 3：借款年利率',
   `rule_zhglf` decimal(6,2) DEFAULT NULL COMMENT '配资借款收益：\n1.如果是天天陪，单位是元\n2.如果是',
   `rule_nll` decimal(6,2) DEFAULT NULL COMMENT '年利率',
-  `rule_yll` decimal(6,2) DEFAULT NULL COMMENT '月利率',
+  `rule_yll` decimal(6,2) DEFAULT NULL COMMENT '月利率\n一倍杠杆',
+  `rule_pcx` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n一倍杠杆',
+  `rule_jjx` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n一倍杠杆',
+  `rule_yll2` decimal(5,2) DEFAULT NULL COMMENT '月利率\n2倍杠杆',
+  `rule_yll3` decimal(5,2) DEFAULT NULL COMMENT '月利率\n3倍杠杆',
+  `rule_yll4` decimal(5,2) DEFAULT NULL COMMENT '月利率\n4倍杠杆',
+  `rule_yll5` decimal(5,2) DEFAULT NULL COMMENT '月利率\n5倍杠杆',
+  `rule_yll6` decimal(5,2) DEFAULT NULL COMMENT '月利率\n6倍杠杆',
+  `rule_pcx2` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n2倍杠杆',
+  `rule_pcx3` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n3倍杠杆',
+  `rule_pcx4` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n4倍杠杆',
+  `rule_pcx5` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n5倍杠杆',
+  `rule_pcx6` decimal(5,2) DEFAULT NULL COMMENT '平仓线(%)，为零或者空为不需要警戒线 \n6倍杠杆',
+  `rule_jjx2` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n2倍杠杆',
+  `rule_jjx3` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n3倍杠杆',
+  `rule_jjx4` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n4倍杠杆',
+  `rule_jjx5` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n5倍杠杆',
+  `rule_jjx6` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n6倍杠杆',
   PRIMARY KEY (`rule_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='配置规则';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='配置规则';
 
 
 
