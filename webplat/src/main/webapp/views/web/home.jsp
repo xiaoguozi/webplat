@@ -60,12 +60,14 @@ document.all(imgg).style.display='block'}}
                 <ul>
                     <li>1</li>
                     <li>2</li>
+                    <li>3</li>
                 </ul>
             </div>
             <div class="bd">
                 <ul>
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main1.jpg"/></a></li>
-                    <li><a href="javascript:void(0)" ><img src="assets/img/ui/banner/main2.jpg"/></a></li>
+                    <li><a class="header_banner1" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner2" href="javascript:void(0)"></a></li>
+                    <li><a class="header_banner3" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>

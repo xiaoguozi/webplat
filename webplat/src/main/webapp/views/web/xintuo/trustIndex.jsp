@@ -63,9 +63,9 @@ html{ width:100%; height:100%;background:#f5f5f5;}
                 </ul>
             </div>
             <div class="bd">           
-                <ul>                
-                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu1.png"/></a></li>
-                    <li><a href="javascript:void(0)" style=""><img src="assets/img/ui/banner/xintu2.jpg"/></a></li>
+                <ul>
+                    <li><a class="xintuo_banner1" href="javascript:void(0)"></a></li>
+                    <li><a class="xintuo_banner2" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>
