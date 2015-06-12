@@ -131,7 +131,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                    
 				                        <td>发起时间：<span class="color158"><fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
 				                        <td colspan="3" style="text-align:left;text-indent:3em;"></td>
-				                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenterdetail?dataId=${peizi.dataId}">查询方案详情</a></td>
+				                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}">查询方案详情</a></td>
 				                    </tr>
 				                </table>
 				                </div>
