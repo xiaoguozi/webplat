@@ -74,12 +74,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
-			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
-			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.dataNll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
-			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
-			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peiziRule.ruleZhglf}" pattern="########.##" />"/>
+			<input type="hidden" name="dataYll" value=""/>
+			<input type="hidden" name="dataNll" value=""/>
+			<input type="hidden" name="dataRulePcx" value=""/>
+			<input type="hidden" name="dataRuleJjx" value=""/>
+			<input type="hidden" name="dataTypeSylx" value="${peiziRule.ruleGlsyType}"/>
 			
 			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
 			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
@@ -89,9 +89,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<input type="hidden" name="dataJklxTotal" value="${peizi.dataJklxTotal }"/>
 			<input type="hidden" name="dataZjsyqx" value="${peizi.dataZjsyqx }"/>
 			
-			
-			
-			
+									
             <div class="bgcolor">
                 <div class="w945">
                     <span class="under_font">选择配资方案</span>
@@ -105,28 +103,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span class="box1">1</span><div class="font_word18">选择您的总操盘金额<span class="font_word16">（3倍杠杆）</span></div>
                     <div class="caopanbox">
                         <div class="cpbox1 on">
-                            <span class="cpmoney">10000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">10000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">20000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">20000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">30000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />" >30000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <div class="clear"></div> 
                         <div class="cpbox1">
-                            <span class="cpmoney">40000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">40000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">50000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">50000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney">60000</span><br />总操盘金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">60000</span><br />总操盘金额
                             <div class="goubox"></div>
                         </div>
                         <hr class="pc"/>
@@ -134,14 +132,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span class="box1">2</span><div class="font_word18">支付配资管理费</div>
                     <div class="qixian">
                         <span class="fleft">期限：</span><div class="sel_wrap fleft">
-                                <label class="lbl">${peizi.dataZjsyqx}天</label>
+                                <label class="lbl" day="${peizi.dataZjsyqx}">${peizi.dataZjsyqx}天</label>
                                 <ul class="select" style="filter: alpha(opacity=100);">
-                                    <li>1天</li>
-                                    <li>2天</li>
-                                    <li>3天</li>
-                                    <li>4天</li>
-                                    <li>5天</li>
-                                    <li>6天</li>
+                                    <li day="1">1天</li>
+                                    <li day="2">2天</li>
+                                    <li day="3">3天</li>
+                                    <li day="3">4天</li>
+                                    <li day="5">5天</li>
+                                    <li day="6">6天</li>
                                 </ul>
                             </div>
                         <div class=" lh20 pl220">总账户管理费：<span id="manageFee" class="colorf06 font26">${peizi.dataJklxTotal}</span>元</div>
@@ -248,10 +246,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 sum = parseFloat($(".cpmoney:eq(" + i + ")").text());
                 $("#capital").text(sum);
                 $("#assure").text(sum * 0.25);
-                $("#loss").text((sum*0.75/100 *$('input[name=dataRuleJjx]').val()).toFixed(0));
-                $("#close").text((sum*0.75/100 * $('input[name=dataRulePcx]').val()).toFixed(0));
+                
+                var pcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var jjx = parseFloat($('.on .cpmoney').attr('jjx'));               
+                $("#loss").text((sum*0.75*jjx/100).toFixed(0));
+                $("#close").text((sum*0.75*pcx/100).toFixed(0));
                 $("#fee").text(((sum/10000)*$('input[name=dataZfglf]').val()).toFixed(2));
-                var syqx=$('.lbl').html().substring(0,1);
+                var syqx=parseInt($('.lbl').attr("day"));
 				$("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*syqx).toFixed(2));
                 
             });
@@ -267,8 +268,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		        $(this).click(function () {
 		            var opt = $(this).html();
 		            $(".lbl").html(opt);
-		            var num = opt.substring(0, 1);
-		            $("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*num).toFixed(2));
+		            $(".lbl").attr("day",$(this).attr("day"))
+		            var syqx=parseInt($('.lbl').attr("day"));
+		            $("#manageFee").text(((sum/10000)*$('input[name=dataZfglf]').val()*syqx).toFixed(2));
 		        })
 		    })
 		});
@@ -285,7 +287,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				$("input[name=dataJjx]").val($("#loss").text());
 				$("input[name=dataPcx]").val($("#close").text());
 				$("input[name=dataJklxTotal]").val($("#manageFee").text());
-				$("input[name=dataZjsyqx]").val($('.lbl').html().substring(0,1));
+				$("input[name=dataZjsyqx]").val($('.lbl').attr("day"));										
+				$("input[name=dataRulePcx]").val($('.on .cpmoney').attr('pcx'));			
+				$("input[name=dataRuleJjx]").val($('.on .cpmoney').attr('jjx'));								
 				$("#modalForm").submit();				
 			}else{
 				errTip("请先阅读并同意《合作操盘协议》", 1);

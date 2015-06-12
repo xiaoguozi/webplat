@@ -77,37 +77,7 @@
 	            <div class="col-md-6">           
 	            	<input type="text" class="form-control required number" max="999" name="ruleZhglf" value="${peiziRule.ruleZhglf}" >           	
 	            </div>             
-	         </div>
-	          <div class="form-group">
-	            <label class="col-md-2 control-label">一倍杠杆警戒线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
-	            </div>            
-	        </div>
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">一倍杠杆平仓线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
-	            </div>            
-	        </div>
-	        
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">2倍杠杆警戒线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx2" value="${peiziRule.ruleJjx2}" >
-	            </div>            
-	        </div>
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">2倍杠杆平仓线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx2" value="${peiziRule.rulePcx2}" >
-	            </div>            
-	        </div>
-	        
-	        
+	         </div>	         	        	        
 	         <div class="form-group">
 	            <label class="col-md-2 control-label">3倍杠杆警戒线(%)</label>
 	            <div class="col-md-6">
@@ -120,51 +90,7 @@
 	            <div class="col-md-6">
 	                <input type="text" class="form-control required number" max="999" name="rulePcx3" value="${peiziRule.rulePcx3}" >
 	            </div>            
-	        </div>
-	        
-	         <div class="form-group">
-	            <label class="col-md-2 control-label">4倍杠杆警戒线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx4" value="${peiziRule.ruleJjx4}" >
-	            </div>            
-	        </div>
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">4倍杠杆平仓线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx4" value="${peiziRule.rulePcx4}" >
-	            </div>            
-	        </div>
-	        
-	        
-	          <div class="form-group">
-	            <label class="col-md-2 control-label">5倍杠杆警戒线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx5" value="${peiziRule.ruleJjx5}" >
-	            </div>            
-	        </div>
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">5倍杠杆平仓线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx5" value="${peiziRule.rulePcx5}" >
-	            </div>            
-	        </div>
-	        
-	        
-	         <div class="form-group">
-	            <label class="col-md-2 control-label">6倍杠杆警戒线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx6" value="${peiziRule.ruleJjx6}" >
-	            </div>            
-	        </div>
-	        
-	        <div class="form-group">
-	            <label class="col-md-2 control-label">6倍杠杆平仓线(%)</label>
-	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx6" value="${peiziRule.rulePcx6}" >
-	            </div>            
-	        </div>
+	        </div>       	        
         </c:if>
         
         

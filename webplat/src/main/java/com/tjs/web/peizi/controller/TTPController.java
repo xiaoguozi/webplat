@@ -69,17 +69,22 @@ public class TTPController {
 		//规则信息
 		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
-		peizi.setDataZfglf(peiziRule.getRuleZhglf());
-		peizi.setDataNll(peiziRule.getRuleNll());
-		peizi.setDataYll(peiziRule.getRuleYll());
-		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
-		peizi.setDataRulePcx(peiziRule.getRulePcx());
+		
+//		peizi.setDataZfglf(peiziRule.getRuleZhglf());
+//		peizi.setDataNll(peiziRule.getRuleNll());
+//		peizi.setDataYll(peiziRule.getRuleYll());
+//		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
+//		peizi.setDataRulePcx(peiziRule.getRulePcx());
+		
+		
 		peizi.setDataStep("1");
 		
 
 		peizi.setDataJyksDate("2");
 		peizi.setDataZjsyqx(1);
 		
+		
+		model.addAttribute("peiziRule",peiziRule);
 		model.addAttribute("peizi",peizi);		
 		return "web/peizi/ttp/ttpeizi";
 	}
