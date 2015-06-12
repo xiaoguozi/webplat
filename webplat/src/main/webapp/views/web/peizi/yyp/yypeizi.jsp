@@ -71,11 +71,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
-			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
-			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.dataNll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
-			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
+			<input type="hidden" name="dataZfglf" value=""/>
+			<input type="hidden" name="dataYll" value=""/>
+			<input type="hidden" name="dataNll" value=""/>
+			<input type="hidden" name="dataRulePcx" value=""/>
+			<input type="hidden" name="dataRuleJjx" value=""/>
 			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
 			
 			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
@@ -103,25 +103,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span class="box1">2</span><div class="font_word18">选择您的配资金额</div>
                     <div class="caopanbox">
                         <div class="cpbox1 on">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                                                 
                         <div class="cpbox1">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll2}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx2}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx2}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll3}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="clear"></div> 
                         <div class="cpbox1" style="margin-left: 97px;">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll4}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx4}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx4}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll5}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx5}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx5}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <hr class="pc"/>
@@ -243,11 +243,11 @@ function arithmetic() {
             $(".cpmoney:eq(2)").text((wsum * 3).toFixed(1));
             $(".cpmoney:eq(3)").text((wsum * 4).toFixed(1));
             $(".cpmoney:eq(4)").text((wsum * 5).toFixed(1));           
-            if($(this).hasClass("on")){
-            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text())*10000;
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            if($(this).hasClass("on")){            	
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll'));                 
+            	var pzje =  parseFloat($('.on .cpmoney').text())*10000;            	
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
@@ -267,11 +267,11 @@ function arithmetic() {
             $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
             $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
             $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
-            if($(this).hasClass("on")){
-            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text());
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            if($(this).hasClass("on")){            	
+            	var pzje =  parseFloat($('.on .cpmoney').text());
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll'));                 
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
@@ -342,9 +342,9 @@ $(document).ready(function () {
             	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
             	strtzbzj =(strtzbzj==''?'0':strtzbzj);
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text())*10000;
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(".cpmoney:eq(" + i + ")").attr('yll'));
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll')); 
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
@@ -356,9 +356,9 @@ $(document).ready(function () {
             	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
             	strtzbzj =(strtzbzj==''?'0':strtzbzj);
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text());
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(".cpmoney:eq(" + i + ")").attr('yll'));
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll'));  
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
@@ -401,6 +401,10 @@ $(document).ready(function () {
 		$("input[name=dataPcx]").val($("#close").text());
 		$("input[name=dataJklxTotal]").val($("#Dinterests").text());
 		$("input[name=dataZjsyqx]").val($(".lbl").attr("month"));
+		$("input[name=dataRulePcx]").val($('.on .cpmoney').attr('pcx'));			
+		$("input[name=dataRuleJjx]").val($('.on .cpmoney').attr('jjx'));		
+		$("input[name=dataYll]").val($('.on .cpmoney').attr('yll'));	
+		
 		$("#modalForm").submit();						
 	});
     

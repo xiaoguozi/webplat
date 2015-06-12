@@ -69,9 +69,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
 			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
 			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.dataNll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
-			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
+			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peiziRule.ruleNll}" pattern="########.##" />"/>
+			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peiziRule.rulePcx }" pattern="########.##" />"/>
+			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peiziRule.ruleJjx }" pattern="########.##" />""/>
 			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
 			
 			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
@@ -108,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="cpbox1" style="width:125px; height:72px;" month="12"><span>12</span>个月<div class="goubox"></div>
                         </div>
                         <hr class="pc"/> 
-                        <p style="font-size:16px;">借款年利率<span class="colorf06"><fmt:formatNumber value="${peizi.dataNll}" pattern="########.00" />%</span>,借款利息 <span id="lixi" class="colorf06"></span> 元</p>
+                        <p style="font-size:16px;">借款年利率<span class="colorf06"><fmt:formatNumber value="${peiziRule.ruleNll}" pattern="########.##" />%</span>,借款利息 <span id="lixi" class="colorf06"></span> 元</p>
                         <hr class="pc"/>
                     </div>
                 </div>  
@@ -126,7 +126,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/>
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
-                    <input id="Checkbox1" type="checkbox" />&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br /><br />
+                    <input id="Checkbox1" type="checkbox"  checked="checked"/>&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br /><br />
                      <a class="tjs_btn" href="rest/web/peizi/dxp/lowNextCapital">我要配资</a>
                   
                 </div>
