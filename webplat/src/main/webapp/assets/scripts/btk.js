@@ -254,20 +254,25 @@ var Btk = {};
     //设置日期组件
     Btk.formDatetimepicker = function(form){
         var $this = $(form).find('.form_date');
-        $this.datetimepicker({
-            language:  'zh-CN',
-            weekStart: 1,
-            todayBtn:  1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0,
-            pickerPosition:'bottom-left'
+        
+        $this.each(function() {
+            //$(this).find('input:text').inputmask($(this).attr("data-date-format"));
+        	var minView = $(this).attr("data-minView");
+        	if(!minView && 0!=minView){
+        		minView = 2;
+            }
+        	$(this).datetimepicker({
+                language:  'zh-CN',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: minView,
+                forceParse: 0,
+                pickerPosition:'bottom-left'
+            });
         });
-//        $this.each(function() {
-//            $(this).find('input:text').inputmask($(this).attr("data-date-format"));
-//        });
     };  
 
 

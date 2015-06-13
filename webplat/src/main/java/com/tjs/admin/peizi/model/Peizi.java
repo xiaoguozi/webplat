@@ -81,6 +81,8 @@ public class Peizi {
 	private Date dataJyfcDate;
 	
 	
+	private BigDecimal dataProfit;;
+	
 	/**页面段显示支付总金额*/
 	
 	private BigDecimal zfzje;
@@ -294,4 +296,11 @@ public class Peizi {
 	public void setDataJyfcDate(Date dataJyfcDate) {
 		this.dataJyfcDate = dataJyfcDate;
 	}
+	public BigDecimal getDataProfit() {
+		return dataProfit;
+	}
+	public void setDataProfit(BigDecimal dataProfit) {
+		this.dataProfit = dataProfit;
+	}
+	
 }
