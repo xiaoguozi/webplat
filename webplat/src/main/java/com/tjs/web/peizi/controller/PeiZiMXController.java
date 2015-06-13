@@ -117,6 +117,24 @@ public class PeiZiMXController {
 					}
 				}
 			}
+		}else{
+			Subject subject = SecurityUtils.getSubject();
+			String username = (String)subject.getPrincipal();
+			if(username!=null){
+				User user = userService.selectByUsername(username);
+				pzIndexCtrlModel.setUserId(user.getId());
+				pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());
+				List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
+				if(lstUser!=null 
+						&& lstUser.size()>0){
+					UserInfoExtendVO userInfoExtendVO = lstUser.get(0);
+					if(userInfoExtendVO.getPeiziType()==PeiziTypeEnum.MXPEIZI.getIntegerKey()
+							&& userInfoExtendVO.getIsOwnResource()==0){
+						model.addAttribute("result", PeiZiConstants.RESULT_ALREADY_USED);
+						return "web/peizi/mxp/mxpeizi";
+					}
+				}
+			}
 		}
 		
 
