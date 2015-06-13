@@ -317,7 +317,7 @@ CREATE TABLE `tjs_peizi_data` (
   `data_user_id` bigint(20) DEFAULT NULL COMMENT 'user的流水号',
   `data_user_tel` varchar(45) DEFAULT NULL COMMENT '用户电话',
   `data_remark` varchar(2000) DEFAULT NULL COMMENT '备注',
-  `data_opera_status` varchar(45) DEFAULT NULL COMMENT '处理状态 10、验资中； 20、操盘中； 30、已完结',
+  `data_opera_status` varchar(45) DEFAULT NULL COMMENT '处理状态',
   `data_opera_user_id` bigint(20) DEFAULT NULL COMMENT '处理人ID',
   `data_opera_user_name` varchar(200) DEFAULT NULL COMMENT '处理人名称',
   `data_rule_pcx` decimal(18,2) DEFAULT NULL COMMENT '平仓线',
@@ -327,8 +327,10 @@ CREATE TABLE `tjs_peizi_data` (
   `data_jyzf_date` datetime DEFAULT NULL COMMENT '发送恒生账户时间',
   `data_jyfc_date` datetime DEFAULT NULL COMMENT '操盘完成时间',
   `data_order_code` varchar(50) DEFAULT NULL COMMENT '订单编码',
+  `data_profit` decimal(18,2) DEFAULT NULL COMMENT '配资收益',
   PRIMARY KEY (`data_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='配资业务表';
+
 
 
 
