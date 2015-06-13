@@ -60,6 +60,10 @@ public class UserInfoServiceImpl extends GenericServiceImpl<UserInfo, Long> impl
 		// TODO Auto-generated method stub
 		return userInfoMapper.findUserInfoByUserId(userId);
 	}
-    
+
+	@Override
+	public int updateUserInfo(UserInfo userInfo) {
+		return userInfoMapper.updateByPrimaryKeySelective(userInfo);
+	}
     
 }

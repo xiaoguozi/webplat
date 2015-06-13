@@ -22,6 +22,8 @@ public class UserInfo implements Serializable{
     private String email;
     private Date regTime;
     private String userStatus;
+    private String name;
+    private String certId;
 
     public UserInfo() {
 
@@ -117,15 +119,34 @@ public class UserInfo implements Serializable{
 		this.userStatus = userStatus;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getCertId() {
+		return certId;
+	}
+
+
+	public void setCertId(String certId) {
+		this.certId = certId;
+	}
+
 
 	@Override
 	public String toString() {
 		return "UserInfo [id=" + id + ", userId=" + userId + ", nickName="
 				+ nickName + ", mobileNo=" + mobileNo + ", qqNo=" + qqNo
 				+ ", wechatNo=" + wechatNo + ", email=" + email + ", regTime="
-				+ regTime + ", userStatus=" + userStatus + "]";
+				+ regTime + ", userStatus=" + userStatus + ", name=" + name
+				+ ", certId=" + certId + "]";
 	}
-
 
 
 }

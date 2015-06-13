@@ -13,4 +13,5 @@ public interface UserInfoService extends GenericService<UserInfo, Long> {
 	
 	 UserInfo findUserInfoByUserId(Long userId);
 
+	 int updateUserInfo(UserInfo userInfo);
 }

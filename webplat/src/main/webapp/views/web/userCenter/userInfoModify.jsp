@@ -14,11 +14,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet" media="screen" type="text/css" />	
 	<!--配资页面样式--> 
 	<link href="assets/css/ui/peizi.css" rel="stylesheet" />	
+	<link href="assets/css/ui-dialog.css" rel="stylesheet" />
     <script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
 	<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
     <script src="app/lib/security/sha256.js" type="text/javascript"></script>
     <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
+    <script src="assets/scripts/ui/dialog-min.js" charset="utf-8"></script>
 </head>
 <body>
 	<div class="home_all">
@@ -94,7 +96,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="bor_dashed moneymx" style="display:none"><a href="javascript:void()">资金明细</a></div>
                         
                         <li class="zlsz">资料设置</li>
-                        <div class="bor_dashed  mmxg"><a href="rest//web/userCenter/userModify" style="color:#ff6600">密码修改</a></div>
+                        <div class="bor_dashed  mmxg"><a href="rest/web/userCenter/userModify" style="color:#ff6600">个人信息</a></div>
                         
                         
                     </ul>
@@ -120,12 +122,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span style="width:auto;font-size:40px;text-align: center;" id="modify_tip"></span>
                   </div>                         
                   <div >
-	                <form class="modify-form" action="rest/web/userCenter/userModifyData" method="post">
-	                 <div style="height:100px"></div>                
-	                 <div class="tjs_register_left" style="width:20%">原密码：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_password" name="password" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="初始密码，6~16个字母、符号或数字组合" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">新密码：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_newpassword" name="newpassword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="初始密码，6~16个字母、符号或数字组合" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">确认新密码：</div><div class="tjs_register_right"style="margin-left:20px"><input id="rpaConfirmssword" name="rpaConfirmssword" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 确认密码" autofocus x-webkit-speech ></div>
-	                 <div style="height:60px; width:75%; text-align: center;"><a id="register-submit-btn"  href="#" class="tjs_registerbtn">提交修改</a></div>
+	                <form class="modify-form" id="modify-form" action="rest/web/userCenter/saveUserInfo" method="post">
+	                	
+	                 <div style="height:30px"></div>     
+	                 <div class="tjs_register_left" style="width:20%">姓名：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_username" name="userInfo.name" value="${name}" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
+	                 <div class="tjs_register_left" style="width:20%">身份证：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_certId" name="userInfo.certId" value="${certId}" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
+	                 <div class="tjs_register_left" style="width:20%">邮箱：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_email" name="userInfo.email" value="${email}" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
+	                 <div class="tjs_register_left" style="width:20%">QQ：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_qq" name="userInfo.qqNo" value="${qq}" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
+	                 <div class="tjs_register_left" style="width:20%">手机号：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_phone" name="phone" value="${phone}" disabled="disabled" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
+	                 <div class="tjs_register_left" style="width:20%">密码：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_password_1" name="password" value="0000000000000000000000000000000000" disabled="disabled" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" x-webkit-speech >&nbsp;&nbsp;<a style="cursor: pointer;" id="a_dialog" onclick="showPasswordDialog()" >修改密码</a></div>
+	                
+	                 <div style="height:60px; width:75%; text-align: center;"><a id="register-submit-btn"  class="tjs_registerbtn">提交修改</a></div>
 	                </form>     
                  </div>
                 <!--/无产品状态-->
@@ -139,149 +146,172 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <%@ include file="/views/web/footer.jsp"%>
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
-$(function() {  
-        /*-二级导航-*/
-        $(".tjpz").hover(function () {
-            $(".nav_menu").show();
-            $(".tjpz>a>span").addClass("tspan");
-        }, function () {
-            $(".nav_menu").hide();
-            $(".tjpz>a>span").removeClass("tspan");
-        });
-        $(".nav_menu").hover(function () {
-            $(this).show();
-            $(".tjpz>a>span").addClass("tspan");
-        });
-        $(".nav_menu").mouseleave(function () {
-            $(this).hide();
-            $(".tjpz>a>span").removeClass("tspan");
-        });
-       
-      
-	  
-		var handleRegister = function() {						
-	        $('.modify-form').validate({
-	            errorElement : 'span', // default input error message container
-	            errorClass : 'tjs_reg_error', // default input error message class
-	            focusInvalid : false, // do not focus the last invalid input
-	            ignore : "",
-	            rules : {	               
-	                password : {
-	                    required : true,
-	                    rangelength:[6,16],
-	                    remote:{
-	                        url: "rest/web/userCenter/valiadPassword",
-	                        type: "post",
-	                        data: {
-	                        	password: function () { return sha256_digest($("#register_password").val()); }
-	                        }
-	                    }
-	                },
-	                newpassword : {
-	                    required : true,
-	                    rangelength:[6,16]
-	                },
-	                rpaConfirmssword : {
-	                    equalTo : "#register_newpassword"
-	                }
-	            },
 
-	            messages : { // custom messages for radio buttons and checkboxes		           
-		            password : {
-		                required : "原密码不能为空.",
-		                remote:"原密码错误"
-		            },
-	               newpassword : {
-	                   required : "新密码不能为空."
-	               }
-	            },
-
-	            invalidHandler : function(event, validator) { 
-	            	$('.alert-danger', $('.modify-form')).show();
-	            },
-
-	            highlight : function(element) { // hightlight error inputs
-	                $(element).closest('.form-group').addClass('has-error');
-	            },
-
-	            success : function(label) {
-	                label.closest('.form-group').removeClass('has-error');
-	                label.remove();
-	            },
-
-	            errorPlacement : function(error, element) {	               
-	                   error.insertAfter(element);
-	            },
-
-	            submitHandler : function(form) {
-	            	//var passwordInput = $('[name="password"]');
-		           // passwordInput.val(sha256_digest(passwordInput.val()));
-		            
-	               // form.submit();
-	            }
-	        });
-
-	        $('.modify-form input').keypress(function(e) {
-	            if (e.which == 13) {
-	                if ($('.modify-form').validate().form()) {	                	                	
-			    		var passwordInput = $('[name="password"]');
-				        passwordInput.val(sha256_digest(passwordInput.val()));			        
-				        var newPasswordInput = $('[name=newpassword]');
-				        newPasswordInput.val(sha256_digest(newPasswordInput.val()));			        
-				        var rpaConfirmssword = $('[name=rpaConfirmssword]');
-				        rpaConfirmssword.val(sha256_digest(newPasswordInput.val()));							    		
-			    		$.post('rest/web/userCenter/userModifyData', 
-			    		            $('.modify-form').formSerialize(),
-			    		            function(data){		    			
-			    			 			passwordInput.val("");
-			    						newPasswordInput.val("");
-			    						rpaConfirmssword.val("");
-			    						if(data){
-			    							$("#modify_tip").text("修改成功");
-			    						}else{
-			    							$("#modify_tip").text("修改失败");
-			    						}
-			    						$("#modify_data").toggle(1000);
-			    						$("#modify_data").toggle(1000);		    								    			
-			    		            });
-	                }
-	                return false;
-	            }
-	        });
-	        
-
-		    $('#register-submit-btn').click(function(e){
-		    	e.preventDefault();
-		    	if ($('.modify-form').validate().form()) {
-		    		var passwordInput = $('[name="password"]');
-			        passwordInput.val(sha256_digest(passwordInput.val()));			        
-			        var newPasswordInput = $('[name=newpassword]');
-			        newPasswordInput.val(sha256_digest(newPasswordInput.val()));			        
-			        var rpaConfirmssword = $('[name=rpaConfirmssword]');
-			        rpaConfirmssword.val(sha256_digest(newPasswordInput.val()));							    		
-		    		$.post('rest/web/userCenter/userModifyData', 
-		    		            $('.modify-form').formSerialize(),
-		    		            function(data){		    			
-		    			 			passwordInput.val("");
-		    						newPasswordInput.val("");
-		    						rpaConfirmssword.val("");
-		    						if(data){
-		    							$("#modify_tip").text("修改成功");
-		    						}else{
-		    							$("#modify_tip").text("修改失败");
-		    						}
-		    						$("#modify_data").toggle(1000);
-		    						$("#modify_data").toggle(1000);		    								    			
-		    		            });
-	            }
-		    	return false;
-		    });
-	        
-		}			   
-		handleRegister();
-						
+	$(document).ready(function () {
+		$("#register-submit-btn").click(function(e){
+			e.preventDefault();
+			$(".modify-form").submit();
+		});
+		
+		//修改成功提示
+		if('${changeSucess}'=='true'){
+			var dNew = dialog({
+    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;修改成功'
+    		});
+    		dNew.show();
+    		setTimeout(function () {
+    			dNew.close().remove();
+    		}, 2000);
+		}
 	});
+	
+	var isOldPwdRight = false;
+	
+	function ajaxQueryOldPassword(obj){
+		if(obj.value==""){
+			$("#span_old_pwd").text("原密码不能为空");
+		}else{
+			$("#span_old_pwd").text("");
+			//ajax查询后台
+			$.ajax({
+			    type: 'POST',
+			    url: 'rest/web/userCenter/valiadPassword' ,
+			    data: {
+                	password: function () { return sha256_digest($("#register_password").val()); }
+                },
+			    success: function(data){
+			    	if(data==false){
+			    		$("#span_old_pwd").text("原密码输入错误");
+			    		isOldPwdRight = false;
+			    	}else{
+			    		$("#span_old_pwd").text("");
+			    		isOldPwdRight = true;
+			    	}
+			    } ,
+			    dataType: 'json'
+			});
+		}
+	}
+
+	function showPasswordDialog(){
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-pwd\" action=\"rest/web/userCenter/userModifyData\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:25%\">原密码：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_password\" name=\"password\" type=\"password\" onblur=\"ajaxQueryOldPassword(this);\" class=\"tjs_register_input  tjs_width245px\" tabindex=\"1\" spellcheck=\"false\" placeholder=\"初始密码，6~16个字母、符号或数字组合\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_old_pwd\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:25%\">新密码：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_newpassword\" name=\"newpassword\" type=\"password\" onblur=\"onBlurNewPassword(this)\" class=\"tjs_register_input  tjs_width245px\" tabindex=\"2\" spellcheck=\"false\" placeholder=\"初始密码，6~16个字母、符号或数字组合\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_new_pwd\"></span></div>";
+		
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:25%\">确认新密码：</div><div class=\"tjs_register_right_new\"style=\"margin-left:20px\"><input id=\"rpaConfirmssword\" name=\"rpaConfirmssword\" type=\"password\" onblur=\"onBlurNewConfirmPassword(this);\" class=\"tjs_register_input  tjs_width245px\" tabindex=\"3\" spellcheck=\"false\" placeholder=\" 确认密码\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_new_confirm_pwd\"></span></div>";
+		
+		
+		dialogContent += "<div style=\"height:60px; width:75%; text-align: center;\"><a id=\"register-submit-pwd-btn\" href=\"#\" class=\"tjs_registerbtn\" >提交修改</a></div>";
+		dialogContent += "</form></div>";
+		
+		var d = dialog({
+		    title: '修改密码',
+		    content: dialogContent
+		});
+		d.showModal();
+		
+		
+		//初始化控件
+		$("#register-submit-pwd-btn").click(function(e){
+			e.preventDefault();
+			var registerPassword = $("#register_password").val();
+			var registerNewpassword = $("#register_newpassword").val();
+			var rpaConfirmssword = $("#rpaConfirmssword").val();
+		
+			if(registerPassword=='' || registerNewpassword=='' || rpaConfirmssword==''){
+				if(registerPassword==''){
+					$("#span_old_pwd").text("原密码不能为空");
+				}
+				if(registerNewpassword==''){
+					$("#span_new_pwd").text("新密码不能为空");
+				}
+				if(rpaConfirmssword==''){
+					$("#span_new_confirm_pwd").text("确认新密码不能为空");
+				}
+				
+				if(registerPassword!=''){
+					$("#span_old_pwd").text("");
+				}
+				if(registerNewpassword!=''){
+					$("#span_new_pwd").text("");
+				}
+				if(rpaConfirmssword!=''){
+					$("#span_new_confirm_pwd").text("");
+				}
+				
+				return false;
+			}else{
+				if(isOldPwdRight==true){
+					$("#span_old_pwd").text("");
+				}
+				$("#span_new_pwd").text("");
+				$("#span_new_confirm_pwd").text("");
+			}
+			
+			if(registerNewpassword!=rpaConfirmssword){
+				$("#span_new_confirm_pwd").text("确认密码与新密码不一致");
+				return false;
+			}
+			
+			if(isOldPwdRight==false){
+				return false;
+			}
+			
+			//ajax修改后台密码
+			$.ajax({
+			    type: 'POST',
+			    url: 'rest/web/userCenter/userModifyData' ,
+			    data: {
+                	password: function () { return sha256_digest(registerPassword); },
+                	newpassword: function () { return sha256_digest(registerNewpassword); }
+                },
+			    success: function(data){
+			    	if(data==true){
+			    		d.close().remove();
+			    		
+			    		var dNew = dialog({
+			    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;修改成功'
+			    		});
+			    		dNew.show();
+			    		setTimeout(function () {
+			    			dNew.close().remove();
+			    		}, 2000);
+			    	}else{
+			    		$("#span_new_confirm_pwd").text("修改错误");
+			    	}
+			    } ,
+			    dataType: 'json'
+			});
+			
+			
+		});
+		
+	}
+	
+	
+	function onBlurNewPassword(obj){
+		if(obj.value==""){
+			$("#span_new_pwd").text("新密码不能为空");
+		}else{
+			$("#span_new_pwd").text("");
+		}
+	}
+	
+	function onBlurNewConfirmPassword(obj){
+		if(obj.value==""){
+			$("#span_new_confirm_pwd").text("确认新密码不能为空");
+		}else{
+			$("#span_new_confirm_pwd").text("");
+		}
+	}
        
 </script>
+
 </body>
 </html>

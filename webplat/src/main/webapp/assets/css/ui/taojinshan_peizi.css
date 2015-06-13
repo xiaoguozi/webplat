@@ -108,6 +108,7 @@ a.tjs_pw_url:hover{ color:#00aeff; text-decoration: underline;}
 .tjs_width350px{ width:350px;}
 .tjs_width330px{ width:334px;}
 .tjs_width239px{ width:239px;}
+.tjs_width245px{ width:245px;font-size: 13px;}
 .tjs_width176px{ width:176px;}
 .tjs_textblue{}
 .tjs_textwhite{ color:#FFFFFF;}
@@ -561,6 +562,10 @@ a.tjs_footer_qq:hover{
 
 .tjs_register_left{ float:left; width:370px; height:56px; line-height:36px; color:#666;text-align:right; font-weight:bold;}
 .tjs_register_right{ margin-left:378px; height:66px;text-align:left;width: auto;}
+.tjs_register_left_new{float:left; width:370px; height:36px; line-height:36px; color:#666;text-align:right; font-weight:bold;}
+.tjs_register_right_new{ margin-left:378px; height:36px;text-align:left;width: auto; }
+.tjs_register_left_new_text{float:left; width:370px; height:20px; line-height:36px; color:#666;text-align:right; font-weight:bold;}
+.tjs_register_right_new_text{ margin-left:378px; height:20px;text-align:left;width: auto; margin-top: 5px;}
 .tjs_numberdiv{ height:56px; line-height:36px;color:#666;}
 .tjs_register_agreement{ margin-left:346px; height:36px;text-align:left;width: auto;}
 .tjs_register_prompt{ margin-left:356px; margin-top:-12px; height:42px;text-align:left;width: auto;}

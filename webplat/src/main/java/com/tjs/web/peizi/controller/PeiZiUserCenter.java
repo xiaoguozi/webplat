@@ -91,7 +91,6 @@ public class PeiZiUserCenter {
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
-	
 		PeiziCtrlModel peiziCtrlModel = new PeiziCtrlModel();
 		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
 		peiziCtrlModel.getPeizi().setDataId(pzIndexCtrlModel.getDataId());

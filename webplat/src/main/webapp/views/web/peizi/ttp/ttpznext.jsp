@@ -218,11 +218,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-     
 
-	
-	    
-	    
 	     //--确定配资--
 		$(".tjs_next_btn").click(function (event) {
 			event.preventDefault();	

@@ -2,6 +2,7 @@
 package com.tjs.web.controller;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.core.generic.GenericCtrlModel;
 
 
@@ -17,7 +18,7 @@ public class UserCenterCtrlModel extends GenericCtrlModel {
 	
 	User user;
 	
-	
+	UserInfo userInfo;
 
 	public User getUser() {
 		return user;
@@ -34,6 +35,13 @@ public class UserCenterCtrlModel extends GenericCtrlModel {
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
 	}
-	
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
 
 }
