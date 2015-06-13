@@ -172,61 +172,6 @@ document.all(imgg).style.display='block'}}
 <!-- 信托板块结束 -->
 
 
-<div  style=" height:26px; width:100%;"></div>
-<!-- 私募板块开始 -->
-<div class="tjs_product_div">
-<div class="tjs_1108px center">
-<div class="tjs_product_left">
-<div class="tjs_tag_div">浮<br />动<br />收<br />益</div>
-<div class="tjs_private_topdiv">百万理财</div>
-<div class="tjs_product_left_cdiv">
-<div  style=" height:26px; width:100%;"></div>
-<div class="tjs_product_left_icodiv"><img src="assets/img/ui/private_ico.png" width="172" height="150" />
-<div class="tjs_left_earningsdiv">&nbsp;收益至&nbsp;<span>10倍</span>&nbsp;收益</div>
-</div>
-<div class="tjs_product_textdiv">私募适合追求超高收益，承 担高风险投 资者。收益可无 限放大无上限，但也可 能出 现亏损，选择时需优中选优。</div>
-</div>
-</div>
-<!-- /tjs_product_left -->
-
-<div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_colorshallowgreen"><span style="float:left;font-size:28px">私募</span><span style="float:right;"><a href="rest/web/pe/peIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
-<div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
-
-<div class="tjs_right_typle">
-
-<c:forEach items="${smcpData}" var="smcp"  end="2" varStatus="status">
-<div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
-<div class="tjs_private_icodiv">
-<div  style=" height:23px; width:100%;"></div>
-<div class="tjs_right_privatetitle"> <img src="assets/img/simu/${smcp.managerLog}" width="128" height="128" /></div>
-<div class="tjs_private_textbgdiv">累计收益</div>
-<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcp.accumulatedIncome}</span>%</div>
-
-<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcp.managerId}" target="_blank">${smcp.managerName}</a></div>
-<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" target="_blank">${smcp.simpleName}</a></div>
-</div>
-<div class="tjs_product_textdiv" style="height:40px;">${smcp.managerReview}  </div>
-<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" class="tjs_btn" target="_blank">了解详情</a></div>
-
-</div>
-</c:forEach>
-<!-- /tjs_right_unit 01 -->
-
-<!-- /tjs_right_unit 03 -->
-<div class="clearfloat"></div>
-
-</div>
-
-</div>
-<!-- /tjs_product_right -->
-
-</div>
-
-
-</div>
-<!-- /tjs_product_div -->
-<!-- 私募板块结束 -->
 
 <div style=" height:26px; width:100%;"></div>
 
@@ -315,6 +260,62 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_div -->
 <!-- 配资板块结束 -->
 
+
+<div  style=" height:26px; width:100%;"></div>
+<!-- 私募板块开始 -->
+<div class="tjs_product_div">
+<div class="tjs_1108px center">
+<div class="tjs_product_left">
+<div class="tjs_tag_div">浮<br />动<br />收<br />益</div>
+<div class="tjs_private_topdiv">百万理财</div>
+<div class="tjs_product_left_cdiv">
+<div  style=" height:26px; width:100%;"></div>
+<div class="tjs_product_left_icodiv"><img src="assets/img/ui/private_ico.png" width="172" height="150" />
+<div class="tjs_left_earningsdiv">&nbsp;收益至&nbsp;<span>10倍</span>&nbsp;收益</div>
+</div>
+<div class="tjs_product_textdiv">私募适合追求超高收益，承 担高风险投 资者。收益可无 限放大无上限，但也可 能出 现亏损，选择时需优中选优。</div>
+</div>
+</div>
+<!-- /tjs_product_left -->
+
+<div class="tjs_product_right">
+<div class="tjs_right_titlediv tjs_colorshallowgreen"><span style="float:left;font-size:28px">私募</span><span style="float:right;"><a href="rest/web/pe/peIndex" target="_blank" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
+
+<div class="tjs_right_typle">
+
+<c:forEach items="${smcpData}" var="smcp"  end="2" varStatus="status">
+<div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
+<div class="tjs_private_icodiv">
+<div  style=" height:23px; width:100%;"></div>
+<div class="tjs_right_privatetitle"> <img src="assets/img/simu/${smcp.managerLog}" width="128" height="128" /></div>
+<div class="tjs_private_textbgdiv">累计收益</div>
+<div class="tjs_right_privateearningsdiv"><span class="tjs_font30px">${smcp.accumulatedIncome}</span>%</div>
+
+<div class="tjs_private_textdiv">基金经理：<a href="rest/web/pe/peIndexMDetail?managerId=${smcp.managerId}" target="_blank">${smcp.managerName}</a></div>
+<div class="tjs_private_textdiv"> 产品名称：<a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" target="_blank">${smcp.simpleName}</a></div>
+</div>
+<div class="tjs_product_textdiv" style="height:40px;">${smcp.managerReview}  </div>
+<div class="tjs_right_btndiv"> <a href="rest/web/pe/peIndexProductDetail?peProductId=${smcp.id}" class="tjs_btn" target="_blank">了解详情</a></div>
+
+</div>
+</c:forEach>
+<!-- /tjs_right_unit 01 -->
+
+<!-- /tjs_right_unit 03 -->
+<div class="clearfloat"></div>
+
+</div>
+
+</div>
+<!-- /tjs_product_right -->
+
+</div>
+
+
+</div>
+<!-- /tjs_product_div -->
+<!-- 私募板块结束 -->
 
 <div style=" height:26px; width:100%;"></div>
 <!-- 海外保险板块开始 -->
