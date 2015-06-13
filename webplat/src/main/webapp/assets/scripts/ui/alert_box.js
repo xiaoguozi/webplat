@@ -1,10 +1,10 @@
 ﻿function alertMsg(productId,productType, mode) { //mode为空，即只有一个确认按钮，mode为1时有确认和取消两个按钮	 
 	var msg="<form id='orderform'><div class='capacity'>预约</div><div class='alert_in_box'>";	
 	msg=msg+"<p><input name='productId' id='productId'  type='hidden' value='"+productId+"'/><input name='productType' id='productType'  type='hidden' value='"+productType+"'/></p>";
-	msg=msg+"<p>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p>";
+	msg=msg+"<p style='padding-bottom:0px'>姓名：<input name='alert_name' id='alert_name' placeholder='请输入中文姓名' type='text'/></p>";
 	msg=msg+"<p id='tip_01' style='height:20px'></p>";
 	msg=msg+"<p id='tip_02' style='padding-top:0px;padding-bottom:3px;padding-left:opx;color: red;font-size:13px;text-align:left;display:none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入2-5字中文姓名</p>";				
-	msg=msg+"<p>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p>";	
+	msg=msg+"<p style='padding-bottom:0px'>电话：<input name='alert_tel' id='alert_tel' placeholder='请输入联系电话' type='text'/></p>";	
 	msg=msg+"<p id='tip_03' style='padding-top:0px;padding-bottom:3px;padding-left:opx;color: red;font-size:13px;text-align:left;display:none'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入11位手机号</p>";	
 	msg=msg+"</div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div></form>";
 	
