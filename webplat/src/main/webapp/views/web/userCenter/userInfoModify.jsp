@@ -176,81 +176,80 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		}
 	}
 	
-	//增加身份证验证
-	function isIdCardNo(num) {
-	    var factorArr = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
-	    var parityBit = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
-	    var varArray = new Array();
-	    var intValue;
-	    var lngProduct = 0;
-	    var intCheckDigit;
-	    var intStrLen = num.length;
-	    var idNumber = num;
-	    // initialize
-	    if ((intStrLen != 15) && (intStrLen != 18)) {
+	function isIdCardNo(num){
+	    num = num.toUpperCase();
+	    //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
+	    if (!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num)))
+	    {
 	        return false;
 	    }
-	    // check and set value
-	    for (i = 0; i < intStrLen; i++) {
-	        varArray[i] = idNumber.charAt(i);
-	        if ((varArray[i] < '0' || varArray[i] > '9') && (i != 17)) {
-	            return false;
-	        } else if (i < 17) {
-	            varArray[i] = varArray[i] * factorArr[i];
-	        }
-	    }
-	    if (intStrLen == 18) {
-	        //check date
-	        var date8 = idNumber.substring(6, 14);
-	        if (isDate8(date8) == false) {
-	            return false;
-	        }
-	        // calculate the sum of the products
-	        for (i = 0; i < 17; i++) {
-	            lngProduct = lngProduct + varArray[i];
-	        }
-	        // calculate the check digit
-	        intCheckDigit = parityBit[lngProduct % 11];
-	        // check last digit
-	        if (varArray[17] != intCheckDigit) {
+	    //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+	    //下面分别分析出生日期和校验位
+	    var len, re;
+	    len = num.length;
+	    if (len == 15)
+	    {
+	        re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
+	        var arrSplit = num.match(re);
+	 
+	        //检查生日日期是否正确
+	        var dtmBirth = new Date('19' + arrSplit[2] + '/' + arrSplit[3] + '/' + arrSplit[4]);
+	        var bGoodDay;
+	        bGoodDay = (dtmBirth.getYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+	        if (!bGoodDay)
+	        {
 	            return false;
 	        }
-	    }
-	    else {        //length is 15
-	        //check date
-	        var date6 = idNumber.substring(6, 12);
-	        if (isDate6(date6) == false) {
-	            return false;
+	        else
+	        {
+	                //将15位身份证转成18位
+	                //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+	                var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+	                var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+	                var nTemp = 0, i;
+	                num = num.substr(0, 6) + '19' + num.substr(6, num.length - 6);
+	                for(i = 0; i < 17; i ++)
+	                {
+	                    nTemp += num.substr(i, 1) * arrInt[i];
+	                }
+	                num += arrCh[nTemp % 11];
+	                return true;
 	        }
 	    }
-	    return true;
-	}
-	function isDate6(sDate) {
-	    if (!/^[0-9]{6}$/.test(sDate)) {
-	        return false;
+	    if (len == 18)
+	    {
+	        re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+	        var arrSplit = num.match(re);
+	 
+	        //检查生日日期是否正确
+	        var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
+	        var bGoodDay;
+	        bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+	        if (!bGoodDay)
+	        {
+	            return false;
+	        }
+	    else
+	    {
+	        //检验18位身份证的校验码是否正确。
+	        //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+	        var valnum;
+	        var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+	        var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+	        var nTemp = 0, i;
+	        for(i = 0; i < 17; i ++)
+	        {
+	            nTemp += num.substr(i, 1) * arrInt[i];
+	        }
+	        valnum = arrCh[nTemp % 11];
+	        if (valnum != num.substr(17, 1))
+	        {
+	            return false;
+	        }
+	        return true;
 	    }
-	    var year, month, day;
-	    year = sDate.substring(0, 4);
-	    month = sDate.substring(4, 6);
-	    if (year < 1700 || year > 2500) return false
-	    if (month < 1 || month > 12) return false
-	    return true
-	}
-
-	function isDate8(sDate) {
-	    if (!/^[0-9]{8}$/.test(sDate)) {
-	        return false;
 	    }
-	    var year, month, day;
-	    year = sDate.substring(0, 4);
-	    month = sDate.substring(4, 6);
-	    day = sDate.substring(6, 8);
-	    var iaMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	    if (year < 1700 || year > 2500) return false
-	    if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) iaMonthDays[1] = 29;
-	    if (month < 1 || month > 12) return false
-	    if (day < 1 || day > iaMonthDays[month - 1]) return false
-	    return true
+	    return false;
 	}
 	
 	
