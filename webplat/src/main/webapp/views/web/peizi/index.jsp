@@ -74,8 +74,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
             <div class="bd">
                 <ul>
-                    <li><a class="inter_cutimg" href="javascript:void(0)"></a></li>
-                    <li><a class="inter_cutimg img02" href="javascript:void(0)"></a></li>
+                    <li><a class="inter_cutimg" href="rest/web/peizi/mfp/freeActivity"></a></li>
+                    <li><a class="inter_cutimg img02" href="rest/web/peizi/mxp/monthCapital"></a></li>
                     <li><a class="inter_cutimg img03" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
