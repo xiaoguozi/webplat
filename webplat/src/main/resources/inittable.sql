@@ -11,6 +11,8 @@ create table t_user_info
    email varchar(128) comment '邮箱',
    user_status varchar(16) comment '用户状态',
    reg_time datetime comment '注册时间',
+   name varchar(64) comment '姓名',
+   cert_id varchar(20) comment '身份证明信息',
    primary key (id)
 ) DEFAULT CHARSET=utf8 comment='用户信息';
 
