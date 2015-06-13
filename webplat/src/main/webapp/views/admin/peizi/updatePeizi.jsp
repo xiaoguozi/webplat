@@ -33,7 +33,8 @@
                  <input type="radio" name="dataType" class="required" value="10" <c:if test="${peizi.dataType== '10'}">checked="checked"</c:if> disabled="disabled">免费配资
                  <input type="radio" name="dataType" class="required" value="20" <c:if test="${peizi.dataType== '20'}">checked="checked"</c:if> disabled="disabled">天天配
                  <input type="radio" name="dataType" class="required" value="30" <c:if test="${peizi.dataType== '30'}">checked="checked"</c:if> disabled="disabled">月月配  
-                 <input type="radio" name="dataType" class="required" value="40" <c:if test="${peizi.dataType== '40'}">checked="checked"</c:if> disabled="disabled">低息配          
+                 <input type="radio" name="dataType" class="required" value="40" <c:if test="${peizi.dataType== '40'}">checked="checked"</c:if> disabled="disabled">低息配 
+                 <input type="radio" name="dataType" class="required" value="40" <c:if test="${peizi.dataType== '50'}">checked="checked"</c:if> disabled="disabled">免息配资           
             </div>            
         </div>
         

@@ -24,6 +24,9 @@
                 </c:when>
                  <c:when test="${peizi.dataType=='40'}">  
                   		低息配   
+                </c:when>
+                 <c:when test="${peizi.dataType=='50'}">  
+                  		免息配资
                 </c:when>    
                 <c:otherwise>  
                      	错误

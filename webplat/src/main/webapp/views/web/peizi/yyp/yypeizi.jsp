@@ -251,8 +251,8 @@ function arithmetic() {
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");
 	             
@@ -275,8 +275,8 @@ function arithmetic() {
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");	                        	
             }                         
@@ -348,8 +348,8 @@ $(document).ready(function () {
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");	                                      
             } else {
@@ -362,8 +362,8 @@ $(document).ready(function () {
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
 	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
 	            $("#Minterests").text(yll+"%");	    
             }

@@ -72,12 +72,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 			<input type="hidden" name="dataId" value="${peizi.dataId}"/>
 			<input type="hidden" name="dataType" value="${peizi.dataType }"/>
-			<input type="hidden" name="dataZfglf" value="<fmt:formatNumber value="${peizi.dataZfglf}" pattern="########.##" />"/>
-			<input type="hidden" name="dataYll" value="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataNll" value="<fmt:formatNumber value="${peizi.dataNll}" pattern="########.##" />"/>
-			<input type="hidden" name="dataRulePcx" value="<fmt:formatNumber value="${peizi.dataRulePcx }" pattern="########.##" />"/>
-			<input type="hidden" name="dataRuleJjx" value="<fmt:formatNumber value="${peizi.dataRuleJjx }" pattern="########.##" />""/>
-			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx }"/>
+			<input type="hidden" name="dataZfglf" value=""/>
+			<input type="hidden" name="dataYll" value=""/>
+			<input type="hidden" name="dataNll" value=""/>
+			<input type="hidden" name="dataRulePcx" value=""/>
+			<input type="hidden" name="dataRuleJjx" value=""/>
+			<input type="hidden" name="dataTypeSylx" value="${peizi.dataTypeSylx}"/>
 			
 			<input type="hidden" name="dataZcpzj" value="<fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" />"/>
 			<input type="hidden" name="dataPzje" value="<fmt:formatNumber value="${peizi.dataPzje }" pattern="########.##" />"/>
@@ -97,27 +97,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/> 
                 <div class="caopanjine">
                     <span class="box1">1</span><div class="font_word18">您的投资本金</div>
-                    <input class="input_txt1" readonly="readonly"  id="principal" name="dataTzbzj"  type="text" maxlength="7" value="10000"/><span class="pos_d">元</span>
+                    <input class="input_txt1" readonly="readonly"  id="principal" name="dataTzbzj" onfocus="this.blur()" type="text" maxlength="7" value="10000"/><span class="pos_d">元</span>
                     <div class="clear"></div>
-                    <p class="bzj" style="display: none;"><img src="assets/img/peizi/zhuyi.png" alt="" />保证金最低2000元</p>
+                    <p class="bzj" style="display: none;"><img src="assets/img/peizi/zhuyi.png" alt="" /></p>
                     <hr class="pc"/>
                     <span class="box1">2</span><div class="font_word18">选择您的配资金额</div>
                     <div class="caopanbox">
                         <div class="cpbox1 on">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx}" pattern="########.##" />" yll="<fmt:formatNumber value="${peiziRule.ruleYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                                                 
                         <div class="cpbox1">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx2}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx2}" pattern="########.##" />"  yll="<fmt:formatNumber value="${peiziRule.ruleYll2}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                         <div class="cpbox1">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" pcx="<fmt:formatNumber value="${peiziRule.rulePcx3}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />"  yll="<fmt:formatNumber value="${peiziRule.ruleYll3}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
-                        </div>
-                        
+                        </div>                       
                         <hr class="pc"/>
+                        
                     </div>
                 </div>  
                 <div class="caopanjine1">
@@ -221,43 +221,43 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript">
 
 function arithmetic() {
-    if (isNaN($("#principal").val()))
+  var strTzbzj=$.trim($("#principal").val()).replace('/,/g','');
+	strTzbzj =(strTzbzj==''?'0':strTzbzj);
+    if (isNaN(strTzbzj))
     {
         $("#principal").val("0");
     }
-    var sum = 0;//投资本金
-    var wan = "万";
-    sum = $("#principal").val();//获取键盘输入的投资本金
-    if (sum.substring(0, 1) == 0) {
+    
+    if (strTzbzj.substring(0, 1) == '0') {
         $("#principal").val("")
+        strTzbzj = '0';
+    }
+    
+   
+    var sum = parseFloat(strTzbzj);//获取键盘输入的投资本金
+    var wan = "万";
+    if (sum==null||sum<0) {
         sum = 0;
     }
-    if (sum==""||sum==null||sum<0) {
-        sum = 0;
-    }
+    
+    
     if (sum >= 10000) {
         var wsum = sum / 10000;
         $(".wan").text(wan);
         $(".cpbox1").each(function (i) {
             $(".cpmoney:eq(0)").text(wsum.toFixed(1));
             $(".cpmoney:eq(1)").text((wsum * 2).toFixed(1));
-            $(".cpmoney:eq(2)").text((wsum * 3).toFixed(1));
-            $(".cpmoney:eq(3)").text((wsum * 4).toFixed(1));
-            $(".cpmoney:eq(4)").text((wsum * 5).toFixed(1));           
+            $(".cpmoney:eq(2)").text((wsum * 3).toFixed(1));              
             if($(this).hasClass("on")){
-            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text())*10000;
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll'));                 
+            	var pzje =  parseFloat($('.on .cpmoney').text())*10000; 
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*yll*qx/100).toFixed(1));
-	            //$("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
-	            //$("#Minterests").text(yll+"%");
-	             
-            	
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));	                         	
             }                       
         });
     } else {
@@ -265,21 +265,17 @@ function arithmetic() {
             $(".wan").text("");
             $(".cpmoney:eq(0)").text(sum);
             $(".cpmoney:eq(1)").text((sum * 2).toFixed(0));
-            $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));
-            $(".cpmoney:eq(3)").text((sum * 4).toFixed(0));
-            $(".cpmoney:eq(4)").text((sum * 5).toFixed(0));
+            $(".cpmoney:eq(2)").text((sum * 3).toFixed(0));           
             if($(this).hasClass("on")){
-            	var pzje =  parseFloat($(this).find(".cpmoney:first-child").text());
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(this).find(".cpmoney:first-child").attr('yll'));
+            	var pzje =  parseFloat($('.on .cpmoney').text());
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll'));        
             	var qx =  parseInt($(".lbl").attr("month"));
          	    var tzbzj = parseFloat(sum);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
-	            //$("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
-	            //$("#Minterests").text(yll+"%");	                        	
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));                        	
             }                         
         });
     }
@@ -323,7 +319,6 @@ $(document).ready(function () {
 	            	pzje = 	parseFloat($('.on .cpmoney').text());
 	            }	        	
 	            var yll = parseFloat($('.on .cpmoney').attr('yll'));
-	           //$("#Dinterests").text(pzje*qx*yll/100);
 	        
 	        })
 	    })
@@ -340,18 +335,17 @@ $(document).ready(function () {
             $(this).addClass("on");
             var str=$(".wan").text();
             if (str != "") {
-            	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
+            	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
+            	strtzbzj =(strtzbzj==''?'0':strtzbzj);
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text())*10000;
-            	var rulejjx = parseFloat($('input[name=dataRuleJjx]').val());
-            	var rulepcx = parseFloat($('input[name=dataRulePcx]').val());
-            	var yll =  parseFloat($(".cpmoney:eq(" + i + ")").attr('yll'));
+            	var rulepcx = parseFloat($('.on .cpmoney').attr('pcx'));
+                var rulejjx = parseFloat($('.on .cpmoney').attr('jjx'));   
+                var yll = parseFloat($('.on .cpmoney').attr('yll')); 
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
 	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
 	            $("#close").text((pzje*rulepcx/100).toFixed(1));
-	            //$("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
-	            //$("#Minterests").text(yll+"%");	                                      
             } else {
             	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text());
@@ -363,8 +357,6 @@ $(document).ready(function () {
             	$("#capital").text((tzbzj+pzje).toFixed(0));
 	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
 	            $("#close").text((pzje*rulepcx/100).toFixed(1));
-	            //$("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
-	            //$("#Minterests").text(yll+"%");	    
             }
             
         });
@@ -406,10 +398,12 @@ $(document).ready(function () {
 		$("input[name=dataPcx]").val($("#close").text());
 		//$("input[name=dataJklxTotal]").val($("#Dinterests").text());
 		$("input[name=dataZjsyqx]").val($(".lbl").attr("month"));
+		$("input[name=dataRulePcx]").val($('.on .cpmoney').attr('pcx'));			
+		$("input[name=dataRuleJjx]").val($('.on .cpmoney').attr('jjx'));		
+		$("input[name=dataYll]").val($('.on .cpmoney').attr('yll'));
 		$("#modalForm").submit();						
 	});
-    
-    
+       
 	arithmetic();
 })
 

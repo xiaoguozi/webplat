@@ -58,14 +58,6 @@ public class PeiZiMXController {
 	 */
 	@RequestMapping("/monthCapital")
 	public String dayCapital(Peizi peizio, Model model) {
-
-		// 如果dataId不为空，从数据库里面读取记录
-//		if (null != peizio.getDataId()
-//				&& !peizio.getDataId().equals(new Long(0))) {
-//			Peizi peizi = iPeizi.findByPeiziId(peizio.getDataId());
-//			model.addAttribute("peizi", peizi);
-//			return "web/peizi/mxp/mxpeizi";
-//		}
 		
 		// 获取天天配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
@@ -82,30 +74,19 @@ public class PeiZiMXController {
 		// 规则信息
 		peizi.setDataId(peizio.getDataId());
 		peizi.setDataType(PeiziTypeEnum.MXPEIZI.getKey());
-		//收益类型
 		peizi.setDataTypeSylx("10");
-		peizi.setDataZfglf(peiziRule.getRuleZhglf());
-		peizi.setDataNll(peiziRule.getRuleNll());
-		peizi.setDataYll(peiziRule.getRuleYll());
-		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
-		peizi.setDataRulePcx(peiziRule.getRulePcx());
 		peizi.setDataStep("1");
+		//收益类型
+		
 
 		// 用户点击上一步选择信息
-		peizi.setDataZcpzj(peizio.getDataZcpzj());
-		peizi.setDataTzbzj(peizio.getDataTzbzj());
-		peizi.setDataJjx(peizio.getDataJjx());
-		peizi.setDataPcx(peizio.getDataPcx());
-		peizi.setDataJklxTotal(peizio.getDataJklxTotal());
-		peizi.setDataZjsyqx(peizio.getDataZjsyqx());
 		peizi.setDataJyksDate(StringUtils.isBlank(peizio.getDataJyksDate()) ? "2"
 				: peizio.getDataJyksDate());
 		Integer dataZjsyqx = ((null == peizio.getDataZjsyqx() || new Integer(0)
 				.equals(peizio.getDataZjsyqx())) ? 1 : peizio.getDataZjsyqx());
 		peizi.setDataZjsyqx(dataZjsyqx);
-
 		model.addAttribute("peizi", peizi);
-		
+		model.addAttribute("peiziRule", peiziRule);
 		
 		//查询当天免费配活动是否有名额
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
