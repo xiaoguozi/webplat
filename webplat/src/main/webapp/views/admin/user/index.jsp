@@ -177,12 +177,13 @@ $(function(){
             _pageSize = pageSize
         }
         $("#searchForm input[name='pageSize']").val(_pageSize);
+        $("#searchForm input[name='pageNo']").val(0);
         
         $.post(
             listDataCountUrl, 
             $('#searchForm').formSerialize(),
             function(data){
-                if(data && data.total){
+                if(data && "undefined"!= typeof data.total){
                     //分页数据
                     $("#paginationDiv").BtkPagination({
                         pageSize: _pageSize,
@@ -197,7 +198,7 @@ $(function(){
                     });                    
                 }
 
-            }, "json");
+            });
     }
 
     //加载列表数据

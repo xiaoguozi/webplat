@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.tjs.admin.controller.UserCtrlModel;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserExample;
 import com.tjs.core.feature.orm.mybatis.Page;
@@ -46,6 +47,7 @@ public interface UserMapper extends GenericDao<User, Long> {
      */
     User authentication(@Param("record") User record);
 
+    
     /**
      * 分页条件查询
      * 
@@ -55,9 +57,10 @@ public interface UserMapper extends GenericDao<User, Long> {
      */
     List<User> selectByExampleAndPage(Page<User> page, UserExample example);
 
-    List<User> selectList();
+    List<User> selectList(UserCtrlModel userCtrlModel);
 
-    Integer selectListCount();
+    Integer selectListCount(UserCtrlModel userCtrlModel);
     
     Integer selectCountByUserName(String userName);
+
 }

@@ -95,10 +95,10 @@ public class UserController {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount() {
+    public Map<String, Integer> listDataCount(UserCtrlModel userCtrlModel, Model model) {
     	Map<String, Integer> result = new HashMap<String, Integer>();
     	
-    	Integer total = userService.selectListCount();
+    	Integer total = userService.selectListCount(userCtrlModel);
     	
     	result.put("total", total);
     	
@@ -109,7 +109,7 @@ public class UserController {
     @RequestMapping("/listData")
     public String listData(UserCtrlModel userCtrlModel, Model model) {
     	List<User> showData = new ArrayList<User>();
-    	showData = userService.selectList();
+    	showData = userService.selectUserList(userCtrlModel);
     	
     	model.addAttribute("showData", showData);
 		model.addAttribute("ctrlData", userCtrlModel);
@@ -132,8 +132,7 @@ public class UserController {
     	Map<String, Object> result = new HashMap<String, Object>();
     	int id = userService.insert(user);
     	result.put("code", "0");
-    	result.put("bizData", user);
-    	
+    	result.put("bizData", user);   	
         return result;
     }
 

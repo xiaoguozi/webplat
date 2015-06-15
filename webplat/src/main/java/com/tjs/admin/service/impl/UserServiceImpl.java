@@ -5,7 +5,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import com.tjs.admin.controller.UserCtrlModel;
 import com.tjs.admin.dao.UserMapper;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserExample;
@@ -65,12 +67,18 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
     
     @Override
     public List<User> selectList() {
-    	return userMapper.selectList();
+    	return userMapper.selectList(null);
     }
     
     @Override
-    public Integer selectListCount() {
-    	return userMapper.selectListCount();
+    public Integer selectListCount(UserCtrlModel userCtrlModel) {
+    	return userMapper.selectListCount(userCtrlModel);
     }
+
+	@Override
+	public List<User> selectUserList(UserCtrlModel userCtrlModel) {
+		// TODO Auto-generated method stub
+		return userMapper.selectList(userCtrlModel);
+	}
     
 }

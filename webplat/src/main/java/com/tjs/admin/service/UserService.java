@@ -1,5 +1,8 @@
 package com.tjs.admin.service;
 
+import java.util.List;
+
+import com.tjs.admin.controller.UserCtrlModel;
 import com.tjs.admin.model.User;
 import com.tjs.core.generic.GenericService;
 
@@ -27,5 +30,10 @@ public interface UserService extends GenericService<User, Long> {
      */
     User selectByUsername(String username);
     
-    Integer selectListCount();
+    Integer selectListCount(UserCtrlModel userCtrlModel);
+    
+    
+    List<User> selectUserList(UserCtrlModel userCtrlModel);
+    
+    
 }

@@ -15,7 +15,17 @@ public class UserCtrlModel extends GenericCtrlModel {
 
 	private String keyWord;
 	
-	User user;
+	private int limitStart;
+	
+	private User user;
+	
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
 	
 	
 
