@@ -344,8 +344,8 @@ $(document).ready(function () {
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
             } else {
             	var strtzbzj= $('input[name=dataTzbzj]').val()==''?"0":$('input[name=dataTzbzj]').val();
             	var pzje =  parseFloat($(".cpmoney:eq(" + i + ")").text());
@@ -355,8 +355,8 @@ $(document).ready(function () {
             	var qx =  parseInt($(".lbl").attr("month"));           	 
          	    var tzbzj = parseFloat(strtzbzj);
             	$("#capital").text((tzbzj+pzje).toFixed(0));
-	           	$("#loss").text((pzje*rulejjx/100).toFixed(1));
-	            $("#close").text((pzje*rulepcx/100).toFixed(1));
+	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
+	            $("#close").text((pzje*rulepcx/100).toFixed(0));
             }
             
         });
