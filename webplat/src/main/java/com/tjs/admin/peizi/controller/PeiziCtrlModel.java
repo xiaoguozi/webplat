@@ -17,7 +17,9 @@ public class PeiziCtrlModel extends GenericCtrlModel {
 		
 	private Peizi peizi;
 	
-	 private int totalPageSize;
+	private int totalPageSize;
+	 
+	private String notEqualoperaStatus;
 
 	 public int getTotalPageSize() {
 		if(super.getTotalCount()%super.getPageSize()==0){
@@ -57,5 +59,15 @@ public class PeiziCtrlModel extends GenericCtrlModel {
 	public void setLimitStart(int limitStart) {
 		this.limitStart = limitStart;
 	}
+
+	public String getNotEqualoperaStatus() {
+		return notEqualoperaStatus;
+	}
+
+	public void setNotEqualoperaStatus(String notEqualoperaStatus) {
+		this.notEqualoperaStatus = notEqualoperaStatus;
+	}
+	
+	
 
 }

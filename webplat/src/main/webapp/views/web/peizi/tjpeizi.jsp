@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">淘金配资</span></a></li>
                         <li><span>淘金募集</span></li>
                         <li><span>淘金自营</span></li>
-                        <li><span>个人中心</span></li>
+                        <li><a href="rest/web/peizi/usercenter/pzzhongxin"><span>个人中心</span></a></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -214,20 +214,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         $(".nav_menu").mouseleave(function () {
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
-        });
-	/*--QQ咨询--*/
-		$(".about_box1:eq(2)").hover(function (){
-			$(".qq").attr("src","assets/img/peizi/qqhove.png");
-			$(".zx").css("color","#1682CA");
-		},function(){
-			$(".qq").attr("src","assets/img/peizi/qq.png");
-			$(".zx").css("color","#8c969d");
-		})
-	/*--/QQ咨询--*/
+        });	
 	})
-	function alertbox() {
-	    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
-	}
+	
 </script>
 </body>
 </html>

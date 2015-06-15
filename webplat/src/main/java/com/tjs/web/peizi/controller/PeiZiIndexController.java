@@ -178,7 +178,8 @@ public class PeiZiIndexController {
 		
 		
 		return "web/peizi/stackAgreement";            
-	}
+	}	
+	
 	
 	
 }

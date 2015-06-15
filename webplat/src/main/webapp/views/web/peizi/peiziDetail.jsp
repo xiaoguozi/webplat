@@ -131,10 +131,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                	<td class="color158 font26" style="white-space:nowrap;">免费体验</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='20'}">
-	                                	<td class="color158 font26" style="white-space:nowrap;">月月配</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">天天配</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='30'}">
-	                                	<td class="color158 font26" style="white-space:nowrap;">天天配</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">月月配</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='40'}">
 	                                	<td class="color158 font26" style="white-space:nowrap;">低息1配1</td>

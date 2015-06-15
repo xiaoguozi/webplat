@@ -11,11 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.peizi.constants.OperaStatusEnum;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 
 /**
  * 用户中心配资
@@ -240,6 +243,51 @@ public class PeiZiUserCenter {
 		
 		return "web/peizi/dxp/dxpzusercenter";
 	}
+	
+	
+
+	/**
+	 * 配资协议 
+	 * @return
+	 */
+	@RequestMapping("/pzzhongxin")
+	public String pzZhongXin(PeiziCtrlModel peiziCtrlModel,Model model) {
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+	
+		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
+		peiziCtrlModel.setNotEqualoperaStatus(OperaStatusEnum.YWJIE.getKey());
+		peiziCtrlModel.setPageSize(1);
+		peiziCtrlModel.setSortField("data_submit_date");
+		peiziCtrlModel.setSortType("desc");
+		
+		//天天配
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.TTPEIZI.getKey());		
+		List<Peizi> lstTTPeizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		
+		//月月配
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.YYPEIZI.getKey());
+		List<Peizi> lstYYPeizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		
+		//低息1配1 
+		peiziCtrlModel.getPeizi().setDataType(PeiziTypeEnum.DXPEIZI.getKey());
+		List<Peizi> lstDXPeizi = iPeiziService.selectPeizi(peiziCtrlModel);
+		
+		if(null!=lstTTPeizi&&lstTTPeizi.size()>0){
+			model.addAttribute("ttPeizi", lstTTPeizi.get(0));	
+		}
+		
+		if(null!=lstYYPeizi&&lstYYPeizi.size()>0){
+			model.addAttribute("yyPeizi", lstYYPeizi.get(0));	
+		}
+		
+		if(null!=lstDXPeizi&&lstDXPeizi.size()>0){
+			model.addAttribute("dxPeizi", lstDXPeizi.get(0));	
+		}
+			
+		return "web/peizi/pzzhongxin";            
+	}	
 	
 	
 }

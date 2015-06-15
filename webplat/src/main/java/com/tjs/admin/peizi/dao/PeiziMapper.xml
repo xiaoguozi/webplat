@@ -63,6 +63,14 @@
         <if test="peizi!= null and peizi.dataType!=null">
          and data_type = #{peizi.dataType}
         </if>
+        
+        <if test="peizi!= null and peizi.dataId!=null">
+          and data_id = #{peizi.dataId}
+        </if>
+               
+        <if test="notEqualoperaStatus!=null">
+         and data_opera_status != #{notEqualoperaStatus}
+        </if>
         					
 	</select>
 
@@ -83,6 +91,10 @@
         <if test="peizi!= null and peizi.dataId!=null">
           and data_id = #{peizi.dataId}
         </if> 
+        
+        <if test="notEqualoperaStatus!=null">
+         and data_opera_status != #{notEqualoperaStatus}
+        </if>
         
         <if test="peizi!= null and peizi.dataUserId!=null">
           and data_user_id = #{peizi.dataUserId}
