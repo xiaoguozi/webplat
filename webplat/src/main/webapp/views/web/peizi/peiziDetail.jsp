@@ -128,19 +128,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        <table class="ty_tbl" style="width: 98%">
 	                            <tr>
 	                            	<c:if test="${peizi.dataType=='10'}">
-	                                	<td class="color158 font26">免费体验</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">免费体验</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='20'}">
-	                                	<td class="color158 font26">月月配</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">月月配</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='30'}">
-	                                	<td class="color158 font26">天天配</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">天天配</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='40'}">
-	                                	<td class="color158 font26">低息1配1</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">低息1配1</td>
 	                                </c:if>
 	                                <c:if test="${peizi.dataType=='50'}">
-	                                	<td class="color158 font26">免息体验</td>
+	                                	<td class="color158 font26" style="white-space:nowrap;">免息体验</td>
 	                                </c:if>
 	                                
 	                                <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘金额</td>
@@ -154,21 +154,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        </table>
 	                        <table class="ty_tbl" style="width: 98%">
 	                            <tr>
-                                     <td >亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span>元</td>
-                                     <td >亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span>元</td>
+                                     <td style="white-space:nowrap;">亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span>元</td>
+                                     <td style="white-space:nowrap;">亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span>元</td>
                                      
                                      <c:if test="${peizi.dataType=='30' || peizi.dataType=='40'}">
-                                     		<td >利息:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
+                                     		<td style="white-space:nowrap;" >利息:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
                                      </c:if>
                                      <c:if test="${peizi.dataType=='10' || peizi.dataType=='20' || peizi.dataType=='50'}">
-                                     		<td >账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
+                                     		<td style="white-space:nowrap;" >账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal==null?0:peizi.dataJklxTotal}" pattern="########.##" /></span>元</td>
                                      </c:if>
                                      
                                      <c:if test="${peizi.dataType=='30' || peizi.dataType=='40'}">
-                                     	<td  >资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>月</td>
+                                     	<td  style="white-space:nowrap;">资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>月</td>
                                      </c:if>
                                      <c:if test="${peizi.dataType=='10' || peizi.dataType=='20' || peizi.dataType=='50'}">
-                                     	<td >资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>天</td>
+                                     	<td style="white-space:nowrap;" >资金使用期限:<span class="font26 colorf06">${peizi.dataZjsyqx}</span>天</td>
                                      </c:if>
                                      
                                  </tr>
