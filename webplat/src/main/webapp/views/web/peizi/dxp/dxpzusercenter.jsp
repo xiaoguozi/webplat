@@ -109,7 +109,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  			<b class="my_tit tit1">低息配 <span class="tit_span">共<span class="colorf06">${peiziCtrlModel.totalCount}</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <c:if test="${peiziCtrlModel.totalCount>0}">
 				                <c:forEach items="${lstPeizi}" var="peizi" varStatus="status">
-				                <div style="border-bottom:solid 1px #d3d3d3">
+				                <div style="border-bottom:dashed 1px #d3d3d3"/>
 				                <table class="my_tbl2"  >
 				                    <tr>
 				                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${peizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
@@ -227,10 +227,7 @@ $(function() {
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-   	
-        
-    
-	 					
+   	            	 					
 	});
        
 </script>
