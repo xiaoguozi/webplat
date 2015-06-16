@@ -174,7 +174,7 @@ public class PeiZiMFIndexController {
 		if(username==null){
 			return "web/peizi/mfp/hdpeizi";
 		}
-		
+		Long dataId = 0L;
 		//1、将用户能使用资源设置为0
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		User user = userService.selectByUsername(username);
@@ -190,10 +190,10 @@ public class PeiZiMFIndexController {
 				//1、更新状态并产生订单
 				userInfoExtendVO.setIsOwnResource(0);
 				userInfoExtendVO.setPhone(username);
-				iPeiZiIndexService.createFreeAllPeiziOrder(userInfoExtendVO, PeiziTypeEnum.MFPEIZI.getKey());
+				dataId = iPeiZiIndexService.createFreeAllPeiziOrder(userInfoExtendVO, PeiziTypeEnum.MFPEIZI.getKey());
 			}
 		}
-		
+		model.addAttribute("dataId", dataId);
 		return "web/peizi/mfp/hdpeizilast";
 	}
 	

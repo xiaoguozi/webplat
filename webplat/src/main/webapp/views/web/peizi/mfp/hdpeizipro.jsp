@@ -98,10 +98,44 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </tr>
                                 </table>
                             </div>
-                            <div class="pros_box bord_d" style="width:92%;">
-                                <b class="color158 font26">正在验资......</b>
-                                <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
-                            </div>
+                            <div class="pros_box bord_d"  style="width:92%;height:100px;" >
+                                <table class="mf_tbl" style="width:100%;">
+                                <tr>
+                                <td style="width:50%;border-right:1px dashed;" >
+	                                 <b class="color158 font26">                              
+		                                <c:choose>  
+							                <c:when test="${peizi.dataOperaStatus=='10'}">  
+							                  		正在验资......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='20'}">  
+							                  		  操盘中......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+							                  		  已完结
+							                </c:when>					                
+							                <c:otherwise>  
+							                     	正在验资......
+							                </c:otherwise>  
+		            					</c:choose>                                                                         
+	                                </b> 
+                                </td>
+                                <td style="width:50%">
+                                	<div style="width:100%;text-align:left;margin:0 auto;font-size:18px">投资保证金付款账户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:91%;margin:0 auto;padding-top:10px;padding-bottom:10px">                                                                                         
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">帐&nbsp;&nbsp;&nbsp;号：6226 0965 5051 9592</div>
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">户&nbsp;&nbsp;&nbsp;名：吴&nbsp;田&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">开户行：招商银行深圳分行深纺支行</div>                                                
+			                        </div> 
+                                
+                                </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" style="text-align:center">
+                                    <p class="pt10">热线电话：<span class="colorf06">4006-114-008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                                  </td>
+                                </tr>
+                                 </table>                                                                                
+                            </div> 
                        </div>
                     </div>
                 </div>

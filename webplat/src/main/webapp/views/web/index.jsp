@@ -220,12 +220,12 @@ document.all(imgg).style.display='block'}}
 <div  style=" height:36px; width:100%;"></div>
 <div class="tjs_rightmatch_title"><span>包赚不赔</span><br />包赚不赔，新手体验
 </div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">免费赠送2000元</span>实盘资金</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">免费赠送10000元</span>实盘资金</div>
 
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">盈利全归您</span>亏损算我们</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/freeActivity" target="_blank" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mfp/freeActivity" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->

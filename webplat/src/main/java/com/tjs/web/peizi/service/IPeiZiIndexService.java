@@ -20,8 +20,8 @@ public interface IPeiZiIndexService {
 	
 	public List<UserInfoExtendVO> getUserInfoExtendList(PZIndexCtrlModel pzIndexCtrlModel);
 	
-	public void createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType);
+	public Long createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType);
 	
-	public void createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi);
+	public Long createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi);
 	
 }

@@ -120,7 +120,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	}
 
 	@Override
-	public void createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
+	public Long createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
 		Date date = Calendar.getInstance().getTime();
 		//插入配资订单
@@ -138,10 +138,11 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataUserTel(userInfoExtendVO.getPhone());
 		peizi.setDataOperaStatus("10");
 		peiziService.insertPeizi(peizi);
+		return peizi.getDataId();
 	}
 	
 	@Override
-	public void createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi) {
+	public Long createFreeChargePeiziOrder(UserInfoExtendVO userInfoExtendVO, Peizi peizi) {
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
 		Date date = Calendar.getInstance().getTime();
 		peizi.setDataSubmitDate(date);
@@ -151,6 +152,9 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		} else {
 			peiziService.updatePeizi(peizi);
 		}
+		
+		return peizi.getDataId();
+		
 	}
 	
 
