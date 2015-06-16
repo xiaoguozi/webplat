@@ -13,10 +13,11 @@
         <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="cert_id" property="certId" jdbcType="VARCHAR" />
+        <result column="is_validate" property="isValidate" jdbcType="INTEGER" />
     </resultMap>
    
     <sql id="Base_Column_List">
-        id, user_id, nick_name, mobile_no, qq_no, wechat_no, email, user_status, reg_time, name, cert_id
+        id, user_id, nick_name, mobile_no, qq_no, wechat_no, email, user_status, reg_time, name, cert_id, is_validate
     </sql>
     
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -145,6 +146,9 @@
             </if>
             <if test="certId != null">
                 cert_id = #{certId,jdbcType=VARCHAR},
+            </if>
+            <if test="isValidate != null">
+                is_validate = #{isValidate,jdbcType=INTEGER},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}

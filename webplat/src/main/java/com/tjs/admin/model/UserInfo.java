@@ -24,6 +24,7 @@ public class UserInfo implements Serializable{
     private String userStatus;
     private String name;
     private String certId;
+    private int isValidate;
 
     public UserInfo() {
 
@@ -138,6 +139,17 @@ public class UserInfo implements Serializable{
 		this.certId = certId;
 	}
 
+	
+
+	public int getIsValidate() {
+		return isValidate;
+	}
+
+
+	public void setIsValidate(int isValidate) {
+		this.isValidate = isValidate;
+	}
+
 
 	@Override
 	public String toString() {
@@ -145,7 +157,7 @@ public class UserInfo implements Serializable{
 				+ nickName + ", mobileNo=" + mobileNo + ", qqNo=" + qqNo
 				+ ", wechatNo=" + wechatNo + ", email=" + email + ", regTime="
 				+ regTime + ", userStatus=" + userStatus + ", name=" + name
-				+ ", certId=" + certId + "]";
+				+ ", certId=" + certId + ", isValidate=" + isValidate + "]";
 	}
 
 

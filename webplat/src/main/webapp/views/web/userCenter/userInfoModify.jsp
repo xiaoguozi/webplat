@@ -123,15 +123,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   </div>                         
                   <div >
 	                <form class="modify-form" id="modify-form" action="rest/web/userCenter/saveUserInfo" method="post">
-	                 <div style="height:30px"></div>     
-	                 <div class="tjs_register_left" style="width:20%">姓名：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_username" name="userInfo.name" value="${name}" maxlength="30" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">身份证：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_certId" name="userInfo.certId" value="${certId}" maxlength="18" onblur="validateCertId(this);" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech >&nbsp;&nbsp;<span id="cert_id_span" style="color: red;"></span>&nbsp;<img id="validateSuccessImg" src="assets/img/peizi/check_sucess.png" valign="center" style="display: none;"><a style="cursor: pointer;" id="aValidate" onclick="validateRealName()" >实名认证</a></div>
+	                 <div style="height:30px"></div> 
+	                     
+	                 <div class="tjs_register_left" style="width:20%">姓名：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_username" name="userInfo.name" value="${name}" maxlength="30" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ${isValidate==1?"disabled":""} style="${isValidate==1?'background-color:#eeeeee':''}"></div>
+	                 <div class="tjs_register_left" style="width:20%">身份证：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_certId" name="userInfo.certId" value="${certId}" maxlength="18" onblur="validateCertId(this);" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ${isValidate==1?"disabled":""} style="${isValidate==1?'background-color:#eeeeee':''}">&nbsp;&nbsp;<span id="cert_id_span" style="color: red;"></span>&nbsp;
+	                 	<c:if test="${isValidate==1}">
+	                 		<img id="validateSuccessImg" src="assets/img/peizi/check_sucess.png" valign="center" ><a style="cursor: default; color: #000000;" id="aValidate"  >已实名认证</a>
+	                 	</c:if>	
+	                 	<c:if test="${isValidate!=1}">
+		                 	<img id="validateSuccessImg" src="assets/img/peizi/check_sucess.png" valign="center" style="display: none;"><a style="cursor: pointer;" id="aValidate" onclick="validateRealName();" >实名认证</a>
+	                 	</c:if>	
+	                 </div>
+	                 
 	                 <div class="tjs_register_left" style="width:20%">邮箱：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_email" name="userInfo.email" value="${email}" maxlength="100" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
 	                 <div class="tjs_register_left" style="width:20%">QQ：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_qq" name="userInfo.qqNo" value="${qq}" maxlength="16" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
 	                 <div class="tjs_register_left" style="width:20%">手机号：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_phone" name="phone" value="${phone}" disabled="disabled" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
 	                 <div class="tjs_register_left" style="width:20%">密码：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_password_1" name="password" value="0000000000000000000000000000000000" disabled="disabled" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" x-webkit-speech >&nbsp;&nbsp;<a style="cursor: pointer;" id="a_dialog" onclick="showPasswordDialog()" >修改密码</a></div>
 	                
-	                 <div style="height:60px; width:75%; text-align: center;"><a id="register-submit-btn"  class="tjs_registerbtn">提交修改</a></div>
+	                 <div style="height:60px; width:75%; text-align: center;"><a id="register-submit-btn"  class="tjs_registerbtn">保&nbsp;&nbsp;存</a></div>
 	                </form>     
                  </div>
                 <!--/无产品状态-->
@@ -167,6 +176,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	function validateCertId(obj){
 		var certId = obj.value;
 		if(certId==""){
+			$("#cert_id_span").text("");
 			return false;
 		}
 		if(!isIdCardNo(certId)){
@@ -384,8 +394,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 	var tipDialog;
 	function validateRealName(){
+		
 		var realName = $("#register_username").val();
 		var realCertId = $("#register_certId").val();
+		
+		if(realName=="" || realCertId==""){
+			var msg = "";
+			if(realName=="" && realCertId==""){
+				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写姓名和身份证信息";
+			}else if(realName==""){
+				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写姓名";
+			}else if(realCertId==""){
+				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写身份证";
+			}
+			
+			var dNew = dialog({
+    		    content: msg
+    		});
+    		dNew.show();
+    		setTimeout(function () {
+    			dNew.close().remove();
+    		}, 2000);
+    		return false;
+    		
+		}
+		
 		//显示一个模态框验证窗口
 		tipDialog = dialog({
 		    title: '温馨提示',
@@ -397,6 +430,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		tipDialog.showModal();
 
 		setTimeout('showValidateResult("'+realName+'","'+realCertId+'")', 2000);
+		
 	}
 	
 	function showValidateResult(realName, realCertId){
@@ -406,16 +440,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    url: 'rest/web/userCenter/valiadCertId' ,
 		    data: {
 		    	name: realName,
-		    	certId: realCertId
+		    	certId: realCertId,
+		    	userId: '${userId}'
             },
 		    success: function(data){
 		    	if(tipDialog){
 			    	tipDialog.close().remove();
 		    	}
-		    	if(data==true){
+		    	if(data=="true"){
 		    		$("#validateSuccessImg").show();
 		    		$("#aValidate").html("已实名认证");
 		    		$("#aValidate").css("color","#000000").css("cursor","default");
+		    		$("#aValidate").removeAttr("onclick");
 		    		$("#register_certId").attr("disabled", true);
 		    		$("#register_certId").css("background-color", "#eeeeee");
 		    		$("#register_username").attr("disabled", true);
@@ -429,8 +465,26 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    			dNew.close().remove();
 		    		}, 2000);
 		    	}else{
+		    		//如果用户没有先进行保存
+		    		if(data=="-1"){
+		    			var dNew = dialog({
+			    		    content: '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;请先保存后再进行实名认证！'
+			    		});
+			    		dNew.show();
+			    		setTimeout(function () {
+			    			dNew.close().remove();
+			    		}, 2000);
+			    		return false;
+		    		}
+		    		
+		    		if(data=="false"){
+		    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;实名认证失败，请重试！';
+		    		}else{
+		    			data = getMsgContent(data);
+		    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;' + data;
+		    		}
 		    		var dNew = dialog({
-		    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;实名认证失败'
+		    		    content: data
 		    		});
 		    		dNew.show();
 		    		setTimeout(function () {
@@ -439,10 +493,34 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    		
 		    	}
 		    } ,
-		    dataType: 'json'
+		    dataType: 'text'
 		});
 	}
 	
+	function getMsgContent(code){
+		var msg = "";
+		if(code=="-71"){
+			msg = "认证服务参数不正确,请联系客服！";
+		}else if(code=="-53"){
+			msg = "认证服务账号过期,请联系客服！";
+		}else if(code=="-72"){
+			msg = "认证服务权限不足,请联系客服！";
+		}else if(code=="-31"){
+			msg = "认证服务需要充值,请联系客服！";
+		}else if(code=="-60"){
+			msg = "认证服务参数格式错误,请联系客服！";
+		}else if(code=="-90"){
+			msg = "认证服务器出问题,请联系客服！";
+		}else if(code=="-1000"){
+			msg = "实名认证存在问题，请联系客服人工验证！";
+		}else if(code=="-1001"){
+			msg = "身份证号码与姓名不一致";
+		}else if(code=="-1002"){
+			msg = "该姓名和身份证号码已被其他用户实名认证，请勿重复认证!";
+		}
+		
+		return msg;
+	}
 	
 	
 	function onBlurNewPassword(obj){

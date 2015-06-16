@@ -11,8 +11,6 @@ create table t_user_info
    email varchar(128) comment '邮箱',
    user_status varchar(16) comment '用户状态',
    reg_time datetime comment '注册时间',
-   name varchar(64) comment '姓名',
-   cert_id varchar(20) comment '身份证明信息',
    primary key (id)
 ) DEFAULT CHARSET=utf8 comment='用户信息';
 
@@ -366,6 +364,28 @@ CREATE TABLE `tjs_peizi_rule` (
   PRIMARY KEY (`rule_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='配置规则';
 
+
+CREATE TABLE `t_cust_identity` (
+  `identify_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `customer_id` bigint(20) DEFAULT NULL COMMENT '用户序号',
+  `identify_type` smallint(2) DEFAULT '0' COMMENT '证件类型 0 身份证 1 其他',
+  `real_name` varchar(20) DEFAULT NULL COMMENT '真实姓名',
+  `card_no` varchar(20) DEFAULT NULL COMMENT '身份证号',
+  `create_time` datetime DEFAULT NULL COMMENT '提交时间',
+  `valid_type` smallint(1) DEFAULT NULL COMMENT '验证方式(0 自动 1 手动)',
+  `status` smallint(1) DEFAULT NULL COMMENT '状态(0 待审核 1 正确 2 不正确 )',
+  `audit_by` varchar(50) DEFAULT NULL COMMENT '审核人',
+  `audit_time` datetime DEFAULT NULL COMMENT '审核时间',
+  `audit_desc` varchar(1000) DEFAULT NULL COMMENT '审核意见',
+  PRIMARY KEY (`identify_id`),
+  KEY `IDX_cust_identity_CustID` (`customer_id`) USING BTREE,
+  KEY `IDX_cust_identify_cardNo` (`card_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+
+alter table t_user_info add  name varchar(64) comment '姓名';
+alter table t_user_info add  cert_id varchar(20) comment '身份证明信息';
+alter table t_user_info add  is_validate int(2) DEFAULT 0 COMMENT '是否已实名认证：0、未实名认证；1、已实名认证';
 
 
 

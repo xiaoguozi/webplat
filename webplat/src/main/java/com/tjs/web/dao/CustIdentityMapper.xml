@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tjs.web.dao.CustIdentityMapper">
+
+	<resultMap id="BaseResultMap" type="com.tjs.web.model.CustIdentity">
+        <id column="identify_id" property="identifyId" jdbcType="BIGINT" />
+        <result column="customer_id" property="customerId" jdbcType="BIGINT" />
+        <result column="identify_type" property="identifyType" jdbcType="INTEGER" />
+        <result column="real_name" property="realName" jdbcType="VARCHAR" />
+        <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="valid_type" property="validType" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="audit_by" property="auditBy" jdbcType="VARCHAR" />
+        <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+        <result column="audit_desc" property="auditDesc" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+        identify_id, customer_id, identify_type, real_name, card_no, create_time, valid_type, status, audit_by, audit_time,audit_desc
+    </sql>
+    
+	<select id="query" resultMap="BaseResultMap" parameterType="com.tjs.web.model.CustIdentity">
+		select
+        <include refid="Base_Column_List" />
+        from t_cust_identity
+        <where>
+			<if test="identifyId != null and identifyId != ''">
+			  and identify_id = #{identifyId}
+			 </if>
+			<if test="customerId != null and customerId != ''">
+				and customer_id = #{customerId}
+			</if>
+			<if test="identifyType != null and identifyType != ''">
+				and identify_type = #{identifyType}
+			</if>
+			<if test="realName != null and realName != ''">
+				and real_name = #{realName}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and card_no = #{cardNo}
+			</if>
+			<if test="createTime != null and createTime != ''">
+				and create_time = #{createTime}
+			</if>
+			<if test="validType != null and validType != ''">
+				and valid_type = #{validType}
+			</if>
+			<if test="status != null and status != ''">
+				and status = #{status}
+			</if>
+			<if test="auditBy != null and auditBy != ''">
+				and audit_by = #{auditBy}
+			</if>
+			<if test="auditTime != null and auditTime != ''">
+				and audit_time = #{auditTime}
+			</if>
+			<if test="auditDesc != null and auditDesc != ''">
+				and audit_desc = #{auditDesc}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertCustIdentity" parameterType="com.tjs.web.model.CustIdentity" useGeneratedKeys="true" keyProperty="identifyId">
+        INSERT INTO t_cust_identity (<include refid="Base_Column_List" />)
+        VALUES (#{identifyId}, 
+         		#{customerId},
+         		#{identifyType},
+         		#{realName},
+         		#{cardNo},
+         		#{createTime},
+         		#{validType},
+         		#{status},
+         		#{auditBy},
+         		#{auditTime},
+         		#{auditDesc})              
+    </insert>
+	
+</mapper>
