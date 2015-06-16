@@ -105,7 +105,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <span class="box1">2</span><div class="font_word18">选择您的配资金额</div>
                     <div class="caopanbox">
                         <div class="cpbox1 on">
-                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx3}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
+                            <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
                                                 
