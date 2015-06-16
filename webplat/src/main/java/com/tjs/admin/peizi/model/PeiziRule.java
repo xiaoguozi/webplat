@@ -87,6 +87,11 @@ public class PeiziRule {
 	/**6倍杠杆警戒线(%)，为零或者空为不需要警戒线*/
 	private BigDecimal ruleJjx6;
 	
+	/**是否可以操作1：可以操作，2：不能操作*/
+	private String ruleEnable;
+	
+	
+	
 	
 	
 	
@@ -281,5 +286,16 @@ public class PeiziRule {
 
 	public void setRuleJjx6(BigDecimal ruleJjx6) {
 		this.ruleJjx6 = ruleJjx6;
-	}				
+	}
+
+	public String getRuleEnable() {
+		return ruleEnable;
+	}
+
+	public void setRuleEnable(String ruleEnable) {
+		this.ruleEnable = ruleEnable;
+	}	
+	
+	
+	
 }

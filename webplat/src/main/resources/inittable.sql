@@ -362,8 +362,10 @@ CREATE TABLE `tjs_peizi_rule` (
   `rule_jjx4` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n4倍杠杆',
   `rule_jjx5` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n5倍杠杆',
   `rule_jjx6` decimal(5,2) DEFAULT NULL COMMENT '警戒线(%)，为零或者空为不需要警戒线\n6倍杠杆',
+  `rule_enable` varchar(2) DEFAULT '10' COMMENT '配资开关10：可以操作，20：不能操作',
   PRIMARY KEY (`rule_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='配置规则';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='配置规则';
+
 
 
 

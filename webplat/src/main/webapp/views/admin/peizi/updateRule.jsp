@@ -271,7 +271,13 @@
 		        </div> 	       
         </c:if>
                                         
-                                                                                               
+         <div class="form-group">
+            <label class="col-md-2 control-label">配资开关</label>
+            <div class="col-md-6">
+                <input type="radio" name="ruleEnable" value="10" <c:if test="${peiziRule.ruleEnable== '10'}">checked="checked"</c:if>>开
+                <input type="radio" name="ruleEnable" value="20" <c:if test="${peiziRule.ruleEnable== '20'}">checked="checked"</c:if>>关
+            </div>            
+        </div>                                                                                           
     </form>
 </div>
 

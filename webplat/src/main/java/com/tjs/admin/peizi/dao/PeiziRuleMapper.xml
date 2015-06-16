@@ -32,18 +32,20 @@
 		
 		<result column="rule_yll6" property="ruleYll6" javaType="java.math.BigDecimal" />
 		<result column="rule_pcx6" property="rulePcx6" javaType="java.math.BigDecimal" />
-		<result column="rule_jjx6" property="ruleJjx6" javaType="java.math.BigDecimal" />					
+		<result column="rule_jjx6" property="ruleJjx6" javaType="java.math.BigDecimal" />
+		<result column="rule_enable" property="ruleEnable" jdbcType="VARCHAR" />					
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
 		rule_id,rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
-		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6,rule_enable
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
-		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6,rule_enable
 	</sql>
+
 
 	<select id="countPeiziRule" resultType="int"
 		parameterType="com.tjs.admin.peizi.controller.PeiziRuleCtrlModel">
@@ -109,7 +111,8 @@
 		#{ruleJjx5},
 		#{ruleYll6},
 		#{rulePcx6},
-		#{ruleJjx6}		
+		#{ruleJjx6},
+		#{ruleEnable}		
 		)
 	</insert>
 	
@@ -137,7 +140,8 @@
 		rule_jjx5=#{ruleJjx5},
 		rule_yll6=#{ruleYll6},
 		rule_pcx6=#{rulePcx6},
-		rule_jjx6=#{ruleJjx6}					
+		rule_jjx6=#{ruleJjx6},
+		rule_enable=#{ruleEnable}					
 		where rule_id=#{ruleId}		
 	</update>
 		
