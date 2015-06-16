@@ -30,10 +30,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
      <div class="logo_wrap"><a href=""><img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
-    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
-    <li><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
-    <li><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
-    <li><a href="rest/web/xintuo/trust/trustSafeguard" target="_blank"><span class="simu_on">安全保障</span></a></li>
+    <li style="width:155px"><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
+    <li style="width:155px"><a href="rest/web/xintuo/trust/trustProduct" target="_blank">信托产品</a></li>
+    <li style="width:155px"><a href="rest/web/xintuo/trust/trustCompany" target="_blank">信托公司</a></li>
+    <li style="width:155px"><a href="rest/web/xintuo/trust/trustSafeguard" target="_blank"><span class="simu_on">安全保障</span></a></li>
 
     </ul>
     </div>    
