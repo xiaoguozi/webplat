@@ -120,7 +120,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll4}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx4}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx4}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
-                        <div class="cpbox1">
+                        <div class="cpbox1 disabled">
                             <span class="cpmoney" yll="<fmt:formatNumber value="${peiziRule.ruleYll5}" pattern="########.##" />" pcx="<fmt:formatNumber value="${peiziRule.rulePcx5}" pattern="########.##" />" jjx="<fmt:formatNumber value="${peiziRule.ruleJjx5}" pattern="########.##" />">0</span> <span class="wan"></span>元<br />配资金额
                             <div class="goubox"></div>
                         </div>
@@ -333,7 +333,7 @@ $(document).ready(function () {
     
     
     /*--操盘金额--*/
-    $(".cpbox1").each(function (i) {
+    $(".cpbox1:not(.disabled)").each(function (i) {
         $(this).click(function () {
             $(".cpbox1").removeClass("on")
             $(this).addClass("on");

@@ -930,12 +930,12 @@
     float:left;
     cursor:pointer;
 }
-    .cpbox1:hover {
-        border-color:#FF8C00;
-    }
-    .cpbox1.on {
-        border-color:#FF8C00;
-    }
+.cpbox1:hover {
+    border-color:#FF8C00;
+}
+.cpbox1.on {
+    border-color:#FF8C00;
+}
 .cpmoney {
     color:#FF6700;
     font-size: 32px;
@@ -947,7 +947,7 @@
     background: url(../../img/peizi/goubox.png) no-repeat 50% 50% #DBDBDB;
     margin-top:19px;
 }
- .cpbox1:hover .goubox {
+.cpbox1:hover .goubox {
     background: url(../../img/peizi/goubox.png) no-repeat 50% 50% #FF8C00;
 }
 .cpbox1.on .goubox {
@@ -1569,3 +1569,21 @@
 	 width:100px;
 	 background:url(../../img/103.png) no-repeat left #F0F0F0;
 }
+
+
+
+
+.cpbox1.disabled:hover {
+    border-color:#DBDBDB;
+}
+
+.cpbox1.disabled:hover .goubox {
+    background: url(../../img/peizi/goubox.png) no-repeat 50% 50% #DBDBDB;
+}
+
+.cpbox1.disabled .cpmoney {
+    color:#DBDBDB;
+    font-size: 32px;    
+}
+
+
