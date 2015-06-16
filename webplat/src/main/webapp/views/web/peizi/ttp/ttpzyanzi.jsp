@@ -17,17 +17,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<link href="assets/css/ui/peizi.css" rel="stylesheet" />
 	
 	<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
-	<script type="text/javascript" src="assets/scripts/slide.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
-	<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
-	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="home_all">
-       <%@ include file="/views/web/header.jsp"%>
+        <%@ include file="/views/web/header.jsp"%>
         <!-- /header_top -->
 
         <div class="header_menu">
@@ -44,7 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li><span>淘金募集</span></li>
                         <li><span>淘金自营</span></li>
                         -->
-                        <li><a href="rest/web/peizi/usercenter/ttpUserCenter"><span>个人中心</span></a></li>
+                        <li><a href="rest/web/peizi/usercenter/yypUserCenter"><span>个人中心</span></a></li>
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
                     </ul>
                 </div>
@@ -63,7 +56,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">天天配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="http://www.taojinshan.com.cn" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a> <span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">月月配</span> </div>
         </div>
         <div class="w100bg">
             <div class="tjs_1108px center">
@@ -87,7 +80,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     <tr>
                                         <td>亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx }" pattern="########.##" /></span>元</td>
                                         <td>亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx }" pattern="########.##" /></span>元</td>
-                                        <td>利息费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
+                                        <td>账户管理费:<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJklxTotal }" pattern="########.##" /></span>元</td>
                                     </tr>
                                     
                                     <tr>
@@ -97,25 +90,45 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </tr>
                                 </table>
                             </div>
-                            <div class="pros_box bord_d" style="width:92%;">
-                                <b class="color158 font26">
-                                 <c:choose>  
-					                <c:when test="${peizi.dataOperaStatus=='10'}">  
-					                  		正在验资......
-					                </c:when>
-					                 <c:when test="${peizi.dataOperaStatus=='20'}">  
-					                  		  操盘中......
-					                </c:when>
-					                 <c:when test="${peizi.dataOperaStatus=='30'}">  
-					                  		  已完结
-					                </c:when>					                
-					                <c:otherwise>  
-					                     	正在验资......
-					                </c:otherwise>  
-            					</c:choose>                                        
-                                	</b>
-                                <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
-                            </div>
+                            
+                            <div class="pros_box bord_d"  style="width:92%;height:100px;" >
+                                <table class="mf_tbl" style="width:100%;">
+                                <tr>
+                                <td style="width:50%;border-right:1px dashed;" >
+	                                 <b class="color158 font26">                              
+		                                <c:choose>  
+							                <c:when test="${peizi.dataOperaStatus=='10'}">  
+							                  		正在验资......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='20'}">  
+							                  		  操盘中......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+							                  		  已完结
+							                </c:when>					                
+							                <c:otherwise>  
+							                     	正在验资......
+							                </c:otherwise>  
+		            					</c:choose>                                                                         
+	                                </b> 
+                                </td>
+                                <td style="width:50%">
+                                	<div style="width:100%;text-align:left;margin:0 auto;font-size:18px">投资保证金付款账户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:91%;margin:0 auto;padding-top:10px;padding-bottom:10px">                                                                                         
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">帐&nbsp;&nbsp;&nbsp;号：6226 0965 5051 9592</div>
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">户&nbsp;&nbsp;&nbsp;名：吴&nbsp;田&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">开户行：招商银行深圳分行深纺支行</div>                                                
+			                        </div> 
+                                
+                                </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" style="text-align:center">
+                                    <p class="pt10">热线电话：<span class="colorf06">4006-114-008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                                  </td>
+                                </tr>
+                                 </table>                                                                                
+                            </div>                         
                        </div>
                     </div>
                 </div>
@@ -123,7 +136,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
     </div>
     <!-- 配资页尾 -->
- <%@ include file="/views/web/footer.jsp"%>
+    <%@ include file="/views/web/footer.jsp"%>
     <!-- 配资页尾 结束 -->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -143,8 +156,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 $(this).hide();
                 $(".tjpz>a>span").removeClass("tspan");
             });
-            
+          
            
+        })
+      
     </script>
 </body>
 </html>

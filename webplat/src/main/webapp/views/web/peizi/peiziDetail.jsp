@@ -15,10 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<!--配资页面样式--> 
 	<link href="assets/css/ui/peizi.css" rel="stylesheet" />	
     <script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
-	<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
-    <script src="app/lib/security/sha256.js" type="text/javascript"></script>
-    <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
+ 	<script type="text/javascript" src="assets/scripts/ui/peizi.js"></script>
 </head>
 <body>
 	<div class="home_all">
@@ -118,13 +115,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <c:if test="${peizi.dataOperaStatus=='30'}">
 	                            	<p>交易密码： <span class="color158">已回收</span>（为了您的资金安全，请妥善保管好密码）</p>
 	                            </c:if>
-	                            <p>重点提醒： 交易前请先阅读 <a href="#">天天配合作操盘协议</a></p>
-	                            <p>交易软件： <a href="ruanjian.html">进入交易软件下载页面</a>（恒生系统每晚20:00进行维护，这段时间无法进行操作）</p>
+	                            <p>重点提醒： 交易前请先阅读 <a href="javascript:openAgree('<%=basePath%>');">天天配合作操盘协议</a></p>
+	                            <p>交易软件： <a href="rest/web/peizi/trade">进入交易软件下载页面</a>（恒生系统每晚20:00进行维护，这段时间无法进行操作）</p>
 	                        </div>
 	                        <h3 style="display: none;">方案详情</h3>
 	                        <div class="pros_box" style="display: none;">
 	                            <p>开始时间： 2015-8-18</p>
-	                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="#">天天配合作操盘协议</a></p>
+	                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="javascript:openAgree('<%=basePath%>');">天天配合作操盘协议</a></p>
 	                        </div>
 	                        <div class="pros_box">
 	                        <table class="ty_tbl" style="width: 98%">
@@ -177,19 +174,44 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        </table>
 	                        
                             </div>  
-	                        <div class="pros_box bord_d">
-	                            <c:if test="${peizi.dataOperaStatus=='10'}">
-		                            <b class="color158 font26">验资中</b>
-	                        	</c:if>
-	                        	<c:if test="${peizi.dataOperaStatus=='20'}">
-		                            <b class="color158 font26">操盘中</b>
-	                        	</c:if>
-	                        	<c:if test="${peizi.dataOperaStatus=='30'}">
-		                            <b class="color158 font26">已完结</b>
-	                        	</c:if>
-	                            
-	                            <p class="pt10">热线电话：<span class="colorf06">4006-114-008</span></p>
-	                        </div>
+	                         <div class="pros_box bord_d"  style="width:82%;height:100px;" >
+                                <table class="mf_tbl" style="width:100%;">
+                                <tr>
+                                <td style="width:50%;border-right:1px dashed;" >
+	                                 <b class="color158 font26">                              
+		                                <c:choose>  
+							                <c:when test="${peizi.dataOperaStatus=='10'}">  
+							                  		正在验资......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='20'}">  
+							                  		  操盘中......
+							                </c:when>
+							                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+							                  		  已完结
+							                </c:when>					                
+							                <c:otherwise>  
+							                     	正在验资......
+							                </c:otherwise>  
+		            					</c:choose>                                                                         
+	                                </b> 
+                                </td>
+                                <td style="width:50%">
+                                	<div style="width:100%;text-align:left;margin:0 auto;font-size:18px">投资保证金付款账户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:91%;margin:0 auto;padding-top:10px;padding-bottom:10px">                                                                                         
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">帐&nbsp;&nbsp;&nbsp;号：6226 0965 5051 9592</div>
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">户&nbsp;&nbsp;&nbsp;名：吴&nbsp;田&nbsp;&nbsp;&nbsp;&nbsp;</div> 
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">开户行：招商银行深圳分行深纺支行</div>                                                
+			                        </div> 
+                                
+                                </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" style="text-align:center">
+                                    <p class="pt10">热线电话：<span class="colorf06">4006-114-008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+                                  </td>
+                                </tr>
+                                 </table>                                                                                
+                            </div> 
 	                    </div>
 	                </div>
 	            <hr class="pc" />
