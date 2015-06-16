@@ -134,12 +134,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <span class="fleft">期限：</span><div class="sel_wrap fleft">
                                 <label class="lbl" day="${peizi.dataZjsyqx}">${peizi.dataZjsyqx}天</label>
                                 <ul class="select" style="filter: alpha(opacity=100);">
-                                    <li day="1">1天</li>
                                     <li day="2">2天</li>
                                     <li day="3">3天</li>
-                                    <li day="3">4天</li>
                                     <li day="5">5天</li>
-                                    <li day="6">6天</li>
+                                    <li day="10">10天</li>
+                                    <li day="15">15天</li>
+                                    <li day="20">20天</li>
                                 </ul>
                             </div>
                         <div class=" lh20 pl220">总账户管理费：<span id="manageFee" class="colorf06 font26">${peizi.dataJklxTotal}</span>元</div>
@@ -164,8 +164,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 	<div style="height:85px">
                   	  如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox" checked="checked" />&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br/>
-                    </div>
-                     <a class="tjs_btn" href="">我要配资</a>                  
+                    </div>                                        
+                     <a class="tjs_btn <c:if test='${peiziRule.ruleEnable==20}'>disabled</c:if> ">我要配资</a>                  
                 </div>
             </div>
             <div class="pz_produce">
@@ -279,7 +279,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		 
 		 
 		//--配资按钮--
-		$(".tjs_btn").click(function(event){
+		$(".tjs_btn:not(.disabled)").click(function(event){
 			event.preventDefault();	 
 			if($('#Checkbox1').attr("checked")){
 				$("input[name=dataZcpzj]").val($("#capital").text());

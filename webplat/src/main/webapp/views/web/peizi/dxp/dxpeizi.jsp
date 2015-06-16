@@ -127,7 +127,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="xuyaopeizibox">
                     如您不清楚规则，或有其他疑问，请联系客服：4006-114-088<br />
                     <input id="Checkbox1" type="checkbox"  checked="checked"/>&nbsp;我已阅读并同意 <a href="javascript:openAgree('<%=basePath%>');">《合作操盘协议》</a><br /><br />
-                     <a class="tjs_btn" href="rest/web/peizi/dxp/lowNextCapital">我要配资</a>
+                     <a class="tjs_btn <c:if test='${peiziRule.ruleEnable==20}'>disabled</c:if> ">我要配资</a>    
                   
                 </div>
             </div>
@@ -259,7 +259,7 @@ $(document).ready(function () {
     /*--/操盘金额--*/
     
     //--配资按钮--
-	$(".tjs_btn").click(function(event){
+	$(".tjs_btn:not(.disabled)").click(function(event){
 		event.preventDefault();	
 		//判断投资保证金是否是1000的整数倍
 		var strTzbzj= $.trim($("#principal").val()).replace('/,/g','');		

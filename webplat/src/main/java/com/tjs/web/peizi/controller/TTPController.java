@@ -77,11 +77,9 @@ public class TTPController {
 //		peizi.setDataRulePcx(peiziRule.getRulePcx());
 		
 		
-		peizi.setDataStep("1");
-		
-
+		peizi.setDataStep("1");		
 		peizi.setDataJyksDate("2");
-		peizi.setDataZjsyqx(1);
+		peizi.setDataZjsyqx(2);
 		
 		
 		model.addAttribute("peiziRule",peiziRule);
