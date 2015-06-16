@@ -162,7 +162,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                   		<a class="tjs_btn disabled" style="margin-top:10px;" href="javascript:void(0);">我要配资</a>
                    		</c:if>
                    		<c:if test="${result!=-2}">
-	                   		<a class="tjs_btn" href="">我要配资</a>
+                   			<c:if test="${result==-3}">
+                   				<span style="color: red;">请到先到用户中心实名认证后再来参与该活动</span>&nbsp;<a href="rest/web/userCenter/index" target="_self">实名认证</a>
+                   				<br/>
+								<a class="tjs_btn disabled" style="margin-top:15px;" href="javascript:void(0);">我要配资</a>
+                   			</c:if>
+                   			<c:if test="${result!=-3}">
+                   				<c:if test='${peiziRule.ruleEnable==20}'>
+		                   			<span style="color: red;">今日名额已满，请改日再体验</span>
+	                   				<br/>
+									<a class="tjs_btn disabled" style="margin-top:15px;" href="javascript:void(0);">我要配资</a>
+								</c:if>
+								<c:if test='${peiziRule.ruleEnable==10}'>
+			                   		<a class="tjs_btn" href="">我要配资</a>
+								</c:if>
+                   			</c:if>
                    		</c:if>
                    </c:if>
                    
@@ -368,7 +382,7 @@ $(document).ready(function () {
    
     
 	 //--配资按钮--
-	$(".tjs_btn").click(function(event){
+	$(".tjs_btn:not(.disabled)").click(function(event){
 		event.preventDefault();	
 		if('${result}'=='-1' || '${result}'=='-2'){
 			return;

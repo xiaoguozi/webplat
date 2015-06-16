@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
+import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.StringUtils;
@@ -49,6 +51,9 @@ public class PeiZiMXController {
 	@Resource
 	private UserService userService;
 	
+	@Resource
+    private UserInfoService userInfoService;
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	/**
@@ -59,7 +64,7 @@ public class PeiZiMXController {
 	@RequestMapping("/monthCapital")
 	public String dayCapital(Peizi peizio, Model model) {
 		
-		// 获取天天配的配资规则
+		// 获取免息配的配资规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
 		peiziRuleCtrlModel.getPeiziRule().setRuleType(
 				PeiziTypeEnum.MXPEIZI.getKey());
@@ -70,6 +75,11 @@ public class PeiZiMXController {
 			throw new RuntimeException("免息配资规则没有找到");
 		}
 		PeiziRule peiziRule = lstPeiziRule.get(0);
+		model.addAttribute("peiziRule",peiziRule);
+		if(peiziRule.getRuleEnable().equals("20")){
+			return "web/peizi/mxp/mxpeizi";
+		}
+		
 		Peizi peizi = new Peizi();
 		// 规则信息
 		peizi.setDataId(peizio.getDataId());
@@ -152,6 +162,20 @@ public class PeiZiMXController {
 				|| BigDecimalUtils.isNull(peizi.getDataTzbzj())) {
 			return "redirect:/rest/web/peizi/mxp/monthCapital";
 		}
+		
+		//判断用户实名认证
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(username!=null){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfoTemp = userInfoService.findUserInfoByUserId(user.getId());
+			if(userInfoTemp.getIsValidate()!=1){
+				//实名认证
+				model.addAttribute("result", "-3");
+				return "web/peizi/mxp/mxpeizi";
+			}
+		}
+		
 
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());

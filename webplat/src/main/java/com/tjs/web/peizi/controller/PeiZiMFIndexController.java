@@ -13,8 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
+import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
+import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
+import com.tjs.admin.peizi.service.IPeiziRule;
+import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
@@ -42,6 +47,12 @@ public class PeiZiMFIndexController {
 	@Resource
 	private UserService userService;
 	
+	@Resource
+    private UserInfoService userInfoService;
+	
+	@Resource
+	IPeiziRule iPeiziRule;
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	/**
@@ -50,6 +61,21 @@ public class PeiZiMFIndexController {
 	 */
 	@RequestMapping("/freeActivity")
 	public String  freeActivity(Model model) {
+		//获取免费配的配资规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		model.addAttribute("peiziRule",peiziRule);
+		
+		if(peiziRule.getRuleEnable().equals("20")){
+			return "web/peizi/mfp/hdpeizi"; 
+		}
+		
 		//查询当天免费配活动是否有名额
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
@@ -110,6 +136,20 @@ public class PeiZiMFIndexController {
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MFPEIZI.getIntegerKey());
 		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
+		
+		//判断用户实名认证
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(username!=null){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfoTemp = userInfoService.findUserInfoByUserId(user.getId());
+			if(userInfoTemp.getIsValidate()!=1){
+				//实名认证
+				model.addAttribute("result", "-3");
+				return "web/peizi/mfp/hdpeizi";
+			}
+		}
+		
 		int result = iPeiZiIndexService.checkFreePeiZiIsValid(pzIndexCtrlModel);
 		if(PeiZiConstants.RESULT_ALREADY_USED==result){
 			model.addAttribute("result", "您已经参加过该活动");
