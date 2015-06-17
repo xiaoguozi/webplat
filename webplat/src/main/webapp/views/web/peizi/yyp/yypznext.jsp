@@ -105,8 +105,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元</p>
-                            <p><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
+                            <p style="white-space:nowrap"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元</p>
+                            <p style="white-space:nowrap"><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
                         </div>
                         <table class="pz_tbl">
                             <tr>

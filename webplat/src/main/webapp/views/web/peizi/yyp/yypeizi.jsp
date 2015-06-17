@@ -281,7 +281,7 @@ $(document).ready(function () {
 	            	pzje = 	parseFloat($('.on .cpmoney').text());
 	            }	        	
 	            var yll = parseFloat($('.on .cpmoney').attr('yll'));
-	           $("#Dinterests").text(pzje*qx*yll/100);
+	           $("#Dinterests").text((pzje*qx*yll/100).toFixed(0));
 	        
 	        })
 	    })
@@ -309,7 +309,7 @@ $(document).ready(function () {
             	$("#capital").text((tzbzj+pzje).toFixed(0));
 	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
 	            $("#close").text((pzje*rulepcx/100).toFixed(0));
-	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(0));               
 	            $("#Minterests").text(yll+"%");	                                      
             } else {
             	var strtzbzj= $.trim($("#principal").val()).replace('/,/g','');
@@ -323,7 +323,7 @@ $(document).ready(function () {
             	$("#capital").text((tzbzj+pzje).toFixed(0));
 	           	$("#loss").text((pzje*rulejjx/100).toFixed(0));
 	            $("#close").text((pzje*rulepcx/100).toFixed(0));
-	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(2));               
+	            $("#Dinterests").text((pzje*yll*qx/100).toFixed(0));               
 	            $("#Minterests").text(yll+"%");	    
             }
             
