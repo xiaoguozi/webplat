@@ -250,11 +250,9 @@ $(document).ready(function () {
 		$("input[name=dataPcx]").val($("#close").text());
 		$("input[name=dataJklxTotal]").val($("#lixi").text());
 		$("input[name=dataZjsyqx]").val($('.on').attr('month'));
-		$("#modalForm").submit();						
-	});
-    
+		$("#modalForm").submit();		
+	});   
 	arithmetic();  
- 
 })
 </script>
 </body>
