@@ -132,21 +132,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p class="w230">最高<span class="colorf06"> 3倍 </span>杠杆，最高可配<span class="colorf06">3万</span></p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/mxp/monthCapital">我要爽</a>
 			</div>
+			
 			<div class="pro_box top20" style="left:728px;">
+				<h1 class="pro_title">月月配</h1>
+				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.1</b>%</span></p>
+				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
+				<p class="w230">最高<span class="colorf06">5倍 </span>杠杆，最高可配<span class="colorf06">500万</span></p>
+				<a class="tjs_btn mtb54" href="rest/web/peizi/yyp/monthCapital">我要配资</a>
+			</div>			
+            <div class="clear"></div>
+            
+			<div class="pro_box ml0 top380 top370" >
 				<h1 class="pro_title">天天配</h1>
 				<p class="wbl pt20"><b class="colorf06">10000</b>元起配，日息低至 <span class="colorf06"><b class="fsize">0.1</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">2~30天</span>任意配</p>
 				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/ttp/dayCapital">我要配资</a>
 			</div>
-            <div class="clear"></div>
-			<div class="pro_box ml0 top380 top370">
-				<h1 class="pro_title">月月配</h1>
-				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.1</b>%</span></p>
-				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
-				<p class="w230">最高<span class="colorf06">5倍 </span>杠杆，最高可配<span class="colorf06">500万</span></p>
-				<a class="tjs_btn mtb54" href="rest/web/peizi/yyp/monthCapital">我要配资</a>
-			</div>
+									
 			<div class="pro_box top380 top370" style="left:349px;">
 				<h1 class="pro_title">低息1配1</h1>
 				<p class="wbl pt20"><b class="colorf06">10000</b>元起配，年利率低至 <span class="colorf06"><b class="fsize">12</b>%</span></p>
