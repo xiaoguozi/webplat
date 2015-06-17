@@ -237,7 +237,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">10000元</span> 起配，日息低至<span class="tjs_shalloworange">0.1%</span></div>
 
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">3倍</span> 杠杆 <span class="tjs_shalloworange">3倍</span> 利润</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">3倍</span>杠杆 <span class="tjs_shalloworange">3倍</span>利润</div>
 
 <div  style=" height:45px; width:100%;"></div>
 <div class="tjs_right_btndiv"> <a href="rest/web/peizi/ttp/dayCapital" target="_blank" class="tjs_btn">我要配资</a></div>
@@ -248,11 +248,11 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>月月配</span><br />长线投资，最高5倍 杠杆
+<div class="tjs_rightmatch_title"><span>月月配</span><br />长线投资，最高5倍杠杆
 </div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">2000元</span> 起配，月息低至 <span class="tjs_shalloworange">1.3%</span></div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">2000元</span> 起配，月息低至 <span class="tjs_shalloworange">1.1%</span></div>
 
-<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">5倍</span> 杠杆，最高可配<span class="tjs_shalloworange">500万</span></div>
+<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">5倍</span>杠杆，最高可配<span class="tjs_shalloworange">500万</span></div>
 
 <div  style=" height:45px; width:100%;"></div>
 <div class="tjs_right_btndiv"> <a href="rest/web/peizi/yyp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
