@@ -12,12 +12,14 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
+import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.web.constants.PeiZiConstants;
@@ -41,6 +43,9 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	
 	@Resource
 	IPeiziRule iPeiziRule;
+	
+	@Resource
+    private UserInfoService userInfoService;
 	
 	@Override
 	public int checkFreePeiZiIsValid(PZIndexCtrlModel pzIndexCtrlModel) {
@@ -138,6 +143,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		}
 		
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(userInfoExtendVO.getUserId());
 		Date date = Calendar.getInstance().getTime();
 		//插入配资订单
 		Peizi peizi = new Peizi();
@@ -157,6 +163,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataJyksDate("2");
 		peizi.setDataCreateDate(date);
 		peizi.setDataUserId(userInfoExtendVO.getUserId());
+		peizi.setDataUserName(userInfo==null?"":userInfo.getName());
 		peizi.setDataUserTel(userInfoExtendVO.getPhone());
 		peizi.setDataOperaStatus("10");
 		peiziService.insertPeizi(peizi);

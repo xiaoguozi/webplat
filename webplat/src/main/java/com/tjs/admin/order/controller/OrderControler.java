@@ -114,7 +114,7 @@ public class OrderControler {
     		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
     		
     		order.setOperateId(user.getId());
-    		order.setOperateName(userInfo==null?"":userInfo.getNickName());
+    		order.setOperateName(userInfo==null?"":userInfo.getName());
     		order.setOperateDate(new Date());
     		
     		

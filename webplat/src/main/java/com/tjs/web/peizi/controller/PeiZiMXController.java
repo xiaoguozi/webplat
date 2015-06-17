@@ -232,6 +232,7 @@ public class PeiZiMXController {
 		//1、将用户能使用资源设置为0
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		User user = userService.selectByUsername(username);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
 		pzIndexCtrlModel.setUserId(user.getId());
 		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MXPEIZI.getIntegerKey());
 		List<UserInfoExtendVO> lstUser = iPeiZiIndexService.getUserInfoExtendList(pzIndexCtrlModel);
@@ -248,6 +249,7 @@ public class PeiZiMXController {
 				peizi.setDataStep("3");
 				peizi.setDataOperaStatus("10");// 正在验资中
 				peizi.setDataUserId(user.getId());
+				peizi.setDataUserName(userInfo==null?"":userInfo.getName());
 				peizi.setDataUserTel(username);
 				
 				iPeiZiIndexService.createFreeChargePeiziOrder(userInfoExtendVO, peizi);

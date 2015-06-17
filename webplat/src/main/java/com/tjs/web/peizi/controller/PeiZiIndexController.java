@@ -172,7 +172,7 @@ public class PeiZiIndexController {
 		if(StringUtils.isNotBlank(username)){
 			User user = userService.selectByUsername(username);
     		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
-    		model.addAttribute("userName", (userInfo==null?"":userInfo.getNickName()));
+    		model.addAttribute("userName", (userInfo==null?"":userInfo.getName()));
     		model.addAttribute("tjsName", (userInfo==null?username:userInfo.getNickName()));				
 		}  
 		

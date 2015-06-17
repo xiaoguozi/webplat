@@ -140,7 +140,7 @@ public class TTPController {
 			if(StringUtils.isNotBlank(username)){
 				User user = userService.selectByUsername(username);
 	    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
-	    		peizi.setDataUserName(userInfo==null?"":userInfo.getNickName());
+	    		peizi.setDataUserName(userInfo==null?"":userInfo.getName());
 				peizi.setDataUserTel(username);
 				peizi.setDataUserId(user.getId());	
 			}   			
