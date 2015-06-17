@@ -50,12 +50,26 @@
            ${peizi.dataJklxTotal}                    
         </td>
         <td>
-            ${peizi.dataZjsyqx}          
+           <c:choose>  
+                <c:when test="${peizi.dataTypeSylx=='10'}">  
+                  		${peizi.dataZjsyqx}天
+                </c:when>
+                 <c:when test="${peizi.dataTypeSylx=='20'}">  
+                  		${peizi.dataZjsyqx}个月
+                </c:when>
+                 <c:when test="${peizi.dataTypeSylx=='30'}">  
+                  		${peizi.dataZjsyqx}个月
+                </c:when>                
+                <c:otherwise>  
+                     	错误
+                </c:otherwise>  
+            </c:choose>  
+                     
         </td>
         <td>
               <c:choose>  
                 <c:when test="${peizi.dataTypeSylx=='10'}">  
-                  		${peizi.dataZfglf}元/天
+                  		${peizi.dataZfglf==null?0:peizi.dataZfglf}元/天
                 </c:when>
                  <c:when test="${peizi.dataTypeSylx=='20'}">  
                   		月利率:${peizi.dataYll}% 
