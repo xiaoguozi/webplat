@@ -3,10 +3,10 @@ package com.tjs.web.constants;
 public class PeiZiConstants {
 
 	/** 免费配总数量 */
-	public static final int FREE_ALL_COUNT = 100;
+	public static final int FREE_ALL_COUNT = 20;
 	
 	/** 免息配总数量 */
-	public static final int FREE_CHARGE_COUNT = 100;
+	public static final int FREE_CHARGE_COUNT = 20;
 	
 //	/** 免费配 */
 //	public static final int TYPE_FREE_ALL = 1;
