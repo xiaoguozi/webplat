@@ -17,8 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet" media="screen" type="text/css" />
 	
 	<!--配资页面样式--> 
-	<link href="assets/css/ui/peizi.css" rel="stylesheet" />
-	
+	<link href="assets/css/ui/peizi.css" rel="stylesheet" />	
 	<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
@@ -60,8 +59,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <ul class="nav_menu" style="width:98px;">
                 	<li><a href="rest/web/peizi/mfp/freeActivity">免费配</a></li>
 					<li><a href="rest/web/peizi/mxp/monthCapital">免息配</a></li>
-                    <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>
-                    <li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
+					<li><a href="rest/web/peizi/yyp/monthCapital">月月配</a></li>
+                    <li><a href="rest/web/peizi/ttp/dayCapital">天天配</a></li>                    
                     <li><a href="rest/web/peizi/dxp/lowCapital">低息1配1</a></li>
                 </ul>
             </div>        
