@@ -84,7 +84,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="bor_dashed moneymx"><a href="javascript:void()">资金明细</a></div>
                         
                         <li class="zlsz">资料设置</li>
-                        <div class="bor_dashed  mmxg"><a href="rest/web/userCenter/userModify">密码修改</a></div>
+                        <div class="bor_dashed  mmxg"><a href="rest/web/userCenter/userModify">个人中心</a></div>
                         
                         
                     </ul>
