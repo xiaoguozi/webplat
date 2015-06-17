@@ -105,8 +105,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p style="white-space:nowrap"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元</p>
-                            <p style="white-space:nowrap"><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
+                            <p style="white-space:nowrap">
+                            <span class="jsgspan">
+                           		 <span class="colorf06 font26" ><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span>元                            	
+                            </span>
+                            <b class="bigfuhao" style="padding:0 10px"> = </b>
+                            
+                            <span class="jsgspan">
+                            <span class="colorf06 font26" ><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="######.##" /></span>元
+                            </span>
+                            
+                            <b class="bigfuhao" style="padding:0 10px"> + </b>
+                            
+                            <span class="jsgspan">
+                            	<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="######.##" /></span>元
+                            </span>
+                            </p>
+                            
+                            <p style="white-space:nowrap">                           
+                            <span class="pl10" style="padding-left:20px">总操盘基金</span>
+                            <span class="pl97" style="padding-left:126px">投资本金</span>
+                            <span class="pl106" style="padding-left:140px">配资金额</span>
+                            </p>
                         </div>
                         <table class="pz_tbl">
                             <tr>
