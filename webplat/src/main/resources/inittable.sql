@@ -30,7 +30,6 @@ create table t_web_log
 ) DEFAULT CHARSET=utf8 comment='web日志';
 
 
-DROP TABLE IF EXISTS `tjs_order`;
 CREATE TABLE `tjs_order` (
   `order_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单号',
   `order_user_id` bigint(20) DEFAULT NULL COMMENT '订单提交人ID',
@@ -48,7 +47,6 @@ CREATE TABLE `tjs_order` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='预定信息表';
 
-DROP TABLE IF EXISTS `tjs_product_xtcp`;
 CREATE TABLE `tjs_product_xtcp` (
   `xtcp_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '信托产品流水号',
   `xtcp_log` varchar(200) DEFAULT NULL COMMENT '信托产品LOGO',
@@ -89,7 +87,6 @@ CREATE TABLE `tjs_product_xtcp` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='信托产品';
 
 
-DROP TABLE IF EXISTS `tjs_product_xtgs`;
 CREATE TABLE `tjs_product_xtgs` (
   `xtgs_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '流水号',
   `xtgs_code` varchar(200) DEFAULT NULL COMMENT '公司编码',
@@ -116,7 +113,6 @@ CREATE TABLE `tjs_product_xtgs` (
   PRIMARY KEY (`xtgs_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='信托公司';
 
-DROP TABLE IF EXISTS `pe_company`;
 
 CREATE TABLE `pe_company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
@@ -143,7 +139,6 @@ CREATE TABLE `pe_company` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募公司';
 
 
-DROP TABLE IF EXISTS `pe_manager`;
 
 CREATE TABLE `pe_manager` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -172,7 +167,6 @@ CREATE TABLE `pe_manager` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募经理';
 
 
-DROP TABLE IF EXISTS `pe_manager_product`;
 
 CREATE TABLE `pe_manager_product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -186,7 +180,6 @@ CREATE TABLE `pe_manager_product` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募经理产品关联表';
 
 
-DROP TABLE IF EXISTS `pe_product`;
 CREATE TABLE `pe_product` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `name` varchar(100) DEFAULT NULL COMMENT '基金名称',
@@ -228,7 +221,6 @@ CREATE TABLE `pe_product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品';
 
-DROP TABLE IF EXISTS `pe_product_income`;
 
 CREATE TABLE `pe_product_income` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -247,7 +239,6 @@ CREATE TABLE `pe_product_income` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='私募产品收益排名表';
 
-DROP TABLE IF EXISTS `pe_product_net`;
 
 CREATE TABLE `pe_product_net` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -269,7 +260,6 @@ ALTER TABLE `tjs_product_xtcp`
 CHANGE COLUMN `xtcp_hkly` `xtcp_hkly` VARCHAR(2000) NULL DEFAULT NULL COMMENT '还款来源' ;
 
 
-DROP TABLE IF EXISTS `free_peizi_detail`;
 
 CREATE TABLE `free_peizi_detail` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '配资活动主键',
@@ -279,7 +269,6 @@ CREATE TABLE `free_peizi_detail` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='配资活动计数表';
 
-DROP TABLE IF EXISTS `user_info_extend`;
 
 CREATE TABLE `user_info_extend` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -290,9 +279,7 @@ CREATE TABLE `user_info_extend` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户扩展信息表（参加活动记录）';
 
-DROP TABLE IF EXISTS `tjs_peizi_rule`;
 
-DROP TABLE IF EXISTS `tjs_peizi_data`;
 
 CREATE TABLE `tjs_peizi_data` (
   `data_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '业务流水号',

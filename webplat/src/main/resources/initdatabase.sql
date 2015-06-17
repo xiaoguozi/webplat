@@ -19,7 +19,6 @@ USE `tjs`;
 
 /*Table structure for table `permission` */
 
-DROP TABLE IF EXISTS `permission`;
 
 CREATE TABLE `permission` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '权限id',
@@ -35,7 +34,6 @@ insert  into `permission`(`id`,`permission_name`,`permission_sign`,`description`
 
 /*Table structure for table `role` */
 
-DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '角色id',
@@ -51,7 +49,6 @@ insert  into `role`(`id`,`role_name`,`role_sign`,`description`) values (1,'admin
 
 /*Table structure for table `role_permission` */
 
-DROP TABLE IF EXISTS `role_permission`;
 
 CREATE TABLE `role_permission` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '表id',
@@ -66,7 +63,6 @@ insert  into `role_permission`(`id`,`role_id`,`permission_id`) values (1,2,1);
 
 /*Table structure for table `user` */
 
-DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
@@ -83,7 +79,6 @@ insert  into `user`(`id`,`username`,`password`,`state`,`create_time`) values (1,
 
 /*Table structure for table `user_role` */
 
-DROP TABLE IF EXISTS `user_role`;
 
 CREATE TABLE `user_role` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '表id',
