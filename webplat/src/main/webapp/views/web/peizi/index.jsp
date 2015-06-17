@@ -117,7 +117,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<div class="pz_produce">
 				<img src="assets/img/peizi/pro_ico.png" alt=""><b>配资产品</b>
 			</div>
-            <div style="position:relative;display:block;height:1125px;">
+            <div style="position:relative;display:block;height:745px;">
 			<div class="pro_box ml0 top20">
 				<h1 class="pro_title">淘金活动</h1>
 				<p class="wbl pt20"><b class="colorf06">免费配</b></p>
