@@ -12,9 +12,14 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import com.tjs.admin.model.User;
+import com.tjs.admin.peizi.constants.PeiziTypeEnum;
+import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
+import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
+import com.tjs.admin.peizi.service.IPeiziRule;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.controller.PZIndexCtrlModel;
 import com.tjs.web.peizi.dao.PeiZiIndexMapper;
@@ -33,6 +38,9 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	
 	@Resource
 	private IPeizi peiziService;
+	
+	@Resource
+	IPeiziRule iPeiziRule;
 	
 	@Override
 	public int checkFreePeiZiIsValid(PZIndexCtrlModel pzIndexCtrlModel) {
@@ -121,6 +129,14 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 
 	@Override
 	public Long createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
+		//免息配规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		
 		peiZiIndexMapper.updateUserInfoExtendVO(userInfoExtendVO);
 		Date date = Calendar.getInstance().getTime();
 		//插入配资订单
@@ -128,6 +144,12 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataZcpzj(new BigDecimal(10001));
 		peizi.setDataTzbzj(new BigDecimal(1));
 		peizi.setDataPzje(new BigDecimal(10000));
+		
+		peizi.setDataJjx(BigDecimalUtils.multiply(new BigDecimal(7500), lstPeiziRule.get(0).getRuleJjx3()).divide(new BigDecimal(100)));
+		peizi.setDataRuleJjx(lstPeiziRule.get(0).getRuleJjx3());
+		peizi.setDataPcx(BigDecimalUtils.multiply(new BigDecimal(7500), lstPeiziRule.get(0).getRulePcx3()).divide(new BigDecimal(100)));
+		peizi.setDataRulePcx(lstPeiziRule.get(0).getRulePcx3());
+		
 		peizi.setDataType(peiziType);
 		peizi.setDataTypeSylx("10");
 		peizi.setDataZjsyqx(2);
