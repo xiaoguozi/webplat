@@ -39,7 +39,7 @@
          <td>
          <c:choose>  
                 <c:when test="${rule.ruleType=='10'}">  
-                  		
+                  		 ${rule.ruleJjx3}%  
                 </c:when>
                  <c:when test="${rule.ruleType=='20'}">  
                   		 ${rule.ruleJjx3}%  
@@ -62,7 +62,7 @@
          <td>
          <c:choose>  
                 <c:when test="${rule.ruleType=='10'}">  
-                  		
+                  		${rule.rulePcx3}%  
                 </c:when>
                  <c:when test="${rule.ruleType=='20'}">  
                   		 ${rule.rulePcx3}%  
