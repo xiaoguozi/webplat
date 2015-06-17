@@ -341,7 +341,7 @@ $(document).ready(function () {
 		var iTzbzj = parseInt(strTzbzj,'10');
 		
 		if(iTzbzj<2000){
-			errTip("保证金最低2000元起", 1);
+			errTip("保证金2000元起", 1);
 			return ;
 		}
 
