@@ -115,9 +115,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <td style="width:50%">
                                 	<div style="width:100%;text-align:left;margin:0 auto;font-size:18px">投资保证金付款账户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
 			                        <div style="width:91%;margin:0 auto;padding-top:10px;padding-bottom:10px">                                                                                         
-			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">帐&nbsp;&nbsp;&nbsp;号：6226 0965 5051 9592</div>
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">帐&nbsp;&nbsp;&nbsp;号：6226 2206 2134 5882</div>
 			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">户&nbsp;&nbsp;&nbsp;名：吴&nbsp;田&nbsp;&nbsp;&nbsp;&nbsp;</div> 
-			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">开户行：招商银行深圳分行深纺支行</div>                                                
+			                        <div style="width:100%;margin:0 auto;text-align:left;font-size:14px">开户行：中国民生银行深圳分行营业部</div>                                                
 			                        </div> 
                                 
                                 </td>

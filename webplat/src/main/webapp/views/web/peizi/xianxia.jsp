@@ -108,7 +108,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <td>户名：张开兴</td>
                         </tr>
                         <tr>
-                            <td>开户行：招商银行深圳分行深纺支行</td>
+                            <td>开户行：中国民生银行深圳分行营业部</td>
                         </tr>
                     </table>
                     <p class="xx_tit">2.提交您的转账信息，财务对账通过后会向您的账户划拔相应金额</p>
