@@ -83,12 +83,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <p class="color158 font18">配资信息</p>
                     <div class="peizidata_box">
                         <div class="line_d">
-                            <p><span class="colorf06 font26">10001</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">1</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">10000</span>元</p>
-                            <p><span class="pl10">总操盘基金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
+                            <p><span class="colorf06 font26">10000</span> 元<b class="bigfuhao"> = </b><span class="colorf06 font26">0</span> 元<b class="bigfuhao"> + </b><span class="colorf06 font26">10000</span>元</p>
+                            <p><span class="pl10">总操盘资金</span><span class="pl97">投资本金</span><span class="pl106">配资金额</span></p>
                         </div>
                         <table class="pz_tbl">
                             <tr>
-                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">10001</span> 元</td>
+                                <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26">10000</span> 元</td>
                                 <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26">0</span> 元</td>
                             </tr>
                             <tr>
@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <div class="zhifu_box">
                         <table class="zhifu_boxtbl">
                             <tr>
-                                <td class="t-left">投资本金：</td>
+                                <td class="t-left">体验费：</td>
                                 <td class="t-right">1 元</td>
                             </tr>
                             <tr>
