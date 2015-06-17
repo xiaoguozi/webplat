@@ -186,7 +186,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_left_icodiv"><img src="assets/img/ui/match_ico.png" width="132" height="160" />
 <div class="tjs_left_earningsdiv">&nbsp;&nbsp;收益至&nbsp;<span>6倍</span>&nbsp;收益</div>
 </div>
-<div class="tjs_product_textdiv">配资包赚不赔，新手体验；短线投资 , 4 倍杠杆；中长线投资 , 5倍杠杆；长线投 资，月息仅0.69%</div>
+<div class="tjs_product_textdiv">配资包赚不赔新手体验；短线投资 ,4倍杠杆；中长线投资 ,5倍杠杆</div>
 </div>
 </div>
 <!-- /tjs_product_left -->
@@ -215,14 +215,14 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit tjs_right_2border">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>天天配</span><br />短线投资 , 3倍杠杆
+<div class="tjs_rightmatch_title"><span>免息配</span><br />短线投资 , 3倍杠杆
 </div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">10000元</span> 起配，日息低至<span class="tjs_shalloworange">0.1%</span></div>
+<div class="tjs_rightmatch_content">最高免息配资金额<span class="tjs_shalloworange">10000元</span></div>
 
 <div class="tjs_rightmatch_content"><span class="tjs_shalloworange">3倍</span>杠杆 <span class="tjs_shalloworange">3倍</span>利润</div>
 
 <div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/ttp/dayCapital" target="_blank" class="tjs_btn">我要配资</a></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mxp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
 
 </div>
 <!-- /tjs_right_unit 02 -->
