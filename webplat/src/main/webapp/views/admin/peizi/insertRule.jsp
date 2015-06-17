@@ -58,14 +58,14 @@
 	         <div class="form-group">
 	            <label class="col-md-2 control-label">警戒线(%)</label>
 	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="ruleJjx" value="${peiziRule.ruleJjx}" >
+	                <input type="text" class="form-control required number" max="999" name="ruleJjx3" value="${peiziRule.ruleJjx3}" >
 	            </div>            
 	        </div>
 	        
 	        <div class="form-group">
 	            <label class="col-md-2 control-label">平仓线(%)</label>
 	            <div class="col-md-6">
-	                <input type="text" class="form-control required number" max="999" name="rulePcx" value="${peiziRule.rulePcx}" >
+	                <input type="text" class="form-control required number" max="999" name="rulePcx3" value="${peiziRule.rulePcx3}" >
 	            </div>            
 	        </div>	        	         
          </c:if>       
