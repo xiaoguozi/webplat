@@ -142,35 +142,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="clear"></div>
 			<div class="pro_box ml0 top380 top370">
 				<h1 class="pro_title">月月配</h1>
-				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.3</b>%</span></p>
+				<p class="wbl pt20"><b class="colorf06">2000</b>元起配，月息低至 <span class="colorf06"><b class="fsize"> 1.1</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">1~6个月</span>配资时长</p>
-				<p class="w230">最高<span class="colorf06"> 5倍 </span>杠杆，最高可配<span class="colorf06"> 500万</span></p>
+				<p class="w230">最高<span class="colorf06">5倍 </span>杠杆，最高可配<span class="colorf06">500万</span></p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/yyp/monthCapital">我要配资</a>
 			</div>
 			<div class="pro_box top380 top370" style="left:349px;">
 				<h1 class="pro_title">低息1配1</h1>
-				<p class="wbl pt20"><b class="colorf06">20000</b>元起配，月息低至 <span class="colorf06"><b class="fsize">0.69</b>%</span></p>
+				<p class="wbl pt20"><b class="colorf06">10000</b>元起配，年利率低至 <span class="colorf06"><b class="fsize">12</b>%</span></p>
 				<p class="wbl lh30"><span class="colorf06">3个月</span>起配</p>
 				<p class="w230">最高<span class="colorf06"> 1倍 </span>杠杆，风险超低</p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/dxp/lowCapital">我要配资</a>
 			</div>
-			<div class="pro_box top380 top370"style="left:728px;">
-				<h1 class="pro_title">淘金募集</h1>
-				<p class="wbl pt20"><span class="color158">淘金山一号<span><span class="colorf06"> <span class="fsize">10</span>.89%</span></p>
-				<p class="wbl lh30">门槛：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
-				<p class="w230">一年半期限，高收益，还款来源足，风控完善，交易对手强劲！</p>
-				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandRaise">我要预约</a> -->
-				<a class="tjs_btn mtb29">我要预约</a>
-			</div>
-			<div class="clear"></div>
-			<div class="pro_box ml0 top760 top750">
-				<h1 class="pro_title">淘金自营</h1>
-				<p class="wbl pt20"><span class="color158">淘金山二号<span><span class="colorf06"> <span class="fsize">528</span>.00%</span></p>
-				<p class="wbl lh30">基金经理：<b class="colorf06">100万 </b> |  期限：<b class="colorf06">18个月</b></p>
-				<p class="w230">擅长趋势投资策略，精研个股，风控严谨产品回撤幅度小！</p>
-				<!--  <a class="tjs_btn mtb29" href="rest/web/peizi/recommandSelf">我要预约</a>-->
-				<a class="tjs_btn mtb29">我要预约</a>
-			</div>
+			
 			
            </div>
 			<hr class="pc"/>
