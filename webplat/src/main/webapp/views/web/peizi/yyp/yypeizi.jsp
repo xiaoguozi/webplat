@@ -98,7 +98,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <hr class="pc"/> 
                 <div class="caopanjine">
                     <span class="box1">1</span><div class="font_word18">输入您的投资本金</div>
-                    <input class="input_txt1" id="principal" name="dataTzbzj"  onkeyup="arithmetic()" onblur="" type="text" maxlength="7" value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########" />"/><span class="pos_d">元</span>
+                    <input class="input_txt1" id="principal" name="dataTzbzj" autocomplete="off" onkeyup="arithmetic()" onblur="arithmetic()" type="text" maxlength="7" value="<fmt:formatNumber value="${peizi.dataTzbzj }" pattern="########" />"/><span class="pos_d">元</span>
                     <div class="clear"></div>
                     <p class="bzj"><img src="assets/img/peizi/zhuyi.png" alt="" />保证金最低2000元</p>
                     <hr class="pc"/>
