@@ -111,36 +111,36 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="txtMarquee-top">
 			<div class="bd">
 				<ul class="infoList">
-					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />x**</span>
-                        <span class="txt_left w185"><b class="colorf06">0.24万</b></span>
-                        <span class="txt_left w185">400.00元</span>
-                        <span class="txt_left w185">64.47元</span>
-                        <span class="txt_left1 w185"><b class="colorf06">3.00%</b></span>
-                        <span class="t-center lh11">2015-04-15</span>
+					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />何**</span>
+                        <span class="txt_left w185"><b class="colorf06">4万</b></span>
+                        <span class="txt_left w185">1万</span>
+                        <span class="txt_left w185">4500元</span>
+                        <span class="txt_left1 w185"><b class="colorf06">45%</b></span>
+                        <span class="t-center lh11">2015-05-15</span>
                         <div class="clear"></div>
 					</li>
-					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />x**</span>
-                        <span class="txt_left w185"><b class="colorf06">0.24万</b></span>
-                        <span class="txt_left w185">400.00元</span>
-                        <span class="txt_left w185">64.47元</span>
-                        <span class="txt_left1 w185"><b class="colorf06">3.00%</b></span>
-                        <span class="t-center lh11">2015-04-15</span>
+					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />周**</span>
+                        <span class="txt_left w185"><b class="colorf06">10万</b></span>
+                        <span class="txt_left w185">2万</span>
+                        <span class="txt_left w185">1.24万</span>
+                        <span class="txt_left1 w185"><b class="colorf06">62%</b></span>
+                        <span class="t-center lh11">2015-06-15</span>
                         <div class="clear"></div>
 					</li>
-					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />x**</span>
-                        <span class="txt_left w185"><b class="colorf06">0.24万</b></span>
-                        <span class="txt_left w185">400.00元</span>
-                        <span class="txt_left w185">64.47元</span>
-                        <span class="txt_left1 w185"><b class="colorf06">3.00%</b></span>
-                        <span class="t-center lh11">2015-04-15</span>
+					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />段**</span>
+                        <span class="txt_left w185"><b class="colorf06">9万</b></span>
+                        <span class="txt_left w185">3万</span>
+                        <span class="txt_left w185">2.1万元</span>
+                        <span class="txt_left1 w185"><b class="colorf06">70%</b></span>
+                        <span class="t-center lh11">2015-06-12</span>
                         <div class="clear"></div>
 					</li>
-					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />x**</span>
-                        <span class="txt_left w185"><b class="colorf06">0.24万</b></span>
-                        <span class="txt_left w185">400.00元</span>
-                        <span class="txt_left w185">64.47元</span>
-                        <span class="txt_left1 w185"><b class="colorf06">3.00%</b></span>
-                        <span class="t-center lh11">2015-04-15</span>
+					<li><span class="txt_left w185"><img class="people" src="assets/img/peizi/people.png" alt="" />陈**</span>
+                        <span class="txt_left w185"><b class="colorf06">20万</b></span>
+                        <span class="txt_left w185">4万</span>
+                        <span class="txt_left w185">5.44万</span>
+                        <span class="txt_left1 w185"><b class="colorf06">136%</b></span>
+                        <span class="t-center lh11">2015-06-14</span>
                         <div class="clear"></div>
 					</li>
                     <li style="display:none"></li>
