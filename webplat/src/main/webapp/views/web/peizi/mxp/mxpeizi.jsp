@@ -63,7 +63,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>        
         <!--/二级导航-->
         <div class="mod_breadcrumb">
-            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <a href="rest/web/peizi/capital" class="path_item">淘金配资</a> <span class="sep">&gt;</span> <span class="txt">免息配</span> </div>
+            <div class="layout_n clearfix"><span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a> <span class="sep">&gt;</span> <a href="rest/web/peizi/index" class="path_item">配资 </a><span class="sep">&gt;</span> <span class="txt">免息配</span> </div>
         </div>
     <div class="w100bg">
         <form id="modalForm" action="rest/web/peizi/mxp/monthNextCapital" method="post" >
