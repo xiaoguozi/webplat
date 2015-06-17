@@ -109,11 +109,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <table class="pz_tbl">
                             <tr>
                                 <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="######.##" /></span> 元</td>
-                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
+                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：${peizi.dataZjsyqx }天</td>                                
                             </tr>
                             <tr>
                                 <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataJjx}" pattern="######.##" /></span> 元</td>
-                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按交易日计算，节假日不收管理费" alt="" />：${peizi.dataZjsyqx }天</td>
+                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
                             </tr>
                             <tr>
                                 <td>账户管理费 <img class="curser" src="assets/img/peizi/qcmark.png" title="每天需要支付的管理费" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.zfglf}" pattern="########.##" /></span> 元/天</td>

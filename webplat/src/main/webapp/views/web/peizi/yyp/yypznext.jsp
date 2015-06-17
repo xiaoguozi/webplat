@@ -111,11 +111,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <table class="pz_tbl">
                             <tr>
                                 <td>总操盘资金 <img class="curser" src="assets/img/peizi/qcmark.png" title="投资本金+配资金额" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元</td>
-                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
+                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按30天计算，如使用1个月，12月16日到1月15日" alt="" />：${peizi.dataZjsyqx }个月 </td>                               
                             </tr>
                             <tr>
                                 <td>亏损警告线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于亏损警戒线以下时，只能平仓不能建仓，需要尽快补充投资本金，以免低于亏损平仓线被平仓" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataJjx}" pattern="######.##" /></span> 元</td>
-                                <td>资金使用期限 <img class="curser" src="assets/img/peizi/qcmark.png" title="按30天计算，如使用1个月，12月16日到1月15日" alt="" />：${peizi.dataZjsyqx }个月 </td>
+                                <td>亏损平仓线 <img class="curser" src="assets/img/peizi/qcmark.png" title="当总操盘资金低于平仓线以下时，我们将有权把您的股票进行平仓，为避免平仓发生，请时刻关注投资本金是否充足。" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPcx}" pattern="######.##" /></span> 元</td>
                             </tr>
                             <tr>
                                 <td>月息 <img class="curser" src="assets/img/peizi/qcmark.png" title="每月需要支付的利息" alt="" />：<span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataYll}" pattern="########.##" /></span> %/月</td>
