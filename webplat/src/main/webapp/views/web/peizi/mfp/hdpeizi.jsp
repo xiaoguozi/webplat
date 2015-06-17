@@ -84,7 +84,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon05.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left">淘金山掏出<b class="color158">10000 元</b>（完全免费）</td>
+                        <td class="tbl_w500_b t-left">淘金山出资<b class="color158">10000 元</b>（完全免费）</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon04.png" alt="" /></td>
@@ -92,7 +92,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon03.png" alt="" /></td>
-                        <td class="tbl_w500_b t-left">总共<b class="color158">10001 元</b>（由您操盘）</td>
+                        <td class="tbl_w500_b t-left">总共<b class="color158">10000 元</b>（由您操盘）</td>
                     </tr>
                     <tr>
                         <td><img src="assets/img/peizi/icon02.png" alt="" /></td>
