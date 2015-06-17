@@ -79,7 +79,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="clear"></div>
                     </div>
                     <div class="datastep3">
-                        <h1 class="color54a">操盘申请成功！</h1>
+                        <h1 class="color54a">操盘预约成功！</h1>
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您！</p>
                     </div>
                     <div class="datastep3" style="padding-top:2px;padding-bottom:40px;margin:0 auto" >
