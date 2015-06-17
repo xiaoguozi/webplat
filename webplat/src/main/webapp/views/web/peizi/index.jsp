@@ -120,14 +120,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div style="position:relative;display:block;height:1125px;">
 			<div class="pro_box ml0 top20">
 				<h1 class="pro_title">淘金活动</h1>
-				<p class="wbl pt80"><b class="colorf06">免费赠送10000元</b> 实盘资金</p>
-				<p><b class="colorf06">盈利全归您</b> 亏损算我们</p>
+				<p class="wbl pt20"><b class="colorf06">免费配</b></p>
+				<p class="wbl lh30"><b class="colorf06">免费赠送10000元</b> 实盘资金</p>
+				<p class="w230"><b class="colorf06">盈利全归您</b> 亏损算我们</p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/mfp/freeActivity">我要爽</a>
-				
 			</div>
 			<div class="pro_box top20" style="left:349px;">
 				<h1 class="pro_title">淘金活动</h1>
-				<p class="wbl pt20"><b class="colorf06">免息配</b>日息为 <span class="colorf06"><b class="fsize">0</b>%</span></p>
+				<p class="wbl pt20"><b class="colorf06">免息配</b></p>
 				<p class="wbl lh30"><span class="colorf06">15天</span>免利息</p>
 				<p class="w230">最高<span class="colorf06"> 3倍 </span>杠杆，最高可配<span class="colorf06">3万</span></p>
 				<a class="tjs_btn mtb54" href="rest/web/peizi/mxp/monthCapital">我要爽</a>
