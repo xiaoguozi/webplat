@@ -111,9 +111,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  		<c:if test="${!empty peizi}">
 				                <table class="my_tbl2" >
 				                    <tr>
-				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
-				                        <td><span class="colorf06 font30">无</span><br />亏损警告线</td>
-				                        <td><span class="colorf06 font30">无</span><br />亏损平仓线</td>
+				                        <td><span class="colorf06 font30">10000</span> 元<br />总操盘资金</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx}" pattern="########.##" /></span><br />亏损警告线</td>
+				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataPcx}" pattern="########.##" /></span><br />亏损平仓线</td>
 				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
 				                        <td>
 				                        	<c:if test="${peizi.dataOperaStatus=='10'}">

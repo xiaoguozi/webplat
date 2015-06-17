@@ -1,5 +1,6 @@
 package com.tjs.web.peizi.controller;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -21,6 +22,7 @@ import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
 import com.tjs.web.peizi.model.UserInfoExtendVO;
@@ -159,6 +161,20 @@ public class PeiZiMFIndexController {
 			return "web/peizi/mfp/hdpeizi";
 		}
 		
+		//获取免费配的配资规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		
+		model.addAttribute("jjx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRuleJjx3()).divide(new BigDecimal(100)));
+		model.addAttribute("pcx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRulePcx3()).divide(new BigDecimal(100)));
+		
+		
 		return "web/peizi/mfp/hdpeizinext";
 	}
 	
@@ -202,7 +218,21 @@ public class PeiZiMFIndexController {
 	 * @return
 	 */
 	@RequestMapping("/freeScheduleActivity")
-	public String  freeScheduleActivity() {
+	public String  freeScheduleActivity(Model model) {
+		//获取免费配的配资规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		
+		model.addAttribute("jjx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRuleJjx3()).divide(new BigDecimal(100)));
+		model.addAttribute("pcx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRulePcx3()).divide(new BigDecimal(100)));
+		
+		
 		return "web/peizi/mfp/hdpeizipro";
 	}
 	

@@ -76,9 +76,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="mf_box">
                             <table class="ty_tbl" style="width:70%;margin:0 auto;">
                                 <tr>
-                                    <td><span class="colorf06 font26">10001</span> 元<br />总操盘金额</td>
+                                    <td><span class="colorf06 font26">10000</span> 元<br />总操盘金额</td>
                                     <td style="width:10px"><b class="font26">=</b></td>
-                                    <td><span class="colorf06 font26">1</span> 元<br />投资本金</td>
+                                    <td><span class="colorf06 font26">0</span> 元<br />投资本金</td>
                                     <td style="width:10px"><b class="font26">+</b></td>
                                     <td><span class="colorf06 font26">10000</span> 元<br />配资金额</td>
                                 </tr>
@@ -86,8 +86,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <div class="pros_box bord_d" style="width:92%;">
                                 <table class="mf_tbl" style="width:100%">
                                     <tr>
-                                        <td>亏损警告线：<span class="font26 colorf06">无</span></td>
-                                        <td>亏损平仓线：<span class="font26 colorf06">无</span></td>
+                                        <td>亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${jjx}" pattern="########.##" /></span>元</td>
+                                        <td>亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${pcx}" pattern="########.##" /></span>元</td>
                                         <td>账户管理费:<span class="font26 colorf06">无</span></td>
                                     </tr>
                                     

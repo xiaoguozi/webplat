@@ -142,9 +142,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                                	<td class="color158 font26" style="white-space:nowrap;">免息体验</td>
 	                                </c:if>
 	                                
+	                                <c:if test="${peizi.dataType=='10'}">
+	                                <td><span class="colorf06 font26">10000</span> 元<br />总操盘金额</td>
+	                                </c:if>
+	                                <c:if test="${peizi.dataType!='10'}">
 	                                <td><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘金额</td>
+	                                </c:if>
+	                                
 	                                <td style="width:10px"><b class="font26">=</b></td>
+	                                
+	                                <c:if test="${peizi.dataType=='10'}">
+	                                <td colspan="1"><span class="colorf06 font26">0</span> 元<br />投资本金</td>
+	            					</c:if>
+	            					<c:if test="${peizi.dataType!='10'}">
 	                                <td colspan="1"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /></span> 元<br />投资本金</td>
+	            					</c:if>
+	            					                    
 	                                <td style="width:10px"><b class="font26">+</b></td>
 	                                <td colspan="1"><span class="colorf06 font26"><fmt:formatNumber value="${peizi.dataPzje}" pattern="########.##" /></span> 元<br />配资金额</td>
 	                                <td colspan="2" style="width: 1px"></td>
