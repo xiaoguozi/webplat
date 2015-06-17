@@ -47,11 +47,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 <div class="tjs_input_div">
 <input name="password" id="password" type="password" class="tjs_input_text" placeholder=" 登录密码" tabindex="2">
-
+	<span id="pwdErrorSpan" class="tjs_login_error" >${error}</span>
 </div>
 
 <div class="tjs_botton_div">
-<span class="">${error }</span>
 <a href="＃" id="loginBut" class="tjs_loginbtn">登录</a>
 </div>
 <div class="tjs_assist">
@@ -87,6 +86,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script>
 $(function() {  
 	var handleLogin = function() {
+		
 	    $('.login-form').validate({
 	        errorElement : 'span', // default input error message container
 	        errorClass : 'tjs_login_error', // default input error message class
