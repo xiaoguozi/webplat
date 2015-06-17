@@ -476,7 +476,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <span>3.2</span><span>平仓线及平仓</span>
 </p>
 <p style="text-indent:60px;line-height:200%">
-    <span>（1）</span><span>在本协议所涉及资产账户运行期间，当某一交易日账户显示净资产余额等于或低于（乙方初始保证金*50%+甲方配资额）时，则本协议所涉及资产触及平仓线。</span>
+    <span>（1）</span><span>在本协议所涉及资产账户运行期间，当某一交易日账户显示净资产余额等于或低于（乙方初始保证金*40%+甲方配资额）时，则本协议所涉及资产触及平仓线。</span>
 </p>
 <p style="text-indent:60px;line-height:200%">
     <span>（2）</span><span>甲方同意丙方将于触及平仓线之日的当日，有权对本协议所涉及资产账户进行平仓操作，直至全部变现为止。</span>
