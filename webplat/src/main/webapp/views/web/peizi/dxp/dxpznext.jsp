@@ -141,7 +141,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <a class="tjs_btndiv btnbox" href="rest/web/peizi/dxp/lowCapital">重选操盘方案</a>
                     </div>
                     <a class="tjs_next_btn mbl" href="rest/web/peizi/dxp/lowLastCapital">确定配资</a>
+                    <!--                     
                     <p class="t-right ptr">您的账户余额：<span class="colorf06">0.00</span>，本次支付还差<span class="colorf06">2522.5</span>元，请先<a href="rest/web/peizi/recharge">充值</a></p>
+               		 -->
                 </div>
                 <hr class="pc"/>
             </div>

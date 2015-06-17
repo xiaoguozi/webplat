@@ -268,8 +268,8 @@ $(document).ready(function () {
 		if(strTzbzj==''){strTzbzj="0"}
 		var iTzbzj = parseInt(strTzbzj,'10');
 		
-		if(iTzbzj<10000){
-			errTip("保证金最低10000元 ", 1);
+		if(iTzbzj<10000){			
+			errTip("保证金最低10000元起", 1);
 			return ;
 		}
 
