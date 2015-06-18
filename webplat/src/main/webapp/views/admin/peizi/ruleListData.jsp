@@ -36,6 +36,9 @@
                 </c:otherwise>  
             </c:choose>                 
         </td>
+        
+        
+        
          <td>
          <c:choose>  
                 <c:when test="${rule.ruleType=='10'}">  

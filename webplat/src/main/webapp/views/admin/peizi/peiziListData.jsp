@@ -33,6 +33,8 @@
                 </c:otherwise>  
             </c:choose>                 
         </td>
+        <td>${peizi.dataUserName}  </td>
+        <td>${peizi.dataUserTel}  </td>
         <td>
            ${peizi.dataZcpzj}              
         </td>

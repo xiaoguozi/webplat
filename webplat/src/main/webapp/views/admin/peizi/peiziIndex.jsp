@@ -39,8 +39,10 @@
                         <th class="data-operator">
                             
                         </th>
-                       <th field="data_id">订单号<span class="glyphicon"></span></th>                      
+                       <th field="data_id">订单号<span class="glyphicon"></span></th>                                         
                        <th field="data_type">配资类型  <span class="glyphicon"></span></th>
+                        <th field="data_use_name">客户姓名<span class="glyphicon"></span></th>
+                       <th field="data_user_tel">手机号<span class="glyphicon"></span></th>  
                        <th field="data_zcpzj">总超盘资金<span class="glyphicon"></span></th>
                        <th field="data_tzbzj">保证金<span class="glyphicon"></span></th>
                        <th field="data_jjx">警戒线<span class="glyphicon"></span></th>

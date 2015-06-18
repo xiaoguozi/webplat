@@ -39,6 +39,21 @@
         </div>
         
          <div class="form-group">
+            <label class="col-md-2 control-label">客户姓名</label>
+            <div class="col-md-6">
+                 ${peizi.dataUserName}
+            </div>            
+        </div>
+        
+         <div class="form-group">
+            <label class="col-md-2 control-label">手机号码</label>
+            <div class="col-md-6">
+                ${peizi.dataUserTel}
+            </div>            
+        </div>
+        
+        
+         <div class="form-group">
             <label class="col-md-2 control-label">总超盘资金（元）</label>
             <div class="col-md-6">
                 <input type="text" class="form-control  number"  name="dataZcpzj" value="${peizi.dataZcpzj}" readonly="readonly">
