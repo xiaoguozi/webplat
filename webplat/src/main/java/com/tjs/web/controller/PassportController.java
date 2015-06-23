@@ -81,7 +81,18 @@ public class PassportController {
             model.addAttribute("error", "用户名或密码错误 ！");
             return "web/passport/login";
         }
-        return "redirect:/";//+returnUrl;
+    	
+    	SavedRequest saveRequest = WebUtils.getSavedRequest(request);
+    	if(saveRequest!=null){
+    		String url = saveRequest.getRequestUrl();
+    	    url = (url==null?"":url); 
+    	    url = url.substring(url.indexOf("rest"));
+    		return "redirect:/"+url;
+    	}else{
+    		 return "redirect:/";//+returnUrl;
+    	}
+    	
+       
     }
 
     /**
