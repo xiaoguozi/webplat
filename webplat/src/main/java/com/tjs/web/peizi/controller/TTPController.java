@@ -69,21 +69,29 @@ public class TTPController {
 		//规则信息
 		peizi.setDataType(PeiziTypeEnum.TTPEIZI.getKey());
 		peizi.setDataTypeSylx(peiziRule.getRuleGlsyType());
-		
-//		peizi.setDataZfglf(peiziRule.getRuleZhglf());
-//		peizi.setDataNll(peiziRule.getRuleNll());
-//		peizi.setDataYll(peiziRule.getRuleYll());
-//		peizi.setDataRuleJjx(peiziRule.getRuleJjx());
-//		peizi.setDataRulePcx(peiziRule.getRulePcx());
-		
-		
+						
 		peizi.setDataStep("1");		
 		peizi.setDataJyksDate("2");
 		peizi.setDataZjsyqx(2);
 		
 		
 		model.addAttribute("peiziRule",peiziRule);
-		model.addAttribute("peizi",peizi);		
+		model.addAttribute("peizi",peizi);
+		
+		//判断用户实名认证
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(username!=null){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfoTemp = UserInfoService.findUserInfoByUserId(user.getId());
+			model.addAttribute("islogin", "true");
+			if(userInfoTemp.getIsValidate()!=1){
+				//实名认证
+				model.addAttribute("result", "-3");//没有认证		
+			}else{
+				model.addAttribute("result", "-2");//已实名认证
+			}
+		}
 		return "web/peizi/ttp/ttpeizi";
 	}
 	

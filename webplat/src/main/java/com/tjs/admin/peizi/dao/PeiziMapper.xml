@@ -158,8 +158,7 @@
 	
 	<update id="updatePeizi" parameterType="com.tjs.admin.peizi.model.Peizi">
 		update tjs_peizi_data set		
-		data_modify_date=#{dataModifyDate},
-		data_use_name=#{dataUserName},		
+		data_modify_date=#{dataModifyDate},	
 		data_remark=#{dataRemark},
 		data_opera_status=#{dataOperaStatus},
 		data_opera_user_name=#{dataOperaUserName},
