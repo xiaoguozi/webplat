@@ -10,7 +10,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山—跟我淘金山</title>
+<meta name="keywords" content="信托产品，信托产品大全，最新信托产品,信托公司,信托公司排名"/>
+<meta name="description" content="淘金山信托频道为您提供信托产品，最亲信托公司中，最新信托产品等详细信息，帮助您选出收益率最高的信托产品，并完成购买信托产品。"/>
+<title>信托产品,信托公司,信托公司排名-淘金山</title>
+
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 <link href="assets/css/ui/simu.css?1=1" rel="stylesheet" />
