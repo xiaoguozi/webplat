@@ -234,12 +234,15 @@
         </if>
     </select>
     
-    <select id="selectList" resultMap="BaseResultMap" parameterType="map">
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.tjs.admin.controller.UserCtrlModel">
         select
         <include refid="Base_Column_List" />
         from user
+        <if test="pageNo!= 0">
+          LIMIT #{limitStart} ,#{pageSize}
+       </if> 
     </select>
-     <select id="selectListCount" parameterType="com.tjs.admin.model.UserExample" resultType="java.lang.Integer">
+     <select id="selectListCount" parameterType="com.tjs.admin.controller.UserCtrlModel" resultType="java.lang.Integer">
         select count(*) as total from user
        
     </select>
