@@ -135,6 +135,21 @@ public class PeiZiMFIndexController {
 	 */
 	@RequestMapping("/freeNextActivity")
 	public String  freeNextActivity(Model model) {
+		//获取免费配的配资规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		model.addAttribute("peiziRule",peiziRule);
+		
+		if(peiziRule.getRuleEnable().equals("20")){
+			return "redirect:/rest/web/peizi/mfp/freeActivity";  
+		}
+		
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		pzIndexCtrlModel.setPeiziType(PeiziTypeEnum.MFPEIZI.getIntegerKey());
 		pzIndexCtrlModel.setDateString(sdf.format(Calendar.getInstance().getTime()));
@@ -161,15 +176,6 @@ public class PeiZiMFIndexController {
 			return "web/peizi/mfp/hdpeizi";
 		}
 		
-		//获取免费配的配资规则
-		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
-		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
-		
-		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
-		if(lstPeiziRule==null||lstPeiziRule.size()==0){
-			throw new  RuntimeException("免息配资规则没有找到");
-		}
-		PeiziRule peiziRule = lstPeiziRule.get(0);
 		
 		model.addAttribute("jjx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRuleJjx3()).divide(new BigDecimal(100)));
 		model.addAttribute("pcx", BigDecimalUtils.multiply(new BigDecimal(7500), peiziRule.getRulePcx3()).divide(new BigDecimal(100)));
@@ -184,6 +190,22 @@ public class PeiZiMFIndexController {
 	 */
 	@RequestMapping("/freeLastActivity")
 	public String  freeLastActivity(Model model) {
+		//获取免费配的配资规则
+		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
+		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
+		
+		List<PeiziRule> lstPeiziRule = iPeiziRule.selectPeiziRule(peiziRuleCtrlModel);
+		if(lstPeiziRule==null||lstPeiziRule.size()==0){
+			throw new  RuntimeException("免息配资规则没有找到");
+		}
+		PeiziRule peiziRule = lstPeiziRule.get(0);
+		model.addAttribute("peiziRule",peiziRule);
+		
+		if(peiziRule.getRuleEnable().equals("20")){
+			return "redirect:/rest/web/peizi/mfp/freeActivity";  
+		}
+		
+		
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		//如果用户没有登录直接访问

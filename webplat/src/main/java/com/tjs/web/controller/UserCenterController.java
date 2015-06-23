@@ -145,6 +145,108 @@ public class UserCenterController {
     }
     
     
+    @RequestMapping("/validateNameCertId")
+    @ResponseBody
+    public String validateNameCertId(@RequestParam(value="name") String  name, 
+    		@RequestParam(value="certId") String  certId,
+    		@RequestParam(value="userId") Long  userId) {
+		String result = "false";
+
+		if (StringUtils.isBlank(name) || StringUtils.isBlank(certId)) {
+			return result;
+		}
+		
+		//保存用户提交的姓名和身份证号
+		UserInfo userInfoTemp = userInfoService.findUserInfoByUserId(userId);
+		userInfoTemp.setName(name);
+		userInfoTemp.setCertId(certId);
+		userInfoService.updateUserInfo(userInfoTemp);
+		
+		
+		//TODO 实名认证流程：
+		// 1）、姓名和身份证号已经被实名验证并且有通过了的记录
+		// 2）、姓名和身份证号已经被实名验证并且有两次都没有通过的记录
+		// 3)、 数据库中已经被验证过一次但没有通过 或者 无记录，此时需要去调用身份证接口
+		// 	 i、验证通过，更新t_user_info和t_cust_identity
+		//	 ii、未验证通过，往t_cust_identity新增记录
+		
+		CustIdentity tempCustIdentity = new CustIdentity();
+		tempCustIdentity.setRealName(name);
+		tempCustIdentity.setCardNo(certId);
+		List<CustIdentity> lstResult = custIdentityService.query(tempCustIdentity);
+		//是否已经通过了验证
+		boolean isChecked = false;
+		for(CustIdentity custIdentity : lstResult){
+			if(custIdentity.getStatus()==1){
+				isChecked = true;
+				result = PeiZiConstants.VALIDATE_RESULT_EXIST;
+			}
+		}
+		
+		if(isChecked){
+			return result;
+		}else{
+			if(lstResult.size()>=2){
+				return PeiZiConstants.VALIDATE_RESULT_MAN;
+			}else{
+				//调用接口
+				CheckResponse response = new CheckResponse();
+				// 测试--跳过验证码
+				try {
+					String value = IdentifierWebService.simpleCheckByJson(certId, name,
+							"tjs_admin", "b8DvR2jl");
+					//String value = "{\"Identifier\":{\"IDNumber\":\"430225198607246010\",\"Name\":\"段育军\",\"FormerName\":null,\"Sex\":\"男性\",\"Nation\":null,\"Birthday\":\"1986-07-24\",\"Company\":null,\"Education\":null,\"MaritalStatus\":null,\"NativePlace\":null,\"BirthPlace\":null,\"Address\":null,\"Photo\":\"\",\"QueryTime\":null,\"IsQueryCitizen\":false,\"Result\":\"不一致\"},\"RawXml\":null,\"ResponseCode\":100,\"ResponseText\":\"成功\"}";
+					response = JSON.parseObject(value, CheckResponse.class);
+					if (response.getResponseCode() == 100) {
+						if ("一致".equals(response.getIdentifier().getResult())) {
+							result = "true";
+							//添加记录
+							tempCustIdentity.setCustomerId(userId);
+							tempCustIdentity.setIdentifyType(0);
+							tempCustIdentity.setCreateTime(Calendar.getInstance().getTime());
+							tempCustIdentity.setValidType(0);
+							tempCustIdentity.setStatus(1);
+							UserInfo userInfo = userInfoService.findUserInfoByUserId(userId);
+							userInfo.setIsValidate(1);
+							
+							custIdentityService.validateCustIdentity(tempCustIdentity, userInfo);
+						} else {
+							result = PeiZiConstants.VALIDATE_RESULT_NOT_SAME;
+							//添加记录
+							tempCustIdentity.setCustomerId(userId);
+							tempCustIdentity.setIdentifyType(0);
+							tempCustIdentity.setCreateTime(Calendar.getInstance().getTime());
+							tempCustIdentity.setValidType(0);
+							tempCustIdentity.setStatus(2);
+							
+							custIdentityService.validateCustIdentity(tempCustIdentity, null);
+						}
+					}else{
+						throw new Exception(response.getResponseCode() + "");
+					}
+				} catch (Exception e) {
+					if ("-71".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_71;
+					} else if ("-53".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_53;
+					} else if ("-72".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_72;
+					} else if ("-31".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_31;
+					} else if ("-60".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_60;
+					} else if ("-90".equals(e.getMessage())) {
+						result = PeiZiConstants.VALIDATE_RESULT_90;
+					} else {
+
+					}
+				}
+				
+			}
+		}
+		
+		return result;
+	}
     
   
     @RequestMapping("/valiadCertId")

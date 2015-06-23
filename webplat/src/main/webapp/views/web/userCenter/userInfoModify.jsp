@@ -121,24 +121,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   </div>                         
                   <div >
 	                <form class="modify-form" id="modify-form" action="rest/web/userCenter/saveUserInfo" method="post">
+	                 <input type="hidden" id="validateHiddenName" />
+	                 <input type="hidden" id="validateHiddenCertId" />
+	                 
 	                 <div style="height:30px"></div> 
-	                     
-	                 <div class="tjs_register_left" style="width:20%">姓名：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_username" name="userInfo.name" value="${name}" maxlength="30" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ${isValidate==1?"disabled":""} style="${isValidate==1?'background-color:#eeeeee':''}"></div>
-	                 <div class="tjs_register_left" style="width:20%">身份证：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_certId" name="userInfo.certId" value="${certId}" maxlength="18" onblur="validateCertId(this);" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ${isValidate==1?"disabled":""} style="${isValidate==1?'background-color:#eeeeee':''}">&nbsp;&nbsp;<span id="cert_id_span" style="color: red;"></span>&nbsp;
-	                 	<c:if test="${isValidate==1}">
-	                 		<img id="validateSuccessImg" src="assets/img/peizi/check_sucess.png" valign="center" ><a style="cursor: default; color: #000000;" id="aValidate"  >已实名认证</a>
-	                 	</c:if>	
-	                 	<c:if test="${isValidate!=1}">
-		                 	<img id="validateSuccessImg" src="assets/img/peizi/check_sucess.png" valign="center" style="display: none;"><a style="cursor: pointer;" id="aValidate" onclick="validateRealName();" >实名认证</a>
-	                 	</c:if>	
+	                   
+	                 <c:if test="${isValidate==1}">
+	                 	<div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img id="vImgSuc" src="assets/img/peizi/check_sucess.png" />&nbsp;实名认证&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 120px;"><span style="color: #999999;" id="validateSpan">已完成实名认证 </span><a style="cursor: pointer; margin-left: 135px;" id="aValidate" onclick="viewValidateNameCertId();" >查看实名认证信息</a></div> </div></div>
+	                 </c:if>
+	                 <c:if test="${isValidate!=1}">
+	                 	<div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img id="vImgAlert" src="assets/img/peizi/check_alert.png" /><img id="vImgSuc" src="assets/img/peizi/check_sucess.png" style="display: none;"/>&nbsp;实名认证&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 120px;"><span style="color: #999999;" id="validateSpan">未完成实名认证 </span><a style="cursor: pointer; margin-left: 135px;" id="aValidate" onclick="validateNameCertId();" >实名认证</a></div> </div></div>
+	                 </c:if>
+					 <div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img  src="assets/img/peizi/check_sucess.png" />&nbsp;登录密码&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 60px;"><span style="color: #999999;" >定期更换密码可以让你的账户更加安全</span><a style="cursor: pointer; margin-left: 62px;" id="a_dialog" onclick="showPasswordDialog()" >修改密码</a></div> </div></div>
+	                 <div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img  src="assets/img/peizi/check_sucess.png" />&nbsp;手机认证&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 120px;"><span style="color: #999999;" >${phone}</span></div> </div></div>
+	                 
+	                 <c:if test="${(empty email) || (empty qq)}">
+	                 	 <div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img  src="assets/img/peizi/check_alert.png" />&nbsp;邮箱&nbsp;QQ&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 60px;"><span style="color: #999999;" >留下您的邮箱和qq号，方便接收活动信息</span><a style="cursor: pointer; margin-left: 46px;" id="a_mail_qq" onclick="showChange()" >立即修改</a></div> </div></div>
+	                 </c:if>
+	                 <c:if test="${!(empty email) && !(empty qq)}">
+		                 <div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img  src="assets/img/peizi/check_sucess.png" />&nbsp;邮箱&nbsp;QQ&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 60px;"><span style="color: #999999;" >留下您的邮箱和qq号，方便接收活动信息</span><a style="cursor: pointer; margin-left: 46px;" id="a_mail_qq" onclick="showChange()" >立即修改</a></div> </div></div>
+	                 </c:if>
+	                 
+	                
+	                 <div id="divMore" style="text-align: center;display: none;">
+	                 		<div style="height: 5px;"></div>
+	                 		<div style="width: 496px;margin-left: 110px; border: dotted 2px #eeeeee; ">
+		                 		 <div style="height: 15px;"></div>
+	                 			 <div id="divEmail" class="tjs_register_left" style="width:20%; display: none; ">邮箱：&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_email" name="userInfo.email" value="${email}" maxlength="100" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" autofocus x-webkit-speech style="display: none;"></div>
+				                 <div id="divQQ" class="tjs_register_left" style="width:20%; display: none;">QQ：&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_qq" name="userInfo.qqNo" value="${qq}" maxlength="16" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" autofocus x-webkit-speech style="display: none;"></div>
+				                 <div id="divSumbit" style="height:60px; width:78%; text-align: center;margin-left:84px; display: none;"><a id="register-submit-btn"  class="tjs_registerbtn">保&nbsp;&nbsp;存</a></div>
+	                 		</div>
+	                 		<div style="height: 5px;"></div>
 	                 </div>
 	                 
-	                 <div class="tjs_register_left" style="width:20%">邮箱：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_email" name="userInfo.email" value="${email}" maxlength="100" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">QQ：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_qq" name="userInfo.qqNo" value="${qq}" maxlength="16" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">手机号：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_phone" name="phone" value="${phone}" disabled="disabled" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" autofocus x-webkit-speech ></div>
-	                 <div class="tjs_register_left" style="width:20%">密码：</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_password_1" name="password" value="0000000000000000000000000000000000" disabled="disabled" type="password" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder="" x-webkit-speech >&nbsp;&nbsp;<a style="cursor: pointer;" id="a_dialog" onclick="showPasswordDialog()" >修改密码</a></div>
-	                
-	                 <div style="height:60px; width:75%; text-align: center;"><a id="register-submit-btn"  class="tjs_registerbtn">保&nbsp;&nbsp;存</a></div>
 	                </form>     
                  </div>
                 <!--/无产品状态-->
@@ -169,7 +184,37 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     			dNew.close().remove();
     		}, 2000);
 		}
+		
+		$(".divLine").mouseover(function(){
+			$(this).css("background-color","#F2F2F2");
+			$(this).find("span").css("color","#000000");
+		});
+		$(".divLine").mouseout(function(){
+			$(this).css("background-color","#FFFFFF");
+			$(this).find("span").css("color","#999999");
+		});
 	});
+	
+	
+	function showChange(){
+		if($("#divEmail").is(':hidden')){
+			$("#divEmail").show();
+			$("#divQQ").show();
+			$("#divSumbit").show();
+			$("#register_email").show();
+			$("#register_qq").show();
+			$("#divMore").show();
+			$("#a_mail_qq").html("取消修改");
+		}else{
+			$("#divEmail").hide();
+			$("#divQQ").hide();
+			$("#divSumbit").hide();
+			$("#register_email").hide();
+			$("#register_qq").hide();
+			$("#divMore").hide();
+			$("#a_mail_qq").html("立即修改");
+		}
+	}
 	
 	function validateCertId(obj){
 		var certId = obj.value;
@@ -390,6 +435,160 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 	}
 	
+	function viewValidateNameCertId(){
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-certId\" action=\"rest/web/userCenter/userModifyData\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:28%\"><img src=\"assets/img/peizi/check_sucess.png\" valign=\"center\">&nbsp;真实姓名：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_name_view\" name=\"userInfo.name\" value=\"${name}\" type=\"text\" disabled class=\"tjs_register_input  tjs_width245px\" tabindex=\"1\" spellcheck=\"false\" maxLength=\"10\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_username\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:28%\"><img src=\"assets/img/peizi/check_sucess.png\" valign=\"center\">&nbsp;身份证号：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_certId_view\" name=\"userInfo.certId\" value=\"${certId}\" type=\"text\" disabled class=\"tjs_register_input  tjs_width245px\" tabindex=\"2\" spellcheck=\"false\" maxLength=\"20\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_certId\"></span></div>";
+		
+		dialogContent += "</form></div>";
+		
+		dInput = dialog({
+		    title: '查看实名认证信息',
+		    content: dialogContent,
+		    width:350,
+		    okValue: '确定',
+		    ok:function(){}
+		});
+		
+		dInput.showModal();	
+		if($("#validateHiddenName").val()!=""){
+			$("#register_name_view").val($("#validateHiddenName").val());
+		}
+		if($("#validateHiddenCertId").val()!=""){
+			$("#register_certId_view").val($("#validateHiddenCertId").val());
+		}
+		
+	}
+	
+	//实名认证输入框
+	var dInput;
+	function validateNameCertId(){
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-certId\" action=\"rest/web/userCenter/userModifyData\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:25%\">真实姓名：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_name\" name=\"userInfo.name\" value=\"${name}\" type=\"text\" onblur=\"onBlurName(this);\" class=\"tjs_register_input  tjs_width245px\" tabindex=\"1\" spellcheck=\"false\" maxLength=\"10\" placeholder=\"请输入您的真实姓名\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_username\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:25%\">身份证号：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_certId\" name=\"userInfo.certId\" value=\"${certId}\" type=\"text\" onblur=\"onBlurCertId(this)\" class=\"tjs_register_input  tjs_width245px\" tabindex=\"2\" spellcheck=\"false\" maxLength=\"20\" placeholder=\"请输入您的身份证号码\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_certId\"></span></div>";
+		
+		dialogContent += "<div style=\"height:60px; width:75%; text-align: center;\"><a id=\"register-submit-cert-btn\" href=\"#\" class=\"tjs_registerbtn\" >开始认证</a></div>";
+		dialogContent += "</form></div>";
+		
+		dInput = dialog({
+		    title: '实名认证',
+		    content: dialogContent
+		});
+		
+		dInput.showModal();		
+		if($("#validateHiddenName").val()!=""){
+			$("#register_name").val($("#validateHiddenName").val());
+		}
+		if($("#validateHiddenCertId").val()!=""){
+			$("#register_certId").val($("#validateHiddenCertId").val());
+		}
+		
+		//初始化控件
+		$("#register-submit-cert-btn").click(function(e){
+				e.preventDefault();
+				var name = $("#register_name").val();
+				var certId = $("#register_certId").val();
+				
+				if(name==''){
+					$("#span_register_username").text("真实姓名不能为空");
+				}
+				
+				if(certId==''){
+					$("#span_register_certId").text("身份证号码不能为空");
+				}
+				
+				if(name=='' || certId==''){
+					return false;
+				}
+				
+				//暂存填写的信息
+				$("#validateHiddenName").val(name);
+				$("#validateHiddenCertId").val(certId);
+				
+				//先关掉实名认证输入框，再弹出实名认证进展框
+		    	if(dInput){
+		    		dInput.close().remove();
+			    	//dInput.close();
+		    	}
+				
+		    	//显示一个模态框验证窗口
+				tipDialog = dialog({
+				    title: '温馨提示',
+				    content: '<div style="float:left;"><img src="assets/img/circle_loading.gif" ></div><div style="text-align:center;float:left;height:32px; line-height:32px;">&nbsp;&nbsp;实名认证中，请稍等...</div>',
+				    width: 300,
+				    cancel: false,
+				    ok: false
+				});
+				tipDialog.showModal();
+				
+				//ajax修改后台密码
+				$.ajax({
+				    type: 'POST',
+				    url: 'rest/web/userCenter/validateNameCertId',
+				    data: {
+				    	name: name,
+				    	certId: certId,
+	                	userId:'${userId}'
+	                },
+				    success: function(data){
+						setTimeout('showValidateNameCertIdResult("'+data+'")', 1000);
+				    } ,
+				    dataType: 'text'
+				});
+		});
+	}
+	
+	function showValidateNameCertIdResult(data){
+		if(tipDialog){
+			tipDialog.close().remove();
+		}
+		
+    	if(data=="true"){
+    		$("#vImgAlert").hide();
+    		$("#vImgSuc").show();
+    		$("#validateSpan").text("已完成实名认证 ");
+    		$("#aValidate").html("查看实名认证信息");
+    		$("#aValidate").removeAttr("onclick");
+    		//TODO 添加查看实名认证信息
+    		$("#aValidate").click(function(){
+    			viewValidateNameCertId();
+    		});
+    		
+    		var dNew = dialog({
+    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;实名认证成功'
+    		});
+    		dNew.show();
+    		setTimeout(function () {
+    			dNew.close().remove();
+    		}, 2000);
+    	}else{
+    		if(data=="false"){
+    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;实名认证失败，请重试！';
+    		}else{
+    			data = getMsgContent(data);
+    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;' + data;
+    		}
+    		var dNew = dialog({
+    		    content: data
+    		});
+    		dNew.show();
+    		setTimeout(function () {
+    			dNew.close().remove();
+    		}, 2000);
+    		
+    	}	
+		
+	}
+	
+	
 	var tipDialog;
 	function validateRealName(){
 		
@@ -510,7 +709,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		}else if(code=="-90"){
 			msg = "认证服务器出问题,请联系客服！";
 		}else if(code=="-1000"){
-			msg = "实名认证存在问题，请联系客服人工验证！";
+			msg = "实名认证存在问题，请联系客服人工认证！";
 		}else if(code=="-1001"){
 			msg = "身份证号码与姓名不一致";
 		}else if(code=="-1002"){
@@ -520,6 +719,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		return msg;
 	}
 	
+	function onBlurCertId(obj){
+		if(obj.value==""){
+			$("#span_register_certId").text("身份证号不能为空");
+		}else{
+			$("#span_register_certId").text("");
+		}
+	}
+	
+	function onBlurName(obj){
+		if(obj.value==""){
+			$("#span_register_username").text("真实姓名不能为空");
+		}else{
+			$("#span_register_username").text("");
+		}
+	}
 	
 	function onBlurNewPassword(obj){
 		if(obj.value==""){
