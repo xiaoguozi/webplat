@@ -104,12 +104,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <span style="width:232px;">下载并登录<br />HOMS操盘软件</span>
                         <span style="width:202px;">开始买卖股票</span>
                     </p>
-                    <hr class="pc" />
-                    
-                  <%@ include file="/views/web/peizi/peizixz.jsp"%>  
-                    
+                    <hr class="pc" />                                                        
                 </div>
             <hr class="pc" />
+            <%@ include file="/views/web/peizi/peizixz.jsp"%> 
         </div>
     </div>
     <!-- 配资页尾 -->
