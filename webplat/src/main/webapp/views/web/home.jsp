@@ -84,7 +84,7 @@ document.all(imgg).style.display='block'}}
        <br/>
      </p>
      <div class="unlogin-title">
-       <p class="profit-hd">欢迎您，</p>
+       <p class="profit-hd">淘金山欢迎您，</p>
        <p class="profit-hb orange">${sessionScope.userInfo.username }</p>
      </div>
    <!--   <p class="security-tip">账户资金安全由银行和PICC共同保障</p>--> 
