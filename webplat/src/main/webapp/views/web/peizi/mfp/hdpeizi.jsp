@@ -121,7 +121,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                    		</c:if>
                    		<c:if test="${result!=-2}">
                    			<c:if test="${result==-3}">
-                   				<span style="color: red;">请先<a href="rest/web/userCenter/index" target="_self">实名认证</a>再来参与该活动</span>
+                   				<span style="color: red;">请先<a href="rest/web/userCenter/index" target="_self">实名认证</a>再参与该活动</span>
                    				<br/>
 								<a class="tjs_btn disabled" style="margin-top:20px;" href="javascript:void(0);">免费体验</a>
                    			</c:if>
