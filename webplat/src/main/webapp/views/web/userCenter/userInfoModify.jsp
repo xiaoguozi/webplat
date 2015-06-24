@@ -142,18 +142,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                 <div class="divLine" style="height: 56px;line-height: 56px;"><div class="tjs_register_left" style="width:20%;line-height: 56px;"><img  src="assets/img/peizi/check_sucess.png" />&nbsp;邮箱&nbsp;QQ&nbsp;</div><div class="tjs_register_right" style="margin-left:20%;height:56px; " ><div style="margin-top: 8px;  height: 56px; margin-left: 60px;"><span style="color: #999999;" >留下您的邮箱和qq号，方便接收活动信息</span><a style="cursor: pointer; margin-left: 46px;" id="a_mail_qq" onclick="showChange()" >立即修改</a></div> </div></div>
 	                 </c:if>
 	                 
-	                
-	                 <div id="divMore" style="text-align: center;display: none;">
-	                 		<div style="height: 5px;"></div>
-	                 		<div style="width: 496px;margin-left: 110px; border: dotted 2px #eeeeee; ">
-		                 		 <div style="height: 15px;"></div>
-	                 			 <div id="divEmail" class="tjs_register_left" style="width:20%; display: none; ">邮箱：&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_email" name="userInfo.email" value="${email}" maxlength="100" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" autofocus x-webkit-speech style="display: none;"></div>
-				                 <div id="divQQ" class="tjs_register_left" style="width:20%; display: none;">QQ：&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="tjs_register_right" style="margin-left:20px"><input id="register_qq" name="userInfo.qqNo" value="${qq}" maxlength="16" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" autofocus x-webkit-speech style="display: none;"></div>
-				                 <div id="divSumbit" style="height:60px; width:78%; text-align: center;margin-left:84px; display: none;"><a id="register-submit-btn"  class="tjs_registerbtn">保&nbsp;&nbsp;存</a></div>
-	                 		</div>
-	                 		<div style="height: 5px;"></div>
-	                 </div>
-	                 
 	                </form>     
                  </div>
                 <!--/无产品状态-->
@@ -169,10 +157,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		$("#register-submit-btn").click(function(e){
-			e.preventDefault();
-			$(".modify-form").submit();
-		});
 		
 		//修改成功提示
 		if('${changeSucess}'=='true'){
@@ -197,23 +181,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 	
 	function showChange(){
-		if($("#divEmail").is(':hidden')){
-			$("#divEmail").show();
-			$("#divQQ").show();
-			$("#divSumbit").show();
-			$("#register_email").show();
-			$("#register_qq").show();
-			$("#divMore").show();
-			$("#a_mail_qq").html("取消修改");
-		}else{
-			$("#divEmail").hide();
-			$("#divQQ").hide();
-			$("#divSumbit").hide();
-			$("#register_email").hide();
-			$("#register_qq").hide();
-			$("#divMore").hide();
-			$("#a_mail_qq").html("立即修改");
-		}
+		
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-emailqq\" action=\"rest/web/userCenter/saveUserInfo\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:28%\">邮箱：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_email\" name=\"userInfo.email\" value=\"${email}\" type=\"text\"  class=\"tjs_register_input  tjs_width245px\" tabindex=\"1\" spellcheck=\"false\" maxLength=\"100\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_email\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:28%\">QQ：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_qq\" name=\"userInfo.qqNo\" value=\"${qq}\" type=\"text\"  class=\"tjs_register_input  tjs_width245px\" tabindex=\"2\" spellcheck=\"false\" maxLength=\"16\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:25%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_qq\"></span></div>";
+		
+		dialogContent += "<div style=\"height:60px; width:75%; text-align: center;\"><a id=\"register-submit-email-btn\" href=\"#\" class=\"tjs_registerbtn\" >提交修改</a></div>";
+		dialogContent += "</form></div>";
+		
+		dInput = dialog({
+		    title: '修改邮箱和QQ',
+		    content: dialogContent
+		});
+		
+		dInput.showModal();	
+		
+		$("#register-submit-email-btn").click(function(e){
+			e.preventDefault();
+			$(".modify-form-emailqq").submit();
+		});
+		
 	}
 	
 	function validateCertId(obj){
@@ -464,6 +455,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 	}
 	
+	var tipDialog;
 	//实名认证输入框
 	var dInput;
 	function validateNameCertId(){
@@ -508,6 +500,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				if(name=='' || certId==''){
 					return false;
 				}
+				
+				//身份证不正确
+				if(!isIdCardNo(certId)){
+					$("#span_register_certId").text("请正确输入您的身份证号码");
+					return false;
+				}else{
+					$("#span_register_certId").text("");
+				}
+				
 				
 				//暂存填写的信息
 				$("#validateHiddenName").val(name);
@@ -588,112 +589,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 	}
 	
-	
-	var tipDialog;
-	function validateRealName(){
-		
-		var realName = $("#register_username").val();
-		var realCertId = $("#register_certId").val();
-		
-		if(realName=="" || realCertId==""){
-			var msg = "";
-			if(realName=="" && realCertId==""){
-				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写姓名和身份证信息";
-			}else if(realName==""){
-				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写姓名";
-			}else if(realCertId==""){
-				msg = "<img src=\"assets/img/peizi/check_fail.png\" valign=\"center\">&nbsp;请填写身份证";
-			}
-			
-			var dNew = dialog({
-    		    content: msg
-    		});
-    		dNew.show();
-    		setTimeout(function () {
-    			dNew.close().remove();
-    		}, 2000);
-    		return false;
-    		
-		}
-		
-		//显示一个模态框验证窗口
-		tipDialog = dialog({
-		    title: '温馨提示',
-		    content: '<div style="float:left;"><img src="assets/img/circle_loading.gif" ></div><div style="text-align:center;float:left;height:32px; line-height:32px;">&nbsp;&nbsp;实名认证中，请稍等...</div>',
-		    width: 300,
-		    cancel: false,
-		    ok: false
-		});
-		tipDialog.showModal();
-
-		setTimeout('showValidateResult("'+realName+'","'+realCertId+'")', 1000);
-		
-	}
-	
-	function showValidateResult(realName, realCertId){
-		//ajax修改后台密码
-		$.ajax({
-		    type: 'POST',
-		    url: 'rest/web/userCenter/valiadCertId' ,
-		    data: {
-		    	name: realName,
-		    	certId: realCertId,
-		    	userId: '${userId}'
-            },
-		    success: function(data){
-		    	if(tipDialog){
-			    	tipDialog.close().remove();
-		    	}
-		    	if(data=="true"){
-		    		$("#validateSuccessImg").show();
-		    		$("#aValidate").html("已实名认证");
-		    		$("#aValidate").css("color","#000000").css("cursor","default");
-		    		$("#aValidate").removeAttr("onclick");
-		    		$("#register_certId").attr("disabled", true);
-		    		$("#register_certId").css("background-color", "#eeeeee");
-		    		$("#register_username").attr("disabled", true);
-		    		$("#register_username").css("background-color", "#eeeeee");
-		    		
-		    		var dNew = dialog({
-		    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;实名认证成功'
-		    		});
-		    		dNew.show();
-		    		setTimeout(function () {
-		    			dNew.close().remove();
-		    		}, 2000);
-		    	}else{
-		    		//如果用户没有先进行保存
-		    		if(data=="-1"){
-		    			var dNew = dialog({
-			    		    content: '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;请先保存后再进行实名认证！'
-			    		});
-			    		dNew.show();
-			    		setTimeout(function () {
-			    			dNew.close().remove();
-			    		}, 2000);
-			    		return false;
-		    		}
-		    		
-		    		if(data=="false"){
-		    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;实名认证失败，请重试！';
-		    		}else{
-		    			data = getMsgContent(data);
-		    			data = '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;' + data;
-		    		}
-		    		var dNew = dialog({
-		    		    content: data
-		    		});
-		    		dNew.show();
-		    		setTimeout(function () {
-		    			dNew.close().remove();
-		    		}, 2000);
-		    		
-		    	}
-		    } ,
-		    dataType: 'text'
-		});
-	}
-	
 	function getMsgContent(code){
 		var msg = "";
 		if(code=="-71"){
@@ -723,7 +618,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		if(obj.value==""){
 			$("#span_register_certId").text("身份证号不能为空");
 		}else{
-			$("#span_register_certId").text("");
+			//身份证不正确
+			if(!isIdCardNo(obj.value)){
+				$("#span_register_certId").text("请正确输入您的身份证号码");
+			}else{
+				$("#span_register_certId").text("");
+			}
 		}
 	}
 	

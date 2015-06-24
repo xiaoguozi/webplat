@@ -193,9 +193,7 @@ public class UserCenterController {
 				CheckResponse response = new CheckResponse();
 				// 测试--跳过验证码
 				try {
-					String value = IdentifierWebService.simpleCheckByJson(certId, name,
-							"tjs_admin", "b8DvR2jl");
-					//String value = "{\"Identifier\":{\"IDNumber\":\"430225198607246010\",\"Name\":\"段育军\",\"FormerName\":null,\"Sex\":\"男性\",\"Nation\":null,\"Birthday\":\"1986-07-24\",\"Company\":null,\"Education\":null,\"MaritalStatus\":null,\"NativePlace\":null,\"BirthPlace\":null,\"Address\":null,\"Photo\":\"\",\"QueryTime\":null,\"IsQueryCitizen\":false,\"Result\":\"不一致\"},\"RawXml\":null,\"ResponseCode\":100,\"ResponseText\":\"成功\"}";
+					String value = IdentifierWebService.simpleCheckByJson(certId, name, "tjs_admin", "b8DvR2jl");
 					response = JSON.parseObject(value, CheckResponse.class);
 					if (response.getResponseCode() == 100) {
 						if ("一致".equals(response.getIdentifier().getResult())) {
