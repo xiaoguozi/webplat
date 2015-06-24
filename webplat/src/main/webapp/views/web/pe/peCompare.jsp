@@ -114,7 +114,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	          </div>
 	          <div class="sub_item" >
 	            <div class="sub_hd">净值走势对比</div>
-	            <div id="chartContainer" class="sub_bd_1" style="min-width: 800px;height: 365px;">
+	            <div id="compare_chart_container" class="sub_bd_1" style="min-width: 800px;height: 365px;">
 	               	
 	            </div>
 	          </div>
@@ -304,7 +304,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script>
 	
 		var chartObj = {
-			renderTo: 'chartContainer',
+			renderTo: 'compare_chart_container',
 			width: 860,
 			height: 350,
 			style: 'text-align:center;margin:0px auto;'

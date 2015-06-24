@@ -91,6 +91,22 @@ public class PEIndexPDetailController {
 			peChartVO.getData().add(dateValue);
 		}
 		lstChartVO.add(peChartVO);
+		
+		//查询沪深300指数
+		peProductNetCtrlModel.setProductId(String.valueOf(300000+Integer.valueOf(peSearchCtrlVO.getPeProductId())));
+		List<PEProductNet> lstPeHs300 = PEProductNetService.getPEProductNetList(peProductNetCtrlModel);
+		PEChartVO peHs300ChartVO = new PEChartVO();
+		peHs300ChartVO.setName("沪深300");
+		for(PEProductNet peProductNet : lstPeHs300){
+			//lstData.add(peProductNet.getTotalNet());
+			Object[] dateValue = new Object[2];
+			dateValue[0] =  calcTime(peProductNet.getNetTime());
+			dateValue[1] = peProductNet.getTotalNet();
+			peHs300ChartVO.getData().add(dateValue);
+		}
+		lstChartVO.add(peHs300ChartVO);
+		
+		
 		//基金经理信息
 		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
 		
