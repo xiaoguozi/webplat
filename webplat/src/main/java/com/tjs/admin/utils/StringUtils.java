@@ -1135,6 +1135,26 @@ public class StringUtils {
 		else
 			return padding(pads, padChar).concat(str);
 	}
+	
+	/**
+	 * 定长的，不足补padChar，多余的删掉
+	 * @param str
+	 * @param size
+	 * @param padChar
+	 * @return
+	 */
+	public static String leftlengthPad(String str, int size, char padChar) {
+		if (str == null)
+			return null;
+		int pads = size - str.length();
+		if (pads <= 0)
+			return str.substring(str.length()-size);
+		if (pads > 8192)
+			return leftPad(str, size, String.valueOf(padChar));
+		else
+			return padding(pads, padChar).concat(str);
+	}
+	
 
 	public static String leftPad(String str, int size, String padStr) {
 		if (str == null)

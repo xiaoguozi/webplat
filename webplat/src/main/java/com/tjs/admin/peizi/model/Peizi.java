@@ -83,19 +83,27 @@ public class Peizi {
 	
 	private BigDecimal dataProfit;;
 	
+	private String dataOrderCode;
+	
+	
 	/**页面段显示支付总金额*/
 	
 	private BigDecimal zfzje;
 	
 	
-	/**页面段显示账户管理费*/
-	
+	/**页面段显示账户管理费*/	
 	private BigDecimal zfglf;
 	
 	
 	
 	
 		
+	public String getDataOrderCode() {
+		return dataOrderCode;
+	}
+	public void setDataOrderCode(String dataOrderCode) {
+		this.dataOrderCode = dataOrderCode;
+	}
 	public Long getDataId() {
 		return dataId;
 	}

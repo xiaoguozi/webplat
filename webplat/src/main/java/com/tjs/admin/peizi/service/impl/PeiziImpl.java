@@ -1,5 +1,6 @@
 package com.tjs.admin.peizi.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,8 @@ import com.tjs.admin.peizi.controller.PeiziCtrlModel;
 import com.tjs.admin.peizi.dao.PeiziMapper;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
+import com.tjs.admin.utils.DateTimeUtils;
+import com.tjs.admin.utils.StringUtils;
 
 @Service
 public class PeiziImpl implements IPeizi {
@@ -32,7 +35,11 @@ public class PeiziImpl implements IPeizi {
 	@Override
 	public int insertPeizi(Peizi peizi) {
 		// TODO Auto-generated method stub
-		return peiziMapper.insertPeizi(peizi);
+		String dataOrderCode = "PZ"+DateTimeUtils.formatDate(new Date(), "yyyyMMdd");
+		peiziMapper.insertPeizi(peizi);	//获取主键
+		dataOrderCode = dataOrderCode+StringUtils.leftlengthPad(String.valueOf(peizi.getDataId()), 6, '0');
+		peizi.setDataOrderCode(dataOrderCode);				
+		return peiziMapper.updateOrderCode(peizi);
 	}
 
 	@Override

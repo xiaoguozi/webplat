@@ -26,5 +26,7 @@ public interface PeiziMapper {
 	public void deleteBatchPeizi(Long[] peiziIds);
 	/**根据ID找到规则*/
 	public Peizi findByPeiziId(Long peiziId);
+	
+	public int updateOrderCode(Peizi peizi);
 		
 }

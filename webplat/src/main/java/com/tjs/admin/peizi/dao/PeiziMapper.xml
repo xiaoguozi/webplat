@@ -35,21 +35,22 @@
 		<result column="data_jyzf" property="dataJyzf" jdbcType="VARCHAR" />
 		<result column="data_jyzf_date" property="dataJyzfDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		<result column="data_jyfc_date" property="dataJyfcDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-		<result column="data_profit" property="dataProfit" javaType="java.math.BigDecimal" />	
+		<result column="data_profit" property="dataProfit" javaType="java.math.BigDecimal" />
+		<result column="data_order_code" property="dataOrderCode" jdbcType="VARCHAR" />	
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
 		data_id,data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
 		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
-		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit
+		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit,data_order_code
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
 		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
-		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit
+		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit,data_order_code
 	</sql>
 
 	<select id="countPeizi" resultType="int"
@@ -152,7 +153,8 @@
 		#{dataJyzf},
 		#{dataJyzfDate},	
 		#{dataJyfcDate},
-		#{dataProfit}				
+		#{dataProfit},
+		#{dataOrderCode}				
 		)
 	</insert>
 	
@@ -168,6 +170,13 @@
 		data_jyzf_date=#{dataJyzfDate},
 		data_jyfc_date=#{dataJyfcDate},
 		data_profit=#{dataProfit}		
+		where data_id=#{dataId}		
+	</update>
+	
+	
+	<update id="updateOrderCode" parameterType="com.tjs.admin.peizi.model.Peizi">
+		update tjs_peizi_data set		
+		data_order_code=#{dataOrderCode}		
 		where data_id=#{dataId}		
 	</update>
 	
