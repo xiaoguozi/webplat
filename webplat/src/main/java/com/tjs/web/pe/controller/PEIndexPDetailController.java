@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.annotation.Resource;
 
@@ -106,6 +105,11 @@ public class PEIndexPDetailController {
 		}
 		lstChartVO.add(peHs300ChartVO);
 		
+		//再逆序排一下净值明细
+		List<PEProductNet> lstPeProductNetAsc = new ArrayList<PEProductNet>();
+		for(int i=lstPeProductNet.size()-1; i>=0; i--){
+			lstPeProductNetAsc.add(lstPeProductNet.get(i));
+		}
 		
 		//基金经理信息
 		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
@@ -156,7 +160,7 @@ public class PEIndexPDetailController {
 		model.addAttribute("peManager", peManager);
 		model.addAttribute("peCompany", peCompany);
 		model.addAttribute("lstProductRate", lstProductRate);
-		model.addAttribute("lstPeProductNet", lstPeProductNet);
+		model.addAttribute("lstPeProductNet", lstPeProductNetAsc);
 		model.addAttribute("currentYear", currentYear+"");
 		model.addAttribute("lstManageProducts", lstManageProducts);
 		model.addAttribute("lstProductIncome", lstProductIncome);
