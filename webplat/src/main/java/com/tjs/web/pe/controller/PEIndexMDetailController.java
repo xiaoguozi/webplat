@@ -101,7 +101,7 @@ public class PEIndexMDetailController {
 			peProductNetCtrlModel.setSortType("asc");
 			peProductNetCtrlModel.setPageNo(0);
 		    List<PEProductNet> lstPEProductNet = peProductNetService.getPEProductNetList(peProductNetCtrlModel);
-		    model.addAttribute("lstPEProductNet", lstPEProductNet);
+		    
 		    
 		    List<PEChartVO> lstChartVO = new ArrayList<PEChartVO>();
 		    PEChartVO peChartVO = new PEChartVO();
@@ -128,6 +128,13 @@ public class PEIndexMDetailController {
 				peHs300ChartVO.getData().add(dateValue);
 			}
 			lstChartVO.add(peHs300ChartVO);
+			
+			//再逆序排一下净值明细
+			List<PEProductNet> lstPeProductNetAsc = new ArrayList<PEProductNet>();
+			for(int i=lstPEProductNet.size()-1; i>=0; i--){
+				lstPeProductNetAsc.add(lstPEProductNet.get(i));
+			}
+			model.addAttribute("lstPEProductNet", lstPeProductNetAsc);
 			
 			String series = gson.toJson(lstChartVO);
 			model.addAttribute("valueSeries", series);
