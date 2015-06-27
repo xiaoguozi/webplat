@@ -116,10 +116,52 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     })
                 </script>
             <div class="mycenter_right" id="mycenter_right">
-                  <div id="modify_data" style="width:75%;text-align: center;margin-top:20px;display:none">
+            	    <h2 class="space-right-h2"><strong>淘金山账户</strong><span style="color: #666; font-size: 13px; font-weight: 300; margin-left: 20px;">账户名： 13714619930</span></h2>
+			        <div class="ms-c3 clearfix">
+			          <div class="ms-c3-l"> <span>账户余额：</span> <br>
+			            <strong>￥0.00</strong>元 <a href="">账户资金明细</a> </div>
+			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a  class="s2" style="margin-right: 30px;">提现</a></p>
+			        </div>
+			        <div class="ms-c2-t" style="margin-bottom: 10px;">
+			          <div id="myAsset">
+			            <dl>
+			              <dt>账户总资产<span id="tip" data-text="可用金额+冻结金额 " class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			              0.00<!-- 0.0 -->
+			                </strong> 元 </dd>
+			            </dl>
+			            <dl>
+			              <dt>配资资产<span id="tip1" data-text="钱生财股票配资金额" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			             
+			                          0
+			                          </strong> 元 </dd>
+			            </dl>
+			            <dl>
+			              <dt>风险保证金<span id="tip2" data-text="风险保证金 + 停牌准备金" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>
+			            
+			                          0
+			                          </strong> 元 </dd>
+			            </dl>
+			            <dl>
+			            <dt>冻结金额</dt>
+			              <dd> <strong>￥0.00</strong> 元 </dd>
+			            
+			              
+			            </dl>
+			            <dl class="last width ">
+			              <dt>账户余额</dt>
+			              <dd> <strong>￥0.00</strong> 元 </dd>
+			            </dl>
+			            
+			          </div>
+			        </div>
+            
+                  <div id="modify_data" style="width:75%;text-align: center;margin-top:1px;display:none">
                     <span style="width:auto;font-size:40px;text-align: center;" id="modify_tip"></span>
                   </div>                         
-                  <div >
+                  <div style="margin-bottom: 20px;">
 	                <form class="modify-form" id="modify-form" action="rest/web/userCenter/saveUserInfo" method="post">
 	                 <input type="hidden" id="validateHiddenName" />
 	                 <input type="hidden" id="validateHiddenCertId" />
