@@ -375,6 +375,109 @@ alter table t_user_info add  cert_id varchar(20) comment '身份证明信息';
 alter table t_user_info add  is_validate int(2) DEFAULT 0 COMMENT '是否已实名认证：0、未实名认证；1、已实名认证';
 
 
+CREATE TABLE `tjs_cust_bank` (
+  `bank_id` bigint(20) NOT NULL COMMENT '序号',
+  `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
+  `card_from` smallint(2) DEFAULT '0' COMMENT '卡来源(0 电脑 1手机)',
+  `bank_code` varchar(20) DEFAULT NULL COMMENT '银行代号',
+  `card_no` varchar(30) DEFAULT NULL COMMENT '卡号',
+  `bank_province` varchar(30) DEFAULT NULL COMMENT '省份',
+  `bank_city` varchar(250) DEFAULT NULL COMMENT '所属城市',
+  `is_quick` smallint(1) DEFAULT '0' COMMENT '是否快捷支付',
+  `branch_name` varchar(250) DEFAULT NULL COMMENT '所属分行',
+  `create_time` datetime DEFAULT NULL COMMENT '添加时间',
+  PRIMARY KEY (`bank_id`),
+  UNIQUE KEY `UQ_t_cust_bank` (`customer_id`,`card_from`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=1752 DEFAULT CHARSET=utf8 COMMENT='银行卡表';
+
+
+
+CREATE TABLE `tjs_recharge` (
+  `recharge_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `customer_id` bigint(20) DEFAULT NULL COMMENT '用户序号',
+  `fund_type` varchar(20) DEFAULT NULL COMMENT '充值类型',
+  `amount` decimal(18,0) DEFAULT NULL COMMENT '充值金额',
+  `status` smallint(1) DEFAULT NULL COMMENT '充值状态(0 未完成 1 成功 2 失败)',
+  `paynumber` varchar(100) DEFAULT NULL COMMENT '`充值流水号',
+  `card_no` varchar(50) DEFAULT NULL COMMENT '充值账号',
+  `record_desc` varchar(1000) DEFAULT NULL COMMENT '充值描述',
+  `request_ip` varchar(60) DEFAULT NULL COMMENT '请求IP',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `audit_by` varchar(50) DEFAULT NULL COMMENT '如果有线下充值，可以通过后台管理加值的',
+  `update_time` datetime DEFAULT NULL COMMENT '成功时间',
+  `lockid` int(4) DEFAULT '1' COMMENT '锁',
+  PRIMARY KEY (`recharge_id`),
+  KEY `IDX_recharge_cust_id` (`customer_id`) USING BTREE,
+  KEY `IDX_recharge_createtime` (`create_time`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='充值记录表';
+
+
+CREATE TABLE `tjs_withdraw` (
+  `withdraw_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
+  `bank_code` varchar(20) DEFAULT NULL COMMENT '银行',
+  `card_from` smallint(1) DEFAULT '0' COMMENT '卡来源(0 电脑 1手机)',
+  `card_no` varchar(30) DEFAULT NULL COMMENT '提现账号',
+  `bank_province` varchar(10) DEFAULT NULL COMMENT '所属省',
+  `bank_city` varchar(30) DEFAULT NULL COMMENT '所属城市',
+  `amount` decimal(20,2) NOT NULL COMMENT '提现金额',
+  `poundage_amount` decimal(20,2) NOT NULL COMMENT '手续费',
+  `branch_name` varchar(150) DEFAULT NULL COMMENT '所属分行',
+  `request_ip` varchar(60) DEFAULT NULL COMMENT '请求IP',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `status` smallint(2) DEFAULT NULL COMMENT '提现状态(0 待审核 1 待确定 2 完成 3 取消)',
+  `audit_by` varchar(50) DEFAULT NULL COMMENT '审核人',
+  `audit_time` datetime DEFAULT NULL COMMENT '审核时间',
+  `audit_desc` varchar(200) DEFAULT NULL COMMENT '审核描述',
+  `check_by` varchar(50) DEFAULT NULL COMMENT '确定人',
+  `check_time` datetime DEFAULT NULL COMMENT '确定时间',
+  `lockid` int(4) DEFAULT '1' COMMENT '业务锁',
+  PRIMARY KEY (`withdraw_id`),
+  KEY `IDX_withdraw_cust_id` (`customer_id`) USING BTREE,
+  KEY `IDX_withdraw_createtime` (`create_time`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2606 DEFAULT CHARSET=utf8 COMMENT='提现记录申请表';
+
+
+CREATE TABLE `tjs_customer_fund` (
+  `customer_fund_id` bigint(20) NOT NULL COMMENT '个人账户流水号',
+  `customer_id` bigint(20) DEFAULT NULL COMMENT '客服ID',
+  `total_fund` decimal(18,2) DEFAULT '0.00' COMMENT '账户总额',
+  `usable_fund` decimal(18,2) DEFAULT '0.00' COMMENT '可用金额',
+  `peizi_fund` decimal(18,2) DEFAULT '0.00',
+  `fxbz_fund` decimal(18,2) DEFAULT '0.00' COMMENT '风险保证金',
+  `dongjie_fund` decimal(18,2) DEFAULT '0.00' COMMENT '冻结金额',
+  PRIMARY KEY (`customer_fund_id`),
+  UNIQUE KEY `fxbz_fund_UNIQUE` (`fxbz_fund`),
+  UNIQUE KEY `customer_id_UNIQUE` (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='个人资金账户';
+
+
+CREATE TABLE `tjs_fund_record` (
+  `record_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
+  `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
+  `fund_type` varchar(20) DEFAULT NULL COMMENT '资金类型10:充值,20配资风险保证金,30借款利息,40配资收益,50,提现',
+  `amount` decimal(20,2) DEFAULT NULL COMMENT '操作金额',
+  `usable_amount` decimal(20,2) DEFAULT NULL COMMENT '可用金额',
+  `business_id` varchar(100) DEFAULT NULL COMMENT '业务序号(提现对应提现的id 充值对应充值的ID)',
+  `record_desc` varchar(300) DEFAULT NULL COMMENT '操作描述',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(50) DEFAULT NULL COMMENT '创建人',
+  PRIMARY KEY (`record_id`),
+  KEY `IDX_FUND_RECORD_CUST` (`customer_id`) USING BTREE,
+  KEY `IDX_FUND_RECORD_CREATETIME` (`create_time`) USING BTREE,
+  KEY `IDX_FUND_RECORD_TYPE` (`fund_type`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=50622 DEFAULT CHARSET=utf8 COMMENT='资金流水';
+
+
+
+
+
+
+
+
+
 
 
 
