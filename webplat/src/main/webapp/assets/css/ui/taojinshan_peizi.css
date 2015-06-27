@@ -935,7 +935,7 @@ text-align:center;
 	margin-left: 125px;
 }
 .m_login_txt1 {
-	background: url("../images/error_icon.png") no-repeat left; margin: 13px 0px 0px 23px; border: currentColor; height: 16px; color: rgb(252, 55, 9); line-height: 16px; padding-left: 26px; font-size: 14px; font-style: normal; float: left;
+	background: url("../../img/zhifu/error_icon.png") no-repeat left; margin: 13px 0px 0px 23px; border: currentColor; height: 16px; color: rgb(252, 55, 9); line-height: 16px; padding-left: 26px; font-size: 14px; font-style: normal; float: left;
 }
 .dsn {
 	display: none;
@@ -973,3 +973,11 @@ text-align:center;
 .bank_list li i > input {
 	margin-top: 16px;
 }
+.l1 p{
+	padding-left:100px;
+	height:70px;
+	background:url("../../img/zhifu/ms08.png") 10px 5px no-repeat;
+}
+
+.btn-box .btn2{ width:120px; height:30px; color:#fff; background:#F60; margin-right:10px; margin-top:10px; border:0;border-radius:3px; font-size:14px; cursor:pointer;}
+.btn-box .btn{ background:#999; color:#fff;}

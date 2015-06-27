@@ -87,7 +87,7 @@
 					class="txt">个人中心</span>
 			</div>
 		</div>
-		<div class="w100bg">
+		<div class="w100bg" >
 			<hr class="pc" />
 			<div class="tjs_1108px center">
 				<div class="bgcolor">
@@ -148,7 +148,7 @@
 						</h2>
 
 						<div class="l_recharge"
-							style="height: 221px; background: #f6f6f6; margin-right: 15px;">
+							style="height: 200px; background: #f6f6f6; margin-right: 15px;">
 							<div class="login_wrap l_mat clr">
 								<div class="l_login_t l_ft18">账户余额：</div>
 								<div class="fl">
@@ -165,9 +165,12 @@
 													name="amount" type="text" maxlength="12" value="请输入金额（元）"
 													init-data="请输入金额（元）" autocomplete="false"
 													onfocus="if(this.value=='请输入金额（元）'){this.value='';}"
-													onblur="if(this.value==''){this.value='请输入金额（元）';}">
+													onblur="if(this.value==''){this.value='请输入金额（元）';}else{$('#rechargeAmountError').hide();}"
+													onkeyup="value=value.replace(/[^\d]/g,'') "
+													onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+													>
 											</div>
-											<p id="rechargeAmountError" class=" m_login_txt1 dsn"
+											<p id="rechargeAmountError" class="m_login_txt1 dsn"
 												style="display: none">输入错误</p>
 										</div>
 									</div>
@@ -180,7 +183,9 @@
 									</div>
 							</div>
 						</div>
-						<div class="pt20 pb20">
+							
+						<div style="margin-top: 20px; margin-bottom: 20px;">选择银行</div>
+						<div style="height: 350px;">
 							<UL id="radioImage" class="bank_list l_bank_list  clr">
 								<LI id="yh1" onclick="yhxz(1);"><I><INPUT
 										name="pdFrpId" checked="checked" value="BOC-NET-B2C"
@@ -269,6 +274,8 @@
 									</P></LI>
 							</UL>
 						</div>
+						
+						
 					</div>
 				</div>
 
@@ -283,8 +290,33 @@
 		$(document).ready(function () {
 			$("#aSubmit").click(function(e){
 				e.preventDefault();
+				if($("#rechargeAmount").val()=="" || $("#rechargeAmount").val()=="请输入金额（元）"){
+					$("#rechargeAmountError").show();
+					$("#rechargeAmountError").html("请输入充值金额");
+					return false;
+				}else{
+					$("#rechargeAmountError").hide();
+				}
+				var callbackUrl = "<%=basePath%>rest/web/userCenter/zhifu/callback";
+				var pdFrpId = $("input:radio[name=pdFrpId]:checked").val();
+				var payUrl = "<%=basePath%>rest/web/userCenter/zhifu/epay?pdFrpId="+pdFrpId
+						+"&rechargeAmount="+$("#rechargeAmount").val()
+						+"&callbackUrl="+callbackUrl;
+				window.open(payUrl, "_blank");
 				
+				var dialogContent = "<div class=\"l1\">";
+				dialogContent += "<p>充值完成前，请不要关闭此窗口<br>";
+				dialogContent += " 操作完成后，请根据您的充值的情况点击下面按钮</p>";
+				dialogContent += "<div class=\"btn-box\" style=\"float:right;\">";
+				dialogContent += "<button type=\"button\" class=\"btn2 btn\" id=\"chargeFailed\">充值遇到问题</button>";
+				dialogContent += "<button type=\"button\" class=\"btn2\" id=\"chargeSuccess\">充值完成</button>";
+				dialogContent += "</div></div>";
 				
+				var d = dialog({
+				    title: '账户充值提示',
+				    content: dialogContent
+				});
+				d.showModal();
 				
 			});
 			
