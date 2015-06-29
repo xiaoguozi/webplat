@@ -13,7 +13,7 @@ public class FundRecord {
 	  private  Long recordId;
 	  /**用户序号 */
       private Long customerId;
-      /**资金类型10:充值,20配资风险保证金,30借款利息,40配资收益,50,提现 */
+      /**资金类型 */
       private String FundType;
       /**操作金额 */
       private BigDecimal amount;
