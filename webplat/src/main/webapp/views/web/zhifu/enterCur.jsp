@@ -82,9 +82,9 @@
 		<div class="mod_breadcrumb">
 			<div class="layout_n clearfix">
 				<span class="home">当前位置 ：</span> <a href="" class="path_item">首页</a>
-				<span class="sep">&gt;</span> <a href="rest/web/peizi/index"
-					class="path_item">配资</a> <span class="sep">&gt;</span> <span
-					class="txt">个人中心</span>
+				<span class="sep">&gt;</span> <a href="rest/web/userCenter/index"
+					class="path_item">个人中心</a> <span class="sep">&gt;</span> <span
+					class="txt">充值</span>
 			</div>
 		</div>
 		<div class="w100bg" >
@@ -304,9 +304,9 @@
 						+"&callbackUrl="+callbackUrl;
 				window.open(payUrl, "_blank");
 				
-				var dialogContent = "<div class=\"l1\">";
-				dialogContent += "<p>充值完成前，请不要关闭此窗口<br>";
-				dialogContent += " 操作完成后，请根据您的充值的情况点击下面按钮</p>";
+				var dialogContent = "<div class=\"l1\"> ";
+				dialogContent += "<p><span>充值完成前，请不要关闭此窗口<br>";
+				dialogContent += " 操作完成后，请根据您的充值的情况点击下面按钮</span></p>";
 				dialogContent += "<div class=\"btn-box\" style=\"float:right;\">";
 				dialogContent += "<button type=\"button\" class=\"btn2 btn\" id=\"chargeFailed\">充值遇到问题</button>";
 				dialogContent += "<button type=\"button\" class=\"btn2\" id=\"chargeSuccess\">充值完成</button>";
