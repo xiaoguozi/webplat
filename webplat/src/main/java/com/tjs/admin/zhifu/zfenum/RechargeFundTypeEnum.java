@@ -1,6 +1,6 @@
 package com.tjs.admin.zhifu.zfenum;
 
-public enum RechangeFundTypeEnum  {
+public enum RechargeFundTypeEnum  {
 	
 	   YIBAOZHIFU("1","易宝支付");	   	   
 	   /** 键 */
@@ -12,7 +12,7 @@ public enum RechangeFundTypeEnum  {
 		/** 值 */
 		private String value;
 
-		private RechangeFundTypeEnum(String key, String value){
+		private RechargeFundTypeEnum(String key, String value){
 			this.key = key;
 			this.value = value;
 			this.integerKey = Integer.valueOf(key);
