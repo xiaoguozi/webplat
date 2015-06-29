@@ -5,8 +5,8 @@
 		<id column="bank_id" property="bankId" javaType="java.lang.Long"  jdbcType="BIGINT" />
 		<result column="customer_id" property="customerId" javaType="java.lang.Long"  jdbcType="BIGINT"/>
 		<result column="card_from" property="cardFrom" javaType="java.lang.Integer"/>
-		<result column="bank_name" property="bankName" javaType="VARCHAR"/>
-		<result column="bank_code" property="bankCode" javaType="VARCHAR"/>		
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR"/>
+		<result column="bank_code" property="bankCode" jdbcType="VARCHAR"/>		
 		<result column="card_no" property="bankNo" jdbcType="VARCHAR"/>		
 		<result column="bank_province" property="bankProvince" jdbcType="VARCHAR"/>
 		<result column="bank_city" property="bankCity" jdbcType="VARCHAR"/>		
