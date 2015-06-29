@@ -1,209 +1,124 @@
-<%@ page language="java" contentType="text/html; charset=gbk"%>
-<%@ page import="com.tjs.core.zhifu.*" %>
-<%! String formatString(String text) {
-		return (text == null) ? "" : text.trim();
-	}
-%>
+<%@ include file="/views/web/include.jsp"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
-	request.setCharacterEncoding("GBK");
-
-	String p1_MerId				= formatString(request.getParameter("p1_MerId"));
-	String r0_Cmd               = formatString(request.getParameter("r0_Cmd"));
-	String r1_Code              = formatString(request.getParameter("r1_Code"));
-	String r2_TrxId             = formatString(request.getParameter("r2_TrxId"));
-	String r3_Amt               = formatString(request.getParameter("r3_Amt"));
-	String r4_Cur               = formatString(request.getParameter("r4_Cur"));
-	String r5_Pid               = formatString(request.getParameter("r5_Pid"));
-	String r6_Order             = formatString(request.getParameter("r6_Order"));
-	String r7_Uid               = formatString(request.getParameter("r7_Uid"));
-	String r8_MP                = formatString(request.getParameter("r8_MP"));
-	String r9_BType             = formatString(request.getParameter("r9_BType"));
-	String rb_BankId            = formatString(request.getParameter("rb_BankId"));
-	String ro_BankOrderId       = formatString(request.getParameter("ro_BankOrderId"));
-	String rp_PayDate           = formatString(request.getParameter("rp_PayDate"));
-	String rq_CardNo            = formatString(request.getParameter("rq_CardNo"));
-	String ru_Trxtime           = formatString(request.getParameter("ru_Trxtime"));
-	String rq_SourceFee         = formatString(request.getParameter("rq_SourceFee"));
-	String rq_TargetFee         = formatString(request.getParameter("rq_TargetFee"));
-	String hmac		            = formatString(request.getParameter("hmac"));
-
-	String[] strArr	= {p1_MerId, r0_Cmd, r1_Code, r2_TrxId, r3_Amt, r4_Cur, r5_Pid, r6_Order, r7_Uid, r8_MP, r9_BType };
-
-	boolean hmacIsCorrect = YeepayService.verifyCallbackHmac(strArr, hmac);
-
-	if(hmacIsCorrect) {
-		if(r9_BType.equals("2")) {
-			out.println("SUCCESS");
-			return;
-		}
-	} else {
-		out.println("Hmac Not Correction!");
-		return;
-	}
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<title>Í¨Öª»Øµ÷</title>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>æ·˜é‡‘å±±-è·Ÿæˆ‘æ·˜é‡‘å±±</title>
+	<link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet" media="screen" type="text/css" />
+	
+	<!--é…èµ„é¡µé¢æ ·å¼--> 
+	<link href="assets/css/ui/peizi.css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/scripts-bottom-min.js"></script>
+	<script type="text/javascript" src="assets/scripts/slide.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
+	<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
+	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 </head>
-	<body>
-		<br /> <br />
-		<table width="70%" border="0" align="center" cellpadding="5" cellspacing="0" style="border:solid 1px #107929">
-			<tr>
-		  		<th align="center" height="30" colspan="5" bgcolor="#6BBE18">
-					Í¨Öª»Øµ÷½á¹û
-				</th>
-		  	</tr>
-			
-			<tr >
-				<td width="25%" align="left">&nbsp;ÉÌ»§±àºÅ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="45"  align="left"> <%=p1_MerId%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">p1_MerId</td> 
-			</tr>
+<body>
+    <div class="home_all">
+       <%@ include file="/views/web/header.jsp"%>
+        <!-- /header_top -->
 
-			<tr >
-				<td width="25%" align="left">&nbsp;ÒµÎñÀàĞÍ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="45"  align="left"> <%=r0_Cmd%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r0_Cmd</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ö§¸¶½á¹û</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r1_Code%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r1_Code</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ò×±¦Á÷Ë®ºÅ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r2_TrxId%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r2_TrxId</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ö§¸¶½ğ¶î</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r3_Amt%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r3_Amt</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;½»Ò×±ÒÖÖ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r4_Cur%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r4_Cur</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÉÌÆ·Ãû³Æ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r5_Pid%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r5_Pid</td> 
-			</tr> 
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÉÌ»§¶©µ¥ºÅ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r6_Order%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r6_Order</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ò×±¦»áÔ±ID</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r7_Uid%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r7_Uid</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;À©Õ¹ĞÅÏ¢</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r8_MP%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r8_MP</td> 
-			</tr>
-
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Í¨ÖªÀàĞÍ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=r9_BType%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">r9_BType</td> 
-			</tr> 
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ö§¸¶Í¨µÀ±àÂë</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=rb_BankId%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">rb_BankId</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÒøĞĞ¶©µ¥ºÅ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=ro_BankOrderId%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">ro_BankOrderId</td> 
-			</tr>
-
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Ö§¸¶³É¹¦Ê±¼ä</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=rp_PayDate%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">rp_PayDate</td> 
-			</tr> 
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÉñÖİĞĞ³äÖµ¿¨ºÅ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=rq_CardNo%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">rq_CardNo</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;Í¨ÖªÊ±¼ä</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=ru_Trxtime%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">ru_Trxtime</td> 
-			</tr>
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÓÃ»§ÊÖĞø·Ñ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=rq_SourceFee%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">rq_SourceFee</td> 
-			</tr>
-
-
-			<tr>
-				<td width="25%" align="left">&nbsp;ÉÌ»§ÊÖĞø·Ñ</td>
-				<td width="5%"  align="center"> : </td> 
-				<td width="35%" align="left"> <%=rq_TargetFee%> </td>
-				<td width="5%"  align="center"> - </td> 
-				<td width="30%" align="left">rq_TargetFee</td> 
-			</tr> 
-
-		</table>
-
-	</body>
+        <div class="header_menu">
+            <div class="tjs_1108px center" style="position: relative;">
+                <div class="logo_wrap">
+                    <a href="">
+                        <img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="æ·˜é‡‘å±±ç†è´¢" /></a>
+                </div>
+                <div class="top_wrap_menu menu">
+                    <ul>
+                        <li><a href="rest/web/peizi/index"><span>é…èµ„é¦–é¡µ</span></a></li>
+                        <li class="tjpz"><a href="rest/web/peizi/capital"><span class="simu_on">æ·˜é‡‘é…èµ„</span></a></li>
+                        <!-- 
+                        <li><span>æ·˜é‡‘å‹Ÿé›†</span></li>
+                        <li><span>æ·˜é‡‘è‡ªè¥</span></li>
+                         -->
+                        <li><a href="rest/web/peizi/usercenter/mfp"><span>ä¸ªäººä¸­å¿ƒ</span></a></li>
+                        <li><a href="rest/web/peizi/trade"><span>äº¤æ˜“è½¯ä»¶ä¸‹è½½</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /header_menu -->
+        <!--äºŒçº§å¯¼èˆª-->
+           <div class="nav_box1">
+                <ul class="nav_menu" style="width:98px;">
+                	<li><a href="rest/web/peizi/mfp/freeActivity">å…è´¹é…</a></li>
+					<li><a href="rest/web/peizi/mxp/monthCapital">å…æ¯é…</a></li>
+					<li><a href="rest/web/peizi/yyp/monthCapital">æœˆæœˆé…</a></li>
+                    <li><a href="rest/web/peizi/ttp/dayCapital">å¤©å¤©é…</a></li>                    
+                    <li><a href="rest/web/peizi/dxp/lowCapital">ä½æ¯1é…1</a></li>
+                </ul>
+            </div>        
+        <!--/äºŒçº§å¯¼èˆª-->
+        <div class="mod_breadcrumb">
+            <div class="layout_n clearfix"><span class="home">å½“å‰ä½ç½® ï¼š</span> <a href="" class="path_item">é¦–é¡µ</a> <span class="sep">&gt;</span> <a href="rest/web/userCenter/index" class="path_item">ä¸ªäººä¸­å¿ƒ</a> <span class="sep">&gt;</span> <span class="txt">æ·˜é‡‘è¯¦æƒ…</span> </div>
+        </div>
+        <div class="w100bg">
+            <div class="tjs_1108px center">
+               <div style="background-color: #FFF; width: 1108px; height: 500px; ">
+               		<div style="background-color: #FFF;  width: 1048px; height: 30px; margin-right:30px; margin-left: 30px; ">
+               		
+               		</div>
+               		<div style="background-color: #F8FFEB;  width: 1048px; height: 150px; margin-right:30px; margin-left: 30px; padding-top:10px; border: #F8F9F1 solid 1px;">
+               				<div style="width: 1048px; height:30px;"></div>
+               				<div style="width: 1048px; height:40px;">
+               					<span style="margin-left: 423px;"><img src="assets/img/zhifu/pay_done.png" align="middle"/><span> æ‚¨å·²æˆåŠŸå……å€¼ï¿¥<span style="color: red; font-size: 17pt;">5000</span>&nbsp;å…ƒ</span></span>
+               				</div>
+               				<div style="width: 1048px; height:30px;">
+               					<span style="margin-left: 459px;">è´¦æˆ·ä½™é¢ï¼š<span style="color: green;">10000</span>&nbsp;å…ƒ</span>
+               				</div>
+               				<div style="width: 1048px; height:30px; text-align: center;">
+               					<span>
+               						  æ‚¨å¯èƒ½éœ€è¦ &nbsp;<a href="rest/web/userCenter/zhifu/enterCur">ç»§ç»­å……å€¼</a>&nbsp;|&nbsp;<a>æŸ¥çœ‹å……å€¼è®°å½•</a>&nbsp;|&nbsp;<a href="" style="cursor: pointer;">è¿”å›æ·˜é‡‘å±±é¦–é¡µ</a>
+               					</span>
+               				</div>
+               		</div>
+               </div>
+        </div>
+    </div>
+    <!-- é…èµ„é¡µå°¾ -->
+    <%@ include file="/views/web/footer.jsp"%>
+    <!-- é…èµ„é¡µå°¾ ç»“æŸ -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*-äºŒçº§å¯¼èˆª-*/
+            $(".tjpz").hover(function () {
+                $(".nav_menu").show();
+                $(".tjpz>a>span").addClass("tspan");
+            }, function () {
+                $(".nav_menu").hide();
+                $(".tjpz>a>span").removeClass("tspan");
+            });
+            $(".nav_menu").hover(function () {
+                $(this).show();
+                $(".tjpz>a>span").addClass("tspan");
+            });
+            $(".nav_menu").mouseleave(function () {
+                $(this).hide();
+                $(".tjpz>a>span").removeClass("tspan");
+            });
+            /*--QQå’¨è¯¢--*/
+            $(".about_box1:eq(2)").hover(function () {
+                $(".qq").attr("src", "assets/img/peizi/qqhove.png");
+                $(".zx").css("color", "#1682CA");
+            }, function () {
+                $(".qq").attr("src", "assets/img/peizi/qq.png");
+                $(".zx").css("color", "#8c969d");
+            })
+            /*--/QQå’¨è¯¢--*/
+        })
+    </script>
+</body>
 </html>
