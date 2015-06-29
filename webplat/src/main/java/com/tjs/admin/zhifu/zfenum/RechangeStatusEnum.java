@@ -4,9 +4,9 @@ public enum RechangeStatusEnum {
 	
    NotFinish("0","未完成"),
    
-   SUCCESS("1","未完成"),
+   SUCCESS("1","成功"),
    
-   FAILED("2","未完成");
+   FAILED("2","失败");
    
    /** 键 */
    private String key;

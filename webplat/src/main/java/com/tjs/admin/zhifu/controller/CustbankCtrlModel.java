@@ -1,26 +1,26 @@
 package com.tjs.admin.zhifu.controller;
 
-import com.tjs.admin.zhifu.model.FundRecord;
+import com.tjs.admin.zhifu.model.Custbank;
 import com.tjs.core.generic.GenericCtrlModel;
 
-public class FundRecordCtrlModel  extends GenericCtrlModel  {
+public class CustbankCtrlModel extends GenericCtrlModel {	
 	private String keyWord;
 	
 	private int limitStart;
 		
-	private FundRecord fundRecord;
+	private Custbank custbank;
 	
 	private int totalPageSize;
 
-	public FundRecord getFundRecord() {
-		if(fundRecord==null){
-			fundRecord = new FundRecord();
+	public Custbank getCustbank() {
+		if(custbank==null){
+			custbank = new Custbank();
 		}
-		return fundRecord;
+		return custbank;
 	}
 
-	public void setFundRecord(FundRecord fundRecord) {
-		this.fundRecord = fundRecord;
+	public void setCustbank(Custbank custbank) {
+		this.custbank = custbank;
 	}
 
 	public String getKeyWord() {

@@ -379,6 +379,7 @@ CREATE TABLE `tjs_cust_bank` (
   `bank_id` bigint(20) NOT NULL COMMENT '序号',
   `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
   `card_from` smallint(2) DEFAULT '0' COMMENT '卡来源(0 电脑 1手机)',
+  `bank_name` varchar(100) DEFAULT NULL COMMENT '银行名字',
   `bank_code` varchar(20) DEFAULT NULL COMMENT '银行代号',
   `card_no` varchar(30) DEFAULT NULL COMMENT '卡号',
   `bank_province` varchar(30) DEFAULT NULL COMMENT '省份',
@@ -389,6 +390,7 @@ CREATE TABLE `tjs_cust_bank` (
   PRIMARY KEY (`bank_id`),
   UNIQUE KEY `UQ_t_cust_bank` (`customer_id`,`card_from`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=1752 DEFAULT CHARSET=utf8 COMMENT='银行卡表';
+
 
 
 

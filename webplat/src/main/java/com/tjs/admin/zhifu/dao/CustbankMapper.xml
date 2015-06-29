@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.CustbankMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.zhifu.model.Custbank">
+		<id column="bank_id" property="bankId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="customer_id" property="customerId" javaType="java.lang.Long"  jdbcType="BIGINT"/>
+		<result column="card_from" property="cardFrom" javaType="java.lang.Integer"/>
+		<result column="bank_name" property="bankName" javaType="VARCHAR"/>
+		<result column="bank_code" property="bankCode" javaType="VARCHAR"/>		
+		<result column="card_no" property="bankNo" jdbcType="VARCHAR"/>		
+		<result column="bank_province" property="bankProvince" jdbcType="VARCHAR"/>
+		<result column="bank_city" property="bankCity" jdbcType="VARCHAR"/>		
+		<result column="is_quick" property="isQuick" javaType="java.lang.Integer"/>		
+		<result column="branch_name" property="branchName" jdbcType="VARCHAR"/>
+		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
+	</resultMap>
+	
+	
+	<sql id="Base_select_Column_List">
+		bank_id,customer_id,card_from,bank_name,bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+	    customer_id,card_from,bank_name,bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time
+	</sql>
+	
+	
+	<select id="countCustbank" resultType="int"
+		parameterType="com.tjs.admin.zhifu.controller.CustbankCtrlModel">
+		select count(*) c from tjs_cust_bank  where 1=1
+		
+		<if test="custbank!= null and custbank.customerId!=null">
+         and  customer_id = #{custbank.customerId}
+        </if>	   					
+	</select>
+	
+	
+	<select id="selectCustbank"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.zhifu.controller.CustbankCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_cust_bank where   1=1	
+		
+		<if test="custbank!= null and custbank.customerId!=null">
+         and  customer_id = #{custbank.customerId}
+        </if>	
+        				      
+        <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>       
+	 </select>
+	
+	
+	
+	<select id="findBybankId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_cust_bank where bank_id=#{bankId}							                  
+	</select>
+	
+	<insert id="insertCustbank" useGeneratedKeys="true"
+		keyProperty="bankId" parameterType="com.tjs.admin.zhifu.model.Custbank">
+		insert into tjs_cust_bank(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{customerId},
+		#{cardFrom},
+		#{bankName},
+		#{bankCode},
+		#{bankNo},
+		#{bankProvince},
+		#{bankCity},
+		#{isQuick},
+		#{branchName},
+		#{createTime}					
+		)
+	</insert>
+
+
+	<delete id="deleteCustbank" parameterType="Long">
+	    delete from tjs_cust_bank where bank_id=#{bankId}
+	</delete>							 
+</mapper>
