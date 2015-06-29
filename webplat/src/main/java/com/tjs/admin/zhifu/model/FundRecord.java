@@ -81,7 +81,5 @@ public class FundRecord {
 	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
-      
-      
-	  
+           	  
 }

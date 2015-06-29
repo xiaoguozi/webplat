@@ -28,7 +28,7 @@ public class Recharge {
 	  /**请求IP */
 	  private String requestIp;
 	  /**创建时间 */
-	  private String createTime;
+	  private Date createTime;
 	  /**创建人 */
 	  private String createBy;
 	  /**如果有线下充值，可以通过后台管理加值的 */
@@ -91,10 +91,10 @@ public class Recharge {
 	public void setRequestIp(String requestIp) {
 		this.requestIp = requestIp;
 	}
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	public String getCreateBy() {

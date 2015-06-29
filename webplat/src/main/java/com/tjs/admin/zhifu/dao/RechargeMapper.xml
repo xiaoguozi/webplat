@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.RechargeMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.zhifu.model.Recharge">
+		<id column="recharge_id" property="rechangeId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="customer_id" property="customerId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="fund_type" property="fundType" jdbcType="VARCHAR" />
+		<result column="amount" property="amount" javaType="java.math.BigDecimal" />
+		<result column="status" property="status" javaType="java.lang.Integer"/>		
+		<result column="paynumber" property="paynumber" jdbcType="VARCHAR" />		
+		<result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+		<result column="record_desc" property="recordDesc" jdbcType="VARCHAR" />		
+		<result column="request_ip" property="requestIp" jdbcType="VARCHAR" />		
+		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />		
+		<result column="audit_by" property="auditBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />	
+		<result column="lockid" property="lockId" javaType="java.lang.Integer"/>
+	</resultMap>
+	
+	
+	<sql id="Base_select_Column_List">
+		recharge_id,customer_id,fund_type,amount,status,paynumber,card_no,record_desc,request_ip,
+		create_time,create_by,audit_by,update_time,lockid
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+	    customer_id,fund_type,amount,status,paynumber,card_no,record_desc,request_ip,
+		create_time,create_by,audit_by,update_time,lockid
+	</sql>
+	
+	 <select id="countRecharge" resultType="int"
+		parameterType="com.tjs.admin.zhifu.controller.RechargeCtrlModel">
+		select count(*) c from tjs_recharge  where 1=1
+		
+		<if test="recharge!= null and recharge.dataUserId!=null">
+         and  customer_id = #{recharge.customerId}
+        </if>	
+     					
+	</select>
+	
+	
+	<select id="selectRecharge"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.zhifu.controller.RechargeCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_recharge where   1=1	
+		
+		<if test="recharge!= null and recharge.dataUserId!=null">
+         and  customer_id = #{recharge.customerId}
+        </if>
+        				      
+        <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+	</select>
+	
+	
+	<select id="findByRechargeId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_recharge where   recharge_id=#{rechangeId}							                  
+	</select>
+	
+	<insert id="insertRecharge" useGeneratedKeys="true"
+		keyProperty="rechangeId" parameterType="com.tjs.admin.zhifu.model.Recharge">
+		insert into tjs_recharge(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{customerId},
+		#{fundType},
+		#{amount},
+		#{status},
+		#{paynumber},
+		#{cardNo},
+		#{recordDesc},
+		#{requestIp},
+		#{createTime},
+		#{createBy},
+		#{updateTime},
+		#{auditBy},
+		#{lockId}						
+		)
+	</insert>
+		
+	<update id="updateRecharge" parameterType="com.tjs.admin.zhifu.model.Recharge">
+		update tjs_recharge set		
+		status=#{status},
+		paynumber=#{paynumber},
+		lockid=#{lockId}		
+		where recharge_id=#{rechangeId}		
+	</update>
+
+	<delete id="deleteRecharge" parameterType="Long">
+	    delete from tjs_recharge  where  recharge_id=#{rechangeId}
+	</delete>	
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.FundRecordMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.peizi.model.PeiziRule">
+		<id column="rule_id" property="ruleId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="rule_type" property="ruleType" jdbcType="VARCHAR" />
+		<result column="rule_pcx" property="rulePcx" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx" property="ruleJjx" javaType="java.math.BigDecimal" />
+		<result column="rule_zjsyqx" property="ruleZjsyqx" jdbcType="INTEGER" />
+		<result column="rule_glsy_type" property="ruleGlsyType" jdbcType="VARCHAR" />
+		<result column="rule_zhglf" property="ruleZhglf" javaType="java.math.BigDecimal" />
+		<result column="rule_nll" property="ruleNll" javaType="java.math.BigDecimal" />
+		<result column="rule_yll" property="ruleYll" javaType="java.math.BigDecimal" />
+			
+		<result column="rule_yll2" property="ruleYll2" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx2" property="rulePcx2" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx2" property="ruleJjx2" javaType="java.math.BigDecimal" />
+		
+		<result column="rule_yll3" property="ruleYll3" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx3" property="rulePcx3" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx3" property="ruleJjx3" javaType="java.math.BigDecimal" />
+		
+		
+		<result column="rule_yll4" property="ruleYll4" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx4" property="rulePcx4" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx4" property="ruleJjx4" javaType="java.math.BigDecimal" />
+		
+		
+		<result column="rule_yll5" property="ruleYll5" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx5" property="rulePcx5" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx5" property="ruleJjx5" javaType="java.math.BigDecimal" />
+		
+		<result column="rule_yll6" property="ruleYll6" javaType="java.math.BigDecimal" />
+		<result column="rule_pcx6" property="rulePcx6" javaType="java.math.BigDecimal" />
+		<result column="rule_jjx6" property="ruleJjx6" javaType="java.math.BigDecimal" />
+		<result column="rule_enable" property="ruleEnable" jdbcType="VARCHAR" />					
+	</resultMap>
+
+	<sql id="Base_select_Column_List">
+		rule_id,rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6,rule_enable
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+		rule_type,rule_pcx,rule_jjx,rule_zjsyqx,rule_glsy_type,rule_zhglf,rule_nll,rule_yll,rule_yll2,rule_pcx2,rule_jjx2,rule_yll3,rule_pcx3,rule_jjx3,rule_yll4,rule_pcx4,rule_jjx4
+		,rule_yll5,rule_pcx5,rule_jjx5,rule_yll6,rule_pcx6,rule_jjx6,rule_enable
+	</sql>
+
+
+	<select id="countPeiziRule" resultType="int"
+		parameterType="com.tjs.admin.peizi.controller.PeiziRuleCtrlModel">
+		select count(*) c from tjs_peizi_rule  where 1=1
+		
+		<if test="peiziRule!= null and peiziRule.ruleType!= '' and peiziRule.ruleType!=null">
+          AND  rule_type = #{peiziRule.ruleType}
+         </if>
+				
+	</select>
+
+	<select id="selectPeiziRule"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.peizi.controller.PeiziRuleCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_peizi_rule where   1=1	
+		
+		 <if test="peiziRule!= null and peiziRule.ruleType!= '' and peiziRule.ruleType!=null">
+          AND  rule_type = #{peiziRule.ruleType}
+         </if>
+					      
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+	</select>
+	
+	
+	<select id="findByPeiziRuleId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_peizi_rule where   rule_Id=#{ruleId}							                  
+	</select>
+	
+	<insert id="insertPeiziRule" useGeneratedKeys="true"
+		keyProperty="ruleId" parameterType="com.tjs.admin.peizi.model.PeiziRule">
+		insert into tjs_peizi_rule(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{ruleType},
+		#{rulePcx},
+		#{ruleJjx},
+		#{ruleZjsyqx},
+		#{ruleGlsyType},
+		#{ruleZhglf},
+		#{ruleNll},
+		#{ruleYll},
+		#{ruleYll2},
+		#{rulePcx2},
+		#{ruleJjx2},
+		#{ruleYll3},
+		#{rulePcx3},
+		#{ruleJjx3},
+		#{ruleYll4},
+		#{rulePcx4},
+		#{ruleJjx4},
+		#{ruleYll5},
+		#{rulePcx5},
+		#{ruleJjx5},
+		#{ruleYll6},
+		#{rulePcx6},
+		#{ruleJjx6},
+		#{ruleEnable}		
+		)
+	</insert>
+	
+	<update id="updatePeiziRule" parameterType="com.tjs.admin.peizi.model.PeiziRule">
+		update tjs_peizi_rule set
+		rule_type=#{ruleType},
+		rule_pcx=#{rulePcx},
+		rule_jjx=#{ruleJjx},
+		rule_zjsyqx=#{ruleZjsyqx},
+		rule_glsy_type=#{ruleGlsyType},
+		rule_zhglf=#{ruleZhglf},
+		rule_nll=#{ruleNll},
+		rule_yll=#{ruleYll},		
+		rule_yll2=#{ruleYll2},
+		rule_pcx2=#{rulePcx2},
+		rule_jjx2=#{ruleJjx2},
+		rule_yll3=#{ruleYll3},
+		rule_pcx3=#{rulePcx3},
+		rule_jjx3=#{ruleJjx3},
+		rule_yll4=#{ruleYll4},
+		rule_pcx4=#{rulePcx4},
+		rule_jjx4=#{ruleJjx4},
+		rule_yll5=#{ruleYll5},
+		rule_pcx5=#{rulePcx5},
+		rule_jjx5=#{ruleJjx5},
+		rule_yll6=#{ruleYll6},
+		rule_pcx6=#{rulePcx6},
+		rule_jjx6=#{ruleJjx6},
+		rule_enable=#{ruleEnable}					
+		where rule_id=#{ruleId}		
+	</update>
+		
+	<delete id="deletePeiziRule" parameterType="Long">
+	    delete from tjs_peizi_rule  where  rule_id=#{ruleId}
+	</delete>
+	
+	
+	<delete id="deleteBatchPeiziRule" parameterType="Long">
+	  delete from tjs_peizi_rule  where rule_id in 
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+	     </foreach>
+	</delete>	
+</mapper>
