@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.CustomerFundMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.zhifu.model.CustomerFund">
+		<id column="customer_fund_id" property="customerFundId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="customer_id" property="customerId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="total_fund" property="totalFund" javaType="java.math.BigDecimal" />
+		<result column="usable_fund" property="usebleFund" javaType="java.math.BigDecimal" />
+		<result column="peizi_fund" property="peiziFund" javaType="java.math.BigDecimal" />
+		<result column="fxbz_fund" property="fxbzFund" javaType="java.math.BigDecimal" />
+		<result column="dongjie_fund" property="dongjieFund" javaType="java.math.BigDecimal" />
+		<result column="lock_Id" property="lockId" javaType="java.lang.Integer" />
+	</resultMap>
+	
+	
+	<sql id="Base_select_Column_List">
+		customer_fund_id,customer_id,total_fund,usable_fund,peizi_fund,fxbz_fund,dongjie_fund,lock_Id
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+	    customer_id,total_fund,usable_fund,peizi_fund,fxbz_fund,dongjie_fund,lock_Id
+	</sql>
+	
+	 <select id="countCustomerFund" resultType="int"
+		parameterType="com.tjs.admin.zhifu.controller.CustomerFundCtrlModel">
+		select count(*) c from tjs_customer_fund  where 1=1
+		
+		<if test="customerFund!= null and customerFund.customerId!=null">
+         and  customer_id = #{customerFund.customerId}
+        </if>	
+     					
+	</select>
+	
+	
+	<select id="selectCustomerFund"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.zhifu.controller.CustomerFundCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_customer_fund where   1=1	
+		
+		<if test="customerFund!= null and customerFund.customerId!=null">
+         and  customer_id = #{customerFund.customerId}
+        </if>
+        				      
+        <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+	</select>
+	
+	
+	<select id="findByCustomerFundId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_customer_fund where customer_fund_id=#{customerFundId}							                  
+	</select>
+	
+	<insert id="insertCustomerFund" useGeneratedKeys="true"
+		keyProperty="customerFundId" parameterType="com.tjs.admin.zhifu.model.CustomerFund">
+		insert into tjs_customer_fund(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{customerId},
+		#{totalFund},
+		#{usebleFund},
+		#{peiziFund},
+		#{fxbzFund},
+		#{dongjieFund},
+		#{lockId}					
+		)
+	</insert>
+		
+	<update id="updateCustomerFund" parameterType="com.tjs.admin.zhifu.model.CustomerFund">
+		update tjs_customer_fund set		
+		total_fund=#{totalFund},
+		usable_fund=#{usebleFund},
+		peizi_fund=#{usebleFund},
+		fxbz_fund=#{peiziFund},
+		dongjie_fund=#{fxbzFund}
+		lock_Id=(#{lockId}+1)				
+		where customer_fund_id=#{customerFundId}
+		and lock_Id =#{lockId}	
+	</update>
+
+	<delete id="deleteCustomerFund" parameterType="Long">
+	    delete from tjs_customer_fund  where  customer_fund_id=#{customerFundId}
+	</delete>	
+</mapper>

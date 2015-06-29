@@ -22,6 +22,8 @@ public class CustomerFund {
 	private BigDecimal fxbzFund ;
 	/**冻结金额 */
 	private BigDecimal dongjieFund;
+	/**版本号*/
+	private Integer lockId;
 	
 	public Long getCustomerFundId() {
 		return customerFundId;
@@ -65,7 +67,10 @@ public class CustomerFund {
 	public void setDongjieFund(BigDecimal dongjieFund) {
 		this.dongjieFund = dongjieFund;
 	}
-	
-	  
-
+	public Integer getLockId() {
+		return lockId;
+	}
+	public void setLockId(Integer lockId) {
+		this.lockId = lockId;
+	}	
 }

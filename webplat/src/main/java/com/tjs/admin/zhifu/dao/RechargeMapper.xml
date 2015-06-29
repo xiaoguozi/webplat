@@ -92,8 +92,9 @@
 		update tjs_recharge set		
 		status=#{status},
 		paynumber=#{paynumber},
-		lockid=#{lockId}		
-		where recharge_id=#{rechangeId}		
+		lockid=(#{lockId}+1)		
+		where recharge_id=#{rechangeId}
+		and lockid=#{lockId}		
 	</update>
 
 	<delete id="deleteRecharge" parameterType="Long">
