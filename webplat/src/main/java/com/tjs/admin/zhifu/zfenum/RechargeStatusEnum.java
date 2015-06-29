@@ -1,6 +1,6 @@
 package com.tjs.admin.zhifu.zfenum;
 
-public enum RechangeStatusEnum {
+public enum RechargeStatusEnum {
 	
    NotFinish("0","未完成"),
    
@@ -18,7 +18,7 @@ public enum RechangeStatusEnum {
 	private String value;
 
 
-	private RechangeStatusEnum(String key, String value){
+	private RechargeStatusEnum(String key, String value){
 		this.key = key;
 		this.value = value;
 		this.integerKey = Integer.valueOf(key);
