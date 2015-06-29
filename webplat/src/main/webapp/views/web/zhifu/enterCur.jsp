@@ -230,46 +230,46 @@
 									</P></LI>
 								<LI id="yh9" onclick="yhxz(9);"><I><INPUT
 										name="pdFrpId" value="CIB-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
+									<P style="height: 33px;">
 										<IMG alt="兴业银行" src="assets/img/zhifu/xingye.gif">
 									</P></LI>
 								<LI id="yh10" onclick="yhxz(10);"><I><INPUT
 										name="pdFrpId" value="BOCO-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
+									<P style="height: 33px;">
 										<IMG alt="交通银行" src="assets/img/zhifu/jiaotong.gif">
 									</P></LI>
 								<LI id="yh11" onclick="yhxz(11);"><I><INPUT
 										name="pdFrpId" value="SPDB-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
+									<P style="height: 33px;">
 										<IMG alt="浦发银行" src="assets/img/zhifu/shangpufa.gif">
 									</P></LI>
 								<LI id="yh12" onclick="yhxz(12);"><I><INPUT
 										name="pdFrpId" value="HXB-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
+									<P style="height: 33px;">
 										<IMG alt="华夏银行" src="assets/img/zhifu/huaxia.gif">
 									</P></LI>
 								<LI id="yh13" onclick="yhxz(13);"><I><INPUT
 										name="pdFrpId" value="PINGANBANK-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
-										<IMG alt="平安银行" style="margin-top: 1px;"
+									<P style="height: 33px;">
+										<IMG alt="平安银行" style="margin-top: 0px;"
 											src="assets/img/zhifu/pingan.gif">
 									</P></LI>
 								<LI id="yh14" onclick="yhxz(14);"><I><INPUT
 										name="pdFrpId" value="SHB-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
-										<IMG alt="上海银行" style="margin-top: 1px;"
+									<P style="height: 33px;">
+										<IMG alt="上海银行" style="margin-top: 0px;"
 											src="assets/img/zhifu/shanghaibank.gif">
 									</P></LI>
 								<LI id="yh15" onclick="yhxz(15);"><I><INPUT
 										name="pdFrpId" value="SDB-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
-										<IMG alt="深圳发展银行" style="margin-top: 1px;"
+									<P style="height: 33px;">
+										<IMG alt="深圳发展银行" style="margin-top: 0px;"
 											src="assets/img/zhifu/shenfa.gif">
 									</P></LI>
 								<LI id="yh16" onclick="yhxz(16);"><I><INPUT
 										name="pdFrpId" value="CMBC-NET-B2C" type="radio"></I>
-									<P style="height: 34px;">
-										<IMG alt="民生银行" style="margin-top: 1px;"
+									<P style="height: 33px;">
+										<IMG alt="民生银行" style="margin-top: 0px;"
 											src="assets/img/zhifu/minsheng.gif">
 									</P></LI>
 							</UL>
