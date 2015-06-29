@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.tjs.admin.peizi.model.Peizi;
+import org.springframework.stereotype.Service;
+
 import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
 import com.tjs.admin.zhifu.dao.RechargeMapper;
 import com.tjs.admin.zhifu.model.Recharge;
 import com.tjs.admin.zhifu.service.IRecharge;
-
+@Service
 public class RechargeImpl implements IRecharge {
 
 	

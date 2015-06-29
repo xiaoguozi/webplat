@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.tjs.admin.zhifu.controller.FundRecordCtrlModel;
 import com.tjs.admin.zhifu.dao.FundRecordMapper;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.service.IFundRecord;
-
+@Service
 public class FundRecordImpl implements IFundRecord{
 
 	@Resource

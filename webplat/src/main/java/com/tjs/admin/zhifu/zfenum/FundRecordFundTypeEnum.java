@@ -13,8 +13,7 @@ public enum FundRecordFundTypeEnum {
 	    TXDJ("00005","提现冻结"),
 	    
 	    TXCG("00006","提现成功");
-	    
-	   	   
+	      	   
 	   /** 键 */
 	   private String key;
 		
