@@ -33,7 +33,7 @@
 		parameterType="com.tjs.admin.zhifu.controller.RechargeCtrlModel">
 		select count(*) c from tjs_recharge  where 1=1
 		
-		<if test="recharge!= null and recharge.dataUserId!=null">
+		<if test="recharge!= null and recharge.customerId!=null">
          and  customer_id = #{recharge.customerId}
         </if>	
      					
@@ -46,7 +46,7 @@
 				
 		from tjs_recharge where   1=1	
 		
-		<if test="recharge!= null and recharge.dataUserId!=null">
+		<if test="recharge!= null and recharge.customerId!=null">
          and  customer_id = #{recharge.customerId}
         </if>
         				      
