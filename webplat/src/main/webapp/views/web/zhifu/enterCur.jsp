@@ -123,7 +123,9 @@
 
 							<li class="zlsz">资料设置</li>
 							<div class="bor_dashed  mmxg">
+							  <span class="bor_dashed">
 								<a href="rest/web/userCenter/userModify" >个人信息</a>
+							   </span>
 							</div>
 
 
