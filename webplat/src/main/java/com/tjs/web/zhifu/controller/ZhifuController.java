@@ -26,6 +26,7 @@ import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
 import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.admin.zhifu.service.IRecharge;
+import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeStatusEnum;
 import com.tjs.core.zhifu.YeepayService;
@@ -50,10 +51,11 @@ public class ZhifuController {
 	@Resource
 	private ICustomerFund customerFundService;
 	
-	
 	@Autowired  
 	private  HttpServletRequest request; 
 
+	private static final String PREFIX = "TJS_TEST_";
+	
 	@RequestMapping("/enterCur")
     public String enterCur(Model model) {
 		model.addAttribute("isLog", "true");
@@ -69,10 +71,11 @@ public class ZhifuController {
 		//插入充值记录
 		Recharge recharge = new Recharge();
 		recharge.setAmount(new BigDecimal(rechargeAmount));
+		recharge.setLockId(1);
 		insertRecharge(request, recharge);
 		
 		String p0_Cmd           = "Buy";
-		String p2_Order         = String.valueOf(recharge.getRechangeId());
+		String p2_Order         = PREFIX + String.valueOf(recharge.getRechangeId());
 		String p3_Amt           = rechargeAmount;
 		String p4_Cur           = "CNY";
 		String p5_Pid           = "productname";
@@ -116,11 +119,16 @@ public class ZhifuController {
 		
 		//1、充值流水
 		String orderId = zhifuModel.getR6_Order();
+		orderId = orderId.replace(PREFIX, "");
 		Recharge recharge = rechargeService.findByRechargeId(Long.valueOf(orderId));
+		if(RechargeStatusEnum.SUCCESS.getIntegerKey().equals(recharge.getStatus())){
+			return "web/zhifu/callback"; 
+		}
 		recharge.setStatus(RechargeStatusEnum.SUCCESS.getIntegerKey());
 		
 		//查询用户个人账户
 		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+		customerFundCtrlModel.getCustomerFund().setCustomerId(user.getId());
 		
 		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
 		CustomerFund customerFund = null;
@@ -130,6 +138,8 @@ public class ZhifuController {
 			CustomerFund cNewCustomerFund = new CustomerFund();
 			cNewCustomerFund.setCustomerId(user.getId());
 			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
+			cNewCustomerFund.setTotalFund(BigDecimal.ZERO);
+			cNewCustomerFund.setLockId(1);
 			customerFundService.insertCustomerFund(cNewCustomerFund);
 			customerFund = cNewCustomerFund;
 		}
@@ -142,6 +152,9 @@ public class ZhifuController {
 			usableAmount = customerFund.getUsebleFund().add(new BigDecimal(zhifuModel.getR3_Amt()));
 		}
 		customerFund.setUsebleFund(usableAmount);
+		//设置总金额
+		customerFund.setTotalFund(customerFund.getTotalFund()==null?new BigDecimal(zhifuModel.getR3_Amt()):
+			customerFund.getTotalFund().add(new BigDecimal(zhifuModel.getR3_Amt())));
 		
 		//3、资金流水
 		FundRecord fundRecord = new FundRecord();
@@ -150,10 +163,14 @@ public class ZhifuController {
 		fundRecord.setCreateBy(userInfo.getName()==null?username:userInfo.getName());
 		fundRecord.setCreateTime(Calendar.getInstance().getTime());
 		fundRecord.setCustomerId(user.getId());
-		fundRecord.setRecordDesc("充值");
+		fundRecord.setFundType(FundRecordFundTypeEnum.CZ.getKey());
+		fundRecord.setRecordDesc(FundRecordFundTypeEnum.CZ.getValue());
 		fundRecord.setUsableAmount(usableAmount);
 		
 		zhifuService.callbackUpdate(recharge, fundRecord, customerFund);
+		
+		model.addAttribute("amount", zhifuModel.getR3_Amt());
+		model.addAttribute("totalAmount", customerFund.getTotalFund());
 		
 		return "web/zhifu/callback";
 	}

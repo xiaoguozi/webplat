@@ -74,10 +74,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                		<div style="background-color: #F8FFEB;  width: 1048px; height: 150px; margin-right:30px; margin-left: 30px; padding-top:10px; border: #F8F9F1 solid 1px;">
                				<div style="width: 1048px; height:30px;"></div>
                				<div style="width: 1048px; height:40px;">
-               					<span style="margin-left: 423px;"><img src="assets/img/zhifu/pay_done.png" align="middle"/><span> 您已成功充值￥<span style="color: red; font-size: 17pt;">5000</span>&nbsp;元</span></span>
+               					<span style="margin-left: 423px;"><img src="assets/img/zhifu/pay_done.png" align="middle"/><span> 您已成功充值￥<span style="color: red; font-size: 17pt;">${amount}</span>&nbsp;元</span></span>
                				</div>
                				<div style="width: 1048px; height:30px;">
-               					<span style="margin-left: 459px;">账户余额：<span style="color: green;">10000</span>&nbsp;元</span>
+               					<span style="margin-left: 459px;">账户余额：<span style="color: green;">${totalAmount}</span>&nbsp;元</span>
                				</div>
                				<div style="width: 1048px; height:30px; text-align: center;">
                					<span>

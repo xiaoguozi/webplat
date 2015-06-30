@@ -25,10 +25,15 @@ public class ZhifuService implements IZhifuService {
 	private ICustomerFund customerFundService;
 
 	@Override
-	public void callbackUpdate(Recharge recharge, FundRecord fundRecord, CustomerFund customerFund) {
-		rechargeService.updateRecharge(recharge);
-		fundRecordService.insertFundRecord(fundRecord);
-		customerFundService.updateCustomerFund(customerFund);
+	public void callbackUpdate(Recharge recharge, FundRecord fundRecord, CustomerFund customerFund) {		
+		int updateCount = rechargeService.updateRecharge(recharge);
+		if(updateCount==1){
+			fundRecordService.insertFundRecord(fundRecord);
+			customerFundService.updateCustomerFund(customerFund);
+		}else{
+			throw new RuntimeException("充值已经更新");
+		}
+		
 	}
 
 }

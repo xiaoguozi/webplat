@@ -166,7 +166,7 @@
 													init-data="请输入金额（元）" autocomplete="false"
 													onfocus="if(this.value=='请输入金额（元）'){this.value='';}"
 													onblur="if(this.value==''){this.value='请输入金额（元）';}else{$('#rechargeAmountError').hide();}"
-													onkeyup="value=value.replace(/[^\d]/g,'') "
+													onkeyup=""
 													onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
 													>
 											</div>
