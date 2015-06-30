@@ -125,6 +125,7 @@ public class ZhifuController {
 			return "web/zhifu/callback"; 
 		}
 		recharge.setStatus(RechargeStatusEnum.SUCCESS.getIntegerKey());
+		recharge.setPaynumber(zhifuModel.getR2_TrxId());
 		
 		//查询用户个人账户
 		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
