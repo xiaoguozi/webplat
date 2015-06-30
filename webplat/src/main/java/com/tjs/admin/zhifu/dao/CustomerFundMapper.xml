@@ -80,7 +80,7 @@
 		usable_fund=#{usebleFund},
 		peizi_fund=#{usebleFund},
 		fxbz_fund=#{peiziFund},
-		dongjie_fund=#{fxbzFund}
+		dongjie_fund=#{fxbzFund},
 		lock_Id=(#{lockId}+1)				
 		where customer_fund_id=#{customerFundId}
 		and lock_Id =#{lockId}	
