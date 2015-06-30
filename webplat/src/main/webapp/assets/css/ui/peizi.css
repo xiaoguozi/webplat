@@ -1317,10 +1317,10 @@
     border-bottom:1px solid #d3d3d3;
     border-top:1px solid #d3d3d3;
 }
-    .wdzj:hover,.wypz:hover {
-        color:#3EAFE9;
-        cursor:pointer;
-    }
+.wdzj:hover,.wypz:hover {
+    color:#3EAFE9;
+    cursor:pointer;
+}
     
     
 .zlsz {
@@ -1342,6 +1342,7 @@
 /*.moneymx ,.ttp, .yyp, .dxp {
     display:none;
 }*/
+
 .wdzj {
     border-top:1px solid #d3d3d3;
     background: url(../../img/peizi/piggy.png) no-repeat 15px 11px;
@@ -1350,10 +1351,29 @@
     text-indent: 1em;
     border-bottom:1px solid #d3d3d3;
 }
-.bor_dashed {
+
+.wdzj:hover{
+        color:#3EAFE9;
+        cursor:pointer;
+  }
+  
+.bor_dashed{
     border-bottom:1px dashed #d3d3d3;
 }
-.moneymx,.mmxg,.wypz_div span {
+
+.wypz_div span {
+    height:40px;
+    line-height:40px;
+    display:block;
+}
+
+.moneymx span {
+    height:40px;
+    line-height:40px;
+    display:block;
+}
+
+.mmxg span {
     height:40px;
     line-height:40px;
     display:block;

@@ -280,11 +280,11 @@
 				</div>
 
 			</div>
-		</div>
 		<hr class="pc" />
 	</div>
 	<!-- 配资页尾 -->
 	<%@ include file="/views/web/footer.jsp"%>
+	</div>
 	<!-- 配资页尾 结束 -->
 	<script type="text/javascript">
 		$(document).ready(function () {

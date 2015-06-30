@@ -91,7 +91,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                         
                         <li class="wdzj">我的资金</li>
-                        <div class="bor_dashed moneymx" style="display:none">
+                        <div class="moneymx">
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">充值</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
@@ -99,7 +99,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </div>
                         
                         <li class="zlsz">资料设置</li>
-                        <div class="bor_dashed  mmxg"><a href="rest/web/userCenter/userModify" style="color:#ff6600">个人信息</a></div>
+                        <div class="bor_dashed  mmxg">
+	                        <span>
+	                        	<a href="rest/web/userCenter/userModify" style="color:#ff6600">个人信息</a>
+	                        </span>
+                        </div>
                         
                         
                     </ul>
@@ -198,8 +202,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <hr class="pc"/>
     </div>
+
 <!-- 配资页尾 -->
 <%@ include file="/views/web/footer.jsp"%>
+</div>
 <!-- 配资页尾 结束 -->
 <script type="text/javascript">
 
