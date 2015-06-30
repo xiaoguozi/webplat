@@ -1,11 +1,11 @@
-package com.tjs.admin.zhifu.dao;
+package com.tjs.admin.zhifu.service;
 
 import java.util.List;
 
 import com.tjs.admin.zhifu.controller.WithdrawCtrlModel;
 import com.tjs.admin.zhifu.model.Withdraw;
 
-public interface WithdrawMapper{
+public interface IWithdraw {
 	/**充值记录数量*/
     public int countWithdraw(WithdrawCtrlModel withdrawCtrlModel);
     /**充值记录*/
@@ -18,5 +18,4 @@ public interface WithdrawMapper{
 	public int deleteWithdraw(Long withdrawId);
 	/**根据ID找到规则*/
 	public Withdraw findByWithdrawId(Long withdrawId);
-	
 }
