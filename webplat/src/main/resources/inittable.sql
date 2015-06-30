@@ -398,7 +398,7 @@ CREATE TABLE `tjs_recharge` (
   `recharge_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `customer_id` bigint(20) DEFAULT NULL COMMENT '用户序号',
   `fund_type` varchar(20) DEFAULT NULL COMMENT '充值类型',
-  `amount` decimal(18,0) DEFAULT NULL COMMENT '充值金额',
+  `amount` decimal(18,2) DEFAULT NULL COMMENT '充值金额',
   `status` smallint(1) DEFAULT NULL COMMENT '充值状态(0 未完成 1 成功 2 失败)',
   `paynumber` varchar(100) DEFAULT NULL COMMENT '`充值流水号',
   `card_no` varchar(50) DEFAULT NULL COMMENT '充值账号',
