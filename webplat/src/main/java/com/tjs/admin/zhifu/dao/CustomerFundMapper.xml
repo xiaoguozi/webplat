@@ -86,7 +86,7 @@
 		and lock_Id =#{lockId}	
 	</update>
 
-	<delete id="deleteCustomerFund" parameterType="Long">
+	<delete id="deleteCustomerFund" parameterType="Long" >
 	    delete from tjs_customer_fund  where  customer_fund_id=#{customerFundId}
 	</delete>	
 </mapper>

@@ -11,7 +11,7 @@ public interface CustomerFundMapper {
 	public int  insertCustomerFund(CustomerFund customerFund);
 		
 	/**根据主键删除个人账户*/
-	public void deleteCustomerFund(Long bankId);
+	public int deleteCustomerFund(Long customerFundId);
 		
 	/**统计个人账户*/
 	public int countCustomerFund(CustomerFundCtrlModel customerFundCtrlModel);
