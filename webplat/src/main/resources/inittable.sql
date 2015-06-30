@@ -418,6 +418,7 @@ CREATE TABLE `tjs_recharge` (
 CREATE TABLE `tjs_withdraw` (
   `withdraw_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
+  `bank_name` varchar(200) DEFAULT NULL COMMENT '银行名字eg:工商银行',
   `bank_code` varchar(20) DEFAULT NULL COMMENT '银行',
   `card_from` smallint(1) DEFAULT '0' COMMENT '卡来源(0 电脑 1手机)',
   `card_no` varchar(30) DEFAULT NULL COMMENT '提现账号',
@@ -439,7 +440,8 @@ CREATE TABLE `tjs_withdraw` (
   PRIMARY KEY (`withdraw_id`),
   KEY `IDX_withdraw_cust_id` (`customer_id`) USING BTREE,
   KEY `IDX_withdraw_createtime` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2606 DEFAULT CHARSET=utf8 COMMENT='提现记录申请表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='提现记录申请表';
+
 
 
 CREATE TABLE `tjs_customer_fund` (
