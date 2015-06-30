@@ -445,7 +445,7 @@ CREATE TABLE `tjs_withdraw` (
 
 
 CREATE TABLE `tjs_customer_fund` (
-  `customer_fund_id` bigint(20) NOT NULL COMMENT '个人账户流水号',
+  `customer_fund_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '个人账户流水号',
   `customer_id` bigint(20) DEFAULT NULL COMMENT '客服ID',
   `total_fund` decimal(18,2) DEFAULT '0.00' COMMENT '账户总额',
   `usable_fund` decimal(18,2) DEFAULT '0.00' COMMENT '可用金额',
