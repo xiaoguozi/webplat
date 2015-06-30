@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.WithdrawMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.zhifu.model.Withdraw">
+		<id column="withdraw_id" property="withrowId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="customer_id" property="customerId" javaType="java.lang.Long"  jdbcType="BIGINT"/>
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR"/>
+		<result column="bank_code" property="bankCode" jdbcType="VARCHAR"/>					
+		<result column="card_from" property="cardFrom" javaType="java.lang.Integer"/>	
+		<result column="card_no" property="cardNo" jdbcType="VARCHAR"/>				
+		<result column="bank_province" property="bankProvince" jdbcType="VARCHAR"/>
+		<result column="bank_city" property="bankcity" jdbcType="VARCHAR"/>		
+		<result column="amount" property="amount" javaType="java.math.BigDecimal" />
+		<result column="poundage_amount" property="poundageAmount" javaType="java.math.BigDecimal" />
+		<result column="branch_name" property="branchName" jdbcType="VARCHAR"/>
+		<result column="request_ip" property="requestIp" jdbcType="VARCHAR"/>					
+		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
+		<result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+		<result column="status" property="status" javaType="java.lang.Integer"/>
+		<result column="audit_by" property="auditBy" jdbcType="VARCHAR"/>						
+		<result column="audit_time" property="auditTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
+		<result column="audit_desc" property="auditDesc" jdbcType="VARCHAR"/>
+		<result column="check_by" property="checkBy" jdbcType="VARCHAR"/>
+		<result column="check_time" property="checkTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
+		<result column="lockid" property="lockId" javaType="java.lang.Integer"/>
+	</resultMap>
+	
+	
+	<sql id="Base_select_Column_List">
+		withdraw_id,customer_id,bank_name,bank_code,card_from,card_no,bank_province,bank_city,amount,poundage_amount,branch_name,
+		request_ip,create_time,create_by,status,audit_by,audit_time,audit_desc,check_by,check_time,lockid
+		
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+	    customer_id,bank_name,bank_code,card_from,card_no,bank_province,bank_city,amount,poundage_amount,branch_name,
+		request_ip,create_time,create_by,status,audit_by,audit_time,audit_desc,check_by,check_time,lockid
+	</sql>
+	
+	
+	<select id="countWithdraw" resultType="int"
+		parameterType="com.tjs.admin.zhifu.controller.WithdrawCtrlModel">
+		select count(*) c from tjs_withdraw  where 1=1
+		
+		<if test="withdraw!= null and withdraw.customerId!=null">
+         and  customer_id = #{withdraw.customerId}
+        </if>	   					
+	</select>
+	
+	
+	<select id="selectWithdraw"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.zhifu.controller.WithdrawCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+				
+		from tjs_withdraw where   1=1	
+		
+		<if test="withdraw!= null and withdraw.customerId!=null">
+         and  customer_id = #{withdraw.customerId}
+        </if>	
+        				      
+        <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+                      
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>       
+	 </select>
+	
+	
+	
+	<select id="findByWithdrawId"  resultMap="BaseResultMap"  parameterType="Long">
+		select			
+		<include refid="Base_select_Column_List" />						
+		from tjs_withdraw where withdraw_id=#{withrowId}							                  
+	</select>
+	
+	<insert id="insertWithdraw" useGeneratedKeys="true"
+		keyProperty="withrowId" parameterType="com.tjs.admin.zhifu.model.Withdraw">
+		insert into tjs_withdraw(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{customerId},
+		#{bankName},
+		#{bankCode},
+		#{cardFrom},
+		#{cardNo},
+		#{bankProvince},
+		#{bankcity},
+		#{amount},
+		#{poundageAmount},
+		#{branchName},
+		#{requestIp},
+		#{createTime},
+		#{createBy},
+		#{status},
+		#{auditBy},
+		#{auditTime},
+		#{auditDesc},
+		#{checkBy},
+		#{checkTime},
+		#{lockId}							
+		)
+	</insert>
+	
+ <update id="updateWithdraw" parameterType="com.tjs.admin.zhifu.model.Withdraw">
+		update tjs_withdraw set		
+		status=#{status},
+		audit_by=#{auditBy},
+	    audit_time=#{auditTime},
+		audit_desc=#{auditDesc},
+		check_by=#{checkBy},
+		check_time=#{checkTime},
+		lockid=(#{lockId}+1)		
+		where withdraw_id=#{withrowId}
+		and lockid=#{lockId}		
+	</update>
+
+	<delete id="deleteWithdraw" parameterType="Long">
+	    delete from tjs_withdraw where withdraw_id=#{withrowId}
+	</delete>							 
+</mapper>

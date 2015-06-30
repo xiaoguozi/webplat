@@ -13,6 +13,8 @@ public class Withdraw {
 	  private Long withrowId;
 	  /**用户序号 */
 	  private Long customerId;
+	  /**银行名字如：工商银行*/
+	  private String bankName;
 	  /**银行 */
 	  private String bankCode;
 	  /**卡来源(0 电脑 1手机) */
@@ -169,7 +171,11 @@ public class Withdraw {
 	public void setLockId(Integer lockId) {
 		this.lockId = lockId;
 	}
-	  
-	  
-	  
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	  	 	  
 }
