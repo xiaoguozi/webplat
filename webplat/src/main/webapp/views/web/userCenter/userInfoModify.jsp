@@ -93,7 +93,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="wdzj">我的资金</li>
                         <div class="moneymx">
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">充值</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur">充值</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">资金明细</a></span>
                         </div>

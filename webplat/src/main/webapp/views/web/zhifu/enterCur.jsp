@@ -114,13 +114,16 @@
 							</div>
 
 							<li class="wdzj">我的资金</li>
-							<div class="bor_dashed moneymx" style="display: none">
-								<a href="javascript:void()">资金明细</a>
-							</div>
+							<div class="moneymx">
+                        	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" style="color: #ff6600">充值</a></span>
+                        	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
+                        	<span class="bor_dashed"><a href="javascript:void()">资金明细</a></span>
+                           </div>
 
 							<li class="zlsz">资料设置</li>
 							<div class="bor_dashed  mmxg">
-								<a href="rest/web/userCenter/userModify" style="color: #ff6600">个人信息</a>
+								<a href="rest/web/userCenter/userModify" >个人信息</a>
 							</div>
 
 
