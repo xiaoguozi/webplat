@@ -22,11 +22,13 @@ import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.controller.FundRecordCtrlModel;
 import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
 import com.tjs.admin.zhifu.model.CustomerFund;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
 import com.tjs.admin.zhifu.service.ICustomerFund;
+import com.tjs.admin.zhifu.service.IFundRecord;
 import com.tjs.admin.zhifu.service.IRecharge;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
@@ -52,6 +54,9 @@ public class ZhifuController {
 	
 	@Resource
 	private ICustomerFund customerFundService;
+	
+	@Resource
+	private IFundRecord fundRecordService;
 	
 	@Autowired  
 	private  HttpServletRequest request; 
@@ -225,7 +230,7 @@ public class ZhifuController {
 		return SUCCESS; 
 	}
 	
-	
+	/** 充值流水 */
 	@RequestMapping("/rechargeHistory")
     public String rechargeHistory(RechargeCtrlModel rechargeCtrlModel, Model model) {
 		
@@ -262,6 +267,45 @@ public class ZhifuController {
 		
 		
 		return "web/zhifu/rechargeHistory";
+	}
+	
+	/** 资金流水 */
+	@RequestMapping("/fundHistory")
+    public String fundHistory(FundRecordCtrlModel fundRecordCtrlModel, Model model) {
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		//查询充值流水
+		fundRecordCtrlModel.getFundRecord().setCustomerId(user.getId());
+		
+    	//设置总条数
+    	int totalCount =fundRecordService.countFundRecord(fundRecordCtrlModel);
+    	fundRecordCtrlModel.setPageSize(8);
+    	fundRecordCtrlModel.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = fundRecordCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(fundRecordCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	fundRecordCtrlModel.setPageNo(1);
+        } else if(fundRecordCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	fundRecordCtrlModel.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = fundRecordCtrlModel.getPageNo();
+        }
+        fundRecordCtrlModel.setPageNo(currentPageNo);
+        
+		List<FundRecord> lstFundRecord = fundRecordService.selectFundRecord(fundRecordCtrlModel);
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		model.addAttribute("totalFund", customerFund.getTotalFund());
+		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		model.addAttribute("lstFundRecord", lstFundRecord);
+		model.addAttribute("isLog", "true");
+		model.addAttribute("fundRecordCtrlModel", fundRecordCtrlModel);
+		
+		
+		return "web/zhifu/fundHistory";
 	}
 	
 	

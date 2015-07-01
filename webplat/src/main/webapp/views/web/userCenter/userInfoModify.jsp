@@ -95,7 +95,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur">充值</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
                         </div>
                         
                         <li class="zlsz">资料设置</li>
@@ -128,7 +128,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             	    <h2 class="space-right-h2"><strong>淘金山账户</strong><span style="color: #666; font-size: 13px; font-weight: 300; margin-left: 20px;">账户名： 13714619930</span></h2>
 			        <div class="ms-c3 clearfix">
 			          <div class="ms-c3-l"> <span>账户余额：</span> <br>
-			            <strong>￥0.00</strong>元 <a href="">账户资金明细</a> </div>
+			            <strong>￥0.00</strong>元 <a href="rest/web/userCenter/zhifu/fundHistory?isFromIndex=1">账户资金明细</a> </div>
 			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a  class="s2" style="margin-right: 30px;">提现</a></p>
 			        </div>
 			        <div class="ms-c2-t" style="margin-bottom: 10px;">

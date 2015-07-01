@@ -11,6 +11,9 @@ public class FundRecordCtrlModel  extends GenericCtrlModel  {
 	private FundRecord fundRecord;
 	
 	private int totalPageSize;
+	
+	/** 是否从首页点进资金明细 */
+	private int isFromIndex = 0;
 
 	public FundRecord getFundRecord() {
 		if(fundRecord==null){
@@ -51,6 +54,14 @@ public class FundRecordCtrlModel  extends GenericCtrlModel  {
 
 	public void setTotalPageSize(int totalPageSize) {
 		this.totalPageSize = totalPageSize;
+	}
+
+	public int getIsFromIndex() {
+		return isFromIndex;
+	}
+
+	public void setIsFromIndex(int isFromIndex) {
+		this.isFromIndex = isFromIndex;
 	}
 	
 }

@@ -118,7 +118,7 @@
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" style="color: #ff6600">充值</a></span>
                         	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
                            </div>
 
 							<li class="zlsz">资料设置</li>
