@@ -1,5 +1,6 @@
 package com.tjs.web.zhifu.controller;
 
+import com.tjs.admin.zhifu.model.Recharge;
 import com.tjs.core.generic.GenericCtrlModel;
 
 /**
@@ -18,6 +19,10 @@ public class ZhifuModel extends GenericCtrlModel {
 
 	/** 回调链接 */
 	private String callbackUrl;
+	
+	private int limitStart;
+	
+	private int totalPageSize;
 	
 	/** --回调结果参数-- */
 	private String p1_MerId;
@@ -57,6 +62,26 @@ public class ZhifuModel extends GenericCtrlModel {
 	private String rq_TargetFee;
 	
 	private String hmac;
+	
+	public int getLimitStart() {
+		return (this.getPageNo()-1)*this.getPageSize();
+	}
+
+	public void setLimitStart(int limitStart) {
+		this.limitStart = limitStart;
+	}
+	
+	public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}
+	}
+
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
+	}
 	
 	
 	public String getRechargeAmount() {

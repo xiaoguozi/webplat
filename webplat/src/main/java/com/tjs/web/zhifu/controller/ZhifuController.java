@@ -22,6 +22,7 @@ import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
 import com.tjs.admin.zhifu.model.CustomerFund;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
@@ -68,24 +69,7 @@ public class ZhifuController {
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
-		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
-		//查询用户个人账户
-		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
-		customerFundCtrlModel.getCustomerFund().setCustomerId(user.getId());
-		
-		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
-		CustomerFund customerFund = null;
-		if(lstCustomerFund!=null && lstCustomerFund.size()>0){
-			customerFund = lstCustomerFund.get(0);
-		}else{
-			CustomerFund cNewCustomerFund = new CustomerFund();
-			cNewCustomerFund.setCustomerId(user.getId());
-			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
-			cNewCustomerFund.setTotalFund(BigDecimal.ZERO);
-			cNewCustomerFund.setLockId(1);
-			customerFundService.insertCustomerFund(cNewCustomerFund);
-			customerFund = cNewCustomerFund;
-		}
+		CustomerFund customerFund = getCustomerFund(user.getId());
 		
 		model.addAttribute("totalFund", customerFund.getTotalFund());
 		model.addAttribute("usableFund", customerFund.getUsebleFund());
@@ -210,6 +194,7 @@ public class ZhifuController {
 		}
 		recharge.setStatus(RechargeStatusEnum.SUCCESS.getIntegerKey());
 		recharge.setPaynumber(zhifuModel.getR2_TrxId());
+		recharge.setUpdateTime(Calendar.getInstance().getTime());
 		
 		//2、个人账户信息
 		CustomerFund customerFund = getCustomerFund(userId);
@@ -238,6 +223,45 @@ public class ZhifuController {
 		zhifuService.callbackUpdate(recharge, fundRecord, customerFund);
 		
 		return SUCCESS; 
+	}
+	
+	
+	@RequestMapping("/rechargeHistory")
+    public String rechargeHistory(RechargeCtrlModel rechargeCtrlModel, Model model) {
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		//查询充值流水
+		rechargeCtrlModel.getRecharge().setCustomerId(user.getId());
+		
+    	//设置总条数
+    	int totalCount =rechargeService.countRecharge(rechargeCtrlModel);
+    	rechargeCtrlModel.setPageSize(8);
+    	rechargeCtrlModel.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = rechargeCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(rechargeCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	rechargeCtrlModel.setPageNo(1);
+        } else if(rechargeCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	rechargeCtrlModel.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = rechargeCtrlModel.getPageNo();
+        }
+        rechargeCtrlModel.setPageNo(currentPageNo);
+        
+		List<Recharge> lstRecharge = rechargeService.selectRecharge(rechargeCtrlModel);
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		model.addAttribute("totalFund", customerFund.getTotalFund());
+		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		model.addAttribute("lstRecharge", lstRecharge);
+		model.addAttribute("isLog", "true");
+		model.addAttribute("rechargeCtrlModel", rechargeCtrlModel);
+		
+		
+		return "web/zhifu/rechargeHistory";
 	}
 	
 	

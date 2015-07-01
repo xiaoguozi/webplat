@@ -149,7 +149,7 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							<strong>账户充值</strong>
+							<strong>账户充值</strong> <span style="margin-left: 20px; font-size: 13px; font-weight:normal; cursor: pointer;"><a href="rest/web/userCenter/zhifu/rechargeHistory">查看历史记录</a></span>
 						</h2>
 
 						<div style="margin-top: 20px; margin-bottom: 20px;">选择银行</div>
@@ -339,6 +339,8 @@
 					d.close().remove();
 				});
 			});
+			
+			
 			
 		});
 		
