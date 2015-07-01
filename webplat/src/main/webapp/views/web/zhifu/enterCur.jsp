@@ -94,7 +94,7 @@
 					<div class="mycenter_left">
 						<ul class="mc_lbox">
 							<li>可用余额</li>
-							<li class="colorf06 font18 lh10 ">0.00元</li>
+							<li class="colorf06 font18 lh10 "><fmt:formatNumber value="${usableFund}" pattern="########.##" />元</li>
 							<li><a class="tjs_btn pzbtn" href="javascript:void()"><b>¥</b>
 									充值</a></li>
 
@@ -152,45 +152,8 @@
 							<strong>账户充值</strong>
 						</h2>
 
-						<div class="l_recharge"
-							style="height: 200px; background: #f6f6f6; margin-right: 15px;">
-							<div class="login_wrap l_mat clr">
-								<div class="l_login_t l_ft18">账户余额：</div>
-								<div class="fl">
-									<div class="l_fc3709" style="width: 100%;">
-										<span id="usableSum">0.00</span>元
-									</div>
-								</div>
-								<br>
-									<div class="login_wrap l_mat clr">
-										<div class="l_login_t">充值金额 ：</div>
-										<div class="fl">
-											<div class="login_input l-w286" style="line-height: 43px;">
-												<input id="rechargeAmount" style="margin-top: 1px;"
-													name="amount" type="text" maxlength="12" value="请输入金额（元）"
-													init-data="请输入金额（元）" autocomplete="false"
-													onfocus="if(this.value=='请输入金额（元）'){this.value='';}"
-													onblur="if(this.value==''){this.value='请输入金额（元）';}else{$('#rechargeAmountError').hide();}"
-													onkeyup=""
-													onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
-													>
-											</div>
-											<p id="rechargeAmountError" class="m_login_txt1 dsn"
-												style="display: none">输入错误</p>
-										</div>
-									</div>
-									<div class="login_wrap l_mat clr">
-										<p id="rechargeError" class=" m_login_txt1 m_dsn"
-											style="display: none">输入错误</p>
-										<a id="aSubmit" href="javascript:void(0);" target="_blank"
-											class="mt10 btn_capital capital" style="margin-top: 50px;">立即充值
-										</a>
-									</div>
-							</div>
-						</div>
-							
 						<div style="margin-top: 20px; margin-bottom: 20px;">选择银行</div>
-						<div style="height: 350px;">
+						<div style="height: 300px;">
 							<UL id="radioImage" class="bank_list l_bank_list  clr">
 								<LI id="yh1" onclick="yhxz(1);"><I><INPUT
 										name="pdFrpId" checked="checked" value="BOC-NET-B2C"
@@ -236,7 +199,7 @@
 								<LI id="yh9" onclick="yhxz(9);"><I><INPUT
 										name="pdFrpId" value="CIB-NET-B2C" type="radio"></I>
 									<P style="height: 33px;">
-										<IMG alt="兴业银行" src="assets/img/zhifu/xingye.gif">
+										<IMG alt="兴业银行"  src="assets/img/zhifu/xingye.gif">
 									</P></LI>
 								<LI id="yh10" onclick="yhxz(10);"><I><INPUT
 										name="pdFrpId" value="BOCO-NET-B2C" type="radio"></I>
@@ -280,7 +243,44 @@
 							</UL>
 						</div>
 						
-						
+						<div style="height: 230px; background: #f6f6f6; margin-right: 15px; margin-bottom: 20px;">
+								<div style="height: 30px; margin-right: 15px;"></div>
+								<div style="height: 50px; margin-right: 15px;">  
+									<div style="height: 50px; width:330px; float:left; text-align: right; margin-right: 10px;"><span style="font-size: 18px; color: #000;">账户余额：</span></div>
+									<div style="height: 50px; width:500px; float:left; "><span id="totalFund" style="font-size: 18px; color: red;"><fmt:formatNumber value="${totalFund}" pattern="########.##" />元</span></div>
+								</div>
+								<div style="height: 43px; margin-right: 15px;">  
+									<div style="height: 43px; width:330px; float:left;  text-align: right; margin-right: 12px;">
+										<div style="height: 10px;"></div>
+										<div style="height: 33px;"><span style="font-size: 16px;">充值金额 ：</span></div>
+									</div>
+									<div style="height: 43px; width:294px; float:left; " class="login_input">
+										<input id="rechargeAmount" style="margin-top: 0px;"
+													name="amount" type="text" maxlength="12" value="请输入金额（元）"
+													init-data="请输入金额（元）" autocomplete="false"
+													onfocus="if(this.value=='请输入金额（元）'){this.value='';}"
+													onblur="if(this.value==''){this.value='请输入金额（元）';}else{$('#rechargeAmountError').hide();}"
+													onkeyup="clearNoNum(this);"
+													onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+													>
+													
+									</div>
+								</div>
+								<div style="height: 25px; margin-right: 15px;">  
+									<div style="height: 25px; width:330px; float:left; text-align: right; margin-right: 10px;"></div>
+									<div style="height: 25px; width:500px; float:left; ">
+									<p id="rechargeAmountError" class="m_login_txt1 dsn" style="display: none; margin-top: 8px; margin-left: 5px;">输入错误</p></div>
+								</div>
+								<div style="height: 50px; margin-right: 15px;">  
+									<div style="height: 10px; "> </div>
+									<div style="height: 40px; width:330px; float:left; margin-right: 12px;"></div>
+									<div style="height: 40px; width:500px; float:left; ">
+										<a id="aSubmit" href="javascript:void(0);" target="_blank"
+											class="btn_capital" >立即充值
+										</a>
+									</div>
+								</div>
+						</div>
 					</div>
 				</div>
 
@@ -300,8 +300,16 @@
 					$("#rechargeAmountError").html("请输入充值金额");
 					return false;
 				}else{
+					$("#rechargeAmountError").html("");
 					$("#rechargeAmountError").hide();
 				}
+				
+				if(parseFloat($("#rechargeAmount").val())<=0){
+					$("#rechargeAmountError").html("充值金额必须大于0");
+					$("#rechargeAmountError").show();
+					return false;
+				}
+				
 				var callbackUrl = "<%=basePath%>rest/web/userCenter/zhifu/callback";
 				var pdFrpId = $("input:radio[name=pdFrpId]:checked").val();
 				var payUrl = "<%=basePath%>rest/web/userCenter/zhifu/epay?pdFrpId="+pdFrpId
@@ -323,9 +331,36 @@
 				});
 				d.showModal();
 				
+				$("#chargeFailed").click(function(){
+					d.close().remove();
+				});
+				
+				$("#chargeSuccess").click(function(){
+					d.close().remove();
+				});
 			});
 			
 		});
+		
+		//保证输入数字
+		function clearNoNum(obj){
+			//先把非数字的都替换掉，除了数字和.
+			obj.value = obj.value.replace(/[^\d.]/g,"");
+			//必须保证第一个为数字而不是.
+			obj.value = obj.value.replace(/^\./g,"");
+			//保证只有出现一个.而没有多个.
+			obj.value = obj.value.replace(/\.{2,}/g,".");
+			//保证.只出现一次，而不能出现两次以上
+			obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+			//保留两位小数
+			var dotIndex = obj.value.indexOf(".");
+			var length = obj.value.length;
+			if(dotIndex!=-1){
+				if(length-dotIndex>3){
+					obj.value = obj.value.substring(0, dotIndex+3);
+				}
+			}
+		}
 	
 		function yhxz(num){
 			

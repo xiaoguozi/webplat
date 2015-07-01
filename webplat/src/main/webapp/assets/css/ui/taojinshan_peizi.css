@@ -910,8 +910,8 @@ text-align:center;
 .login_input span {
 	width: 80px; height: 42px; text-align: center; color: rgb(158, 158, 158); line-height: 42px; font-size: 15px; vertical-align: top; display: inline-block; background-color: rgb(237, 237, 237);
 }
-.login_input input {
-	padding: 0px 22px; border: 0px currentColor; width: 250px; height: 40px; color: rgb(187, 187, 187); line-height: 42px; font-family: "Microsoft YaHei"; font-size: 15px;
+.login_input input {	
+	padding: 0px 22px; border: 0px currentColor; width: 250px; height: 41px; color: rgb(187, 187, 187); line-height: 41px; font-family: "Microsoft YaHei"; font-size: 15px;
 }
 .login_input input:focus {
 	border: 1px solid rgb(134, 187, 246);
