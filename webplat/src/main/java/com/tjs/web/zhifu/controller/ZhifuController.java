@@ -28,12 +28,14 @@ import com.tjs.admin.zhifu.controller.CustbankCtrlModel;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
 import com.tjs.admin.zhifu.controller.FundRecordCtrlModel;
 import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
+import com.tjs.admin.zhifu.controller.WithdrawCtrlModel;
 import com.tjs.admin.zhifu.model.Area;
 import com.tjs.admin.zhifu.model.Bank;
 import com.tjs.admin.zhifu.model.Custbank;
 import com.tjs.admin.zhifu.model.CustomerFund;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
+import com.tjs.admin.zhifu.model.Withdraw;
 import com.tjs.admin.zhifu.service.IAreaBank;
 import com.tjs.admin.zhifu.service.ICustbank;
 import com.tjs.admin.zhifu.service.ICustomerFund;
@@ -459,5 +461,84 @@ public class ZhifuController {
 		return "redirect:/rest/web/userCenter/zhifu/addbank";  
 	}
 	
+	@RequestMapping("/withdrawIndex")
+    public String withdrawIndex(Model model) {
+		model.addAttribute("isLog", "true");
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		
+		return "web/zhifu/withdraw"; 
+	}
 	
+	/**
+	 * 提现
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/withdraw")
+    public String withdraw(HttpServletRequest request, WithdrawCtrlModel withdrawCtrlModel, Model model) {
+		model.addAttribute("isLog", "true");
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		BigDecimal amount = withdrawCtrlModel.getWithdraw().getAmount();
+		//如果传过来需提现的值大于可用余额，给用户提示，防止重复提交
+		if(amount.compareTo(customerFund.getUsebleFund())==1){
+			return "redirect:/rest/web/userCenter/zhifu/withdrawIndex";
+		}
+		
+		
+		//1、更新个人账户
+		BigDecimal usableAmount = customerFund.getUsebleFund();
+		customerFund.setUsebleFund(usableAmount.subtract(amount));
+		customerFund.setDongjieFund(customerFund.getDongjieFund()==null?
+				amount:customerFund.getDongjieFund().add(amount));
+		
+		//2、插入提现流水
+		Withdraw withdraw = new Withdraw();
+		withdraw.setCustomerId(user.getId());
+		//TODO
+		withdraw.setBankCode(null);
+		withdraw.setCardFrom(0);
+		withdraw.setCardNo(null);
+		withdraw.setBankProvince(null);
+		withdraw.setBankcity(null);
+		withdraw.setAmount(amount);
+		withdraw.setPoundageAmount(BigDecimal.ZERO);
+		withdraw.setBranchName(null);
+		withdraw.setRequestIp(request.getRemoteAddr());
+		withdraw.setCreateTime(Calendar.getInstance().getTime());
+		withdraw.setCreateBy(userInfo.getName()==null?username:userInfo.getName());
+		withdraw.setStatus(0);
+		
+		
+		//3、插入资金流水
+		FundRecord fundRecord = new FundRecord();
+		fundRecord.setAmount(amount);
+		//fundRecord.setBusinessId();
+		fundRecord.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
+		fundRecord.setCreateTime(Calendar.getInstance().getTime());
+		fundRecord.setCustomerId(user.getId());
+		fundRecord.setFundType(FundRecordFundTypeEnum.TXDJ.getKey());
+		fundRecord.setRecordDesc(FundRecordFundTypeEnum.TXDJ.getValue());
+		fundRecord.setUsableAmount(usableAmount);
+		
+		//提现操作
+		zhifuService.withdraw(withdraw, fundRecord, customerFund);
+		
+		
+		model.addAttribute("totalFund", customerFund.getTotalFund());
+		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		model.addAttribute("isLog", "true");
+		
+		return "web/zhifu/withdrawHistory"; 
+	}
 }

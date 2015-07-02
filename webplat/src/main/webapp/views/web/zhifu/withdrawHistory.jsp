@@ -116,9 +116,9 @@
 							<li class="wdzj">我的资金</li>
 							<div class="moneymx">
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" style="color: #ff6600">充值</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" >充值</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex">提现</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory" style="color: #ff6600">资金明细</a></span>
                            </div>
 
 							<li class="zlsz">资料设置</li>
@@ -149,48 +149,43 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							<a href="rest/web/userCenter/zhifu/enterCur" ><img src="assets/img/zhifu/back.png" title="返回充值" style="cursor: pointer;"/></a>&nbsp;<strong>充值历史记录</strong>
+							&nbsp;<strong>历史提现记录</strong>
 						</h2>
 						<div class="ms-c6-table" style="margin-right: 15px;">
 							<table style="border: 1px solid #fff; border-collapse: collapse; ">
 							 		<thead>
 									 <tr style="background: #f9f9f9;">
-									     <th width="120px;">充值时间</th>
-									     <th width="100px;">充值方式</th>
+									     <th width="120px;">时间</th>
+									     <th width="100px;">交易类型</th>
 									     <th width="100px;" >金额&nbsp;(元)</th>
-									     <th width="110px;">手续费&nbsp;(元)</th>
-									     <th width="70px;">状态</th>
+									     <th width="100px;" >可用余额&nbsp;(元)</th>
 									     <th width="170px;">备注</th>
 									   </tr>
 									</thead>
 									<tbody>
-										<c:forEach var="recharge" items="${lstRecharge}">
+										<c:forEach var="fundRecord" items="${lstFundRecord}">
 											<tr>
-												<td><fmt:formatDate value="${recharge.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td>易宝充值</td>
-												<td ><fmt:formatNumber value="${recharge.amount}" pattern="########.##" /></td>
-												<td>0.00</td>
+												<td><fmt:formatDate value="${fundRecord.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												<td>
-													<c:if test="${recharge.status==0}">未完成</c:if>
-													<c:if test="${recharge.status==1}"><span style="color: green;">成功</span></c:if>
-													<c:if test="${recharge.status==2}"><span style="color: red;">失败</span></c:if>
-											    </td>
-											    <c:if test="${recharge.status==1}">
-											    	<td>
-														易宝流水号${recharge.paynumber}
-													</td>
-											    </c:if>
-												<c:if test="${recharge.status!=1}">
-											    	<td></td>
-											    </c:if>
+													<c:if test="${fundRecord.fundType=='00001'}">充值</c:if>
+													<c:if test="${fundRecord.fundType=='00002'}">借款利息</c:if>
+													<c:if test="${fundRecord.fundType=='00003'}">投资保证金</c:if>
+													<c:if test="${fundRecord.fundType=='00004'}">配资金额</c:if>
+													<c:if test="${fundRecord.fundType=='00005'}">提现冻结</c:if>
+													<c:if test="${fundRecord.fundType=='00006'}">提现成功</c:if>
+												</td>
+												
+												<td style="color: green;"><fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
+												<td><fmt:formatNumber value="${fundRecord.usableAmount}" pattern="########.##" /></td>
+												<td>${fundRecord.recordDesc}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
               				</table>
               			</div>
-              			<form id="modalForm" action="rest/web/userCenter/zhifu/rechargeHistory" method="post" >
-              				<input name="pageNo" type="hidden" value="${rechargeCtrlModel.pageNo}"/>
-							<input name="pageSize" type="hidden" value="${rechargeCtrlModel.pageSize }"/>
+              			<form id="modalForm" action="rest/web/userCenter/zhifu/fundHistory" method="post" >
+              				<input name="pageNo" type="hidden" value="${fundRecordCtrlModel.pageNo}"/>
+							<input name="pageSize" type="hidden" value="${fundRecordCtrlModel.pageSize }"/>
               			</form>
               			
               			<!-- 翻页开始 -->
@@ -199,11 +194,11 @@
 						      <tbody>
 						        <tr>
 						        <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
-						        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${rechargeCtrlModel.pageNo-1}"><</a></td>
-						        <c:if test="${rechargeCtrlModel.totalPageSize<=9||(rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo<=5)}">
-						       	 <c:forEach var="item" varStatus="status" begin="1" end="${rechargeCtrlModel.totalPageSize>9?9:rechargeCtrlModel.totalPageSize}">             
+						        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${fundRecordCtrlModel.pageNo-1}"><</a></td>
+						        <c:if test="${fundRecordCtrlModel.totalPageSize<=9||(fundRecordCtrlModel.totalPageSize>9&&fundRecordCtrlModel.pageNo<=5)}">
+						       	 <c:forEach var="item" varStatus="status" begin="1" end="${fundRecordCtrlModel.totalPageSize>9?9:fundRecordCtrlModel.totalPageSize}">             
 							        <c:choose>  
-							          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
+							          <c:when test="${status.index==fundRecordCtrlModel.pageNo }"> 
 							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
@@ -213,10 +208,10 @@
 						       </c:forEach>
 						       </c:if>
 						       
-						       <c:if test="${rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo>5&&rechargeCtrlModel.totalPageSize>rechargeCtrlModel.pageNo+4}">
-						        <c:forEach var="item" varStatus="status" begin="${rechargeCtrlModel.pageNo-4}" end="${rechargeCtrlModel.pageNo+4}">             
+						       <c:if test="${fundRecordCtrlModel.totalPageSize>9&&fundRecordCtrlModel.pageNo>5&&fundRecordCtrlModel.totalPageSize>fundRecordCtrlModel.pageNo+4}">
+						        <c:forEach var="item" varStatus="status" begin="${fundRecordCtrlModel.pageNo-4}" end="${fundRecordCtrlModel.pageNo+4}">             
 						        <c:choose>  
-						          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
+						          <c:when test="${status.index==fundRecordCtrlModel.pageNo }"> 
 						           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 						          </c:when> 
 						          <c:otherwise>
@@ -227,10 +222,10 @@
 						       </c:if>
 						       
 						       
-						       <c:if test="${rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo>5&&rechargeCtrlModel.totalPageSize<=rechargeCtrlModel.pageNo+4}">
-							        <c:forEach var="item" varStatus="status" begin="${rechargeCtrlModel.totalPageSize-8}" end="${rechargeCtrlModel.totalPageSize}">             
+						       <c:if test="${fundRecordCtrlModel.totalPageSize>9&&fundRecordCtrlModel.pageNo>5&&fundRecordCtrlModel.totalPageSize<=fundRecordCtrlModel.pageNo+4}">
+							        <c:forEach var="item" varStatus="status" begin="${fundRecordCtrlModel.totalPageSize-8}" end="${fundRecordCtrlModel.totalPageSize}">             
 							        <c:choose>  
-							          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
+							          <c:when test="${status.index==fundRecordCtrlModel.pageNo }"> 
 							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
@@ -239,8 +234,8 @@
 							        </c:choose>             
 							        </c:forEach>							        
 							       </c:if>
-							        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${rechargeCtrlModel.pageNo+1}">></a></td>
-							        <td class=pagnum><a title=最前一页 href="#" page_no="${rechargeCtrlModel.totalPageSize}">>|</a></td>          
+							        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${fundRecordCtrlModel.pageNo+1}">></a></td>
+							        <td class=pagnum><a title=最前一页 href="#" page_no="${fundRecordCtrlModel.totalPageSize}">>|</a></td>          
 							        </tr>
 							      </tbody>
 							    </table>
