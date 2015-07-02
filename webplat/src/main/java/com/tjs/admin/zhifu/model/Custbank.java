@@ -31,6 +31,8 @@ public class Custbank {
 	  /**添加时间 */
 	  private Date createTime;
 	  
+	  private String img;
+	  
 	  public Long getBankId() {
 			return bankId;
 		}
@@ -96,6 +98,12 @@ public class Custbank {
 		}
 		public void setBankNo(String bankNo) {
 			this.bankNo = bankNo;
+		}
+		public String getImg() {
+			return img;
+		}
+		public void setImg(String img) {
+			this.img = img;
 		}  	
 		
 		

@@ -20,6 +20,7 @@
 <script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
 <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/scripts/ui/err_box.js"></script>
 <script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 <script src="assets/scripts/ui/dialog-min.js" charset="utf-8"></script>
 </head>
@@ -139,9 +140,22 @@
                        </c:if>
                        <c:if test="${userInfo.isValidate==1}">
                             <c:if test="${!empty lstCustbank}">
-							<div class="l_recharge" style="height: 200px; background: #f6f6f6; margin-right: 15px;">
-								
+							<div class="l_recharge" style="height: 120px; margin-right: 15px;">
+								<UL id="radioImage" class="bank_list l_bank_list  clr">
+								 <c:forEach items="${lstCustbank}" var="custbank" >
+								<LI id="yh1" style="height:">
+								    <div style="width:160px">
+									<P>
+										<IMG alt="${custbank.bankName}" src="assets/img/zhifu/${custbank.img}" >									
+									</P>
+									<p style="text-align:center;border:0px;height:20px">
+									     ${custbank.bankNo}
+									</p>									
+								</LI>																															
+							    </c:forEach>								
+							</UL>
 							</div>
+							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px;border:1px solid"></div>
 							</c:if>	
 							
 							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px">添加银行卡(<span style="color:red">请务必填写本人的银行卡号，否则会提款失败</span>)</div>
@@ -174,9 +188,10 @@
 									    <option value="">--请选择--</option>
 									   </select>
 									</span>
+									
 								</div>
-								<div style="height:40px"><span style="margin-left:220px">开户支行:</span><span><input type="text"  name="branchName" style="height:25px" size="25" maxLength="60"/></div>
-								<div style="height:40px"><span style="margin-left:220px">卡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</span><span ><input  type="text" size="25" maxlength="25" name="bankNo" style="height:25px"  onkeyup="formatBankNo(this)" onkeydown="formatBankNo(this)" /></span></div>						
+								<div style="height:40px"><span style="margin-left:220px">开户支行:</span><span><input type="text"  name="branchName" style="height:25px" size="25" maxLength="60" value=""/></div>
+								<div style="height:40px"><span style="margin-left:220px">卡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</span><span ><input  type="text" size="25" maxlength="25" value="" name="bankNo" style="height:25px"  onkeyup="formatBankNo(this)" onkeydown="formatBankNo(this)" /></span></div>						
 								
 								<div style="height:40px">
 							      <span style="margin-left:220px" class="addbank"><a href="" class="tjs_btn">添加银行卡</a></span>
@@ -259,6 +274,21 @@
  		//添加银行卡
  		$(".addbank .tjs_btn").click(function(event){
 			event.preventDefault();	
+			//判断必填项
+			if($('#province').val()==''||$('#city').val()==''){
+				errTip("开户城市需要填写 ", 1);
+				return;
+			}
+			if($.trim($('input[name=branchName]').val())==''){
+				errTip("开户支行需要填写 ", 1);
+				return;
+			}
+			
+			if($.trim($('input[name=bankNo]').val())==''){
+				errTip("卡号需要填写 ", 1);
+				return;
+			}
+						
 			$("#modalForm").submit();			   
 		})
 	 });

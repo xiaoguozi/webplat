@@ -12,13 +12,12 @@
 		<result column="bank_city" property="bankCity" jdbcType="VARCHAR"/>		
 		<result column="is_quick" property="isQuick" javaType="java.lang.Integer"/>		
 		<result column="branch_name" property="branchName" jdbcType="VARCHAR"/>
-		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
+		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />	
+		<result column="bank_img" property="img" jdbcType="VARCHAR"/>			
 	</resultMap>
 	
 	
-	<sql id="Base_select_Column_List">
-		bank_id,customer_id,card_from,bank_name,bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time
-	</sql>
+
 
 	<sql id="Base_insert_Column_List">
 	    customer_id,card_from,bank_name,bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time
@@ -37,10 +36,9 @@
 	
 	<select id="selectCustbank"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.zhifu.controller.CustbankCtrlModel">
 		select
-		<include refid="Base_select_Column_List" />
+		tjs_cust_bank.bank_id,tjs_cust_bank.customer_id,card_from,tjs_cust_bank.bank_name,tjs_cust_bank.bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time,tjs_bank.bank_img
 				
-		from tjs_cust_bank where   1=1	
-		
+		from tjs_cust_bank ,tjs_bank where tjs_cust_bank.bank_code = tjs_bank.bank_code		
 		<if test="custbank!= null and custbank.customerId!=null">
          and  customer_id = #{custbank.customerId}
         </if>	
@@ -57,8 +55,7 @@
 	
 	
 	<select id="findBybankId"  resultMap="BaseResultMap"  parameterType="Long">
-		select			
-		<include refid="Base_select_Column_List" />						
+		select bank_id,customer_id,card_from,bank_name,bank_code,card_no,bank_province,bank_city,is_quick,branch_name,create_time,'' img					
 		from tjs_cust_bank where bank_id=#{bankId}							                  
 	</select>
 	
