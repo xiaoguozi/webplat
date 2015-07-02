@@ -17,11 +17,9 @@ public class Custbank {
 	  /**银行名字 */
 	  private String bankName;
 	  /**银行代号 */
-	  private String bankCode;	 
-	  
+	  private String bankCode;	   
 	  /**银行卡号 */
-	  private String bankNo;	 
-	  
+	  private String bankNo;	   
 	  /**省份 */
 	  private String bankProvince;
 	  /**所属城市 */
@@ -92,5 +90,14 @@ public class Custbank {
 		}
 		public void setCreateTime(Date createTime) {
 			this.createTime = createTime;
-		}  		  	
+		}
+		public String getBankNo() {
+			return bankNo;
+		}
+		public void setBankNo(String bankNo) {
+			this.bankNo = bankNo;
+		}  	
+		
+		
+		
 }

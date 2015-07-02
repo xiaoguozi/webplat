@@ -1,7 +1,9 @@
 package com.tjs.web.zhifu.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,25 +17,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.zhifu.controller.CustbankCtrlModel;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
 import com.tjs.admin.zhifu.controller.FundRecordCtrlModel;
 import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
+import com.tjs.admin.zhifu.model.Area;
+import com.tjs.admin.zhifu.model.Bank;
+import com.tjs.admin.zhifu.model.Custbank;
 import com.tjs.admin.zhifu.model.CustomerFund;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
+import com.tjs.admin.zhifu.service.IAreaBank;
+import com.tjs.admin.zhifu.service.ICustbank;
 import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.admin.zhifu.service.IFundRecord;
 import com.tjs.admin.zhifu.service.IRecharge;
+import com.tjs.admin.zhifu.zfenum.AreaLevelEnum;
+import com.tjs.admin.zhifu.zfenum.CustBankCardFromEnum;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeStatusEnum;
 import com.tjs.core.zhifu.YeepayService;
+import com.tjs.web.peizi.token.TokenConstants;
+import com.tjs.web.peizi.token.TokenHandler;
 import com.tjs.web.zhifu.service.IZhifuService;
 
 @Controller
@@ -57,6 +70,13 @@ public class ZhifuController {
 	
 	@Resource
 	private IFundRecord fundRecordService;
+	
+	
+	@Resource
+	private ICustbank custbankService;
+	
+	@Resource
+	private IAreaBank areaService;
 	
 	@Autowired  
 	private  HttpServletRequest request; 
@@ -356,5 +376,88 @@ public class ZhifuController {
 		
 		rechargeService.insertRecharge(recharge);
 	}
+	
+	
+	
+	
+	/** 添加银行卡 */
+	@RequestMapping("/addbank")
+    public String addbank(Model model) {
+		//获取登录信息
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		
+		//获取添加的银行卡
+		CustbankCtrlModel custbankCtrlModel = new CustbankCtrlModel();
+		custbankCtrlModel.getCustbank().setCustomerId(user.getId());
+		List<Custbank> lstCustbank = custbankService.selectCustbank(custbankCtrlModel);
+		
+		//获取省份
+		Area area = new Area();
+		area.setLevel(AreaLevelEnum.PROVINCE.getIntegerKey());
+		List<Area> lstArea = areaService.selectAreaList(area);
+		
+		//获取银行
+		List<Bank>lstBank = areaService.selectBankList(null);
+		
+		model.addAttribute("userInfo",userInfo);
+		model.addAttribute("lstCustbank", lstCustbank);
+		model.addAttribute("lstProvince", lstArea);
+		model.addAttribute("lstBank", lstBank);
+		
+		String token = TokenHandler.generateGUID(request.getSession());
+		model.addAttribute(TokenConstants.DEFAULT_TOKEN_NAME, token);
+		return "web/zhifu/addbank";
+	}
+	
+	
+	/** 根据省份查询城市 */
+	@RequestMapping("/queryCity")
+	@ResponseBody
+    public List<Area> queryCity(@RequestParam(value="provinceId") Integer id) {
+		//获取登录信息
+		Area area = new Area();
+		area.setPid(id);
+		area.setLevel(AreaLevelEnum.CITY.getIntegerKey());
+		List<Area> lstCity = areaService.selectAreaList(area);				
+        if(lstCity==null){
+        	lstCity =  new ArrayList<Area>(0);
+        }
+		return lstCity;
+	}
+	
+	/** 添加银行记录 */
+	@RequestMapping("/addbankData")
+    public String addbankData(Custbank custbank,Model model,Integer provinceId,Integer cityId) {
+		//重复提交
+		if(!TokenHandler.validToken(request)){
+			return "redirect:/rest/web/userCenter/zhifu/addbank"; 
+		}
+		//获取登录信息
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		custbank.setCustomerId(user.getId());
+		custbank.setCardFrom(CustBankCardFromEnum.PC.getIntegerKey());
+		custbank.setIsQuick(0);
+	    List<Bank> lstBank = areaService.selectBankList(custbank.getBankCode());	    
+	    custbank.setBankName(lstBank.get(0).getBankName());
+	    
+	    Area area = new Area();
+		area.setId(provinceId);
+		List<Area> ListArea = areaService.selectAreaList(area);
+		custbank.setBankProvince(ListArea.get(0).getNameCn());
+		
+		area.setId(cityId);
+		ListArea = areaService.selectAreaList(area);
+		custbank.setBankCity(ListArea.get(0).getNameCn());
+		
+	    custbank.setCreateTime(new Date());
+	    custbankService.insertCustbank(custbank);		
+		return "redirect:/rest/web/userCenter/zhifu/addbank";  
+	}
+	
 	
 }

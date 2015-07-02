@@ -376,7 +376,7 @@ alter table t_user_info add  is_validate int(2) DEFAULT 0 COMMENT '是否已实�
 
 
 CREATE TABLE `tjs_cust_bank` (
-  `bank_id` bigint(20) NOT NULL COMMENT '序号',
+  `bank_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `customer_id` bigint(20) NOT NULL COMMENT '用户序号',
   `card_from` smallint(2) DEFAULT '0' COMMENT '卡来源(0 电脑 1手机)',
   `bank_name` varchar(100) DEFAULT NULL COMMENT '银行名字',
@@ -387,9 +387,9 @@ CREATE TABLE `tjs_cust_bank` (
   `is_quick` smallint(1) DEFAULT '0' COMMENT '是否快捷支付',
   `branch_name` varchar(250) DEFAULT NULL COMMENT '所属分行',
   `create_time` datetime DEFAULT NULL COMMENT '添加时间',
-  PRIMARY KEY (`bank_id`),
-  UNIQUE KEY `UQ_t_cust_bank` (`customer_id`,`card_from`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=1752 DEFAULT CHARSET=utf8 COMMENT='银行卡表';
+  PRIMARY KEY (`bank_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1753 DEFAULT CHARSET=utf8 COMMENT='银行卡表';
+
 
 
 

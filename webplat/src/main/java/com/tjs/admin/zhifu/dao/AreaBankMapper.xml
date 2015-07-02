@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.zhifu.dao.AreaBankMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.zhifu.model.Area">
+		<id column="id" property="id" javaType="java.lang.Integer" />
+		<result column="pid" property="pid" javaType="java.lang.Integer"/>
+		<result column="code" property="code" jdbcType="VARCHAR"/>
+		<result column="temp_pcode" property="tempPcode" jdbcType="VARCHAR"/>
+		<result column="name_cn" property="nameCn" jdbcType="VARCHAR"/>
+		<result column="name_en" property="nameEn" jdbcType="VARCHAR"/>
+		<result column="display_order" property="dispalyOrder" jdbcType="VARCHAR"/>
+		<result column="status" property="status" javaType="java.lang.Integer"  />
+		<result column="level" property="level" javaType="java.lang.Integer"  />
+		<result column="privince_area" property="privinceArea" jdbcType="VARCHAR"/>
+		<result column="short_name" property="shortName" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<resultMap id="BaseBanktMap" type="com.tjs.admin.zhifu.model.Bank">
+		<id column="bank_Id" property="bankId" javaType="java.lang.Integer" />
+		<result column="bank_code" property="bankCode" jdbcType="VARCHAR"/>
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR"/>
+		<result column="bank_img" property="bankImg" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	
+	
+	<select id="selectAreaList" resultMap="BaseResultMap"
+		parameterType="com.tjs.admin.zhifu.model.Area">
+		select id,pid,code,temp_pcode,name_cn,name_en,display_order,status,
+		level,privince_area,short_name from tjs_area  where status=1		
+		<if test="level!=null">
+         and  level = #{level}
+        </if> 
+        
+        <if test="id!=null">
+         and  id = #{id}
+        </if>
+              
+        <if test="pid!=null">
+         and  pid = #{pid}
+        </if>	   					
+	</select>
+	
+	
+	<select id="selectBankList" resultMap="BaseBanktMap"
+		parameterType="java.lang.String">
+		select bank_Id,bank_code,bank_name,bank_img from tjs_bank  where 1=1		
+		<if test="_parameter!=null">
+         and  bank_code = #{bankCode!=null}
+        </if>              	   					
+	</select>
+							 
+</mapper>
