@@ -1,0 +1,33 @@
+.signing_bankcard_list li {
+	border-width: 1px; border-style: solid; border-color: rgb(217, 217, 217); 
+	padding: 13px 10px 0px; width: 70%; height: 48px; line-height: 32px; 
+	border-bottom-color: rgb(217, 217, 217); border-bottom-width: 1px; border-bottom-style: solid;
+}
+
+.signing_bankcard_list li input {
+	margin-top: 10px !important;
+}
+button {
+	outline:none; 
+	border-width: 1px; border-style: solid; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); 
+	padding: 7px 20px; border-radius: 2px; text-align: center; color: rgb(51, 51, 51) !important; 
+	line-height: 20px; font-size: 14px; margin-top: 0px; margin-bottom: 10px; 
+	vertical-align: middle; display: inline-block; cursor: pointer; 
+	background-color: rgb(237, 237, 237); -moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px;
+}
+button:hover {
+	
+}
+button:active {
+	
+}
+button.red {
+	color: rgb(255, 255, 255) !important; background-color: rgb(227, 49, 27);
+}
+button.red:hover {
+	background: rgb(208, 42, 22);
+}
+button.red:active {
+	background: rgb(208, 42, 22);
+}

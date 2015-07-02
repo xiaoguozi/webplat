@@ -15,6 +15,8 @@
 <title>淘金山-个人中心</title>
 <link href="assets/css/ui/taojinshan_peizi.css" rel="stylesheet"
 	media="screen" type="text/css" />
+<link href="assets/css/ui/zhifu.css" rel="stylesheet"
+	media="screen" type="text/css" />
 <!--配资页面样式-->
 <link href="assets/css/ui/peizi.css" rel="stylesheet" />
 <link href="assets/css/ui-dialog.css" rel="stylesheet" />
@@ -116,8 +118,8 @@
 							<li class="wdzj">我的资金</li>
 							<div class="moneymx">
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" style="color: #ff6600">充值</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex">提现</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" >充值</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex" style="color: #ff6600">提现</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
                            </div>
 
@@ -149,104 +151,45 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							<a href="rest/web/userCenter/zhifu/enterCur" ><img src="assets/img/zhifu/back.png" title="返回充值" style="cursor: pointer;"/></a>&nbsp;<strong>充值历史记录</strong>
+							<strong>账户提现</strong><span style="margin-left: 20px; font-size: 13px; font-weight:normal; cursor: pointer;"><a href="rest/web/userCenter/zhifu/rechargeHistory">查看提现记录</a></span>
 						</h2>
-						<div class="ms-c6-table" style="margin-right: 15px;">
-							<table style="border: 1px solid #fff; border-collapse: collapse; ">
-							 		<thead>
-									 <tr style="background: #f9f9f9;">
-									     <th width="120px;">充值时间</th>
-									     <th width="100px;">充值方式</th>
-									     <th width="100px;" >金额&nbsp;(元)</th>
-									     <th width="110px;">手续费&nbsp;(元)</th>
-									     <th width="70px;">状态</th>
-									     <th width="170px;">备注</th>
-									   </tr>
-									</thead>
-									<tbody>
-										<c:forEach var="recharge" items="${lstRecharge}">
-											<tr>
-												<td><fmt:formatDate value="${recharge.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td>易宝充值</td>
-												<td ><fmt:formatNumber value="${recharge.amount}" pattern="########.##" /></td>
-												<td>0.00</td>
-												<td>
-													<c:if test="${recharge.status==0}">未完成</c:if>
-													<c:if test="${recharge.status==1}"><span style="color: green;">成功</span></c:if>
-													<c:if test="${recharge.status==2}"><span style="color: red;">失败</span></c:if>
-											    </td>
-											    <c:if test="${recharge.status==1}">
-											    	<td>
-														易宝流水号${recharge.paynumber}
-													</td>
-											    </c:if>
-												<c:if test="${recharge.status!=1}">
-											    	<td></td>
-											    </c:if>
-											</tr>
-										</c:forEach>
-									</tbody>
-              				</table>
-              			</div>
               			<form id="modalForm" action="rest/web/userCenter/zhifu/rechargeHistory" method="post" >
               				<input name="pageNo" type="hidden" value="${rechargeCtrlModel.pageNo}"/>
 							<input name="pageSize" type="hidden" value="${rechargeCtrlModel.pageSize }"/>
               			</form>
+              			<p style="line-height: 28px; vertical-align: baseline; margin-top: 30px; ">
+              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">账户余额：</label>
+              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥467.37</span>
+              			</p>
+              			<p style="line-height: 28px; vertical-align: baseline; margin-top: 10px; ">
+              				<label for="" style="width:130px;line-height: 28px; margin-left: 56px;">可提现金额：</label>
+              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥467.37</span>
+              			</p>
+              			<p style="line-height: 28px; margin-top: 15px; ">
+	              			<span style="color: #999; font-size: 14px; margin-top: 30px; font-weight: bold; margin-bottom: 10px;">选择提现使用的银行卡</span>
+              			</p>
+              			<form name="WithdrawForm" class="hform" id="WithdrawForm" method="post">
+              			<ul class="signing_bankcard_list" style="margin-top: 15px;">
+              				<li >
+              					<input style="float: left;" name="bankCardId" value="23503" type="radio" data-name="招商">
+              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/jianshe.gif">
+              					<span  style="margin-left: 30px; margin-top: 15px;">****4479</span>
+                            </li>
+                            <li style="border-top: 0px;">
+              					<input style="float: left;" name="bankCardId" value="23503" type="radio" data-name="招商">
+              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/jianshe.gif">
+              					<span  style="margin-left: 30px; margin-top: 15px;">****4479</span>
+                            </li>
+                        </ul>     
+                        <p style="line-height: 28px; vertical-align: baseline; margin-top: 20px; ">
+              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">提交金额：</label>
+              				<input name="withdraw.amount" class="txt" id="amount" type="text" maxLength="10" style="height: 42px; width: 235px; margin-left: 12px;"/>
+              			</p>
               			
-              			<!-- 翻页开始 -->
-						<div class="pages pgbtn" style="margin-top: 20px;">
-						    <table class=pagetb cellspacing=0 >
-						      <tbody>
-						        <tr>
-						        <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
-						        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${rechargeCtrlModel.pageNo-1}"><</a></td>
-						        <c:if test="${rechargeCtrlModel.totalPageSize<=9||(rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo<=5)}">
-						       	 <c:forEach var="item" varStatus="status" begin="1" end="${rechargeCtrlModel.totalPageSize>9?9:rechargeCtrlModel.totalPageSize}">             
-							        <c:choose>  
-							          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
-							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
-							          </c:when> 
-							          <c:otherwise>
-							          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
-							          </c:otherwise> 
-							        </c:choose>             
-						       </c:forEach>
-						       </c:if>
-						       
-						       <c:if test="${rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo>5&&rechargeCtrlModel.totalPageSize>rechargeCtrlModel.pageNo+4}">
-						        <c:forEach var="item" varStatus="status" begin="${rechargeCtrlModel.pageNo-4}" end="${rechargeCtrlModel.pageNo+4}">             
-						        <c:choose>  
-						          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
-						           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
-						          </c:when> 
-						          <c:otherwise>
-						          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
-						          </c:otherwise> 
-						        </c:choose>             
-						        </c:forEach>							        
-						       </c:if>
-						       
-						       
-						       <c:if test="${rechargeCtrlModel.totalPageSize>9&&rechargeCtrlModel.pageNo>5&&rechargeCtrlModel.totalPageSize<=rechargeCtrlModel.pageNo+4}">
-							        <c:forEach var="item" varStatus="status" begin="${rechargeCtrlModel.totalPageSize-8}" end="${rechargeCtrlModel.totalPageSize}">             
-							        <c:choose>  
-							          <c:when test="${status.index==rechargeCtrlModel.pageNo }"> 
-							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
-							          </c:when> 
-							          <c:otherwise>
-							          <td class=pagnum><a title=第${status.index}页  href="#" page_no="${status.index}">${status.index}</a></td>   
-							          </c:otherwise> 
-							        </c:choose>             
-							        </c:forEach>							        
-							       </c:if>
-							        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${rechargeCtrlModel.pageNo+1}">></a></td>
-							        <td class=pagnum><a title=最前一页 href="#" page_no="${rechargeCtrlModel.totalPageSize}">>|</a></td>          
-							        </tr>
-							      </tbody>
-							    </table>
-						  </div>
-					 <!-- 翻页结束 -->
-              			
+						</form>      
+						<p class="space-bot">
+							<button style="padding: 8px 40px; letter-spacing: 1px; margin-left: 158px; margin-top: 30px; font-size: 16px;" id="SumbitWithdrawForm" class="red left" type="button">申请提现</button>
+						</p>					
 					</div>
 					
 				</div>
