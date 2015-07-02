@@ -477,6 +477,32 @@ CREATE TABLE `tjs_fund_record` (
 ) ENGINE=InnoDB AUTO_INCREMENT=50622 DEFAULT CHARSET=utf8 COMMENT='资金流水';
 
 
+CREATE TABLE `tjs_area` (
+  `id` int(11) NOT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `temp_pcode` varchar(10) DEFAULT NULL,
+  `name_cn` varchar(255) DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `display_order` int(255) DEFAULT NULL,
+  `status` smallint(2) DEFAULT NULL,
+  `level` smallint(2) DEFAULT NULL,
+  `privince_area` varchar(255) DEFAULT NULL,
+  `short_name` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `IDX_AREA_CODE` (`code`) USING BTREE,
+  KEY `IDX_AREA_TEMP_PCODE` (`temp_pcode`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `tjs_bank` (
+  `bank_Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序列',
+  `bank_code` varchar(45) DEFAULT NULL COMMENT '银行编码',
+  `bank_name` varchar(45) DEFAULT NULL COMMENT '银行名字',
+  `bank_img` varchar(45) DEFAULT NULL COMMENT '银行图片',
+  PRIMARY KEY (`bank_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='淘金山支持的银行';
+
+
 
 
 
