@@ -173,7 +173,7 @@
               							<li>
               						</c:if>
 		              					<input style="float: left;" id="userBankId" name="userBankId" ${status.index==0?'checked':''} value="${bank.bankId}" type="radio" >
-		              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/${bank.img}">
+		              					<img class="bankImg" index="${status.index}" alt="" style="float: left; margin-left: 20px; vertical-align: bottom; cursor: pointer;" src="assets/img/zhifu/${bank.img}">
 		              					<span  style="margin-left: 30px; margin-top: 15px;">${bank.bankNo}</span>
 		                            </li>
               				</c:forEach>
@@ -245,6 +245,12 @@
 				});
 			}
 			
+			//点击选择银行卡
+			$(".bankImg").click(function(){
+				var index = $(this).attr("index");
+				$("input:radio[name=userBankId]").attr("checked",false);
+				$("input:radio[name=userBankId]")[index].checked = true;
+			});
 			
 		});
 		

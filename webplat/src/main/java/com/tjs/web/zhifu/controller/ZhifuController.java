@@ -539,6 +539,7 @@ public class ZhifuController {
 		withdraw.setCardNo(custbank.getBankNo());
 		withdraw.setBankProvince(custbank.getBankProvince());
 		withdraw.setBankcity(custbank.getBankCity());
+		withdraw.setBankName(custbank.getBankName());
 		withdraw.setAmount(amount);
 		withdraw.setPoundageAmount(BigDecimal.ZERO);
 		withdraw.setBranchName(custbank.getBranchName());
