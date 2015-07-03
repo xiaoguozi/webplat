@@ -154,36 +154,40 @@
               			</form>
               			<p style="line-height: 28px; vertical-align: baseline; margin-top: 30px; ">
               				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">账户余额：</label>
-              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥467.37</span>
+              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥<fmt:formatNumber value="${usableFund}" pattern="########.##" /></span>
               			</p>
               			<p style="line-height: 28px; vertical-align: baseline; margin-top: 10px; ">
               				<label for="" style="width:130px;line-height: 28px; margin-left: 56px;">可提现金额：</label>
-              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥467.37</span>
+              				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥<fmt:formatNumber value="${usableFund}" pattern="########.##" /></span>
               			</p>
               			<p style="line-height: 28px; margin-top: 15px; ">
 	              			<span style="color: #999; font-size: 14px; margin-top: 30px; font-weight: bold; margin-bottom: 10px;">选择提现使用的银行卡</span>
               			</p>
               			<form name="WithdrawForm" class="hform" id="WithdrawForm" method="post">
               			<ul class="signing_bankcard_list" style="margin-top: 15px;">
-              				<li >
-              					<input style="float: left;" name="bankCardId" value="23503" type="radio" data-name="招商">
-              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/jianshe.gif">
-              					<span  style="margin-left: 30px; margin-top: 15px;">****4479</span>
-                            </li>
-                            <li style="border-top: 0px;">
-              					<input style="float: left;" name="bankCardId" value="23503" type="radio" data-name="招商">
-              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/jianshe.gif">
-              					<span  style="margin-left: 30px; margin-top: 15px;">****4479</span>
-                            </li>
+              				<c:forEach items="${lstCustbank}" var="bank" varStatus="status">
+              						<c:if test="${status.index!=0}">
+              							<li style="border-top: 0px;">
+              						</c:if>
+              						<c:if test="${status.index==0}">
+              							<li>
+              						</c:if>
+		              					<input style="float: left;" id="userBankId" name="userBankId" ${status.index==0?'checked':''} value="${bank.bankId}" type="radio" >
+		              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/${bank.img}">
+		              					<span  style="margin-left: 30px; margin-top: 15px;">${bank.cardNo}</span>
+		                            </li>
+              				</c:forEach>
                         </ul>     
                         <p style="line-height: 28px; vertical-align: baseline; margin-top: 20px; ">
               				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">提交金额：</label>
-              				<input name="withdraw.amount" class="txt" id="amount" type="text" maxLength="10" style="height: 42px; width: 235px; margin-left: 12px;"/>
+              				
+              				<input name="withdraw.amount" class="txt" id="amount" type="text" maxLength="10" onkeyup="clearNoNum(this);" style="height: 42px; width: 235px; margin-left: 12px;"/>
+              				
               			</p>
               			
 						</form>      
 						<p class="space-bot">
-							<button style="padding: 8px 40px; letter-spacing: 1px; margin-left: 158px; margin-top: 30px; font-size: 16px;" id="SumbitWithdrawForm" class="red left" type="button">申请提现</button>
+							<button style="padding: 8px 40px; letter-spacing: 1px; margin-left: 158px; margin-top: 30px; font-size: 16px;" id="SumbitWithdrawForm" ${bankCount=='0'?'disabled':''} class="red left" type="button">申请提现</button>
 						</p>					
 					</div>
 					
@@ -199,12 +203,58 @@
 	<!-- 配资页尾 结束 -->
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$(".pagnum a").click(function(event){
-		    	event.preventDefault();
-	            $("input[name=pageNo]").val($(this).attr("page_no"));
-		    	$("#modalForm").submit();
-		    });
+			
+			if('${bankCount}'=='0'){
+				var htmlContent = '&nbsp;&nbsp;<img src="assets/img/peizi/check_alert.png" valign="center">&nbsp;&nbsp;您尚未添加银行卡';
+				htmlContent += '<br><span id="span_second" style="color:green;font-size:16px;">4</span>秒后将跳转到添加银行卡页面'
+				var dNew = dialog({
+	    		    content: htmlContent
+	    		});
+	    		dNew.show();
+	    		tick();
+			}else{
+				$("#SumbitWithdrawForm").click(function(){
+					$("#WithdrawForm").post();
+					$("#SumbitWithdrawForm").attr("disabled", true);
+				});
+			}
+			
+			
 		});
+		
+		var timer = 4;
+		function tick(){
+			 if(timer == 1){
+				var url = window.location.href;
+    			var index = url.indexOf('withdrawIndex');
+    			url = url.substring(0, index);
+    			window.location.href = url + 'addbank';
+			 }else{
+				  timer--;
+				  $('#span_second').html(timer);
+				  setTimeout("tick()",1000);
+			 }
+		}
+		
+		//保证输入数字
+		function clearNoNum(obj){
+			//先把非数字的都替换掉，除了数字和.
+			obj.value = obj.value.replace(/[^\d.]/g,"");
+			//必须保证第一个为数字而不是.
+			obj.value = obj.value.replace(/^\./g,"");
+			//保证只有出现一个.而没有多个.
+			obj.value = obj.value.replace(/\.{2,}/g,".");
+			//保证.只出现一次，而不能出现两次以上
+			obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+			//保留两位小数
+			var dotIndex = obj.value.indexOf(".");
+			var length = obj.value.length;
+			if(dotIndex!=-1){
+				if(length-dotIndex>3){
+					obj.value = obj.value.substring(0, dotIndex+3);
+				}
+			}
+		}
 		
 	</script>
 </body>

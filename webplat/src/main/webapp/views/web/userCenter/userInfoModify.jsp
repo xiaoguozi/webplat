@@ -125,7 +125,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			        <div class="ms-c3 clearfix">
 			          <div class="ms-c3-l"> <span>账户余额：</span> <br>
 			            <strong>￥0.00</strong>元 <a href="rest/web/userCenter/zhifu/fundHistory?isFromIndex=1">账户资金明细</a> </div>
-			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a  class="s2" style="margin-right: 30px;">提现</a></p>
+			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a href="rest/web/userCenter/zhifu/withdrawIndex"  class="s2" style="margin-right: 30px;">提现</a></p>
 			        </div>
 			        <div class="ms-c2-t" style="margin-bottom: 10px;">
 			          <div id="myAsset">

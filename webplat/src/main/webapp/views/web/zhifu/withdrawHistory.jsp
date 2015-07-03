@@ -185,7 +185,7 @@
 									</tbody>
               				</table>
               			</div>
-              			<form id="modalForm" action="rest/web/userCenter/zhifu/fundHistory" method="post" >
+              			<form id="modalForm" action="rest/web/userCenter/zhifu/withdrawHistory" method="post" >
               				<input name="pageNo" type="hidden" value="${withdrawCtrlModel.pageNo}"/>
 							<input name="pageSize" type="hidden" value="${withdrawCtrlModel.pageSize }"/>
               			</form>
@@ -263,6 +263,18 @@
 	            $("input[name=pageNo]").val($(this).attr("page_no"));
 		    	$("#modalForm").submit();
 		    });
+			
+			//修改成功提示
+			if('${isSuccess}'=='1'){
+				var dNew = dialog({
+	    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;提现成功'
+	    		});
+	    		dNew.show();
+	    		setTimeout(function () {
+	    			dNew.close().remove();
+	    		}, 2000);
+			}
+			
 		});
 		
 	</script>

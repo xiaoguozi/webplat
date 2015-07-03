@@ -43,6 +43,8 @@ import com.tjs.admin.zhifu.service.IFundRecord;
 import com.tjs.admin.zhifu.service.IRecharge;
 import com.tjs.admin.zhifu.service.IWithdraw;
 import com.tjs.admin.zhifu.zfenum.AreaLevelEnum;
+import com.tjs.admin.zhifu.zfenum.BankImageEnum;
+import com.tjs.admin.zhifu.zfenum.BankNameEnum;
 import com.tjs.admin.zhifu.zfenum.CustBankCardFromEnum;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
@@ -86,7 +88,7 @@ public class ZhifuController {
 	
 	@Autowired  
 	private  HttpServletRequest request; 
-
+	
 	/** 充值流水前缀 */
 	private static final String PREFIX = "TJS_TEST_";
 	
@@ -475,6 +477,20 @@ public class ZhifuController {
 		CustomerFund customerFund = getCustomerFund(user.getId());
 		model.addAttribute("usableFund", customerFund.getUsebleFund());
 		
+		//获取添加的银行卡
+		CustbankCtrlModel custbankCtrlModel = new CustbankCtrlModel();
+		custbankCtrlModel.getCustbank().setCustomerId(user.getId());
+		List<Custbank> lstCustbank = custbankService.selectCustbank(custbankCtrlModel);
+		
+		model.addAttribute("lstCustbank", lstCustbank);
+		if(lstCustbank==null || lstCustbank.size()==0){
+			model.addAttribute("bankCount", "0");
+		}else{
+			for(Custbank bank : lstCustbank){
+				bank.setBankName(BankNameEnum.getValue(bank.getBankCode()));
+				bank.setImg(BankImageEnum.getValue(bank.getBankCode()));
+			}
+		}
 		return "web/zhifu/withdraw"; 
 	}
 	
@@ -506,18 +522,22 @@ public class ZhifuController {
 		customerFund.setDongjieFund(customerFund.getDongjieFund()==null?
 				amount:customerFund.getDongjieFund().add(amount));
 		
+		//查询用户选中的银行
+		Long userBankId = withdrawCtrlModel.getUserBankId();
+		Custbank custbank = custbankService.findBybankId(userBankId);
+		
 		//2、插入提现流水
 		Withdraw withdraw = new Withdraw();
 		withdraw.setCustomerId(user.getId());
 		//TODO
-		withdraw.setBankCode(null);
-		withdraw.setCardFrom(0);
-		withdraw.setCardNo(null);
-		withdraw.setBankProvince(null);
-		withdraw.setBankcity(null);
+		withdraw.setBankCode(custbank.getBankCode());
+		withdraw.setCardFrom(custbank.getCardFrom());
+		withdraw.setCardNo(custbank.getBankNo());
+		withdraw.setBankProvince(custbank.getBankProvince());
+		withdraw.setBankcity(custbank.getBankCity());
 		withdraw.setAmount(amount);
 		withdraw.setPoundageAmount(BigDecimal.ZERO);
-		withdraw.setBranchName(null);
+		withdraw.setBranchName(custbank.getBranchName());
 		withdraw.setRequestIp(request.getRemoteAddr());
 		withdraw.setCreateTime(Calendar.getInstance().getTime());
 		withdraw.setCreateBy(userInfo.getName()==null?username:userInfo.getName());
