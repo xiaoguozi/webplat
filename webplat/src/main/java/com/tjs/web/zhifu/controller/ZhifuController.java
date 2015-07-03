@@ -586,7 +586,7 @@ public class ZhifuController {
 		//提现成功标志
 		//model.addAttribute("isSuccess","1");
 		
-		return "redirect:/web/zhifu/withdrawHistory"; 
+		return "redirect:/rest/web/zhifu/withdrawHistory"; 
 	}
 	
 	/**
