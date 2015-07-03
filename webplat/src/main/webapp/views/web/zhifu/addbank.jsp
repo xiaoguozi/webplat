@@ -77,14 +77,9 @@
 				<div class="bgcolor">
 					<div class="mycenter_left">
 						<ul class="mc_lbox">
-							<li>可用余额</li>
-							<li class="colorf06 font18 lh10 ">0.00元</li>
-							<li><a class="tjs_btn pzbtn" href="javascript:void()"><b>¥</b>
-									充值</a></li>
-
-
+							
 							<li class="wypz">我的配资</li>
-							<div class="ttp wypz_div" style="display: none">
+							<div class="ttp wypz_div">
 								<span class="bor_dashed"><a
 									href="rest/web/peizi/usercenter/mfp">免费配</a></span> <span
 									class="bor_dashed"><a
@@ -99,10 +94,10 @@
 
 							<li class="wdzj">我的资金</li>
 							<div class="moneymx">
-                        	<span class="bor_dashed"><a href="javascript:void()" style="color: #ff6600">银行卡</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/addbank" style="color: #ff6600">银行卡</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" >充值</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">提现</a></span>
-                        	<span class="bor_dashed"><a href="javascript:void()">资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex">提现</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
                            </div>
 
 							<li class="zlsz">资料设置</li>
