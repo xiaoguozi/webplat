@@ -12,6 +12,9 @@ public class WithdrawCtrlModel  extends GenericCtrlModel{
 	private Withdraw withdraw;
 	
 	private int totalPageSize;
+	
+	/** 用户选中用来提现的银行Id */
+	private Long userBankId;
 				
 	public Withdraw getWithdraw() {
 		if(withdraw==null){
@@ -50,6 +53,14 @@ public class WithdrawCtrlModel  extends GenericCtrlModel{
 
 	public void setTotalPageSize(int totalPageSize) {
 		this.totalPageSize = totalPageSize;
+	}
+
+	public Long getUserBankId() {
+		return userBankId;
+	}
+
+	public void setUserBankId(Long userBankId) {
+		this.userBankId = userBankId;
 	}
 	
 }

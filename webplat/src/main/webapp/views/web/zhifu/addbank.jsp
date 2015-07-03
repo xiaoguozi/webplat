@@ -139,11 +139,11 @@
 								<UL id="radioImage" class="bank_list l_bank_list  clr">
 								 <c:forEach items="${lstCustbank}" var="custbank" >
 								<LI id="yh1" style="height:">
-								    <div style="width:160px">
+								    <div style="width:200px">
 									<P>
 										<IMG alt="${custbank.bankName}" src="assets/img/zhifu/${custbank.img}" >									
 									</P>
-									<p style="text-align:center;border:0px;height:20px">
+									<p style="text-align:center;border:0px;height:20px; width:200px;">
 									     ${custbank.bankNo}
 									</p>									
 								</LI>																															

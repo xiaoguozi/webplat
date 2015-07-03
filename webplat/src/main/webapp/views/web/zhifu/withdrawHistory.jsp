@@ -42,16 +42,7 @@
 				</div>
 				<div class="top_wrap_menu menu">
 					<ul>
-						<c:if test="${isLog!='true'}">
-							<li st><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
-							<li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
-							<li><a href="rest/web/peizi/usercenter/pzzhongxin"><span
-									class="simu_on">个人中心</span></a></li>
-							<li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
-						</c:if>
-
-						<c:if test="${isLog=='true'}">
-							<li style="width: 115px"><a href="#">首页</a></li>
+						<li style="width: 115px"><a href="#">首页</a></li>
 							<li style="width: 115px"><a
 								href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
 							<li style="width: 115px"><a href="rest/web/pe/peIndex"
@@ -61,7 +52,6 @@
 							<li style="width: 115px"><a href="#" target="_blank">海外保险</a></li>
 							<li style="width: 115px"><a href="rest/web/aboutUs/index"
 								target="_blank">关于我们</a></li>
-						</c:if>
 
 					</ul>
 				</div>
@@ -167,14 +157,11 @@
 												<td><fmt:formatDate value="${withdraw.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												<td>提现</td>
 												<td style="color: green;"><fmt:formatNumber value="${withdraw.amount}" pattern="########.##" /></td>
-												<c:if test="${withdraw.status==0}">
-													<td>待审核</td>
-												</c:if>
-												<c:if test="${withdraw.status==1}">
-													<td>待确定</td>
+												<c:if test="${withdraw.status==0 || withdraw.status==1}">
+													<td>冻结中</td>
 												</c:if>
 												<c:if test="${withdraw.status==2}">
-													<td>完成</td>
+													<td>已完成</td>
 												</c:if>
 												<c:if test="${withdraw.status==3}">
 													<td>取消</td>
@@ -185,7 +172,7 @@
 									</tbody>
               				</table>
               			</div>
-              			<form id="modalForm" action="rest/web/userCenter/zhifu/fundHistory" method="post" >
+              			<form id="modalForm" action="rest/web/userCenter/zhifu/withdrawHistory" method="post" >
               				<input name="pageNo" type="hidden" value="${withdrawCtrlModel.pageNo}"/>
 							<input name="pageSize" type="hidden" value="${withdrawCtrlModel.pageSize }"/>
               			</form>
@@ -263,6 +250,18 @@
 	            $("input[name=pageNo]").val($(this).attr("page_no"));
 		    	$("#modalForm").submit();
 		    });
+			
+			//修改成功提示
+			if('${isSuccess}'=='1'){
+				var dNew = dialog({
+	    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;提现成功'
+	    		});
+	    		dNew.show();
+	    		setTimeout(function () {
+	    			dNew.close().remove();
+	    		}, 2000);
+			}
+			
 		});
 		
 	</script>
