@@ -584,9 +584,9 @@ public class ZhifuController {
 		model.addAttribute("usableFund", customerFund.getUsebleFund());
 		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
 		//提现成功标志
-		model.addAttribute("isSuccess","1");
+		//model.addAttribute("isSuccess","1");
 		
-		return "web/zhifu/withdrawHistory"; 
+		return "redirect:/web/zhifu/withdrawHistory"; 
 	}
 	
 	/**

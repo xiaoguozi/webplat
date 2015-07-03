@@ -24,9 +24,6 @@ public enum BankNameEnum {
 	/** 键 */
 	private String key;
 
-	/** 整型键值 */
-	private Integer integerKey;
-
 	/** 值 */
 	private String value;
 
@@ -40,7 +37,6 @@ public enum BankNameEnum {
 	private BankNameEnum(String key, String value) {
 		this.key = key;
 		this.value = value;
-		this.integerKey = Integer.valueOf(key);
 	}
 
 	public String getKey() {
@@ -49,14 +45,6 @@ public enum BankNameEnum {
 
 	public void setKey(String key) {
 		this.key = key;
-	}
-
-	public Integer getIntegerKey() {
-		return integerKey;
-	}
-
-	public void setIntegerKey(Integer integerKey) {
-		this.integerKey = integerKey;
 	}
 
 	public String getValue() {

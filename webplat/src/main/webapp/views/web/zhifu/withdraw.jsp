@@ -146,7 +146,7 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							<strong>账户提现</strong><span style="margin-left: 20px; font-size: 13px; font-weight:normal; cursor: pointer;"><a href="rest/web/userCenter/zhifu/rechargeHistory">查看提现记录</a></span>
+							<strong>账户提现</strong><span style="margin-left: 20px; font-size: 13px; font-weight:normal; cursor: pointer;"><a href="rest/web/userCenter/zhifu/withdrawHistory">查看历史记录</a></span>
 						</h2>
               			<form id="modalForm" action="rest/web/userCenter/zhifu/rechargeHistory" method="post" >
               				<input name="pageNo" type="hidden" value="${rechargeCtrlModel.pageNo}"/>
@@ -163,7 +163,7 @@
               			<p style="line-height: 28px; margin-top: 15px; ">
 	              			<span style="color: #999; font-size: 14px; margin-top: 30px; font-weight: bold; margin-bottom: 10px;">选择提现使用的银行卡</span>
               			</p>
-              			<form name="WithdrawForm" class="hform" id="WithdrawForm" method="post">
+              			<form name="WithdrawForm" class="hform" id="WithdrawForm" action="rest/web/userCenter/zhifu/withdraw"  method="post">
               			<ul class="signing_bankcard_list" style="margin-top: 15px;">
               				<c:forEach items="${lstCustbank}" var="bank" varStatus="status">
               						<c:if test="${status.index!=0}">
@@ -174,12 +174,12 @@
               						</c:if>
 		              					<input style="float: left;" id="userBankId" name="userBankId" ${status.index==0?'checked':''} value="${bank.bankId}" type="radio" >
 		              					<img  alt="" style="float: left; margin-left: 20px; vertical-align: bottom;" src="assets/img/zhifu/${bank.img}">
-		              					<span  style="margin-left: 30px; margin-top: 15px;">${bank.cardNo}</span>
+		              					<span  style="margin-left: 30px; margin-top: 15px;">${bank.bankNo}</span>
 		                            </li>
               				</c:forEach>
                         </ul>     
                         <p style="line-height: 28px; vertical-align: baseline; margin-top: 20px; ">
-              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">提交金额：</label>
+              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">提现金额：</label>
               				
               				<input name="withdraw.amount" class="txt" id="amount" type="text" maxLength="10" onkeyup="clearNoNum(this);" style="height: 42px; width: 235px; margin-left: 12px;"/>
               				
@@ -214,7 +214,33 @@
 	    		tick();
 			}else{
 				$("#SumbitWithdrawForm").click(function(){
-					$("#WithdrawForm").post();
+					if($("#amount").val()==""){
+						var dNew = dialog({
+			    		    content: '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;提现金额不能为空'
+			    		});
+			    		dNew.show();
+			    		setTimeout(function () {
+			    			dNew.close().remove();
+			    		}, 2000);
+			    		
+			    		return false;
+					}
+					
+					var usableAmount = parseFloat('${usableFund}');
+					var currentAmount = parseFloat($("#amount").val());
+					if(currentAmount>usableAmount){
+						var dNew = dialog({
+			    		    content: '<img src="assets/img/peizi/check_fail.png" valign="center">&nbsp;提现金额不能大于余额'
+			    		});
+			    		dNew.show();
+			    		setTimeout(function () {
+			    			dNew.close().remove();
+			    		}, 2000);
+			    		
+			    		return false;
+					}
+					
+					$("#WithdrawForm").submit();
 					$("#SumbitWithdrawForm").attr("disabled", true);
 				});
 			}

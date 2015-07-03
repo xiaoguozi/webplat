@@ -167,14 +167,11 @@
 												<td><fmt:formatDate value="${withdraw.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 												<td>提现</td>
 												<td style="color: green;"><fmt:formatNumber value="${withdraw.amount}" pattern="########.##" /></td>
-												<c:if test="${withdraw.status==0}">
-													<td>待审核</td>
-												</c:if>
-												<c:if test="${withdraw.status==1}">
-													<td>待确定</td>
+												<c:if test="${withdraw.status==0 || withdraw.status==1}">
+													<td>冻结中</td>
 												</c:if>
 												<c:if test="${withdraw.status==2}">
-													<td>完成</td>
+													<td>已完成</td>
 												</c:if>
 												<c:if test="${withdraw.status==3}">
 													<td>取消</td>
