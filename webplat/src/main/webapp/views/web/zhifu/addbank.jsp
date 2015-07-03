@@ -139,8 +139,8 @@
 								<UL id="radioImage" class="bank_list l_bank_list  clr">
 								 <c:forEach items="${lstCustbank}" var="custbank" >
 								<LI id="yh1" style="height:">
-								    <div style="width:200px">
-									<P>
+								    <div style="width:250px; border: 1px solid rgb(217, 217, 217);" >
+									<P style="margin-top: 10px;">
 										<IMG alt="${custbank.bankName}" src="assets/img/zhifu/${custbank.img}" >									
 									</P>
 									<p style="text-align:center;border:0px;height:20px; width:200px;">
@@ -152,9 +152,8 @@
 							</div>
 							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px;border:1px solid"></div>
 							</c:if>	
-							
-							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px">添加银行卡(<span style="color:red">请务必填写本人的银行卡号，否则会提款失败</span>)</div>
-							  
+							<c:if test="${lstCustbank.size()<3}">
+							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px">添加银行卡(<span style="color:red">请务必填写本人的银行卡号，否则会提款失败</span>)</div>							  
 							<form id="modalForm" action="rest/web/userCenter/zhifu/addbankData" method="post">
 							<input type="hidden" name="springMVC_token"  value="${springMVC_token}"/>
 							<div style="height: 250px;">
@@ -193,12 +192,17 @@
 						    	</div>
 							</div>
 							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px;border:1px solid"></div>
-							<div>
+				 			</form>
+				 			
+				 			</c:if>			  
+							
+							<div style="margin-bottom: 20px;">
 								* 银行卡仅限于取现使用，充值不限绑定的银行卡<br/>
 								* 请保证银行卡开户名与淘金山实名认证一致，否则取现不成功<br/>
-								* 请绑定银行储蓄卡帐户，不能绑定信用卡帐户<br/>														
+								* 请绑定银行储蓄卡帐户，不能绑定信用卡帐户<br/>	
+								* <span style="color: red;">最多只能绑定三张银行卡</span>	<br/>												
 							</div>
-						   </form>	
+						  
 					 </c:if>
 						
 					</div>

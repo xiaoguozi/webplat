@@ -121,10 +121,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     })
                 </script>
             <div class="mycenter_right" id="mycenter_right">
-            	    <h2 class="space-right-h2"><strong>淘金山账户</strong><span style="color: #666; font-size: 13px; font-weight: 300; margin-left: 20px;">账户名： 13714619930</span></h2>
+            	    <h2 class="space-right-h2"><strong>淘金山账户</strong><span style="color: #666; font-size: 13px; font-weight: 300; margin-left: 20px;">账户名： ${phone}</span></h2>
 			        <div class="ms-c3 clearfix">
 			          <div class="ms-c3-l"> <span>账户余额：</span> <br>
-			            <strong>￥0.00</strong>元 <a href="rest/web/userCenter/zhifu/fundHistory?isFromIndex=1">账户资金明细</a> </div>
+			            <strong>￥<c:if test="${empty customerFund.usebleFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.usebleFund}">
+				              		<fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong>元 <a href="rest/web/userCenter/zhifu/fundHistory?isFromIndex=1">账户资金明细</a> </div>
 			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a href="rest/web/userCenter/zhifu/withdrawIndex"  class="s2" style="margin-right: 30px;">提现</a></p>
 			        </div>
 			        <div class="ms-c2-t" style="margin-bottom: 10px;">

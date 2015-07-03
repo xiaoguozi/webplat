@@ -107,8 +107,8 @@
 							<div class="moneymx">
                         	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
                         	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" >充值</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex">提现</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory" style="color: #ff6600">资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex" style="color: #ff6600">提现</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory" >资金明细</a></span>
                            </div>
 
 							<li class="zlsz">资料设置</li>
@@ -139,7 +139,7 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							&nbsp;<strong>历史提现记录</strong>
+							<a href="rest/web/userCenter/zhifu/withdrawIndex" ><img src="assets/img/zhifu/back.png" title="返回提现" style="cursor: pointer;"/></a>&nbsp;<strong>历史提现记录</strong>
 						</h2>
 						<div class="ms-c6-table" style="margin-right: 15px;">
 							<table style="border: 1px solid #fff; border-collapse: collapse; ">

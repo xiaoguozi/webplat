@@ -630,8 +630,6 @@ public class ZhifuController {
 		
 		model.addAttribute("lstWithdraw", lstWithdraw);
 		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
-		//提现成功标志
-		model.addAttribute("isSuccess","1");
 		
 		return "web/zhifu/withdrawHistory"; 
 	}
