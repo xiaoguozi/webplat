@@ -151,17 +151,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <ul class="sub-menu">
                                 <li>
                                     <a href="rest/admin/user/index">
-                                        用户管理
+                                      	  用户管理
                                     </a>
                                 </li>
                                 <li>
                                     <a href="rest/admin/role/index">
-                                        角色管理
+                                        	角色管理
                                     </a>
                                 </li>
                                 <li>
                                     <a href="rest/admin/permission/index">
-                                        权限管理
+                                        	权限管理
                                     </a>
                                 </li>
                             </ul>
@@ -237,7 +237,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>                                                               
                             </ul>
-                        </li>
+                          </li>
+                          
+                           <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-gears"></i><span class="title"> 提现管理 </span><span
+                                class="arrow "> </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="rest/admin/withdraw/withdrawIndex">
+                                     	  提现处理
+                                    </a>
+                                </li>                                                               
+                            </ul>
+                          </li>
+                          
 
                         <li class="">
                             <a href="javascript:;">
