@@ -354,8 +354,12 @@ public class ZhifuController {
 		}else{
 			CustomerFund cNewCustomerFund = new CustomerFund();
 			cNewCustomerFund.setCustomerId(userId);
-			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
 			cNewCustomerFund.setTotalFund(BigDecimal.ZERO);
+			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
+			cNewCustomerFund.setPeiziFund(BigDecimal.ZERO);
+			cNewCustomerFund.setFxbzFund(BigDecimal.ZERO);
+			cNewCustomerFund.setDongjieFund(BigDecimal.ZERO);
+			
 			cNewCustomerFund.setLockId(1);
 			customerFundService.insertCustomerFund(cNewCustomerFund);
 			customerFund = cNewCustomerFund;

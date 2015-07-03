@@ -130,34 +130,59 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			        <div class="ms-c2-t" style="margin-bottom: 10px;">
 			          <div id="myAsset">
 			            <dl>
-			              <dt>账户总资产<span id="tip" data-text="可用金额+冻结金额 " class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dt>账户总资产<span id="tip" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
 			              <dd> <strong>￥
-			              0.00<!-- 0.0 -->
-			                </strong> 元 </dd>
+			              		<c:if test="${empty customerFund.totalFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.totalFund}">
+				              		<fmt:formatNumber value="${customerFund.totalFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
 			            </dl>
 			            <dl>
-			              <dt>配资资产<span id="tip1" data-text="钱生财股票配资金额" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dt>配资资产<span id="tip1" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
 			              <dd> <strong>￥
-			             
-			                          0
-			                          </strong> 元 </dd>
+			              		<c:if test="${empty customerFund.peiziFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.peiziFund}">
+				              		<fmt:formatNumber value="${customerFund.peiziFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
 			            </dl>
 			            <dl>
-			              <dt>风险保证金<span id="tip2" data-text="风险保证金 + 停牌准备金" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
-			              <dd> <strong>
-			            
-			                          0
-			                          </strong> 元 </dd>
+			              <dt>风险保证金<span id="tip2"  class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.fxbzFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.fxbzFund}">
+				              		<fmt:formatNumber value="${customerFund.fxbzFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong> 元 </dd>
 			            </dl>
 			            <dl>
 			            <dt>冻结金额</dt>
-			              <dd> <strong>￥0.00</strong> 元 </dd>
-			            
-			              
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.dongjieFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.dongjieFund}">
+				              		<fmt:formatNumber value="${customerFund.dongjieFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
 			            </dl>
 			            <dl class="last width ">
 			              <dt>账户余额</dt>
-			              <dd> <strong>￥0.00</strong> 元 </dd>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.usebleFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.usebleFund}">
+				              		<fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong> 元 </dd>
 			            </dl>
 			            
 			          </div>

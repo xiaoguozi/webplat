@@ -1,5 +1,6 @@
 package com.tjs.web.controller;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,6 +23,9 @@ import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.model.CustIdentity;
 import com.tjs.web.service.CustIdentityService;
@@ -45,6 +49,9 @@ public class UserCenterController {
     @Resource
     private CustIdentityService custIdentityService;
     
+    @Resource
+	private ICustomerFund customerFundService;
+    
     @RequestMapping("/index")
     public String index(Model model) {
     	model.addAttribute("isLog", "true");
@@ -53,6 +60,7 @@ public class UserCenterController {
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
 		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		CustomerFund customerFund = getCustomerFund(user.getId()); 
 		
 		model.addAttribute("userId", userInfo.getUserId());
 		model.addAttribute("phone", username);
@@ -60,6 +68,7 @@ public class UserCenterController {
 		model.addAttribute("certId", userInfo.getCertId());
 		model.addAttribute("qq", userInfo.getQqNo());
 		model.addAttribute("email", userInfo.getEmail());
+		model.addAttribute("customerFund", customerFund);
 		model.addAttribute("isValidate", userInfo.getIsValidate());
 		
         return "web/userCenter/userInfoModify";
@@ -73,6 +82,7 @@ public class UserCenterController {
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
 		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		CustomerFund customerFund = getCustomerFund(user.getId()); 
 		
 		model.addAttribute("userId", userInfo.getUserId());
 		model.addAttribute("phone", username);
@@ -80,6 +90,7 @@ public class UserCenterController {
 		model.addAttribute("certId", userInfo.getCertId());
 		model.addAttribute("qq", userInfo.getQqNo());
 		model.addAttribute("email", userInfo.getEmail());
+		model.addAttribute("customerFund", customerFund);
 		model.addAttribute("isValidate", userInfo.getIsValidate());
 		
         return "web/userCenter/userInfoModify";
@@ -347,6 +358,35 @@ public class UserCenterController {
 		}
 		
 		return result;
+	}
+    
+    /**
+	 * 获取个人账户信息
+	 * @param userId
+	 * @return CustomerFund
+	 */
+	private CustomerFund getCustomerFund(Long userId){
+		CustomerFund customerFund = null;
+		//查询用户个人账户
+		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+		customerFundCtrlModel.getCustomerFund().setCustomerId(userId);
+		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
+		if(lstCustomerFund!=null && lstCustomerFund.size()>0){
+			customerFund = lstCustomerFund.get(0);
+		}else{
+			CustomerFund cNewCustomerFund = new CustomerFund();
+			cNewCustomerFund.setCustomerId(userId);
+			cNewCustomerFund.setTotalFund(BigDecimal.ZERO);
+			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
+			cNewCustomerFund.setPeiziFund(BigDecimal.ZERO);
+			cNewCustomerFund.setFxbzFund(BigDecimal.ZERO);
+			cNewCustomerFund.setDongjieFund(BigDecimal.ZERO);
+			cNewCustomerFund.setLockId(1);
+			customerFundService.insertCustomerFund(cNewCustomerFund);
+			customerFund = cNewCustomerFund;
+		}
+		
+		return customerFund;
 	}
     
 
