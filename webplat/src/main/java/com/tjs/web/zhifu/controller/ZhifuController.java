@@ -41,6 +41,7 @@ import com.tjs.admin.zhifu.service.ICustbank;
 import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.admin.zhifu.service.IFundRecord;
 import com.tjs.admin.zhifu.service.IRecharge;
+import com.tjs.admin.zhifu.service.IWithdraw;
 import com.tjs.admin.zhifu.zfenum.AreaLevelEnum;
 import com.tjs.admin.zhifu.zfenum.CustBankCardFromEnum;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
@@ -79,6 +80,9 @@ public class ZhifuController {
 	
 	@Resource
 	private IAreaBank areaService;
+	
+	@Resource
+	private IWithdraw withdrawService;
 	
 	@Autowired  
 	private  HttpServletRequest request; 
@@ -534,10 +538,76 @@ public class ZhifuController {
 		//提现操作
 		zhifuService.withdraw(withdraw, fundRecord, customerFund);
 		
+		withdrawCtrlModel.getWithdraw().setCustomerId(user.getId());
+		//设置总条数
+    	int totalCount =withdrawService.countWithdraw(withdrawCtrlModel);
+    	withdrawCtrlModel.setPageSize(8);
+    	withdrawCtrlModel.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = withdrawCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(withdrawCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	withdrawCtrlModel.setPageNo(1);
+        } else if(withdrawCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	withdrawCtrlModel.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = withdrawCtrlModel.getPageNo();
+        }
+        withdrawCtrlModel.setPageNo(currentPageNo);
 		
+		
+		List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);
+		
+		model.addAttribute("lstWithdraw", lstWithdraw);
 		model.addAttribute("totalFund", customerFund.getTotalFund());
 		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
+		//提现成功标志
+		model.addAttribute("isSuccess","1");
+		
+		return "web/zhifu/withdrawHistory"; 
+	}
+	
+	/**
+	 * 提现
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/withdrawHistory")
+    public String withdrawHistory(WithdrawCtrlModel withdrawCtrlModel, Model model) {
 		model.addAttribute("isLog", "true");
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		
+		withdrawCtrlModel.getWithdraw().setCustomerId(user.getId());
+		//设置总条数
+    	int totalCount =withdrawService.countWithdraw(withdrawCtrlModel);
+    	withdrawCtrlModel.setPageSize(8);
+    	withdrawCtrlModel.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = withdrawCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(withdrawCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	withdrawCtrlModel.setPageNo(1);
+        } else if(withdrawCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	withdrawCtrlModel.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = withdrawCtrlModel.getPageNo();
+        }
+        withdrawCtrlModel.setPageNo(currentPageNo);
+		
+		
+		List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);
+		
+		model.addAttribute("lstWithdraw", lstWithdraw);
+		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
+		//提现成功标志
+		model.addAttribute("isSuccess","1");
 		
 		return "web/zhifu/withdrawHistory"; 
 	}
