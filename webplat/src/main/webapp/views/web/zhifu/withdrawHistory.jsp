@@ -42,16 +42,7 @@
 				</div>
 				<div class="top_wrap_menu menu">
 					<ul>
-						<c:if test="${isLog!='true'}">
-							<li st><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
-							<li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
-							<li><a href="rest/web/peizi/usercenter/pzzhongxin"><span
-									class="simu_on">个人中心</span></a></li>
-							<li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
-						</c:if>
-
-						<c:if test="${isLog=='true'}">
-							<li style="width: 115px"><a href="#">首页</a></li>
+						<li style="width: 115px"><a href="#">首页</a></li>
 							<li style="width: 115px"><a
 								href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
 							<li style="width: 115px"><a href="rest/web/pe/peIndex"
@@ -61,7 +52,6 @@
 							<li style="width: 115px"><a href="#" target="_blank">海外保险</a></li>
 							<li style="width: 115px"><a href="rest/web/aboutUs/index"
 								target="_blank">关于我们</a></li>
-						</c:if>
 
 					</ul>
 				</div>

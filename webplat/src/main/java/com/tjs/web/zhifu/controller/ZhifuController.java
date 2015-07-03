@@ -501,7 +501,7 @@ public class ZhifuController {
 	 */
 	@RequestMapping("/withdraw")
     public String withdraw(HttpServletRequest request, WithdrawCtrlModel withdrawCtrlModel, Model model) {
-		model.addAttribute("isLog", "true");
+		//model.addAttribute("isLog", "true");
 		
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
@@ -580,13 +580,13 @@ public class ZhifuController {
 		List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);
 		
 		model.addAttribute("lstWithdraw", lstWithdraw);
-		model.addAttribute("totalFund", customerFund.getTotalFund());
-		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		//model.addAttribute("totalFund", customerFund.getTotalFund());
+		//model.addAttribute("usableFund", customerFund.getUsebleFund());
 		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
 		//提现成功标志
-		//model.addAttribute("isSuccess","1");
+		model.addAttribute("isSuccess","1");
 		
-		return "redirect:/rest/web/zhifu/withdrawHistory"; 
+		return "redirect:/rest/web/userCenter/zhifu/withdrawHistory"; 
 	}
 	
 	/**
