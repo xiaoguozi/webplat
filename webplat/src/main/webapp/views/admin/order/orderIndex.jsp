@@ -81,7 +81,7 @@ var IndexPage = {};
 $(function(){
     var insertUrl = "rest/admin/order/order/insert";
     var updateUrl = "rest/admin/order/order/update";
-    var viewUrl = "rest/admin/order/order/view";
+    var viewUrl = "rest/admin/order/order/update";
     var deleteDataUrl = "rest/admin/order/order/deleteData";
     var listDataCountUrl = "rest/admin/order/order/listDataCount";
     var listDataUrl = "rest/admin/order/order/listData";
