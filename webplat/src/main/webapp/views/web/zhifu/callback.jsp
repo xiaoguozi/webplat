@@ -81,7 +81,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                				</div>
                				<div style="width: 1048px; height:30px; text-align: center;">
                					<span>
-               						  您可能需要 &nbsp;<a href="rest/web/userCenter/zhifu/enterCur">继续充值</a>&nbsp;|&nbsp;<a>查看充值记录</a>&nbsp;|&nbsp;<a href="" style="cursor: pointer;">返回淘金山首页</a>
+               						  您可能需要 &nbsp;<a href="rest/web/userCenter/zhifu/enterCur">继续充值</a>&nbsp;|&nbsp;<a href="rest/web/userCenter/zhifu/rechargeHistory">查看充值记录</a>&nbsp;|&nbsp;<a href="" style="cursor: pointer;">返回淘金山首页</a>
                					</span>
                				</div>
                		</div>

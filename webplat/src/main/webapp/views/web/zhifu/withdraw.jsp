@@ -153,18 +153,18 @@
 							<input name="pageSize" type="hidden" value="${rechargeCtrlModel.pageSize }"/>
               			</form>
               			<p style="line-height: 28px; vertical-align: baseline; margin-top: 30px; ">
-              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">账户余额：</label>
+              				<label for="" style="width:230px;line-height: 28px; margin-left: 170px;">账户余额：</label>
               				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥<fmt:formatNumber value="${usableFund}" pattern="########.##" /></span>
               			</p>
               			<p style="line-height: 28px; vertical-align: baseline; margin-top: 10px; ">
-              				<label for="" style="width:130px;line-height: 28px; margin-left: 56px;">可提现金额：</label>
+              				<label for="" style="width:230px;line-height: 28px; margin-left: 156px;">可提现金额：</label>
               				<span id="usableFund" style="color: #18b160; font-size: 18px; font-weight: bold;">￥<fmt:formatNumber value="${usableFund}" pattern="########.##" /></span>
               			</p>
               			<p style="line-height: 28px; margin-top: 15px; ">
-	              			<span style="color: #999; font-size: 14px; margin-top: 30px; font-weight: bold; margin-bottom: 10px;">选择提现使用的银行卡</span>
+	              			<span style="color: #999; font-size: 14px; margin-left:100px; margin-top: 30px; font-weight: bold; margin-bottom: 10px;">选择提现使用的银行卡</span>
               			</p>
               			<form name="WithdrawForm" class="hform" id="WithdrawForm" action="rest/web/userCenter/zhifu/withdraw"  method="post">
-              			<ul class="signing_bankcard_list" style="margin-top: 15px;">
+              			<ul class="signing_bankcard_list" style="margin-top: 15px; margin-left: 100px;">
               				<c:forEach items="${lstCustbank}" var="bank" varStatus="status">
               						<c:if test="${status.index!=0}">
               							<li style="border-top: 0px;">
@@ -174,12 +174,12 @@
               						</c:if>
 		              					<input style="float: left;" id="userBankId" name="userBankId" ${status.index==0?'checked':''} value="${bank.bankId}" type="radio" >
 		              					<img class="bankImg" index="${status.index}" alt="" style="float: left; margin-left: 20px; vertical-align: bottom; cursor: pointer;" src="assets/img/zhifu/${bank.img}">
-		              					<span  style="margin-left: 30px; margin-top: 15px;">${bank.bankNo}</span>
+		              					<span  style="margin-left: 30px; margin-top: 15px; font-size: 15px; font-weight: bold;">${bank.bankNo}</span>
 		                            </li>
               				</c:forEach>
                         </ul>     
                         <p style="line-height: 28px; vertical-align: baseline; margin-top: 20px; ">
-              				<label for="" style="width:130px;line-height: 28px; margin-left: 70px;">提现金额：</label>
+              				<label for="" style="width:230px;line-height: 28px; margin-left: 170px;">提现金额：</label>
               				
               				<input name="withdraw.amount" class="txt" id="amount" type="text" maxLength="10" onkeyup="clearNoNum(this);" style="height: 42px; width: 235px; margin-left: 12px;"/>
               				
@@ -187,7 +187,7 @@
               			
 						</form>      
 						<p class="space-bot">
-							<button style="padding: 8px 40px; letter-spacing: 1px; margin-left: 158px; margin-top: 30px; font-size: 16px;" id="SumbitWithdrawForm" ${bankCount=='0'?'disabled':''} class="red left" type="button">申请提现</button>
+							<button style="padding: 8px 40px; letter-spacing: 1px; margin-left: 258px; margin-top: 30px; font-size: 16px;" id="SumbitWithdrawForm" ${bankCount=='0'?'disabled':''} class="red left" type="button">申请提现</button>
 						</p>					
 					</div>
 					
