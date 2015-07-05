@@ -284,6 +284,8 @@ public class ZhifuController {
         	currentPageNo = rechargeCtrlModel.getPageNo();
         }
         rechargeCtrlModel.setPageNo(currentPageNo);
+        rechargeCtrlModel.setSortField("create_time");
+        rechargeCtrlModel.setSortType("desc");
         
 		List<Recharge> lstRecharge = rechargeService.selectRecharge(rechargeCtrlModel);
 		CustomerFund customerFund = getCustomerFund(user.getId());
@@ -323,6 +325,8 @@ public class ZhifuController {
         	currentPageNo = fundRecordCtrlModel.getPageNo();
         }
         fundRecordCtrlModel.setPageNo(currentPageNo);
+        fundRecordCtrlModel.setSortField("create_time");
+        fundRecordCtrlModel.setSortType("desc");
         
 		List<FundRecord> lstFundRecord = fundRecordService.selectFundRecord(fundRecordCtrlModel);
 		CustomerFund customerFund = getCustomerFund(user.getId());
@@ -625,6 +629,8 @@ public class ZhifuController {
         	currentPageNo = withdrawCtrlModel.getPageNo();
         }
         withdrawCtrlModel.setPageNo(currentPageNo);
+        withdrawCtrlModel.setSortField("create_time");
+        withdrawCtrlModel.setSortType("desc");
 		
 		
 		List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);

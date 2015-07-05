@@ -257,10 +257,7 @@
 		var timer = 4;
 		function tick(){
 			 if(timer == 1){
-				var url = window.location.href;
-    			var index = url.indexOf('withdrawIndex');
-    			url = url.substring(0, index);
-    			window.location.href = url + 'addbank';
+    			window.location.href = '<%=basePath%>rest/web/userCenter/zhifu/addbank';
 			 }else{
 				  timer--;
 				  $('#span_second').html(timer);

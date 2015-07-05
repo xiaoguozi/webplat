@@ -332,6 +332,7 @@
 				
 				$("#chargeSuccess").click(function(){
 					d.close().remove();
+					window.location.href = '<%=basePath%>rest/web/userCenter/zhifu/fundHistory';
 				});
 			});
 			
