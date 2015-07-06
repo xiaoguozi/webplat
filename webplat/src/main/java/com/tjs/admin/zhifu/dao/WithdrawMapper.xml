@@ -44,7 +44,17 @@
 		
 		<if test="withdraw!= null and withdraw.customerId!=null">
          and  customer_id = #{withdraw.customerId}
-        </if>	   					
+        </if>	
+        
+         <if test="keyWord!= null and keyWord!= ''">
+           AND (
+           bank_name like CONCAT('%',#{keyWord},'%') OR 
+           create_by like CONCAT('%',#{keyWord},'%') OR
+           audit_by like CONCAT('%',#{keyWord},'%') OR
+           check_by like CONCAT('%',#{keyWord},'%')
+           )
+         </if>
+            					
 	</select>
 	
 	
@@ -56,10 +66,24 @@
 		
 		<if test="withdraw!= null and withdraw.customerId!=null">
          and  customer_id = #{withdraw.customerId}
-        </if>	
+        </if>
+        
+         <if test="keyWord!= null and keyWord!= ''">
+           AND (
+           bank_name like CONCAT('%',#{keyWord},'%') OR 
+           create_by like CONCAT('%',#{keyWord},'%') OR
+           audit_by like CONCAT('%',#{keyWord},'%') OR
+           check_by like CONCAT('%',#{keyWord},'%')
+           )
+         </if>
+         	
         				      
         <if test="sortField!= null and sortField!= ''">
            ORDER BY ${sortField} ${sortType}
+        </if>
+        
+        <if test="sortField== null or sortField== ''">
+           ORDER BY create_time desc
         </if>
                       
          <if test="pageNo!= 0">

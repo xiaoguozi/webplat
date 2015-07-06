@@ -19,6 +19,7 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.withdraw.service.IWithdrawBizService;
 import com.tjs.admin.zhifu.controller.WithdrawCtrlModel;
 import com.tjs.admin.zhifu.model.Withdraw;
@@ -50,8 +51,14 @@ public class WithdrawController {
     
     @RequestMapping("/listDataCount")
     @ResponseBody
-    public Map<String, Integer> listDataCount(WithdrawCtrlModel withdrawCtrlModel, Model model){
+    public Map<String, Integer> listDataCount(WithdrawCtrlModel withdrawCtrlModel, Model model) throws UnsupportedEncodingException{
     	Map<String, Integer> result = new HashMap<String, Integer>();
+    	
+    	if(StringUtils.isNotBlank(withdrawCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(withdrawCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		withdrawCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+    	
     	int icount = withdrawService.countWithdraw(withdrawCtrlModel);
     	   	
     	result.put("total", icount);
@@ -62,6 +69,12 @@ public class WithdrawController {
     
     @RequestMapping("/listData")
     public String listData(WithdrawCtrlModel withdrawCtrlModel, Model model) throws UnsupportedEncodingException {
+    	
+    	if(StringUtils.isNotBlank(withdrawCtrlModel.getKeyWord())){
+    		String paramsTrans = new String(withdrawCtrlModel.getKeyWord().getBytes("ISO-8859-1"),"UTF-8");
+    		withdrawCtrlModel.setKeyWord(java.net.URLDecoder.decode(paramsTrans , "UTF-8"));
+    	}
+    	
     	List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);
     	model.addAttribute("showData", lstWithdraw);
 		model.addAttribute("ctrlData", withdrawCtrlModel);
