@@ -172,11 +172,12 @@
 											    </td>
 											    <c:if test="${recharge.status==1}">
 											    	<td>
-														易宝流水号${recharge.paynumber}
+											    		银行：${recharge.recordDesc}<br/>
+														易宝流水号：${recharge.paynumber}
 													</td>
 											    </c:if>
 												<c:if test="${recharge.status!=1}">
-											    	<td></td>
+											    	<td>银行：${recharge.recordDesc}</td>
 											    </c:if>
 											</tr>
 										</c:forEach>

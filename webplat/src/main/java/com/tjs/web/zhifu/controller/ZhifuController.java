@@ -120,7 +120,7 @@ public class ZhifuController {
 		Recharge recharge = new Recharge();
 		recharge.setAmount(new BigDecimal(rechargeAmount));
 		recharge.setLockId(1);
-		insertRecharge(request, recharge);
+		insertRecharge(request, recharge, pdFrpId);
 		
 		String p0_Cmd           = "Buy";
 		String p2_Order         = PREFIX + String.valueOf(recharge.getRechangeId());
@@ -284,6 +284,8 @@ public class ZhifuController {
         	currentPageNo = rechargeCtrlModel.getPageNo();
         }
         rechargeCtrlModel.setPageNo(currentPageNo);
+        rechargeCtrlModel.setSortField("create_time");
+        rechargeCtrlModel.setSortType("desc");
         
 		List<Recharge> lstRecharge = rechargeService.selectRecharge(rechargeCtrlModel);
 		CustomerFund customerFund = getCustomerFund(user.getId());
@@ -323,6 +325,8 @@ public class ZhifuController {
         	currentPageNo = fundRecordCtrlModel.getPageNo();
         }
         fundRecordCtrlModel.setPageNo(currentPageNo);
+        fundRecordCtrlModel.setSortField("create_time");
+        fundRecordCtrlModel.setSortType("desc");
         
 		List<FundRecord> lstFundRecord = fundRecordService.selectFundRecord(fundRecordCtrlModel);
 		CustomerFund customerFund = getCustomerFund(user.getId());
@@ -373,7 +377,7 @@ public class ZhifuController {
 	 * @param request
 	 * @param recharge
 	 */
-	private void insertRecharge(HttpServletRequest request, Recharge recharge){
+	private void insertRecharge(HttpServletRequest request, Recharge recharge, String pdFrpId){
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
@@ -385,6 +389,7 @@ public class ZhifuController {
 		recharge.setCreateTime(Calendar.getInstance().getTime());
 		recharge.setCreateBy(userInfo.getName()==null?username:userInfo.getName());
 		recharge.setRequestIp(request.getRemoteAddr());
+		recharge.setRecordDesc(BankNameEnum.getValue(pdFrpId));
 		
 		rechargeService.insertRecharge(recharge);
 	}
@@ -493,6 +498,7 @@ public class ZhifuController {
 			for(Custbank bank : lstCustbank){
 				bank.setBankName(BankNameEnum.getValue(bank.getBankCode()));
 				bank.setImg(BankImageEnum.getValue(bank.getBankCode()));
+				bank.setBankNo(getMaskCardNo(bank.getBankNo()));
 			}
 		}
 		return "web/zhifu/withdraw"; 
@@ -539,6 +545,7 @@ public class ZhifuController {
 		withdraw.setCardNo(custbank.getBankNo());
 		withdraw.setBankProvince(custbank.getBankProvince());
 		withdraw.setBankcity(custbank.getBankCity());
+		withdraw.setBankName(custbank.getBankName());
 		withdraw.setAmount(amount);
 		withdraw.setPoundageAmount(BigDecimal.ZERO);
 		withdraw.setBranchName(custbank.getBranchName());
@@ -624,15 +631,25 @@ public class ZhifuController {
         	currentPageNo = withdrawCtrlModel.getPageNo();
         }
         withdrawCtrlModel.setPageNo(currentPageNo);
+        withdrawCtrlModel.setSortField("create_time");
+        withdrawCtrlModel.setSortType("desc");
 		
 		
 		List<Withdraw> lstWithdraw = withdrawService.selectWithdraw(withdrawCtrlModel);
 		
 		model.addAttribute("lstWithdraw", lstWithdraw);
 		model.addAttribute("withdrawCtrlModel", withdrawCtrlModel);
-		//提现成功标志
-		model.addAttribute("isSuccess","1");
 		
 		return "web/zhifu/withdrawHistory"; 
 	}
+	
+	private String getMaskCardNo(String cardNo){
+		if(cardNo==null){
+			return cardNo;
+		}
+		String strStart = cardNo.substring(0, 4);
+		String strEnd = cardNo.substring(cardNo.length()-4);
+		return strStart+"***********"+strEnd;
+	}
+	
 }

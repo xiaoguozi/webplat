@@ -242,7 +242,7 @@
 								<div style="height: 30px; margin-right: 15px;"></div>
 								<div style="height: 50px; margin-right: 15px;">  
 									<div style="height: 50px; width:330px; float:left; text-align: right; margin-right: 10px;"><span style="font-size: 18px; color: #000;">账户余额：</span></div>
-									<div style="height: 50px; width:500px; float:left; "><span id="totalFund" style="font-size: 18px; color: red;"><fmt:formatNumber value="${totalFund}" pattern="########.##" />元</span></div>
+									<div style="height: 50px; width:500px; float:left; "><span id="totalFund" style="font-size: 18px; color: red;"><fmt:formatNumber value="${usableFund}" pattern="########.##" />元</span></div>
 								</div>
 								<div style="height: 43px; margin-right: 15px;">  
 									<div style="height: 43px; width:330px; float:left;  text-align: right; margin-right: 12px;">
@@ -332,6 +332,7 @@
 				
 				$("#chargeSuccess").click(function(){
 					d.close().remove();
+					window.location.href = '<%=basePath%>rest/web/userCenter/zhifu/fundHistory';
 				});
 			});
 			
