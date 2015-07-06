@@ -10,4 +10,12 @@ public interface IWithdrawBizService {
 	  * @return
 	  */
 	 int updateWithdraw(Withdraw withdraw,String usernName);
+	 
+	 
+	 /**
+	  * 取消提现记录
+	  * @param withdraw
+	  * @return
+	  */
+	 int cancelWithdraw(Withdraw withdraw,String usernName);
 }

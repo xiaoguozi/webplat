@@ -27,7 +27,6 @@
                 <input type="hidden" name="pageSize" value="">
             </div>&nbsp;&nbsp;
             <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
-            <button type="button" id="deleteBtn" class="btn btn-danger ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-trash"></span> 删除</button>
         </form>
     </div>
 </div>

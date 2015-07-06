@@ -10,7 +10,19 @@
         
 <div class="pull-right">
     <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
-    <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span> 保存</button>
+    <c:if test="${withdraw.status==0}">
+    	<button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>审核</button>
+    	<button type="button" id="modalCancelBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>取消提现</button>
+    </c:if>
+    
+     <c:if test="${withdraw.status==1}">
+    	<button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>确认</button>
+    	<button type="button" id="modalCancelBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>取消提现</button>
+    </c:if>
+    
+  
+    
+    
 </div>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
@@ -21,6 +33,7 @@
     <form id="modalForm" action="rest/admin/withdraw/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="withrowId" value="${withdraw.withrowId}">
         <input type="hidden" name="lockId" value="${withdraw.lockId}">
+        <input type="hidden" name="status" value="${withdraw.status}">
         <div class="form-group">
             <label class="col-md-2 control-label">客户名称</label>
             <div class="col-md-6">
@@ -58,43 +71,48 @@
              </div>              
          </div>
         
-         <div class="form-group">
-             <label class="col-md-2 control-label">提现状态</label>
-             <div class="col-md-6" style="margin-top:5px;font-size:14px" >                  
-                    <select name="status"  style="width: 200px; height: 30px " class="form-control required">
-                         <option value="0" <c:if test="${withdraw.status == 0}">selected</c:if>>待审核</option>                      
-                         <option value="1" <c:if test="${withdraw.status == 1}">selected</c:if>>待确认</option>  
-                         <option value="2" <c:if test="${withdraw.status == 2}">selected</c:if>>完成</option>                        
-                    </select>             	                
-             </div>              
-         </div>
-         
+                
           <div class="form-group">
             <label class="col-md-2 control-label">备注</label>
             <div class="col-md-6">   
-              <textarea rows="3" cols="100" class="form-control " name="auditDesc">${withdraw.auditDesc}</textarea>            
+              <textarea rows="3" cols="100" class="form-control" onmouseout="" name="auditDesc">${withdraw.auditDesc}</textarea>            
             </div>
-         </div>
-           
-          
-        
+         </div>       
     </form>
+    
+    <form id="cancelForm" action="rest/admin/withdraw/cancelData" method="post" class="form-horizontal" role="form" data-submit="#modalCancelBtn">
+    <input type="hidden" name="withrowId" value="${withdraw.withrowId}">
+    <input type="hidden" name="lockId" value="${withdraw.lockId}">
+    <input type="hidden" name="status" value="${withdraw.status}">
+   </form>
+    
 </div>
 
 <script type="text/javascript">
 
 $(function(){
 
-    Btk.form($("#modalForm"),"update",function(data){
+  Btk.form($("#modalForm"),"update",function(data){
         if("0"==data.code){
             IndexPage.togglePage('list');
             $("#searchBtn").click();
         }
-    });
+    }); 
+    
+  Btk.form($("#cancelForm"),"update",function(data){
+      if("0"==data.code){
+          IndexPage.togglePage('list');
+          $("#searchBtn").click();
+      }
+  });  
+    
 
     $("button.modalCloseBtn").unbind('click').click(function(event) {
         IndexPage.togglePage('list');
     });
+    
+    
+    
 
 
 });

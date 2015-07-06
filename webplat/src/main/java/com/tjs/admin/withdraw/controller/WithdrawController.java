@@ -93,5 +93,22 @@ public class WithdrawController {
     	result.put("bizData", withdrawCtrlModel);
         return result;
     }
+    
+    
+    @RequestMapping("/cancelData")
+    @ResponseBody
+    public Map<String, Object> cancelData(Withdraw withdraw, WithdrawCtrlModel withdrawCtrlModel, Model model) {  	
+    	Map<String, Object> result = new HashMap<String, Object>();
+    	
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();		
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+		String userName=userInfo==null?"":userInfo.getName();		
+    	withdrawBizService.cancelWithdraw(withdraw,userName);
+    	result.put("code", "0");
+    	result.put("bizData", withdrawCtrlModel);
+        return result;
+    }
 	
 }

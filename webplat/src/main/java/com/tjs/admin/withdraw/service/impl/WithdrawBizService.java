@@ -1,7 +1,7 @@
 package com.tjs.admin.withdraw.service.impl;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -39,14 +39,23 @@ public class WithdrawBizService implements IWithdrawBizService {
 		
 		//是否已经提现完成
 		Withdraw oldWithdraw= withdrawService.findByWithdrawId(withdraw.getWithrowId());
-		if(WithdrawEnum.FINISH.getIntegerKey().equals(oldWithdraw.getStatus())){
+		if(WithdrawEnum.FINISH.getIntegerKey().equals(oldWithdraw.getStatus())||
+		 WithdrawEnum.CANCEL.getIntegerKey().equals(oldWithdraw.getStatus())){
 			return 1;
 		}
 		
-		
-		
-		
-		
+		if(WithdrawEnum.DSH.getIntegerKey().equals(withdraw.getStatus())){
+			withdraw.setStatus(WithdrawEnum.DYD.getIntegerKey());
+			withdraw.setAuditBy(userName);
+			withdraw.setAuditTime(new Date());
+		}else if(WithdrawEnum.DYD.getIntegerKey().equals(withdraw.getStatus())){
+			withdraw.setAuditBy(oldWithdraw.getAuditBy());
+			withdraw.setAuditTime(oldWithdraw.getAuditTime());
+			withdraw.setStatus(WithdrawEnum.FINISH.getIntegerKey());
+			withdraw.setCheckBy(userName);
+			withdraw.setCheckTime(new Date());;
+		}
+								
 		//更新提现记录
 		int iCount = withdrawService.updateWithdraw(withdraw);
 		if(iCount==0){
@@ -62,7 +71,11 @@ public class WithdrawBizService implements IWithdrawBizService {
 			CustomerFund customerFund = lstCustomerFund.get(0);
 			customerFund.setDongjieFund(BigDecimalUtils.subtract(customerFund.getDongjieFund(), withdraw.getAmount()));
 			customerFund.setTotalFund(BigDecimalUtils.subtract(customerFund.getTotalFund(), withdraw.getAmount()));
-			customerFundService.updateCustomerFund(customerFund);
+			int iUpdateCount = customerFundService.updateCustomerFund(customerFund);
+			
+			if(iUpdateCount==0){
+				throw new DuplicateException("操作冲突");
+			}
 			
 			//插入资金流水
 			FundRecord fundRecord = new FundRecord();
@@ -73,9 +86,66 @@ public class WithdrawBizService implements IWithdrawBizService {
 			fundRecord.setCustomerId(oldWithdraw.getCustomerId());
 			fundRecord.setFundType(FundRecordFundTypeEnum.TXCG.getKey());
 			fundRecord.setRecordDesc(FundRecordFundTypeEnum.TXCG.getValue());
-			fundRecord.setUsableAmount(customerFund.getUsebleFund());			
+			fundRecord.setUsableAmount(customerFund.getUsebleFund());
+			fundRecordService.insertFundRecord(fundRecord);
 		}	
 		return 0;
+	}
+
+
+	@Override
+	public int cancelWithdraw(Withdraw withdraw, String userName) {
+		//是否已经提现完成
+		Withdraw oldWithdraw= withdrawService.findByWithdrawId(withdraw.getWithrowId());
+		if(WithdrawEnum.FINISH.getIntegerKey().equals(oldWithdraw.getStatus())){
+			return 1;
+		}
+		
+		if(WithdrawEnum.DSH.getIntegerKey().equals(withdraw.getStatus())){
+			withdraw.setStatus(WithdrawEnum.CANCEL.getIntegerKey());
+			withdraw.setAuditBy(userName);
+			withdraw.setAuditTime(new Date());
+		}else if(WithdrawEnum.DYD.getIntegerKey().equals(withdraw.getStatus())){
+			withdraw.setAuditBy(oldWithdraw.getAuditBy());
+			withdraw.setAuditTime(oldWithdraw.getAuditTime());
+			withdraw.setStatus(WithdrawEnum.CANCEL.getIntegerKey());
+			withdraw.setCheckBy(userName);
+			withdraw.setCheckTime(new Date());;
+		}
+		
+		//更新提现记录
+		int iCount = withdrawService.updateWithdraw(withdraw);
+		if(iCount==0){
+			throw new DuplicateException("操作冲突");
+		}
+		
+							
+	    //更新个人账户信息
+		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+		customerFundCtrlModel.getCustomerFund().setCustomerId(oldWithdraw.getCustomerId());
+		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
+		CustomerFund customerFund = lstCustomerFund.get(0);
+		customerFund.setDongjieFund(BigDecimalUtils.subtract(customerFund.getDongjieFund(), oldWithdraw.getAmount()));
+		customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(), oldWithdraw.getAmount()));
+		customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(), oldWithdraw.getAmount()));
+		int iUpdateCount = customerFundService.updateCustomerFund(customerFund);
+		
+		if(iUpdateCount==0){
+			throw new DuplicateException("操作冲突");
+		}
+		
+		//插入资金流水
+		FundRecord fundRecord = new FundRecord();
+		fundRecord.setAmount(oldWithdraw.getAmount());
+		fundRecord.setBusinessId(oldWithdraw.getWithrowId());
+		fundRecord.setCreateBy(oldWithdraw.getCreateBy());
+		fundRecord.setCreateTime(Calendar.getInstance().getTime());
+		fundRecord.setCustomerId(oldWithdraw.getCustomerId());
+		fundRecord.setFundType(FundRecordFundTypeEnum.TXSB.getKey());
+		fundRecord.setRecordDesc(FundRecordFundTypeEnum.TXSB.getValue());
+		fundRecord.setUsableAmount(customerFund.getUsebleFund());
+		fundRecordService.insertFundRecord(fundRecord);					
+		return 1;
 	}
 
 }
