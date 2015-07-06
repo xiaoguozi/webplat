@@ -46,6 +46,10 @@
          and  customer_id = #{withdraw.customerId}
         </if>	
         
+        <if test="withdraw!= null and withdraw.status!=null">
+         and status= #{withdraw.status}
+        </if>
+        
          <if test="keyWord!= null and keyWord!= ''">
            AND (
            bank_name like CONCAT('%',#{keyWord},'%') OR 
@@ -66,6 +70,10 @@
 		
 		<if test="withdraw!= null and withdraw.customerId!=null">
          and  customer_id = #{withdraw.customerId}
+        </if>
+        
+        <if test="withdraw!= null and withdraw.status!=null">
+         and  status= #{withdraw.status}
         </if>
         
          <if test="keyWord!= null and keyWord!= ''">

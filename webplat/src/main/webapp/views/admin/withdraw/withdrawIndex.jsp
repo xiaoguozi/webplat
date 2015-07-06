@@ -20,12 +20,30 @@
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" size="30" name="keyWord" placeholder="关键字" value="" >
+            
+	             <!-- Single button -->
+				<div class="btn-group" >
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				   <span class="txzt" style="width:50px">提现状态</span><span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li><a href="" title="提现状态" value="">--全部--</a></li>
+				    <li><a href="#" title="待审核" value="0">待审核</a></li>
+				    <li><a href="#" title="待确定" value="1">待确定</a></li>
+				    <li><a href="#" title="完成"  value="2">完成</a></li>
+				    <li><a href="#" title="取消" value="3">取消</a></li>				   
+				  </ul>				 
+				</div>
+				
+                <input type="hidden" id="withdrawStatus" name="withdraw.status" value="">
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
                 <input type="hidden" name="pageSize" value="">
             </div>&nbsp;&nbsp;
+            
+		    <input type="text" class="form-control" size="20" name="keyWord" placeholder="关键字" value="" style="width:150px">
+
             <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
         </form>
     </div>
@@ -86,6 +104,17 @@ $(function(){
     var listDataUrl = "rest/admin/withdraw/listData";
 
     Btk.form($('#searchForm'));
+    
+    
+    //查询条件
+    $(".dropdown-menu a").click(function(event) {
+        event.preventDefault();
+        $("#withdrawStatus").val($(this).attr("value"));
+        loadList();      
+       $(".txzt").html($(this).attr("title"))
+       $(".form-group .open").removeClass("open");              
+        return false;
+    });
 
     //搜索事件
     $("#searchBtn").click(function(event) {
