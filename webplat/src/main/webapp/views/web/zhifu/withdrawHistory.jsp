@@ -83,14 +83,9 @@
 				<div class="bgcolor">
 					<div class="mycenter_left">
 						<ul class="mc_lbox">
-							<li>可用余额</li>
-							<li class="colorf06 font18 lh10 "><fmt:formatNumber value="${usableFund}" pattern="########.##" />元</li>
-							<li><a class="tjs_btn pzbtn" href="javascript:void()"><b>¥</b>
-									充值</a></li>
-
-
+							
 							<li class="wypz">我的配资</li>
-							<div class="ttp wypz_div" style="display: none">
+							<div class="ttp wypz_div">
 								<span class="bor_dashed"><a
 									href="rest/web/peizi/usercenter/mfp">免费配</a></span> <span
 									class="bor_dashed"><a
