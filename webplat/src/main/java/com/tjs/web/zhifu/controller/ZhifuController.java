@@ -546,13 +546,14 @@ public class ZhifuController {
 		withdraw.setBankProvince(custbank.getBankProvince());
 		withdraw.setBankcity(custbank.getBankCity());
 		withdraw.setBankName(custbank.getBankName());
-		withdraw.setAmount(amount);
+		withdraw.setAmount(customerFund.getUsebleFund());
 		withdraw.setPoundageAmount(BigDecimal.ZERO);
 		withdraw.setBranchName(custbank.getBranchName());
 		withdraw.setRequestIp(request.getRemoteAddr());
 		withdraw.setCreateTime(Calendar.getInstance().getTime());
 		withdraw.setCreateBy(userInfo.getName()==null?username:userInfo.getName());
 		withdraw.setStatus(0);
+		withdraw.setLockId(1);
 		
 		
 		//3、插入资金流水
