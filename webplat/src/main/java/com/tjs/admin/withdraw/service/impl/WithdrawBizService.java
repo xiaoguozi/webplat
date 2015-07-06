@@ -125,8 +125,8 @@ public class WithdrawBizService implements IWithdrawBizService {
 		customerFundCtrlModel.getCustomerFund().setCustomerId(oldWithdraw.getCustomerId());
 		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
 		CustomerFund customerFund = lstCustomerFund.get(0);
+		//个人总资产不用加，因为在提先申请的时候，是从可以金额变为冻结金额，取消的时候就只处理这两个字段
 		customerFund.setDongjieFund(BigDecimalUtils.subtract(customerFund.getDongjieFund(), oldWithdraw.getAmount()));
-		customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(), oldWithdraw.getAmount()));
 		customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(), oldWithdraw.getAmount()));
 		int iUpdateCount = customerFundService.updateCustomerFund(customerFund);
 		
