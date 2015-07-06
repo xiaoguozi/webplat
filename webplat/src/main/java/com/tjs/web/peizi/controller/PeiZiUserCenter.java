@@ -27,7 +27,7 @@ import com.tjs.admin.utils.StringUtils;
 /**
  * 用户中心配资
  * 
- *@author dyj
+ *@author 用户中心
  *@since 2015年6月9日
  *
  **/
