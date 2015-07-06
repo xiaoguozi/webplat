@@ -171,6 +171,7 @@
 													<c:if test="${fundRecord.fundType=='00004'}">配资金额</c:if>
 													<c:if test="${fundRecord.fundType=='00005'}">提现冻结</c:if>
 													<c:if test="${fundRecord.fundType=='00006'}">提现成功</c:if>
+													<c:if test="${fundRecord.fundType=='00007'}">提现失败</c:if>
 												</td>
 												
 												<td style="color: green;"><fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
