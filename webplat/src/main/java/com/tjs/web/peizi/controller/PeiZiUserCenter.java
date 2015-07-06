@@ -1,6 +1,5 @@
 package com.tjs.web.peizi.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,17 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
-import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.constants.OperaStatusEnum;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziCtrlModel;
-import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
-import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserService;
-import com.tjs.admin.utils.BigDecimalUtils;
-import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.service.ICustomerFund;
 
 /**
  * 用户中心配资
@@ -41,6 +38,9 @@ public class PeiZiUserCenter {
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private ICustomerFund customerFundService;
 
 	/**
 	 * 免费配资用户中心
@@ -260,6 +260,19 @@ public class PeiZiUserCenter {
 		String username = (String)subject.getPrincipal();
 		User user = userService.selectByUsername(username);
 	
+		
+		//查询用户个人账户
+		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+		customerFundCtrlModel.getCustomerFund().setCustomerId(user.getId());
+		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
+		CustomerFund customerFund =null;
+		if(lstCustomerFund!=null && lstCustomerFund.size()>0){
+			customerFund = lstCustomerFund.get(0);
+		}else{
+			customerFund = new CustomerFund();
+		}
+		model.addAttribute("customerFund",customerFund);
+		
 		peiziCtrlModel.getPeizi().setDataUserId(user.getId());
 		peiziCtrlModel.setNotEqualoperaStatus(OperaStatusEnum.YWJIE.getKey());
 		peiziCtrlModel.setPageSize(1);

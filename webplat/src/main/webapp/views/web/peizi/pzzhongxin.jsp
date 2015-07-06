@@ -115,25 +115,78 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     })
                 </script>
 	            <div class="mycenter_right" id="mycenter_right">
-	                <b class="my_tit">资产总览</b>
-               		 <table class="my_tbl1">
-	                    <thead>
-	                    <tr>
-	                        <td>账户总资产<span>(元)</span></td>
-	                        <td>配资金额<span>(元)</span></td>
-	                        <td>投资本金<span>(元)</span></td>
-	                        <td>账户余额<span>(元)</span></td>
-	                    </tr>
-	                    </thead>
-	                    <tbody>
-	                    <tr>
-	                        <td class="colorf06">0.00</td>
-	                        <td>0.00</td>
-	                        <td>0.00</td>
-	                        <td style="border:none;">0.00</td>
-	                    </tr>
-	                    </tbody>
-                 </table>
+	                <h2 class="space-right-h2"><strong>淘金山账户</strong><span style="color: #666; font-size: 13px; font-weight: 300; margin-left: 20px;">账户名： ${phone}</span></h2>
+			        <div class="ms-c3 clearfix">
+			          <div class="ms-c3-l"> <span>账户余额：</span> <br>
+			            <strong>￥<c:if test="${empty customerFund.usebleFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.usebleFund}">
+				              		<fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong>元 <a href="rest/web/userCenter/zhifu/fundHistory?isFromIndex=1">账户资金明细</a> </div>
+			          <p><a href="rest/web/userCenter/zhifu/enterCur" class="s1">充值</a><a href="rest/web/userCenter/zhifu/withdrawIndex"  class="s2" style="margin-right: 30px;">提现</a></p>
+			        </div>
+			        <div class="ms-c2-t" style="margin-bottom: 10px;">
+			          <div id="myAsset">
+			            <dl>
+			              <dt>账户总资产<span id="tip" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.totalFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.totalFund}">
+				              		<fmt:formatNumber value="${customerFund.totalFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
+			            </dl>
+			            <dl>
+			              <dt>配资资产<span id="tip1" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.peiziFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.peiziFund}">
+				              		<fmt:formatNumber value="${customerFund.peiziFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
+			            </dl>
+			            <dl>
+			              <dt>风险保证金<span id="tip2"  class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.fxbzFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.fxbzFund}">
+				              		<fmt:formatNumber value="${customerFund.fxbzFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong> 元 </dd>
+			            </dl>
+			            <dl>
+			            <dt>冻结金额</dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.dongjieFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.dongjieFund}">
+				              		<fmt:formatNumber value="${customerFund.dongjieFund}" pattern="########.##" />
+			              		</c:if>
+			              	</strong> 元 </dd>
+			            </dl>
+			            <dl class="last width ">
+			              <dt>账户余额</dt>
+			              <dd> <strong>￥
+			              		<c:if test="${empty customerFund.usebleFund}">
+			              			0
+			              		</c:if>
+			              		<c:if test="${!empty customerFund.usebleFund}">
+				              		<fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" />
+			              		</c:if>
+			              </strong> 元 </dd>
+			            </dl>
+			            
+			          </div>
+			        </div>
 	              
 	              <!-- 天天配 --> 
 	               <b class="my_tit" style="border-bottom-width:1px">天天配 <span class="tit_span">最近进行中<span >${!empty ttPeizi?1:0}</span>笔</span><span class="f-right" style="font-size:14px;color:#666;font-weight:normal">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>                  
