@@ -410,6 +410,9 @@ public class ZhifuController {
 		CustbankCtrlModel custbankCtrlModel = new CustbankCtrlModel();
 		custbankCtrlModel.getCustbank().setCustomerId(user.getId());
 		List<Custbank> lstCustbank = custbankService.selectCustbank(custbankCtrlModel);
+		for(Custbank custbank:lstCustbank){
+			custbank.setBankNo(this.getMaskCardNo(custbank.getBankNo()));
+		}
 		
 		//获取省份
 		Area area = new Area();
