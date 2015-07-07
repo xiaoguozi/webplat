@@ -20,7 +20,22 @@
 <div class="row">
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
-            <div class="form-group">
+         <div class="form-group">
+             <!-- Single button -->
+			<div class="btn-group" >
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			   <span class="pzzt" style="width:50px">配资状态</span><span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a href="" title="配资状态" value="">--全部--</a></li>
+			    <li><a href="#" title="待支付" value="1">待支付</a></li>
+			    <li><a href="#" title="验资中" value="10">验资中</a></li>
+			    <li><a href="#" title="操盘中"  value="20">操盘中</a></li>
+			    <li><a href="#" title="已完结" value="30">已完结</a></li>				   
+			  </ul>				 
+			</div>
+           
+                 <input type="hidden" id="peiziStatus" name="peizi.dataOperaStatus" value="">
                 <input type="hidden" name="sortField" value="">
                 <input type="hidden" name="sortType" value="">
                 <input type="hidden" name="pageNo" value="">
@@ -41,8 +56,9 @@
                         </th>
                        <th field="data_id">订单号<span class="glyphicon"></span></th>                                         
                        <th field="data_type">配资类型  <span class="glyphicon"></span></th>
-                        <th field="data_use_name">客户姓名<span class="glyphicon"></span></th>
-                       <th field="data_user_tel">手机号<span class="glyphicon"></span></th>  
+                       <th field="data_use_name">客户姓名<span class="glyphicon"></span></th>
+                       <th field="data_user_tel">手机号<span class="glyphicon"></span></th>
+                       <th field="data_opera_status">配资状态<span class="glyphicon"></span></th>  
                        <th field="data_zcpzj">总超盘资金<span class="glyphicon"></span></th>
                        <th field="data_tzbzj">保证金<span class="glyphicon"></span></th>
                        <th field="data_jjx">警戒线<span class="glyphicon"></span></th>
@@ -91,6 +107,16 @@ $(function(){
 
     Btk.form($('#searchForm'));
 
+    //查询条件
+    $(".dropdown-menu a").click(function(event) {
+        event.preventDefault();
+        $("#peiziStatus").val($(this).attr("value"));
+        loadList();      
+       $(".pzzt").html($(this).attr("title"))
+       $(".form-group .open").removeClass("open");              
+        return false;
+    });
+    
     //搜索事件
     $("#searchBtn").click(function(event) {
         event.preventDefault();

@@ -65,6 +65,10 @@
          and data_type = #{peizi.dataType}
         </if>
         
+        <if test="peizi!= null and peizi.dataOperaStatus!=null and peizi.dataOperaStatus!=''">
+         and data_opera_status = #{peizi.dataOperaStatus}
+        </if>
+        
         <if test="peizi!= null and peizi.dataId!=null">
           and data_id = #{peizi.dataId}
         </if>
@@ -87,7 +91,11 @@
         
         <if test="peizi!= null and peizi.dataType!=null">
           and data_type = #{peizi.dataType}
-        </if>		
+        </if>	
+        
+        <if test="peizi!= null and peizi.dataOperaStatus!=null and peizi.dataOperaStatus!=''">
+         and data_opera_status = #{peizi.dataOperaStatus}
+        </if>	
         
         <if test="peizi!= null and peizi.dataId!=null">
           and data_id = #{peizi.dataId}

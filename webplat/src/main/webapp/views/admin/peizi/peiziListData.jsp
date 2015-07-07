@@ -36,6 +36,27 @@
         <td>${peizi.dataUserName}  </td>
         <td>${peizi.dataUserTel}  </td>
         <td>
+              <c:choose>  
+                <c:when test="${peizi.dataOperaStatus=='1'}">  
+                  		待支付
+                </c:when>
+                 <c:when test="${peizi.dataOperaStatus=='10'}">  
+                  		验资中
+                </c:when>
+                 <c:when test="${peizi.dataOperaStatus=='20'}">  
+                  		  操盘中
+                </c:when>
+                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+                  		已完结
+                </c:when>          
+                <c:otherwise>  
+                     	异常
+                </c:otherwise>  
+            </c:choose>                 
+        </td>
+        
+        
+        <td>
            ${peizi.dataZcpzj}              
         </td>
         <td>
