@@ -204,7 +204,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							                </c:when>
 							                 <c:when test="${peizi.dataOperaStatus=='30'}">  
 							                  		  已完结
-							                </c:when>					                
+							                </c:when>	
+							                <c:when test="${peizi.dataOperaStatus=='40'}">  
+							                  		  已取消
+							                </c:when>				                
 							                <c:otherwise>  
 							                     	正在验资......
 							                </c:otherwise>  

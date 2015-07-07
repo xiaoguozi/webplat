@@ -104,15 +104,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                 <td style="width:50%;border-right:1px dashed;" >
 	                                 <b class="color158 font26">                              
 		                                <c:choose>  
+		                                	<c:when test="${peizi.dataOperaStatus=='1'}">  
+							                  		待支付......
+							                </c:when>
 							                <c:when test="${peizi.dataOperaStatus=='10'}">  
 							                  		正在验资......
 							                </c:when>
 							                 <c:when test="${peizi.dataOperaStatus=='20'}">  
 							                  		  操盘中......
 							                </c:when>
-							                 <c:when test="${peizi.dataOperaStatus=='30'}">  
+							                <c:when test="${peizi.dataOperaStatus=='30'}">  
 							                  		  已完结
-							                </c:when>					                
+							                </c:when>		
+							                <c:when test="${peizi.dataOperaStatus=='40'}">  
+							                  		  已取消
+							                </c:when>			                
 							                <c:otherwise>  
 							                     	正在验资......
 							                </c:otherwise>  

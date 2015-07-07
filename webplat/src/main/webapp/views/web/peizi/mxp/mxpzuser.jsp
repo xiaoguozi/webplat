@@ -139,6 +139,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                        	<c:if test="${peizi.dataOperaStatus=='30'}">
 				                        		<b class="color158 font18">已完结</b>
 				                        	</c:if>
+				                        	<c:if test="${peizi.dataOperaStatus=='40'}">
+				                        		<b class="color158 font18">已取消</b>
+				                        	</c:if>
 				                        </td>
 				                    </tr>
 				                    <tr>
