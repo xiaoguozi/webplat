@@ -361,6 +361,9 @@ public class PeiZiMXController {
 			lstFundRecord.add(fundRecord);
 			lstFundRecord.add(fundRecord2);
 			
+			//设置配资状态
+			peizi.setDataOperaStatus(OperaStatusEnum.PZZhong.getKey());
+			
 			zhifuService.payPeizi(lstFundRecord, customerFund, peizi);
 		}
 		
