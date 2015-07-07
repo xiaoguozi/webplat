@@ -1,6 +1,10 @@
 package com.tjs.admin.peizi.constants;
 
 public enum OperaStatusEnum {
+	
+	/**免费配资*/
+	PZPay("1","待支付"),
+	
 	/**免费配资*/
 	PZZhong("10","配资中"),
 	

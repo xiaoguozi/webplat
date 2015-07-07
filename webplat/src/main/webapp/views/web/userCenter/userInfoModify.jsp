@@ -80,7 +80,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div">
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp" >免费配</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mfp">免息配</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/peizi/usercenter/mxp">免息配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/ttpUserCenter">天天配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/yypUserCenter">月月配</a></span>
                             <span class="bor_dashed"><a href="rest/web/peizi/usercenter/dxpUserCenter">低息1配1</a></span>

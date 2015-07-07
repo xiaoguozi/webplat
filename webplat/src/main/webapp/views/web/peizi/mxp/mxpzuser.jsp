@@ -115,11 +115,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  		<c:if test="${!empty peizi}">
 				                <table class="my_tbl2" >
 				                    <tr>
+				                    	<td rowspan="2" ><a class="tjs_next_btn" href="" style="width: 110px;">前往支付</a></td>
+				                        <c:if test="${peizi.dataOperaStatus }">
+				                        	
+				                        </c:if>
+				                        
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span><br />亏损警告线</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span><br />亏损平仓线</td>
 				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
 				                        <td>
+				                        	<c:if test="${peizi.dataOperaStatus=='1'}">
+				                        		<b class="color158 font18">待支付</b>
+				                        	</c:if>
 				                        	<c:if test="${peizi.dataOperaStatus=='10'}">
 				                        		<b class="color158 font18">验资中</b>
 				                        	</c:if>
@@ -133,7 +141,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                    </tr>
 				                    <tr>
 				                        <td colspan="4" style="text-align:left;text-indent:3em;">发起时间：<span class="color158"><fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td>
-				                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}">查询方案详情</a></td>
+				                        <td>
+				                        	<a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}">查询方案详情</a>
+				                        </td>
 				                    </tr>
 				                </table>
 	                  		</c:if>

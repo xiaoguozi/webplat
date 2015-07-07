@@ -1,5 +1,8 @@
 package com.tjs.web.zhifu.service;
 
+import java.util.List;
+
+import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.zhifu.model.CustomerFund;
 import com.tjs.admin.zhifu.model.FundRecord;
 import com.tjs.admin.zhifu.model.Recharge;
@@ -21,5 +24,12 @@ public interface IZhifuService {
 	 * @param customerFund
 	 */
 	void withdraw(Withdraw withdraw, FundRecord fundRecord, CustomerFund customerFund);
+	
+	/**
+	 * 支付配资
+	 * @param fundRecord
+	 * @param customerFund
+	 */
+	void payPeizi(List<FundRecord> lstFundRecord, CustomerFund customerFund, Peizi peizi);
 	
 }
