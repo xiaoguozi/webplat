@@ -12,7 +12,10 @@ public enum OperaStatusEnum {
 	CPZHONG("20","操盘中"),
 	
 	/**免费配资*/
-	YWJIE("30","已完结");
+	YWJIE("30","已完结"),
+	
+	/**免费配资*/
+	PZCANCEL("40","已完结");
 	
 	 /** 键 */
     private String key;
