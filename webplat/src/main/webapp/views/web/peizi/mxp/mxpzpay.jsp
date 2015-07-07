@@ -104,7 +104,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   	</c:if>
                   	<c:if test="${customerFund.usebleFund>=peizi.dataTzbzj}">
                   		<div style="height: 60px; line-height:60px; margin-top:40px; text-align: center; ">
-		                    <a class="tjs_next_btn" href="">确定付款</a>
+		                    <c:if test="${peizi.dataOperaStatus=='1'}">
+			                    <a class="tjs_next_btn" href="">确定付款</a>
+		                    </c:if>
+		                    <c:if test="${peizi.dataOperaStatus=='10'}">
+		                    	<b class="color158 font18">已支付，正在验资......</b>
+		                    </c:if>
 	                  	</div>
                   	</c:if>
                   	

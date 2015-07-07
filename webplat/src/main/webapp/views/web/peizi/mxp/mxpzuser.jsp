@@ -113,11 +113,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  <div id="div_mfp">
 	                  		<b class="my_tit tit1">免息配 <span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 	                  		<c:if test="${!empty peizi}">
+	                  			<form name="payForm" class="hform" id="payForm" action="rest/web/peizi/mxp/confirmPay" target="_blank" method="post">
+			              			<input type="hidden" name="peizi.dataId" value="${peizi.dataId}"/>
+			              		</form>
 				                <table class="my_tbl2" >
 				                    <tr>
-				                    	<td rowspan="2" ><a class="tjs_next_btn" href="" style="width: 110px;">前往支付</a></td>
-				                        <c:if test="${peizi.dataOperaStatus }">
-				                        	
+				                        <c:if test="${peizi.dataOperaStatus=='1'}">
+					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" href="" style="width: 110px;">前往支付</a></td>
 				                        </c:if>
 				                        
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
@@ -142,7 +144,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                    <tr>
 				                        <td colspan="4" style="text-align:left;text-indent:3em;">发起时间：<span class="color158"><fmt:formatDate value="${peizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td>
 				                        <td>
-				                        	<a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}">查询方案详情</a>
+				                        	<a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" href="rest/web/peizi/usercenter/pzdetail?dataId=${peizi.dataId}" target="_blank">查询方案详情</a>
 				                        </td>
 				                    </tr>
 				                </table>
@@ -224,6 +226,11 @@ $(function() {
 		        })
 		    })
 		})
+		
+		$("#aPay").click(function(e){
+     		e.preventDefault();
+     		$("#payForm").submit();
+     	});
 						
 	});
        
