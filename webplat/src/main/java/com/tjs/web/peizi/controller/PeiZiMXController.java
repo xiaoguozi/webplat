@@ -278,7 +278,8 @@ public class PeiZiMXController {
 		
 		model.addAttribute("customerFund", customerFund);
 		model.addAttribute("peizi", peizi);
-		return "web/peizi/mxp/mxpzpay";
+		model.addAttribute("peiziType", PeiziTypeEnum.MXPEIZI.getKey());
+		return "web/peizi/pzpay";
 	}
 	
 	/**
@@ -302,7 +303,8 @@ public class PeiZiMXController {
 		
 		model.addAttribute("customerFund", customerFund);
 		model.addAttribute("peizi", peizi);
-		return "web/peizi/mxp/mxpzpay";
+		model.addAttribute("peiziType", PeiziTypeEnum.MXPEIZI.getKey());
+		return "web/peizi/pzpay";
 	}
 	
 	
@@ -311,21 +313,25 @@ public class PeiZiMXController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/monthPay")
-	public String monthPay(PeiziCtrlModel peiziCtrlModel, Model model) {
+	@RequestMapping("/pay")
+	public String pay(PeiziCtrlModel peiziCtrlModel, Model model) {
 		Peizi peizi = peiziCtrlModel.getPeizi();
-		if (BigDecimalUtils.isNull(peizi.getDataTzbzj())) {
+		if (peizi.getDataId()==null) {
 			return "redirect:/rest/web/peizi/mxp/monthCapital";
 		}
-		//从数据库中读取
-		peizi = iPeizi.findByPeiziId(peizi.getDataId());
-		
 		//判断用户实名认证
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
-		
 		User user = userService.selectByUsername(username);
 		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		//从数据库中读取
+		peizi = iPeizi.findByPeiziId(peizi.getDataId());
+		//如果不是待支付状态，直接跳到成功页面
+		if(!OperaStatusEnum.PZPay.getKey().equals(peizi.getDataOperaStatus())){
+			CustomerFund customerFund = getCustomerFund(user.getId());
+			model.addAttribute("usableFund", customerFund.getUsebleFund());
+			return "web/peizi/mxp/mxpzlast";
+		}
 		
 		CustomerFund customerFund = getCustomerFund(user.getId());
 		if(customerFund.getUsebleFund().compareTo(peizi.getDataTzbzj())!=-1){
@@ -333,33 +339,24 @@ public class PeiZiMXController {
 			customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataTzbzj()));
 			customerFund.setPeiziFund(customerFund.getPeiziFund().add(peizi.getDataPzje()));
 			customerFund.setFxbzFund(customerFund.getFxbzFund().add(peizi.getDataTzbzj()));	
-			//TODO 增加利息
+			//TODO 付利息
+			if(peizi.getDataJklxTotal()!=null){
+				customerFund.setTotalFund(customerFund.getTotalFund().subtract(peizi.getDataJklxTotal()));
+				customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataJklxTotal()));
+			}
 			
-			//2、插入记录
-			FundRecord fundRecord = new FundRecord();
-			fundRecord.setAmount(peizi.getDataTzbzj());
-			fundRecord.setBusinessId(peizi.getDataId());
-			fundRecord.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
-			fundRecord.setCreateTime(Calendar.getInstance().getTime());
-			fundRecord.setCustomerId(user.getId());
-			fundRecord.setFundType(FundRecordFundTypeEnum.TZBZJ.getKey());
-			fundRecord.setRecordDesc(FundRecordFundTypeEnum.TZBZJ.getValue());
-			fundRecord.setUsableAmount(customerFund.getUsebleFund());
-			
-			FundRecord fundRecord2 = new FundRecord();
-			fundRecord2.setAmount(peizi.getDataTzbzj());
-			fundRecord2.setBusinessId(peizi.getDataId());
-			fundRecord2.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
-			fundRecord2.setCreateTime(Calendar.getInstance().getTime());
-			fundRecord2.setCustomerId(user.getId());
-			fundRecord2.setFundType(FundRecordFundTypeEnum.PZJE.getKey());
-			fundRecord2.setRecordDesc(FundRecordFundTypeEnum.PZJE.getValue());
-			fundRecord2.setUsableAmount(customerFund.getUsebleFund());
-			
-			//TODO 利息
+			//2、插入记录  --投资保证金
+			FundRecord fundRecord = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.TZBZJ, customerFund.getUsebleFund());
+			// --配资金额
+			FundRecord fundRecord2 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.PZJE, customerFund.getUsebleFund());
 			List<FundRecord> lstFundRecord = new ArrayList<FundRecord>();
 			lstFundRecord.add(fundRecord);
 			lstFundRecord.add(fundRecord2);
+			// --利息
+			if(peizi.getDataJklxTotal()!=null){
+				FundRecord fundRecord3 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.JKLX, customerFund.getUsebleFund());
+				lstFundRecord.add(fundRecord3);
+			}
 			
 			//设置配资状态
 			peizi.setDataOperaStatus(OperaStatusEnum.PZZhong.getKey());
@@ -373,6 +370,34 @@ public class PeiZiMXController {
 		return "web/peizi/mxp/mxpzlast";
 	}
 	
+	/**
+	 * 构造资金流水
+	 * @param peizi
+	 * @param fundTypeEnum
+	 * @param usableAmount
+	 * @return FundRecord
+	 */
+	private FundRecord buildFundRecord(Peizi peizi, UserInfo userInfo,
+				FundRecordFundTypeEnum fundTypeEnum, BigDecimal usableAmount){
+		FundRecord fundRecord = new FundRecord();
+		if(FundRecordFundTypeEnum.TZBZJ.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataTzbzj());
+		}else if(FundRecordFundTypeEnum.PZJE.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataPzje());
+		}else if(FundRecordFundTypeEnum.JKLX.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataJklxTotal());
+		}
+		
+		fundRecord.setBusinessId(peizi.getDataId());
+		fundRecord.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
+		fundRecord.setCreateTime(Calendar.getInstance().getTime());
+		fundRecord.setCustomerId(userInfo.getUserId());
+		fundRecord.setFundType(fundTypeEnum.getKey());
+		fundRecord.setRecordDesc(fundTypeEnum.getValue());
+		fundRecord.setUsableAmount(usableAmount);
+		
+		return fundRecord;
+	}
 
 	/**
 	 * 天天配查看方案进度

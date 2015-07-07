@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.peizi.constants.OperaStatusEnum;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
@@ -133,7 +134,7 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 	}
 
 	@Override
-	public Long createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
+	public Peizi createFreeAllPeiziOrder(UserInfoExtendVO userInfoExtendVO, String peiziType) {
 		//免息配规则
 		PeiziRuleCtrlModel peiziRuleCtrlModel = new PeiziRuleCtrlModel();
 		peiziRuleCtrlModel.getPeiziRule().setRuleType(PeiziTypeEnum.MFPEIZI.getKey());
@@ -165,9 +166,9 @@ public class PeiZiIndexService implements IPeiZiIndexService {
 		peizi.setDataUserId(userInfoExtendVO.getUserId());
 		peizi.setDataUserName(userInfo==null?"":userInfo.getName());
 		peizi.setDataUserTel(userInfoExtendVO.getPhone());
-		peizi.setDataOperaStatus("10");
+		peizi.setDataOperaStatus(OperaStatusEnum.PZPay.getKey());
 		peiziService.insertPeizi(peizi);
-		return peizi.getDataId();
+		return peizi;
 	}
 	
 	@Override

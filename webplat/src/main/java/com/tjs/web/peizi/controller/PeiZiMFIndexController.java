@@ -2,6 +2,7 @@ package com.tjs.web.peizi.controller;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,18 +16,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.peizi.constants.OperaStatusEnum;
 import com.tjs.admin.peizi.constants.PeiziTypeEnum;
+import com.tjs.admin.peizi.controller.PeiziCtrlModel;
 import com.tjs.admin.peizi.controller.PeiziRuleCtrlModel;
+import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.model.PeiziRule;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.peizi.service.IPeiziRule;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.BigDecimalUtils;
+import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.model.FundRecord;
+import com.tjs.admin.zhifu.service.ICustomerFund;
+import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.peizi.model.FreePeiziDetailVO;
 import com.tjs.web.peizi.model.UserInfoExtendVO;
 import com.tjs.web.peizi.service.IPeiZiIndexService;
+import com.tjs.web.zhifu.service.IZhifuService;
 
 /**
  * 免费配资控制器
@@ -54,6 +65,12 @@ public class PeiZiMFIndexController {
 	
 	@Resource
 	IPeiziRule iPeiziRule;
+	
+	@Resource
+	private ICustomerFund customerFundService;
+	
+	@Resource
+	private IZhifuService zhifuService;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
@@ -212,7 +229,7 @@ public class PeiZiMFIndexController {
 		if(username==null){
 			return "web/peizi/mfp/hdpeizi";
 		}
-		Long dataId = 0L;
+		Peizi peizi = new Peizi();
 		//1、将用户能使用资源设置为0
 		PZIndexCtrlModel pzIndexCtrlModel = new PZIndexCtrlModel();
 		User user = userService.selectByUsername(username);
@@ -228,12 +245,166 @@ public class PeiZiMFIndexController {
 				//1、更新状态并产生订单
 				userInfoExtendVO.setIsOwnResource(0);
 				userInfoExtendVO.setPhone(username);
-				dataId = iPeiZiIndexService.createFreeAllPeiziOrder(userInfoExtendVO, PeiziTypeEnum.MFPEIZI.getKey());
+				peizi = iPeiZiIndexService.createFreeAllPeiziOrder(userInfoExtendVO, PeiziTypeEnum.MFPEIZI.getKey());
 			}
 		}
-		model.addAttribute("dataId", dataId);
-		return "web/peizi/mfp/hdpeizilast";
+		model.addAttribute("dataId", peizi.getDataId());
+		
+		//账户信息
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		model.addAttribute("customerFund", customerFund);
+		model.addAttribute("peizi", peizi);
+		model.addAttribute("peiziType", PeiziTypeEnum.MFPEIZI.getKey());
+		return "web/peizi/pzpay";
 	}
+	
+	/**
+	 * 从后台打开确认支付页
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/confirmPay")
+	public String confirmPay(PeiziCtrlModel peiziCtrlModel, Model model) {
+		Peizi peizi = peiziCtrlModel.getPeizi();
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(StringUtils.isBlank(username) || peizi.getDataId()==null){
+			return "redirect:/rest/web/peizi/mxp/monthCapital";
+		}
+		User user = userService.selectByUsername(username);
+		//从数据库中读取
+		peizi = iPeiziService.findByPeiziId(peizi.getDataId());
+		//账户信息
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		
+		model.addAttribute("customerFund", customerFund);
+		model.addAttribute("peizi", peizi);
+		model.addAttribute("peiziType", PeiziTypeEnum.MFPEIZI.getKey());
+		return "web/peizi/pzpay";
+	}
+	
+	
+	/**
+	 * 免息配付款
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/pay")
+	public String pay(PeiziCtrlModel peiziCtrlModel, Model model) {
+		Peizi peizi = peiziCtrlModel.getPeizi();
+		if (peizi.getDataId()==null) {
+			return "redirect:/rest/web/peizi/mxp/monthCapital";
+		}
+		//判断用户实名认证
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+		//从数据库中读取
+		peizi = iPeiziService.findByPeiziId(peizi.getDataId());
+		//如果不是待支付状态，直接跳到成功页面
+		if(!OperaStatusEnum.PZPay.getKey().equals(peizi.getDataOperaStatus())){
+			CustomerFund customerFund = getCustomerFund(user.getId());
+			model.addAttribute("usableFund", customerFund.getUsebleFund());
+			return "web/peizi/mxp/mxpzlast";
+		}
+		
+		CustomerFund customerFund = getCustomerFund(user.getId());
+		if(customerFund.getUsebleFund().compareTo(peizi.getDataTzbzj())!=-1){
+			//1、修改保证金
+			customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataTzbzj()));
+			customerFund.setPeiziFund(customerFund.getPeiziFund().add(peizi.getDataPzje()));
+			customerFund.setFxbzFund(customerFund.getFxbzFund().add(peizi.getDataTzbzj()));	
+			//TODO 付利息
+			if(peizi.getDataJklxTotal()!=null){
+				customerFund.setTotalFund(customerFund.getTotalFund().subtract(peizi.getDataJklxTotal()));
+				customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataJklxTotal()));
+			}
+			
+			//2、插入记录  --投资保证金
+			FundRecord fundRecord = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.TZBZJ, customerFund.getUsebleFund());
+			// --配资金额
+			FundRecord fundRecord2 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.PZJE, customerFund.getUsebleFund());
+			List<FundRecord> lstFundRecord = new ArrayList<FundRecord>();
+			lstFundRecord.add(fundRecord);
+			lstFundRecord.add(fundRecord2);
+			// --利息
+			if(peizi.getDataJklxTotal()!=null){
+				FundRecord fundRecord3 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.JKLX, customerFund.getUsebleFund());
+				lstFundRecord.add(fundRecord3);
+			}
+			
+			//设置配资状态
+			peizi.setDataOperaStatus(OperaStatusEnum.PZZhong.getKey());
+			
+			zhifuService.payPeizi(lstFundRecord, customerFund, peizi);
+		}
+		
+		
+		model.addAttribute("usableFund", customerFund.getUsebleFund());
+		
+		return "web/peizi/mxp/mxpzlast";
+	}
+	
+	/**
+	 * 构造资金流水
+	 * @param peizi
+	 * @param fundTypeEnum
+	 * @param usableAmount
+	 * @return FundRecord
+	 */
+	private FundRecord buildFundRecord(Peizi peizi, UserInfo userInfo,
+				FundRecordFundTypeEnum fundTypeEnum, BigDecimal usableAmount){
+		FundRecord fundRecord = new FundRecord();
+		if(FundRecordFundTypeEnum.TZBZJ.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataTzbzj());
+		}else if(FundRecordFundTypeEnum.PZJE.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataPzje());
+		}else if(FundRecordFundTypeEnum.JKLX.getKey().equals(fundTypeEnum.getKey())){
+			fundRecord.setAmount(peizi.getDataJklxTotal());
+		}
+		
+		fundRecord.setBusinessId(peizi.getDataId());
+		fundRecord.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
+		fundRecord.setCreateTime(Calendar.getInstance().getTime());
+		fundRecord.setCustomerId(userInfo.getUserId());
+		fundRecord.setFundType(fundTypeEnum.getKey());
+		fundRecord.setRecordDesc(fundTypeEnum.getValue());
+		fundRecord.setUsableAmount(usableAmount);
+		
+		return fundRecord;
+	}
+
+	/**
+	 * 获取个人账户信息
+	 * @param userId
+	 * @return CustomerFund
+	 */
+	private CustomerFund getCustomerFund(Long userId){
+		CustomerFund customerFund = null;
+		//查询用户个人账户
+		CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+		customerFundCtrlModel.getCustomerFund().setCustomerId(userId);
+		List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
+		if(lstCustomerFund!=null && lstCustomerFund.size()>0){
+			customerFund = lstCustomerFund.get(0);
+		}else{
+			CustomerFund cNewCustomerFund = new CustomerFund();
+			cNewCustomerFund.setCustomerId(userId);
+			cNewCustomerFund.setTotalFund(BigDecimal.ZERO);
+			cNewCustomerFund.setUsebleFund(BigDecimal.ZERO);
+			cNewCustomerFund.setPeiziFund(BigDecimal.ZERO);
+			cNewCustomerFund.setFxbzFund(BigDecimal.ZERO);
+			cNewCustomerFund.setDongjieFund(BigDecimal.ZERO);
+			
+			cNewCustomerFund.setLockId(1);
+			customerFundService.insertCustomerFund(cNewCustomerFund);
+			customerFund = cNewCustomerFund;
+		}
+		
+		return customerFund;
+	}
+	
 	
 	/**
 	 * 免费配资查看方案进度
