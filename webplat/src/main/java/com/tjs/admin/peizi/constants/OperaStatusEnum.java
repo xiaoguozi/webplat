@@ -15,7 +15,7 @@ public enum OperaStatusEnum {
 	YWJIE("30","已完结"),
 	
 	/**免费配资*/
-	PZCANCEL("40","已完结");
+	PZCANCEL("40","取消");
 	
 	 /** 键 */
     private String key;
