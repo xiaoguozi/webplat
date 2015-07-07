@@ -487,5 +487,15 @@ public final class BigDecimalUtils {
         return false;
     }
 
+    /**
+     * 相减之后，如果为负数，返还零
+     */
+    public  static BigDecimal subtractZero(BigDecimal source, BigDecimal destination){
+    	BigDecimal result = subtract(source,destination);
+    	if(isLessThan(result, BigDecimal.ZERO)){
+    		return BigDecimal.ZERO;
+    	}
+    	return result;
+    }
     
 }

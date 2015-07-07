@@ -1,5 +1,7 @@
 package com.tjs.admin.peizi.service.impl;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +16,16 @@ import com.tjs.admin.peizi.controller.PeiziCtrlModel;
 import com.tjs.admin.peizi.dao.PeiziMapper;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
+import com.tjs.admin.utils.BigDecimalUtils;
 import com.tjs.admin.utils.DateTimeUtils;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
 import com.tjs.admin.zhifu.exception.DuplicateException;
+import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.model.FundRecord;
+import com.tjs.admin.zhifu.service.ICustomerFund;
+import com.tjs.admin.zhifu.service.IFundRecord;
+import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 
 @Service
 public class PeiziImpl implements IPeizi {
@@ -24,6 +33,14 @@ public class PeiziImpl implements IPeizi {
 	
 	@Resource
     private PeiziMapper peiziMapper;
+	
+	 @Resource
+	 IFundRecord fundRecordService;
+	 
+	 @Resource
+	 ICustomerFund customerFundService;
+	 
+	 
 	@Override
 	public int countPeizi(PeiziCtrlModel peiziCtrlModel) {
 		return peiziMapper.countPeizi(peiziCtrlModel);
@@ -96,9 +113,92 @@ public class PeiziImpl implements IPeizi {
 		
 		//如果配资完成
 		if(OperaStatusEnum.YWJIE.getKey().equals(peizi.getDataOperaStatus())){
-			//2、更新个人账户资金信息
+			//配资完成金额，收益为整数									 
+			CustomerFundCtrlModel customerFundCtrlModel = new CustomerFundCtrlModel();
+			customerFundCtrlModel.getCustomerFund().setCustomerId(peizi.getDataUserId());
+			List<CustomerFund> lstCustomerFund = customerFundService.selectCustomerFund(customerFundCtrlModel);
+			CustomerFund customerFund = lstCustomerFund.get(0);
 			
-			//3、插入个人资金流水
+			//收益为为正数
+			if(BigDecimalUtils.isGreaterThan(peizi.getDataProfit(), BigDecimal.ZERO)
+				||BigDecimalUtils.isEquals(peizi.getDataProfit(), BigDecimal.ZERO)){
+				//2、插入个人资金流水				
+				//2.1 返还风险保证金
+				FundRecord fundRecord1 = new FundRecord();
+				fundRecord1.setAmount(oldPeizi.getDataTzbzj());
+				fundRecord1.setBusinessId(oldPeizi.getDataId());
+				fundRecord1.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord1.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord1.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord1.setFundType(FundRecordFundTypeEnum.HHTZBZJ.getKey());
+				fundRecord1.setRecordDesc(FundRecordFundTypeEnum.HHTZBZJ.getValue());
+				fundRecord1.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(), oldPeizi.getDataTzbzj()));
+				
+				customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),oldPeizi.getDataTzbzj()));
+				customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),oldPeizi.getDataTzbzj()));
+				customerFund.setFxbzFund(BigDecimalUtils.subtractZero(customerFund.getFxbzFund(), oldPeizi.getDataTzbzj()));
+				fundRecordService.insertFundRecord(fundRecord1);
+				
+				//2.2扣除配资金额
+				FundRecord fundRecord2 = new FundRecord();
+				fundRecord2.setAmount(oldPeizi.getDataPzje());
+				fundRecord2.setBusinessId(oldPeizi.getDataId());
+				fundRecord2.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord2.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord2.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord2.setFundType(FundRecordFundTypeEnum.SHPZJE.getKey());
+				fundRecord2.setRecordDesc(FundRecordFundTypeEnum.SHPZJE.getValue());
+				fundRecord2.setUsableAmount(customerFund.getUsebleFund());
+				
+				customerFund.setPeiziFund(BigDecimalUtils.subtractZero(customerFund.getPeiziFund(), oldPeizi.getDataPzje()));
+				fundRecordService.insertFundRecord(fundRecord2);
+				//2.3收益
+				if(!BigDecimalUtils.isEquals(peizi.getDataProfit(), BigDecimal.ZERO)){
+				FundRecord fundRecord3 = new FundRecord();
+				fundRecord3.setAmount(peizi.getDataProfit());
+				fundRecord3.setBusinessId(oldPeizi.getDataId());
+				fundRecord3.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord3.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord3.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord3.setFundType(FundRecordFundTypeEnum.PZSH.getKey());
+				fundRecord3.setRecordDesc(FundRecordFundTypeEnum.PZSH.getValue());
+				fundRecord3.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(), peizi.getDataProfit()));
+				
+				customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),peizi.getDataProfit()));
+				customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),peizi.getDataProfit()));
+				
+				fundRecordService.insertFundRecord(fundRecord3);
+				}
+			
+				//3、更新个人账户资金信息	
+				customerFundService.updateCustomerFund(customerFund);								
+			}else{
+				//2.1扣除风险保证金
+				 BigDecimal result = BigDecimalUtils.add(peizi.getDataProfit(), oldPeizi.getDataTzbzj());
+				 if(BigDecimalUtils.isGreaterThan(result, BigDecimal.ZERO)
+				  ||BigDecimalUtils.isEquals(result, BigDecimal.ZERO)){
+					
+					 
+				 }
+				
+				
+				//2.2扣除配资金额
+				FundRecord fundRecord2 = new FundRecord();
+				fundRecord2.setAmount(oldPeizi.getDataPzje());
+				fundRecord2.setBusinessId(oldPeizi.getDataId());
+				fundRecord2.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord2.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord2.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord2.setFundType(FundRecordFundTypeEnum.SHPZJE.getKey());
+				fundRecord2.setRecordDesc(FundRecordFundTypeEnum.SHPZJE.getValue());
+				fundRecord2.setUsableAmount(customerFund.getUsebleFund());
+				
+				customerFund.setPeiziFund(BigDecimalUtils.subtractZero(customerFund.getPeiziFund(), oldPeizi.getDataPzje()));
+				fundRecordService.insertFundRecord(fundRecord2);
+				
+				
+			}
+			
 		}
 		
 		return 1;
