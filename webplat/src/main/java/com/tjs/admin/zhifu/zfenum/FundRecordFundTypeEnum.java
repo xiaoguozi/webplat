@@ -18,11 +18,11 @@ public enum FundRecordFundTypeEnum {
 	    
 	    SHPZJE("00008","收回配资金额"),
 	    
-	    HHTZBZJ("00008","返还投资保证金"),
+	    HHTZBZJ("00009","返还投资保证金"),
 	    
-	    PZSH("00009","配资收益"),
+	    PZSH("00010","配资收益"),
 	    
-	    KCFXBZJ("00010","扣除风险保证金");
+	    KCFXBZJ("00011","扣除风险保证金");
 	    
 	    
 	      	   

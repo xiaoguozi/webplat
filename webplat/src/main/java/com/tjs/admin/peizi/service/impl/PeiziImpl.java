@@ -171,31 +171,69 @@ public class PeiziImpl implements IPeizi {
 				}
 			
 				//3、更新个人账户资金信息	
-				customerFundService.updateCustomerFund(customerFund);								
+				int iupdateCount = customerFundService.updateCustomerFund(customerFund);
+				if(iupdateCount==0){
+					throw new DuplicateException("操作冲突");
+				}
 			}else{
 				//2.1扣除风险保证金
-				 BigDecimal result = BigDecimalUtils.add(peizi.getDataProfit(), oldPeizi.getDataTzbzj());
-				 if(BigDecimalUtils.isGreaterThan(result, BigDecimal.ZERO)
-				  ||BigDecimalUtils.isEquals(result, BigDecimal.ZERO)){
+				FundRecord fundRecord1 = new FundRecord();
+				BigDecimal reslut = BigDecimalUtils.add(peizi.getDataProfit(), oldPeizi.getDataTzbzj());
+				if(BigDecimalUtils.isEquals(reslut, BigDecimal.ZERO)
+						||BigDecimalUtils.isLessThan(reslut, BigDecimal.ZERO)){
+					fundRecord1.setAmount(oldPeizi.getDataTzbzj());
 					
-					 
-				 }
+				}else{
+					fundRecord1.setAmount(peizi.getDataProfit().abs());
+				}				
+				fundRecord1.setBusinessId(oldPeizi.getDataId());
+				fundRecord1.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord1.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord1.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord1.setFundType(FundRecordFundTypeEnum.KCFXBZJ.getKey());
+				fundRecord1.setRecordDesc(FundRecordFundTypeEnum.KCFXBZJ.getValue()+":由于配资收益为"+BigDecimalUtils.format(peizi.getDataProfit())+"元");
+				fundRecord1.setUsableAmount(customerFund.getUsebleFund());
+				fundRecordService.insertFundRecord(fundRecord1);
 				
+				//2.2风险保证金还存在
+				if(BigDecimalUtils.isGreaterThan(reslut, BigDecimal.ZERO)){
+					FundRecord fundRecord2 = new FundRecord();
+					fundRecord2.setAmount(reslut);
+					fundRecord2.setBusinessId(oldPeizi.getDataId());
+					fundRecord2.setCreateBy(oldPeizi.getDataUserName());
+					fundRecord2.setCreateTime(Calendar.getInstance().getTime());
+					fundRecord2.setCustomerId(oldPeizi.getDataUserId());
+					fundRecord2.setFundType(FundRecordFundTypeEnum.HHTZBZJ.getKey());
+					fundRecord2.setRecordDesc(FundRecordFundTypeEnum.HHTZBZJ.getValue());
+					fundRecord2.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(),reslut));
+					
+					customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),reslut));
+					customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),reslut));
+										
+					fundRecordService.insertFundRecord(fundRecord2);					
+				}
 				
-				//2.2扣除配资金额
-				FundRecord fundRecord2 = new FundRecord();
-				fundRecord2.setAmount(oldPeizi.getDataPzje());
-				fundRecord2.setBusinessId(oldPeizi.getDataId());
-				fundRecord2.setCreateBy(oldPeizi.getDataUserName());
-				fundRecord2.setCreateTime(Calendar.getInstance().getTime());
-				fundRecord2.setCustomerId(oldPeizi.getDataUserId());
-				fundRecord2.setFundType(FundRecordFundTypeEnum.SHPZJE.getKey());
-				fundRecord2.setRecordDesc(FundRecordFundTypeEnum.SHPZJE.getValue());
-				fundRecord2.setUsableAmount(customerFund.getUsebleFund());
+				customerFund.setFxbzFund(BigDecimalUtils.subtractZero(customerFund.getFxbzFund(), oldPeizi.getDataTzbzj()));
+					
+				//2.3扣除配资金额
+				FundRecord fundRecord3 = new FundRecord();
+				fundRecord3.setAmount(oldPeizi.getDataPzje());
+				fundRecord3.setBusinessId(oldPeizi.getDataId());
+				fundRecord3.setCreateBy(oldPeizi.getDataUserName());
+				fundRecord3.setCreateTime(Calendar.getInstance().getTime());
+				fundRecord3.setCustomerId(oldPeizi.getDataUserId());
+				fundRecord3.setFundType(FundRecordFundTypeEnum.SHPZJE.getKey());
+				fundRecord3.setRecordDesc(FundRecordFundTypeEnum.SHPZJE.getValue());
+				fundRecord3.setUsableAmount(customerFund.getUsebleFund());
 				
 				customerFund.setPeiziFund(BigDecimalUtils.subtractZero(customerFund.getPeiziFund(), oldPeizi.getDataPzje()));
-				fundRecordService.insertFundRecord(fundRecord2);
+				fundRecordService.insertFundRecord(fundRecord3);
 				
+				//3、更新个人账户资金信息	
+				int iupdateCount = customerFundService.updateCustomerFund(customerFund);
+				if(iupdateCount==0){
+					throw new DuplicateException("操作冲突");
+				}
 				
 			}
 			
