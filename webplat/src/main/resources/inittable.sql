@@ -454,7 +454,6 @@ CREATE TABLE `tjs_customer_fund` (
   `dongjie_fund` decimal(18,2) DEFAULT '0.00' COMMENT '冻结金额',
   `lock_Id` int(11) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`customer_fund_id`),
-  UNIQUE KEY `fxbz_fund_UNIQUE` (`fxbz_fund`),
   UNIQUE KEY `customer_id_UNIQUE` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='个人资金账户';
 
