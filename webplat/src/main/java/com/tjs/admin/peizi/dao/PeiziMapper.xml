@@ -188,7 +188,7 @@
 		data_jyfc_date=#{dataJyfcDate},
 		data_profit=#{dataProfit},
 		data_cpf_date=#{dataCpfDate},
-		lock_id = #{lockId+1}		
+		lock_id = (#{lockId}+1)	
 		where data_id=#{dataId}	
 		and lock_id =#{lockId}	
 	</update>
