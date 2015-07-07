@@ -113,7 +113,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            <div class="mycenter_right" id="mycenter_right">
 	                  <div id="div_mfp">
 	                  			<form name="payForm" class="hform" id="payForm" action="rest/web/peizi/ttp/confirmPay" target="_blank" method="post">
-			              			<input type="hidden" name="peizi.dataId" value="${peizi.dataId}"/>
+			              			<input type="hidden" name="peizi.dataId" id="dateIdHidden" />
 			              		</form>
 	                  			<b class="my_tit tit1">天天配 <span class="tit_span">共<span class="colorf06">${peiziCtrlModel.totalCount}</span>笔</span><span class="f-right">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>
 				                <c:if test="${peiziCtrlModel.totalCount>0}">
@@ -122,7 +122,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                <table class="my_tbl2"  >
 				                    <tr>
 				                    	<c:if test="${peizi.dataOperaStatus=='1'}">
-					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" href="" style="width: 110px;">前往支付</a></td>
+					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" dataId="${peizi.dataId}" style="width: 110px;">前往支付</a></td>
 				                        </c:if>
 				                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${peizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
@@ -247,6 +247,7 @@ $(function() {
    	
         $("#aPay").click(function(e){
      		e.preventDefault();
+     		$("#dateIdHidden").val($(this).attr("dataId"));
      		$("#payForm").submit();
      	});
     

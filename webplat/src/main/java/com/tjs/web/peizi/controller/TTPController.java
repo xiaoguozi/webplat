@@ -196,7 +196,7 @@ public class TTPController {
 		Subject subject = SecurityUtils.getSubject();
 		String username = (String)subject.getPrincipal();
 		if(StringUtils.isBlank(username) || peizi.getDataId()==null){
-			return "redirect:/rest/web/peizi/ttp/monthCapital";  
+			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		User user = userService.selectByUsername(username);
 		//从数据库中读取
