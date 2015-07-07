@@ -2,9 +2,9 @@ package com.tjs.admin.peizi.service;
 
 import java.util.List;
 
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.controller.PeiziCtrlModel;
 import com.tjs.admin.peizi.model.Peizi;
-import com.tjs.admin.peizi.model.PeiziRule;
 
 public interface IPeizi {
 	
@@ -22,5 +22,12 @@ public interface IPeizi {
 	public void deleteBatchPeizi(Long[] peiziIds);
 	/**根据ID找到规则*/
 	public Peizi findByPeiziId(Long peiziId);
+	
+	/**更新配资*/
+	public int updatePeiziBiz(Peizi peizi,UserInfo userInfo);
+	
+	
+	/**取消配资*/
+	public int CancelPeizi(Peizi peizi,UserInfo userInfo);
 
 }

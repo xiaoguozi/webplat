@@ -503,6 +503,22 @@ CREATE TABLE `tjs_bank` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='淘金山支持的银行';
 
 
+ALTER TABLE `tjs_peizi_data` 
+CHANGE COLUMN `data_opera_user_id` `data_opera_user_id` BIGINT(20) NULL DEFAULT NULL COMMENT '验证ID' ,
+CHANGE COLUMN `data_opera_user_name` `data_opera_user_name` VARCHAR(200) NULL DEFAULT NULL COMMENT '操盘完成' ,
+ADD COLUMN `data_audit_by` VARCHAR(100) NULL COMMENT '操盘完成' AFTER `data_profit`;
+
+
+ALTER TABLE `tjs_peizi_data` 
+ADD COLUMN `lock_id` INT NULL COMMENT '版本控制' AFTER `data_audit_by`;
+
+
+ALTER TABLE `tjs_peizi_data` 
+ADD COLUMN `data_cpf_date` DATETIME NULL COMMENT '操盘完成时间' AFTER `lock_id`;
+
+
+
+
 
 
 

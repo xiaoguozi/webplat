@@ -14,7 +14,15 @@ public enum FundRecordFundTypeEnum {
 	    
 	    TXCG("00006","提现成功"),
 	    
-	    TXSB("00007","提现失败");
+	    TXSB("00007","提现失败"),	
+	    
+	    SHPZJE("00008","收回配资金额"),
+	    
+	    HHTZBZJ("00008","返还投资保证金"),
+	    
+	    PZSH("00009","配资收益");
+	    
+	    
 	      	   
 	   /** 键 */
 	   private String key;

@@ -37,20 +37,25 @@
 		<result column="data_jyfc_date" property="dataJyfcDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		<result column="data_profit" property="dataProfit" javaType="java.math.BigDecimal" />
 		<result column="data_order_code" property="dataOrderCode" jdbcType="VARCHAR" />	
+		<result column="data_audit_by" property="dataAuditBy" jdbcType="VARCHAR" />
+		<result column="lock_id" property="lockId" jdbcType="INTEGER" />
+		<result column="data_cpf_date" property="dataCpfDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />	
 	</resultMap>
 
 	<sql id="Base_select_Column_List">
 		data_id,data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
 		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
-		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit,data_order_code
+		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit,
+		data_order_code,data_audit_by,lock_id,data_cpf_date	
 	</sql>
 
 	<sql id="Base_insert_Column_List">
 		data_zcpzj,data_tzbzj,data_jjx,data_pcx,data_type,data_type_sylx,data_zjsyqx,data_zfglf,
 		data_yll,data_nll,data_jklx_total,data_submit_date,data_jyks_date,data_step,data_create_date,data_modify_date,
 		data_use_name,data_user_id,data_user_tel,data_remark,data_opera_status,data_opera_user_name,data_opera_user_id,
-		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,data_profit,data_order_code
+		data_rule_pcx,data_rule_jjx,data_pzje,data_jymm,data_jyzf,data_jyzf_date,data_jyfc_date,
+		data_profit,data_order_code,data_audit_by,lock_id,data_cpf_date
 	</sql>
 
 	<select id="countPeizi" resultType="int"
@@ -162,7 +167,10 @@
 		#{dataJyzfDate},	
 		#{dataJyfcDate},
 		#{dataProfit},
-		#{dataOrderCode}				
+		#{dataOrderCode},
+		#{dataAuditBy},
+		#{lockId},
+		#{dataCpfDate}				
 		)
 	</insert>
 	
@@ -175,10 +183,14 @@
 		data_opera_user_id=#{dataOperaUserId},
 		data_jymm=#{dataJymm},
 		data_jyzf=#{dataJyzf},
+		data_audit_by=#{dataAuditBy},
 		data_jyzf_date=#{dataJyzfDate},
 		data_jyfc_date=#{dataJyfcDate},
-		data_profit=#{dataProfit}		
-		where data_id=#{dataId}		
+		data_profit=#{dataProfit},
+		data_cpf_date=#{dataCpfDate},
+		lock_id = #{lockId+1}		
+		where data_id=#{dataId}	
+		and lock_id =#{lockId}	
 	</update>
 	
 	

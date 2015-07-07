@@ -80,12 +80,31 @@ public class Peizi {
 	 @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date dataJyfcDate;
 	
-	
+	 private Date dataCpfDate;
+	 
 	private BigDecimal dataProfit;;
 	
 	private String dataOrderCode;
 	
+	/**操盘完成*/
+	private String dataAuditBy;
 	
+	/**版本*/
+	private Integer lockId;
+	
+	
+	public Integer getLockId() {
+		return lockId;
+	}
+	public void setLockId(Integer lockId) {
+		this.lockId = lockId;
+	}
+	public String getDataAuditBy() {
+		return dataAuditBy;
+	}
+	public void setDataAuditBy(String dataAuditBy) {
+		this.dataAuditBy = dataAuditBy;
+	}
 	/**页面段显示支付总金额*/
 	
 	private BigDecimal zfzje;
@@ -97,7 +116,16 @@ public class Peizi {
 	
 	
 	
+	
+	
+	
 		
+	public Date getDataCpfDate() {
+		return dataCpfDate;
+	}
+	public void setDataCpfDate(Date dataCpfDate) {
+		this.dataCpfDate = dataCpfDate;
+	}
 	public String getDataOrderCode() {
 		return dataOrderCode;
 	}

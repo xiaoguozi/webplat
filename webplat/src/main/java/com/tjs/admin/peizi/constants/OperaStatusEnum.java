@@ -6,7 +6,7 @@ public enum OperaStatusEnum {
 	PZPay("1","待支付"),
 	
 	/**免费配资*/
-	PZZhong("10","配资中"),
+	PZZhong("10","验资中"),
 	
 	/**免费配资*/
 	CPZHONG("20","操盘中"),

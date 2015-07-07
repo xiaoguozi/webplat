@@ -8,12 +8,16 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.peizi.model.Peizi;
 import com.tjs.admin.peizi.service.IPeizi;
 import com.tjs.admin.service.UserInfoService;
@@ -73,6 +77,7 @@ public class PeiziController {
 	    		peiziCtrlModel.setKeyWord(paramsTrans);
 	    	}
 	    	
+	    	
 	    	showData = iPeizi.selectPeizi(peiziCtrlModel);
 	    	model.addAttribute("showData", showData);
 			model.addAttribute("ctrlData", peiziCtrlModel);
@@ -114,6 +119,25 @@ public class PeiziController {
 	    @RequestMapping("/updateData")
 	    @ResponseBody
 	    public Map<String, Object> updateData(Peizi peizi,  PeiziCtrlModel PeiziCtrlModel, Model model) {	    	
+	    	Map<String, Object> result = new HashMap<String, Object>();
+	    	
+	    	Subject subject = SecurityUtils.getSubject();
+    		String username = (String)subject.getPrincipal();
+    		
+    		User user = userService.selectByUsername(username);
+    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+    		
+    		
+	    	int id = iPeizi.updatePeiziBiz(peizi, userInfo);
+	    	result.put("code", "0");
+	    	result.put("bizData", peizi);	    	
+	        return result;
+	    }
+	    
+	    
+	    @RequestMapping("/CancelPeizi")
+	    @ResponseBody
+	    public Map<String, Object> CancelPeizi(Peizi peizi,  PeiziCtrlModel PeiziCtrlModel, Model model) {	    	
 	    	Map<String, Object> result = new HashMap<String, Object>();
 	    	int id = iPeizi.updatePeizi(peizi);
 	    	result.put("code", "0");
