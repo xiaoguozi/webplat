@@ -1,17 +1,19 @@
 package com.tjs.admin.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.tjs.admin.controller.UserCtrlModel;
 import com.tjs.admin.dao.UserMapper;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserExample;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.core.generic.GenericDao;
 import com.tjs.core.generic.GenericServiceImpl;
 
@@ -26,10 +28,27 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 
     @Resource
     private UserMapper userMapper;
+    
+    
+    @Resource
+    private ICustomerFund customerService;
 
     @Override
     public int insert(User model) {
-        return userMapper.insertSelective(model);
+    	int iResult = userMapper.insertSelective(model);
+    	if(model.getId()>0){
+    		CustomerFund customerFund = new CustomerFund();
+    		customerFund.setCustomerId(model.getId());
+    		customerFund.setDongjieFund(BigDecimal.ZERO);
+    		customerFund.setFxbzFund(BigDecimal.ZERO);
+    		customerFund.setPeiziFund(BigDecimal.ZERO);
+    		customerFund.setTotalFund(BigDecimal.ZERO);
+    		customerFund.setUsebleFund(BigDecimal.ZERO);
+    		customerFund.setLockId(1);
+    		customerService.insertCustomerFund(customerFund);
+    		
+    	}
+        return iResult;
     }
 
     @Override
