@@ -47,7 +47,7 @@
         </if>
         
         <if test="sortField== null or sortField== ''">
-           ORDER BY create_time desc,record_id asc
+           ORDER BY create_time desc,record_id desc
         </if>
                       
          <if test="pageNo!= 0">
