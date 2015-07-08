@@ -172,6 +172,11 @@
 													<c:if test="${fundRecord.fundType=='00005'}">提现冻结</c:if>
 													<c:if test="${fundRecord.fundType=='00006'}">提现成功</c:if>
 													<c:if test="${fundRecord.fundType=='00007'}">提现失败</c:if>
+													<c:if test="${fundRecord.fundType=='00008'}">收回配资金额</c:if>
+													<c:if test="${fundRecord.fundType=='00009'}">返还投资保证金</c:if>
+													<c:if test="${fundRecord.fundType=='00010'}">配资收益</c:if>
+													<c:if test="${fundRecord.fundType=='00011'}">扣除风险保证金</c:if>
+													<c:if test="${fundRecord.fundType=='00012'}">返还借款利息</c:if>
 												</td>
 												
 												<td style="color: green;"><fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
