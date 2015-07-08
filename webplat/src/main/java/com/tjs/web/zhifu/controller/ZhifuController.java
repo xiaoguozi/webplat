@@ -325,8 +325,8 @@ public class ZhifuController {
         	currentPageNo = fundRecordCtrlModel.getPageNo();
         }
         fundRecordCtrlModel.setPageNo(currentPageNo);
-        fundRecordCtrlModel.setSortField("create_time");
-        fundRecordCtrlModel.setSortType("desc");
+       // fundRecordCtrlModel.setSortField("create_time");
+       // fundRecordCtrlModel.setSortType("desc");
         
 		List<FundRecord> lstFundRecord = fundRecordService.selectFundRecord(fundRecordCtrlModel);
 		CustomerFund customerFund = getCustomerFund(user.getId());

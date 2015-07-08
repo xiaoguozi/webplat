@@ -45,6 +45,10 @@
         <if test="sortField!= null and sortField!= ''">
            ORDER BY ${sortField} ${sortType}
         </if>
+        
+        <if test="sortField== null or sortField== ''">
+           ORDER BY create_time desc,record_id asc
+        </if>
                       
          <if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}

@@ -24,7 +24,7 @@ public enum FundRecordFundTypeEnum {
 	    
 	    KCFXBZJ("00011","扣除风险保证金"),
 	    
-	    FHJKLX("00012","扣除风险保证金");
+	    FHJKLX("00012","返还借款利息");
 	    
 	    
 	      	   
