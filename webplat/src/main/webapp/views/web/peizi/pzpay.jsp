@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 	<!--配资页面样式--> 
 	<link href="assets/css/ui/peizi.css" rel="stylesheet" />
-	
+	<link href="assets/css/ui-dialog.css" rel="stylesheet" />
 	<script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/iview.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/jquery.plugins-min.js"></script>
@@ -24,6 +24,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<script type="text/javascript" src="assets/scripts/ui/alert_box.js"></script>
 	<script type="text/javascript" src="assets/scripts/ui/tip_box.js"></script>
 	<script src="assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
+	<script src="assets/scripts/ui/dialog-min.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="home_all">
@@ -154,17 +155,33 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          
          	$(".tjs_next_btn:not(.disabled)").click(function(e){
          		e.preventDefault();
-         		if('${peiziType}'=='10'){
-         			$("#payForm").attr("action", "rest/web/peizi/mfp/pay").submit();
-         		}else if('${peiziType}'=='20'){
-         			$("#payForm").attr("action", "rest/web/peizi/ttp/pay").submit();
-         		}else if('${peiziType}'=='30'){
-         			$("#payForm").attr("action", "rest/web/peizi/yyp/pay").submit();
-         		}else if('${peiziType}'=='40'){
-         			$("#payForm").attr("action", "rest/web/peizi/dxp/pay").submit();
-         		}else if('${peiziType}'=='50'){
-         			$("#payForm").attr("action", "rest/web/peizi/mxp/pay").submit();
-         		}
+         		//显示一个模态框验证窗口
+				var tipDialog = dialog({
+				    title: '温馨提示',
+				    content: '<div style="height:32px; line-height:32px; text-align:center;"><img src="assets/img/zhifu/zhifu_loading.gif" ></div><div style="text-align:center;height:32px; line-height:32px;">&nbsp;&nbsp;<b>支付中，请稍等......</b></div>',
+				    width: 300,
+				    cancel: false,
+				    ok: false
+				});
+				tipDialog.showModal();
+				var loadingTime = 1000*(1+Math.random());
+				setTimeout(function() {
+					
+	         		if('${peiziType}'=='10'){
+	         			$("#payForm").attr("action", "rest/web/peizi/mfp/pay").submit();
+	         		}else if('${peiziType}'=='20'){
+	         			$("#payForm").attr("action", "rest/web/peizi/ttp/pay").submit();
+	         		}else if('${peiziType}'=='30'){
+	         			$("#payForm").attr("action", "rest/web/peizi/yyp/pay").submit();
+	         		}else if('${peiziType}'=='40'){
+	         			$("#payForm").attr("action", "rest/web/peizi/dxp/pay").submit();
+	         		}else if('${peiziType}'=='50'){
+	         			$("#payForm").attr("action", "rest/web/peizi/mxp/pay").submit();
+	         		}
+					
+	    		}, loadingTime);
+				
+         		
          	});
         })
        
