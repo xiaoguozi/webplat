@@ -122,7 +122,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				                <table class="my_tbl2"  >
 				                    <tr>
 				                    	<c:if test="${peizi.dataOperaStatus=='1'}">
-					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" dataId="${peizi.dataId}" style="width: 110px;">前往支付</a></td>
+					                    	<td rowspan="2" ><a class="tjs_next_btn aPay" id="aPay" dataId="${peizi.dataId}" style="width: 110px;">前往支付</a></td>
 				                        </c:if>
 				                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${peizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
@@ -245,7 +245,7 @@ $(function() {
             $(".tjpz>a>span").removeClass("tspan");
         });
    	
-        $("#aPay").click(function(e){
+        $(".aPay").click(function(e){
      		e.preventDefault();
      		$("#dateIdHidden").val($(this).attr("dataId"));
      		$("#payForm").submit();

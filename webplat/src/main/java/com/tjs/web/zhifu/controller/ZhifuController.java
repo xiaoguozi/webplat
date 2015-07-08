@@ -126,9 +126,9 @@ public class ZhifuController {
 		String p2_Order         = PREFIX + String.valueOf(recharge.getRechangeId());
 		String p3_Amt           = rechargeAmount;
 		String p4_Cur           = "CNY";
-		String p5_Pid           = "productname";
+		String p5_Pid           = "淘金山充值";
 		String p6_Pcat          = "productcat";
-		String p7_Pdesc         = "productdesc";
+		String p7_Pdesc         = "充值";
 		String p8_Url           = callbackUrl;
 		String p9_SAF           = "0";
 		String pa_MP            = "";

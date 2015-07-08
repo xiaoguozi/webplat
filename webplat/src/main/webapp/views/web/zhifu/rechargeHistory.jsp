@@ -154,8 +154,8 @@
 									     <th width="100px;">充值方式</th>
 									     <th width="100px;" >金额&nbsp;(元)</th>
 									     <th width="110px;">手续费&nbsp;(元)</th>
-									     <th width="70px;">状态</th>
-									     <th width="170px;">备注</th>
+									     <th width="50px;">状态</th>
+									     <th width="210px;">备注</th>
 									   </tr>
 									</thead>
 									<tbody>
