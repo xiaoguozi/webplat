@@ -212,6 +212,8 @@ public class YYPController {
 		User user = userService.selectByUsername(username);
 		//从数据库中读取
 		peizi = iPeizi.findByPeiziId(peizi.getDataId());
+		peizi.setDataJklxTotal(peizi.getDataJklxTotal()==null?BigDecimal.ZERO:peizi.getDataJklxTotal());
+		
 		//账户信息
 		CustomerFund customerFund = getCustomerFund(user.getId());
 		
@@ -250,26 +252,33 @@ public class YYPController {
 		
 		CustomerFund customerFund = getCustomerFund(user.getId());
 		if(customerFund.getUsebleFund().compareTo(peizi.getDataTzbzj())!=-1){
+			BigDecimal usableAmount1 = null;
+			BigDecimal usableAmount2 = null;
+			
 			//1、修改保证金
-			customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataTzbzj()));
+			usableAmount1 = customerFund.getUsebleFund().subtract(peizi.getDataTzbzj());
+			customerFund.setUsebleFund(usableAmount1);
 			customerFund.setPeiziFund(customerFund.getPeiziFund().add(peizi.getDataPzje()));
 			customerFund.setFxbzFund(customerFund.getFxbzFund().add(peizi.getDataTzbzj()));	
 			//TODO 付利息
-			if(peizi.getDataJklxTotal()!=null){
+			if(peizi.getDataJklxTotal()!=null && BigDecimal.ZERO.compareTo(peizi.getDataJklxTotal())!=0){
+				usableAmount2 = customerFund.getUsebleFund().subtract(peizi.getDataJklxTotal());
 				customerFund.setTotalFund(customerFund.getTotalFund().subtract(peizi.getDataJklxTotal()));
-				customerFund.setUsebleFund(customerFund.getUsebleFund().subtract(peizi.getDataJklxTotal()));
+				customerFund.setUsebleFund(usableAmount2);
+			}else{
+				usableAmount2 = usableAmount1;
 			}
 			
 			//2、插入记录  --投资保证金
-			FundRecord fundRecord = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.TZBZJ, customerFund.getUsebleFund());
+			FundRecord fundRecord = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.TZBZJ, usableAmount1);
 			// --配资金额
 			FundRecord fundRecord2 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.PZJE, customerFund.getUsebleFund());
 			List<FundRecord> lstFundRecord = new ArrayList<FundRecord>();
 			lstFundRecord.add(fundRecord);
 			lstFundRecord.add(fundRecord2);
 			// --利息
-			if(peizi.getDataJklxTotal()!=null){
-				FundRecord fundRecord3 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.JKLX, customerFund.getUsebleFund());
+			if(peizi.getDataJklxTotal()!=null && BigDecimal.ZERO.compareTo(peizi.getDataJklxTotal())!=0){
+				FundRecord fundRecord3 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.JKLX, usableAmount2);
 				lstFundRecord.add(fundRecord3);
 			}
 			

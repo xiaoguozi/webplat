@@ -83,7 +83,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <p class="pt10">股票交易账户会在下个交易日9:30前，交易账户开好后，我们将信息通知您!</p>                                                                                                       
                     </div>
                     <div class="datastep3" style="padding-top:2px;padding-bottom:10px;margin:0 auto" >
-                        <a class="tjs_next_btn mt30" href="rest/web/peizi/yyp/dayScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
+                        <a class="tjs_next_btn mt30" href="rest/web/peizi/yyp/monthScheduleCapital?dataId=${peizi.dataId}">查看方案进度</a>
                     </div>
                     <div class="w985">
                         <p class="color158 font18">配资进度</p>

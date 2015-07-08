@@ -95,15 +95,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         	<c:if test="${peiziType=='50'}">免息配</c:if>配资方案，方案
                         <fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" />&nbsp;配
                         <fmt:formatNumber value="${peizi.dataPzje}" pattern="########.##" />
-                        </span><span style="margin-left: 35px; color: #C5C6C5;">订单金额：<span style="color: #FF996F; font-weight: bold;"><fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /></span>元</span></p>
+                        </span><span style="margin-left: 35px; color: #C5C6C5;">订单金额：<span style="color: #FF996F; font-weight: bold;"><fmt:formatNumber value="${peizi.dataTzbzj + peizi.dataJklxTotal}" pattern="########.##" /></span>元</span></p>
                     </div>
                   	<div style="border: 2px solid #C3E1F6; width: 985px; margin-left: 55px; height: 40px; line-height: 40px; margin-top: 20px;">
                   		<div style="float: left; "><span style="margin-left: 20px;">账户余额：<span style="color: #FF996F; font-weight: bold;"><fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" /></span>&nbsp;元</span></div>
-                  		<div style="float: right;"><span style="margin-right: 20px;">支付：<span style="color: #FF996F; font-weight: bold;"> <fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /></span>元</span></div> 
+                  		<div style="float: right;"><span style="margin-right: 20px;">支付：<span style="color: #FF996F; font-weight: bold;"> <fmt:formatNumber value="${peizi.dataTzbzj + peizi.dataJklxTotal}" pattern="########.##" /></span>元</span></div> 
                   	</div>
                   	
                   	 <c:if test="${peizi.dataOperaStatus=='1'}">
-                  	 		<c:if test="${customerFund.usebleFund<peizi.dataTzbzj}">
+                  	 		<c:if test="${customerFund.usebleFund<(peizi.dataTzbzj+peizi.dataJklxTotal)}">
 		                  		<div style="height: 50px; line-height:50px; text-align: center; margin-top: 20px;">
 			                  		<span style="color: red;">请先<a href="rest/web/userCenter/zhifu/enterCur" target="_self">充值</a>，再到“我的配资”中进行付款</span>
 		                  		</div>
@@ -111,7 +111,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                  		<a class="tjs_btn disabled" href="javascript:void(0);">确定付款</a>
 		                  		</div>
 		                  	</c:if>
-		                  	<c:if test="${customerFund.usebleFund>=peizi.dataTzbzj}">
+		                  	<c:if test="${customerFund.usebleFund>=(peizi.dataTzbzj+peizi.dataJklxTotal)}">
 		                  		<div style="height: 60px; line-height:60px; margin-top:40px; text-align: center; ">
 					                    <a class="tjs_next_btn" href="">确定付款</a>
 			                  	</div>
