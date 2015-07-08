@@ -116,7 +116,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                  			<form name="payForm" class="hform" id="payForm" action="rest/web/peizi/mxp/confirmPay" target="_blank" method="post">
 			              			<input type="hidden" name="peizi.dataId" value="${peizi.dataId}"/>
 			              		</form>
-				                <table class="my_tbl2" >
+				                <table class="my_tbl2" style="border-bottom: dashed 1px #d3d3d3;">
 				                    <tr>
 				                        <c:if test="${peizi.dataOperaStatus=='1'}">
 					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" href="" style="width: 110px;">前往支付</a></td>

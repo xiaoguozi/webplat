@@ -199,10 +199,10 @@ public class TTPController {
 			return "redirect:/rest/web/peizi/ttp/dayCapital";  
 		}
 		User user = userService.selectByUsername(username);
-		//从数据库中读取
-		peizi = iPeizi.findByPeiziId(peizi.getDataId());
 		//账户信息
 		CustomerFund customerFund = getCustomerFund(user.getId());
+		//从数据库中读取
+		peizi = iPeizi.findByPeiziId(peizi.getDataId());
 		
 		model.addAttribute("customerFund", customerFund);
 		model.addAttribute("peizi", peizi);
@@ -233,7 +233,8 @@ public class TTPController {
 		if(!OperaStatusEnum.PZPay.getKey().equals(peizi.getDataOperaStatus())){
 			CustomerFund customerFund = getCustomerFund(user.getId());
 			model.addAttribute("usableFund", customerFund.getUsebleFund());
-			return "web/peizi/yyp/yypzlast";
+			model.addAttribute("peizi", peizi);
+			return "web/peizi/pzpay";
 		}
 		
 		CustomerFund customerFund = getCustomerFund(user.getId());

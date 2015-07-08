@@ -101,24 +101,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   		<div style="float: left; "><span style="margin-left: 20px;">账户余额：<span style="color: #FF996F; font-weight: bold;"><fmt:formatNumber value="${customerFund.usebleFund}" pattern="########.##" /></span>&nbsp;元</span></div>
                   		<div style="float: right;"><span style="margin-right: 20px;">支付：<span style="color: #FF996F; font-weight: bold;"> <fmt:formatNumber value="${peizi.dataTzbzj}" pattern="########.##" /></span>元</span></div> 
                   	</div>
-                  	<c:if test="${customerFund.usebleFund<peizi.dataTzbzj}">
-                  		<div style="height: 50px; line-height:50px; text-align: center; margin-top: 20px;">
-	                  		<span style="color: red;">请先<a href="rest/web/userCenter/zhifu/enterCur" target="_self">充值</a>，再到“我的配资”中进行付款</span>
-                  		</div>
-                  		<div style="height: 50px; line-height:50px; text-align: center; margin-top: 20px;">
-	                  		<a class="tjs_btn disabled" href="javascript:void(0);">确定付款</a>
-                  		</div>
-                  	</c:if>
-                  	<c:if test="${customerFund.usebleFund>=peizi.dataTzbzj}">
-                  		<div style="height: 60px; line-height:60px; margin-top:40px; text-align: center; ">
-		                    <c:if test="${peizi.dataOperaStatus=='1'}">
-			                    <a class="tjs_next_btn" href="">确定付款</a>
-		                    </c:if>
-		                    <c:if test="${peizi.dataOperaStatus=='10'}">
-		                    	<b class="color158 font18">已支付，正在验资中......</b>
-		                    </c:if>
-	                  	</div>
-                  	</c:if>
+                  	
+                  	 <c:if test="${peizi.dataOperaStatus=='1'}">
+                  	 		<c:if test="${customerFund.usebleFund<peizi.dataTzbzj}">
+		                  		<div style="height: 50px; line-height:50px; text-align: center; margin-top: 20px;">
+			                  		<span style="color: red;">请先<a href="rest/web/userCenter/zhifu/enterCur" target="_self">充值</a>，再到“我的配资”中进行付款</span>
+		                  		</div>
+		                  		<div style="height: 50px; line-height:50px; text-align: center; margin-top: 20px;">
+			                  		<a class="tjs_btn disabled" href="javascript:void(0);">确定付款</a>
+		                  		</div>
+		                  	</c:if>
+		                  	<c:if test="${customerFund.usebleFund>=peizi.dataTzbzj}">
+		                  		<div style="height: 60px; line-height:60px; margin-top:40px; text-align: center; ">
+					                    <a class="tjs_next_btn" href="">确定付款</a>
+			                  	</div>
+		                  	</c:if>
+                  	 </c:if>
+                  	 <c:if test="${peizi.dataOperaStatus!='1'}">
+                  	 		<div style="height: 60px; line-height:60px; margin-top:40px; text-align: center; ">
+			                    	<b class="color158 font18">已支付，正在验资中......</b>
+		                  	</div>
+                  	 </c:if>
+                  	
                   	
                     <hr class="pc" />                                        
                 </div>

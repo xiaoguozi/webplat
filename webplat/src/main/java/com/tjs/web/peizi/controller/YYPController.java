@@ -244,7 +244,8 @@ public class YYPController {
 		if(!OperaStatusEnum.PZPay.getKey().equals(peizi.getDataOperaStatus())){
 			CustomerFund customerFund = getCustomerFund(user.getId());
 			model.addAttribute("usableFund", customerFund.getUsebleFund());
-			return "web/peizi/yyp/yypzlast";
+			model.addAttribute("peizi", peizi);
+			return "web/peizi/pzpay";
 		}
 		
 		CustomerFund customerFund = getCustomerFund(user.getId());
