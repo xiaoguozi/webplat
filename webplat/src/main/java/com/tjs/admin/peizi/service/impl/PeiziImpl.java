@@ -134,7 +134,6 @@ public class PeiziImpl implements IPeizi {
 				fundRecord1.setRecordDesc(FundRecordFundTypeEnum.HHTZBZJ.getValue());
 				fundRecord1.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(), oldPeizi.getDataTzbzj()));
 				
-				customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),oldPeizi.getDataTzbzj()));
 				customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),oldPeizi.getDataTzbzj()));
 				customerFund.setFxbzFund(BigDecimalUtils.subtractZero(customerFund.getFxbzFund(), oldPeizi.getDataTzbzj()));
 				fundRecordService.insertFundRecord(fundRecord1);
@@ -207,7 +206,6 @@ public class PeiziImpl implements IPeizi {
 					fundRecord2.setRecordDesc(FundRecordFundTypeEnum.HHTZBZJ.getValue());
 					fundRecord2.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(),reslut));
 					
-					customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),reslut));
 					customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),reslut));
 										
 					fundRecordService.insertFundRecord(fundRecord2);					
@@ -289,7 +287,7 @@ public class PeiziImpl implements IPeizi {
 			fundRecord1.setRecordDesc(FundRecordFundTypeEnum.HHTZBZJ.getValue());
 			fundRecord1.setUsableAmount(BigDecimalUtils.add(customerFund.getUsebleFund(), oldPeizi.getDataTzbzj()));
 			
-			customerFund.setTotalFund(BigDecimalUtils.add(customerFund.getTotalFund(),oldPeizi.getDataTzbzj()));
+			
 			customerFund.setUsebleFund(BigDecimalUtils.add(customerFund.getUsebleFund(),oldPeizi.getDataTzbzj()));
 			customerFund.setFxbzFund(BigDecimalUtils.subtractZero(customerFund.getFxbzFund(), oldPeizi.getDataTzbzj()));
 			fundRecordService.insertFundRecord(fundRecord1);
