@@ -260,7 +260,7 @@ public class TTPController {
 			//2、插入记录  --投资保证金
 			FundRecord fundRecord = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.TZBZJ, usableAmount1);
 			// --配资金额
-			FundRecord fundRecord2 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.PZJE, customerFund.getUsebleFund());
+			FundRecord fundRecord2 = buildFundRecord(peizi, userInfo, FundRecordFundTypeEnum.PZJE, usableAmount1);
 			List<FundRecord> lstFundRecord = new ArrayList<FundRecord>();
 			lstFundRecord.add(fundRecord);
 			lstFundRecord.add(fundRecord2);
