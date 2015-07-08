@@ -22,7 +22,9 @@ public enum FundRecordFundTypeEnum {
 	    
 	    PZSH("00010","配资收益"),
 	    
-	    KCFXBZJ("00011","扣除风险保证金");
+	    KCFXBZJ("00011","扣除风险保证金"),
+	    
+	    FHJKLX("00012","扣除风险保证金");
 	    
 	    
 	      	   

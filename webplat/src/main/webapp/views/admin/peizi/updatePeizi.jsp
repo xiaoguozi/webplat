@@ -12,6 +12,7 @@
     <button type="button" class="btn btn-default modalCloseBtn" data-dismiss="modal">关闭</button>
      <c:if test="${peizi.dataOperaStatus=='10'}">
         <button type="button" id="modalSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>验资完成</button>
+     	<button type="button" id="cancelSaveBtn"  class="btn btn-primary ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-save"></span>取消验资</button>
      </c:if>
      
       <c:if test="${peizi.dataOperaStatus=='20'}">
@@ -26,11 +27,11 @@
 <div class="modal-body">
     <form id="modalForm" action="rest/admin/peizi/peizi/updateData" method="post" class="form-horizontal" role="form" data-submit="#modalSaveBtn">
         <input type="hidden" name="dataId" value="${peizi.dataId}">
-          <input type="hidden" name="lockId" value="${peizi.lockId}">
+        <input type="hidden" name="lockId" value="${peizi.lockId}">
          <div class="form-group">
             <label class="col-md-2 control-label">订单号</label>
             <div class="col-md-6">
-                ${peizi.dataId}
+                ${peizi.dataOrderCode}
             </div>            
         </div>
         <div class="form-group">
@@ -226,19 +227,25 @@
           <div class="form-group">
             <label class="col-md-2 control-label">备注</label>
             <div class="col-md-6">
-                 <textarea rows="6" cols="100" class="form-control" name="dataRemark">${peizi.dataRemark}</textarea>
+                 <textarea rows="6" cols="100" class="form-control" name="dataRemark" onblur="toCanlForm(this)">${peizi.dataRemark}</textarea>
             </div>            
         </div>
                                                                                                                                                          
     </form>
+    
+     <form id="cancelForm" action="rest/admin/peizi/peizi/CancelPeizi" method="post" class="form-horizontal" role="form" data-submit="#cancelSaveBtn">
+	   <input type="hidden" name="dataId" value="${peizi.dataId}">
+       <input type="hidden" name="lockId" value="${peizi.lockId}">
+       <input type="hidden" name="dataRemark" value="${peizi.dataRemark}">
+	 </form>
+    
+    
 </div>
 
 
 <script type="text/javascript">
 
 $(function(){
-
-
     Btk.form($("#modalForm"),"insert",function(data){
         if("0"==data.code){
             IndexPage.togglePage('list');
@@ -247,11 +254,24 @@ $(function(){
     });
 
 
+    Btk.form($("#cancelForm"),"update",function(data){
+        if("0"==data.code){
+            IndexPage.togglePage('list');
+            $("#searchBtn").click();
+        }
+    });  
+    
+    
     $("button.modalCloseBtn").unbind('click').click(function(event) {
         IndexPage.togglePage('list');
     });
     
 
 });
+
+
+function toCanlForm(obj){
+	$("#cancelForm").find("input[name=dataRemark]").val($(obj).val());
+}
 
 </script>

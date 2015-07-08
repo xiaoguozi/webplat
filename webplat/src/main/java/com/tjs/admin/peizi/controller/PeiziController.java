@@ -139,7 +139,13 @@ public class PeiziController {
 	    @ResponseBody
 	    public Map<String, Object> CancelPeizi(Peizi peizi,  PeiziCtrlModel PeiziCtrlModel, Model model) {	    	
 	    	Map<String, Object> result = new HashMap<String, Object>();
-	    	int id = iPeizi.updatePeizi(peizi);
+	    	Subject subject = SecurityUtils.getSubject();
+    		String username = (String)subject.getPrincipal();
+    		
+    		User user = userService.selectByUsername(username);
+    		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+    		
+	    	int id = iPeizi.CancelPeizi(peizi, userInfo);
 	    	result.put("code", "0");
 	    	result.put("bizData", peizi);	    	
 	        return result;
