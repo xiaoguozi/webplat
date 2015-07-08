@@ -66,10 +66,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="bgcolor">
                 <div class="mycenter_left">
                     <ul class="mc_lbox">
-                    	<li >可用余额</li>                                             
-                        <li class="colorf06 font18 lh10 ">0.00元</li>
-                        <li><a class="tjs_btn pzbtn" href="javascript:void()"><b>¥</b> 充值</a></li>
-                    	   
                                          
                         <li class="wypz">我的配资</li>
                         <div class="ttp wypz_div" >
@@ -187,17 +183,25 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			            
 			          </div>
 			        </div>
-	              
+	               <form name="payForm" class="hform" id="payForm" action="" target="_blank" method="post">
+             			<input type="hidden" name="peizi.dataId" id="dateIdHidden" />
+             		</form>
 	              <!-- 天天配 --> 
 	               <b class="my_tit" style="border-bottom-width:1px">天天配 <span class="tit_span">最近进行中<span >${!empty ttPeizi?1:0}</span>笔</span><span class="f-right" style="font-size:14px;color:#666;font-weight:normal">交易账号密码请在方案详情中查看&nbsp;&nbsp;</span></b>                  
 	                <c:if test="${!empty ttPeizi}">
 	                <table class="my_tbl2">                    
 	                    <tr>
+	                    	<c:if test="${ttPeizi.dataOperaStatus=='1'}">
+		                    	<td rowspan="2" ><a class="tjs_next_btn aPay" id="aPay" dataId="${ttPeizi.dataId}"  href="rest/web/peizi/ttp/confirmPay" style="width: 110px;">前往支付</a></td>
+	                        </c:if>
 	                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${ttPeizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${ttPeizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${ttPeizi.dataPcx}" pattern="#0.####"/></span>元<br />亏损平仓线</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${ttPeizi.dataJklxTotal}" pattern="#0.####"/></span>元<br />账户管理费</td>
 	                        <td>
+	                        	<c:if test="${ttPeizi.dataOperaStatus=='1'}">
+	                        		<b class="color158 font18">待支付</b>
+	                        	</c:if>
 	                        	<c:if test="${ttPeizi.dataOperaStatus=='10'}">
 	                        		<b class="color158 font18">验资中</b>
 	                        	</c:if>
@@ -207,12 +211,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        	<c:if test="${ttPeizi.dataOperaStatus=='30'}">
 	                        		<b class="color158 font18">已完结</b>
 	                        	</c:if>
+	                        	<c:if test="${ttPeizi.dataOperaStatus=='40'}">
+	                        		<b class="color158 font18">已取消</b>
+	                        	</c:if>
 	                        </td>
 	                    </tr>
 	                    <tr>				                    
-	                       <td>发起时间：<span class="color158"><fmt:formatDate value="${ttPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
-	                       <td colspan="3" style="text-align:left;text-indent:3em;"></td>
-	                       <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${ttPeizi.dataId}">查询方案详情</a></td>
+	                       <td colspan="4" style="text-align: left;">发起时间：<span class="color158"><fmt:formatDate value="${ttPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
+	                       <td><a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" target="_blank" href="rest/web/peizi/usercenter/pzdetail?dataId=${ttPeizi.dataId}" >查询方案详情</a></td>
 	                   </tr>
 	                </table>
 	                </c:if>
@@ -232,11 +238,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	               <c:if test="${!empty yyPeizi}">
 	                <table class="my_tbl2"  >
 	                    <tr>
+	                    	<c:if test="${yyPeizi.dataOperaStatus=='1'}">
+		                    	<td rowspan="2" ><a class="tjs_next_btn aPay" id="aPay" dataId="${yyPeizi.dataId}"  href="rest/web/peizi/yyp/confirmPay" style="width: 110px;">前往支付</a></td>
+	                        </c:if>
 	                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${yyPeizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${yyPeizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${yyPeizi.dataPcx}" pattern="#0.####"/></span>元<br />亏损平仓线</td>
 	                        <td><span class="colorf06 font30"><fmt:formatNumber value="${yyPeizi.dataJklxTotal}" pattern="#0.####"/></span>元<br />借款利息费</td>
 	                        <td>
+	                        	<c:if test="${yyPeizi.dataOperaStatus=='1'}">
+	                        		<b class="color158 font18">待支付</b>
+	                        	</c:if>
 	                        	<c:if test="${yyPeizi.dataOperaStatus=='10'}">
 	                        		<b class="color158 font18">验资中</b>
 	                        	</c:if>
@@ -246,13 +258,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        	<c:if test="${yyPeizi.dataOperaStatus=='30'}">
 	                        		<b class="color158 font18">已完结</b>
 	                        	</c:if>
+	                        	<c:if test="${yyPeizi.dataOperaStatus=='40'}">
+	                        		<b class="color158 font18">已取消</b>
+	                        	</c:if>
+	                        	
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                    
-	                        <td>发起时间：<span class="color158"><fmt:formatDate value="${yyPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
-	                        <td colspan="3" style="text-align:left;text-indent:3em;"></td>
-	                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${yyPeizi.dataId}">查询方案详情</a></td>
+	                        <td colspan="4" style="text-align: left;">发起时间：<span class="color158"><fmt:formatDate value="${yyPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
+	                        <td><a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" target="_blank" href="rest/web/peizi/usercenter/pzdetail?dataId=${yyPeizi.dataId}">查询方案详情</a></td>
 	                    </tr>
 	                </table>
 	                </c:if>
@@ -273,11 +288,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                 <c:if test="${!empty dxPeizi}">
 		                <table class="my_tbl2"  >
 		                    <tr>
+		                    	<c:if test="${dxPeizi.dataOperaStatus=='1'}">
+			                    	<td rowspan="2" ><a class="tjs_next_btn aPay" id="aPay" dataId="${dxPeizi.dataId}"  href="rest/web/peizi/dxp/confirmPay" style="width: 110px;">前往支付</a></td>
+		                        </c:if>
 		                        <td><span class="colorf06 font30"> <fmt:formatNumber value="${dxPeizi.dataZcpzj}" pattern="#0.####"/></span> 元<br />总操盘资金</td>
 		                        <td><span class="colorf06 font30"><fmt:formatNumber value="${dxPeizi.dataJjx}" pattern="#0.####"/></span>元<br />亏损警告线</td>
 		                        <td><span class="colorf06 font30"><fmt:formatNumber value="${dxPeizi.dataPcx}" pattern="#0.####"/></span>元<br />亏损平仓线</td>
 		                        <td><span class="colorf06 font30"><fmt:formatNumber value="${dxPeizi.dataJklxTotal}" pattern="#0.####"/></span>元<br />借款利息费</td>
 		                        <td>
+		                        	<c:if test="${dxPeizi.dataOperaStatus=='1'}">
+		                        		<b class="color158 font18">待支付</b>
+		                        	</c:if>
 		                        	<c:if test="${dxPeizi.dataOperaStatus=='10'}">
 		                        		<b class="color158 font18">验资中</b>
 		                        	</c:if>
@@ -287,13 +308,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                        	<c:if test="${dxPeizi.dataOperaStatus=='30'}">
 		                        		<b class="color158 font18">已完结</b>
 		                        	</c:if>
+		                        	<c:if test="${dxPeizi.dataOperaStatus=='40'}">
+		                        		<b class="color158 font18">已取消</b>
+		                        	</c:if>
+		                        	
 		                        </td>
 		                    </tr>
 		                    <tr>
 		                    
-		                        <td>发起时间：<span class="color158"><fmt:formatDate value="${dxPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
-		                        <td colspan="3" style="text-align:left;text-indent:3em;"></td>
-		                        <td><a class="tjs_next_btn" href="rest/web/peizi/usercenter/pzdetail?dataId=${dxPeizi.dataId}">查询方案详情</a></td>
+		                        <td colspan="4" style="text-align: left;">发起时间：<span class="color158"><fmt:formatDate value="${dxPeizi.dataSubmitDate}" pattern="yyyy-MM-dd" /></span></td> 			                        
+		                        <td ><a class="tjs_next_btn" style="color: #3d9fe1; background-color:#fff; border: 2px solid #3d9fe1; width: 130px;" target="_blank" href="rest/web/peizi/usercenter/pzdetail?dataId=${dxPeizi.dataId}">查询方案详情</a></td>
 		                    </tr>
 		                </table>
 	                    </c:if>
@@ -337,7 +361,12 @@ $(function() {
             $(this).hide();
             $(".tjpz>a>span").removeClass("tspan");
         });
-   	       	 					
+   	       	 
+        $(".aPay").click(function(e){
+     		e.preventDefault();
+     		$("#dateIdHidden").val($(this).attr("dataId"));
+     		$("#payForm").attr("action", $(this).attr("href")).submit();
+     	});
 	});
        
 </script>
