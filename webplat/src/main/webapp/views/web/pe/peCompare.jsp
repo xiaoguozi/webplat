@@ -10,7 +10,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山—跟我淘金山</title>
+<meta name="keywords" content="基金净值、基金费用、基金风险、基金经理" />
+<meta name="description" content="淘金山理财为您提供全方位的私募产品净值、费用、风险、收益分析。" />
+<title>私募基金排名，私募产品收益对比分析-淘金山私募</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet"
 	media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
