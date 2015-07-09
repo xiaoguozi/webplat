@@ -12,7 +12,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="私募股权基金，阳光私募，私募基金排名" />
 <meta name="description" content="淘金山阳光私募频道是国内专业的阳光私募基金信息提供商、私募基金评级及私募基金销售服务商，提供最新的私募基金净值、私募基金排名、私募产品数据库。" />
-<title>阳光私募基金,私募基金经理,私募基金排名,私募产品-淘金山私募/title>
+<title>阳光私募基金,私募基金经理,私募基金排名,私募产品-淘金山私募</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 
