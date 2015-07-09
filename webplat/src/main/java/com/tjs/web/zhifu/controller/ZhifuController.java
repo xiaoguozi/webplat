@@ -514,8 +514,6 @@ public class ZhifuController {
 			model.addAttribute("bankCount", "0");
 		}else{
 			for(Custbank bank : lstCustbank){
-				bank.setBankName(BankNameEnum.getValue(bank.getBankCode()));
-				bank.setImg(BankImageEnum.getValue(bank.getBankCode()));
 				bank.setBankNo(getMaskCardNo(bank.getBankNo()));
 			}
 		}
