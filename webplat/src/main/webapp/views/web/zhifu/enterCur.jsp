@@ -154,86 +154,86 @@
 										name="pdFrpId" checked="checked" value="BOC-NET-B2C"
 										type="radio"></I>
 									<P>
-										<IMG alt="中国银行" src="assets/img/zhifu/zhongguo.gif">
+										<IMG alt="中国银行" src="assets/img/zhifu/banks/zhongguo.png">
 									</P></LI>
 								<LI id="yh2" onclick="yhxz(2);"><I><INPUT
 										name="pdFrpId" value="CMBCHINA-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="招商银行" src="assets/img/zhifu/zhaohang.gif">
+										<IMG alt="招商银行" src="assets/img/zhifu/banks/zhaohang.png">
 									</P></LI>
 								<LI id="yh3" onclick="yhxz(3);"><I><INPUT
 										name="pdFrpId" value="CCB-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中国建设银行" src="assets/img/zhifu/jianshe.gif">
+										<IMG alt="中国建设银行" src="assets/img/zhifu/banks/jianshe.png">
 									</P></LI>
 								<LI id="yh4" onclick="yhxz(4);"><I><INPUT
 										name="pdFrpId" value="ICBC-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中国工商银行" src="assets/img/zhifu/gongshang.gif">
+										<IMG alt="中国工商银行" src="assets/img/zhifu/banks/gongshang.png">
 									</P></LI>
 								<LI id="yh5" onclick="yhxz(5);"><I><INPUT
 										name="pdFrpId" value="ABC-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中国农业银行" src="assets/img/zhifu/nongye.gif">
+										<IMG alt="中国农业银行" src="assets/img/zhifu/banks/nongye.png">
 									</P></LI>
 								<LI id="yh6" onclick="yhxz(6);"><I><INPUT
 										name="pdFrpId" value="POST-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中国邮政储蓄银行" src="assets/img/zhifu/youzheng.gif">
+										<IMG alt="中国邮政储蓄银行" src="assets/img/zhifu/banks/youzheng.png">
 									</P></LI>
 								<LI id="yh7" onclick="yhxz(7);"><I><INPUT
 										name="pdFrpId" value="ECITIC-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中信银行" src="assets/img/zhifu/zhongxin.gif">
+										<IMG alt="中信银行" src="assets/img/zhifu/banks/zhongxin.png">
 									</P></LI>
 								<LI id="yh8" onclick="yhxz(8);"><I><INPUT
 										name="pdFrpId" value="CEB-NET-B2C" type="radio"></I>
 									<P>
-										<IMG alt="中国光大银行" src="assets/img/zhifu/guangda.gif">
+										<IMG alt="中国光大银行" src="assets/img/zhifu/banks/guangda.png">
 									</P></LI>
 								<LI id="yh9" onclick="yhxz(9);"><I><INPUT
 										name="pdFrpId" value="CIB-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="兴业银行"  src="assets/img/zhifu/xingye.gif">
+									<P>
+										<IMG alt="兴业银行"  src="assets/img/zhifu/banks/xingye.png">
 									</P></LI>
 								<LI id="yh10" onclick="yhxz(10);"><I><INPUT
 										name="pdFrpId" value="BOCO-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="交通银行" src="assets/img/zhifu/jiaotong.gif">
+									<P>
+										<IMG alt="交通银行" src="assets/img/zhifu/banks/jiaotong.png">
 									</P></LI>
 								<LI id="yh11" onclick="yhxz(11);"><I><INPUT
 										name="pdFrpId" value="SPDB-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="浦发银行" src="assets/img/zhifu/shangpufa.gif">
+									<P>
+										<IMG alt="浦发银行" src="assets/img/zhifu/banks/shangpufa.png">
 									</P></LI>
 								<LI id="yh12" onclick="yhxz(12);"><I><INPUT
 										name="pdFrpId" value="HXB-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="华夏银行" src="assets/img/zhifu/huaxia.gif">
+									<P>
+										<IMG alt="华夏银行" src="assets/img/zhifu/banks/huaxia.png">
 									</P></LI>
 								<LI id="yh13" onclick="yhxz(13);"><I><INPUT
 										name="pdFrpId" value="PINGANBANK-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="平安银行" style="margin-top: 0px;"
-											src="assets/img/zhifu/pingan.gif">
+									<P style="height:37px;">
+										<IMG alt="平安银行" 
+											src="assets/img/zhifu/banks/pingan.png">
 									</P></LI>
 								<LI id="yh14" onclick="yhxz(14);"><I><INPUT
 										name="pdFrpId" value="SHB-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="上海银行" style="margin-top: 0px;"
-											src="assets/img/zhifu/shanghaibank.gif">
+									<P style="height:37px;">
+										<IMG alt="上海银行" 
+											src="assets/img/zhifu/banks/shanghaibank.png">
 									</P></LI>
 								<LI id="yh15" onclick="yhxz(15);"><I><INPUT
 										name="pdFrpId" value="SDB-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="深圳发展银行" style="margin-top: 0px;"
-											src="assets/img/zhifu/shenfa.gif">
+									<P style="height:37px;">
+										<IMG alt="深圳发展银行" 
+											src="assets/img/zhifu/banks/shenfa.png">
 									</P></LI>
 								<LI id="yh16" onclick="yhxz(16);"><I><INPUT
 										name="pdFrpId" value="CMBC-NET-B2C" type="radio"></I>
-									<P style="height: 33px;">
-										<IMG alt="民生银行" style="margin-top: 0px;"
-											src="assets/img/zhifu/minsheng.gif">
+									<P style="height:37px;">
+										<IMG alt="民生银行" 
+											src="assets/img/zhifu/banks/minsheng.png">
 									</P></LI>
 							</UL>
 						</div>
