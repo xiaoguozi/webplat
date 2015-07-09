@@ -31,3 +31,87 @@ button.red:hover {
 button.red:active {
 	background: rgb(208, 42, 22);
 }
+
+.bankList li.c3 {
+	
+}
+.bankList li.last.c3 {
+	
+}
+.big.bankList li.c3 {
+	
+}
+
+.bankList li {
+	width: 162px; margin-right: 20px; margin-bottom: 24px; position: relative; cursor: pointer;
+	float:left; margin-left: 40px;
+}
+.bankList li.first {
+	width: 152px; margin-right: 20px; margin-bottom: 24px; position: relative;
+}
+.bankList li img {
+	border: 1px solid rgb(204, 204, 204); width: 152px;
+}
+.bankList li img.selected {
+	border: 1px solid rgb(238, 9, 0);
+}
+.bankList li b {
+	background: url("../images/spirit.png") -182px -474px; width: 25px; height: 25px; right: 0px; bottom: 4px; display: block; position: absolute;
+}
+.big.bankList li {
+	padding: 10px 5px 15px; width: 229px; height: 110px;
+}
+.big.bankList li img {
+	border: currentColor;
+}
+.big.bankList li p {
+	margin: 10px 0px 0px; font-weight: bold;
+}
+.big.bankList li span.left {
+	margin: 20px 0px 0px 10px;
+}
+.big.bankList li span.right {
+	margin: 20px 10px 0px 0px;
+}
+.bankList li.last {
+	margin-right: 0px;
+}
+.big.bankList li.last {
+	margin-right: 20px;
+}
+.bankList li img.addBtn {
+	width: 73px;
+}
+.bankList .orange {
+	color: rgb(255, 150, 30);
+}
+
+.r-10 {
+	border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;
+}
+
+.box {
+	background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217);
+}
+
+.row {
+	zoom:1;
+	width:100%;
+	margin-top: 0px;
+	margin-right:auto;
+	margin-bottom:0px;
+	margin-left: auto;
+	color:#333;
+}
+
+.bankListUL{
+	list-style-type: none;
+	list-style-image: none;
+	color:#333333;
+	margin-bottom: 8px;
+	list-style-position: inside;
+}
+
+.text-center{
+	text-align: center;
+}

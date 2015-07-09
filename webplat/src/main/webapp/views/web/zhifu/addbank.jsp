@@ -17,6 +17,7 @@
 <!--配资页面样式-->
 <link href="assets/css/ui/peizi.css" rel="stylesheet" />
 <link href="assets/css/ui-dialog.css" rel="stylesheet" />
+<link href="assets/css/ui/zhifu.css" rel="stylesheet" />
 <script type="text/javascript" src="assets/scripts/ui/jquery-1.9.1.js"></script>
 <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
@@ -135,21 +136,22 @@
                        </c:if>
                        <c:if test="${userInfo.isValidate==1}">
                             <c:if test="${!empty lstCustbank}">
-							<div class="l_recharge" style="height: 120px; margin-right: 15px;">
-								<UL id="radioImage" class="bank_list l_bank_list  clr">
-								 <c:forEach items="${lstCustbank}" var="custbank" >
-								<LI id="yh1" style="height:">
-								    <div style="width:250px; border: 1px solid rgb(217, 217, 217);" >
-									<P style="margin-top: 10px;">
-										<IMG alt="${custbank.bankName}" src="assets/img/zhifu/${custbank.img}" >									
-									</P>
-									<p style="text-align:center;border:0px;height:20px; width:200px;">
-									     ${custbank.bankNo}
-									</p>									
-								</LI>																															
-							    </c:forEach>								
-							</UL>
-							</div>
+							<div class="row" style="height: 170px;">
+							<div class="bankList big" id="bankcardlist" >
+			                    <ul >
+			                    	<c:forEach items="${lstCustbank}" var="custbank" >
+			                           <li class="c3 first  box r-10" id="banknumber_37749">
+			                                <input type="hidden" id="bankcardflag" name="bankcardflag" value="3">																																				
+			                                <img alt="${custbank.bankName}" src="assets/img/zhifu/banks/${custbank.img}">																																																														
+			                                <p class="text-center" style="font-size: 16px;">${custbank.bankNo}</p>
+			                                	
+			                                <span style="float: right; color: #0088cc; margin-top: 20px; margin-right: 10px;" data-bankid="37749" id="del_bankcard2" data-lastnumber="4316">删除</span>
+			                           </li>	
+			                         </c:forEach>
+			                       </ul>
+			                </div>
+			                </div>
+							
 							<div style="margin-top: 20px; margin-bottom: 20px;TEXT-ALIGN: center;font-size:18px;border:1px solid"></div>
 							</c:if>	
 							<c:if test="${lstCustbank.size()<3}">
@@ -185,7 +187,7 @@
 									
 								</div>
 								<div style="height:40px"><span style="margin-left:220px">开户支行:</span><span><input type="text"  name="branchName" style="height:25px" size="25" maxLength="60" value=""/></div>
-								<div style="height:40px"><span style="margin-left:220px">卡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</span><span ><input  type="text" size="26" maxlength="26" value="" name="bankNo" style="height:25px"  onkeyup="formatBankNo(this)" onkeydown="formatBankNo(this)" /></span></div>						
+								<div style="height:40px"><span style="margin-left:220px">卡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</span><span ><input  type="text" size="25" maxlength="25" value="" name="bankNo" style="height:25px"  onkeyup="formatBankNo(this)" onkeydown="formatBankNo(this)" /></span></div>						
 								
 								<div style="height:40px">
 							      <span style="margin-left:220px" class="addbank"><a href="" class="tjs_btn">添加银行卡</a></span>
@@ -287,74 +289,10 @@
 				errTip("卡号需要填写 ", 1);
 				return;
 			}
-			
-			if(!bankCard($('input[name=bankNo]').val())){
-				errTip("卡号填写错误 ", 1);
-				return;
-			}
 						
 			$("#modalForm").submit();			   
 		})
 	 });
- 	
- 	
- 	function bankCard(bankno1){
-		if (bankno1 == "" || bankno1 == null) {
-			return false;
-		}		
- 		var bankno   =   bankno1.replace(/\s+/g,"");
-		var lastNum = bankno.substr(bankno.length - 1, 1);
-		var first15Num = bankno.substr(0, bankno.length - 1);
-		var newArr = new Array();
-		for (var i = first15Num.length - 1; i > -1; i--) {
-			newArr.push(first15Num.substr(i, 1));
-		}
-		var arrJiShu = new Array();
-		var arrJiShu2 = new Array();
-		var arrOuShu = new Array();
-		for (var j = 0; j < newArr.length; j++) {
-			if ((j + 1) % 2 == 1) {
-				if (parseInt(newArr[j]) * 2 < 9)
-					arrJiShu.push(parseInt(newArr[j]) * 2);
-				else
-					arrJiShu2.push(parseInt(newArr[j]) * 2);
-			} else
-				arrOuShu.push(newArr[j]);
-		}
-		var jishu_child1 = new Array();
-		var jishu_child2 = new Array();
-		for (var h = 0; h < arrJiShu2.length; h++) {
-			jishu_child1.push(parseInt(arrJiShu2[h]) % 10);
-			jishu_child2.push(parseInt(arrJiShu2[h]) / 10);
-		}
-		var sumJiShu = 0;
-		var sumOuShu = 0;
-		var sumJiShuChild1 = 0;
-		var sumJiShuChild2 = 0;
-		var sumTotal = 0;
-		for (var m = 0; m < arrJiShu.length; m++) {
-			sumJiShu = sumJiShu + parseInt(arrJiShu[m]);
-		}
-		for (var n = 0; n < arrOuShu.length; n++) {
-			sumOuShu = sumOuShu + parseInt(arrOuShu[n]);
-		}
-		for (var p = 0; p < jishu_child1.length; p++) {
-			sumJiShuChild1 = sumJiShuChild1 + parseInt(jishu_child1[p]);
-			sumJiShuChild2 = sumJiShuChild2 + parseInt(jishu_child2[p]);
-		}
-		sumTotal = parseInt(sumJiShu) + parseInt(sumOuShu)
-				+ parseInt(sumJiShuChild1) + parseInt(sumJiShuChild2);
-		var k = parseInt(sumTotal) % 10 == 0 ? 10 : parseInt(sumTotal) % 10;
-		var luhm = 10 - k;
-		if (parseInt(sumJiShu) + parseInt(sumOuShu) == 0) {
-			return false;
-		}
-		if (lastNum == luhm) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	</script>
 </body>
