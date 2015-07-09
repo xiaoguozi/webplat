@@ -179,7 +179,12 @@
 													<c:if test="${fundRecord.fundType=='00012'}">返还借款利息</c:if>
 												</td>
 												
-												<td style="color: green;"><fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
+												<c:if test="${fundRecord.fundType=='00002' || fundRecord.fundType=='00003' || fundRecord.fundType=='00005' || fundRecord.fundType=='00006' || fundRecord.fundType=='00011'}">
+													<td style="color: #FFA348;">-<fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
+												</c:if>
+												<c:if test="${fundRecord.fundType=='00001' || fundRecord.fundType=='00004' || fundRecord.fundType=='00007' || fundRecord.fundType=='00008' || fundRecord.fundType=='00009' || fundRecord.fundType=='00010' || fundRecord.fundType=='00012'}">
+													<td style="color: green;"><fmt:formatNumber value="${fundRecord.amount}" pattern="########.##" /></td>
+												</c:if>
 												<td><fmt:formatNumber value="${fundRecord.usableAmount}" pattern="########.##" /></td>
 												<td>${fundRecord.recordDesc}</td>
 											</tr>
