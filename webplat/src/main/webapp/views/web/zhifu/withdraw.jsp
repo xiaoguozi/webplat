@@ -173,8 +173,8 @@
               							<li>
               						</c:if>
 		              					<input style="float: left;" id="userBankId" name="userBankId" ${status.index==0?'checked':''} value="${bank.bankId}" type="radio" >
-		              					<img class="bankImg" index="${status.index}" alt="" style="float: left; margin-left: 20px; vertical-align: bottom; cursor: pointer;" src="assets/img/zhifu/${bank.img}">
-		              					<span  style="margin-left: 30px; margin-top: 15px; font-size: 15px; font-weight: bold;">${bank.bankNo}</span>
+		              					<img class="bankImg" index="${status.index}" alt="" title="${bank.bankName}" style="float: left; margin-left: 20px; vertical-align: bottom; cursor: pointer;" src="assets/img/zhifu/banks/${bank.img}">
+		              					<span  style="margin-left: 30px; margin-top: 15px; font-size: 16px; font-weight: bold;">${bank.bankNo}</span>
 		                            </li>
               				</c:forEach>
                         </ul>     
