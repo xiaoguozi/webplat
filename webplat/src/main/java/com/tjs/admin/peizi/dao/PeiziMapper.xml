@@ -79,7 +79,7 @@
         </if>
                
         <if test="notEqualoperaStatus!=null">
-         and data_opera_status != #{notEqualoperaStatus}
+        and (data_opera_status != '30' and data_opera_status !='40')
         </if>
         					
 	</select>
@@ -107,7 +107,7 @@
         </if> 
         
         <if test="notEqualoperaStatus!=null">
-         and data_opera_status != #{notEqualoperaStatus}
+         and (data_opera_status != '30' and data_opera_status !='40')
         </if>
         
         <if test="peizi!= null and peizi.dataUserId!=null">
