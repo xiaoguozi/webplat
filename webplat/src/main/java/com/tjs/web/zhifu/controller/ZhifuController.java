@@ -43,7 +43,6 @@ import com.tjs.admin.zhifu.service.IFundRecord;
 import com.tjs.admin.zhifu.service.IRecharge;
 import com.tjs.admin.zhifu.service.IWithdraw;
 import com.tjs.admin.zhifu.zfenum.AreaLevelEnum;
-import com.tjs.admin.zhifu.zfenum.BankImageEnum;
 import com.tjs.admin.zhifu.zfenum.BankNameEnum;
 import com.tjs.admin.zhifu.zfenum.CustBankCardFromEnum;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
