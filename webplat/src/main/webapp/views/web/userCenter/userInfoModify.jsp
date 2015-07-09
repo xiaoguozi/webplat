@@ -136,7 +136,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			        <div class="ms-c2-t" style="margin-bottom: 10px;">
 			          <div id="myAsset">
 			            <dl>
-			              <dt>账户总资产<span id="tip" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
+			              <dt>账户总资产<img src="assets/img/peizi/qcmark.png" style="cursor: help;" align="middle" title="账户总资产=风险保证金+冻结金额+账户余额"/><span id="tip" class="icon icon-help-s ml10" style="cursor: pointer;"></span></dt>
 			              <dd> <strong>￥
 			              		<c:if test="${empty customerFund.totalFund}">
 			              			0
