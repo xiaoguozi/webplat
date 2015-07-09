@@ -118,17 +118,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			              		</form>
 				                <table class="my_tbl2" style="border-bottom: dashed 1px #d3d3d3;">
 				                    <tr>
-				                        <c:if test="${peizi.dataOperaStatus=='1'}">
-					                    	<td rowspan="2" ><a class="tjs_next_btn" id="aPay" href="" style="width: 110px;">前往支付</a></td>
-				                        </c:if>
-				                        
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataZcpzj}" pattern="########.##" /></span> 元<br />总操盘资金</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span><br />亏损警告线</td>
 				                        <td><span class="colorf06 font30"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span><br />亏损平仓线</td>
 				                        <td><span class="colorf06 font30">无</span><br />账户管理费</td>
 				                        <td>
 				                        	<c:if test="${peizi.dataOperaStatus=='1'}">
-				                        		<b class="color158 font18">待支付</b>
+				                        		<a class="tjs_next_btn" id="aPay" href="" style="width: 130px;">待支付</a>
 				                        	</c:if>
 				                        	<c:if test="${peizi.dataOperaStatus=='10'}">
 				                        		<b class="color158 font18">验资中</b>
