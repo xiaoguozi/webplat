@@ -10,7 +10,7 @@ public interface ICustbank {
 		public Custbank  insertCustbank(Custbank custbank);
 		
 		/**根据主键删除银行卡*/
-		public void deleteCustbank(Long bankId);
+		public int deleteCustbank(Custbank custbank);
 		
 		/**银行卡数量数量*/
 	    public int countCustbank(CustbankCtrlModel custbankCtrlModel);

@@ -25,9 +25,9 @@ public class CustBankImpl implements ICustbank {
 	}
 
 	@Override
-	public void deleteCustbank(Long bankId) {
+	public int deleteCustbank(Custbank custbank) {
 		// TODO Auto-generated method stub
-		custbankMapper.deleteCustbank(bankId);
+		return custbankMapper.deleteCustbank(custbank);
 		
 	}
 

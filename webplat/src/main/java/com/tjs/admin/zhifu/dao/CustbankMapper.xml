@@ -78,7 +78,7 @@
 	</insert>
 
 
-	<delete id="deleteCustbank" parameterType="Long">
-	    delete from tjs_cust_bank where bank_id=#{bankId}
+	<delete id="deleteCustbank" parameterType="com.tjs.admin.zhifu.model.Custbank">
+	    delete from tjs_cust_bank where bank_id=#{bankId} and customer_id=#{customerId}
 	</delete>							 
 </mapper>

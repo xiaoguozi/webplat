@@ -181,9 +181,10 @@ public class PeiziImpl implements IPeizi {
 				if(BigDecimalUtils.isEquals(reslut, BigDecimal.ZERO)
 						||BigDecimalUtils.isLessThan(reslut, BigDecimal.ZERO)){
 					fundRecord1.setAmount(oldPeizi.getDataTzbzj());
-					
+					customerFund.setTotalFund(BigDecimalUtils.subtractZero(customerFund.getTotalFund(),oldPeizi.getDataTzbzj()));
 				}else{
 					fundRecord1.setAmount(peizi.getDataProfit().abs());
+					customerFund.setTotalFund(BigDecimalUtils.subtractZero(customerFund.getTotalFund(),peizi.getDataProfit().abs()));
 				}				
 				fundRecord1.setBusinessId(oldPeizi.getDataId());
 				fundRecord1.setCreateBy(oldPeizi.getDataUserName());

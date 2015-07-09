@@ -479,6 +479,21 @@ public class ZhifuController {
 		return "redirect:/rest/web/userCenter/zhifu/addbank";  
 	}
 	
+	
+	
+	/** 添加银行记录 */
+	@RequestMapping("/delBank")
+    public String delBank(@RequestParam(value="dataId") long bankId) {
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		Custbank custBank =new Custbank();
+		custBank.setBankId(bankId);
+		custBank.setCustomerId(user.getId());
+		custbankService.deleteCustbank(custBank);
+		return "redirect:/rest/web/userCenter/zhifu/addbank";  
+	}
+	
 	@RequestMapping("/withdrawIndex")
     public String withdrawIndex(Model model) {
 		model.addAttribute("isLog", "true");

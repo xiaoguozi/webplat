@@ -145,7 +145,7 @@
 			                                <img alt="${custbank.bankName}" src="assets/img/zhifu/banks/${custbank.img}">																																																														
 			                                <p class="text-center" style="font-size: 16px;">${custbank.bankNo}</p>
 			                                	
-			                                <span style="float: right; color: #0088cc; margin-top: 20px; margin-right: 10px;" data-bankid="37749" id="del_bankcard2" data-lastnumber="4316">删除</span>
+			                                <span style="float: right; color: #0088cc; margin-top: 20px; margin-right: 10px;"  id="del_bankcard2" ><a class="delbank" href="rest/web/userCenter/zhifu/delBank?dataId=${custbank.bankId}">删除</a></span>
 			                           </li>	
 			                         </c:forEach>
 			                       </ul>
@@ -272,6 +272,7 @@
 	}
 	 
  	$(document).ready(function () {
+ 			
  		//添加银行卡
  		$(".addbank .tjs_btn").click(function(event){
 			event.preventDefault();	
