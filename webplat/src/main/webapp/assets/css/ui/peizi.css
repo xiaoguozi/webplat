@@ -1299,6 +1299,10 @@
         width:50px;
         text-align:center;
     }
+.ty_tbl_new td {
+        width:250px;
+        text-align:center;
+}    
 .pros_box.bord_d {
     border:none;
     border-top: 1px dashed #d3d3d3;

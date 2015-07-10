@@ -124,7 +124,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            <p>预计到期时间： 2015-9-10 <a style="float:right" href="javascript:openAgree('<%=basePath%>');">天天配合作操盘协议</a></p>
 	                        </div>
 	                        <div class="pros_box">
-	                        <table class="ty_tbl" style="width: 98%">
+	                        <table class="ty_tbl_new" style="width: 98%">
 	                            <tr>
 	                            	<c:if test="${peizi.dataType=='10'}">
 	                                	<td class="color158 font26" style="white-space:nowrap;">免费体验</td>
@@ -164,7 +164,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                            </tr>
 	                            
 	                        </table>
-	                        <table class="ty_tbl" style="width: 98%">
+	                        <table class="ty_tbl ty_tbl_new" style="width: 98%">
 	                            <tr>
                                      <td style="white-space:nowrap;">亏损警告线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataJjx==null?0:peizi.dataJjx}" pattern="########.##" /></span>元</td>
                                      <td style="white-space:nowrap;">亏损平仓线：<span class="font26 colorf06"><fmt:formatNumber value="${peizi.dataPcx==null?0:peizi.dataPcx}" pattern="########.##" /></span>元</td>
