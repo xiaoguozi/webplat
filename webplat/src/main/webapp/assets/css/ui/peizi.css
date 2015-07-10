@@ -1295,13 +1295,13 @@
     color: #999;
     padding-bottom:30px;
 }
-    .ty_tbl td {
-        width:50px;
-        text-align:center;
-    }
+.ty_tbl td {
+    width:50px;
+    text-align:center;
+}
 .ty_tbl_new td {
-        width:250px;
-        text-align:center;
+     width:250px;
+     text-align:center;
 }    
 .pros_box.bord_d {
     border:none;
