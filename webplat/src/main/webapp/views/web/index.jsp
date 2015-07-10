@@ -501,6 +501,11 @@ $(function() {
 		slideboxshow();
 		hoverproduct();
 		});
+		
+		window.onresize = function(){
+			var clientWidth = $(document.body)[0].clientWidth;
+			$("a[class^=header_banner]").css("width", clientWidth);
+		}
 	</script>
         
 

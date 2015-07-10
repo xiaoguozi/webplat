@@ -190,6 +190,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    alertMsg("<div class='capacity'>预约</div><div class='alert_in_box'><p>姓名：<input id='alert_name' placeholder='请输入中文姓名' type='text'/></p><p>电话：<input id='alert_tel' placeholder='请输入联系电话' type='text'/></p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>", 1);
 	   
 	}
+    
+    window.onresize = function(){
+		var clientWidth = $(document.body)[0].clientWidth;
+		$("a[class^=inter_cutimg]").css("width", clientWidth);
+	}
 	
 </script>
 </body>

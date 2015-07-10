@@ -518,7 +518,12 @@ $(function() {
 		j.style.display = "none";
 	}
 	document.getElementById(showContent).style.display = "block";
-}
+	}
+   
+   window.onresize = function(){
+		var clientWidth = $(document.body)[0].clientWidth;
+		$("a[class^=xintuo_banner]").css("width", clientWidth);
+	}
       
 
 </SCRIPT>

@@ -305,12 +305,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    };
 		});
       	
-		
+		window.onresize = function(){
+			var clientWidth = $(document.body)[0].clientWidth;
+			$("a[class^=inter_cutimg]").css("width", clientWidth);
+		}
     </script>
-    
-    
-<script>
-
     
 
 </body>
