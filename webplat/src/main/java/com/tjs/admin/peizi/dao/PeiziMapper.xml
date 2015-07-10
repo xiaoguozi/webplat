@@ -117,6 +117,10 @@
          <if test="sortField!= null and sortField!= ''">
            ORDER BY ${sortField} ${sortType}
         </if>
+        
+         <if test="sortField== null or sortField== ''">
+           ORDER BY data_create_date desc
+        </if>
                       
         <if test="pageNo!= 0">
            LIMIT #{limitStart} ,#{pageSize}
