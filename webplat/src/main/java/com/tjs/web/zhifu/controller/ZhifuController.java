@@ -1,5 +1,6 @@
 package com.tjs.web.zhifu.controller;
 
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,7 +11,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import sun.util.logging.resources.logging;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
@@ -48,6 +53,8 @@ import com.tjs.admin.zhifu.zfenum.CustBankCardFromEnum;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeStatusEnum;
+import com.tjs.core.zhifu.Configuration;
+import com.tjs.core.zhifu.DigestUtil;
 import com.tjs.core.zhifu.YeepayService;
 import com.tjs.web.peizi.token.TokenConstants;
 import com.tjs.web.peizi.token.TokenHandler;
@@ -89,10 +96,12 @@ public class ZhifuController {
 	private  HttpServletRequest request; 
 	
 	/** 充值流水前缀 */
-	private static final String PREFIX = "TJS_TEST_";
+	private static final String PREFIX = "TJS_";
 	
 	/** 点对点返回给易宝服务器  */
 	private static final String SUCCESS = "success";
+	
+	private Logger logging = Logger.getLogger(ZhifuController.class);
 	
 	@RequestMapping("/enterCur")
     public String enterCur(Model model) {
@@ -110,7 +119,7 @@ public class ZhifuController {
 	}
 	
 	@RequestMapping("/epay")
-    public String epay(HttpServletRequest request, ZhifuModel zhifuModel, Model model) {
+    public String epay(HttpServletRequest request,  ZhifuModel zhifuModel, Model model) {
 		String rechargeAmount = zhifuModel.getRechargeAmount();
 		String pdFrpId = zhifuModel.getPdFrpId();
 		String callbackUrl = zhifuModel.getCallbackUrl();
@@ -125,9 +134,9 @@ public class ZhifuController {
 		String p2_Order         = PREFIX + String.valueOf(recharge.getRechangeId());
 		String p3_Amt           = rechargeAmount;
 		String p4_Cur           = "CNY";
-		String p5_Pid           = "淘金山充值";
+		String p5_Pid           = "taojinshan";
 		String p6_Pcat          = "productcat";
-		String p7_Pdesc         = "充值";
+		String p7_Pdesc         = "desc";
 		String p8_Url           = callbackUrl;
 		String p9_SAF           = "0";
 		String pa_MP            = "";
@@ -136,25 +145,34 @@ public class ZhifuController {
 		String pn_Unit          = "";
 		String pr_NeedResponse  = "1";
 
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("p0_Cmd", 	p0_Cmd);
-		params.put("p2_Order",	p2_Order);
-		params.put("p3_Amt",	p3_Amt);
-		params.put("p4_Cur",	p4_Cur);
-		params.put("p5_Pid",	p5_Pid);
-		params.put("p6_Pcat",	p6_Pcat);
-		params.put("p7_Pdesc",	p7_Pdesc);
-		params.put("p8_Url",	p8_Url);
-		params.put("p9_SAF",	p9_SAF);
-		params.put("pa_MP",		pa_MP);
-		params.put("pd_FrpId",	pd_FrpId);
-		params.put("pm_Period",	pm_Period);
-		params.put("pn_Unit",	pn_Unit);
-		params.put("pr_NeedResponse",pr_NeedResponse);
-
-		String payURL		= YeepayService.getPayURL(params);
+		String p1_MerId			= Configuration.getInstance().getValue("p1_MerId");
+		String keyValue			= Configuration.getInstance().getValue("keyValue");
+		String[] strArr			= {p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, 
+									p7_Pdesc, p8_Url, p9_SAF, pa_MP, pd_FrpId, pm_Period, pn_Unit, pr_NeedResponse};
+		String hmac				= DigestUtil.getHmac(strArr, keyValue);
+		String requestURL		= Configuration.getInstance().getValue("requestURL");
 		
-		return "redirect:"+payURL;  
+		
+		model.addAttribute("p0_Cmd", 	p0_Cmd);
+		model.addAttribute("p1_MerId", 	p1_MerId);
+		model.addAttribute("p2_Order",	p2_Order);
+		model.addAttribute("p3_Amt",	p3_Amt);
+		model.addAttribute("p4_Cur",	p4_Cur);
+		model.addAttribute("p5_Pid",	p5_Pid);
+		model.addAttribute("p6_Pcat",	p6_Pcat);
+		model.addAttribute("p7_Pdesc",	p7_Pdesc);
+		model.addAttribute("p8_Url",	p8_Url);
+		model.addAttribute("p9_SAF",	p9_SAF);
+		model.addAttribute("pa_MP",		pa_MP);
+		model.addAttribute("pd_FrpId",	pd_FrpId);
+		model.addAttribute("pm_Period",	pm_Period);
+		model.addAttribute("pn_Unit",	pn_Unit);
+		model.addAttribute("pr_NeedResponse",pr_NeedResponse);
+		model.addAttribute("requestURL",requestURL);
+		model.addAttribute("hmac",hmac);
+		
+		
+		return "web/zhifu/pay";
 	}
 	
 	@RequestMapping("/callback")
@@ -207,54 +225,6 @@ public class ZhifuController {
 		model.addAttribute("totalAmount", customerFund.getTotalFund());
 		
 		return "web/zhifu/callback";
-	}
-	
-	@RequestMapping("/p2pCallback")
-	@ResponseBody
-    public String p2pCallback(ZhifuModel zhifuModel) {
-		
-		//1、充值流水
-		String orderId = zhifuModel.getR6_Order();
-		orderId = orderId.replace(PREFIX, "");
-		Recharge recharge = rechargeService.findByRechargeId(Long.valueOf(orderId));
-		//用户Id
-		Long userId =recharge.getCustomerId();
-		UserInfo userInfo = userInfoService.findUserInfoByUserId(userId);
-		
-		if(RechargeStatusEnum.SUCCESS.getIntegerKey().equals(recharge.getStatus())){
-			return SUCCESS; 
-		}
-		recharge.setStatus(RechargeStatusEnum.SUCCESS.getIntegerKey());
-		recharge.setPaynumber(zhifuModel.getR2_TrxId());
-		recharge.setUpdateTime(Calendar.getInstance().getTime());
-		
-		//2、个人账户信息
-		CustomerFund customerFund = getCustomerFund(userId);
-		BigDecimal usableAmount = null;
-		if(customerFund.getUsebleFund()==null){
-			usableAmount = new BigDecimal(zhifuModel.getR3_Amt());
-		}else{
-			usableAmount = customerFund.getUsebleFund().add(new BigDecimal(zhifuModel.getR3_Amt()));
-		}
-		customerFund.setUsebleFund(usableAmount);
-		//设置总金额
-		customerFund.setTotalFund(customerFund.getTotalFund()==null?new BigDecimal(zhifuModel.getR3_Amt()):
-			customerFund.getTotalFund().add(new BigDecimal(zhifuModel.getR3_Amt())));
-		
-		//3、资金流水
-		FundRecord fundRecord = new FundRecord();
-		fundRecord.setAmount(new BigDecimal(zhifuModel.getR3_Amt()));
-		fundRecord.setBusinessId(Long.valueOf(orderId));
-		fundRecord.setCreateBy(userInfo.getName()==null?userInfo.getMobileNo():userInfo.getName());
-		fundRecord.setCreateTime(Calendar.getInstance().getTime());
-		fundRecord.setCustomerId(userId);
-		fundRecord.setFundType(FundRecordFundTypeEnum.CZ.getKey());
-		fundRecord.setRecordDesc(FundRecordFundTypeEnum.CZ.getValue());
-		fundRecord.setUsableAmount(usableAmount);
-		
-		zhifuService.callbackUpdate(recharge, fundRecord, customerFund);
-		
-		return SUCCESS; 
 	}
 	
 	/** 充值流水 */

@@ -92,6 +92,7 @@
 		update tjs_recharge set		
 		status=#{status},
 		paynumber=#{paynumber},
+		update_time=#{updateTime},
 		lockid=(#{lockId}+1)		
 		where recharge_id=#{rechangeId}
 		and lockid=#{lockId}		
