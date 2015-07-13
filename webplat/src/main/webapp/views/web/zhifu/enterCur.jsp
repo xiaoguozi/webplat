@@ -224,10 +224,10 @@
 											src="assets/img/zhifu/banks/shanghaibank.png">
 									</P></LI>
 								<LI id="yh15" onclick="yhxz(15);"><I><INPUT
-										name="pdFrpId" value="SDB-NET-B2C" type="radio"></I>
+										name="pdFrpId" value="BCCB-NET-B2C" type="radio"></I>
 									<P style="height:37px;">
-										<IMG alt="深圳发展银行" 
-											src="assets/img/zhifu/banks/shenfa.png">
+										<IMG alt="北京银行" 
+											src="assets/img/zhifu/banks/beijing.png">
 									</P></LI>
 								<LI id="yh16" onclick="yhxz(16);"><I><INPUT
 										name="pdFrpId" value="CMBC-NET-B2C" type="radio"></I>

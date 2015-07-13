@@ -18,7 +18,7 @@ public enum BankNameEnum {
 	HXB("HXB-NET-B2C", "华夏银行"), 
 	PINGANBANK("PINGANBANK-NET-B2C", "平安银行"), 
 	SHB("SHB-NET-B2C", "上海银行"), 
-	SDB("SDB-NET-B2C", "深圳发展银行"), 
+	SDB("BCCB-NET-B2C", "北京银行"), 
 	CMBC("CMBC-NET-B2C", "民生银行");
 
 	/** 键 */

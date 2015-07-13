@@ -37,7 +37,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `tjs_bank` WRITE;
 /*!40000 ALTER TABLE `tjs_bank` DISABLE KEYS */;
-INSERT INTO `tjs_bank` VALUES (1,'BOC-NET-B2C','中国银行','zhongguo.png'),(2,'CMBCHINA-NET-B2C','招商银行','zhaohang.png'),(3,'CCB-NET-B2C','中国建设银行','jianshe.png'),(4,'ICBC-NET-B2C','中国工商银行','gongshang.png'),(5,'ABC-NET-B2C','中国农业银行','nongye.png'),(6,'POST-NET-B2C','中国邮政储蓄银行','youzheng.png'),(7,'ECITIC-NET-B2C','中信银行','zhongxin.png'),(8,'CEB-NET-B2C','中国光大银行','guangda.png'),(9,'CIB-NET-B2C','兴业银行','xingye.png'),(10,'BOCO-NET-B2C','交通银行','jiaotong.png'),(11,'SPDB-NET-B2C','浦发银行','shangpufa.png'),(12,'HXB-NET-B2C','华夏银行','huaxia.png'),(13,'PINGANBANK-NET-B2C','平安银行','pingan.png'),(14,'SHB-NET-B2C','上海银行','shanghaibank.png'),(15,'SDB-NET-B2C','深圳发展银行','shenfa.png'),(16,'CMBC-NET-B2C','民生银行','minsheng.png');
+INSERT INTO `tjs_bank` VALUES (1,'BOC-NET-B2C','中国银行','zhongguo.png'),(2,'CMBCHINA-NET-B2C','招商银行','zhaohang.png'),(3,'CCB-NET-B2C','中国建设银行','jianshe.png'),(4,'ICBC-NET-B2C','中国工商银行','gongshang.png'),(5,'ABC-NET-B2C','中国农业银行','nongye.png'),(6,'POST-NET-B2C','中国邮政储蓄银行','youzheng.png'),(7,'ECITIC-NET-B2C','中信银行','zhongxin.png'),(8,'CEB-NET-B2C','中国光大银行','guangda.png'),(9,'CIB-NET-B2C','兴业银行','xingye.png'),(10,'BOCO-NET-B2C','交通银行','jiaotong.png'),(11,'SPDB-NET-B2C','浦发银行','shangpufa.png'),(12,'HXB-NET-B2C','华夏银行','huaxia.png'),(13,'PINGANBANK-NET-B2C','平安银行','pingan.png'),(14,'SHB-NET-B2C','上海银行','shanghaibank.png'),(15,'BCCB-NET-B2C','北京银行','beijing.png'),(16,'CMBC-NET-B2C','民生银行','minsheng.png');
 /*!40000 ALTER TABLE `tjs_bank` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
