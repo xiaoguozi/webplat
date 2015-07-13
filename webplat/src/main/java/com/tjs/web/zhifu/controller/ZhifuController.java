@@ -1,17 +1,13 @@
 package com.tjs.web.zhifu.controller;
 
-import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
@@ -22,8 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import sun.util.logging.resources.logging;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
@@ -55,7 +49,6 @@ import com.tjs.admin.zhifu.zfenum.RechargeFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeStatusEnum;
 import com.tjs.core.zhifu.Configuration;
 import com.tjs.core.zhifu.DigestUtil;
-import com.tjs.core.zhifu.YeepayService;
 import com.tjs.web.peizi.token.TokenConstants;
 import com.tjs.web.peizi.token.TokenHandler;
 import com.tjs.web.zhifu.service.IZhifuService;
@@ -178,6 +171,11 @@ public class ZhifuController {
 	@RequestMapping("/callback")
     public String callback(ZhifuModel zhifuModel, Model model) {
 		
+		//检查返回的参数和hmac是否被认为修改
+		if(!checkHmac(zhifuModel)){
+			return "web/zhifu/callback"; 
+		}
+		
 		//1、充值流水
 		String orderId = zhifuModel.getR6_Order();
 		orderId = orderId.replace(PREFIX, "");
@@ -185,6 +183,7 @@ public class ZhifuController {
 		//用户Id
 		Long userId =recharge.getCustomerId();
 		UserInfo userInfo = userInfoService.findUserInfoByUserId(userId);
+		
 		
 		if(RechargeStatusEnum.SUCCESS.getIntegerKey().equals(recharge.getStatus())){
 			CustomerFund customerFund = getCustomerFund(userId);
@@ -636,6 +635,41 @@ public class ZhifuController {
 		String strStart = cardNo.substring(0, 4);
 		String strEnd = cardNo.substring(cardNo.length()-4);
 		return strStart+"***********"+strEnd;
+	}
+	
+	/**
+	 * 比对hmac是否一致
+	 * @param zhifuModel
+	 * @return boolean
+	 */
+	private boolean checkHmac(ZhifuModel zhifuModel){
+		 /** --回调结果参数-- */
+		 String p1_MerId = formatString(zhifuModel.getP1_MerId());
+		 String r0_Cmd = formatString(zhifuModel.getR0_Cmd());
+		 String r1_Code = formatString(zhifuModel.getR1_Code());
+		 String r2_TrxId = formatString(zhifuModel.getR2_TrxId());
+		 String r3_Amt = formatString(zhifuModel.getR3_Amt());
+		 String r4_Cur = formatString(zhifuModel.getR4_Cur());
+		 String r5_Pid = formatString(zhifuModel.getR5_Pid());
+		 String r6_Order = formatString(zhifuModel.getR6_Order());
+		 String r7_Uid = formatString(zhifuModel.getR7_Uid());
+		 String r8_MP = formatString(zhifuModel.getR8_MP());
+		 String r9_BType = formatString(zhifuModel.getR9_BType());
+		 
+		 String keyValue = Configuration.getInstance().getValue("keyValue");
+		 
+		 String[] strArr = new String[]{p1_MerId, r0_Cmd, r1_Code, r2_TrxId, r3_Amt, r4_Cur,
+				 r5_Pid, r6_Order,  r7_Uid, r8_MP, r9_BType};
+		 String hmac = DigestUtil.getHmac(strArr, keyValue);
+		 if(hmac.equals(zhifuModel.getHmac())){
+			 return true;
+		 }
+		 
+		 return false;
+	}
+	
+	private String formatString(String text) {
+		return text == null ? "" : text.trim();
 	}
 	
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +27,8 @@ import com.tjs.admin.zhifu.service.IRecharge;
 import com.tjs.admin.zhifu.service.IWithdraw;
 import com.tjs.admin.zhifu.zfenum.FundRecordFundTypeEnum;
 import com.tjs.admin.zhifu.zfenum.RechargeStatusEnum;
+import com.tjs.core.zhifu.Configuration;
+import com.tjs.core.zhifu.DigestUtil;
 import com.tjs.web.zhifu.service.IZhifuService;
 
 @Controller
@@ -71,11 +72,16 @@ public class CallbackController {
 	/** 点对点返回给易宝服务器  */
 	private static final String SUCCESS = "success";
 	
-	private Logger logging = Logger.getLogger(CallbackController.class);
+	private static final String FAIL = "fail";
 	
 	@RequestMapping("/p2pCallback")
 	@ResponseBody
     public String p2pCallback(ZhifuModel zhifuModel) {
+		
+		//检查返回的参数和hmac是否被认为修改
+		if(!checkHmac(zhifuModel)){
+			return FAIL;
+		}
 		
 		//1、充值流水
 		String orderId = zhifuModel.getR6_Order();
@@ -149,6 +155,41 @@ public class CallbackController {
 		}
 		
 		return customerFund;
+	}
+	
+	/**
+	 * 比对hmac是否一致
+	 * @param zhifuModel
+	 * @return boolean
+	 */
+	private boolean checkHmac(ZhifuModel zhifuModel){
+		 /** --回调结果参数-- */
+		 String p1_MerId = formatString(zhifuModel.getP1_MerId());
+		 String r0_Cmd = formatString(zhifuModel.getR0_Cmd());
+		 String r1_Code = formatString(zhifuModel.getR1_Code());
+		 String r2_TrxId = formatString(zhifuModel.getR2_TrxId());
+		 String r3_Amt = formatString(zhifuModel.getR3_Amt());
+		 String r4_Cur = formatString(zhifuModel.getR4_Cur());
+		 String r5_Pid = formatString(zhifuModel.getR5_Pid());
+		 String r6_Order = formatString(zhifuModel.getR6_Order());
+		 String r7_Uid = formatString(zhifuModel.getR7_Uid());
+		 String r8_MP = formatString(zhifuModel.getR8_MP());
+		 String r9_BType = formatString(zhifuModel.getR9_BType());
+		 
+		 String keyValue = Configuration.getInstance().getValue("keyValue");
+		 
+		 String[] strArr = new String[]{p1_MerId, r0_Cmd, r1_Code, r2_TrxId, r3_Amt, r4_Cur,
+				 r5_Pid, r6_Order,  r7_Uid, r8_MP, r9_BType};
+		 String hmac = DigestUtil.getHmac(strArr, keyValue);
+		 if(hmac.equals(zhifuModel.getHmac())){
+			 return true;
+		 }
+		 
+		 return false;
+	}
+	
+	private String formatString(String text) {
+		return text == null ? "" : text.trim();
 	}
 	
 }
