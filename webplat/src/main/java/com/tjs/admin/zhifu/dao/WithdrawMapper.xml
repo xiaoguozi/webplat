@@ -23,12 +23,14 @@
 		<result column="check_by" property="checkBy" jdbcType="VARCHAR"/>
 		<result column="check_time" property="checkTime" javaType="java.util.Date" jdbcType="TIMESTAMP"  />				
 		<result column="lockid" property="lockId" javaType="java.lang.Integer"/>
+		<result column="bank_fullname" property="bankFullName" jdbcType="VARCHAR"/>
+		<result column="mobile_no" property="telNo" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	
 	<sql id="Base_select_Column_List">
 		withdraw_id,customer_id,bank_name,bank_code,card_from,card_no,bank_province,bank_city,amount,poundage_amount,branch_name,
-		request_ip,create_time,create_by,status,audit_by,audit_time,audit_desc,check_by,check_time,lockid
+		request_ip,create_time,create_by,status,audit_by,audit_time,audit_desc,check_by,check_time,lockid,'' bank_fullname,'' mobile_no
 		
 	</sql>
 
@@ -150,5 +152,16 @@
 
 	<delete id="deleteWithdraw" parameterType="Long">
 	    delete from tjs_withdraw where withdraw_id=#{withrowId}
-	</delete>							 
+	</delete>	
+	
+	<select id="selectWithdrawByIds"  resultMap="BaseResultMap"  parameterType="Long">
+		select
+		tjs_withdraw.*,	tjs_bank.bank_fullname,t_user_info.mobile_no			
+		 from tjs_withdraw ,tjs_bank,t_user_info
+		where tjs_withdraw.customer_id = t_user_info.user_id
+		and tjs_withdraw.bank_code = tjs_bank.bank_code and withdraw_id in 		
+		 <foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+		</foreach>		       
+	 </select>						 
 </mapper>

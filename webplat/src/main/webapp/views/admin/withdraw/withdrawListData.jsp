@@ -6,6 +6,10 @@
 <c:forEach items="${showData}" var="withdraw">
     <tr>
         <td class="data-operator">
+        	<label class="checkbox-inline">
+                <input type="checkbox" name="data-id" value="${withdraw.withrowId}"> 
+                &nbsp;&nbsp;&nbsp;
+            </label>
             <a data-id="${withdraw.withrowId}" href="" class="edit invisible" title="修改">
                 <span class="glyphicon glyphicon-edit"></span> 修改
             </a>

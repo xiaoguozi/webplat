@@ -45,6 +45,7 @@
 		    <input type="text" class="form-control" size="20" name="keyWord" placeholder="关键字" value="" style="width:150px">
 
             <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+       		<button type="submit" id="export" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon" style="text-align:center"></span>导&nbsp;出</button>
         </form>
     </div>
 </div>
@@ -55,6 +56,10 @@
                 <thead>
                     <tr>
                         <th class="data-operator">
+                             <label class="checkbox-inline">
+                                <input type="checkbox" value=""/> 
+                                &nbsp;&nbsp;&nbsp;
+                            </label>
                            
                         </th>                      
                         <th field="create_by">客户名称 <span class="glyphicon"></span></th>
@@ -80,6 +85,9 @@
             </div>
         </div>
     </div>
+    <form id="exportForm" action="rest/admin/withdraw/exportData" method="post" >
+     <input type="hidden" name="ids" value=""/>
+    </form>
 </div>
 
 </div>
@@ -128,6 +136,20 @@ $(function(){
         loadList();
         return false;
     })
+    
+     //搜索事件
+    $("#export").click(function(event) {
+        event.preventDefault();
+        var ids = Btk.tableCheckedIds($("#list-data"));
+        if(!ids){
+            Btk.message("请选择记录进行操作！");
+            return false;
+        }      
+        $("#exportForm input[name='ids']").val(ids);
+        
+        $("#exportForm").submit();
+        return false;
+    });
 
     //新增事件
     $("#insertBtn").click(function() {

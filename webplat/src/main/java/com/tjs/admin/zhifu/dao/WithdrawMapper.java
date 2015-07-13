@@ -18,5 +18,6 @@ public interface WithdrawMapper{
 	public int deleteWithdraw(Long withdrawId);
 	/**根据ID找到规则*/
 	public Withdraw findByWithdrawId(Long withdrawId);
-	
+	  /**提现记录*/
+    public List<Withdraw> selectWithdrawByIds(Long[] ids);		
 }

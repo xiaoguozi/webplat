@@ -51,6 +51,32 @@ public class Withdraw {
 	  private Date checkTime;
 	  /**业务锁 */
 	  private Integer lockId;
+	  
+	  /**银行全称*/
+	  private String bankFullName;  
+	  /**手机电话号码*/
+	  private String telNo;
+	  /**原因 */	  
+	  private String  reason;
+	  
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getBankFullName() {
+		return bankFullName;
+	}
+	public void setBankFullName(String bankFullName) {
+		this.bankFullName = bankFullName;
+	}
+	public String getTelNo() {
+		return telNo;
+	}
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
+	}
 	public Long getWithrowId() {
 		return withrowId;
 	}

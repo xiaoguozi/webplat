@@ -1,11 +1,15 @@
 package com.tjs.admin.withdraw.controller;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -19,6 +23,8 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.ExcelUtils;
+import com.tjs.admin.utils.ExportMo;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.withdraw.service.IWithdrawBizService;
 import com.tjs.admin.zhifu.controller.WithdrawCtrlModel;
@@ -89,6 +95,7 @@ public class WithdrawController {
     	model.addAttribute("ctrlData", withdrawCtrlModel);
         return "admin/withdraw/updateWithdraw";
     }
+    
   
 
     @RequestMapping("/updateData")
@@ -124,4 +131,66 @@ public class WithdrawController {
         return result;
     }
 	
+    
+    @RequestMapping("/exportData")
+    public String exportData(@RequestParam(value="ids",required=false) Long[] withrowIds ,HttpServletResponse response) throws IOException {  	      	
+    	
+    	 String  mimetype = "application/x-msdownload";
+    	 response.setContentType(mimetype);
+    	 String downFileName = "withdraw.xls";
+    	 String inlineType = "attachment"; // 是否内联附件
+    	 response.setHeader("Content-Disposition", inlineType+ ";filename=\"" + downFileName + "\"");
+ 	   
+    	ExportMo exportMo = new ExportMo();
+    	OutputStream os = response.getOutputStream();
+    	
+    	List<Withdraw> lstWithdraw = withdrawService.selectWithdrawByIds(withrowIds);
+    	
+		exportMo.setTableName("提现记录");
+		List<String> lstColumns = new ArrayList<String>();
+		lstColumns.add("withrowId");
+		lstColumns.add("withrowId");
+		lstColumns.add("createBy");
+		lstColumns.add("cardNo");
+		lstColumns.add("bankName");
+		lstColumns.add("bankProvince");
+		lstColumns.add("bankcity");
+		lstColumns.add("amount");
+		lstColumns.add("reason");
+		lstColumns.add("bankFullName");		
+		lstColumns.add("telNo");
+		exportMo.setColumns(lstColumns);
+		
+		List<String> lstColumnsTitle = new ArrayList<String>();
+		lstColumnsTitle.add("批次号");
+		lstColumnsTitle.add("订单号");
+		lstColumnsTitle.add("帐户名称");
+		lstColumnsTitle.add("银行账号");
+		lstColumnsTitle.add("开户银行");
+		lstColumnsTitle.add("省");
+		lstColumnsTitle.add("市");
+		lstColumnsTitle.add("金额");
+		lstColumnsTitle.add("打款原因");
+		lstColumnsTitle.add("开户银行全称");
+		lstColumnsTitle.add("手机号");		
+		exportMo.setColumnTitles(lstColumnsTitle);
+		
+		exportMo.setValues(lstWithdraw);
+		
+		List<String> lstColumnsType = new ArrayList<String>();
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("numberSize");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		lstColumnsType.add("String");
+		exportMo.setColumnTypes(lstColumnsType);
+		ExcelUtils.generateFile(os, exportMo);
+        return null;
+    }
 }

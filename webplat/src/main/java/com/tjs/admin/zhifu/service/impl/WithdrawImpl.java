@@ -53,4 +53,10 @@ public class WithdrawImpl implements IWithdraw{
 		return withdrawMapper.findByWithdrawId(withdrawId);
 	}
 
+	@Override
+	public List<Withdraw> selectWithdrawByIds(Long[] ids) {
+		// TODO Auto-generated method stub
+		return withdrawMapper.selectWithdrawByIds(ids);
+	}
+
 }
