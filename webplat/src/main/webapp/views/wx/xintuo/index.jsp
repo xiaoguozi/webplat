@@ -28,9 +28,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <h1>你好,欢迎回来!</h1>
                 <h5>淘金山用户累计收益已超30亿元</h5>
             </div>
-            <div class="col-xs-12">
-                <a href="logo.html" class="btn btn_default">登录</a>
-                <a href="reg.html" class="btn btn_default">注册</a>
+            <div class="col-xs-12">               
+                <a class="btn btn_default" >登录</a>
+                <a class="btn btn_default">注册</a>                           
             </div>
         </div>
         <div class="row border_bottom">
@@ -50,8 +50,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
             <div class="col-xs-6">
                 <a href="peizi.html">                 
-                    <h2>500万</h2>
-                    <p>最高可配金额(元)</p>
+                    <h2><fmt:formatNumber value="${xtcp.xtcpZdrgje}" pattern="#0.####"/><span style="font-size:14px">万起</span></h2>
+                    <p>${xtcp.xtcpHd}</p>
                 </a>
             </div>
         </div>
@@ -81,7 +81,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         </a>
                     </li>
                     <li class="">
-                        <a href="index1.html">
+                        <a>
                             <span class="menu-person"></span>
                             <p>个人中心</p>
                         </a>
