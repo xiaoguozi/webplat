@@ -23,7 +23,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <a href="rest/wx/xintuo/xintuoInfo" class="btn btn-block btn_blue">点击查看信托介绍<span class="pull-right icon-a"></span></a>
         </div>
         <div class="row">
-           <c:forEach items="${lstProductVos}" var="xintuocp" end="5">
+           <c:forEach items="${lstProductVos}" var="xintuocp">
 	            <div class="jr_list">
 	                <div class="col-xs-12">
 	                    <h3>${xintuocp.xtcpSplname}</h3>
