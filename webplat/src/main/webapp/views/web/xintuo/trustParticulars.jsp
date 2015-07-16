@@ -94,7 +94,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <td class="tjs_pcs_textoddbg">
              <c:choose>  
                 <c:when test="${productXtcp.xtcpLxfp=='10'}">  
-                  		不限按月付息
+                  		 按月付息
                 </c:when>
                  <c:when test="${productXtcp.xtcpLxfp=='20'}">  
                   		  按季付息

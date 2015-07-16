@@ -77,7 +77,7 @@
         </if>
         
          <if test="sortField== null or sortField== ''">
-           ORDER BY xtcp_modifyDate desc,xtcp_status asc
+           ORDER BY xtcp_modifyDate desc,xtcp_tjno asc
         </if>
         
          <if test="pageNo!= 0">
