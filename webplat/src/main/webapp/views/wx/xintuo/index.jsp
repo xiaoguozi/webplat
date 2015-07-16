@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
     <div class="container">
         <div class="row banner">
-            <img src="assets/img/wx/ad.png" alt="" class="img-responsive center-block">
+            <img src="assets/img/wx/xintuowxbanner.jpg" alt="" class="img-responsive center-block">
             <button type="button" class="close" aria-label="Close">&times;</button>
         </div>
         <div class="row bg">
