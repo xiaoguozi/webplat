@@ -169,7 +169,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                    			</c:if>
                    			<c:if test="${result!=-3}">
                    				<c:if test='${peiziRule.ruleEnable==20}'>
-		                   			<span style="color: red;">今日名额已满，请改日再体验</span>
+		                   			<span style="color: red;">该业务已关闭</span>
 	                   				<br/>
 									<a class="tjs_btn disabled" style="margin-top:15px;" href="javascript:void(0);">我要配资</a>
 								</c:if>
