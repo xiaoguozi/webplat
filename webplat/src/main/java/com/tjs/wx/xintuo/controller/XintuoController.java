@@ -126,9 +126,10 @@ public class XintuoController {
     	productXtcp.setXtcpFxgm(BigDecimalUtils.div(productXtcp.getXtcpFxgm(), div10000));
     	productXtcp.setXtcpZdrgje(BigDecimalUtils.div(productXtcp.getXtcpZdrgje(), div10000));
    	
-    	model.addAttribute("productXtcp", productXtcp);
+    	model.addAttribute("xtcp", productXtcp);
         return "wx/xintuo/xintuoDetail";
     }
+	
 	
 	@RequestMapping("/reservePage")
     public String reservePage(Model model) {

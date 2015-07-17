@@ -36,20 +36,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row border_bottom">
          
 			<div class="col-xs-12">
-				<a href="peizi.html">   
+				<a href="rest/wx/xintuo/detail?id=${xtcp.xtcpId}">   
 				 	<h3>${xtcp.xtcpSplname}</h3>
 			    </a>
 			</div>				
 
             <div class="hot"><img src="assets/img/wx/hot.png" alt="" class="img-responsive center-block"></div>
             <div class="col-xs-6 line">
-                <a href="peizi.html">                    
+                <a href="rest/wx/xintuo/detail?id=${xtcp.xtcpId}">                    
                     <h2><fmt:formatNumber value="${xtcp.xtcpNsyl}" pattern="#0.####"/>%</h2>
                     <p>${xtcp.xtcpCxq}个月</p>
                 </a>
             </div>
             <div class="col-xs-6">
-                <a href="peizi.html">                 
+                <a href="rest/wx/xintuo/detail?id=${xtcp.xtcpId}">                 
                     <h2><fmt:formatNumber value="${xtcp.xtcpZdrgje}" pattern="#0.####"/><span style="font-size:14px">万起</span></h2>
                     <p>${xtcp.xtcpHd}</p>
                 </a>
@@ -69,13 +69,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="row">
                 <ul class="list-unstyled">
                     <li class=" active">
-                        <a href="index.html">
+                        <a href="rest/wx/xintuo/index">
                             <span class="menu-home"></span>
                             <p>首页</p>
                         </a>
                     </li>
                     <li class="">
-                        <a href="list.html">
+                        <a href="rest/wx/moreProducts">
                             <span class="menu-shopping"></span>
                             <p>我要理财</p>
                         </a>

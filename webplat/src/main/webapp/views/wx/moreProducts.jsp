@@ -23,12 +23,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<p class="text-center" style="width: 100%; font-weight: bold; font-size:20px; color: #308AFF;  margin-top:15px; margin-bottom:15px; ">全部产品</p>
 		</div>
 		<div class="row" style="border-bottom:1px solid #E0E0E0; border-top:1px solid #E0E0E0;">
+		 <a href="rest/wx/xintuo/list">
 			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/xintuo.png" /></div>
 			<div class="col-xs-8">
-				<p style="font-size:20px; color:#000; margin-top: 12px;"><b>信托<b></p>
-				<p style="color:#ccc; font-size: 13px;">低风险，30倍银行活期存款利息</p>
+					<p style="font-size:20px; color:#000; margin-top: 12px;"><b>信托<b></p>
+					<p style="color:#ccc; font-size: 13px;">低风险，30倍银行活期存款利息</p>			  
 			</div>
 			<div class="col-xs-2" style="padding-top: 25px;"><img src="assets/img/wx/jiantou.png" /></div>	
+		 </a>
 		</div>
 		<div class="row" style="border-bottom:1px solid #E0E0E0;">
 			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/simu.png" /></div>
