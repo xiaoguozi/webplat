@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <a href="peizi.html" class="btn btn-block btn_orange">了解更多</a>
+                <a href="rest/wx/xintuo/list" class="btn btn-block btn_orange">了解更多</a>
             </div>
             <div class="col-xs-12">
                 <a href="list.html" class="btn btn-block btn_gray">参看更多理财产品</a>
