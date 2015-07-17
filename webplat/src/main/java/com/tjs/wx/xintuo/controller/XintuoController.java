@@ -1,5 +1,6 @@
 package com.tjs.wx.xintuo.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +11,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
+import com.tjs.admin.xintuo.util.BigDecimalUtils;
 
 
 /**
@@ -113,4 +116,18 @@ public class XintuoController {
     	result.put("bizData", lstProductVos);
         return result;
     }
+	
+	
+	@RequestMapping("/detail")
+    public String detail(Model model,@RequestParam(value="id",required=false) Long xtcpId) {
+		
+		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(xtcpId);
+    	BigDecimal div10000 = new BigDecimal(10000);		
+    	productXtcp.setXtcpFxgm(BigDecimalUtils.div(productXtcp.getXtcpFxgm(), div10000));
+    	productXtcp.setXtcpZdrgje(BigDecimalUtils.div(productXtcp.getXtcpZdrgje(), div10000));
+   	
+    	model.addAttribute("productXtcp", productXtcp);
+        return "wx/xintuo/xintuoDetail";
+    }
+	
 }
