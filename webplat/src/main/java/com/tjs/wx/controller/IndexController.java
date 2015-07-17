@@ -35,4 +35,9 @@ public class IndexController {
 		}
         return "wx/index";
     }
+	
+	@RequestMapping("/moreProducts")
+    public String moreProducts(Model model) {		
+        return "wx/moreProducts";
+    }
 }
