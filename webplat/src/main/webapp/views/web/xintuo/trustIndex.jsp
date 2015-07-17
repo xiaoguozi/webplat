@@ -69,6 +69,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
                 <ul>
                     <li><a class="xintuo_banner1" href="javascript:void(0)"></a></li>
                     <li><a class="xintuo_banner2" href="javascript:void(0)"></a></li>
+                    <li><a class="xintuo_banner3" href="javascript:void(0)"></a></li>
                 </ul>
             </div>
             <div class="tjs_nav_box"><a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a></div>

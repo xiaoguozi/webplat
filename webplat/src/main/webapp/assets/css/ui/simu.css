@@ -122,7 +122,12 @@
     	height:400px;
     	display:block;
     }
-   
+    .xintuo_banner3 {
+        background: url(../../img/ui/banner/minsheng18.png) no-repeat center center;
+        width:100%;
+    	height:400px;
+    	display:block;
+    }
     
        
     .slideBox .prev,
