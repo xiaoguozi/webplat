@@ -47,13 +47,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="container">
             <div class="row">
                 <ul class="list-unstyled">
-                    <li class=" active">
+                    <li class="">
                         <a href="rest/wx/xintuo/index">
                             <span class="menu-home"></span>
                             <p>首页</p>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="active">
                         <a href="rest/wx/moreProducts">
                             <span class="menu-shopping"></span>
                             <p>我要理财</p>
