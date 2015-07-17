@@ -85,32 +85,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          <input type="hidden"  name="totalPageSize" value="${xinTuoSeachCtrlVO.totalPageSize}">
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <ul class="list-unstyled">
-                    <li class="">
-                        <a href="rest/wx/xintuo/index">
-                            <span class="menu-home"></span>
-                            <p>首页</p>
-                        </a>
-                    </li>
-                    <li class=" active">
-                        <a href="rest/wx/moreProducts">
-                            <span class="menu-shopping"></span>
-                            <p>我要理财</p>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a>
-                            <span class="menu-person"></span>
-                            <p>个人中心</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 </body>
 
 <script src="assets/scripts/wx/ai.js" type="text/javascript"></script> 
