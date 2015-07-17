@@ -22,7 +22,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<div class="row" style="background:#F8F8F8;">
 			<p class="text-center" style="width: 100%; font-weight: bold; font-size:20px; color: #308AFF;  margin-top:15px; margin-bottom:15px; ">全部产品</p>
 		</div>
-		<div class="row" style="border-bottom:2px solid #E0E0E0;">
+		<div class="row" style="border-bottom:1px solid #E0E0E0; border-top:1px solid #E0E0E0;">
 			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/xintuo.png" /></div>
 			<div class="col-xs-8">
 				<p style="font-size:20px; color:#000; margin-top: 12px;"><b>信托<b></p>
@@ -30,7 +30,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 			<div class="col-xs-2" style="padding-top: 25px;"><img src="assets/img/wx/jiantou.png" /></div>	
 		</div>
-		<div class="row" style="border-bottom:2px solid #E0E0E0;">
+		<div class="row" style="border-bottom:1px solid #E0E0E0;">
 			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/simu.png" /></div>
 			<div class="col-xs-8">
 				<p style="font-size:20px; color:#000; margin-top: 12px;"><b>私募<b></p>

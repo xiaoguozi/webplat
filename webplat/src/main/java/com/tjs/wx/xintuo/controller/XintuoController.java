@@ -130,4 +130,9 @@ public class XintuoController {
         return "wx/xintuo/xintuoDetail";
     }
 	
+	@RequestMapping("/reservePage")
+    public String reservePage(Model model) {
+        return "wx/xintuo/reserve";
+    }
+	
 }
