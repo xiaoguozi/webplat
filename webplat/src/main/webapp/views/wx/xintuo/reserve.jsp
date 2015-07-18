@@ -28,15 +28,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <label style="margin-top: 5px;">
                         <span style="color:#000; font-size: 20px; font-weight: bold;">${xtName}</span>
                     </label>
-            </div>
-            <div class="col-xs-12" style="background: #F2F2F2;">
-                    <label >
-                        <h4>请填写预约相关信息</h4>
-                    </label>
-            </div>
+            </div>          
             <div class="pei_money col-xs-12" style="margin-top: 0px;">
-            	<form id="xtForm" action="rest/web/wx/xintuo/orderProduct" method="post">
-            		<input type="hidden" name="productId" value="${productId}" />
+            	<form id="xtForm" action="rest/wx/xintuo/orderProduct" method="post">
+            		<input type="hidden" name="productId" value="${productId}"/>
             		<input type="hidden" name="productType" value="10" />
             		
 	                <div class="row">

@@ -20,8 +20,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12" style="background: #F8FFEB">
-            	<span style="color: #000;"><img src="assets/img/zhifu/pay_done.png" align="middle"/>预约成功，跳转中......</span>
+            <div class="col-xs-12" style="background: #F8FFEB;text-align:center;">
+            	<span style="color: #000;">预约成功，跳转中......</span>
             	<span id="span_time" style="font-size: 24px;color: ">3</span>
             </div>
         </div>
@@ -53,13 +53,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
     </footer>
 </body>
-<script src="assets/scripts/wx/require.js" data-main="assets/scripts/wx/main"></script>
+<script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 <script>
-
 var timer = 4;
 function tick(){
 	 if(timer == 1){
-		window.location.href = '<%=basePath%>rest/web/wx/xintuo/list';
+		window.location.href = '<%=basePath%>rest/wx/xintuo/list';
 	 }else{
 		  timer--;
 		  $('#span_time').html(timer);
@@ -67,9 +66,8 @@ function tick(){
 	 }
 }
 
-$(document).ready(function () {
+$(function(){
 	tick();
 });
-
 </script>
 </html>

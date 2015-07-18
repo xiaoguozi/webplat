@@ -151,12 +151,12 @@ public class XintuoController {
      * @return
      */
      @RequestMapping("/orderProduct")
-     public String orderProduct(@RequestParam(value="productId",required=false) Long productId,@RequestParam(value="productType") String productType,@RequestParam(value="userName") String userName,@RequestParam(value="userPhone") String  userPhone) {
+     public String orderProduct(@RequestParam(value="productId",required=false) Long productId,@RequestParam(value="userName") String userName,@RequestParam(value="userPhone") String  userPhone) {
      	Order order = new Order();
      	order.setCreateDate(new Date());
      	//未处理
      	order.setOperateStatus("10");
-     	order.setProductType(productType);
+     	order.setProductType("10");
      	order.setProductId(productId);
      	if(productId!=null){
      		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(productId);
