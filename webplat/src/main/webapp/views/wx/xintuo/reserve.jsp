@@ -58,6 +58,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                        </div>
 	                    </div>
 	                </div>
+	                
+	               
+	               
+	                <div class="row" style="display:none" id="rowInfo">
+	                    <div class="b_b">
+	                        <div class="col-xs-12">
+	                            <span style="color:red;font-size:14px" id="tipInifo">
+	                               
+	                           </span>
+	                        </div>
+	                    </div>	                   
+	                </div>
+	                
                 </form>
             </div>
         </div>
@@ -74,9 +87,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 <script src="assets/scripts/wx/require.js" data-main="assets/scripts/wx/main"></script>
 <script type="text/javascript">
-	$(function() { 
+	$(function(){ 
 		$("#aConfirm").click(function(event){
 	    	event.preventDefault();
+	    	if($.trim($("#userName").val())==''){
+	    		$("#tipInifo").html("请输入姓名");
+	    		$("#rowInfo").css("display","block");
+	    		return ;
+	    	}
+	    	
+			if($.trim($("#userPhone").val())==''){
+				$("#tipInifo").html("请输入手机号码");
+	    		$("#rowInfo").css("display","block");
+	    		return;
+	    	}
+			
+			if(!(/^1[3|4|5|7|8]\d{9}$/.test($("#userPhone").val().replace(/^\s+|\s+$/g, '')))){
+				$("#tipInifo").html("请输入正确的手机号码");
+	    		$("#rowInfo").css("display","block");
+				return;
+			}
+	    	
+			
 	    	$("#xtForm").submit();
 		});
 	});
