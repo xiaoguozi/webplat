@@ -2,6 +2,7 @@ package com.tjs.wx.xintuo.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.order.model.Order;
+import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
@@ -33,7 +36,9 @@ public class XintuoController {
     @Resource
     private IProductXtcpService productXtcpService;
     
-	
+    @Resource
+	private IOrderService iOrderService;
+    
 	@Resource
 	private IProductXtcpService iProductXtService;
 	
@@ -132,8 +137,37 @@ public class XintuoController {
 	
 	
 	@RequestMapping("/reservePage")
-    public String reservePage(Model model) {
+    public String reservePage(XintuoCtrlModel xintuoCtrlModel, Model model) {
+		Long productId = xintuoCtrlModel.getProductId();
+		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(productId);
+		
+		model.addAttribute("xtName", productXtcp.getXtcpSplname());
+		model.addAttribute("productId", productId);
         return "wx/xintuo/reserve";
     }
+	
+	/**
+     * 
+     * @return
+     */
+     @RequestMapping("/orderProduct")
+     public String orderProduct(@RequestParam(value="productId",required=false) Long productId,@RequestParam(value="productType") String productType,@RequestParam(value="userName") String userName,@RequestParam(value="userPhone") String  userPhone) {
+     	Order order = new Order();
+     	order.setCreateDate(new Date());
+     	//未处理
+     	order.setOperateStatus("10");
+     	order.setProductType(productType);
+     	order.setProductId(productId);
+     	if(productId!=null){
+     		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(productId);
+     		order.setProductName(productXtcp.getXtcpSplname());
+     	}   	
+     	order.setTelphone(userPhone);;
+     	order.setUserName(userName);    	
+     	
+     	iOrderService.insertOrder(order);
+     	
+     	return "wx/xintuo/success";
+     }
 	
 }

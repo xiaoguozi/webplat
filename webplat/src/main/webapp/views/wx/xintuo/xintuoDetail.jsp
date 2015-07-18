@@ -329,7 +329,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="container">
             <div class="row">
                 <div class="col-xs-12" style="padding-bottom:20px">
-                    <a href="rest/wx/xintuo/reservePage?id=${xtcp.xtcpId}" class="btn btn-block btn_orange">立即预约</a>
+                    <a href="rest/wx/xintuo/reservePage?productId=${xtcp.xtcpId}" class="btn btn-block btn_orange">立即预约</a>
                 </div>
             </div>
         </div>
