@@ -20,38 +20,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body class="bg_gray">
     <div class="container">
         <div class="row">
-            <a href="javascript:history.go(-1);" class="btn btn-block btn-lg back_btn">${xtcp.xtcpSplname}<span class="icon-back pull-left"></span></a>
+            <a href="javascript:history.go(-1);" class="btn btn-block btn-lg back_btn" ><font style="font-weight: bold; font-family: 黑体;color: #000000; font-size: 20px;">${xtcp.xtcpSplname}</font><span class="icon-back pull-left"></span></a>
         </div>              
-        <div class="pei_money row">
+        <div class="pei_money row" >
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>信托公司:</h4>
+                    <h4><font style="font-weight: bold;">信托公司:</font></h4>
                 </div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>${xtcp.xtcpGszhname}</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;">${xtcp.xtcpGszhname}</font></h4></span>
                 </div>
             </div>
             <div class="b_b" style="background-color: #f8f8f8">
                 <div class="col-xs-6">
-                    <h4>预计发行规模:</h4>
+                    <h4><font style="font-weight: bold;">预计发行规模:</font></h4>
                 </div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4><fmt:formatNumber value="${xtcp.xtcpFxgm}" pattern="#0.####"/>万</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;"><fmt:formatNumber value="${xtcp.xtcpFxgm}" pattern="#0.####"/>万</font></h4></span>
                 </div>
             </div>
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>预期年收益率：</h4></div>
+                    <h4><font style="font-weight: bold;">预期年收益率：</font></h4></div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>${xtcp.xtcpNsyl}%</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;">${xtcp.xtcpNsyl}%</font></h4></span>
                 </div>
             </div>
             <div class="b_b" style="background-color: #f8f8f8">
                 <div class="col-xs-6">
-                    <h4>付息方式:</h4>
+                    <h4><font style="font-weight: bold;">付息方式:</font></h4>
                 </div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>
+                    <span class="money_select"><h4><font style="font-weight: bold;">
                     	<c:choose>  
 			                <c:when test="${xtcp.xtcpLxfp=='10'}">  
 			                  		 按月付息
@@ -71,63 +71,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                <c:otherwise>  
 			                     	其他
 			                </c:otherwise>  
-			           </c:choose>                   
+			           </c:choose>      </font>             
                     </h4></span>
                 </div>
             </div>
         	<div class="b_b">
                 <div class="col-xs-6">
-                    <h4>存续期：</h4></div>
+                    <h4><font style="font-weight: bold;">存续期：</font></h4></div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>${xtcp.xtcpCxq}个月</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;">${xtcp.xtcpCxq}个月</font></h4></span>
                 </div>
            </div>
            
-           <div class="b_b" style="background-color: #f8f8f8">
+          <div class="b_b" style="background-color: #f8f8f8">
                 <div class="col-xs-6">
-                    <h4>投资方式:</h4>
-                </div>
+                    <h4><font style="font-weight: bold;">最低认购金额：</font></h4></div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>
-                    	<c:choose>  
-			                <c:when test="${xtcp.xtcpTzfs=='10'}">  
-			                  		信托贷款
-			                </c:when>
-			                 <c:when test="${xtcp.xtcpTzfs=='20'}">  
-			                  		  股权投资
-			                </c:when>
-			                 <c:when test="${xtcp.xtcpTzfs=='30'}">  
-			                  		  权益投资  
-			                </c:when> 
-			                 <c:when test="${xtcp.xtcpTzfs=='40'}">  
-			                  		组合运用 
-			                </c:when> 
-			                 <c:when test="${xtcp.xtcpTzfs=='50'}">  
-			                  		 债券投资
-			                </c:when>
-			                 <c:when test="${xtcp.xtcpTzfs=='60'}">  
-			                  		 其他投资 
-			                </c:when>       
-			                <c:otherwise>  
-			                     	其他
-			                </c:otherwise>  
-			            </c:choose>                                       
-                    </h4></span>
-                </div>
-           </div>
-        
-          <div class="b_b">
-                <div class="col-xs-6">
-                    <h4>最低认购金额：</h4></div>
-                <div class="col-xs-6">
-                    <span class="money_select"><h4><fmt:formatNumber value="${xtcp.xtcpZdrgje}" pattern="#0.####"/>万</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;"><fmt:formatNumber value="${xtcp.xtcpZdrgje}" pattern="#0.####"/>万</font></h4></span>
                 </div>
          </div>
-         <div class="b_b" style="background-color: #f8f8f8">
+         <div class="b_b" >
                 <div class="col-xs-6">
-                    <h4>投资领域：</h4></div>
+                    <h4><font style="font-weight: bold;">投资领域：</font></h4></div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>
+                    <span class="money_select"><h4><font style="font-weight: bold;">
                     	<c:choose>  
 			                <c:when test="${xtcp.xtcpTzly=='10'}">  
 			                  		房地产
@@ -147,27 +114,40 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			                <c:otherwise>  
 			                     	其他
 			                </c:otherwise>  
-			            </c:choose>
+			            </c:choose></font>
                     </h4></span>
                 </div>
          </div>
          
          
-          <div class="b_b">
+          <div class="b_b" style="background-color: #f8f8f8">
                 <div class="col-xs-6">
-                    <h4>抵押率:</h4></div>
+                    <h4><font style="font-weight: bold;">抵押率:</font></h4></div>
                 <div class="col-xs-6">
-                    <span class="money_select"><h4>${xtcp.xtcpDyl}</h4></span>
+                    <span class="money_select"><h4><font style="font-weight: bold;">${xtcp.xtcpDyl}</font></h4></span>
+                </div>
+         </div>
+         
+         <div class="b_b" >
+                <div class="col-xs-6">
+                    <h4><font style="font-weight: bold;">抵押物:</font></h4></div>
+                <div class="col-xs-6">
+                    <span class="money_select"><h4><font style="font-weight: bold;">${xtcp.xtcpDyw}</font></h4></span>
                 </div>
          </div>
          
          <div class="b_b" style="background-color: #f8f8f8">
                 <div class="col-xs-6">
-                    <h4>抵押物:</h4></div>
-                <div class="col-xs-6">
-                    <span class="money_select"><h4>${xtcp.xtcpDyw}</h4></span>
+                    <h4><font style="font-weight: bold;">资金用途:</font></h4>
                 </div>
-         </div>
+                <div class="col-xs-6">
+                    <span class="money_select"><h4>
+                    	<font style="font-weight: bold;">${xtcp.xtcpZjyt}</font>                              
+                    </h4></span>
+                </div>
+           </div>
+         
+         
          </div>
          
          
@@ -175,7 +155,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row pei_money" style="border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>收益说明</h4></div>
+                    <h4><font style="font-weight: bold;">收益说明</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpSysm">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpSysm" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -190,7 +170,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        
        
        <div id="xtcpSysm" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-             ${xtcp.xtcpSysm}
+             <font style="font-weight: bold;">${xtcp.xtcpSysm}</font>
        </div>
        
      
@@ -199,7 +179,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>募集进度/账号</h4></div>
+                    <h4><font style="font-weight: bold;">募集进度/账号</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpMjzh">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpMjzh" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -212,7 +192,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        <div id="xtcpMjzh" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-            <c:choose>  
+            <font style="font-weight: bold;"><c:choose>  
 		       <c:when test="${xtcp.xtcpStatus=='20'}">  
 		                      募集中<br/>
 		       </c:when>    
@@ -220,14 +200,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                    募集完毕<br/>
 		       </c:otherwise>  
 		     </c:choose>          
-		     ${xtcp.xtcpMjzh}
+		     ${xtcp.xtcpMjzh}</font>
        </div>
        
        
         <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>融资方是谁？</h4></div>
+                    <h4><font style="font-weight: bold;">融资方是谁？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpRzf">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpRzf" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -240,11 +220,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        <div id="xtcpRzf" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-           ${xtcp.xtcpRzf}
+           <font style="font-weight: bold;">${xtcp.xtcpRzf}</font>
        </div>
        
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4>资金用途是什么？</h4></div>
@@ -259,15 +239,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpZjyt" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpZjyt" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px; display:none;">
            ${xtcp.xtcpZjyt}
        </div>
-       
        
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>风控措施如何？</h4></div>
+                    <h4><font style="font-weight: bold;">风控措施如何？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpFkcs">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpFkcs" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -280,13 +259,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        <div id="xtcpFkcs" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-           ${xtcp.xtcpFkcs}
+           <font style="font-weight: bold;">${xtcp.xtcpFkcs}</font>
        </div>
               
          <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>还款来源有哪些？</h4></div>
+                    <h4><font style="font-weight: bold;">还款来源有哪些？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpHkly">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpHkly" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -299,13 +278,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        <div id="xtcpHkly" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-           ${xtcp.xtcpHkly}
+           <font style="font-weight: bold;">${xtcp.xtcpHkly}</font>
        </div>
        
         <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
             <div class="b_b">
                 <div class="col-xs-6">
-                    <h4>管理机构是谁？</h4></div>
+                    <h4><font style="font-weight: bold;">管理机构是谁？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpZcglr">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpZcglr" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
@@ -318,7 +297,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        <div id="xtcpZcglr" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
-           ${xtcp.xtcpZcglr}
+           <font style="font-weight: bold;">${xtcp.xtcpZcglr}</font>
        </div>
           
     </div>

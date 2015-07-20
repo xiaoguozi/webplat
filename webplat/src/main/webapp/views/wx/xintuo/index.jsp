@@ -26,7 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row bg">
             <div class="col-xs-12">
                 <h1>你好,欢迎回来!</h1>
-                <h5>淘金山用户累计收益已超30亿元</h5>
+                <h5>淘金山用户累计收益已超10亿元</h5>
             </div>
             <div class="col-xs-12">               
                 <a class="btn btn_default" >登录</a>
