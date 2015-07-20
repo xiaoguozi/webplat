@@ -37,7 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	           <c:forEach items="${lstProductVos}" var="xintuocp">
 		            <div class="jr_list"  onclick="goXintuoDetail('${xintuocp.xtcpId}')">
 		                <div class="col-xs-12">
-		                    <h3>${xintuocp.xtcpSplname}</h3>
+		                    <h3><font style="color: #5C9BD1;">${xintuocp.xtcpSplname}</font></h3>
 		                </div>
 		                <div class="col-xs-12">               
 		                    <div class="row m_title">
@@ -176,7 +176,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	function addRecode(xintop){
 		var strhtml ="<div class=\"jr_list\"  onclick=\"goXintuoDetail('"+xintop.xtcpId+"')\">";
 		    strhtml+="<div class=\"col-xs-12\">";
-		    strhtml+="<h3>"+xintop.xtcpSplname+"</h3>";
+		    strhtml+="<h3><font style='color: #5C9BD1;'>"+xintop.xtcpSplname+"</font></h3>";
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"col-xs-12\"> ";              
 		    strhtml+="<div class=\"row m_title\">";
