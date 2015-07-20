@@ -29,7 +29,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<p style="font-size:20px; color:#000; margin-top: 12px;"><b>信托<b></p>
 					<p style="color:#ccc; font-size: 13px;">低风险，30倍银行活期存款利息</p>			  
 			</div>
-			<div class="col-xs-2" style="padding-top: 25px;"><img src="assets/img/wx/jiantou.png" /></div>	
+			<div class="col-xs-2" style="padding-top: 25px;">
+				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+			</div>	
 		 </a>
 		</div>
 		<div class="row" style="border-bottom:1px solid #E0E0E0;">
@@ -38,7 +40,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p style="font-size:20px; color:#000; margin-top: 12px;"><b>私募<b></p>
 				<p style="color:#ccc;font-size: 13px;">高风险，追求超高收益</p>
 			</div>
-			<div class="col-xs-2" style="padding-top: 25px;"><img src="assets/img/wx/jiantou.png" /></div>	
+			<div class="col-xs-2" style="padding-top: 25px;">
+				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+			</div>	
 		</div>
 		
 	</div>

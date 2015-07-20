@@ -20,14 +20,22 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body>
     <div class="container" id="bar_list">
-        <div style="left: 0;  position: fixed;  top: 0;  width: 100%;  z-index: 1000;">
-            <a href="rest/wx/xintuo/xintuoInfo" class="btn btn-block btn_blue">点击查看信托介绍<span class="pull-right icon-a"></span></a>
+        <div class="row" style="background: #007AFF;  position: fixed;  top: 0;  width: 100%;  z-index: 1000;">
+        	<div class="col-xs-2" >
+        		<a href="javascript:history.go(-1);" style="margin-top: 3px;" class="btn btn-block btn_blue">&nbsp;<span class="pull-left icon-back" style="margin-top: 3px;"></span></a>
+        	</div>
+        	<div class="col-xs-8" >
+        		<a href="rest/wx/xintuo/xintuoInfo" style="margin-top: 3px;" class="btn btn-block btn_blue">点击查看信托介绍</a>
+        	</div>
+        	<div class="col-xs-2" >
+        		<a href="rest/wx/xintuo/xintuoInfo" style="margin-top: 3px;" class="btn btn-block btn_blue">&nbsp;<span class="pull-right icon-a" style="margin-top: 3px;"></span></a>
+        	</div>
         </div>
         
-        <div class="row" id="bar_list_div" style="margin-top: 20px">
+        <div class="row" id="bar_list_div" style="margin-top: 28px">
        	  <div id="bar_list_ul">
 	           <c:forEach items="${lstProductVos}" var="xintuocp">
-		            <div class="jr_list">
+		            <div class="jr_list" >
 		                <div class="col-xs-12">
 		                    <h3><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">${xintuocp.xtcpSplname}</a></h3>
 		                </div>
