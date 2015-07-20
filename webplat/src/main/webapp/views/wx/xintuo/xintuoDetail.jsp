@@ -137,12 +137,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          </div>
          
          <div class="b_b" style="background-color: #f8f8f8">
-                <div class="col-xs-6">
+                <div class="col-xs-5">
                     <h4><font style="font-weight: bold;">资金用途:</font></h4>
                 </div>
-                <div class="col-xs-6">
-                    <span class="money_select"><h4>
-                    	<font style="font-weight: bold;">${xtcp.xtcpZjyt}</font>                              
+                <div class="col-xs-7">
+                    <span class="money_select" style="text-align: right;"><h4>
+                    	<font style="font-weight: bold; font-size: 16px;">${xtcp.xtcpZjyt}</font>                              
                     </h4></span>
                 </div>
            </div>
