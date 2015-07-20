@@ -35,7 +35,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row" id="bar_list_div" style="margin-top: 28px">
        	  <div id="bar_list_ul">
 	           <c:forEach items="${lstProductVos}" var="xintuocp">
-		            <div class="jr_list" >
+		            <div class="jr_list"  onclick="goXintuoDetail('${xintuocp.xtcpId}')">
 		                <div class="col-xs-12">
 		                    <h3><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">${xintuocp.xtcpSplname}</a></h3>
 		                </div>
@@ -174,7 +174,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 		
 	function addRecode(xintop){
-		var strhtml ="<div class=\"jr_list\">";
+		var strhtml ="<div class=\"jr_list\"  onclick=\"goXintuoDetail('"+xintop.xtcpId+"')\">";
 		    strhtml+="<div class=\"col-xs-12\">";
 		    strhtml+="<h3>"+xintop.xtcpSplname+"</h3>";
 		    strhtml+="</div>";
@@ -211,6 +211,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				 endFun: loading
 			});
 	});
+	
+
+	
+	function goXintuoDetail(id){
+		window.location.href = '<%=basePath%>rest/wx/xintuo/detail?id='+id;
+	}
 
 </SCRIPT>
 </html>

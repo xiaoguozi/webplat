@@ -60,7 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <a href="rest/wx/xintuo/list" class="btn btn-block btn_orange">了解更多</a>
             </div>
             <div class="col-xs-12">
-                <a href="rest/wx/moreProducts" class="btn btn-block btn_gray">参看更多理财产品</a>
+                <a href="#" class="btn btn-block btn_gray">更多产品请访问PC版</a>
             </div>
         </div>
     </div>
