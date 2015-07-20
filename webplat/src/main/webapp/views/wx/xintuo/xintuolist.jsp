@@ -37,28 +37,28 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	           <c:forEach items="${lstProductVos}" var="xintuocp">
 		            <div class="jr_list"  onclick="goXintuoDetail('${xintuocp.xtcpId}')">
 		                <div class="col-xs-12">
-		                    <h3><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">${xintuocp.xtcpSplname}</a></h3>
+		                    <h3>${xintuocp.xtcpSplname}</h3>
 		                </div>
 		                <div class="col-xs-12">               
 		                    <div class="row m_title">
 		                        <div class="col-xs-7">
-		                            <h5>  <a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}"> 预期年收益率</a></h5></div>
+		                            <h5>预期年收益率</h5></div>
 		                        <div class="col-xs-5">
-		                            <h5><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">存续期<span class="pull-right icon-a"></span></a> </h5>
+		                            <h5>存续期<span class="pull-right icon-a"></span></h5>
 		                        </div>
 		                    </div>
 		                    <div class="row m_money">
 		                        <div class="col-xs-7">
-		                            <h4><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}"><fmt:formatNumber value="${xintuocp.xtcpNsyl}" pattern="#0.####"/>%</a></h4></div>
+		                            <h4><fmt:formatNumber value="${xintuocp.xtcpNsyl}" pattern="#0.####"/>%</h4></div>
 		                        <div class="col-xs-5">
-		                            <h4 class="m_day"><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">${xintuocp.xtcpCxq}个月</a></h4>
+		                            <h4 class="m_day">${xintuocp.xtcpCxq}个月</h4>
 		                        </div>
 		                    </div>
 		                    <div class="row m_tip">
 		                        <div class="col-xs-7">
-		                            <h5><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}"><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#0.####"/>万起</a></h5></div>
+		                            <h5><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#0.####"/>万起</h5></div>
 		                        <div class="col-xs-5">
-		                            <h5><a href="rest/wx/xintuo/detail?id=${xintuocp.xtcpId}">	                            
+		                            <h5>                           
 		                           		<c:choose>  
 							                <c:when test="${xintuocp.xtcpLxfp=='10'}">  
 							                  		按月付息
@@ -79,7 +79,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							                     	其他
 							                </c:otherwise>  
 							            </c:choose>		                            
-		                            </a></h5>
+		                            </h5>
 		                        </div>
 		                    </div>
 		                </div>
@@ -181,24 +181,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    strhtml+="<div class=\"col-xs-12\"> ";              
 		    strhtml+="<div class=\"row m_title\">";
 		    strhtml+="<div class=\"col-xs-7\">";
-		    strhtml+="    <h5>  <a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\"> 预期年收益率</a></h5></div>";
+		    strhtml+="    <h5>  预期年收益率</h5></div>";
 		    strhtml+="<div class=\"col-xs-5\">";
-		    strhtml+="    <h5><a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\">存续期<span class=\"pull-right icon-a\"></span></a> </h5>";
+		    strhtml+="    <h5>存续期<span class=\"pull-right icon-a\"></span></h5>";
 		    strhtml+="</div>";
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"row m_money\">";
 		    strhtml+="<div class=\"col-xs-7\">";
-		    strhtml+="     <h4><a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\">"+xintop.xtcpNsyl+"%</a></h4></div>";
+		    strhtml+="     <h4>"+xintop.xtcpNsyl+"%</h4></div>";
 		    strhtml+="<div class=\"col-xs-5\">";
-		    strhtml+="<h4 class=\"m_day\"><a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\">"+xintop.xtcpCxq+"个月</a></h4>";
+		    strhtml+="<h4 class=\"m_day\">"+xintop.xtcpCxq+"个月</h4>";
 		    strhtml+="</div>";
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"row m_tip\">";
 		    strhtml+="<div class=\"col-xs-7\">";
-		    strhtml+="<h5><a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\">"+xintop.xtcpZdrgje+"万起</a></h5></div>";
+		    strhtml+="<h5>"+xintop.xtcpZdrgje+"万起</h5></div>";
 		    strhtml+="<div class=\"col-xs-5\">";
-		    strhtml+="<h5><a href=\"rest/wx/xintuo/detail?id="+xintop.xtcpId+"\">";                                      
-		    strhtml+="</a></h5>";
+		    strhtml+="<h5>";                                      
+		    strhtml+="</h5>";
 		    strhtml+="</div>";
 		    strhtml+="</div>";
 		    strhtml+="</div>";
