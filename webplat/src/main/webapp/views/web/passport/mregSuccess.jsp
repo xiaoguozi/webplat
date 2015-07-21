@@ -16,6 +16,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
         <title>淘金山——注册</title>
+        <div id='wx_pic' style='margin:0 auto;display:none;'>
+          <img src='assets/img/fx_logo.jpg' />
+        </div>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="" name="description" />
