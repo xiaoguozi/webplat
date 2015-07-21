@@ -136,18 +136,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
          </div>
          
-         <div class="b_b" style="background-color: #f8f8f8">
-                <div class="col-xs-5">
-                    <h4><font style="color:#545454;">资金用途:</font></h4>
-                </div>
-                <div class="col-xs-7">
-                    <span class="money_select" style="text-align: right;"><h4>
-                    	<font style="color:#080808; font-size: 16px;">${xtcp.xtcpZjyt}</font>                              
-                    </h4></span>
-                </div>
-           </div>
-         
-         
+                      
          </div>
          
          
@@ -222,6 +211,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        <div id="xtcpRzf" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
            <font style="color:#080808;">${xtcp.xtcpRzf}</font>
        </div>
+       
+       
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+            <div class="b_b">
+                <div class="col-xs-6">
+                    <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
+                <div class="col-xs-6" role="tab" id="pz_xtcpZjyt">
+                    <div class="row collapsed" data-toggle="collapse" href="#xtcpZjyt" aria-expanded="true" aria-controls="info">
+                        <div class="col-xs-12">
+                            <div class="rotate pull-right">
+                                <h4><span class="icon-a"></span>  </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       
+       
+       <div id="xtcpZjyt" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+           <font style="color:#080808;"> ${xtcp.xtcpZjyt}</font>
+       </div>
+       
        
        
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;">
