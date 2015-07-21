@@ -21,7 +21,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
     <div class="container">
         <div class="row" >
-            <a href="javascript:history.go(-1);" class="btn btn-block btn-lg back_btn " style="background: #45A7FF;">预约<span class="icon-back pull-left"></span></a>
+            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn " style="background: #45A7FF;cursor: default;">预约</a>
         </div>
         <div class="row" >
         	<div class="col-xs-12" style="background: #F2F2F2;">

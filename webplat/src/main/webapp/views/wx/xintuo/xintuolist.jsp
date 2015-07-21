@@ -22,7 +22,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="container" id="bar_list">
         <div class="row" style="background: #007AFF;  position: fixed;  top: 0;  width: 100%;  z-index: 1000;">
         	<div class="col-xs-2" >
-        		<a href="javascript:history.go(-1);" style="margin-top: 3px;" class="btn btn-block btn_blue">&nbsp;<span class="pull-left icon-back" style="margin-top: 3px;"></span></a>
+        		<a href="rest/wx/xintuo/xintuoInfo" style="margin-top: 3px; " class="btn btn-block btn_blue">&nbsp;</a>
         	</div>
         	<div class="col-xs-8" >
         		<a href="rest/wx/xintuo/xintuoInfo" style="margin-top: 3px;" class="btn btn-block btn_blue">点击查看信托介绍</a>

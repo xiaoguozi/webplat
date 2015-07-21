@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body class="bg_gray">
     <div class="container">
         <div class="row">
-            <a href="javascript:history.go(-1);" class="btn btn-block btn-lg back_btn" ><font style="font-family: 黑体;color:#080808; font-size: 20px;">${xtcp.xtcpSplname}</font><span class="icon-back pull-left"></span></a>
+            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;"><font style="font-family: 黑体;color:#080808; font-size: 20px;">${xtcp.xtcpSplname}</font></a>
         </div>              
         <div class="pei_money row" >
             <div class="b_b">
@@ -141,12 +141,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          
          
          
-        <div class="row pei_money" style="border-bottom: 0px">
+        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpSysm');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">收益说明</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpSysm">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpSysm" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -157,20 +157,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        
-       
-       <div id="xtcpSysm" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpSysm" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
              <font style="color:#080808;">${xtcp.xtcpSysm}</font>
        </div>
        
      
        
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpMjzh');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">募集进度/账号</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpMjzh">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpMjzh" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -180,7 +179,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpMjzh" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpMjzh" class="panel-collapse collapse row"  style="background: #fff;padding-left: 15px">
             <font style="color:#080808;"><c:choose>  
 		       <c:when test="${xtcp.xtcpStatus=='20'}">  
 		                      募集中<br/>
@@ -193,12 +192,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
        
-        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpRzf');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">融资方是谁？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpRzf">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpRzf" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -208,12 +207,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpRzf" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpRzf" class="panel-collapse collapse row"  style="background: #fff;padding-left: 15px">
            <font style="color:#080808;">${xtcp.xtcpRzf}</font>
        </div>
        
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpZjyt');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
@@ -230,12 +229,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
        
-       <div id="xtcpZjyt" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpZjyt" class="panel-collapse collapse row"  style="background: #fff;padding-left: 15px">
            <font style="color:#080808;"> ${xtcp.xtcpZjyt}</font>
        </div>
        
               
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;">
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;" >
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
@@ -254,12 +253,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            ${xtcp.xtcpZjyt}
        </div>
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px;cursor: pointer;" onclick="showPanel('xtcpFkcs');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">风控措施如何？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpFkcs">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpFkcs" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -269,16 +268,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpFkcs" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpFkcs" class="panel-collapse collapse row"  style="background: #fff;padding-left: 15px">
            <font style="color:#080808;">${xtcp.xtcpFkcs}</font>
        </div>
               
-         <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+         <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpHkly');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">还款来源有哪些？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpHkly">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpHkly" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -288,16 +287,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpHkly" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpHkly" class="panel-collapse collapse row" style="background: #fff;padding-left: 15px">
            <font style="color:#080808;">${xtcp.xtcpHkly}</font>
        </div>
        
-        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px">
+        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpZcglr');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">管理机构是谁？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpZcglr">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpZcglr" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right">
                                 <h4><span class="icon-a"></span>  </h4>
@@ -307,7 +306,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>
-       <div id="xtcpZcglr" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px">
+       <div id="xtcpZcglr" class="panel-collapse collapse row"  style="background: #fff;padding-left: 15px">
            <font style="color:#080808;">${xtcp.xtcpZcglr}</font>
        </div>
           
@@ -326,5 +325,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </footer>
 </body>
 <script src="assets/scripts/wx/require.js" data-main="assets/scripts/wx/main"></script>
+<script type="text/javascript">
+
+	function showPanel(panelId){
+		var obj = $("#"+panelId);
+		if(obj.css("display")!='none'){
+			obj.css("display", "none");
+		}else{
+			obj.css("display", "block");
+		}
+	}
+	
+</script>
 
 </html>
