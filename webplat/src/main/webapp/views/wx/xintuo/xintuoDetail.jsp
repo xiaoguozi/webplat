@@ -33,7 +33,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body class="bg_gray">
     <div class="container">
-        <div class="row">
+        <div class="row" style="display: none;">
             <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;"><font style="font-family: 黑体;color:#080808; font-size: 20px;">${xtcp.xtcpSplname}</font></a>
         </div>              
         <div class="pei_money row" >
