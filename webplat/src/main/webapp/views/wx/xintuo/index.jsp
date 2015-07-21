@@ -13,6 +13,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="淘金山信托频道为您提供信托产品，帮助您选出收益率最高的信托产品，并完成购买信托产品"/>
     <title>淘金山</title>
     <div id='wx_pic' style='margin:0 auto;display:none;'>
       <img src='assets/img/fx_logo.jpg' />

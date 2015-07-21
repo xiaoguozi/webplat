@@ -13,6 +13,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
     <title>${xtcp.xtcpSplname}</title>
+     <div id='wx_pic' style='margin:0 auto;display:none;'>
+       <img src='assets/img/fx_logo.jpg' />
+    </div>   
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/wx/index.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
