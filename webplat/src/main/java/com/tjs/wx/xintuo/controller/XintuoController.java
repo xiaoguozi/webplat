@@ -33,6 +33,7 @@ import com.tjs.admin.xintuo.util.BigDecimalUtils;
 @RequestMapping(value ="/wx/xintuo")
 public class XintuoController {
 	
+	
     @Resource
     private IProductXtcpService productXtcpService;
     
