@@ -7,6 +7,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
  	<base href="<%=basePath%>">
     <meta charset="UTF-8">

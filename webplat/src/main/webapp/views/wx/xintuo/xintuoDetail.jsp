@@ -15,6 +15,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <title>淘金山</title>
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/wx/index.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    	.rotateTop{display:inline-block;
+    			transition:all 0.5s ease;
+    			-webkit-transition:all 0.5s ease;
+    			-moz-transition:all 0.5s ease;
+    			-o-transition:all 0.5s ease;
+    			-ms-transition:all 0.5s ease;
+		    	transform:rotate(-90deg);
+		    	-moz-transform:rotate(-90deg);
+		    	-o-transform:rotate(-90deg);
+		    	-ms-transform:rotate(-90deg);
+		    	-webkit-transform:rotate(-90deg);
+    	}
+    </style>
 </head>
 
 <body class="bg_gray">
@@ -148,8 +162,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpSysm">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpSysmArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -171,8 +185,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpMjzh">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpMjzhArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -199,8 +213,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpRzf">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpRzfArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -217,10 +231,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
                 <div class="col-xs-6" role="tab" id="pz_xtcpZjyt">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpZjyt" aria-expanded="true" aria-controls="info">
+                    <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpZjytArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -236,13 +250,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;" >
             <div class="b_b">
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
-                <div class="col-xs-6" role="tab" id="pz_xtcpZjyt">
+                <div class="col-xs-4" role="tab" id="pz_xtcpZjyt">
                     <div class="row collapsed" data-toggle="collapse" href="#xtcpZjyt" aria-expanded="true" aria-controls="info">
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpZjytArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -260,8 +274,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpFkcs">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpFkcsArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -279,8 +293,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpHkly">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpHklyArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -298,8 +312,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="col-xs-6" role="tab" id="pz_xtcpZcglr">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right">
-                                <h4><span class="icon-a"></span>  </h4>
+                            <div class="rotate pull-right" id="xtcpZcglrArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
                     </div>
@@ -329,10 +343,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	function showPanel(panelId){
 		var obj = $("#"+panelId);
+		var objArrow = $("#"+panelId+"Arrow");
 		if(obj.css("display")!='none'){
 			obj.css("display", "none");
+			objArrow.removeClass("rotateTop");
+			objArrow.addClass("rotate");
 		}else{
 			obj.css("display", "block");
+			objArrow.removeClass("rotate");
+			objArrow.addClass("rotateTop");
 		}
 	}
 	
