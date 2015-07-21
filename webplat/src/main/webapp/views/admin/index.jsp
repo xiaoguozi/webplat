@@ -1,5 +1,5 @@
-<%@ include file="/views/admin/include.jsp"%>
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/views/web/include.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();

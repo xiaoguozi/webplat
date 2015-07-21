@@ -13,6 +13,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
     <title>淘金山</title>
+    <div id='wx_pic' style='margin:0 auto;display:none;'>
+      <img src='assets/img/fx_logo.jpg' />
+    </div>   
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/wx/index.css" rel="stylesheet" type="text/css" />
 </head>
@@ -25,12 +28,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <div class="row bg">
             <div class="col-xs-12">
-                <h1>你好,欢迎回来!</h1>
+                <h2>
+               		 ${username},欢迎回来!                
+                </h2>
                 <h5>淘金山用户累计收益已超10亿元</h5>
             </div>
-            <div class="col-xs-12">               
-                <a class="btn btn_default" >登录</a>
-                <a class="btn btn_default">注册</a>                           
+            <div class="col-xs-12"> 
+                <c:if test="${username=='你好'}">              
+                <a href="rest/web/mlogin" class="btn btn_default" >登录</a>
+                <a href="rest/web/passport/mreg" class="btn btn_default">注册</a>
+                </c:if>                           
             </div>
         </div>
         <div class="row border_bottom">

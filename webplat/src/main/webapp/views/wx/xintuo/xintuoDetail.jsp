@@ -234,8 +234,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <font style="color:#080808;"> ${xtcp.xtcpZjyt}</font>
        </div>
        
-       
-       
+              
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;">
             <div class="b_b">
                 <div class="col-xs-6">

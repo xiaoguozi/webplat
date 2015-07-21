@@ -9,14 +9,21 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
+import com.tjs.admin.service.UserInfoService;
+import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
@@ -43,9 +50,28 @@ public class XintuoController {
 	@Resource
 	private IProductXtcpService iProductXtService;
 	
+	
+	 @Resource
+	 private UserService userService;
+	 
+	 @Resource
+	 private UserInfoService UserInfoService;
+	
     
 	@RequestMapping("/index")
-    public String index(Model model) {		
+    public String index(Model model) {
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());			
+			model.addAttribute("username", (StringUtils.isBlank(userInfo.getName())?username:userInfo.getName()));		
+		}else{
+			model.addAttribute("username", "你好");
+		}
+				
 		List<ProductXtcp> lstXtcp =  productXtcpService.selectProductXtcpIndex();
 		if(lstXtcp!=null&&lstXtcp.size()>0){
 			model.addAttribute("xtcp", lstXtcp.get(0));

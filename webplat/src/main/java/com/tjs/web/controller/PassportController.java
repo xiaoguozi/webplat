@@ -513,6 +513,59 @@ public class PassportController {
 		model.addAttribute("error", errorMsg);
 		return "web/passport/mreg";
     }
+    
+    
+    
+    /**
+     * 用户登录
+     * 
+     * @param user
+     * @param result
+     * @return
+     */
+    @RequestMapping(value = "/mlogin", method = RequestMethod.POST)
+    public String mlogin(@Valid User user, String verifyCode, String returnUrl, BindingResult result, Model model, HttpServletRequest request) {
+    	//model.addAttribute("returnUrl", returnUrl);
+    	try {
+        	//String code = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);        //获取生成的验证码 
+            Subject subject = SecurityUtils.getSubject();
+            // 已登陆则 跳到首页
+            if (subject.isAuthenticated()) {
+            	if(null == request.getSession().getAttribute("userInfo")){
+            		final User authUserInfo = userService.selectByUsername((String)subject.getPrincipal());
+                    request.getSession().setAttribute("userInfo", authUserInfo);
+            	}
+            	
+            	SavedRequest tt = WebUtils.getSavedRequest(request);
+                return "redirect:/rest/wx/xintuo/index";//+returnUrl;
+            }
+            if (result.hasErrors()) {
+                model.addAttribute("error", "参数错误！");
+                return "web/passport/mlogin";
+            }
+            // 身份验证
+            subject.login(new UsernamePasswordToken(user.getUsername(), user.getPassword()));
+            // 验证成功在Session中保存用户信息
+            final User authUserInfo = userService.selectByUsername(user.getUsername());
+            request.getSession().setAttribute("userInfo", authUserInfo);
+        } catch (AuthenticationException e) {
+            // 身份验证失败
+            model.addAttribute("error", "用户名或密码错误 ！");
+            return "web/passport/mlogin";
+        }
+    	
+    	SavedRequest saveRequest = WebUtils.getSavedRequest(request);
+    	if(saveRequest!=null){
+    		String url = saveRequest.getRequestUrl();
+    	    url = (url==null?"":url); 
+    	    url = url.substring(url.indexOf("rest"));
+    		return "redirect:/"+url;
+    	}else{
+    		 return "redirect:/rest/wx/xintuo/index";//+returnUrl;
+    	}
+    	
+       
+    }
 
 
 }
