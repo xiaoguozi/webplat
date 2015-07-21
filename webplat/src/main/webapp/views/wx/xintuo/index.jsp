@@ -29,9 +29,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <div class="row bg">
             <div class="col-xs-12">
-                <h2>
+                <h3>
                		 ${username},欢迎回来!                
-                </h2>
+                </h3>
                 <h5>淘金山用户累计收益已超10亿元</h5>
             </div>
             <div class="col-xs-12"> 

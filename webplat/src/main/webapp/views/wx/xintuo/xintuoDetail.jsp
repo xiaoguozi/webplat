@@ -228,9 +228,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpZjyt');">
             <div class="b_b">
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
-                <div class="col-xs-6" role="tab" id="pz_xtcpZjyt">
+                <div class="col-xs-4" role="tab" id="pz_xtcpZjyt">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right" id="xtcpZjytArrow">
@@ -248,25 +248,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
               
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; display: none;" >
-            <div class="b_b">
-                <div class="col-xs-8">
-                    <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
-                <div class="col-xs-4" role="tab" id="pz_xtcpZjyt">
-                    <div class="row collapsed" data-toggle="collapse" href="#xtcpZjyt" aria-expanded="true" aria-controls="info">
-                        <div class="col-xs-12">
-                            <div class="rotate pull-right" id="xtcpZjytArrow">
-                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </div>
-       <div id="xtcpZjyt" class="panel-collapse collapse row" role="tabpanel" aria-expanded="false" style="background: #fff;padding-left: 15px; display:none;">
-           ${xtcp.xtcpZjyt}
-       </div>
-       
        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px;cursor: pointer;" onclick="showPanel('xtcpFkcs');">
             <div class="b_b">
                 <div class="col-xs-6">
@@ -288,9 +269,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               
          <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpHkly');">
             <div class="b_b">
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <h4><font style="color:#545454;">还款来源有哪些？</font></h4></div>
-                <div class="col-xs-6" role="tab" id="pz_xtcpHkly">
+                <div class="col-xs-4" role="tab" id="pz_xtcpHkly">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right" id="xtcpHklyArrow">
