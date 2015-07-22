@@ -11,4 +11,7 @@ public interface IWxTick {
 	public int  insertWxTick(WxTick wxTick);
 	/**更新Tick*/
 	public int updateWxTick(WxTick wxTick);
+	
+	public boolean isExpire();
+	
 }

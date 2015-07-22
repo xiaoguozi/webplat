@@ -34,4 +34,30 @@ public class WxTickImpl implements IWxTick {
 		return wxTickMapper.updateWxTick(wxTick);
 	}
 
+	@Override
+	public boolean isExpire() {
+		boolean result=true;
+    	List<WxTick> lstWxTick = this.selectWxTick();
+    	if(lstWxTick==null||lstWxTick.size()==0){
+    		WxTick wxTick = new WxTick();
+    		wxTick.setTickInterval(6500L);
+    		wxTick.setTokenDate(1L);
+    		wxTick.setTickDate(1L);
+    		wxTick.setTickName("tick");
+    	    this.insertWxTick(wxTick);
+    	}else{
+    		WxTick wxTick = lstWxTick.get(0);
+    		long currentTime = System.currentTimeMillis()/1000;
+    		long lastQuestTime = wxTick.getTickDate();
+    		long interval = wxTick.getTickInterval();
+    		if(currentTime-lastQuestTime>interval){
+    			result=true;
+    		}else{
+    			result=false;
+    		}   		
+    	}
+    	
+    	return result;
+	}
+
 }
