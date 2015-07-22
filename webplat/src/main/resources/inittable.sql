@@ -516,6 +516,16 @@ ALTER TABLE `tjs_peizi_data`
 ADD COLUMN `data_cpf_date` DATETIME NULL COMMENT '操盘完成时间' AFTER `lock_id`;
 
 
+CREATE TABLE `tjs_wx_tick` (
+  `tick_id` bigint(20) NOT NULL COMMENT '序列',
+  `tick_name` varchar(200) DEFAULT NULL COMMENT 'tick_name',
+  `tick_date` bigint(20) DEFAULT NULL COMMENT '请求到时间秒',
+  `token_date` bigint(20) DEFAULT NULL COMMENT 'token 请求时间',
+  `tick_interval` bigint(20) DEFAULT NULL COMMENT '过期时间，单位秒',
+  PRIMARY KEY (`tick_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='微信分享朋友圈调用凭证缓存';
+
+
 
 
 
