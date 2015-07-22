@@ -31,53 +31,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     <label style="margin-top: 5px;">
                         <span style="color:#000; font-size: 20px; font-weight: bold;">${xtName}</span>
                     </label>
-            </div>          
-            <div class="pei_money col-xs-12" style="margin-top: 0px;">
-            	<form id="xtForm" action="rest/wx/xintuo/orderProduct" method="post">
-            		<input type="hidden" name="productId" value="${productId}"/>
-            		<input type="hidden" name="productType" value="10" />
-            		
-	                <div class="row">
-	                    <div class="b_b">
-	                        <div class="col-xs-4">
-	                            <label for="userName">
-	                                <h4>客户姓名</h4></label>
-	                        </div>
-	                        <div class="col-xs-8">
-	                            <h4>
-	                                <input type="text" maxlength="12"  placeholder="请输入姓名" class="form-control" id="userName" name="userName" placeholder="请输入姓名">
-	                           </h4>
-	                        </div>
-	                    </div>
-	                    <div class="b_b">
-	                        <div class="col-xs-4">
-	                            <label for="userPhone">
-	                                <h4>客户手机</h4></label>
-	                        </div>
-	                        <div class="col-xs-8">
-	                            <h4>
-	                                <input type="text" maxlength="11" class="form-control" id="userPhone" name="userPhone" placeholder="请输入手机号码">
-	                           </h4>
-	                        </div>
-	                    </div>
-	                </div>
-	                
-	               
-	               
-	                <div class="row" style="display:none" id="rowInfo">
-	                    <div class="b_b">
-	                        <div class="col-xs-12">
-	                            <span style="color:red;font-size:14px" id="tipInifo">
-	                               
-	                           </span>
-	                        </div>
-	                    </div>	                   
-	                </div>
-	                
-                </form>
-            </div>
+            </div>  
+            <form id="xtForm" action="rest/wx/xintuo/orderProduct" method="post">
+         	<input type="hidden" name="productId" value="${productId}"/>
+         	<input type="hidden" name="productType" value="10" />
+	            <div class="col-xs-12">
+	             	<div class="form-group" >
+						    <label>客户姓名</label>
+						    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入姓名">
+					   </div>
+			  
+					  <div class="form-group" style="margin-bottom:2px">
+					    <label>客户手机</label>
+					    <input type="text" class="form-control" id="userPhone" name="userPhone"  placeholder="请输入手机号码">
+					  </div>
+	                   
+	                  <div class="form-group" style="margin-bottom:2px">
+					    <label>备注</label>
+					     <textarea rows="4" cols="50" class="form-control" name="dataRemark" maxlength="200"></textarea>
+					  </div>
+	             	
+	             </div> 
+	             
+	             <div class="col-xs-12">
+	                 <span style="color:red;font-size:14px" id="tipInifo">
+	                    
+	                </span>
+	             </div>   
+            </form>     
+          
         </div>
     </div>
+    
+      
     <footer>
         <div class="container">
             <div class="row">
