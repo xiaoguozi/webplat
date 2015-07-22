@@ -67,7 +67,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
             </div>
             <div class="bd">           
                 <ul>
-                    <li><a class="xintuo_banner1" href="javascript:void(0)"></a></li>
+                    <li><a class="xintuo_banner1" href="rest/web/xintuo/trust/trustParticulars?id=19"></a></li>
                     <li><a class="xintuo_banner2" href="javascript:void(0)"></a></li>
                     <li><a class="xintuo_banner3" href="javascript:void(0)"></a></li>
                 </ul>
