@@ -65,8 +65,8 @@ document.all(imgg).style.display='block'}}
             </div>
             <div class="bd">
                  <ul>
+                    <li><a class="header_banner2" href="rest/web/xintuo/trust/trustParticulars?id=19" target="_blank"></a></li>
                     <li><a class="header_banner1" href="javascript:void(0)"></a></li>
-                    <li><a class="header_banner2" href="javascript:void(0)"></a></li>
                     <li><a class="header_banner3" href="rest/web/xintuo/trust/trustParticulars?id=15" target="_blank"></a></li>
                 </ul>
             </div>

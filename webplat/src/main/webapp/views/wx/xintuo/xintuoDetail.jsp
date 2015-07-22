@@ -323,6 +323,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     </footer>
 </body>
 <script src="assets/scripts/wx/require.js" data-main="assets/scripts/wx/main"></script>
+<script src="assets/scripts/wx/jweixin-1.0.0.js" ></script>
 <script type="text/javascript">
 
 	function showPanel(panelId){
@@ -338,6 +339,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			objArrow.addClass("rotateTop");
 		}
 	}
+	var tsNow=new Date().getTime();
+	wx.config({
+	    debug: false, 
+	    appId: 'wx01ee38587db99c1a', // 必填，公众号的唯一标识
+	    timestamp: tsNow, // 必填，生成签名的时间戳
+	    nonceStr: '', // 必填，生成签名的随机串
+	    signature: '',// 必填，签名，见附录1
+	    jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	});
 	
 </script>
 
