@@ -113,12 +113,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		 $.post("<%=basePath%>rest/wx/share/sign",
 					{"url":window.location.href},
 					function(data){
-						data=eval("("+data+")");
+						//data=eval("("+data+")");
 						wx.config({
-						          debug: true,
+						          debug: false,
 						          appId: data.appId,
 						          timestamp:data.timestamp,
-						          nonceStr:data.noncestr,
+						          nonceStr:data.nonceStr,
 						          signature:data.signature,
 						          jsApiList: [
 						          'checkJsApi',
@@ -143,6 +143,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							  };
 							  wx.onMenuShareAppMessage(sdata);
 							  wx.onMenuShareTimeline(sdata);
+							  wx.onMenuShareQQ(sdata);
 						});
 			});
 		

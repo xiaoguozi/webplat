@@ -101,6 +101,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script src="assets/scripts/wx/ai.js" type="text/javascript"></script> 
 <script src="assets/scripts/wx/slip.js" type="text/javascript"></script> 
 <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
+<script src="assets/scripts/wx/jweixin-1.0.0.js" ></script>
+
 <SCRIPT type=text/javascript>
 	window.addEventListener('load', function(){		
 		ai.hideUrl();	
@@ -220,6 +222,51 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	function goXintuoDetail(id){
 		window.location.href = '<%=basePath%>rest/wx/xintuo/detail?id='+id;
 	}
+	
+	$(function(){ 
+		 $('.close').click(function(){
+			 $('.banner').fadeOut(500);
+		  });
+		 
+		 $.post("<%=basePath%>rest/wx/share/sign",
+					{"url":window.location.href},
+					function(data){
+						//data=eval("("+data+")");
+						wx.config({
+						          debug: false,
+						          appId: data.appId,
+						          timestamp:data.timestamp,
+						          nonceStr:data.nonceStr,
+						          signature:data.signature,
+						          jsApiList: [
+						          'checkJsApi',
+						          'onMenuShareTimeline',
+						          'onMenuShareAppMessage',
+						          'onMenuShareQQ'
+						          ]
+						});
+						
+						wx.ready(function(){
+							  var sdata = {
+								  title: '跟我淘金山',
+								  desc: '淘金山信托频道为您提供信托产品，帮助您选出收益率最高的信托产品，并完成购买信托产品',
+								  link: '<%=basePath%>rest/wx/xintuo/index',
+								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
+								  success: function () {
+								  	
+								  },
+								  cancel: function () {
+								  	
+								  }
+							  };
+							  wx.onMenuShareAppMessage(sdata);
+							  wx.onMenuShareTimeline(sdata);
+							  wx.onMenuShareQQ(sdata);
+						});
+			});
+		
+		
+	});
 
 </SCRIPT>
 </html>
