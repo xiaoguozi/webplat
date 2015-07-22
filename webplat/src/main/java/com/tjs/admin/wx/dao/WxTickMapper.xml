@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.wx.dao.WxTickMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.wx.model.WxTick">
+		<id column="tick_id" property="tickId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="tick_name" property="tickName" jdbcType="VARCHAR" />
+		<result column="tick_date" property="tickDate" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="token_date" property="tokenDate" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="tick_interval" property="tickInterval" javaType="java.lang.Long"  jdbcType="BIGINT" />		
+	</resultMap>
+
+	<sql id="Base_select_Column_List">
+		tick_id,tick_name,tick_date,token_date,tick_interval
+	</sql>
+	
+	
+	<sql id="Base_insert_Column_List">
+		tick_name,tick_date,token_date,tick_interval
+	</sql>
+
+	
+
+	<select id="selectWxTick"  resultMap="BaseResultMap" >
+		select
+		<include refid="Base_select_Column_List" />				
+		from tjs_wx_tick       
+	</select>
+	
+	
+	
+	
+	<insert id="insertWxTick" useGeneratedKeys="true"
+		keyProperty="tickId" parameterType="com.tjs.admin.wx.model.WxTick">
+		insert into tjs_wx_tick(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{tickName},
+		#{tickDate},
+		#{tokenDate},
+		#{tickInterval}				
+		)
+	</insert>
+	
+	<update id="updateWxTick" parameterType="com.tjs.admin.wx.model.WxTick">
+		update tjs_wx_tick set		
+		tick_name=#{tickName},	
+		tick_date=#{tickDate},
+		token_date=#{tokenDate},
+		tick_interval=#{tickInterval}	
+		where tick_id=#{tickId}	
+	</update>	
+</mapper>
