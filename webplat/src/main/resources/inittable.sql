@@ -517,7 +517,7 @@ ADD COLUMN `data_cpf_date` DATETIME NULL COMMENT '操盘完成时间' AFTER `loc
 
 
 CREATE TABLE `tjs_wx_tick` (
-  `tick_id` bigint(20) NOT NULL COMMENT '序列',
+  `tick_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '序列',
   `tick_name` varchar(200) DEFAULT NULL COMMENT 'tick_name',
   `tick_date` bigint(20) DEFAULT NULL COMMENT '请求到时间秒',
   `token_date` bigint(20) DEFAULT NULL COMMENT 'token 请求时间',
