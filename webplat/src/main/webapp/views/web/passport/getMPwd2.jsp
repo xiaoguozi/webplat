@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="col-md-12">
             <div>
             <img src="assets/img/ui/register_logo.png" alt="logo" class="img-responsive"/>
-            <div class="center-block"><h1 class="text-success">恭喜您注册成功！</h1></div>
+            <div class="center-block"><h1 class="text-success">您已成功重置密码！</h1></div>
             <br/>
             <a href="rest/web/mlogin" class="btn btn-primary btn-lg btn-block">马上登陆</a>
             </div>

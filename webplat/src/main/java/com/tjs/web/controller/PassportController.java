@@ -517,7 +517,7 @@ public class PassportController {
     
     
     /**
-     * 用户登录
+     * 微信用户登录
      * 
      * @param user
      * @param result
@@ -565,6 +565,71 @@ public class PassportController {
     	}
     	
        
+    }
+    
+    /**
+     * 微信找回密码
+     * @param user
+     * @param ctrlModel
+     * @param model
+     * @return
+     */
+    @RequestMapping("/getMPwd")
+    public String getMPwd(User user, PassportCtrlModel ctrlModel, Model model) {  	
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);  	
+        return "web/passport/getMPwd";
+    }
+    
+    
+    /**
+     * 微信找回密码
+     * @param user
+     * @param ctrlModel
+     * @param model
+     * @return
+     */
+    @RequestMapping("/getMPwd2")
+    public String getMPwd2(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {  	
+    	//验证手机号，验证短信验证码
+    	//保存新密码到数据库，清除session中的手机号和短信验证码
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword()) ){
+    		dataValid = false;
+    		errorMsg = "新密码验证错误";
+    	}else if(passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号未注册";
+    	}
+    	
+    	if(dataValid){
+			boolean result = passportService.resetPassword(userName, ctrlModel.getPassword());
+			if(result){
+				// 清除session中的手机号&短信验证码
+				request.getSession().setAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY, "");
+				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
+				return "web/passport/getMPwd2";
+			}else{
+				dataValid = false;
+	    		errorMsg = "重置密码服务发生错误，请稍后再试！";
+			}
+    	}
+
+		model.addAttribute("error", errorMsg);
+		return "web/passport/getMPwd";
     }
 
 

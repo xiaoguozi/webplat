@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		 		<div class="form-group" >
 			 		<div class="tjs_assist" nowrap>
 					<div class="tjs_assist_left" style="width:65px;margin-left:15px"><input name="remember" type="checkbox" value="1" /> 记住我</div>
-					<div class="tjs_assist_right" style="margin-right:10px"> <a>忘记密码？</a> ｜ <a href="rest/web/passport/mreg">立即注册</a></div>
+					<div class="tjs_assist_right" style="margin-right:10px"> <a href="rest/web/passport/getMPwd">忘记密码？</a> ｜ <a href="rest/web/passport/mreg">立即注册</a></div>
 					</div>
 			   </div>
 			 </form>
