@@ -250,7 +250,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							  var sdata = {
 								  title: '跟我淘金山',
 								  desc: '淘金山信托频道为您提供信托产品，帮助您选出收益率最高的信托产品，并完成购买信托产品',
-								  link: '<%=basePath%>rest/wx/xintuo/index',
+								  link: '<%=basePath%>rest/wx/xintuo/list',
 								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
 								  success: function () {
 								  	

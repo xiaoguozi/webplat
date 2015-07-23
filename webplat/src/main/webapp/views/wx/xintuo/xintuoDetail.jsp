@@ -363,7 +363,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							  var sdata = {
 								  title: '${xtcp.xtcpSplname}', 
 								  desc: '${xtcp.xtcpDp}',
-								  link: '<%=basePath%>rest/wx/xintuo/index',
+								  link: '<%=basePath%>rest/wx/xintuo/detail?id=${xtcp.xtcpId}',
 								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
 								  success: function () {
 								  	
