@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <head>
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
-        <title>淘金山——注册</title>
+        <title>淘金山—找回密码</title>
         <div id='wx_pic' style='margin:0 auto;display:none;'>
           <img src='assets/img/fx_logo.jpg' />
         </div>
@@ -41,8 +41,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row">
             <div class="col-md-12">
             <div>
-            <img src="assets/img/ui/register_logo.png" alt="logo" class="img-responsive"/>
-            <div class="center-block"><h1 class="text-success">您已成功重置密码！</h1></div>
+            <img src="assets/img/ui/getpwd_logo.jpg" alt="logo" class="img-responsive"/>
+            <div class="center-block"><h3 class="text-success">您已成功重置密码！</h3></div>
             <br/>
             <a href="rest/web/mlogin" class="btn btn-primary btn-lg btn-block">马上登陆</a>
             </div>
