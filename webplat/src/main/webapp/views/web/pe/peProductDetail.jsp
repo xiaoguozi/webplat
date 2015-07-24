@@ -326,8 +326,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <th width="94">发行平台：</th>
                   <td width="318">${peProduct.distributionPlatform }</td>
                   <th width="94">基金性质：</th>
-                  <td width="*">主基金
-                  			<c:if test="${peProduct.fundProperty==1}">主基金</c:if>
+                  <td width="*"><c:if test="${peProduct.fundProperty==1}">主基金</c:if>
                        		<c:if test="${peProduct.fundProperty==2}">子基金</c:if>
                   </td>
                 </tr>
