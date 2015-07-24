@@ -35,14 +35,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		 </a>
 		</div>
 		<div class="row" style="border-bottom:1px solid #E0E0E0;">
-			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/simu.png" /></div>
-			<div class="col-xs-8">
-				<p style="font-size:20px; color:#000; margin-top: 12px;"><b>私募<b></p>
-				<p style="color:#ccc;font-size: 13px;"><font style="color: #101010;">（敬请期待）</font></p>
-			</div>
-			<div class="col-xs-2" style="padding-top: 25px;">
-				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
-			</div>	
+			<a href="rest/wx/simu/list">
+				<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/simu.png" /></div>
+				<div class="col-xs-8">
+					<p style="font-size:20px; color:#000; margin-top: 12px;"><b>私募<b></p>
+					<p style="color:#ccc;font-size: 13px;"><font style="color: #101010;">（敬请期待）</font></p>
+				</div>
+				<div class="col-xs-2" style="padding-top: 25px;">
+					<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+				</div>	
+			</a>
 		</div>
 		<div class="row" style="border-bottom:1px solid #E0E0E0;">
 			<div class="col-xs-2" style="padding-top: 15px;"><img src="assets/img/wx/baoxian.png" /></div>
