@@ -35,7 +35,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="container">
             <div class="row">
                 <div class="col-xs-12" style="padding-bottom:20px">
-                    <a href="javascript:history.back()" class="btn btn_orange btn-block">我知道了</a>
+                    <a href="rest/wx/xintuo/list" class="btn btn_orange btn-block">我知道了</a>
                 </div>
             </div>
         </div>
