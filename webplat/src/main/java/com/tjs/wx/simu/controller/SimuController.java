@@ -30,7 +30,6 @@ import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
-import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.web.pe.controller.PEChartVO;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
 import com.tjs.wx.xintuo.controller.XintuoCtrlModel;

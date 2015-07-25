@@ -61,17 +61,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row" style="background: white; ">
         	<div class="col-xs-4" style="border-top: 2px solid #F9F9F9; border-bottom: 2px solid #F9F9F9;">
         		<p style="margin-top: 5px;">最新净值</p>
-        		<p><font style="color: red; font-size: 17px;" >${simucp.netWorth}</font></p>
+        		<p><font style="color: red; font-size: 18px; font-weight: bold;" >${simucp.netWorth}</font></p>
         		<p><nobr><font style="font-size: 12px;">净值日期：<br><fmt:formatDate value="${simucp.netWorthTime}" pattern="yyyy-MM-dd"/></font></nobr></p>
         	</div>
         	<div class="col-xs-4" style="border: 2px solid #F9F9F9;">
         		<p style="margin-top: 5px;">累计收益</p>
-        		<p><font style="color: red; font-size: 17px;" ><fmt:formatNumber value="${simucp.accumulatedIncome.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${simucp.accumulatedIncome*100%100}" pattern="00"/>%</span></font></p>
+        		<p><font style="color: red; font-size: 18px; font-weight: bold;" ><fmt:formatNumber value="${simucp.accumulatedIncome.intValue()}" pattern="#0"/><span class="small" style="font-weight: bold;">.<fmt:formatNumber value="${simucp.accumulatedIncome*100%100}" pattern="00"/>%</span></font></p>
         		<p><nobr><font style="font-size: 12px;">成立日期：<br> <fmt:formatDate value="${simucp.setupTime}" pattern="yyyy-MM-dd"/></font></nobr></p>
         	</div>
         	<div class="col-xs-4" style="border-top: 2px solid #F9F9F9; border-bottom: 2px solid #F9F9F9;">
         		<p style="margin-top: 5px;"><nobr>认购起点（万）</nobr></p>
-        		<p><font style="color: red; font-size: 17px;" ><fmt:formatNumber value="${simucp.subscripStart.intValue()}" pattern="#0"/><span class="small">.<fmt:formatNumber value="${simucp.subscripStart*100%100}" pattern="00"/> </span></font></p>
+        		<p><font style="color: red; font-size: 18px; font-weight: bold;" ><fmt:formatNumber value="${simucp.subscripStart.intValue()}" pattern="#0"/><span class="small" style="font-weight: bold;">.<fmt:formatNumber value="${simucp.subscripStart*100%100}" pattern="00"/> </span></font></p>
         		<p><nobr><font style="font-size: 12px;">私募公司：<br>${simucp.pecompanyName}</font></nobr></p>
         	</div>
         </div>
