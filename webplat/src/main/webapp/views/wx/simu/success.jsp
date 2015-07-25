@@ -58,7 +58,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 var timer = 7;
 function tick(){
 	 if(timer == 1){
-		window.location.href = '<%=basePath%>rest/wx/xintuo/list';
+		window.location.href = '<%=basePath%>rest/wx/simu/list';
 	 }else{
 		  timer--;
 		  $('#span_time').html(timer);

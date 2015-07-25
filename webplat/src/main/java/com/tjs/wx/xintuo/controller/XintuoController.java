@@ -170,7 +170,7 @@ public class XintuoController {
 		
 		model.addAttribute("xtName", productXtcp.getXtcpSplname());
 		model.addAttribute("productId", productId);
-        return "wx/xintuo/reserve";
+        return "wx/simu/reserve";
     }
 	
 	/**

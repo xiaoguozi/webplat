@@ -29,12 +29,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row" >
         	<div class="col-xs-12" style="background: #F2F2F2;">
                     <label style="margin-top: 5px;">
-                        <span style="color:#000; font-size: 20px; font-weight: bold;">${xtName}</span>
+                        <span style="color:#000; font-size: 20px; font-weight: bold;">${simuName}</span>
                     </label>
             </div>  
-            <form id="xtForm" action="rest/wx/xintuo/orderProduct" method="post">
+            <form id="xtForm" action="rest/wx/simu/orderProduct" method="post">
          	<input type="hidden" name="productId" value="${productId}"/>
-         	<input type="hidden" name="productType" value="10" />
+         	<input type="hidden" name="productType" value="20" />
 	            <div class="col-xs-12">
 	             	<div class="form-group" >
 						    <label>客户姓名</label>

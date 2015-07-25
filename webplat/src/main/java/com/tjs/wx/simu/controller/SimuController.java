@@ -13,18 +13,27 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tjs.admin.order.model.Order;
+import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
+import com.tjs.admin.pe.model.PECompany;
+import com.tjs.admin.pe.model.PEManager;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PEProductNet;
 import com.tjs.admin.pe.model.PETopProduct;
+import com.tjs.admin.pe.service.PECompanyService;
+import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.web.pe.controller.PEChartVO;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
+import com.tjs.wx.xintuo.controller.XintuoCtrlModel;
 
 @Controller
 @RequestMapping(value ="/wx/simu")
@@ -36,6 +45,15 @@ public class SimuController {
 	
 	@Resource
 	private PEProductNetService peProductNetService;
+	
+	@Resource
+	private PEManagerService peManagerService;
+	
+	@Resource
+	private PECompanyService peCompanyService;
+	
+	@Resource
+	private IOrderService iOrderService;
 	
 	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
@@ -133,14 +151,59 @@ public class SimuController {
 			peChartVO.getData().add(dateValue);
 		}
 		lstChartVO.add(peChartVO);
-		
 		String series = gson.toJson(lstChartVO);
+		
+		//基金经理信息
+		PEManager peManager = peManagerService.getPEManagerById(peProduct.getManagerId());
+		
+		//基金公司
+		PECompany peCompany = peCompanyService.getPECompanyById(peProduct.getPecompanyId());
 		
     	model.addAttribute("valueSeries", series);
 		model.addAttribute("simucp", peProduct);
+		model.addAttribute("peManager", peManager);
+		model.addAttribute("peCompany", peCompany);
 		
         return "wx/simu/simuDetail";
     }
+	
+	@RequestMapping("/reservePage")
+    public String reservePage(XintuoCtrlModel xintuoCtrlModel, Model model) {
+		Long productId = xintuoCtrlModel.getProductId();
+		PEProduct peProduct = peProductService.getPEProductById(productId);
+		
+		model.addAttribute("simuName", peProduct.getSimpleName());
+		model.addAttribute("productId", productId);
+        return "wx/simu/reserve";
+    }
+	
+	/**
+     * 
+     * @return
+     */
+     @RequestMapping("/orderProduct")
+     public String orderProduct(@RequestParam(value="productId",required=false) Long productId,
+    		 @RequestParam(value="userName") String userName,
+    		 @RequestParam(value="userPhone") String  userPhone,
+    		 @RequestParam(value="dataRemark") String dataRemark) {
+     	Order order = new Order();
+     	order.setCreateDate(new Date());
+     	//未处理
+     	order.setOperateStatus("10");
+     	order.setProductType("20");
+     	order.setProductId(productId);
+     	order.setRemark(dataRemark);
+     	if(productId!=null){
+     		PEProduct peProduct = peProductService.getPEProductById(productId);
+     		order.setProductName(peProduct.getSimpleName());
+     	}   	
+     	order.setTelphone(userPhone);;
+     	order.setUserName(userName);    	
+     	
+     	iOrderService.insertOrder(order);
+     	
+     	return "wx/xintuo/success";
+     }
 	
 	private Long calcTime(Date dateSource){
 		if(dateSource==null){

@@ -100,10 +100,163 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        
        <div id="rgxz" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
              <div class="row">
-             	
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>发行平台：</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.distributionPlatform}</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>基金性质：</nobr></font></div>
+             	<div class="col-xs-3">
+             		<font style="color:#080808; font-size: 12px;"><nobr>
+             				<c:if test="${simucp.fundProperty==1}">主基金</c:if>
+                       		<c:if test="${simucp.fundProperty==2}">子基金</c:if></nobr>
+             		</font>
+             	</div>
              </div>
+             <div class="row">
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>托管银行：</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.custodianBank}</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>基金类型：</nobr></font></div>
+             	<div class="col-xs-3">
+             		<font style="color:#080808; font-size: 12px;"><nobr>
+             				<c:if test="${simucp.fundType==1}">股票</c:if>
+                       		<c:if test="${simucp.fundType==2}">期货基金</c:if>
+                       		<c:if test="${simucp.fundType==3}">股票量化</c:if>
+                       		<c:if test="${simucp.fundType==4}">债券型</c:if>
+                       		<c:if test="${simucp.fundType==5}">定向增发</c:if>
+                       		<c:if test="${simucp.fundType==6}">宏观对冲</c:if>
+                       		<c:if test="${simucp.fundType==7}">组合基金</c:if>
+                       		<c:if test="${simucp.fundType==8}">其他</c:if></nobr>
+             		</font>
+             	</div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>证券经纪：</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.stockbrokers}</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>是否结构化：</nobr></font></div>
+             	<div class="col-xs-3">
+             		<font style="color:#080808; font-size: 12px;"><nobr>
+             				${simucp.whetherStructure }</nobr>
+             		</font>
+             	</div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>证券经纪：</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.stockbrokers}</nobr></font></div>
+             	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>是否结构化：</nobr></font></div>
+             	<div class="col-xs-3">
+             		<font style="color:#080808; font-size: 12px;"><nobr>
+             				${simucp.whetherStructure }</nobr>
+             		</font>
+             	</div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-4"><font style="color:#545454; font-size: 12px;"><nobr>开&nbsp;放&nbsp;日：</nobr></font></div>
+             	<div class="col-xs-8"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.openTime}</nobr></font></div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-4"><font style="color:#545454; font-size: 12px;"><nobr>退出费用：</nobr></font></div>
+             	<div class="col-xs-8"><font style="color:#080808; font-size: 12px;"><nobr><c:if test="${simucp.exitFee!=null}">
+                  		${simucp.exitFee}
+                  		</c:if></nobr></font></div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-4"><font style="color:#545454; font-size: 12px;"><nobr>认购起点：</nobr></font></div>
+             	<div class="col-xs-8"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.subscripStart}万元</nobr></font></div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-4"><font style="color:#545454; font-size: 12px;"><nobr>浮动管理费：</nobr></font></div>
+             	<div class="col-xs-8"><font style="color:#080808; font-size: 12px;"><nobr>
+             	<c:if test="${simucp.managementFee!=null}">
+                  		${simucp.managementFee}
+                  	</c:if></nobr></font></div>
+             </div>
+             <div class="row">
+             	<div class="col-xs-4"><font style="color:#545454; font-size: 12px;"><nobr>认&nbsp;购&nbsp;费：</nobr></font></div>
+             	<div class="col-xs-8"><font style="color:#080808; font-size: 12px;"><nobr>
+             	<c:if test="${simucp.subscripFee!=null}">
+                  		${simucp.subscripFee}
+                  	</c:if></nobr></font></div>
+             </div>
+             
        </div>
-         
+       
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('smjl');">
+            <div class="b_b">
+                <div class="col-xs-6">
+                    <h4><font style="color:#545454;">私募经理</font></h4></div>
+                <div class="col-xs-6" role="tab" id="pz_smjl">
+                    <div class="row collapsed" >
+                        <div class="col-xs-12">
+                            <div class="rotate pull-right" id="smjlArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       
+       <div id="smjl" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
+             <font style="color:#080808;">${peManager.introduce}</font>
+       </div>
+       
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('smgs');">
+            <div class="b_b">
+                <div class="col-xs-6">
+                    <h4><font style="color:#545454;">私募公司</font></h4></div>
+                <div class="col-xs-6" role="tab" id="pz_smgs">
+                    <div class="row collapsed" >
+                        <div class="col-xs-12">
+                            <div class="rotate pull-right" id="smgsArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       
+       <div id="smgs" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
+             <font style="color:#080808;">${peCompany.companyProfile}</font>
+       </div>
+       
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('tzln');">
+            <div class="b_b">
+                <div class="col-xs-6">
+                    <h4><font style="color:#545454;">投资理念</font></h4></div>
+                <div class="col-xs-6" role="tab" id="pz_tzln">
+                    <div class="row collapsed" >
+                        <div class="col-xs-12">
+                            <div class="rotate pull-right" id="tzlnArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       
+       <div id="tzln" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
+             <font style="color:#080808;">${peCompany.investmentPhilosophy}</font>
+       </div>
+       
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('tytd');">
+            <div class="b_b">
+                <div class="col-xs-6">
+                    <h4><font style="color:#545454;">投研团队</font></h4></div>
+                <div class="col-xs-6" role="tab" id="pz_tytd">
+                    <div class="row collapsed" >
+                        <div class="col-xs-12">
+                            <div class="rotate pull-right" id="tytdArrow">
+                                <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       
+       <div id="tytd" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
+             <font style="color:#080808;">${peCompany.investmentTeam}</font>
+       </div>
         
     </div>
     
@@ -111,7 +264,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="container">
             <div class="row">
                 <div class="col-xs-12" style="padding-bottom:20px">
-                    <a href="rest/wx/xintuo/reservePage?productId=${xtcp.xtcpId}" class="btn btn-block btn_orange">立即预约</a>
+                    <a href="rest/wx/simu/reservePage?productId=${simucp.id}" class="btn btn-block btn_orange">立即预约</a>
                 </div>
             </div>
         </div>

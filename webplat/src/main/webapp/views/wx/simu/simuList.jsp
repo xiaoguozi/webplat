@@ -52,7 +52,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                    </div>
 		                    <div class="row m_money">
 		                        <div class="col-xs-7">
-		                            <h4><fmt:formatNumber value="${simucp.nowRate}" pattern="#0.####"/>%</h4></div>
+		                        	<c:if test="${simucp.nowRate>0}">
+			                            <h4><font style="color: #f60;"><fmt:formatNumber value="${simucp.nowRate}" pattern="#0.####"/>%</font></h4>
+		                        	</c:if>
+		                        	<c:if test="${simucp.nowRate<=0}">
+										<h4><font style="color: #090;"><fmt:formatNumber value="${simucp.nowRate}" pattern="#0.####"/>%</font></h4>
+		                        	</c:if>
+		                        </div>
 		                        <div class="col-xs-5">
 		                            <h4 class="m_day">${simucp.netWorth}</h4>
 		                        </div>
