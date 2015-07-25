@@ -201,7 +201,7 @@ public class SimuController {
      	
      	iOrderService.insertOrder(order);
      	
-     	return "wx/xintuo/success";
+     	return "wx/simu/success";
      }
 	
 	private Long calcTime(Date dateSource){
