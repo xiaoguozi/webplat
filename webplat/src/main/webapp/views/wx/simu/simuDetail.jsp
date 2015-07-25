@@ -82,7 +82,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <div class="col-xs-12" id="chartContainer" ></div>
          </div>
          
-         <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('rgxz');">
+         <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('rgxz');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">认购需知</font></h4></div>
@@ -98,7 +98,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>
        </div>
        
-       <div id="rgxz" class="panel-collapse collapse row" role="tabpanel"  style="background: #fff;padding-left: 15px">
+       <div id="rgxz" class="panel-collapse collapse row" role="tabpanel"  
+       				style="background: #fff;padding-left: 15px; ">
              <div class="row">
              	<div class="col-xs-3"><font style="color:#545454; font-size: 12px;"><nobr>发行平台：</nobr></font></div>
              	<div class="col-xs-3"><font style="color:#080808; font-size: 12px;"><nobr>${simucp.distributionPlatform}</nobr></font></div>
@@ -178,7 +179,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              
        </div>
        
-       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('smjl');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('smjl');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">私募经理</font></h4></div>
@@ -198,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <font style="color:#080808;">${peManager.introduce}</font>
        </div>
        
-       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('smgs');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('smgs');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">私募公司</font></h4></div>
@@ -218,7 +219,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <font style="color:#080808;">${peCompany.companyProfile}</font>
        </div>
        
-       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('tzln');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('tzln');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">投资理念</font></h4></div>
@@ -238,7 +239,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
              <font style="color:#080808;">${peCompany.investmentPhilosophy}</font>
        </div>
        
-       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('tytd');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('tytd');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">投研团队</font></h4></div>

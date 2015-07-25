@@ -180,7 +180,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"row m_money\">";
 		    strhtml+="<div class=\"col-xs-7\">";
-		    strhtml+="     <h4>"+simucp.nowRate+"%</h4></div>";
+		    if(simucp.nowRate>0){
+			    strhtml+="     <h4><font style=\"color: #f60;\">"+simucp.nowRate+"%</font></h4></div>";
+		    }else{
+		    	strhtml+="     <h4><font style=\"color: #090;\">"+simucp.nowRate+"%</font></h4></div>";
+		    }
+		    
 		    strhtml+="<div class=\"col-xs-5\">";
 		    strhtml+="<h4 class=\"m_day\">"+simucp.netWorth+"</h4>";
 		    strhtml+="</div>";
