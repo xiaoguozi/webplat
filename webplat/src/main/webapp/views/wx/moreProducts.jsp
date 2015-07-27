@@ -75,8 +75,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <p>我要理财</p>
                         </a>
                     </li>
-                    <li class="rest/wx/center/index">
-                        <a>
+                    <li class="">
+                        <a href="rest/wx/center/index">
                             <span class="menu-person"></span>
                             <p>个人中心</p>
                         </a>
