@@ -1,5 +1,9 @@
 package com.tjs.wx.center.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
@@ -13,6 +17,9 @@ import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
+import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
+import com.tjs.admin.xintuo.model.ProductXtcp;
+import com.tjs.admin.xintuo.service.IProductXtcpService;
 
 /**
  * 微信中心控制器
@@ -29,6 +36,9 @@ public class CenterController {
 	 
 	 @Resource
 	 private UserInfoService UserInfoService;
+	 
+	 @Resource
+	private IProductXtcpService iProductXtService;
 	 
 	 
 	@RequestMapping("/index")
@@ -69,4 +79,76 @@ public class CenterController {
 				
         return "wx/center/personInfo";
     }	
+	
+	@RequestMapping("/xtOrder")
+    public String xtOrder(Model model) {		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			XinTuoSeachCtrlVO xinTuoSeachCtrlVO = new XinTuoSeachCtrlVO();
+			xinTuoSeachCtrlVO.setUserId(user.getId());
+			xinTuoSeachCtrlVO.setTelPhone(username);
+			xinTuoSeachCtrlVO.setPageSize(12);
+	    	int totalcount = iProductXtService.countOrderXtcp(xinTuoSeachCtrlVO);
+	    	xinTuoSeachCtrlVO.setTotalCount(totalcount); 
+	    	
+	    	//判断请求页
+	        int totalPageNO = xinTuoSeachCtrlVO.getTotalPageSize();//总页数
+	        int currentPageNo = 1;//当前页
+	        if(xinTuoSeachCtrlVO.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+	        	currentPageNo =1;
+	        } else if(xinTuoSeachCtrlVO.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+	        	currentPageNo =totalPageNO;
+	        }else{
+	        	currentPageNo = xinTuoSeachCtrlVO.getPageNo();
+	        }
+	        
+	    	xinTuoSeachCtrlVO.setPageNo(currentPageNo);			
+			List<ProductXtcp> lstProduct = iProductXtService.selectOrderXtcp(xinTuoSeachCtrlVO);
+			model.addAttribute("lstProduct",lstProduct);
+		}else{
+			return "redirect:/rest/web/mlogin";
+		}
+								
+        return "wx/center/xtOrder";
+    }
+	
+	
+	@RequestMapping("/listMore")
+    public Map<String, Object> listMore(XinTuoSeachCtrlVO xinTuoSeachCtrlVO)  {
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			xinTuoSeachCtrlVO.setUserId(user.getId());
+			xinTuoSeachCtrlVO.setPageSize(8);
+	    	int totalcount = iProductXtService.countOrderXtcp(xinTuoSeachCtrlVO);
+	    	xinTuoSeachCtrlVO.setTotalCount(totalcount); 
+	    	
+	    	//判断请求页
+	        int totalPageNO = xinTuoSeachCtrlVO.getTotalPageSize();//总页数
+	        int currentPageNo = 1;//当前页
+	        if(xinTuoSeachCtrlVO.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+	        	currentPageNo =1;
+	        } else if(xinTuoSeachCtrlVO.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+	        	currentPageNo =totalPageNO;
+	        }else{
+	        	currentPageNo = xinTuoSeachCtrlVO.getPageNo();
+	        }
+	        
+	    	xinTuoSeachCtrlVO.setPageNo(currentPageNo);			
+			List<ProductXtcp> lstProduct = iProductXtService.selectOrderXtcp(xinTuoSeachCtrlVO);
+			result.put("xinTuoSeachCtrlVO", xinTuoSeachCtrlVO);
+	    	result.put("bizData", lstProduct);
+	    	result.put("listMore",false);
+		}else{
+			result.put("listMore",true);
+		}								
+        return result;
+    }
+	
 }
