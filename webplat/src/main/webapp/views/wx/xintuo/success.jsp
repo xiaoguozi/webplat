@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <p>我要理财</p>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="rest/wx/center/index">
                         <a>
                             <span class="menu-person"></span>
                             <p>个人中心</p>
