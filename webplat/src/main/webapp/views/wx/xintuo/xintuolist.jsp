@@ -57,11 +57,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                            <h4 class="m_day">${xintuocp.xtcpCxq}个月</h4>
 		                        </div>
 		                    </div>
-		                    <div class="row m_money">
+		                    <div class="row m_tip">
 		                        <div class="col-xs-7">
-		                            <h5><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#0.####"/>万起</h5></div>
+		                            <h5 style="color:#d4d4d4"><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#0.####"/>万起</h5></div>
 		                        <div class="col-xs-5">
-		                            <h5>                           
+		                            <h5 style="color:#d4d4d4">                           
 		                           		<c:choose>  
 							                <c:when test="${xintuocp.xtcpLxfp=='10'}">  
 							                  		按月付息
@@ -200,9 +200,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"row m_tip\">";
 		    strhtml+="<div class=\"col-xs-7\">";
-		    strhtml+="<h5>"+xintop.xtcpZdrgje+"万起</h5></div>";
+		    strhtml+="<h5 style=\"color:#d4d4d4\">"+xintop.xtcpZdrgje+"万起</h5></div>";
 		    strhtml+="<div class=\"col-xs-5\">";
-		    strhtml+="<h5>";                                      
+		    strhtml+="<h5 style=\"color:#d4d4d4\">"+getfxfs(xintop.xtcpLxfp);                                      
 		    strhtml+="</h5>";
 		    strhtml+="</div>";
 		    strhtml+="</div>";
@@ -211,10 +211,29 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		  return strhtml;
 		
 	}
-		var slipjs_yuxiang = slip('px', bar_list_div, {
-				 moveFun: update,
-				 endFun: loading
-			});
+	
+	function getfxfs(xtcpLxfp){
+		var zfxtcpLxfp ="";
+		if(xtcpLxfp=='10'){
+			zfxtcpLxfp="按月付息";
+		}else if(xtcpLxfp=='20'){
+			zfxtcpLxfp="按季付息";	
+		}else if(xtcpLxfp=='30'){
+			zfxtcpLxfp="半年付息";	
+		}else if(xtcpLxfp=='40'){
+			zfxtcpLxfp="按年付息";	
+		}else if(xtcpLxfp=='50'){
+			zfxtcpLxfp="到期付息";	
+		}else{
+			zfxtcpLxfp="其他";	
+		}
+		return zfxtcpLxfp;		
+	}
+	
+	var slipjs_yuxiang = slip('px', bar_list_div, {
+			 moveFun: update,
+			 endFun: loading
+		});
 	});
 	
 
