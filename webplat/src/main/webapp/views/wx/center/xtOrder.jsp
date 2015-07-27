@@ -39,11 +39,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       
        <c:if test="${null!=lstProduct&&!lstProduct.isEmpty()}">
       	<c:forEach items="${lstProduct}" var="xintuocp">
-        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px;" onclick="showPanel('${xintuocp.orderId}');">
+        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 15px;" onclick="showPanel('${xintuocp.orderId}');">
             <div class="b_b">
-                <div class="col-xs-6">
-                    <h4><font style="color:#545454;">${xintuocp.xtcpSplname}</font></h4></div>
-                <div class="col-xs-6" role="tab" id="pz_${xintuocp.orderId}">
+                <div class="col-xs-10">
+                    <h4><font style="color:#545454;">${xintuocp.xtcpSplname}adsfasdfasd</font></h4></div>
+                <div class="col-xs-2" role="tab" id="pz_${xintuocp.orderId}">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
                             <div class="rotate pull-right" id="${xintuocp.orderId}Arrow">
