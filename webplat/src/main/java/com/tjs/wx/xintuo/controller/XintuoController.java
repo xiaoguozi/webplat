@@ -40,17 +40,14 @@ import com.tjs.admin.xintuo.util.BigDecimalUtils;
 @RequestMapping(value ="/wx/xintuo")
 public class XintuoController {
 	
-	
-    @Resource
-    private IProductXtcpService productXtcpService;
+
     
     @Resource
 	private IOrderService iOrderService;
     
 	@Resource
 	private IProductXtcpService iProductXtService;
-	
-	
+		
 	 @Resource
 	 private UserService userService;
 	 
@@ -72,7 +69,7 @@ public class XintuoController {
 			model.addAttribute("username", "你好");
 		}
 				
-		List<ProductXtcp> lstXtcp =  productXtcpService.selectProductXtcpIndex();
+		List<ProductXtcp> lstXtcp =  iProductXtService.selectProductXtcpIndex();
 		if(lstXtcp!=null&&lstXtcp.size()>0){
 			model.addAttribute("xtcp", lstXtcp.get(0));
 		}else{
@@ -183,6 +180,15 @@ public class XintuoController {
     		 @RequestParam(value="userPhone") String  userPhone,
     		 @RequestParam(value="dataRemark") String dataRemark) {
      	Order order = new Order();
+     	
+     	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			order.setUserID(user.getId());
+		}
+		
+     	
      	order.setCreateDate(new Date());
      	//未处理
      	order.setOperateStatus("10");

@@ -154,7 +154,22 @@ public class ProductXtcpServiceImpl  implements IProductXtcpService {
 				}				
 		return lstVOs;
 	}
+
+	@Override
+	public List<ProductXtcp> selectOrderXtcp(XinTuoSeachCtrlVO xinTuoSeachCtrlVO) {
+		List<ProductXtcp> lstVOs = productXtcpMapper.selectOrderXtcp(xinTuoSeachCtrlVO);								
+		BigDecimal div10000 = new BigDecimal(10000);
+		for(ProductXtcp product:lstVOs){
+			product.setXtcpZdrgje(BigDecimalUtils.div(product.getXtcpZdrgje(), div10000));
+			product.setXtcpFxgm(BigDecimalUtils.div(product.getXtcpFxgm(), div10000));
+		}				
+		return lstVOs;
+	}
 		
 	
+	@Override
+	public int countOrderXtcp(XinTuoSeachCtrlVO xinTuoSeachCtrlVO){
+		return productXtcpMapper.countOrderXtcp(xinTuoSeachCtrlVO);
+	}
 
 }

@@ -26,6 +26,10 @@ public class XinTuoSeachCtrlVO extends GenericCtrlModel {
 	 private String  xtcpGszhname;
 	 /**信托公司ID */
 	 private long  xtcpGsId=0;
+	 /**用户ID */
+	 private Long userId;
+	 /**登陆人电话 */
+	 private String telPhone;
 	 
 	 private  int  limitStart;
 	 	  
@@ -55,7 +59,20 @@ public class XinTuoSeachCtrlVO extends GenericCtrlModel {
 		this.keyword = keyword;
 	}
 	
+    public String getTelPhone() {
+			return telPhone;
+	}
+    
+	public void setTelPhone(String telPhone) {
+			this.telPhone = telPhone;
+	}
 	
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public int getXtcpZdrgje() {
 		return xtcpZdrgje;
 	}

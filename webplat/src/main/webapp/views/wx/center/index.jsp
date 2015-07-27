@@ -45,13 +45,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		</div>
 		
 		<div class="row pei_money" style="margin-top:10px">
-			<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/xintuoyd.png" /></p></div>
-			<div class="col-xs-8" style="padding-top: 25px;margin-left:10px">
-				<p style="font-size:20px; color:#000; "><b>信托预约记录</b></p>
-			</div>
-			<div class="col-xs-1" style="padding-top:25px;">
-				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
-			</div>	
+		    <a href="rest/wx/center/xtOrder">
+				<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/xintuoyd.png" /></p></div>
+				<div class="col-xs-8" style="padding-top: 25px;margin-left:10px">
+					<p style="font-size:20px; color:#000; "><b>信托预约记录</b></p>
+				</div>
+				<div class="col-xs-1" style="padding-top:25px;">
+					<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+				</div>
+			</a>	
 		</div>				
 	  </div>
 	

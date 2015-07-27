@@ -41,4 +41,11 @@ public interface ProductXtcpMapper {
 	
 	/**根据公司ID查询产品*/
 	public List<ProductXtcp> selectProductXtcpByGsId(Long xtgsId);
+	
+	/**根据登陆人ID查询*/
+	public List<ProductXtcp> selectOrderXtcp(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);
+	
+	
+	/**根据登陆人ID查询*/
+	public int countOrderXtcp(XinTuoSeachCtrlVO xinTuoSeachCtrlVO);
 }

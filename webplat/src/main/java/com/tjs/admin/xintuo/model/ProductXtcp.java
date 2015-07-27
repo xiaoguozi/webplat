@@ -90,7 +90,7 @@ public class ProductXtcp {
 	
 	private String xtcpTzfs;
     
-    
+    private Long orderId;
 	
   
 	public String getXtcpTzfs() {
@@ -204,8 +204,6 @@ public class ProductXtcp {
 		this.xtcpZdrgje = xtcpZdrgje;
 	}
 	
-	
-	
 	public String getXtcpDyl() {
 		return xtcpDyl;
 	}
@@ -308,8 +306,11 @@ public class ProductXtcp {
 	public void setXtcpCity(String xtcpCity) {
 		this.xtcpCity = xtcpCity;
 	}
-	
-    
-    
-    
+	public Long getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+      
 }

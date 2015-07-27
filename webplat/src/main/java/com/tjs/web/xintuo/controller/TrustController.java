@@ -9,15 +9,19 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tjs.admin.model.User;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
 import com.tjs.admin.xintuo.model.ProductXtcp;
@@ -248,12 +252,14 @@ public class TrustController {
     		order.setProductName(productXtcp.getXtcpSplname());
     	}   	
     	order.setTelphone(userTel);;
-    	order.setUserName(userName);    	
-//    	Subject subject = SecurityUtils.getSubject();
-//	     if(subject!=null){
-//	    	 User user= iUserService.selectByUsername( (String)subject.getPrincipal());
-//	    	 order.setUserID(user!=null?user.getId():null);
-//	     }
+    	order.setUserName(userName); 
+    	
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(StringUtils.isNotBlank(username)){
+			User user = iUserService.selectByUsername(username);
+			order.setUserID(user.getId());
+		}
     	    			 
     	iOrderService.insertOrder(order);
     	Map<String, String> result = new HashMap<String, String>();

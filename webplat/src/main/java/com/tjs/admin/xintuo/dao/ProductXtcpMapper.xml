@@ -372,4 +372,34 @@
 		 							
 	</select>
 	
+	
+	<select id="selectOrderXtcp" resultType="com.tjs.admin.xintuo.model.ProductXtcp"
+	 parameterType="com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO">
+		select
+		xtcp_id, xtgs_log xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
+		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
+		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus,
+		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs,tjs_order.order_ID
+		from tjs_product_xtcp,tjs_product_xtgs,tjs_order where 
+		 xtgs_id = xtcp_gsId
+		AND xtcp_id = tjs_order.order_product_id
+		AND xtcp_validstatus='1'
+		AND tjs_order.order_product_type='10'
+	    AND(tjs_order.order_user_Id= #{userId} or tjs_order.order_telphone=	#{telPhone}) 	 	 		 
+		ORDER BY tjs_order.order_create_date desc					
+		LIMIT #{limitStart} ,#{pageSize}		 							
+	</select>
+	
+	<select id="countOrderXtcp" resultType="int"
+	 parameterType="com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO">
+		select
+		count(1)
+		from tjs_product_xtcp,tjs_product_xtgs,tjs_order where 
+		 xtgs_id = xtcp_gsId
+		AND xtcp_id = tjs_order.order_product_id
+		AND xtcp_validstatus='1'
+		AND tjs_order.order_product_type='10' 
+		AND(tjs_order.order_user_Id= #{userId} or tjs_order.order_telphone=	#{telPhone}) 	 	 
+	</select>
+	
 </mapper>
