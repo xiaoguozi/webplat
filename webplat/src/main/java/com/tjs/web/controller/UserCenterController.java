@@ -126,7 +126,6 @@ public class UserCenterController {
         return "web/userCenter/userInfoModify";
     }
     
-    
     @RequestMapping("/userModifyData")
     @ResponseBody
     public boolean userModifyData(@RequestParam(value="password") String  password,@RequestParam(value="newpassword") String  newpassword) {    	

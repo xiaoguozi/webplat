@@ -58,7 +58,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>	
 		</div>
 		
-		<div class="row pei_money" style="margin-top:10px">
+		<div class="row pei_money" style="margin-top:10px" onclick="showPasswordDialog();">
 			<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/dui.png" /></p></div>
 			<div class="col-xs-8" style="padding-top: 10px;margin-left:-20px">
 				<p style="font-size:20px; color:#3f3f3f; "><b>登陆密码</b></p>
@@ -75,13 +75,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<p style="font-size:20px; color:#3f3f3f; "><b>手机认证</b></p>
 			</div>
 			<div class="col-xs-1" style="padding-top:10px;margin-left:25px">
-				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+				<span class="" style="margin-top: 3px; color: #b4b4b4;">&nbsp;</span>
 			</div>	
 		</div>				
 	  
 	  
-	  <div class="row pei_money" style="margin-top:10px">
-			<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/${(empty userInfo.email||empty userInfo.qqNo )?'cuo.png':'dui.png'}" /></p></div>
+	  <div class="row pei_money" style="margin-top:10px" onclick="showChange();">
+			<div class="col-xs-2" style="margin-top:10px">
+				<c:if test="${(empty userInfo.email) || (empty userInfo.qqNo)}">
+					<p><img src="assets/img/wx/cuo.png" /></p>
+				</c:if>
+				<c:if test="${!(empty userInfo.email) && !(empty userInfo.qqNo)}">
+					<p><img src="assets/img/wx/dui.png" /></p>
+				</c:if>
+			</div>
 			<div class="col-xs-8" style="padding-top: 10px;margin-left:-20px">
 				<p style="font-size:20px; color:#3f3f3f; "><b>邮箱QQ</b></p>
 			</div>
@@ -122,6 +129,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 <script src="assets/scripts/ui/dialog-min.js" charset="utf-8"></script>
+<script src="app/lib/security/sha256.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	
@@ -362,6 +370,213 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	    }
 	    return false;
 	}
+	
+	var isOldPwdRight = false;
+	
+	function ajaxQueryOldPassword(obj){
+		if(obj.value==""){
+			$("#span_old_pwd").text("原密码不能为空");
+		}else{
+			$("#span_old_pwd").text("");
+			//ajax查询后台
+			$.ajax({
+			    type: 'POST',
+			    url: 'rest/web/userCenter/valiadPassword' ,
+			    data: {
+                	password: function () { return sha256_digest($("#register_password").val()); }
+                },
+			    success: function(data){
+			    	if(data==false){
+			    		$("#span_old_pwd").text("原密码输入错误");
+			    		isOldPwdRight = false;
+			    	}else{
+			    		$("#span_old_pwd").text("");
+			    		isOldPwdRight = true;
+			    	}
+			    } ,
+			    dataType: 'json'
+			});
+		}
+	}
+	
+	function showPasswordDialog(){
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-pwd\" action=\"rest/web/userCenter/userModifyData\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:31%\">原密码：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_password\" name=\"password\" type=\"password\" onblur=\"ajaxQueryOldPassword(this);\" class=\"tjs_register_input\" style=\"width:170px; font-size:12px;\" tabindex=\"1\" spellcheck=\"false\" placeholder=\"6~16个字母、符号或数字组合\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:31%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_old_pwd\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:31%\">新密码：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_newpassword\" name=\"newpassword\" type=\"password\" onblur=\"onBlurNewPassword(this)\" class=\"tjs_register_input\" style=\"width:170px; font-size:12px;\" tabindex=\"2\" spellcheck=\"false\" placeholder=\"6~16个字母、符号或数字组合\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:31%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_new_pwd\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:31%\"><nobr>确认新密码：</nobr></div><div class=\"tjs_register_right_new\"style=\"margin-left:20px\"><input id=\"rpaConfirmssword\" name=\"rpaConfirmssword\" type=\"password\" onblur=\"onBlurNewConfirmPassword(this);\" class=\"tjs_register_input\" style=\"width:170px; font-size:12px;\" tabindex=\"3\" spellcheck=\"false\" placeholder=\" 确认密码\" autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:31%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_new_confirm_pwd\"></span></div>";
+		
+		dialogContent += "<div style=\"height:60px;  text-align: center;\"><a id=\"register-submit-pwd-btn\" href=\"#\" class=\"tjs_registerbtn\" style=\"width:240px;\">提交修改</a></div>";
+		dialogContent += "</form></div>";
+		
+		var d = dialog({
+		    title: '修改密码',
+		    width:260,
+		    content: dialogContent
+		});
+		d.showModal();
+		
+		
+		//初始化控件
+		$("#register-submit-pwd-btn").click(function(e){
+			e.preventDefault();
+			var registerPassword = $("#register_password").val();
+			var registerNewpassword = $("#register_newpassword").val();
+			var rpaConfirmssword = $("#rpaConfirmssword").val();
+		
+			if(registerPassword=='' || registerNewpassword=='' || rpaConfirmssword==''){
+				if(registerPassword==''){
+					$("#span_old_pwd").text("原密码不能为空");
+				}
+				if(registerNewpassword==''){
+					$("#span_new_pwd").text("新密码不能为空");
+				}
+				if(rpaConfirmssword==''){
+					$("#span_new_confirm_pwd").text("确认新密码不能为空");
+				}
+				
+				if(registerPassword!=''){
+					$("#span_old_pwd").text("");
+				}
+				if(registerNewpassword!=''){
+					$("#span_new_pwd").text("");
+				}
+				if(rpaConfirmssword!=''){
+					$("#span_new_confirm_pwd").text("");
+				}
+				
+				return false;
+			}else{
+				if(isOldPwdRight==true){
+					$("#span_old_pwd").text("");
+				}
+				$("#span_new_pwd").text("");
+				$("#span_new_confirm_pwd").text("");
+			}
+			
+			if(registerNewpassword!=rpaConfirmssword){
+				$("#span_new_confirm_pwd").text("确认密码与新密码不一致");
+				return false;
+			}
+			
+			if(isOldPwdRight==false){
+				return false;
+			}
+			
+			//ajax修改后台密码
+			$.ajax({
+			    type: 'POST',
+			    url: 'rest/web/userCenter/userModifyData' ,
+			    data: {
+                	password: function () { return sha256_digest(registerPassword); },
+                	newpassword: function () { return sha256_digest(registerNewpassword); }
+                },
+			    success: function(data){
+			    	if(data==true){
+			    		d.close().remove();
+			    		
+			    		var dNew = dialog({
+			    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;修改成功'
+			    		});
+			    		dNew.show();
+			    		setTimeout(function () {
+			    			dNew.close().remove();
+			    		}, 2000);
+			    	}else{
+			    		$("#span_new_confirm_pwd").text("修改错误");
+			    	}
+			    } ,
+			    dataType: 'json'
+			});
+			
+			
+		});
+		
+	}
+	
+	
+	function onBlurCertId(obj){
+		if(obj.value==""){
+			$("#span_register_certId").text("身份证号不能为空");
+		}else{
+			//身份证不正确
+			if(!isIdCardNo(obj.value)){
+				$("#span_register_certId").text("请正确输入您的身份证号码");
+			}else{
+				$("#span_register_certId").text("");
+			}
+		}
+	}
+	
+	function onBlurName(obj){
+		if(obj.value==""){
+			$("#span_register_username").text("真实姓名不能为空");
+		}else{
+			$("#span_register_username").text("");
+		}
+	}
+	
+	function onBlurNewPassword(obj){
+		if(obj.value==""){
+			$("#span_new_pwd").text("新密码不能为空");
+		}else{
+			$("#span_new_pwd").text("");
+		}
+	}
+	
+	function onBlurNewConfirmPassword(obj){
+		if(obj.value==""){
+			$("#span_new_confirm_pwd").text("确认新密码不能为空");
+		}else{
+			$("#span_new_confirm_pwd").text("");
+		}
+	}
+	
+	function showChange(){
+		
+		var dialogContent = "<div>";
+		dialogContent += "<form class=\"modify-form-emailqq\" action=\"rest/wx/center/saveUserInfo\" method=\"post\">";
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:24%\">邮箱：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_email\" name=\"userInfo.email\" value=\"${userInfo.email}\" type=\"text\"  class=\"tjs_register_input\" style=\"width:180px;font-size:12px;\" tabindex=\"1\" spellcheck=\"false\" maxLength=\"100\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:24%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_email\"></span></div>";
+		
+		dialogContent += "<div class=\"tjs_register_left_new\" style=\"width:24%\">QQ：</div><div class=\"tjs_register_right_new\" style=\"margin-left:20px\"><input id=\"register_qq\" name=\"userInfo.qqNo\" value=\"${userInfo.qqNo}\" type=\"text\"  class=\"tjs_register_input\" style=\"width:180px;font-size:12px;\" tabindex=\"2\" spellcheck=\"false\" maxLength=\"16\"  autofocus x-webkit-speech ></div>";
+		dialogContent += "<div class=\"tjs_register_left_new_text\" style=\"width:24%\"></div><div class=\"tjs_register_right_new_text\" style=\"margin-left:20px\"><span style=\"color:red;margin-top:5px;height:30px;\" id=\"span_register_qq\"></span></div>";
+		
+		dialogContent += "<div style=\"height:60px; text-align: center;\"><a id=\"register-submit-email-btn\" href=\"#\" class=\"tjs_registerbtn\" style=\"width:240px;\">提交修改</a></div>";
+		dialogContent += "</form></div>";
+		
+		dInput = dialog({
+		    title: '修改邮箱和QQ',
+		    width: 260,
+		    content: dialogContent
+		});
+		
+		dInput.showModal();	
+		
+		$("#register-submit-email-btn").click(function(e){
+			e.preventDefault();
+			$(".modify-form-emailqq").submit();
+		});
+		
+	}
+	
+	$(function(){
+		//修改成功提示
+		if('${changeSucess}'=='true'){
+			var dNew = dialog({
+    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;修改成功'
+    		});
+    		dNew.show();
+    		setTimeout(function () {
+    			dNew.close().remove();
+    		}, 2000);
+		}
+	});
 	
 </script>
 

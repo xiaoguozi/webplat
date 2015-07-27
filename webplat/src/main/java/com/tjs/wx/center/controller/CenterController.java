@@ -20,6 +20,7 @@ import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.controller.XinTuoSeachCtrlVO;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
+import com.tjs.web.controller.UserCenterCtrlModel;
 
 /**
  * 微信中心控制器
@@ -151,4 +152,28 @@ public class CenterController {
         return result;
     }
 	
+	@RequestMapping("/saveUserInfo")
+    public String wxSaveUserInfo(UserCenterCtrlModel userCenterCtrlModel, Model model) {
+    	model.addAttribute("isLog", "true");
+    	//查询手机号
+    	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());
+		
+		if(userInfo.getIsValidate()!=1){
+			userInfo.setName(userCenterCtrlModel.getUserInfo().getName());
+			userInfo.setCertId(userCenterCtrlModel.getUserInfo().getCertId());
+		}
+		
+		userInfo.setQqNo(userCenterCtrlModel.getUserInfo().getQqNo());
+		userInfo.setEmail(userCenterCtrlModel.getUserInfo().getEmail());
+		UserInfoService.updateUserInfo(userInfo);
+    	
+		model.addAttribute("phone", username);
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("changeSucess", true);
+		
+        return "wx/center/personInfo";
+    }
 }

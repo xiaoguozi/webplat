@@ -37,7 +37,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <div class="top_wrap_menu menu">
                     <ul>
                        <c:if test="${isLog!='true'}">
-                        <li st><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
+                        <li><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
                         <li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>                      
                         <li><a href="rest/web/peizi/usercenter/pzzhongxin"><span class="simu_on">个人中心</span></a></li>                       
                         <li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
