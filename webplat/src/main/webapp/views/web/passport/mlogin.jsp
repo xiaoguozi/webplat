@@ -59,7 +59,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				   <span style="color:red;margin-left:5px">${error}</span>				  
 				   </div>
 				 	  		  		
-		 		<button type="button" id="loginBut" class="btn btn-primary btn-lg btn-block">登陆</button>
+		 		<button type="button" id="loginBut" class="btn btn-primary btn-lg btn-block">登录</button>
 		 		
 		 		
 		 		<div class="form-group" >
