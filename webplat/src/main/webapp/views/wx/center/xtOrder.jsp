@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 15px;" onclick="showPanel('${xintuocp.orderId}');">
             <div class="b_b">
                 <div class="col-xs-10">
-                    <h4><font style="color:#545454;">${xintuocp.xtcpSplname}adsfasdfasd</font></h4></div>
+                    <h4><font style="color:#545454;">${xintuocp.xtcpSplname}</font></h4></div>
                 <div class="col-xs-2" role="tab" id="pz_${xintuocp.orderId}">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
