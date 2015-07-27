@@ -109,14 +109,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	  </c:if>
 	  
 	  <c:if test="${null==lstProduct||lstProduct.isEmpty()}">
-	  <div class="pei_money row" >
-	  	<div class="b_b">
-              <div class="col-xs-6">
-                     <img src="assets/img/wx/tanhao.png"/>
+	  <div class="row" >
+	  	<div class="b_b" style="margin-top:30px">
+              <div class="col-xs-12" style="text-align:center">
+                     <span><img src="assets/img/wx/tanhao.png"/></span>
               </div>
-              <div class="col-xs-6">
-                 <span class="money_select"><h4><font style="color:#080808;"></font></h4></span>
-             </div>
+              
+              <div class="col-xs-12" style="text-align:center">
+                    <h3 style="color:#3f3f3f">当前没有信托预约记录</h3>
+              </div> 
+              
+              <div class="col-xs-12" style="margin-top:30px">
+                <a href="rest/wx/xintuo/list" class="btn btn-block btn_orange">先逛一逛</a>
+            </div>           
          </div>
 	  </div>	 	  
 	  </c:if>
