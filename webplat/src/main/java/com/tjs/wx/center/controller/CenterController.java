@@ -56,7 +56,11 @@ public class CenterController {
 		if(StringUtils.isNotBlank(username)){
 			User user = userService.selectByUsername(username);
 			UserInfo userInfo = UserInfoService.findUserInfoByUserId(user.getId());			
-			model.addAttribute("username", (StringUtils.isBlank(userInfo.getName())?username:userInfo.getName()));		
+			model.addAttribute("username", (StringUtils.isBlank(userInfo.getName())?username:userInfo.getName()));
+			if(userInfo.getIsValidate()==1){
+				userInfo.setCertId(userInfo.getCertId().substring(0,3)+"***********"
+			    +userInfo.getCertId().substring(userInfo.getCertId().length()-4));
+			}
 			model.addAttribute("userInfo",userInfo);
 			model.addAttribute("user",user);
 		}else{
