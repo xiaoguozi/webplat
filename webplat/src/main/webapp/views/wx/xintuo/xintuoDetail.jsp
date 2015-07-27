@@ -158,7 +158,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
          
          
          
-        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpSysm');">
+        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpSysm');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">收益说明</font></h4></div>
@@ -181,7 +181,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
      
        
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpMjzh');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpMjzh');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">募集进度/账号</font></h4></div>
@@ -209,7 +209,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
        
-        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpRzf');">
+        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpRzf');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">融资方是谁？</font></h4></div>
@@ -229,7 +229,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
        
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpZjyt');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpZjyt');">
             <div class="b_b">
                 <div class="col-xs-8">
                     <h4><font style="color:#545454;">资金用途是什么？</font></h4></div>
@@ -251,7 +251,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
        </div>
        
               
-       <div class="row pei_money" style="margin-top:10px;border-bottom: 0px;cursor: pointer;" onclick="showPanel('xtcpFkcs');">
+       <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpFkcs');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">风控措施如何？</font></h4></div>
@@ -270,7 +270,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <font style="color:#080808;">${xtcp.xtcpFkcs}</font>
        </div>
               
-         <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpHkly');">
+         <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpHkly');">
             <div class="b_b">
                 <div class="col-xs-8">
                     <h4><font style="color:#545454;">还款来源有哪些？</font></h4></div>
@@ -289,7 +289,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <font style="color:#080808;">${xtcp.xtcpHkly}</font>
        </div>
        
-        <div class="row pei_money" style="margin-top:10px;border-bottom: 0px; cursor: pointer;" onclick="showPanel('xtcpZcglr');">
+        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 10px; border-bottom: 1px solid #DDDDDD;" onclick="showPanel('xtcpZcglr');">
             <div class="b_b">
                 <div class="col-xs-6">
                     <h4><font style="color:#545454;">管理机构是谁？</font></h4></div>

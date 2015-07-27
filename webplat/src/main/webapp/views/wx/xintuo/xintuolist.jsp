@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		                            <h4 class="m_day">${xintuocp.xtcpCxq}个月</h4>
 		                        </div>
 		                    </div>
-		                    <div class="row m_tip">
+		                    <div class="row m_money">
 		                        <div class="col-xs-7">
 		                            <h5><fmt:formatNumber value="${xintuocp.xtcpZdrgje}" pattern="#0.####"/>万起</h5></div>
 		                        <div class="col-xs-5">
