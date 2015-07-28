@@ -57,7 +57,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
 				</div>
 			</a>	
-		</div>				
+		</div>
+		
+		<div class="row pei_money" style="margin-top:10px">
+		    <a href="rest/wx/center/about">
+				<div class="col-xs-2" style="margin-top:5px"><p><img src="assets/img/wx/about.png" /></p></div>
+				<div class="col-xs-8" style="padding-top: 15px;margin-left:10px">
+					<p style="font-size:20px; color:#000; "><b>关于淘金山</b></p>
+				</div>
+				<div class="col-xs-1" style="padding-top:15px;">
+					<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
+				</div>
+			</a>	
+		</div>						
 	  </div>
 	
 	
