@@ -42,7 +42,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="row pei_money" style="cursor: pointer; margin-top: 15px;border-bottom: 1px solid #DDDDDD; " onclick="showPanel(this,'${simucp.orderId}');">
             <div class="b_b" style="border:0px">
                 <div class="col-xs-10">
-                    <h4><font style="color:#545454;">${simucp.simpleName}</font></h4></div>
+                    <h4><font style="color:#545454;"><a href="rest/wx/simu/detail?peProductId=${simucp.id}">${simucp.simpleName}</a></font></h4></div>
                 <div class="col-xs-2" role="tab" id="pz_${simucp.orderId}">
                     <div class="row collapsed" >
                         <div class="col-xs-12">

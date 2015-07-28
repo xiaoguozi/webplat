@@ -66,7 +66,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				   <tbody>
 				      <tr>
 				         <td style="border:1px solid #ddd;width:25%">产品名称</td>
-				         <td style="border:1px solid #ddd;width:80%">${xintuocp.xtcpSplname}</td>
+				         <td style="border:1px solid #ddd;width:80%"><a href="rest/wx/xintuo/detail?id=${xintuocp.id}">${xintuocp.xtcpSplname}</a></td>
 				      </tr>
 				      <tr>
 				         <td style="border:1px solid #ddd;width:25%">公 &nbsp; &nbsp; &nbsp; &nbsp;司</td>

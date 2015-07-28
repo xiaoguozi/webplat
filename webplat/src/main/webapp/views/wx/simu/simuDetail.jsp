@@ -311,9 +311,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						
 						wx.ready(function(){
 							  var sdata = {
-								  title: '${simucp.name}', 
-								  desc: '---',
-								  link: '<%=basePath%>rest/wx/simu/detail?id=${xtcp.xtcpId}',
+								  title: '${simucp.managerName} - ${simucp.name}', 
+								  desc: '${simucp.managerName} - ${simucp.name}',
+								  link: '<%=basePath%>rest/wx/simu/detail?peProductId=${simucp.id}',
 								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
 								  success: function () {
 								  	
