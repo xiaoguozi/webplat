@@ -39,14 +39,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       
        <c:if test="${null!=lstProduct&&!lstProduct.isEmpty()}">
       	<c:forEach items="${lstProduct}" var="simucp">
-        <div class="row pei_money" style="cursor: pointer; margin-top: 15px;border-bottom: 1px solid #DDDDDD; " onclick="showPanel(this,'${simucp.id}');">
+        <div class="row pei_money" style="cursor: pointer; margin-top: 15px;border-bottom: 1px solid #DDDDDD; " onclick="showPanel(this,'${simucp.orderId}');">
             <div class="b_b" style="border:0px">
                 <div class="col-xs-10">
                     <h4><font style="color:#545454;">${simucp.simpleName}</font></h4></div>
-                <div class="col-xs-2" role="tab" id="pz_${simucp.id}">
+                <div class="col-xs-2" role="tab" id="pz_${simucp.orderId}">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
-                            <div class="rotate pull-right" id="${simucp.id}Arrow">
+                            <div class="rotate pull-right" id="${simucp.orderId}Arrow">
                                 <h4><span class="icon-a" style="color: #bbb;"></span>  </h4>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
             </div>
        </div>               
-       <div id="${simucp.id}" class="panel-collapse collapse row" role="tabpanel"  style="padding-top:10px;background: #fff;padding-left:10px">
+       <div id="${simucp.orderId}" class="panel-collapse collapse row" role="tabpanel"  style="padding-top:10px;background: #fff;padding-left:10px">
 	            <table class="table" style="width:97%">				
 				   <tbody>
 				      <tr>

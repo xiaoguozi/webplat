@@ -134,6 +134,8 @@ public class PEProduct {
 	/* 订单日期 */
 	private Date orderCreateDate;
 	
+	private long orderId;
+	
 	public long getId() {
 		return id;
 	}
@@ -452,6 +454,14 @@ public class PEProduct {
 
 	public void setOrderCreateDate(Date orderCreateDate) {
 		this.orderCreateDate = orderCreateDate;
+	}
+	
+	public long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
 	}
 
 	@Override

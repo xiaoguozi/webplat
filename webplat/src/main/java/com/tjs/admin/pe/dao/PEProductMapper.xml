@@ -40,6 +40,7 @@
    		<result property="managerName" column="manager_name" jdbcType="VARCHAR"  />
    		<result property="isShow" column="is_show" jdbcType="INTEGER"  />
    		<result property="orderCreateDate" column="order_create_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+   		<result property="orderId" column="order_id" jdbcType="BIGINT"/>
     </resultMap>
     
     
@@ -295,7 +296,7 @@
 	<select id="selectOrderSimucp" resultMap="peProductMap"
 	 	parameterType="com.tjs.admin.pe.controller.PEProductCtrlModel">
 		select 
-		tjs_order.order_create_date, pe_product.*
+		tjs_order.order_create_date, tjs_order.order_id, pe_product.*
 		from tjs_order, pe_product where
 		pe_product.id = tjs_order.order_product_id
 		AND tjs_order.order_product_type='20' 
