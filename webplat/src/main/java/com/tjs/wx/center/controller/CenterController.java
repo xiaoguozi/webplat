@@ -218,4 +218,16 @@ public class CenterController {
 								
         return "wx/center/simuOrder";
     }
+	
+	@RequestMapping("/about")
+    public String about(Model model) {		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isBlank(username)){			
+			return "redirect:/rest/web/mlogin";
+		}
+				
+        return "wx/center/about";
+    }	
 }

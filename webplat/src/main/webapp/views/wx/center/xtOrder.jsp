@@ -131,9 +131,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             </div>           
          </div>
 	  </div>	 	  
-	  </c:if>
-                              
-    
+	  </c:if>                            
+   </div>
 </body>
 <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">

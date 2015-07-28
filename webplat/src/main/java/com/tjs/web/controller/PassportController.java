@@ -633,4 +633,18 @@ public class PassportController {
     }
 
 
+    /**
+     * 用户登出
+     * 
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/mlogout", method = RequestMethod.GET)
+    public String mlogout(HttpSession session) {
+        session.removeAttribute("userInfo");
+        // 登出操作
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/rest/wx/xintuo/index";
+    }
 }
