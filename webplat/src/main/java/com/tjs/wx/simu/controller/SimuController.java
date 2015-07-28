@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.tjs.admin.model.User;
+import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
@@ -33,6 +34,7 @@ import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.web.pe.controller.PEChartVO;
@@ -61,6 +63,9 @@ public class SimuController {
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private UserInfoService userInfoService;
 	
 	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
@@ -178,6 +183,18 @@ public class SimuController {
     public String reservePage(XintuoCtrlModel xintuoCtrlModel, Model model) {
 		Long productId = xintuoCtrlModel.getProductId();
 		PEProduct peProduct = peProductService.getPEProductById(productId);
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+			model.addAttribute("userPhone", username);
+			if(userInfo.getIsValidate()==1){
+				model.addAttribute("name", userInfo.getName());
+			}
+		}
 		
 		model.addAttribute("simuName", peProduct.getSimpleName());
 		model.addAttribute("productId", productId);

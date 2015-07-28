@@ -40,19 +40,20 @@ import com.tjs.admin.xintuo.util.BigDecimalUtils;
 @RequestMapping(value ="/wx/xintuo")
 public class XintuoController {
 	
-
+     @Resource
+	 private IOrderService iOrderService;
     
-    @Resource
-	private IOrderService iOrderService;
-    
-	@Resource
-	private IProductXtcpService iProductXtService;
+	 @Resource
+	 private IProductXtcpService iProductXtService;
 		
 	 @Resource
 	 private UserService userService;
 	 
 	 @Resource
 	 private UserInfoService UserInfoService;
+	 
+	 @Resource
+		private UserInfoService userInfoService;
 	
     
 	@RequestMapping("/index")
@@ -164,6 +165,18 @@ public class XintuoController {
     public String reservePage(XintuoCtrlModel xintuoCtrlModel, Model model) {
 		Long productId = xintuoCtrlModel.getProductId();
 		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(productId);
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			UserInfo userInfo = userInfoService.findUserInfoByUserId(user.getId());
+			model.addAttribute("userPhone", username);
+			if(userInfo.getIsValidate()==1){
+				model.addAttribute("name", userInfo.getName());
+			}
+		}
 		
 		model.addAttribute("xtName", productXtcp.getXtcpSplname());
 		model.addAttribute("productId", productId);

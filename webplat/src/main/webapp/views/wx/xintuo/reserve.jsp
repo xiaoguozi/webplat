@@ -38,12 +38,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	            <div class="col-xs-12">
 	             	<div class="form-group" >
 						    <label>客户姓名</label>
-						    <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入姓名">
+						    <input type="text" class="form-control" name="userName" id="userName" value="${name}" placeholder="请输入姓名">
 					   </div>
 			  
 					  <div class="form-group" style="margin-bottom:2px">
 					    <label>客户手机</label>
-					    <input type="text" class="form-control" id="userPhone" name="userPhone"  placeholder="请输入手机号码">
+					    <input type="text" class="form-control" id="userPhone" name="userPhone" value="${userPhone}" placeholder="请输入手机号码">
 					  </div>
 	                   
 	                  <div class="form-group" style="margin-bottom:2px">
