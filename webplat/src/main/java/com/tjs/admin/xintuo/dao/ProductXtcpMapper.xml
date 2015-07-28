@@ -379,7 +379,7 @@
 		xtcp_id, xtgs_log xtcp_log,xtcp_fullname, xtcp_gszhname, xtcp_gsId,
 		xtcp_fxgm,xtcp_nsyl,xtcp_lxfp,xtcp_cxq,xtcp_xtlx,xtcp_zdrgje,xtcp_dyl,xtcp_tzly,xtcp_dyw,xtcp_sysm,xtcp_mjzh,xtcp_rzf,
 		xtcp_zjyt,xtcp_hkly,xtcp_fkcs,xtcp_zcglr,xtcp_dp,xtcp_hd,xtcp_status,xtcp_tjw,xtcp_tjno,xtcp_createDate,xtcp_modifyDate,xtcp_userId,xtcp_username,xtcp_validstatus,
-		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs,tjs_order.order_ID
+		xtcp_area,xtcp_city,xtcp_splname,xtcp_tzfs,tjs_order.order_ID,tjs_order.order_create_date
 		from tjs_product_xtcp,tjs_product_xtgs,tjs_order where 
 		 xtgs_id = xtcp_gsId
 		AND xtcp_id = tjs_order.order_product_id

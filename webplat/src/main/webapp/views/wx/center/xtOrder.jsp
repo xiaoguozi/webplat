@@ -39,10 +39,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       
        <c:if test="${null!=lstProduct&&!lstProduct.isEmpty()}">
       	<c:forEach items="${lstProduct}" var="xintuocp">
-        <div class="row pei_money" style="border-bottom: 0px; cursor: pointer; margin-top: 15px;" onclick="showPanel('${xintuocp.orderId}');">
-            <div class="b_b">
+        <div class="row pei_money" style="cursor: pointer; margin-top: 15px;border-bottom: 1px solid #DDDDDD; " onclick="showPanel(this,'${xintuocp.orderId}');">
+            <div class="b_b" style="border:0px">
                 <div class="col-xs-10">
                     <h4><font style="color:#545454;">${xintuocp.xtcpSplname}</font></h4></div>
+               
                 <div class="col-xs-2" role="tab" id="pz_${xintuocp.orderId}">
                     <div class="row collapsed" >
                         <div class="col-xs-12">
@@ -53,8 +54,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     </div>
                 </div>
             </div>
+            <div class="b_b" style="border:0px;" >
+                <div style="margin-left:16px;color:#d4d4d4" >
+                 	<fmt:formatDate value="${xintuocp.orderCreateDate}" pattern="yyyy-MM-dd HH:mm"/>
+                </div>
+            </div>
+            
        </div>               
-       <div id="${xintuocp.orderId}" class="panel-collapse collapse row" role="tabpanel"  style="padding-top:10px;background: #fff;padding-left:10px">
+       <div id="${xintuocp.orderId}" class="panel-collapse collapse row" role="tabpanel"  style="padding-top:10px;background: #fff;padding-left:10px;border-bottom: 1px solid #DDDDDD;">
 	            <table class="table" style="width:97%">				
 				   <tbody>
 				      <tr>
@@ -130,18 +137,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-
-	function showPanel(panelId){
+	function showPanel(obj,panelId){
+		var _this = $(obj);
 		var obj = $("#"+panelId);
 		var objArrow = $("#"+panelId+"Arrow");
 		if(obj.css("display")!='none'){
 			obj.css("display", "none");
 			objArrow.removeClass("rotateTop");
 			objArrow.addClass("rotate");
+			_this.css("border-bottom","1px solid #DDDDDD");
 		}else{
 			obj.css("display", "block");
 			objArrow.removeClass("rotate");
 			objArrow.addClass("rotateTop");
+			_this.css("border-bottom","0px");
 		}
 	}
 			

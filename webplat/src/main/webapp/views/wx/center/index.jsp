@@ -21,24 +21,27 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body class="bg_gray">
     <div class="container">		
-			<div class="row centerbg">
+			<div class="row bg">
 	            <div class="col-xs-12">
 	                <h3>
 	               		 ${username},欢迎回来!                
 	                </h3>
-	                <h5>淘金山用户累计收益已超10亿元</h5>
-	            </div>	            
+	                <h5>淘金山用户累计收益已超10亿元<a href="rest/web/mlogin" class="btn btn_default" >退出</a></h5> 
+	            </div>
+	            <div class="col-xs-12">                           
+                                                           
+            </div>	            
 	      </div>
 		
 		
 		
 		<div class="row pei_money" style="margin-top:10px">
 		 <a href="rest/wx/center/personInfo">
-			<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/baseinfo.png"/></p></div>
-			<div class="col-xs-8" style="padding-top: 25px;margin-left:10px">
+			<div class="col-xs-2" style="margin-top:5px"><p><img src="assets/img/wx/baseinfo.png"/></p></div>
+			<div class="col-xs-8" style="padding-top: 15px;margin-left:10px">
 					<p style="font-size:20px; color:#000;"><b>基本资料</b></p>							  
 			</div>
-			<div class="col-xs-1" style="padding-top: 25px;">
+			<div class="col-xs-1" style="padding-top: 15px;">
 				<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
 			</div>	
 		 </a>
@@ -46,11 +49,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 		<div class="row pei_money" style="margin-top:10px">
 		    <a href="rest/wx/center/xtOrder">
-				<div class="col-xs-2" style="margin-top:10px"><p><img src="assets/img/wx/xintuoyd.png" /></p></div>
-				<div class="col-xs-8" style="padding-top: 25px;margin-left:10px">
+				<div class="col-xs-2" style="margin-top:5px"><p><img src="assets/img/wx/xintuoyd.png" /></p></div>
+				<div class="col-xs-8" style="padding-top: 15px;margin-left:10px">
 					<p style="font-size:20px; color:#000; "><b>信托预约记录</b></p>
 				</div>
-				<div class="col-xs-1" style="padding-top:25px;">
+				<div class="col-xs-1" style="padding-top:15px;">
 					<span class="pull-right icon-a" style="margin-top: 3px; color: #b4b4b4;"></span>
 				</div>
 			</a>	

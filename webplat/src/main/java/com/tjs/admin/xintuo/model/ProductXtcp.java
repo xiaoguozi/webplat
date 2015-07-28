@@ -91,8 +91,17 @@ public class ProductXtcp {
 	private String xtcpTzfs;
     
     private Long orderId;
+    
+    private Date orderCreateDate;
 	
-  
+	public Date getOrderCreateDate() {
+		return orderCreateDate;
+	}
+	
+	public void setOrderCreateDate(Date orderCreateDate) {
+		this.orderCreateDate = orderCreateDate;
+	}
+	
 	public String getXtcpTzfs() {
 		return xtcpTzfs;
 	}
