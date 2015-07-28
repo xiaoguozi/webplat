@@ -26,7 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	                <h3>
 	               		 ${username},欢迎回来!                
 	                </h3>
-	                <h5>淘金山用户累计收益已超10亿元<a href="rest/web/mlogin" class="btn btn_default" >退出</a></h5> 
+	                <h5>淘金山用户累计收益已超10亿元</h5> 
 	            </div>
 	            <div class="col-xs-12">                           
                                                            
