@@ -16,7 +16,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <head>
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
-        <title>淘金山—-登录</title>
+        <title>淘金山—登录</title>
         <div id='wx_pic' style='margin:0 auto;display:none;'>
           <img src='assets/img/fx_logo.jpg' />
          </div>
