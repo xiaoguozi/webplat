@@ -40,7 +40,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	           <c:forEach items="${lstProductVos}" var="xintuocp">
 		            <div class="jr_list"  onclick="goXintuoDetail('${xintuocp.xtcpId}')">
 		                <div class="col-xs-12">
-		                    <h3><font style="color: #5C9BD1;">${xintuocp.xtcpSplname}</font></h3>
+		                    <h3><font style="color: #000;">${xintuocp.xtcpSplname}</font></h3>
 		                </div>
 		                <div class="col-xs-12">               
 		                    <div class="row m_title">
