@@ -309,10 +309,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						          ]
 						});
 						
+						
 						wx.ready(function(){
+								var simuDesc = "最新净值：${simucp.netWorth} "+"（"+"<fmt:formatDate value='${simucp.netWorthTime}' pattern='yyyy-MM-dd'/>"+"）";
+								simuDesc += " 累计收益："+"<fmt:formatNumber value='${simucp.accumulatedIncome.intValue()}' pattern='#0'/>.<fmt:formatNumber value='${simucp.accumulatedIncome*100%100}' pattern='00'/>%";
+								simuDesc += " 成立日期："+"<fmt:formatDate value='${simucp.setupTime}' pattern='yyyy-MM-dd'/>";
+							
 							  var sdata = {
 								  title: '${simucp.managerName} - ${simucp.name}', 
-								  desc: '${simucp.managerName} - ${simucp.name}',
+								  desc: simuDesc, 
 								  link: '<%=basePath%>rest/wx/simu/detail?peProductId=${simucp.id}',
 								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
 								  success: function () {
