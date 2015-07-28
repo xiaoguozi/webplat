@@ -19,6 +19,8 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	
 	private int limitStart;
 	
+	private int totalPageSize;
+	
 	/* 净值日期 */
 	private String netWorthTimeStr;
 	
@@ -39,6 +41,22 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 	
 	/** 更新时传入的ids */
 	private String ids;
+	
+	private Long userId;
+	
+	private String telPhone;
+	
+	public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}
+	}
+	
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
+	}
 	
 	public String getKeyWord() {
 		return keyWord;
@@ -113,6 +131,22 @@ public class PEProductCtrlModel extends GenericCtrlModel {
 
 	public void setIds(String ids) {
 		this.ids = ids;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getTelPhone() {
+		return telPhone;
+	}
+
+	public void setTelPhone(String telPhone) {
+		this.telPhone = telPhone;
 	}
 	
 }

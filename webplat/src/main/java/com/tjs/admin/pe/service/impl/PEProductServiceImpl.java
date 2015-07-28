@@ -338,5 +338,20 @@ public class PEProductServiceImpl implements PEProductService {
 		List<PEProduct> result  = peProductMappper.selectStarPEProductIndex(peProductCtrlModel);
 		return result;
 	}
+
+	@Override
+	public int countOrderSimucp(PEProductCtrlModel peProductCtrlModel) {
+		int result = 0;
+		result = peProductMappper.countOrderSimucp(peProductCtrlModel);
+		return result;
+	}
+
+	@Override
+	public List<PEProduct> selectOrderSimucp(
+			PEProductCtrlModel peProductCtrlModel) {
+		List<PEProduct> result = new ArrayList<PEProduct>();
+		result = peProductMappper.selectOrderSimucp(peProductCtrlModel);
+		return result;
+	}
 	
 }

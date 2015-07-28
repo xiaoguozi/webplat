@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tjs.admin.model.User;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.pe.controller.PEProductNetCtrlModel;
@@ -30,6 +33,8 @@ import com.tjs.admin.pe.service.PECompanyService;
 import com.tjs.admin.pe.service.PEManagerService;
 import com.tjs.admin.pe.service.PEProductNetService;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.web.pe.controller.PEChartVO;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
 import com.tjs.wx.xintuo.controller.XintuoCtrlModel;
@@ -53,6 +58,9 @@ public class SimuController {
 	
 	@Resource
 	private IOrderService iOrderService;
+	
+	@Resource
+	private UserService userService;
 	
 	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
@@ -196,8 +204,15 @@ public class SimuController {
      		PEProduct peProduct = peProductService.getPEProductById(productId);
      		order.setProductName(peProduct.getSimpleName());
      	}   	
-     	order.setTelphone(userPhone);;
+     	order.setTelphone(userPhone);
      	order.setUserName(userName);    	
+     	
+     	Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			order.setUserID(user.getId());
+		}
      	
      	iOrderService.insertOrder(order);
      	

@@ -32,4 +32,9 @@ public interface PEProductMapper  {
 	
 	
 	List<PEProduct> selectStarPEProductIndex(PEProductCtrlModel peProductCtrlModel); 
+	
+	int countOrderSimucp(PEProductCtrlModel peProductCtrlModel);
+	
+	List<PEProduct> selectOrderSimucp(PEProductCtrlModel peProductCtrlModel);
+	
 }

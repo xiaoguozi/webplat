@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
+import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.model.PEProduct;
+import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
@@ -39,7 +42,10 @@ public class CenterController {
 	 private UserInfoService UserInfoService;
 	 
 	 @Resource
-	private IProductXtcpService iProductXtService;
+	 private IProductXtcpService iProductXtService;
+	 
+	 @Resource
+	 private PEProductService peProductService;
 	 
 	 
 	@RequestMapping("/index")
@@ -175,5 +181,41 @@ public class CenterController {
 		model.addAttribute("changeSucess", true);
 		
         return "wx/center/personInfo";
+    }
+	
+	@RequestMapping("/simuOrder")
+    public String simuOrder(Model model) {		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		
+		if(StringUtils.isNotBlank(username)){
+			User user = userService.selectByUsername(username);
+			
+			PEProductCtrlModel peProductCtrlModel = new PEProductCtrlModel();
+			peProductCtrlModel.setUserId(user.getId());
+			peProductCtrlModel.setTelPhone(username);
+			peProductCtrlModel.setPageSize(12);
+	    	int totalcount = peProductService.countOrderSimucp(peProductCtrlModel);
+	    	peProductCtrlModel.setTotalCount(totalcount); 
+	    	
+	    	//判断请求页
+	        int totalPageNO = peProductCtrlModel.getTotalPageSize();//总页数
+	        int currentPageNo = 1;//当前页
+	        if(peProductCtrlModel.getPageNo()<1||totalPageNO==0){//如果请求的页数小于1，设置成第一页
+	        	currentPageNo =1;
+	        } else if(peProductCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+	        	currentPageNo =totalPageNO;
+	        }else{
+	        	currentPageNo = peProductCtrlModel.getPageNo();
+	        }
+	        
+	        peProductCtrlModel.setPageNo(currentPageNo);			
+			List<PEProduct> lstProduct = peProductService.selectOrderSimucp(peProductCtrlModel);
+			model.addAttribute("lstProduct",lstProduct);
+		}else{
+			return "redirect:/rest/web/mlogin";
+		}
+								
+        return "wx/center/simuOrder";
     }
 }

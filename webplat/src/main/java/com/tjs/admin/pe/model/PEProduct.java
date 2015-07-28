@@ -131,6 +131,9 @@ public class PEProduct {
 	/**经理点评*/
 	private String managerReview;
 	
+	/* 订单日期 */
+	private Date orderCreateDate;
+	
 	public long getId() {
 		return id;
 	}
@@ -434,7 +437,6 @@ public class PEProduct {
 	public void setIsShow(int isShow) {
 		this.isShow = isShow;
 	}
-	
 
 	public String getManagerLog() {
 		return managerLog;
@@ -444,6 +446,13 @@ public class PEProduct {
 		this.managerLog = managerLog;
 	}
 
+	public Date getOrderCreateDate() {
+		return orderCreateDate;
+	}
+
+	public void setOrderCreateDate(Date orderCreateDate) {
+		this.orderCreateDate = orderCreateDate;
+	}
 
 	@Override
 	public String toString() {

@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.tjs.admin.pe.controller.PEProductCtrlModel;
+import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEManager;
-import com.tjs.admin.pe.model.PEManagerProduct;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.web.pe.controller.PESearchCtrlVO;
-import com.tjs.admin.pe.model.PECommonVO;
 
 /**
  * 私募产品服务接口
@@ -136,5 +135,19 @@ public interface PEProductService  {
     * @return
     */
 	List<PEProduct> selectStarPEProductIndex();   
+	
+	/**
+	 * 微信个人中心查询私募
+	 * @param peProductCtrlModel
+	 * @return 数量
+	 */
+	int countOrderSimucp(PEProductCtrlModel peProductCtrlModel);
+	
+	/**
+	 * 微信个人中心查询私募
+	 * @param peProductCtrlModel
+	 * @return
+	 */
+	List<PEProduct> selectOrderSimucp(PEProductCtrlModel peProductCtrlModel);
 	
 }
