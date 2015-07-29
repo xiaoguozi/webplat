@@ -55,9 +55,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body class="bg_gray">
     <div class="container">
-    	<div class="row" >
-            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;width: 100%;"><font style="font-family: 黑体;color:#080808; font-size: 20px;">${simucp.managerName} - ${simucp.name}</font></a>
+    
+        <div class="row" id="backDiv">
+            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;width: 100%;">
+            	<span id="spanBack" class="pull-left icon-back" style="margin-top: 3px; margin-left:6px; display:none;"></span>
+            	<font style="font-family: 黑体;color:#080808; font-size: 20px;">${simucp.managerName} - ${simucp.name}</font>
+            </a>
         </div>
+        
         <div class="row" style="background: white; ">
         	<div class="col-xs-4" style="border-top: 2px solid #F9F9F9; border-bottom: 2px solid #F9F9F9;">
         		<p style="margin-top: 5px;">最新净值</p>
@@ -333,7 +338,20 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						});
 			});
 		
+		 //设置如果被分享出去，那么给一个返回的按钮
+		 var url = window.location.href;
+		 if(url.indexOf("from")!=-1){
+			 $("#spanBack").show();
+			 $("#backDiv").click(function(){
+				 back();
+			 });
+		 }
+		 
 	});
+	
+	function back(){
+		window.location.href = "<%=basePath%>rest/wx/xintuo/index";
+	}
 	
 	
 	var chartObj = {

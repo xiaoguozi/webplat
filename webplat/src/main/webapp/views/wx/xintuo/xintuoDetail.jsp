@@ -36,9 +36,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body class="bg_gray">
     <div class="container">
-        <div class="row" style="display: none;">
-            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;"><font style="font-family: 黑体;color:#080808; font-size: 20px;">${xtcp.xtcpSplname}</font></a>
-        </div>              
+        <div class="row" id="backDiv">
+            <a href="javascript:void(0);" class="btn btn-block btn-lg back_btn" style="cursor: default;width: 100%;">
+            	<span id="spanBack" class="pull-left icon-back" style="margin-top: 3px; margin-left:6px; display:none;"></span>
+            	<font style="font-family: 黑体;color:#080808; font-size: 20px;">${xtcp.xtcpSplname}</font>
+            </a>
+        </div>
         <div class="pei_money row" >
             <div class="b_b">
                 <div class="col-xs-6">
@@ -378,8 +381,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						});
 			});
 		
+		 
+		 //设置如果被分享出去，那么给一个返回的按钮
+		 var url = window.location.href;
+		 if(url.indexOf("from")!=-1){
+			 $("#spanBack").show();
+			 $("#backDiv").click(function(){
+				 back();
+			 });
+		 }
 		
 	});
+	
+	function back(){
+		window.location.href = "<%=basePath%>rest/wx/xintuo/index";
+	}
 	
 </script>
 
