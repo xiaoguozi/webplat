@@ -181,7 +181,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	function addRecode(xintop){
 		var strhtml ="<div class=\"jr_list\"  onclick=\"goXintuoDetail('"+xintop.xtcpId+"')\">";
 		    strhtml+="<div class=\"col-xs-12\">";
-		    strhtml+="<h3><font style='color: #5C9BD1;'>"+xintop.xtcpSplname+"</font></h3>";
+		    strhtml+="<h3><font style='color: #000;'>"+xintop.xtcpSplname+"</font></h3>";
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"col-xs-12\"> ";              
 		    strhtml+="<div class=\"row m_title\">";

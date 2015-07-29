@@ -168,7 +168,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	function addRecode(simucp){
 		var strhtml ="<div class=\"jr_list\"  onclick=\"goSimuDetail('"+simucp.id+"')\">";
 		    strhtml+="<div class=\"col-xs-12\">";
-		    strhtml+="<h3><font style='color: #5C9BD1;'>"+simucp.name+"</font></h3>";
+		    strhtml+="<h3><font style='color: #000;'>"+simucp.name+"</font></h3>";
 		    strhtml+="</div>";
 		    strhtml+="<div class=\"col-xs-12\"> ";              
 		    strhtml+="<div class=\"row m_title\">";
