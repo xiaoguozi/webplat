@@ -58,7 +58,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		 h5{color: #f04e27;}			
     </style>
 </head>
-<body class="bg_gray" style="background: #80D2DD;">
+<body class="bg_gray" >
         <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
        		<div class="row" >
 			    <div class="col-xs-12" >
