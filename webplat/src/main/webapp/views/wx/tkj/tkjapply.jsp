@@ -20,66 +20,154 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 </head>
 <body class="bg_gray" style="background: #80D2DD; margin-left: 0px; margin-right: 0px;">
-       <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
-       		<div class="row" >
+       <div >
+       		<div class="row" style="background: #80D2DD;">
                 <div class="col-xs-12" style="text-align: center;margin-top: 10px;">
-                    <img src="assets/img/tkj/buzou3.png">
+                    <img src="assets/img/tkj/buzou1.png">&nbsp;
                 </div>
 			</div>
-           <div class="row" style="background: #ffffff; margin-top: 20px; border-bottom: 1px solid #DCDCDC; min-height: 50px; line-height: 50px;" >
-               <div class="col-xs-3" style="background: #ffffff;text-align: left;color: #000000;">
-                   <nobr>用户名</nobr>
-               </div>
-               <div class="col-xs-9" style="text-align: center;color: #ffffff;">
-                   <input type="text" class="form-control" id="firstname" style="margin-top: 8px;"
-                          placeholder="请输入用户名">
-               </div>
-           </div>
-           <div class="row" style="background: #ffffff; border-bottom: 1px solid #DCDCDC; min-height: 50px; line-height: 50px;" >
-               <div class="col-xs-3" style="background: #ffffff;text-align: left;color: #000000;">
-                   <nobr>卡号</nobr>
-               </div>
-               <div class="col-xs-9" style="text-align: center;color: #ffffff;">
-                   <input type="text" class="form-control" id="cardId" style="margin-top: 8px;"
-                          placeholder="请输入卡号">
-               </div>
-           </div>
-           <div class="row" style="background: #ffffff; border-bottom: 1px solid #DCDCDC; min-height: 50px; line-height: 50px;" >
-               <div class="col-xs-3" style="background: #ffffff;text-align: left;color: #000000;">
-                   <nobr>所属银行</nobr>
-               </div>
-               <div class="col-xs-9" style="text-align: right;color: #ffffff;">
-                   <img src="assets/img/tkj/jianhang_s.png" style="margin-top: -4px;" />&nbsp;&nbsp;<span style="color: #C9C9C9;font-size: 16px;"><span style="color: #222222;">中国建设银行</span>&nbsp;<span class="icon-a" style="color: #E2E2E2; "></span></span>
-               </div>
-           </div>
-           <div class="row" style="background: #ffffff; border-bottom: 1px solid #DCDCDC; min-height: 50px; line-height: 50px;" >
-               <div class="col-xs-3" style="background: #ffffff;text-align: left;color: #000000;">
-                   <nobr>开户城市</nobr>
-               </div>
-               <div class="col-xs-3" style="text-align: center;color: #ffffff;">
-                   <img src="assets/img/tkj/down_white.png">
-               </div>
-               <div class="col-xs-1" style="text-align: center;color: #ffffff;">
-                   <div style="background: #dddddd; width: 1px; margin-top: 2px; margin-bottom: 2px;">&nbsp;</div>
-               </div>
-               <div class="col-xs-2" style="text-align: right;color: #ffffff;">
-                   <img src="assets/img/tkj/down_white.png">
-               </div>
-           </div>
-           <div class="row" style="background: #ffffff; border-bottom: 1px solid #DCDCDC; min-height: 50px; line-height: 50px;" >
-               <div class="col-xs-3" style="background: #ffffff;text-align: left;color: #000000;">
-                   <nobr>开户支行</nobr>
-               </div>
-               <div class="col-xs-9" style="text-align: center;color: #ffffff;">&nbsp;
 
+           <div class="row" style="background: #80D2DD;">
+               <div class="col-xs-12" style="text-align: left;margin-top: 5px; color: #ffffff; font-size: 16px; ">
+                   &nbsp;身份验证
                </div>
            </div>
 
-           <div class="row" style="background: #80D2DD; text-align: center; margin-top: 30px; ">
-               <button type="button" class="btn" onclick="next();"  style="color:#EE592E; width: 80%; background: #FFFFFF;" >下一步</button>
+
+           <div style="height: 50px; line-height: 50px; float: left; width: 100%; background: #FFFFFF; border-bottom: 1px solid #DDDDDD;">
+               <div style="height: 50px; line-height: 50px; width: 30%;  float: left;">
+                   <span>&nbsp;姓名</span>
+               </div>
+               <div style="height: 50px; line-height: 50px;width: 70%;  float: left;">
+                   <input type="text" class="form-control" style="height:34px;line-height: 34px; width: 90%;  margin-top: 8px;" id="name"
+                          placeholder="请输入名字">
+               </div>
            </div>
 
-           <div class="row" style="position:absolute; width:100%;  z-index:-1; margin-top: 65px;">
+           <div style="height: 50px; line-height: 50px; float: left; width: 100%;background: #FFFFFF;">
+               <div style="height: 50px; line-height: 50px; width: 30%;  float: left;">
+                   <span>&nbsp;身份证号码</span>
+               </div>
+               <div style="height: 50px; line-height: 50px;width: 70%;   float: left;">
+                   <input type="text" class="form-control" style="height:34px;line-height: 34px;  width: 90%; margin-top: 8px;" id="certId"
+                          placeholder="请输入身份证号码">
+               </div>
+           </div>
+
+
+           <div class="row" style="background: #ffffff; min-height: 15px;">&nbsp;</div>
+           <div class="row" style="background: #80D2DD; text-align: center; min-height: 10px;">&nbsp;</div>
+           <div class="row" style="background: #80D2DD; text-align: center; ">
+               <button type="button" class="btn" style="color:#EE592E; width: 80%; background: #FFFFFF; height: 40px;" >身份认证</button>
+           </div>
+           <div class="row" style="background: #80D2DD; text-align: center;  min-height: 10px;">&nbsp;</div>
+
+
+
+           <div class="row" style="background: #ffffff; min-height: 12px;"></div>
+           <div class="row" style="background: #ffffff; ">
+                <span style="margin-left: 15px;font-size: 16px;">手机使用情况验证</span>
+           </div>
+           <div class="row" style="background: #ffffff; min-height: 5px;"></div>
+
+           <div style="background: #ffffff; height: 60px; line-height: 60px; float: left;width: 100%;" >
+               <div style="height: 60px; line-height: 60px;float: left; width: 33%;">
+                   <div style="width: 50%; float: left; text-align: right;">
+                       <div style="height: 30px; line-height: 40px;float: left; width: 100%;">
+                           <img src="assets/img/tkj/anniu.png">&nbsp;&nbsp;
+                       </div>
+                       <div style="height: 30px; line-height: 20px;float: left;width: 100%; ">
+                           <span style="font-size: 12px;"><nobr>移动</nobr>&nbsp;</span>
+                       </div>
+                   </div>
+                   <div style="width: 50%; float: left; text-align: left;">
+                       <img src="assets/img/tkj/yidong.png">
+                   </div>
+               </div>
+               <div style="height: 60px; line-height: 60px;float: left; width: 33%;">
+                   <div style="width: 50%; float: left; text-align: right;">
+                       <div style="height: 30px; line-height: 40px;float: left; width: 100%;">
+                           <img src="assets/img/tkj/anniu2.png">&nbsp;&nbsp;
+                       </div>
+                       <div style="height: 30px; line-height: 20px;float: left;width: 100%; ">
+                           <span style="font-size: 12px;"><nobr>联通</nobr>&nbsp;</span>
+                       </div>
+                   </div>
+                   <div style="width: 50%; float: left; text-align: left;">
+                       <img src="assets/img/tkj/liantong.png">
+                   </div>
+               </div>
+               <div style="height: 60px; line-height: 60px;float: left; width: 33%;">
+                   <div style="width: 50%; float: left; text-align: right;">
+                       <div style="height: 30px; line-height: 40px;float: left; width: 100%;">
+                           <img src="assets/img/tkj/anniu2.png">&nbsp;&nbsp;
+                       </div>
+                       <div style="height: 30px; line-height: 20px;float: left;width: 100%; ">
+                           <span style="font-size: 12px;"><nobr>电信</nobr>&nbsp;</span>
+                       </div>
+                   </div>
+                   <div style="width: 50%; float: left; text-align: left;">
+                       <img src="assets/img/tkj/dianxin.png">
+                   </div>
+               </div>
+           </div>
+
+
+           <div class="row" style="background: #ffffff; min-height: 5px;">&nbsp;</div>
+           <div style="background: #80D2DD; width: 100%; margin-top: 20px; text-align: center;">
+               <button type="button" class="btn" style="color:#EE592E; width: 80%; background: #FFFFFF; height: 40px;" >手机验证</button>
+           </div>
+
+           <div style="background: #80D2DD; width: 100%; margin-top: 20px;">
+                <span style="text-align: left; color: #ffffff; font-size: 16px;">紧急联系人认证</span>
+           </div>
+
+
+           <div style="height: 50px; line-height: 50px; width: 100%; background: #ffffff;  border-bottom: 1px solid #DDDDDD;">
+               <div style="height: 50px; line-height: 50px; width: 80px;  float: left;">
+                   <span>&nbsp;手机号码</span>
+               </div>
+               <div style="height: 50px; line-height: 50px;width: 65%;  float: left;">
+                   <input type="text" class="form-control" style="height:34px;line-height: 34px; width: 90%; margin-left: 0px;  margin-top: 8px;" id="name"
+                          placeholder="请输入手机号码">
+               </div>
+           </div>
+
+
+
+           <div style="height: 50px; line-height: 50px; float: left; width: 100%; background: #FFFFFF; ">
+               <div style="width: 60%; float: left;">
+                   <div style="height: 50px; line-height: 50px; width: 80px;  float: left;">
+                       <span>&nbsp;姓名</span>
+                   </div>
+                   <div style="height: 50px; line-height: 50px;width: 100px;  float: left;">
+                       <input type="text" class="form-control" style="height:34px;line-height: 34px; width: 100px;  margin-top: 8px;" id="name"
+                              placeholder="请输入姓名">
+                   </div>
+               </div>
+
+               <div style="width: 40%;float: left;">
+                   <div style="width: 70%; float: left; text-align: center;">
+                       <span ><nobr>关系</nobr></span>
+                   </div>
+                   <div style="width: 30%; float: left;">
+                       <img src="assets/img/tkj/down_white.png" style="vertical-align: middle; ">
+                   </div>
+               </div>
+           </div>
+
+
+
+           <div style="background: #80D2DD; min-height: 10px; width: 100%;">&nbsp;</div>
+           <div style="background: #80D2DD; text-align: center; width: 100%;">
+               <button type="button" class="btn" style="color:#EE592E; width: 80%; background: #FFFFFF; height: 40px;" >紧急联系人验证</button>
+           </div>
+           <div  style="background: #80D2DD; min-height: 20px; width: 100%;">&nbsp;</div>
+           <div  style=" text-align: center; width: 100%;">
+               <button type="button" class="btn" onclick="next();" style="color:#EE592E; width: 40%; background: #FFFFFF; height: 40px;" >下一步</button>
+           </div>
+
+           <div  style="position:absolute; width:100%;  z-index:-1; margin-bottom: 0px;  ">
                <img src="assets/img/tkj/beijingb.png"  width="100%"/>
            </div>
 
