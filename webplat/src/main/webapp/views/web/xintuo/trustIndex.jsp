@@ -112,7 +112,14 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_right_textdiv"> 门槛：  <fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/>万 | 期限：${xintuotop.xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv" style="height:40px;"> ${xintuotop.xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+	 <c:choose>  
+	    <c:when test="${xintuotop.xtcpStatus=='30'}">
+	       <div class="tjs_right_btndiv"> <a href="" class="tjs_btn_disable" data_id="${xintuotop.xtcpId}">立即预约</a></div><br/>       	
+	    </c:when>    
+	    <c:otherwise>  
+	       <div class="tjs_right_btndiv"> <a href="" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div><br/>
+	    </c:otherwise>  
+	</c:choose> 
 </div>
 </c:forEach>
 
@@ -194,7 +201,16 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 	<div class="tjs_float_left tjs_width225px tjs_height145px">
 	<div class="tjs_trust_order">
 	<div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootsmall.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootsmall.xtcpId}">立即预约</a></div>
+	
+	<c:choose>  
+	    <c:when test="${xintuofootsmall.xtcpStatus=='30'}">
+	       <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${xintuofootsmall.xtcpId}">立即预约</a></div>
+	    </c:when>    
+	    <c:otherwise>  
+	       <div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootsmall.xtcpId}">立即预约</a></div>
+	    </c:otherwise>  
+	</c:choose> 
+	
 	</div>
 	</div>
 </div>
@@ -252,7 +268,14 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${xintuofootone.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuofootone.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootone.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${xintuofootone.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${xintuofootone.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${xintuofootone.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose> 
 </div>
 </div>
 </div>
@@ -310,7 +333,14 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootHighs.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootHighs.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${lstTopfootHighs.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${lstTopfootHighs.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootHighs.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
 </div>
 </div>
 </div>
@@ -365,7 +395,15 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width225px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${lstTopfootOthers.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootOthers.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${lstTopfootOthers.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${lstTopfootOthers.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${lstTopfootOthers.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
+
 </div>
 </div>
 </div>
@@ -500,6 +538,12 @@ $(function() {
 		        }).blur();
 		    };
 		});
+		  
+		  
+		 //--预约--                   
+		$("a.tjs_btn_disable").click(function(event){	
+			event.preventDefault();		
+		});
 		  		       
 		});
       //--/预约--
@@ -525,7 +569,7 @@ $(function() {
    
    window.onresize = function(){
 		var clientWidth = $(document.body)[0].clientWidth;
-		$("a[class^=xintuo_banner]").css("width", clientWidth);
+		$("a[class^=header_banner]").css("width", clientWidth);
 	}
       
 

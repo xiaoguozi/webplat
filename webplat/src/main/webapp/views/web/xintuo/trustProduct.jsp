@@ -81,7 +81,15 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_right_textdiv"> 门槛：<fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限： ${xintuotop.xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv" style="height:40px"> ${xintuotop.xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${xintuotop.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn_disable" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
+
 </div>
 
 </c:forEach>
@@ -180,7 +188,15 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xintuoProduct.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限：  ${xintuoProduct.xtcpCxq} 个月 </div>
 </div>
 <div class="tjs_product_textdiv" style="height:40px"> ${xintuoProduct.xtcpDp}</div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuoProduct.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${xintuoProduct.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn_disable" data_id="${xintuoProduct.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuoProduct.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
+
 </div>
 <!-- /tjs_pct_unit 01 -->
 </li>
@@ -401,6 +417,12 @@ IndexPage.formActionUrl="rest/web/xintuo/trust/trustProduct";
 			            }
 			        }).blur();
 			    };
+		});
+	    
+	    
+		 //--预约--                   
+		$("a.tjs_btn_disable").click(function(event){	
+			event.preventDefault();		
 		});
 		  
 		

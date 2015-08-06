@@ -350,6 +350,8 @@ a.tjs_moreurl:hover{  text-decoration:none; color:#FF6600;}
 a.tjs_btn{ width: 172px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 44px; background-color: #0280cc;border-radius: 4px;line-height: 44px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;}
 a.tjs_btn:hover{ width: 172px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 44px; background-color: #FF6600;border-radius: 4px;line-height: 44px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;}
 
+a.tjs_btn_disable{ width: 172px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 44px; background-color: #dbdbdb;border-radius: 4px;line-height: 44px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;}
+
 a.tjs_ok_btn{ width: 152px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 44px; background-color: #FF6600;border-radius: 4px;line-height: 44px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;}
 a.tjs_ok_btn:hover{ width: 152px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 44px; background-color: #fe8315;border-radius: 4px;line-height: 44px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;}
 

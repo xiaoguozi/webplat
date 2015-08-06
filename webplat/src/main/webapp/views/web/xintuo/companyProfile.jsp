@@ -160,7 +160,15 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <div class="tjs_float_left tjs_width340px tjs_height145px">
 <div class="tjs_trust_order">
 <div class="tjs_trust_ordertitle"><strong>预期收益</strong><br /><span style=" font-size:36px;color:#FF6600;"><span style="font-size:48px"><fmt:formatNumber value="${productXtcp.xtcpNsyl}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</span></div>
-<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+<c:choose>  
+    <c:when test="${productXtcp.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
+
 </div>
 </div>
 
@@ -239,14 +247,13 @@ $(function () {
 		        }).blur();
 		    };
 	});
+    
+	 //--预约--                   
+	$("a.tjs_btn_disable").click(function(event){	
+		event.preventDefault();		
+	});
 	  
-	IndexPage.orderProduct= function(productId,productType,username,usertel){
-	     $.post(IndexPage.orderProductUrl, 
-	            $('#orderform').formSerialize(),
-	            function(data){		              
-					
-	             });
-	 }  
+
 	    		       
 }); 
 

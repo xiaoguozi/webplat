@@ -41,7 +41,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="header_menu">
 <div class="tjs_1108px center" style="position: relative;" >
 
-     <div class="logo_wrap"><a href="<%=basePath%>"><img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
+    <div class="logo_wrap"><a href="<%=basePath%>"><img src="<%=basePath%>assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" /></a></div>
     <div class="top_wrap_menu">
     <ul>
     <li style="width:155px"><a href="<%=basePath%>rest/web/xintuo/trust/trustIndex" target="_blank">信托首页</a></li>
@@ -73,7 +73,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <li class="flow_menu_dash"><a href="#F">管理机构</a></li>
 </ul>
 </div>
-<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div> <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div></div>
+<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div>
+	<c:choose>  
+	    <c:when test="${productXtcp.xtcpStatus=='30'}">
+	        <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+	    </c:when>    
+	    <c:otherwise>        
+			<div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+	    </c:otherwise>  
+	</c:choose> 
+	
+</div>
 <div style=" height:10px; width:100%; font-size:0px;"></div>
 <div class="tjs_pcs_box">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tjs_pcs_bable">
@@ -391,13 +401,10 @@ $(function(){
 		
 	});
 	  
-	IndexPage.orderProduct= function(productId,productType,username,usertel){
-	     $.post(IndexPage.orderProductUrl, 
-	            $('#orderform').formSerialize(),
-	            function(data){		              
-					
-	             });
-	 }  
+	 //--预约--                   
+	$("a.tjs_btn_disable").click(function(event){	
+		event.preventDefault();		
+	});
 	
    });
    
