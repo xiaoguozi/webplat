@@ -16,6 +16,9 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.system.controller.BannerCtrlModel;
+import com.tjs.admin.system.model.SysHome;
+import com.tjs.admin.system.service.ISysHome;
 import com.tjs.admin.xintuo.model.ProductXtcp;
 import com.tjs.admin.xintuo.service.IProductXtcpService;
 
@@ -35,6 +38,9 @@ public class WebController {
     private IProductXtcpService productXtcpService;
     @Resource
     private PEProductService pEProductService;
+       
+    @Resource
+    private ISysHome sysHomeService;
     
 	/**
 	 * 首页－默认
@@ -59,21 +65,20 @@ public class WebController {
         	}
 		}
 
+		//
+		BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("10");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
 
-		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
-	
-		
-		
+		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();				
 		model.addAttribute("xtcpData", xtcp);
-
-
-		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
-	
-		
-		
+		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();				
 		model.addAttribute("smcpData", smcp);
 		
-
 		if (isLogin) {
 			return "web/home";
 		} else {
@@ -90,6 +95,14 @@ public class WebController {
 	 */
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request, Model model) {
+		
+		BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("10");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
 		
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
 				
@@ -111,6 +124,14 @@ public class WebController {
 	 */
 	@RequestMapping("/home")
 	public String home(HttpServletRequest request, Model model) {
+		
+		BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("10");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
 
 		List<ProductXtcp> xtcp =  productXtcpService.selectProductXtcpIndex();
 					

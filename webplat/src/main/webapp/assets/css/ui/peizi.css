@@ -54,6 +54,15 @@
     margin: 0 auto;
     top: -200px;
 }
+
+ .header_banner{
+    background-repeat:no-repeat;
+    background-position:center center;  
+    height:400px;
+    display:block;
+   }
+   
+   
 .inter_cutimg {
     background: url(../../img/peizi/free.png) no-repeat center center;
     width:100%;

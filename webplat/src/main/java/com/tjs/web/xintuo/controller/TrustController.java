@@ -21,6 +21,9 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.order.model.Order;
 import com.tjs.admin.order.service.IOrderService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.system.controller.BannerCtrlModel;
+import com.tjs.admin.system.model.SysHome;
+import com.tjs.admin.system.service.ISysHome;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.xintuo.controller.XinTuoCpCtrlModel;
 import com.tjs.admin.xintuo.controller.XinTuoGsCtrlModel;
@@ -50,6 +53,9 @@ public class TrustController {
 	@Resource
 	private UserService iUserService;
 	
+	@Resource
+	private ISysHome sysHomeService;
+	
 	
 	/**
 	 * 查询信托首页
@@ -58,6 +64,18 @@ public class TrustController {
 	 */
     @RequestMapping("/trustIndex")
     public String trustIndex(Model model) {
+    	
+    	BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("20");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
+
+    	
+    	
+    	
     	XinTuoCpCtrlModel ctrlModel = new XinTuoCpCtrlModel();
     	ctrlModel.setFormat(true);
         //查询前面四个

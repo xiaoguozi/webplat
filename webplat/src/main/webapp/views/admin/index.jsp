@@ -54,7 +54,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <link rel="stylesheet" href="assets/widget/bootstrap-notify/css/styles/alert-blackgloss.css">
     <link rel="stylesheet" href="assets/widget/bootstrap-notify/css/styles/alert-notification-animations.css">
     <link rel="stylesheet" href="assets/widget/kindeditor/themes/default/default.css">
-    
+    <link rel="stylesheet" href="assets/plugins/webuploader/webuploader.css">
     <link rel="stylesheet" href="assets/css/admin-index.css">
 <!-- END CUSTOM CSS IMPORT -->
         <link rel="shortcut icon" href="favicon.ico" />
@@ -164,6 +164,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                         	权限管理
                                     </a>
                                 </li>
+                                
+                                 <li>
+                                    <a href="rest/admin/system/banner/bannerIndex">
+                                        	banner管理
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
@@ -262,12 +268,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             <ul class="sub-menu">
                                 <li>
                                     <a href="rest/admin/user/infoUpdate">
-                                        信息修改
+                                      	  信息修改
                                     </a>
                                 </li>
                                 <li>
                                     <a href="rest/admin/user/pwdUpdate">
-                                        密码修改
+                                      	  密码修改
                                     </a>
                                 </li>
                                 
@@ -451,6 +457,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <script src="assets/scripts/app.js" type="text/javascript"></script>
         <script type="text/javascript" src="app/js/index.js"></script>
 
+		 <script type="text/javascript" src="assets/plugins/webuploader/webuploader.js"></script>
         <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
     </body>
 </html>

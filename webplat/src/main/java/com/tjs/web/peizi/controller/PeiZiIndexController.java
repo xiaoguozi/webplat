@@ -1,5 +1,7 @@
 package com.tjs.web.peizi.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
@@ -12,6 +14,9 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.system.controller.BannerCtrlModel;
+import com.tjs.admin.system.model.SysHome;
+import com.tjs.admin.system.service.ISysHome;
 import com.tjs.admin.utils.StringUtils;
 
 /**
@@ -30,12 +35,23 @@ public class PeiZiIndexController {
 	 
 	 @Resource
 	 private UserInfoService UserInfoService;
+	 
+	 @Resource
+	 private ISysHome sysHomeService;
 	/**
 	 * 配资首页
 	 * @return
 	 */
 	@RequestMapping("/index")
-    public String index() {
+    public String index(Model model)  {
+		BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("40");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
+		
         return "web/peizi/index";
     }
 	

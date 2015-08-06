@@ -91,6 +91,15 @@
         background: url(../../img/ui/images03.jpg) no-repeat center center;
     }
    
+   .header_banner{
+    background-repeat:no-repeat;
+    background-position:center center;  
+    height:400px;
+    display:block;
+   }
+   
+   
+   
  .header_banner1 {
     background: url(../../img/ui/banner/minsheng18.png) no-repeat center center;
     width:100%;

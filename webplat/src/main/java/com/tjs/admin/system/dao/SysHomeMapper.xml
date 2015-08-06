@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.system.dao.SysHomeMapper">
+	<resultMap id="BaseResultMap" type="com.tjs.admin.system.model.SysHome">
+		<id column="home_id" property="homeId" javaType="java.lang.Long"  jdbcType="BIGINT" />
+		<result column="order_index" property="orderIndex" javaType="java.lang.Integer" />
+		<result column="use_type" property="userType" javaType="java.lang.Integer" />
+		<result column="enable" property="enable" javaType="java.lang.Integer" />
+		<result column="home_img" property="homeImg" jdbcType="VARCHAR" />
+		<result column="home_type" property="homeType" javaType="java.lang.Integer"  />
+		<result column="home_url" property="homeUrl" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="location_banner" property="locationBanner" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" javaType="java.util.Date" jdbcType="DATE" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_select_Column_List">
+		home_id, order_index,use_type,enable,home_img,home_type,home_url,content,create_time,create_by,update_time,
+		update_by,title,location_banner		
+	</sql>
+
+	<sql id="Base_insert_Column_List">
+		order_index,use_type,enable,home_img,home_type,home_url,content,create_time,create_by,update_time,
+		update_by,title,location_banner	
+	</sql>
+
+	<select id="countBanner" resultType="int"
+		parameterType="com.tjs.admin.system.controller.BannerCtrlModel">
+		select count(*) c from tjs_sys_home  where 1=1	
+		 <if test="sysHome!= null and sysHome.enable!=null">
+           AND (enable=#{enable})
+         </if>
+         
+         <if test="sysHome!= null and sysHome.locationBanner!=null">
+          AND location_banner like CONCAT('%',#{locationBanner},'%') 
+         </if>	
+         
+          <if test="keyWord!= null and keyWord!= ''">
+           AND (title like CONCAT('%',#{keyWord},'%'))
+         </if>
+	</select>
+
+	<select id="selectBanner"  resultMap="BaseResultMap"  parameterType="com.tjs.admin.system.controller.BannerCtrlModel">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_sys_home where 1=1			
+         <if test="sysHome!= null and sysHome.enable!=null">
+           AND (enable=#{sysHome.enable})
+         </if>
+         
+          <if test="sysHome!= null and sysHome.locationBanner!=null">
+          AND location_banner like CONCAT('%',#{sysHome.locationBanner},'%') 
+         </if>		
+		
+		 <if test="keyWord!= null and keyWord!= ''">
+           AND (title like CONCAT('%',#{keyWord},'%'))
+         </if>
+         
+         <if test="sortField!= null and sortField!= ''">
+           ORDER BY ${sortField} ${sortType}
+        </if>
+        
+        <if test="sortField== null or sortField== ''">
+           ORDER BY order_index 
+        </if>
+        
+        <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
+	</select>
+
+	<insert id="insertBanner" useGeneratedKeys="true"
+		keyProperty="homeId" parameterType="com.tjs.admin.system.model.SysHome">
+		insert into tjs_sys_home(
+		<include refid="Base_insert_Column_List" />
+		) values
+		(#{orderIndex},
+		#{userType},
+		#{enable},
+		#{homeImg},
+		#{homeType},
+		#{homeUrl},
+		#{content},
+		#{createTime},
+		#{createBy},
+		#{updateTime},
+		#{updateBy},
+		#{title},
+		#{locationBanner}	
+		)
+	</insert>
+
+	<update id="updateBanner" parameterType="com.tjs.admin.system.model.SysHome">
+		update tjs_sys_home set
+		order_index=#{orderIndex},
+		use_type=#{userType},
+		enable=#{enable},
+		home_img=#{homeImg},
+		home_type=#{homeType},
+		home_url=#{homeUrl},
+		content=#{content},
+		create_time=#{createTime},
+		create_by=#{createBy},
+		update_time=#{updateTime},
+		update_by=#{updateBy},
+		title=#{title},
+		location_banner=#{locationBanner}	
+		where home_id=#{homeId}		
+	</update>
+
+	
+
+	<select id="findSysHomeById" parameterType="Long"
+		resultType="com.tjs.admin.system.model.SysHome">
+		select
+		<include refid="Base_select_Column_List" />
+		from tjs_sys_home
+		where home_id=#{homeId}
+	</select>
+	
+		
+</mapper>

@@ -21,6 +21,9 @@ import com.tjs.admin.pe.model.PECommonVO;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.model.PETopProduct;
 import com.tjs.admin.pe.service.PEProductService;
+import com.tjs.admin.system.controller.BannerCtrlModel;
+import com.tjs.admin.system.model.SysHome;
+import com.tjs.admin.system.service.ISysHome;
 
 /**
  * 私募首页控制器
@@ -40,9 +43,23 @@ public class PEIndexController {
 	@Resource
 	private IOrderService iOrderService;
 	
+	@Resource
+	private ISysHome sysHomeService;
+	
 	
 	@RequestMapping("/peIndex")
     public String index(PESearchCtrlVO peSearchCtrlVO, Model model) {
+		
+		BannerCtrlModel params =new BannerCtrlModel();
+		params.getSysHome().setEnable(1);
+		params.setPageSize(3);
+		params.getSysHome().setLocationBanner("30");
+		
+	    List<SysHome> lstSysHome = sysHomeService.selectBanner(params);
+	    model.addAttribute("lstSysHome", lstSysHome);
+		
+		
+		
 		//查询4个顶级私募
 		List<PETopProduct> showData = new ArrayList<PETopProduct>();
     	showData = peProductService.getTop4PEProductList();
