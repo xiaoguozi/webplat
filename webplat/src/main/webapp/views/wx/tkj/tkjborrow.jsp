@@ -21,7 +21,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     
 </head>
-<body class="bg_gray" style="background-image:url('assets/img/tkj/beijin_long.jpg');background-size: 100% 100%; background-repeat:no-repeat;">
+<body style="background-image:url('assets/img/tkj/beijin_long.jpg');background-size: 100% 100%; background-repeat:no-repeat;">
        <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
        		<div class="row" >
                 <div class="col-xs-12" style="text-align: center;margin-top: 10px;">
@@ -147,16 +147,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            <div  style="margin-top: 5px; width: 100%;">
 	           	<nobr><span style="font-size: 14px; font-family: bold;">提款总额：</span>
 	           	<span style="font-size: 14px; font-family: bold; color: #E95024;">100</span>
-	           	<span style="font-size: 11px;color: #E95024;">（元）</span> 
+	           	<span style="font-size: 11px;color: #E95024;">(元)</span> 
 	           	<span style="font-size: 14px; font-family: bold;">利息：</span>
 	           	<span style="font-size: 14px; font-family: bold; color: #E95024;">5.0</span>
-	           	<span style="font-size: 11px;color: #E95024;">（元）</span> 
+	           	<span style="font-size: 11px;color: #E95024;">(元)</span> 
 	           	<span style="font-size: 14px; font-family: bold; color: #E95024;">还款计划&gt;&gt;</span>
 	           	</nobr>
            </div>
-
-           <div style="text-align: center; margin-top: 10px; width: 100%;">
-               <button type="button" class="btn" onclick="next();" style="color:#EE592E; width: 40%; border-radius: 8px; background: #FFFFFF; height: 50px; font-size: 18px; font-weight: bold;" >下一步</button>
+           <div style="text-align: center;  width: 100%; margin-top:5px;">
+               <button type="button" class="btn" onclick="next();" style="color:#EE592E; width: 40%; border-radius: 8px; background: #FFFFFF; height: 45px; font-size: 18px; font-weight: bold;" >下一步</button>
            </div>
 	   </div>
 </body>
