@@ -151,7 +151,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	           	<span style="font-size: 14px; font-family: bold;">利息：</span>
 	           	<span style="font-size: 14px; font-family: bold; color: #E95024;">5.0</span>
 	           	<span style="font-size: 11px;color: #E95024;">(元)</span> 
-	           	<span style="font-size: 14px; font-family: bold; color: #E95024;">还款计划&gt;&gt;</span>
+	           	<span style="font-size: 14px; font-family: bold; color: #E95024; cursor:pointer;" onclick="goPlan();">还款计划&gt;&gt;</span>
 	           	</nobr>
            </div>
            <div style="text-align: center;  width: 100%; margin-top:5px;">
@@ -161,6 +161,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 
 <script type="text/javascript">
+	function goPlan(){
+		window.location.href = "<%=basePath%>"+"rest/wx/tkj/plan";
+	}
+
 	function next(){
 		window.location.href = "<%=basePath%>"+"rest/wx/tkj/apply";
 	}

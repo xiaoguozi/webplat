@@ -76,10 +76,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            </div>
 
            <div class="row" style="background: #80D2DD; text-align: center; margin-top: 30px; ">
-               <button type="button" class="btn" onclick="next();" style="color:#EE592E; width: 80%; background: #FFFFFF;" >下一步</button>
+               <button type="button" class="btn" onclick="next();" style="color:#EE592E; width: 80%; height:45px; background: #FFFFFF;" >下一步</button>
            </div>
 
-           <div class="row" style="position:absolute; width:100%;  z-index:-1; margin-top: 65px;">
+           <div class="row" style="position:absolute; width:100%;  z-index:-1; margin-top: 5px;">
                <img src="assets/img/tkj/beijingb.png"  width="100%"/>
            </div>
 

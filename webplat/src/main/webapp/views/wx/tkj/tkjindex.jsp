@@ -39,9 +39,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         }
 
          .content {     
-            -webkit-border-radius: 1em;
-            -moz-border-radius: 1em;
-            border-radius: 1em;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
         }
 		 
 		
@@ -53,121 +53,108 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			
 		.bg_gray{background:#f9f9f9}
 		.container{width:100%}
-		.list_li li{width:33.333333%;float:left;text-align:center}
+		.list_li li{width:30%;float:left;text-align:center}
+		.list_li2 li{width:33.33333%;float:left;text-align:center}
 		.center{text-align:center;color: #f04e27;}
 		 h5{color: #f04e27;}			
     </style>
 </head>
-<body class="bg_gray" >
-        <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
-       		<div class="row" >
-			    <div class="col-xs-12" >
-					<div id="carousel-example-generic" class="carousel slide " data-ride="carousel" >
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-						</ol>
-		
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner">
-							<div class="item active" style="text-align:center">
-								<img alt="First slide" src="assets/img/tkj/banner1.jpg" style="height:8em;width:12em;display:inline" />
-							</div>
-							<div class="item"  style="text-align:center">
-								<img alt="Second slide" src="assets/img/tkj/banner1.jpg" style="height:8em;width:12em;display:inline"/>
-							</div>
-							<div class="item"  style="text-align:center">
-								<img alt="Third slide" src="assets/img/tkj/banner1.jpg" style="height:8em;width:12em;display:inline" />
-							</div>
-						</div>
-		
-						<!-- Controls -->
-						<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-						</a>
-						<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
-					</div>
-				 </div>
+<body style="background:#FAFBFF;" >
+        <div style="min-height:30em; height:auto!important; height:30em;min-width:21em; background:#ffffff;" >
+       		
+			<div style="width:100%;">
+				<img src="assets/img/tkj/banner.jpg" width="100%"/>
 			</div>
 			
-			<a href="rest/wx/tkj/borrow" >
-			<div class="row content" style="background-color:#81D2D5;padding-top:0.5em;padding-bottom:0.5em">
-			     <div class="content-text col-xs-8" >
-                    <p style="font-size:1.2em">我要提款</p>
-                    <p style="font-size:1em">月息低至0.99%，额度100-20000</p>
-                </div>
-                <div class="content-img col-xs-4" >
-                    <img src="assets/img/tkj/tubiao1.png" style="width:5em;height:5em"/>
-                </div>
-		  </div>
-		  </a>
+			<div onclick="goBorrow();" class="row content" style="background-color:#FFD87B;margin-top:10px; margin-left:15px; margin-right:15px; ">
+				     
+				     <div class="content-text col-xs-8" style="margin-top:13px; margin-bottom:13px;">
+	                    <p style="font-size:18px;color:#000000;">我要提款</p>
+	                    <p style="font-size:12px; color:#986D4B;"><nobr>月息低至0.99%，额度最高2万</nobr></p>
+	                </div>
+	                <div class="content-img col-xs-4" style="margin-top:13px; margin-bottom:13px;">
+	                    <img src="assets/img/tkj/tubiao1.png" style="width:5em;height:5em"/>
+	                </div>
+			</div>
     
 	      <div class="row" >
-		      <div class="center" style="margin-top:0.5em;margin-bottom:0.5em"><p style="font-size:1.2em">比你想象的too simple</p></div>
+		      <div class="center" style="margin-top:0.5em;margin-bottom:0.5em"><p style="font-size:1.2em; color:#9DD3C6;">比你想象的更简单</p></div>
 			  <div class="container list_li">
 			 	<div class="row">
 					<ul class="list-unstyled">
-						<li class="active">
+						<li class="active" style="margin-left:3px;">
 							<img src="assets/img/tkj/tubiao2.png" style="width:5em;height:5em">
 							<div class="classicon">
-								<p style="font-size:1.1em;color: #f04e27;">提交申请</p>
-								<p style="font-size:0.8em;color:#d8d8d8">在线提交申请</p>
+								<p style="font-size:1.1em;color: #9DD3C6;">提交申请</p>
+								<p style="font-size:0.8em;color:#b8b8b8;">在线提交申请</p>
 							</div>
+						</li>
+						<li style="width:5%;float:left;text-align:left;margin-top:24px; margin-left:-5px;">
+							<img src="assets/img/tkj/dot.png" >
 						</li>
 						<li class="">
 							  <img src="assets/img/tkj/tubiao3.png"  style="width:5em;height:5em">
 							  <div class="classicon">
-								<p style="font-size:1.1em;color: #f04e27;">等待审核</p>
-								<p style="font-size:0.8em;color:#d8d8d8">审核资料</p>
+								<p style="font-size:1.1em;color: #9DD3C6;">等待审核</p>
+								<p style="font-size:0.8em;color:#b8b8b8;">审核资料</p>
 							 </div>
+						</li>
+						<li style="width:5%;float:left;text-align:left;margin-top:24px; margin-left:-5px;">
+							<img src="assets/img/tkj/dot.png" >
 						</li>
 						<li class="">                  
 							<img src="assets/img/tkj/tubiao4.png"  style="width:5em;height:5em">
 							<div class="classicon">
-								<p style="font-size:1.1em;color: #f04e27;">放款成功</p>
-								<p style="font-size:0.8em;color:#d8d8d8">最快1小时内可到账</p>
+								<p style="font-size:1.1em;color: #9DD3C6;">放款成功</p>
+								<p style="font-size:0.8em;color:#b8b8b8;">最快1小时内可到账&nbsp;&nbsp;</p>
 							</div>
 						</li>
 					</ul>
 				</div>							
 			</div>
-		  </div>		  				
+		  </div>		 
+		  
+		  
+		  <div class="row" style="margin-top:15px;border-top:1px solid #E5E5E7; background:#FAFBFF;">
+			  <div class="container list_li2" style="margin-top:15px;">
+			 	<div class="row">
+					<ul class="list-unstyled">
+						<li class="active" onclick="goBorrow();">
+							<img src="assets/img/tkj/tubiao3-1.png" style="width:5em;height:5em">
+							<div class="classicon">
+								<p style="font-size:1.1em;color: #9DD3C6;">我要还款</p>
+							</div>
+						</li>
+						<li class="" onclick="goFenqi();">
+							  <img src="assets/img/tkj/tubiao3-2.png"  style="width:5em;height:5em">
+							  <div class="classicon">
+								<p style="font-size:1.1em;color: #9DD3C6;">我的账户</p>
+							 </div>
+						</li>
+						<li class="">                  
+							<img src="assets/img/tkj/tubiao3-3.png"  style="width:5em;height:5em">
+							<div class="classicon">
+								<p style="font-size:1.1em;color: #9DD3C6;">MI我吧</p>
+							</div>
+						</li>
+					</ul>
+				</div>							
+			</div>
+		  </div>	
 	   </div>
            
-       <footer style="padding-top:0px;">
-		  <div class="container">
-            <div class="row" >
-				<ul class="list-unstyled">
-                    <li class="active" style="background-color:#596273">
-                    	<a href="rest/wx/tkj/fenqi">
-                        <img src="assets/img/tkj/tubiao5.png"  style="width:5em;height:5em">
-						<div class="classicon">
-							<h5 style="color:#ffffff">我要还款</h5>
-						</div>
-						</a>
-                    </li>
-                    <li class="" style="background-color:#dce4e7">
-                    	<a href="rest/wx/tkj/borrow">
-                        <img src="assets/img/tkj/tubiao6.png"  style="width:5em;height:5em">
-                    	<div class="classicon">
-                       	 <h5 style="color:#4e4e4e">我的账户</h5>
-                    	</div>
-                    	</a>
-                    </li>
-                    <li class="" style="background-color:#f6f2f1" >                  
-                        <div class="classicon">
-                           <img src="assets/img/tkj/tubiao7.png"  style="width:5em;height:5em" >
-                    	   <h5  style="color:#4e4e4e">MI我吧</h5>
-                        </div>
-                    </li>
-                </ul>							
-            </div>
-		</div>
-      </footer>
+       
 </body>
+
+<script type="text/javascript">
+	function goFenqi(){
+		window.location.href = "<%=basePath%>"+"rest/wx/tkj/fenqi";
+	}
+	
+	function goBorrow(){
+		window.location.href = "<%=basePath%>"+"rest/wx/tkj/borrow";
+	}
+</script>
+
 
 </html>

@@ -45,4 +45,10 @@ public class TkjController {
 		return "wx/tkj/tkjsuccess";
 	}
 	
+	@RequestMapping("/plan")
+    public String plan(Model model) {
+		
+		return "wx/tkj/tkjplan";
+	}
+	
 }
