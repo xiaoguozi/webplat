@@ -28,13 +28,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
        		<div class="row" >
                 <div class="col-xs-12" style="text-align: center;margin-top: 10px;">
-                    <img src="images/tkj/buzou3.png">
+                    <img src="assets/img/tkj/buzou3.png">
                 </div>
 			</div>
 
            <div class="row" style="margin-top: 30px;">
                <div class="col-xs-12" style="text-align: center;">
-                   <img src="images/tkj/chengong.png">
+                   <img src="assets/img/tkj/chengong.png">
                </div>
                <div class="col-xs-12" style="text-align: center;">
                    <span style="color:#E95024; font-size: 21px; ">提款成功</span>
