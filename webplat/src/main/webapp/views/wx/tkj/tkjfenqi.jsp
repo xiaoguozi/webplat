@@ -19,31 +19,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <link rel="stylesheet" type="text/css"  href="assets/plugins/bootstrap/css/bootstrap.min.css">
     <script src="assets/scripts/ui/jquery.js" type="text/javascript"></script>
 </head>
-<body class="bg_gray" style="background: #80D2DD;">
+<body class="bg_gray" >
         <div class="container" style="min-height:30em; height:auto!important; height:30em;min-width:21em" >
        		<div class="row" >
                 <div class="col-xs-12" style="background: #81D2D5; min-height: 20px;"></div>
 			    <div class="col-xs-12" style="background: #81D2D5; ">
-                        <span style="font-weight: bold;">剩余还款总额</span><span style="font-size: 12px;">（元）</span>
+                        <span style="font-weight: bold;">提款金额</span><span style="font-size: 12px;">（元）</span>
 				</div>
                 <div class="col-xs-12" style="background: #81D2D5; min-height: 10px;"></div>
                 <div class="col-xs-12" style="background: #81D2D5; ">
-                    <span style="font-size: 38px; color: #FFFFFF;font-weight: bold;">1200.00</span></span>
+                    <span style="font-size: 38px; color: #FFFFFF;font-weight: bold;">10000.00</span>
                 </div>
 			</div>
            <div class="row" >
                <div class="col-xs-12" style="background: #81D2D5; min-height: 10px;"></div>
                <div class="col-xs-12" style="background: #81D2D5; ">
-                   <span style="color: #FFFFFF;">包含利息200（元）</span>
+                   <span style="color: #FFFFFF;">利息200（元）</span>
                </div>
                <div class="col-xs-12" style="background: #81D2D5; min-height: 10px;"></div>
            </div>
            <div class="row" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
-               <div class="col-xs-6" >
-                   <span style="font-size: 16px;">账单总额</span>
+               <div class="col-xs-4" >
+                   <span style="font-size: 16px;">贷款期限</span>
                </div>
-               <div class="col-xs-6" style="text-align: right;">
-                   <span style="color: #C9C9C9;font-size: 16px;">1400.00</span>
+               <div class="col-xs-8" style="text-align: right;">
+                   <span style="color: #C9C9C9;font-size: 16px;">2015-08-05至2015-09-05</span>
                </div>
            </div>
            <div class="row" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
@@ -54,40 +54,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                    <span style="color: #C9C9C9;font-size: 16px;">200.00</span>
                </div>
            </div>
-           <div class="row" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
+           
+           <div class="row" onclick="goPlan();" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
                <div class="col-xs-6" >
-                   <span style="font-size: 16px;">未分期</span>
+                   <span style="font-size: 16px;">还款计划</span>
                </div>
                <div class="col-xs-6" style="text-align: right;">
-                   <span style="color: #C9C9C9;font-size: 16px;">创建还款计划&nbsp;<span class="icon-a" style="color: #E2E2E2;"></span></span>
+                   <span style="color: #C9C9C9;font-size: 16px;"><span class="icon-a" style="color: #E2E2E2;"></span></span>
                </div>
            </div>
-           <div class="row" style="min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
+           
+           <div class="row bg_gray" style="min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
                <div class="col-xs-12" >
                    <span style="font-size: 16px;">账单明细</span>
                </div>
            </div>
 
-           <div class="row" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
-               <div class="col-xs-7" >
-                   <div style="line-height: 28px;">
-                      <img src="assets/img/tkj/fenqi.png"> &nbsp;2015年8月分期
-                   </div>
-                   <div style="line-height: 22px; color: #C9C9C9;">
-                       01/03期
-                   </div>
-               </div>
-               <div class="col-xs-5" style="text-align: right; ">
-                   <span style="color: #C9C9C9;font-size: 16px;">50.00&nbsp;<span class="icon-a" style="color: #E2E2E2;"></span></span>
-               </div>
-           </div>
-           <div class="row" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
+          
+           <div class="row" onclick="goPlan();" style="background: #ffffff; min-height: 50px; line-height: 50px; border-bottom: 1px solid #E2E2E2;">
                <div class="col-xs-6" >
                    <div style="line-height: 28px;">
                        <img src="assets/img/tkj/huankuan.png"> &nbsp;主动还款
                    </div>
                    <div style="line-height: 22px; color: #C9C9C9;">
-                       07-30
+                       <span style="margin-left:33px;">07-30</span>
                    </div>
                </div>
                <div class="col-xs-6" style="text-align: right;">
@@ -101,5 +91,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
        </div>
 </body>
+
+<script type="text/javascript">
+	function goPlan(){
+		window.location.href = "<%=basePath%>" + "rest/wx/tkj/plan";
+	}
+</script>
 
 </html>
