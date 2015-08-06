@@ -11,6 +11,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
  	<base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
     <title>提款机，无抵押、无担保、一小时放款，淘金山提款机</title>
     <link href="assets/css/wx/index.css" rel="stylesheet" type="text/css" />
@@ -81,13 +82,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
            </div>
            
            <div style="background:#DDDDDD; float:left; margin-top:10px; min-height:45px; line-height:45px; width:100%;">
-           		<div style="background:#8D8D8D;width:50%;text-align:left;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">&nbsp;2015-3-05</span></div>
+           		<div style="background:#8D8D8D;width:50%;text-align:left;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">&nbsp;2015-03-05</span></div>
            		<div style="background:#8D8D8D;width:29%;text-align:right;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">2000.00&nbsp;</span></div>
            		<div style="width:21%;text-align:right;min-height:45px; line-height:45px;float:left; ">&nbsp;</div>
            </div>
            
            <div style="background:#DDDDDD; float:left; margin-top:10px; min-height:45px; line-height:45px; width:100%;">
-           		<div style="background:#8D8D8D;width:50%;text-align:left;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">&nbsp;2015-4-05</span></div>
+           		<div style="background:#8D8D8D;width:50%;text-align:left;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">&nbsp;2015-04-05</span></div>
            		<div style="background:#8D8D8D;width:26%;text-align:right;min-height:45px; line-height:45px;float:left; "><span style="color:#ffffff;">1000.00&nbsp;</span></div>
            		<div style="width:24%;text-align:right;min-height:45px; line-height:45px;float:left; ">&nbsp;</div>
            </div>

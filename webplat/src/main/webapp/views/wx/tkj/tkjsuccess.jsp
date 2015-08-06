@@ -11,6 +11,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
  	<base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="telephone=no" name="format-detection">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
     <title>提款机，无抵押、无担保、一小时放款，淘金山提款机</title>
     <link href="assets/css/wx/index.css" rel="stylesheet" type="text/css" />
