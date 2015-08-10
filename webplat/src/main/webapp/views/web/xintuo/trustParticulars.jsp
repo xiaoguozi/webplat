@@ -17,6 +17,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/tip_box.js"></script>
 <script src="<%=basePath%>assets/widget/form/jquery.form.min.js" charset="utf-8"></script>
 <link href="<%=basePath%>assets/css/ui/simu.css" rel="stylesheet" />
+<link href="<%=basePath%>assets/css/ui/xintuo.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -62,18 +63,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div class="tjs_1108px center" style="position:relative;" >
 <div style=" height:20px; width:100%;"></div>
-<div class="flow_menu" style="width:10%">
-<ul>
-<li class="flow_menu_solid flow_menu_titlebg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>快速直达</strong></li>
-<li class="flow_menu_dash"><a href="#A"  id="flow_menu_click">产品概况</a></li>
-<li class="flow_menu_dash"><a href="#B">融资方</a></li>
-<li class="flow_menu_dash"><a href="#C">资金用途</a></li>
-<li class="flow_menu_dash"><a href="#D">风控措施</a></li>
-<li class="flow_menu_dash"><a href="#E">还款来源</a></li>
-<li class="flow_menu_dash"><a href="#F">管理机构</a></li>
-</ul>
-</div>
-<div class="tjs_pcs_title"><div class="tjs_pcs_titleleft">产品概况</div>
+<div class="xt_fastnav_wrap">
+		<div class="fastnav_container">
+			<div class="xt_fastnav" style="top: 0px; position: static; z-index: 1000;">
+				<div class="fastnav_hd">快速直达</div>
+				<div class="fastnav_bd">
+					<ul class="fastnav_list">
+						<li class="fastnav_item fastnav_item_active">
+							<a href="#detail_info">
+								<em class="nav_ico"></em>
+								<span class="txt">产品概况</span>
+							</a>
+						</li>
+						<li class="fastnav_item">
+							<a href="#who">
+								<em class="nav_ico"></em>
+								<span class="txt">融资方</span>
+							</a>
+						</li>
+						<li class="fastnav_item">
+							<a href="#where">
+								<em class="nav_ico"></em>
+								<span class="txt">资金用途</span>
+							</a>
+						</li>
+						<li class="fastnav_item">
+							<a href="#howback">
+								<em class="nav_ico"></em>
+								<span class="txt">风控措施</span>
+							</a>
+						</li>
+						<li class="fastnav_item">
+							<a href="#from">
+								<em class="nav_ico"></em>
+								<span class="txt">还款来源</span>
+							</a>
+						</li>
+						
+						<li class="fastnav_item fastnav_item_last">
+							<a href="#managercom">
+								<em class="nav_ico"></em>
+								<span class="txt">管理机构</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>              
+	</div>
+<div class="tjs_pcs_title xt_side_nav_box" id="detail_info"><div class="tjs_pcs_titleleft">产品概况</div>
 	<c:choose>  
 	    <c:when test="${productXtcp.xtcpStatus=='30'}">
 	        <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
@@ -223,7 +261,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title">融资方是谁？<a name="B" id="B"></a></div>
+<div class="tjs_pcs_title xt_side_nav_box" id="who">融资方是谁？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
   ${productXtcp.xtcpRzf}
  </div>
@@ -233,7 +271,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title">资金用途是什么？<a name="C" id="C"></a></div>
+<div class="tjs_pcs_title xt_side_nav_box" id="where">资金用途是什么？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
    ${productXtcp.xtcpZjyt}
 </div>
@@ -243,7 +281,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title">风控措施如何？<a name="D" id="D"></a></div>
+<div class="tjs_pcs_title xt_side_nav_box" id="howback">风控措施如何？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpFkcs}
 </div>
@@ -255,7 +293,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!--// tjs_padding_width24px 04-->
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title">还款来源有哪些？<a name="E" id="E"></a></div>
+<div class="tjs_pcs_title xt_side_nav_box" id="from">还款来源有哪些？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpHkly}
 </div>
@@ -265,7 +303,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title">管理机构是谁？<a name="F" id="F"></a></div>
+<div class="tjs_pcs_title xt_side_nav_box" id="managercom">管理机构是谁？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpZcglr}
  </div>
@@ -282,7 +320,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_1108px center" >
 <div style=" height:30px;  font-size:0px;"></div>
 
-<div class="tjs_pcs_title">信托购买流程<a name="G" id="G"></a></div>
+<div class="tjs_pcs_title">信托购买流程</a></div>
 
 <div class="tjs_flowdiv"  >
 <ul>
@@ -405,9 +443,61 @@ $(function(){
 	$("a.tjs_btn_disable").click(function(event){	
 		event.preventDefault();		
 	});
+	 
+	 
+	//快速导航滚动
+	var $navs = $(".xt_fastnav .fastnav_bd .fastnav_item"),
+    $containers = $(".xt_side_nav_box");
+	if($navs.length > 0){
+	    //滚动时的处理
+	    function doScroll()
+	    {
+	        $containers.each(function(index) {	        
+	            container_top = $(this).offset().top;
+	            container_bottom = $(this).offset().top + $(this).height();
+	            scrollbar_position = $(document).scrollTop();
+	            if(container_top <= scrollbar_position && container_bottom > scrollbar_position){
+	                $navs.eq(index).addClass("fastnav_item_active").siblings(".fastnav_item").removeClass("fastnav_item_active");
+	            }
+	        });
+	    }
+	    //刚进详情页判断一次
+	    doScroll();
+	    //滚动时，进行判断
+	    $(window).scroll(function() {
+	        doScroll();
+	    });
+	    
+	    
+	}
+	
+	if($(".fastnav_container").length > 0){
+		//详细页左边快速导航
+	$(window).scroll(function(){
+	    var h = $(".fastnav_container").offset().top ;   
+	    var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+	
+	    if( scrollt > h){
+	        $(".xt_fastnav").css({
+	            position: 'fixed',
+	            top:'0'                                         
+	        });                     
+	    }else{ 
+	        $(".xt_fastnav").css({
+	            position: 'static'
+	        });             
+	    }
+	});
+	} 
+	 
 	
    });
    
+   
+   
+   
+
+
    
 function placeholderSupport() {
     return 'placeholder' in document.createElement('input');
