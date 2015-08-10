@@ -11,7 +11,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山—跟我淘金山</title>
+<meta name="description" content="找信托理财产品上淘金山，为您提供信托理财产品收益率列表，信托理财产品查询，帮助您选出最适合自己信托产品，并完成购买信托产品。" />
+<meta name="keywords" content="信托理财产品，信托理财产品收益率，信托理财产品查询" />
+<title>信托理财产品,信托理财产品收益率,信托理财产品查询-淘金山</title>
 <link href="assets/css/ui/taojinshan.css?1=1" rel="stylesheet" media="screen" type="text/css" />
 <link href="assets/css/ui/public.css" rel="stylesheet" />
 <link href="assets/css/ui/simu.css" rel="stylesheet" />

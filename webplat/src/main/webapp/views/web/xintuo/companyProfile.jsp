@@ -11,7 +11,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山—跟我淘金山</title>
+<meta name="description" content="找${productXtgs.xgtsSplname}产品上淘金山，为您提供${productXtgs.xgtsSplname}理财产品，${productXtgs.xgtsSplname}最新产品，${productXtgs.xgtsSplname}产品有哪些等详细信息，帮助您选出最适合自己${productXtgs.xgtsSplname}公司产品，并完成购买信托产品。" />
+<meta name="keywords" content="${productXtgs.xgtsSplname}产品，${productXtgs.xgtsSplname}理财产品，${productXtgs.xgtsSplname}最新产品" />
+<title>${productXtgs.xgtsSplname}产品,${productXtgs.xgtsSplname}理财产品,${productXtgs.xgtsSplname}最新产品-淘金山</title>
 <script src="assets/scripts/ui/jquery-1.10.2.min.js" type="text/javascript"></script> 
 <link href="assets/css/ui/alertMessage.css" rel="stylesheet" />
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
