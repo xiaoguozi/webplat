@@ -10,7 +10,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>淘金山—跟我淘金山</title>
+<meta name="keywords" content="${productXtcp.xtcpSplname},${productXtcp.xtcpFullname}"/>
+<meta name="description" content="找${productXtcp.xtcpSplname} 上淘金山，为您提供${productXtcp.xtcpFullname}信息介绍，包括起始资金<fmt:formatNumber value="${productXtcp.xtcpFxgm}" pattern="#0.####"/>万元、产品期限${productXtcp.xtcpCxq}个月、预期收益${productXtcp.xtcpNsyl}%，帮助您选出最适合自己信托产品，并完成购买信托产品。"/>
+<title>${productXtcp.xtcpSplname}_信托产品-淘金山</title>
 <link href="<%=basePath%>assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
  <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/jquery.js"></script>
 <script type="text/javascript" src="<%=basePath%>assets/scripts/ui/alert_box.js"></script>
