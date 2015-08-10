@@ -1,0 +1,29 @@
+/*
+* @author : hzg
+* @date   : 2014/10/17
+* @desc   : 信托2.0
+*/
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------产品详细----------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+.xt_fastnav_wrap{ width: 1180px; margin: 0 auto; position: relative; z-index: 999;}
+.xt_fastnav_wrap .fastnav_container{ width: 125px; min-height: 280px; position: absolute; top: 15px; left: -145px;}
+.xt_fastnav{ width: 125px; border: 1px solid #e1e1e1; background-color: #fff;}
+.xt_fastnav .fastnav_hd{ height: 38px; border-bottom: 1px solid #e1e1e1; background-color: #fafafa; line-height: 40px; text-align: center; color: #3d9fe1;}
+.xt_fastnav .fastnav_bd{}
+.xt_fastnav .fastnav_list{}
+.xt_fastnav .fastnav_item{ border-bottom: 1px dashed #e1e1e1;}
+.xt_fastnav .fastnav_item a{ display: block; height: 24px; padding: 7px 0 7px 7px; line-height: 24px; color: #525252;}
+.xt_fastnav .fastnav_item a:hover{ color: #f60;}
+.xt_fastnav .fastnav_item .nav_ico{ display: inline-block; width: 24px; height: 24px; background: url(../../img/simu/202.png) no-repeat; vertical-align: middle;}
+.xt_fastnav .fastnav_item .txt{ display: inline-block;}
+.xt_fastnav .fastnav_item_active{ background-color: #fafafa;}
+.xt_fastnav .fastnav_item_active a{ color: #f60;}
+.xt_fastnav .fastnav_item a:hover .nav_ico,
+.xt_fastnav .fastnav_item_active .nav_ico{ background: url(../../img/simu/201.png) no-repeat;}
+.xt_fastnav .fastnav_item_last{ border-bottom: none;}
