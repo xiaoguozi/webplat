@@ -68,27 +68,64 @@ public class UpfileController {
     			byte[] info = (byte[])fileInfo.get("fileInfo");
     			ByteArrayInputStream is = new ByteArrayInputStream(info);
     			IOUtils.copy(is, os);
+    			
+    			if(null != os){
+        			os.flush();
+        		}
+    			
     			is.close();
-    		}else{
-    			fileInfo = uploadFileService.getFileInfo(imageName);
-    			if(fileInfo!=null){
-    				byte[] info = (byte[])fileInfo.get("fileInfo");
-        			ByteArrayInputStream is = new ByteArrayInputStream(info);
-        			IOUtils.copy(is, os);
-        			is.close();
-    			}else{
-    				System.out.println("imageName= " + imageName + " not found.");
-    			}
+    			os.close();
     		}
-    		if(null != os){
-    			os.flush();
-    		}
+    		
         } catch (IOException e) {
         	
         } catch (Exception e){
         	
         }
     }
+    
+    
+    /***
+     * 查看文件
+     * @param imageName
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("downFile")
+    public void downFile(HttpServletRequest request,HttpServletResponse response){   	    
+    	String imageName = request.getParameter("imageName");
+    	OutputStream os = null;
+    	try {
+    		if(StringUtils.isEmpty(imageName)){
+    			imageName ="500";
+    		}
+    		os = response.getOutputStream();
+    	  Map<String,Object> fileInfo = uploadFileService.getFileInfo(imageName);
+    	  response.setContentType("application/x-msdownload");  
+    	  String fileName=new String(((String)fileInfo.get("oldName")).getBytes("GBK"),"ISO8859_1");
+      	  response.setHeader("Content-Disposition","attachment;filename="  
+      	                   + fileName);
+    		if(fileInfo!=null){
+    			byte[] info = (byte[])fileInfo.get("fileInfo");
+    			ByteArrayInputStream is = new ByteArrayInputStream(info);
+    			IOUtils.copy(is, os);
+    			
+    			if(null != os){
+        			os.flush();
+        		}
+    			
+    			is.close();
+    			os.close();
+    		}
+
+        } catch (IOException e) {
+        	
+        } catch (Exception e){
+        	
+        }
+    }
+
 
     /***
      * Uedit使用的数据
@@ -106,7 +143,7 @@ public class UpfileController {
         map.put("imageActionName","upload");
         map.put("imageUrlPrefix", "");
         map.put("imageMaxSize", 1024*1000);
-        map.put("imageAllowFiles", new String[]{".png", ".jpg", ".jpeg", ".gif", ".bmp"});
+        map.put("imageAllowFiles", new String[]{".png", ".jpg", ".jpeg", ".gif", ".bmp",".pdf",".doc",".docx",".rar"});
         return map;
     }
     
@@ -121,7 +158,7 @@ public class UpfileController {
 	public void uploadExecute(HttpServletRequest request,
 			Map<String, Object> map,String fileType) throws Exception {
 		//TODO 图片
-		String fileTypes = "gif,png,jpg,jpeg,bmp";
+		String fileTypes = "gif,png,jpg,jpeg,bmp,pdf,doc,docx,rar";
 		//TODO 图片保存路径
 		String path = FileUtil.getSystemPath();
 		
@@ -152,7 +189,7 @@ public class UpfileController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			// 关闭流及删除临时文件
+			// 关闭流及删除临时文件 ba 
 			if(null!=fis){
 				FileUtil.closeQuietly(fis);
 			}
