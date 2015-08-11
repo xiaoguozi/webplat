@@ -68,7 +68,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   <!-- hot -->
   <div id="detail_info" class="layout_n simu_side_nav_box">
     <div class="simu_detailtop_box clearfix">
-      <div class="detail_box_1"> <span class="box_tit"> <a target="_blank" href=""><img width="35" height="35" src="assets/img/ui2/txicon.png" alt="" />${peProduct.managerName}</a> - ${peProduct.name} </span>
+      <div class="detail_box_1"> <span class="box_tit"> <a target="_blank" href="rest/web/pe/peIndexMDetail?managerId=${peProduct.managerId}"><img width="35" height="35" src="assets/img/ui2/txicon.png"  alt="" />${peProduct.managerName}</a> - ${peProduct.name} </span>
         <ul class="assess_list">
         </ul>
       </div>
