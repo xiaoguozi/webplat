@@ -11,9 +11,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="私募基金，私募基金经理，私募基金排名，阳光私募" />
-<meta name="description" content="淘金山私募频道为广大投资者选出具有长期投资价值的明星私募基金和明星私募基金经理，提供最新的私募基金净值、私募基金排名、私募产品数据库。" />
-<title>私募基金经理,阳光私募基金经理,私募基金经理排名-淘金山私募</title>
+<meta name="keywords" content=" ${peManagerProduct.managerName}， ${peManagerProduct.managerName}基金经理， ${peManagerProduct.managerName}私募产品， ${peManagerProduct.managerName}私募基金" />
+<meta name="description" content="找${peManagerProduct.managerName}私募基金上淘金山，为您提供${peManagerProduct.managerName}基金经理个人简介，${peManagerProduct.managerName}私募基金业绩，助您快速找到最适合的${peManagerProduct.managerName}私募产品进行购买，支持7*24小时在线预约。" />
+<title> ${peManagerProduct.managerName}-私募基金经理-淘金山私募</title>
+
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>  
 <script type="text/javascript" src="assets/scripts/ui/highstock-1.3.9.js"></script>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />

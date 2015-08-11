@@ -10,8 +10,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="私募基金，私募基金经理，私募基金排名，阳光私募" />
-<meta name="description" content="淘金山私募频道为广大投资者选出具有长期投资价值的明星私募基金和明星私募基金经理，提供最新的私募基金净值、私募基金排名、私募产品数据库。" />
+<meta name="keywords" content="找私募基金经理上淘金山，为您提供阳光私募基金经理，私募基金经理排名列表信息，助您快速找到最适合的私募基金经理购买产品，支持7*24小时在线预约。" />
+<meta name="description" content="私募基金经理，阳光私募基金经理，私募基金经理排名" />
 <title>私募基金经理,阳光私募基金经理,私募基金经理排名-淘金山私募</title>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet"
 	media="screen" type="text/css" />
