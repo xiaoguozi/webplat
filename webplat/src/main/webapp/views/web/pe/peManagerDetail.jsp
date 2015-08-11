@@ -199,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <!-- 推荐理由 --> 
       <!-- 基金收益 -->
       <div  class="mod_left_item simu_side_nav_box">
-        <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>徐翔代表作 </span><span class="dbzuo_fc">泽熙三期</span> </div>
+        <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>${peManagerProduct.managerName}代表作 </span><span class="dbzuo_fc">${peManagerProduct.productSimpleName}</span> </div>
         <div class="simu_detailwrap_2 simu_detailwrap">
           <!-- 
           <div class="sub_item">
