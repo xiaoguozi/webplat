@@ -113,7 +113,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 		</div>              
 	</div>
-<div class="tjs_pcs_title xt_side_nav_box" id="detail_info"><div class="tjs_pcs_titleleft">产品概况</div>
+<div class="tjs_pcs_title" ><div class="tjs_pcs_titleleft">产品概况</div>
 	<c:choose>  
 	    <c:when test="${productXtcp.xtcpStatus=='30'}">
 	        <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
@@ -125,7 +125,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	
 </div>
 <div style=" height:10px; width:100%; font-size:0px;"></div>
-<div class="tjs_pcs_box">
+<div class="tjs_pcs_box xt_side_nav_box" id="detail_info">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tjs_pcs_bable">
   <tr>
     <td width="15%" height="40" class="tjs_pcs_titleoddbg">信托全称：</td>
@@ -260,58 +260,63 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 </div>
 <!--// tjs_pcs_box 01-->
-
+<div class="xt_side_nav_box" id="who">
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title xt_side_nav_box" id="who">融资方是谁？</a></div>
+<div class="tjs_pcs_title">融资方是谁？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
   ${productXtcp.xtcpRzf}
  </div>
-<!--// tjs_pcs_box 02-->
 </div>
-<!--// tjs_padding_width24px 02-->
+</div>
 
+<!--// tjs_pcs_box 02-->
+<div class="xt_side_nav_box" id="where">
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title xt_side_nav_box" id="where">资金用途是什么？</a></div>
+<div class="tjs_pcs_title">资金用途是什么？</div>
 <div class="tjs_pcs_box tjs_padding_height16px">
    ${productXtcp.xtcpZjyt}
 </div>
-<!--// tjs_pcs_box 03-->
 </div>
-<!--// tjs_padding_width24px 03-->
+</div>
 
+
+<!--// tjs_pcs_box 03-->
+<div class="xt_side_nav_box" id="howback">
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title xt_side_nav_box" id="howback">风控措施如何？</a></div>
+<div class="tjs_pcs_title">风控措施如何？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpFkcs}
 </div>
-<!--// tjs_pcs_box 04-->
+</div>
 </div>
 
 
 
-<!--// tjs_padding_width24px 04-->
+<!--// tjs_pcs_box 04-->
+<div class="xt_side_nav_box" id="from"> 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title xt_side_nav_box" id="from">还款来源有哪些？</a></div>
+<div class="tjs_pcs_title" >还款来源有哪些？</div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpHkly}
 </div>
-<!--// tjs_pcs_box 04-->
+</div>
 </div>
 
-
+<!--// tjs_pcs_box 05-->
+<div class="xt_side_nav_box" id="managercom"> 
 <div style=" height:30px; width:100%; font-size:0px;"></div>
 <div  class="tjs_padding_width24px" style="padding-left:0px">
-<div class="tjs_pcs_title xt_side_nav_box" id="managercom">管理机构是谁？</a></div>
+<div class="tjs_pcs_title">管理机构是谁？</a></div>
 <div class="tjs_pcs_box tjs_padding_height16px">
  ${productXtcp.xtcpZcglr}
  </div>
-<!--// tjs_pcs_box 05-->
 </div>
-<!--// tjs_padding_width24px 05-->
+</div>
+<!--// tjs_pcs_box 05 05-->
 
 </div>
 <!-- /tjs_content_div tjs_1108px -->
