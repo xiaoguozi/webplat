@@ -11,9 +11,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="私募基金，私募基金经理，私募基金排名，阳光私募" />
-<meta name="description" content="淘金山私募频道为广大投资者选出具有长期投资价值的明星私募基金和明星私募基金经理，提供最新的私募基金净值、私募基金排名、私募产品数据库。" />
-<title>私募基金经理,阳光私募基金经理,私募基金经理排名-淘金山私募</title>
+<meta name="keywords" content=" ${peManagerProduct.managerName}， ${peManagerProduct.managerName}基金经理， ${peManagerProduct.managerName}私募产品， ${peManagerProduct.managerName}私募基金" />
+<meta name="description" content="找${peManagerProduct.managerName}私募基金上淘金山，为您提供${peManagerProduct.managerName}基金经理个人简介，${peManagerProduct.managerName}私募基金业绩，助您快速找到最适合的${peManagerProduct.managerName}私募产品进行购买，支持7*24小时在线预约。" />
+<title> ${peManagerProduct.managerName}-私募基金经理-淘金山私募</title>
+
 <script type="text/javascript" src="assets/scripts/ui/jquery.js"></script>  
 <script type="text/javascript" src="assets/scripts/ui/highstock-1.3.9.js"></script>
 <link href="assets/css/ui/taojinshan.css" rel="stylesheet" media="screen" type="text/css" />
@@ -198,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
       <!-- 推荐理由 --> 
       <!-- 基金收益 -->
       <div  class="mod_left_item simu_side_nav_box">
-        <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>徐翔代表作 </span><span class="dbzuo_fc">泽熙三期</span> </div>
+        <div class="left_hd clearfix"> <span class="txt"> </span> <span class="txt"> <em class="ui_titico ui_titico_6"><img src="assets/img/ui2/zoushi.png" style="margin-top:10px;" alt="" /></em>${peManagerProduct.managerName}代表作 </span><span class="dbzuo_fc">${peManagerProduct.productSimpleName}</span> </div>
         <div class="simu_detailwrap_2 simu_detailwrap">
           <!-- 
           <div class="sub_item">
