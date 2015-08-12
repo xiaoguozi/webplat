@@ -31,6 +31,9 @@ public class XinTuoSeachCtrlVO extends GenericCtrlModel {
 	 
 	 private int totalPageSize;
 	 
+	 /** 比较时传过来的id列表 */
+	 private String productIdArray;
+	 
 	 public int getTotalPageSize() {
 			if(super.getTotalCount()%super.getPageSize()==0){
 				return super.getTotalCount()/super.getPageSize();
@@ -104,6 +107,12 @@ public class XinTuoSeachCtrlVO extends GenericCtrlModel {
 	}
 	public void setXtcpGsId(Long xtcpGsId) {
 		this.xtcpGsId = xtcpGsId;
+	}
+	public String getProductIdArray() {
+		return productIdArray;
+	}
+	public void setProductIdArray(String productIdArray) {
+		this.productIdArray = productIdArray;
 	}
 	 
 	 

@@ -32,6 +32,18 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 </head>
 
 <body>
+<div id="divTemplate"  style="display: none;">
+		<input type="hidden" name="cid" value="#productId" />
+		<img class="del_compare" src="assets/img/ui2/close_compare.png" onclick="clearChoose('#productId');" alt="" />
+		<div class="clear"></div>
+		<p>#productName</p>
+		<p>预期年化收益</p>
+		<p class="tjs_products_title">
+			#intValue.<span>#decimal%</span>
+		</p>
+	</div>
+
+
 <div class="tis_trust_all">
 
 <%@ include file="/views/web/header.jsp"%>
@@ -56,60 +68,9 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 
 <div class="tjs_trust_positiondiv"> <div class="tjs_1108px center">当前位置： <a href="">首页</a> &gt; <a href="rest/web/xintuo/trust/trustIndex">信托</a>&gt;信托产品</div></div>
-<!-- 精选推荐 开始-->
-
-<div class="tjs_1108px center">
-<div style=" height:20px; width:100%;"></div>
-<div class="tjs_recommend_title tjs_recommend_trusticobg">精选推荐</div>
-<div style=" height:10px; width:100%; font-size:0px;"></div>
-<div class="tjs_trust_coloreddiv"></div>
-
-<div class="tjs_trust_typle">
-
-<c:forEach items="${lstTopVos}" var="xintuotop" >
-<div class="tjs_trust_unit tjs_right_1pxdashed">
-<div class="tjs_right_icodiv">
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_title">
-  <tr>
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/xintuo/small/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" style="font-size:16px" target="_blank">${xintuotop.xtcpSplname}</a></span></td>
-  </tr>
-
-</div>
-<div class="tjs_right_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuotop.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
-<div  style=" height:20px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuotop.xtcpHd}</span></div>
-<div class="tjs_right_textdiv"> 门槛：<fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限： ${xintuotop.xtcpCxq} 个月 </div>
-</div>
-<div class="tjs_product_textdiv" style="height:40px"> ${xintuotop.xtcpDp}</div>
-<c:choose>  
-    <c:when test="${xintuotop.xtcpStatus=='30'}">
-    	<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn_disable" data_id="${xintuotop.xtcpId}">立即预约</a></div>
-    </c:when>    
-    <c:otherwise>        
-		<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuotop.xtcpId}">立即预约</a></div>
-    </c:otherwise>  
-</c:choose>
-
-</div>
-
-</c:forEach>
-<!-- /tjs_right_unit 04 -->
-<div class="clearfloat"></div>
-
-</div>
-</div>
-<!-- /tjs_content_div tjs_1108px -->
-
-<!-- 精选推荐 结束-->
 
 
 
-
-
-
-<div  style=" height:26px; width:100%;"></div>
 <!-- 信托产品开始 -->
 <div class="tjs_1108px center">
 <div class="tjs_recommend_title tjs_product_allicobg">全部信托产品</div>
@@ -155,8 +116,8 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <form id="modalForm" action="rest/web/xintuo/trust/trustProduct" method="post" >
 <div class="tjs_dashed_bottom tjst_height_32px" style="margin-top:4px;padding-top:0px;height:2px"></div>
 <div class="tjst_height_50px tjs_dashed_bottom"><div class="tjs_search_left">关  键  词： </div><div class="tjs_search_right"><input name="keyword"  type="text"  value="${xintuoSearVO.keyword}" placeholder="请输入关键字"  class="tjst_pct_search"><a href="#"><img src="assets/img/ui/search_ico.png" width="33" height="33" style="float:left"></a></div></div>
-<div class="tjst_height_50px tjs_bg_gray"><div class="tjs_search_left">已选条件： </div>
-<div class="tjs_pct_right "><span class="searchCondition">
+<div class="tjst_height_50px " style="background:#ffffff;"><div class="tjs_search_left" >已选条件： </div>
+<div class="tjs_pct_right " ><span class="searchCondition">
 
 </span>
 共 <span style="font-size:16px; color:#FF6600">${xintuoSearVO.totalCount}</span> 款产品满足条件&nbsp;&nbsp;&nbsp;&nbsp;
@@ -165,49 +126,111 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 <!-- //tjs_product_search -->
 
 
-<div class="tjst_height_32px"></div>
+<div class="tjst_height_32px" style="height:15px; background:#ffffff;"></div>
 
 <input name="sortField" type="hidden" value="${xintuoSearVO.sortField }"/>
 <input name="sortType" type="hidden" value="${xintuoSearVO.sortType}"/>
 <input name="pageNo" type="hidden" value="${xintuoSearVO.pageNo}"/>
 <input name="pageSize" type="hidden" value="${xintuoSearVO.pageSize }"/>
-<div class="tjs_pct_div">
-<ul>
-<c:forEach items="${lstProductVos}" var="xintuoProduct" varStatus="status">
-<li>
-<div class="tjs_pct_unit">
-<div  style=" height:20px; width:100%;"></div>
-<div class="tjs_pct_title">
-  <tr>
-    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" target="_blank" ><img src="assets/img/xintuo/small/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"></a></td>
-    <td align="left">&nbsp;&nbsp;<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" class="tjs_pct_titleurl" style="font-size:16px" target="_blank">${xintuoProduct.xtcpSplname}</a></td>
-  </tr>
-</div>
-<div class="tjs_pct_icodiv">
-<div class="tjs_pct_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuoProduct.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuoProduct.xtcpNsyl*100%100}" pattern="00"/>%</div>
-<div  style=" height:15px; width:100%;"></div>
-<div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuoProduct.xtcpHd}</span></div>
-<div class="tjs_right_textdiv"> 门槛： <fmt:formatNumber value="${xintuoProduct.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限：  ${xintuoProduct.xtcpCxq} 个月 </div>
-</div>
-<div class="tjs_product_textdiv" style="height:40px"> ${xintuoProduct.xtcpDp}</div>
-<c:choose>  
-    <c:when test="${xintuoProduct.xtcpStatus=='30'}">
-    	<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn_disable" data_id="${xintuoProduct.xtcpId}">立即预约</a></div>
-    </c:when>    
-    <c:otherwise>        
-		<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn" data_id="${xintuoProduct.xtcpId}">立即预约</a></div>
-    </c:otherwise>  
-</c:choose>
 
+
+
+<div class="simu_mainprolist_result" style="background:#ffffff; margin-top:0px;">
+                 <table class="simu_pro_tb_2 tjs_simu_tbl" width="100%">
+                     <thead>
+                         <tr>
+                             <td class="tjs_tbl_td_brm" >对比</td>
+                             <td class="tjs_tbl_td_bm" style="text-align: center;width:12%"><span style="padding-left: 20px;">发行机构</span></td>
+                             <td class="tjs_tbl_td_brm" style="text-align: center;width:18%"><span>产品简称</span></td>
+                             <td class="tjs_tbl_td_bm" style="width:9%;text-align: right;"><nobr>预期年化收益</nobr></td>
+                             <td class="tjs_tbl_td_bm" style="width:9%;text-align: right;">返现金额</td>
+                             <td class="tjs_tbl_td_bm" style="width:9%;text-align: right;">认购起点</td>
+                             <td class="tjs_tbl_td_brm" style="width:9%;text-align: center">产品期限</td>
+                             <td class="tjs_tbl_td_bm" style="width:8%;">付息方式</td>
+                             <td class="tjs_tbl_td_bm" style="text-align:center;width:8%;">投资领域</td>
+                             <td class="tjs_tbl_td_bm" style="text-align:center;width:8%;">所在区域</td>
+                             <td class="tjs_tbl_td_bm">预约</td>
+                         </tr>
+                     </thead>
+                     <tbody>
+                     	<c:forEach items="${lstProductVos}" varStatus="status"  var="xintuoProduct">
+                          <tr class="odd">
+								<td class="c_c c_b c_first_control">
+								<div class="lb_wrap">
+									<span class="lb_b"></span> <input class="tb_chk" productId="${xintuoProduct.xtcpId}" productName="${xintuoProduct.xtcpSplname }" accumulatedIncome="<fmt:formatNumber value='${xintuoProduct.xtcpNsyl.intValue()}' pattern='#0'/>.<fmt:formatNumber value='${xintuoProduct.xtcpNsyl*100%100}' pattern='00'/>%"  type="checkbox" />
+									</div>
+								</td>
+								<td class="c_l" style="text-align:center;"> 
+									<div style="float:left;width:40%;">
+										<img src="assets/img/xintuo/small/${xintuoProduct.xtcpLog}" width="36" height="30" align="middle"/>
+									</div>
+									<div style="float:left;width:60%;text-align:center; margin-top:4px;">
+										<span>${xintuoProduct.xtcpGszhname}</span>
+									</div>
+								</td>
+								<td class="c_l c_b" style="text-align:left;">
+									<a href="rest/web/xintuo/trust/trustParticulars?id=${xintuoProduct.xtcpId}" style="font-size:16px" target="_blank"><nobr>${xintuoProduct.xtcpSplname}</nobr></a>
+								</td>
+								<td class="c_l" style="text-align:right;"><span class="f_f80"><fmt:formatNumber value="${xintuoProduct.xtcpNsyl.intValue()}" pattern="#0"/>.<fmt:formatNumber value="${xintuoProduct.xtcpNsyl*100%100}" pattern="00"/>%</span></td>
+								<td class="c_l" style="text-align:right;"><span class="f_f80">${xintuoProduct.xtcpHd}元</span></td>
+								
+								<td class="c_c_s" style="text-align:right;"><fmt:formatNumber value="${xintuoProduct.xtcpZdrgje}" pattern="#0.####"/> 万 </td>
+								<td class="c_c_s c_b" style="text-align:center;">${xintuoProduct.xtcpCxq}个月</td>
+								<td class="c_r_s" style="text-align:center;">
+									<c:choose>  
+						                <c:when test="${xintuoProduct.xtcpLxfp=='10'}">按月付息</c:when>
+						                <c:when test="${xintuoProduct.xtcpLxfp=='20'}">按季付息</c:when>
+						                <c:when test="${xintuoProduct.xtcpLxfp=='30'}">半年付息</c:when> 
+						                <c:when test="${xintuoProduct.xtcpLxfp=='40'}">按年付息</c:when> 
+						                <c:when test="${xintuoProduct.xtcpLxfp=='50'}">到期付息</c:when>     
+						                <c:otherwise>其他</c:otherwise>  
+						            </c:choose>
+						        </td>
+								<td class="c_r_s" style="text-align:center;">
+									<c:choose>  
+						                <c:when test="${xintuoProduct.xtcpTzly=='10'}">  
+						                  		房地产
+						                </c:when>
+						                 <c:when test="${xintuoProduct.xtcpTzly=='20'}">  
+						                  		  金融
+						                </c:when>
+						                 <c:when test="${xintuoProduct.xtcpTzly=='30'}">  
+						                  		基础设施  
+						                </c:when> 
+						                 <c:when test="${xintuoProduct.xtcpTzly=='40'}">  
+						                  		工商企业
+						                </c:when> 
+						                 <c:when test="${xintuoProduct.xtcpTzly=='50'}">  
+						                  		其他
+						                </c:when>                 
+						                <c:otherwise>  
+						                     	其他
+						                </c:otherwise>  
+						            </c:choose>
+								</td>
+								<td class="c_r_s" style="text-align:center;">${xintuoProduct.xtcpCity}</td>
+								<td class="c_r_s">
+									<c:choose> 
+										<c:when test="${xintuoProduct.xtcpStatus=='30'}">
+											<a class="tb_btn tb_btn_primary simu_reserve_btn" style="background-color: #dbdbdb;border:1px solid #dbdbdb; color:white; cursor:default;" href="javascript:void(0)" data_id="${xintuoProduct.xtcpId}">预约</a>
+										</c:when>
+										<c:otherwise>     
+											<a class="tb_btn tb_btn_primary simu_reserve_btn t_reserve" href="javascript:void(0)" data_id="${xintuoProduct.xtcpId}">预约</a>
+										</c:otherwise>
+									</c:choose>
+								</td>
+							</tr>
+		             </c:forEach>
+		        </tbody>
+    		</table>
 </div>
-<!-- /tjs_pct_unit 01 -->
-</li>
-</c:forEach>
-</ul>
-</div>
+
+
+
+
 <!-- //tjs_pct_div -->
 <!-- 翻页开始 -->
-<div class="pages pgbtn">
+<div class="pages pgbtn" >
     <table class=pagetb cellspacing=0>
       <tbody>
         <tr>
@@ -264,9 +287,90 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 
 <!-- 信托产品结束 -->
 
+<div  style=" height:16px; width:100%;"></div>
+
+<!-- 精选推荐 开始-->
+
+<div class="tjs_1108px center">
+<div style=" height:20px; width:100%;"></div>
+<div class="tjs_recommend_title tjs_recommend_trusticobg">精选推荐</div>
+<div style=" height:10px; width:100%; font-size:0px;"></div>
+<div class="tjs_trust_coloreddiv"></div>
+
+<div class="tjs_trust_typle">
+
+<c:forEach items="${lstTopVos}" var="xintuotop" >
+<div class="tjs_trust_unit tjs_right_1pxdashed">
+<div class="tjs_right_icodiv">
+<div  style=" height:36px; width:100%;"></div>
+<div class="tjs_right_title">
+  <tr>
+    <td width="65" align="right"><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" target="_blank"><img src="assets/img/xintuo/small/${xintuotop.xtcpLog}" width="36" height="30" align="middle"></a></td>
+    <td align="left">&nbsp;&nbsp;<span><a href="rest/web/xintuo/trust/trustParticulars?id=${xintuotop.xtcpId}" style="font-size:16px" target="_blank">${xintuotop.xtcpSplname}</a></span></td>
+  </tr>
+
+</div>
+<div class="tjs_right_earningsdiv"><span class="tjs_font36px"><fmt:formatNumber value="${xintuotop.xtcpNsyl.intValue()}" pattern="#0"/>.</span><fmt:formatNumber value="${xintuotop.xtcpNsyl*100%100}" pattern="00"/>%</div>
+<div  style=" height:20px; width:100%;"></div>
+<div class="tjs_right_textdiv"><span class="tjs_colororange">${xintuotop.xtcpHd}</span></div>
+<div class="tjs_right_textdiv"> 门槛：<fmt:formatNumber value="${xintuotop.xtcpZdrgje}" pattern="#0.####"/> 万 | 期限： ${xintuotop.xtcpCxq} 个月 </div>
+</div>
+<div class="tjs_product_textdiv" style="height:40px"> ${xintuotop.xtcpDp}</div>
+<c:choose>  
+    <c:when test="${xintuotop.xtcpStatus=='30'}">
+    	<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn_disable" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+    </c:when>    
+    <c:otherwise>        
+		<div class="tjs_right_btndiv"> <a href="#" class="tjs_btn t_reserve" data_id="${xintuotop.xtcpId}">立即预约</a></div>
+    </c:otherwise>  
+</c:choose>
+
+</div>
+
+</c:forEach>
+<!-- /tjs_right_unit 04 -->
+<div class="clearfloat"></div>
+
+</div>
+</div>
+<!-- /tjs_content_div tjs_1108px -->
+
+<!-- 精选推荐 结束-->
+
 
 <div class="clearfloat"></div>
 <div style=" height:26px; width:100%;"></div>
+
+
+
+<!-- 产品对比 -->
+<div class="simu_compare_container">
+    <div class="compare_container">
+        <div class="compare_container_title">
+            <h3 class="compare_products">产品对比栏</h3>
+            <div class="close_compare">
+                <img src="assets/img/ui2/close_compareicon.png" alt="" />隐藏</div>
+        </div>
+        <div class="compare_container_contents">
+            <p class="moren_font">您还可以继续添加</p>
+        </div>
+        <div class="compare_container_contents">
+            <p class="moren_font">您还可以继续添加</p>
+        </div>
+        <div class="compare_container_contents">
+            <p class="moren_font">您还可以继续添加</p>
+        </div>
+        <div class="tjs_comparing">
+            <a class="uc_btn compare_btn" href="javascript:void(0)" onclick="goCompareDetail();">对&nbsp;&nbsp;&nbsp;&nbsp;比</a>
+            <a id="clear_duibi" class="uc_btn compare_btn">清空对比栏</a>
+        </div>
+    </div>
+</div>
+<!-- 产品对比 end -->
+<div class="clear"></div>
+<!-- container end -->
+
+
 
 <!-- 底部 -->
 <%@ include file="/views/web/footer.jsp"%>
@@ -278,6 +382,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
 var IndexPage = {};
 IndexPage.orderProductUrl="rest/web/xintuo/trust/orderProduct";
 IndexPage.formActionUrl="rest/web/xintuo/trust/trustProduct";
+var sum = 0;
 	$(function () {  
 		//初始化选择按钮
 	    $("#xtcpZdrgje a[tag=${xintuoSearVO.xtcpZdrgje}]").addClass("tjs_condition_selected");
@@ -401,7 +506,7 @@ IndexPage.formActionUrl="rest/web/xintuo/trust/trustProduct";
 	    
 	    
 	    //--预约--                   
-		$("a.tjs_btn").click(function(event){	
+		$("a.t_reserve").click(function(event){	
 			event.preventDefault();
 			  alertMsg($(this).attr("data_id"),'10', 1);  							    
 				if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
@@ -428,8 +533,97 @@ IndexPage.formActionUrl="rest/web/xintuo/trust/trustProduct";
 		});
 		  
 		
+		 
+		
+		//--对比框--
+		$(".close_compare").click(function () {
+            $(".simu_compare_container").hide();
+        })
+        $("#clear_duibi").click(function () {
+            $(".tb_chk").removeAttr("checked");
+            $(".simu_compare_container").hide();
+            for(var i=0; i<3; i++){
+            	$(".compare_container_contents:eq("+i+")").html("<p class='moren_font'>您还可以继续添加</p>");
+            }
+            sum = 0;
+        });
+
+        $(".tb_chk").each(function (index) {
+            $(".tb_chk").removeAttr("checked");
+            $(this).click(function () {
+                if ($(this).is(':checked')) {
+                    sum += 1;
+                    if (sum > 3) {
+	                    sum = 3;
+	                    $(this).removeAttr("checked");
+	                    alert("最多只能选三个进行对比！")
+	                }else{
+	                	if($("input[name=cid][value="+$(this).attr("productId")+"]").size()==0){
+	                		//添加要对比的选项
+	                    	var contentHtml = $("#divTemplate").html();
+	                    	contentHtml = contentHtml.replace(/#productId/g, $(this).attr("productId"));
+	                    	contentHtml = contentHtml.replace("#productName", $(this).attr("productName"));
+	                    	//收益
+	                    	var income = $(this).attr("accumulatedIncome") ;
+	                    	income = parseFloat(income).toFixed(2);
+	                    	var intValue = income.substring(0, income.indexOf("."));
+	                    	var decimal = income.substring(income.indexOf(".")+1);
+	                    	contentHtml = contentHtml.replace("#intValue", intValue);
+	                    	contentHtml = contentHtml.replace("#decimal", decimal);
+	                    	
+	                    	for(var i=0; i<3; i++){
+	                    		if($(".compare_container_contents:eq("+i+")").find("input").size()==0){
+	                    			$(".compare_container_contents:eq("+i+")").html(contentHtml);
+	                    			break;
+	                    		}
+	                    	}
+	                	}
+	                }
+                    
+                } else {
+                    sum -= 1;
+                    var obj = $("input[name=cid][value="+$(this).attr("productId")+"]");
+                    if(obj.size()>0){
+	                    obj.eq(0).parent().html(" <p class='moren_font'>您还可以继续添加</p>");
+                    }
+                }
+                sum > 0 ? $(".simu_compare_container").show() : $(".simu_compare_container").hide();
+            });
+        });
+        $(".del_compare").each(function (index) {
+            $(this).click(function () {
+                $(".compare_container_contents:eq(" + index + ")").html(" <p class='moren_font'>您还可以继续添加</p>");
+            });
+        }) 
+		 
+		 
  	    		       
 	}); 
+	
+	//去掉选项
+	function clearChoose(productId){
+		$("input[name=cid][value="+productId+"]").parent().html("<p class='moren_font'>您还可以继续添加</p>");
+	    $("input[class=tb_chk][productId="+productId+"]").removeAttr("checked");
+	    sum -= 1;
+	}
+	
+	function goCompareDetail(event){
+		var cids = $(".compare_container input[name=cid]");
+		if(cids.size()<2){
+			alert("请至少选择两个产品");
+			return;
+		}
+		var ids='';
+		for(var i=0; i<cids.size(); i++){
+			if(i!=0){
+				ids = cids[i].value + ','+ids;
+			}else{
+				ids += cids[i].value;
+			}
+		}
+		window.open("<%=basePath%>rest/web/xintuo/trust/compare?productIdArray="+ids, "_blank");
+	}
+	
 	
 	function placeholderSupport() {
 	    return 'placeholder' in document.createElement('input');

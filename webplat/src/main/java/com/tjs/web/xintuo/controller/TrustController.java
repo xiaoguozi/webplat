@@ -1,10 +1,13 @@
 package com.tjs.web.xintuo.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -55,6 +58,9 @@ public class TrustController {
 	
 	@Resource
 	private ISysHome sysHomeService;
+	
+	//处理返现金额
+	private static final Pattern pattern = Pattern.compile("\\d+");
 	
 	
 	/**
@@ -161,11 +167,23 @@ public class TrustController {
     	xinTuoAdminSeachCtrlVO.setPageNo(currentPageNo);
     	xinTuoSeachCtrlVO.setPageNo(currentPageNo);
     	
-    	List<ProductXtcp> lstProductVos= iProductXtService.selectProductXtcpTrust(xinTuoAdminSeachCtrlVO);    	
+    	List<ProductXtcp> lstProductVos= iProductXtService.selectProductXtcpTrust(xinTuoAdminSeachCtrlVO); 
+    	//处理下返现金额
+    	for(ProductXtcp vo : lstProductVos){
+    		vo.setXtcpHd(clearFxAmount(vo.getXtcpHd()));
+    	}
     	//分页结束
     	model.addAttribute("xintuoSearVO", xinTuoSeachCtrlVO);
     	model.addAttribute("lstProductVos", lstProductVos);
         return "web/xintuo/trustProduct";
+    }
+    
+    private String clearFxAmount(String source){
+    	Matcher matcher = pattern.matcher(source);
+    	if(matcher.find()){
+    		source = matcher.group();
+    	}
+    	return source;
     }
     
     
@@ -250,6 +268,29 @@ public class TrustController {
     @RequestMapping("/trustSafeguard")
     public String trustSafeguard() {
     	return "web/xintuo/trustSafeguard";
+    }
+    
+    /**
+     * 比较信托内容
+     * @param model
+     * @param xinTuoSeachCtrlVO
+     * @return
+     */
+    @RequestMapping("/compare")
+    public String compare(XinTuoSeachCtrlVO xinTuoSeachCtrlVO, Model model) {
+    	String productIdArray = xinTuoSeachCtrlVO.getProductIdArray();
+    	List<ProductXtcp> lstProduct = new ArrayList<ProductXtcp>();
+    	String[] ids = productIdArray.split(",");
+    	for(String id : ids){
+    		ProductXtcp productXtcp = iProductXtService.findByProductXtcpId(Long.valueOf(id));
+        	BigDecimal div10000 = new BigDecimal(10000);		
+        	productXtcp.setXtcpFxgm(BigDecimalUtils.div(productXtcp.getXtcpFxgm(), div10000));
+        	productXtcp.setXtcpZdrgje(BigDecimalUtils.div(productXtcp.getXtcpZdrgje(), div10000));
+        	lstProduct.add(productXtcp);
+    	}
+    	
+    	model.addAttribute("lstProduct", lstProduct);
+    	return "web/xintuo/trustCompare";
     }
     
    /**
