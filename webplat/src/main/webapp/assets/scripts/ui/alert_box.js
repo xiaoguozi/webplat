@@ -105,7 +105,11 @@
         function(data){		  
          document.body.removeChild(alertBox);
          document.body.removeChild(shadowDiv);
-         alertTip("<div class='capacity'>预约</div><div class='alert_in_box' style='text-align: center; width: 320px;height:300px'><p>恭喜,预约成功！</p></div><div class='remark'>淘金山专业投资顾问将在24小时以内与您联系</div>",1);
+    	 var html="<div class='capacity' style='font-size:20px'>温馨提示</div><div class='tip_in_box' style='text-align: center;float:left'>";
+	  	    html+="<div style='width:200px;height:160px;border-right:1px solid #afafaf;float:left'><img src='assets/img/tjs_logo.png'/ style='width:160px;height:160px'><p style='font-size:14px;margin-left:0px'>扫一扫,获取最新预约动态</P></div>"
+	  	    html+="<div style='width:200px;height:160px;padding-top:30px;float:left'><img src='assets/img/tip_info.png'/ style='width:40px;height:40px'><p style='font-size:18px;margin-top:20px'>恭喜,预约成功</P><p style='font-size:14px;margin-top:20px'>我们将尽快与您联系</P></div>"
+	  	    html+="</div>";	
+         alertTip(html,1);
                                    
       });
         

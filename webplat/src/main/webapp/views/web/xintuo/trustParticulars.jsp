@@ -9,6 +9,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="${productXtcp.xtcpSplname},${productXtcp.xtcpFullname}"/>
 <meta name="description" content="找${productXtcp.xtcpSplname} 上淘金山，为您提供${productXtcp.xtcpFullname}信息介绍，包括起始资金<fmt:formatNumber value="${productXtcp.xtcpFxgm}" pattern="#0.####"/>万元、产品期限${productXtcp.xtcpCxq}个月、预期收益${productXtcp.xtcpNsyl}%，帮助您选出最适合自己信托产品，并完成购买信托产品。"/>
@@ -25,20 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
 <div class="tis_pcs_all">
 
-<div class="header_top">
- <div class="tjs_1108px center">
-     <span class="time">欢迎您来到淘金山，投资有风险，选择需谨慎！</span>
-     <div class="topservice">4006-114-088</div>
-	    <div class="toplinks">
-			<c:if test="${empty sessionScope.userInfo.username}">  
-			     <a href="<%=basePath%>rest/web/login" class="log_link">登录</a> | <a href="<%=basePath%>rest/web/passport/reg">注册</a> 
-			</c:if>  
-			<c:if test="${not empty sessionScope.userInfo.username}">  
-			     <a href="<%=basePath%>rest/web/userCenter/index" class="log_link">欢迎您：${sessionScope.userInfo.username }</a> | <a href="<%=basePath%>rest/web/passport/logout">退出</a> 
-			</c:if>      	    	    
-	    </div>    
-  </div>
-</div>
+<%@ include file="/views/web/header.jsp"%>
 <!-- /header_top -->
 
 <div class="header_menu">
@@ -361,55 +349,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 
 
-<footer>
-<div class="footer_bg">
-    <div class="tjs_1108px center">
-        <div class="foot_menu">
-            <p class="menu_title">关于我们</p>
-            <ul class="foot_menu1">
-                <li><a href="<%=basePath%>rest/web/aboutUs/index" target="_blank">><span>公司简介</span></a></li>
-                <li><a href="<%=basePath%>rest/web/aboutUs/team" target="_blank">><span>管理团队</span></a></li>
-                <li><a href="<%=basePath%>rest/web/aboutUs/jobs" target="_blank">><span>人才招聘</span></a></li>
-                <li><a href="<%=basePath%>rest/web/aboutUs/contact" target="_blank">><span>联系我们</span></a></li>
-                <li><a href="<%=basePath%>rest/web/aboutUs/partner" target="_blank">><span>商户合作</span></a></li>
-            </ul>
-        </div>
-        <div class="foot_menu">
-            <p class="menu_title">帮助中心</p>
-            <ul class="foot_menu1">
-                <li><a href="">><span>新手入门</span></a></li>
-                <li><a href="">><span>理财问答</span></a></li>
-                <li><a href="">><span>试用帮助</span></a></li>
-            </ul>
-        </div>
-        <div class="foot_menu">
-            <p class="menu_title">关注我们</p>
-            <ul class="foot_menu1">
-                <img src="<%=basePath%>assets/img/ui2/aboutimg.png" alt=""/>
-            </ul>
-        </div>
-        <div class="foot_about_box">
-            <ul class="about_box1">
-                <li><img class="addr_home" src="<%=basePath%>assets/img/ui2/home.png" alt=""></li><li><span>联系地址</span></li><li class="w217">深圳市福田区福强路4001号文化创意园A座6层
-（地铁龙岗线益田站D出口）</li>
-            </ul>
-            <ul class="about_box1">
-                <li><img class="addr_home" src="<%=basePath%>assets/img/ui2/phone.png" alt=""></li><li><span>热线电话</span></li><li class="w217 lh40">4006-114-088</li>
-            </ul>
-            <ul class="about_box1">
-                <li><img class="addr_home qq" src="<%=basePath%>assets/img/ui2/qq.png" alt=""></li><li><span class="zx">在线咨询</span></li><li class="w217 lh40">08:00-23:00</li>
-            </ul>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="footers">
-    <p class="pt25">投资有风险，理财需谨慎</p>
-    <p>淘金山互联网在线理财 版权所有 © 2015-2018 粤ICP备 15026551号-1
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255221274'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1255221274%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
-	</p>
-</div>
-</footer>
+<%@ include file="/views/web/footer.jsp"%>
 <!-- /footer tjs_1108px -->
 </div>
 </div>

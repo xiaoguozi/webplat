@@ -71,7 +71,7 @@
     //弹出框
     var styleStr1 = 'display:block;position:fixed;_position:absolute;left:' + (winSize.windowWidth / 2 - 200) + 'px;top:' + (winSize.windowHeight / 2 - 200) + 'px;_top:' + (winSize.windowHeight / 2 + top - 150) + 'px;'; //弹出框的位置
     var alertBox = document.createElement('div');
-    alertBox.id = 'alertMsg';
+    alertBox.id = 'tiptMsg';
     alertBox.style.cssText = styleStr1;
     //创建弹出框里面的内容div标签
     var alertMsg_info = document.createElement('div');
