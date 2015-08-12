@@ -167,7 +167,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
     	<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
     </c:when>    
     <c:otherwise>        
-		<<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+		<div class="tjs_right_btndiv" style="margin-top:12px;"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
     </c:otherwise>  
 </c:choose>
 
