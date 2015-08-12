@@ -139,7 +139,7 @@ a.tjs_condition_selected{ min-width:44px;width:auto !important;width:44px;-webki
                  <table class="simu_pro_tb_2 tjs_simu_tbl" width="100%">
                      <thead>
                          <tr>
-                             <td class="tjs_tbl_td_brm" >对比</td>
+                             <td class="tjs_tbl_td_brm" >&nbsp;对比&nbsp;</td>
                              <td class="tjs_tbl_td_bm" style="text-align: center;width:12%"><span style="padding-left: 20px;">发行机构</span></td>
                              <td class="tjs_tbl_td_brm" style="text-align: center;width:18%"><span>产品简称</span></td>
                              <td class="tjs_tbl_td_bm" style="width:9%;text-align: right;"><nobr>预期年化收益</nobr></td>
