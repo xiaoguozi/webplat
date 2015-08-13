@@ -60,38 +60,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<div class="fastnav_bd">
 					<ul class="fastnav_list">
 						<li class="fastnav_item fastnav_item_active">
-							<a href="#detail_info">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#detail_info">
 								<em class="nav_ico"></em>
 								<span class="txt">产品概况</span>
 							</a>
 						</li>
 						<li class="fastnav_item">
-							<a href="#who">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#who">
 								<em class="nav_ico"></em>
 								<span class="txt">融资方</span>
 							</a>
 						</li>
 						<li class="fastnav_item">
-							<a href="#where">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#where">
 								<em class="nav_ico"></em>
 								<span class="txt">资金用途</span>
 							</a>
 						</li>
 						<li class="fastnav_item">
-							<a href="#howback">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#howback">
 								<em class="nav_ico"></em>
 								<span class="txt">风控措施</span>
 							</a>
 						</li>
 						<li class="fastnav_item">
-							<a href="#from">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#from">
 								<em class="nav_ico"></em>
 								<span class="txt">还款来源</span>
 							</a>
 						</li>
 						
 						<li class="fastnav_item fastnav_item_last">
-							<a href="#managercom">
+							<a href="<%=basePath%>rest/web/xintuo/trust/trustParticulars?id=${productXtcp.xtcpId}#managercom">
 								<em class="nav_ico"></em>
 								<span class="txt">管理机构</span>
 							</a>
