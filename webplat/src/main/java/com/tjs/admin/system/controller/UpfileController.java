@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.alibaba.fastjson.JSONObject;
 import com.tjs.admin.system.service.impl.UploadFileService;
 import com.tjs.admin.system.utils.FileUtil;
 
@@ -45,6 +46,24 @@ public class UpfileController {
         uploadExecute(request, map, "head");
           
         return map;
+    }
+    
+    
+    /***
+     * 文件上传
+     * @param request
+     * @return
+     * @throws Exception 
+     */
+    @RequestMapping("uploadRich")
+    public void  uploadRich(HttpServletRequest request,HttpServletResponse response) throws Exception{
+    	Map<String,Object>  map = new HashMap<String,Object>();    	
+        //获取图片用途
+        uploadExecute(request, map, "head");
+        JSONObject obj = new JSONObject();
+        obj.put("error", 0);
+		obj.put("url",  request.getContextPath()+"/rest/web/system/upfile/viewImage?imageName="+map.get("url"));
+		response.getOutputStream().println(obj.toJSONString());
     }
 
     /***
@@ -143,7 +162,7 @@ public class UpfileController {
         map.put("imageActionName","upload");
         map.put("imageUrlPrefix", "");
         map.put("imageMaxSize", 1024*1000);
-        map.put("imageAllowFiles", new String[]{".png", ".jpg", ".jpeg", ".gif", ".bmp",".pdf",".doc",".docx",".rar"});
+        map.put("imageAllowFiles", new String[]{".png", ".jpg", ".jpeg", ".gif", ".bmp",".pdf",".doc",".docx",".rar",".zip"});
         return map;
     }
     
@@ -158,7 +177,7 @@ public class UpfileController {
 	public void uploadExecute(HttpServletRequest request,
 			Map<String, Object> map,String fileType) throws Exception {
 		//TODO 图片
-		String fileTypes = "gif,png,jpg,jpeg,bmp,pdf,doc,docx,rar";
+		String fileTypes = "gif,png,jpg,jpeg,bmp,pdf,doc,docx,rar,zip";
 		//TODO 图片保存路径
 		String path = FileUtil.getSystemPath();
 		

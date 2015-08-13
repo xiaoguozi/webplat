@@ -258,6 +258,35 @@
                  <textarea rows="6" cols="100" class="form-control required"  maxlength="30" name="xtcpDp">${productXtcp.xtcpDp}</textarea>
             </div>
        </div>
+       
+        <div class="form-group">
+           <label class="col-md-2 control-label">资料上传 </label>
+            <div  class="col-md-1" <c:if test="${(empty productXtcp.xtcpUrl)}">style="display:none"</c:if> id="img_div">	            	   
+		          <a href="rest/web/system/upfile/downFile?imageName=${productXtcp.xtcpUrl}"  id="JS-img-src"><img alt="ddd" src="assets/img/attachfile.png"></a>
+		    </div>
+         	<input type="hidden" class="form-control " name="xtcpUrl" id="JS-homeImg" value="${productXtcp.xtcpUrl}" >
+            <div class="col-md-5">          			           				            	   
+                     <div id="uploader" class="wu-example">
+                    	
+				        <div class="queueList">
+				            <div id="dndArea" class="placeholder">
+				                <div id="filePicker"></div>				               
+				            </div>
+				        </div>
+				        <div class="statusBar" style="display:none;">
+				            <div class="progress">
+				                <span class="text">0%</span>
+				                <span class="percentage"></span>
+				            </div>
+				            <div class="info"></div>
+				            <div class="btns">
+				                <div id="filePicker2"></div>
+				                <div class="uploadBtn">开始上传</div>
+				            </div>
+				        </div>
+				    </div>
+               </div>
+          </div>
         
     </form>
 </div>
@@ -275,6 +304,50 @@ $(function(){
 
     $("button.modalCloseBtn").unbind('click').click(function(event) {
         IndexPage.togglePage('list');
+    });
+    
+    
+ // 实例化
+    var uploader = WebUploader.create({
+    	 // swf文件路径
+	    swf: 'assets/plugins/webuploader/Uploader.swf',
+	    // 文件接收服务端。
+	    server :  'rest/web/system/upfile/uploadFile',//上传的URL
+	    accept: {
+            title: 'Images',
+            extensions: "pdf,doc,docx,rar,zip",
+            mimeTypes: 'application/msword|word,application/pdf|pdf'
+        },
+        auto: true,
+	    // 选择文件的按钮。可选。
+	    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	    pick: {
+        	id: '#filePicker',
+        	innerHTML: "选择资料"
+    	}
+    });
+   
+
+    uploader.on( 'uploadSuccess', function(file,ret) {
+    	var success = false;
+		var message = "";
+		try {
+        	if (ret.state == 'SUCCESS') {
+        		success = true;
+            }else{
+            	message = ret.statusText || "未知原因"
+            }
+        } catch (e) {
+        	message = "未知原因";
+        }
+        if(success){
+        	$("#JS-homeImg").val(ret.url);
+        	$("#img_div").css("display","block");
+        	$("#JS-img-src").attr("href","rest/web/system/upfile/downFile?imageName=" + ret.url);
+        }else{
+        	XT.error(message);
+        }
+
     });
 
 

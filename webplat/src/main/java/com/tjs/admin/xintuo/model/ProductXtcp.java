@@ -87,6 +87,8 @@ public class ProductXtcp {
 	private String xtcpHd;
 	/**信托产品简称*/
 	private String xtcpSplname;
+	/**资料下载*/
+	private String xtcpUrl;
 	
 	private String xtcpTzfs;
     
@@ -321,5 +323,14 @@ public class ProductXtcp {
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
+
+	public String getXtcpUrl() {
+		return xtcpUrl;
+	}
+
+	public void setXtcpUrl(String xtcpUrl) {
+		this.xtcpUrl = xtcpUrl;
+	}
+	
       
 }

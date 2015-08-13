@@ -95,7 +95,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 								<em class="nav_ico"></em>
 								<span class="txt">管理机构</span>
 							</a>
-						</li>
+						</li>						
 					</ul>
 				</div>
 			</div>
@@ -104,10 +104,15 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_pcs_title" ><div class="tjs_pcs_titleleft">产品概况</div>
 	<c:choose>  
 	    <c:when test="${productXtcp.xtcpStatus=='30'}">
-	        <div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+	        <div class="tjs_pcs_titleright">	        
+	         <a href="#" class="tjs_btn_disable" data_id="${productXtcp.xtcpId}">立即预约</a>	         
+	         </div>
 	    </c:when>    
-	    <c:otherwise>        
-			<div class="tjs_pcs_titleright"> <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a></div>
+	    <c:otherwise>
+	    	      
+			<div class="tjs_pcs_titleright">
+			 <a href="#" class="tjs_btn" data_id="${productXtcp.xtcpId}">立即预约</a>			 
+			</div>
 	    </c:otherwise>  
 	</c:choose> 
 	
@@ -117,7 +122,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tjs_pcs_bable">
   <tr>
     <td width="15%" height="40" class="tjs_pcs_titleoddbg">信托全称：</td>
-    <td colspan="3" class="tjs_pcs_textoddbg">${productXtcp.xtcpFullname}</td>
+    <td colspan="3" class="tjs_pcs_textoddbg"><strong>${productXtcp.xtcpFullname}</strong>
+     <c:if test="${!empty productXtcp.xtcpUrl}">
+      <span style="float:right;">
+      <a href="rest/web/system/upfile/downFile?imageName=${productXtcp.xtcpUrl}"  id="JS-img-src"><img alt="下载资料" src="assets/img/attachfile.png" style="width:30px;height:30px; vertical-align: middle;"/><span style="padding-bottom:10px">附件</span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      </span>
+    </c:if>
+   
+    </td>
     </tr>
   <tr>
     <td height="40"  class="tjs_pcs_titleevenbg">信托公司：</td>
