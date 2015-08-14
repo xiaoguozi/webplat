@@ -145,10 +145,10 @@ html{ width:100%; height:100%;background:#f5f5f5;}
 <!-- 信托TAB代码 开始 -->
 <div class="tjs_trust_tabtitle">
 <ul id=tags>
-<li class=selectTag><A onClick="selectTag('tagContent0',this)" href="javascript:void(0)">小额信托</A></li>
-<li><A onClick="selectTag('tagContent1',this)" href="javascript:void(0)">1年期信托</A></li>
-<li><A onClick="selectTag('tagContent2',this)" href="javascript:void(0)">高收益信托</A> </li>
-<li><A onClick="selectTag('tagContent3',this)" href="javascript:void(0)">政信类信托</A> </li> 
+<li class=selectTag><A onClick="selectTag('tagContent0',this)" href="javascript:void(0)">小额信托</A><i class="caretTip"></i></li>
+<li><A onClick="selectTag('tagContent1',this)" href="javascript:void(0)">1年期信托</A><i class="caretTip"></i></li>
+<li><A onClick="selectTag('tagContent2',this)" href="javascript:void(0)">高收益信托</A><i class="caretTip"></i></li>
+<li><A onClick="selectTag('tagContent3',this)" href="javascript:void(0)">政信类信托</A><i class="caretTip"></i></li> 
 </ul>
 </div>
 <!--=====================tab pages start=====================-->
