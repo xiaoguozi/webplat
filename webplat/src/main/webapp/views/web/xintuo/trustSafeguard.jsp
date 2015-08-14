@@ -71,19 +71,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="trust_asc_right">
 <div class="trust_asc_rtitle">
 <span style=" font-size:30px;">百里挑一</span>&nbsp;&nbsp;&nbsp;我们是这样挑选产品的</div>
-<div style=" padding-left:65px;line-height:32px; color:#333;"><strong>第一道防护</strong>——信托公司严格审核</div>
+<div style=" padding-left:65px;line-height:32px; color:#333;"><strong>第二道防护</strong>——淘金山极致风控独立筛选</div>
 <ul>
-<li>尽职调查：至少两个月谨慎性调查，深入实地调研，风险点尽职报告</li>
-<li>产品立项：撰写立项报告，可行性分析</li>
-<li>尽职调查：至少两个月谨慎性调查，深入实地调研，风险点尽职报告</li>
-<li>产品预审：合规部、风险管理部门审核，首席风险官一票否决</li>
-<li>产品立项：撰写立项报告，可行性分析</li>
+<li>看还款来源：还款来源明确，可充分覆盖信托本息</li>
+<li>看风控措施：优质足值抵押，流动性强；担保方实力强</li>
+<li>看融资企业：公司实力雄厚，资产优质，运营稳健，能保证项目顺利进行</li>
+<li>看信托公司：发行方整体风控严密，过往兑付表现优异</li>
 </ul>
 </div>
 <!--//trust_asc_right-->
 <div class="clearfloat"></div>
 <div style=" height:20px; width:100%;"></div>
-<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>再严格的审核，那么多的产品总有优次差别。淘金山不包销产品，只客观、独立地挑选安全、优质的产品</strong></div>
+<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>再严格的审核，那么多的产品总有优次差别。淘金山只客观、独立地挑选安全、优质的产品</strong></div>
 <div style=" height:30px; width:100%;"></div>
 </div>
 </div>
@@ -97,7 +96,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_1108px center">
 <div style=" height:20px; width:100%;"></div>
 <div  class="trust_flowtitle"><span style="color:#418ac7">投资管理</span> 三级监管体系</div>
-<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>再严格的审核，那么多的产品总有优次差别。淘金山不包销产品，只客观、独立地挑选安全、优质的产品</strong></div>
+<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>信托资金由客户直接汇入信托公司指定募集账户，淘金山不经手客户资金</strong></div>
 <div class="tjs_pct_unit"><img src="assets/img/ui/strength_img.png" width="902" height="620" /></div>
 </div>
 <!-- /tjs_content_div tjs_1108px -->
@@ -129,7 +128,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_1108px center">
 <div style=" height:20px; width:100%;"></div>
 <div  class="trust_flowtitle"><span style="color:#418ac7">信息安全保障</span></div>
-<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>再严格的审核，那么多的产品总有优次差别。淘金山不包销产品，只客观、独立地挑选安全、优质的产品</strong></div>
+<div style="line-height:32px; color:#2c6ea6; text-align:center;"><strong>领先技术+严格流程管理=国家安全级别的信息保护</strong></div>
 <div style=" height:20px; width:100%;"></div>
 <div class="trust_asc_div">
 <div class="trust_safety_left tjs_border_2">
