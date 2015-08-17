@@ -193,87 +193,6 @@ document.all(imgg).style.display='block'}}
 <!-- /tjs_product_div -->
 <!-- 信托板块结束 -->
 
-<div style=" height:26px; width:100%;"></div>
-
-<!-- 配资板块开始 -->
-<div class="tjs_product_div">
-<div class="tjs_1108px center">
-<div class="tjs_product_left">
-<div class="tjs_tag_div">翻<br />倍<br />收<br />益</div>
-<div class="tjs_match_topdiv">百元随取</div>
-<div class="tjs_product_left_cdiv">
-<div  style=" height:26px; width:100%;"></div>
-<div class="tjs_product_left_icodiv"><img src="assets/img/ui/match_ico.png" width="132" height="160" />
-<div class="tjs_left_earningsdiv">&nbsp;&nbsp;收益至&nbsp;<span>6倍</span>&nbsp;收益</div>
-</div>
-<div class="tjs_product_textdiv">配资包赚不赔，新手体验;短线投资,3倍杠杆;中长线投资 ,5倍杠杆</div>
-</div>
-</div>
-<!-- /tjs_product_left -->
-
-<div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">配资</span><span style="float:right;"><a href="rest/web/peizi/index" class="tjs_moreurl" target="_blank">更多>></a></span></div>
-<div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
-
-<div class="tjs_right_typle">
-
-<div class="product_div tjs_right_unit tjs_right_2border">
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>包赚不赔</span><br />包赚不赔，新手体验
-</div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">免费赠送10000元</span>实盘资金</div>
-
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">盈利全归您</span>亏损算我们</div>
-
-<div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mfp/freeActivity" target="_blank" class="tjs_btn">我要配资</a></div>
-
-</div>
-<!-- /tjs_right_unit 01 -->
-
-<div class="product_div tjs_right_unit tjs_right_2border">
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>免息配</span><br />短线投资 ,3倍杠杆
-</div>
-<div class="tjs_rightmatch_content">最高免息配资金额<span class="tjs_shalloworange">30000元</span></div>
-
-<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">3倍</span>杠杆 <span class="tjs_shalloworange">3倍</span>利润</div>
-
-<div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mxp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
-
-</div>
-<!-- /tjs_right_unit 02 -->
-
-<div class="product_div tjs_right_unit">
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightmatch_title"><span>月月配</span><br />长线投资，最高5倍杠杆
-</div>
-<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">2000元</span> 起配，月息低至 <span class="tjs_shalloworange">1.1%</span></div>
-
-<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">5倍</span>杠杆，最高可配<span class="tjs_shalloworange">500万</span></div>
-
-<div  style=" height:45px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="rest/web/peizi/yyp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
-
-</div>
-
-<!-- /tjs_right_unit 03 -->
-<div class="clearfloat"></div>
-
-</div>
-
-</div>
-<!-- /tjs_product_right -->
-
-</div>
-
-</div>
-<!-- /tjs_product_div -->
-<!-- 配资板块结束 -->
 <div  style=" height:26px; width:100%;"></div>
 <!-- 私募板块开始 -->
 <div class="tjs_product_div">
@@ -422,6 +341,97 @@ document.all(imgg).style.display='block'}}
 </div>
 <!-- /tjs_product_div -->
 <!-- 海外保险板块结束 -->
+
+
+<div style=" height:26px; width:100%;"></div>
+
+
+<!-- 配资板块开始 -->
+<div class="tjs_product_div">
+<div class="tjs_1108px center">
+<div class="tjs_product_left">
+<div class="tjs_tag_div">翻<br />倍<br />收<br />益</div>
+<div class="tjs_match_topdiv">百元随取</div>
+<div class="tjs_product_left_cdiv">
+<div  style=" height:26px; width:100%;"></div>
+<div class="tjs_product_left_icodiv"><img src="assets/img/ui/match_ico.png" width="132" height="160" />
+<div class="tjs_left_earningsdiv">&nbsp;&nbsp;收益至&nbsp;<span>6倍</span>&nbsp;收益</div>
+</div>
+<div class="tjs_product_textdiv">配资包赚不赔，新手体验;短线投资,3倍杠杆;中长线投资 ,5倍杠杆</div>
+</div>
+</div>
+<!-- /tjs_product_left -->
+
+<div class="tjs_product_right">
+<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">配资</span><span style="float:right;"><a href="rest/web/peizi/index" class="tjs_moreurl" target="_blank">更多>></a></span></div>
+<div class="tjs_coloreddiv"><div class="tjs_coloredorange"></div></div>
+
+<div class="tjs_right_typle">
+
+<div class="product_div tjs_right_unit tjs_right_2border">
+
+<div  style=" height:36px; width:100%;"></div>
+<div class="tjs_rightmatch_title"><span>包赚不赔</span><br />包赚不赔，新手体验
+</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">免费赠送10000元</span>实盘资金</div>
+
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">盈利全归您</span>亏损算我们</div>
+
+<div  style=" height:45px; width:100%;"></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mfp/freeActivity" target="_blank" class="tjs_btn">我要配资</a></div>
+
+</div>
+<!-- /tjs_right_unit 01 -->
+
+<div class="product_div tjs_right_unit tjs_right_2border">
+
+<div  style=" height:36px; width:100%;"></div>
+<div class="tjs_rightmatch_title"><span>免息配</span><br />短线投资 ,3倍杠杆
+</div>
+<div class="tjs_rightmatch_content">最高免息配资金额<span class="tjs_shalloworange">30000元</span></div>
+
+<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">3倍</span>杠杆 <span class="tjs_shalloworange">3倍</span>利润</div>
+
+<div  style=" height:45px; width:100%;"></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/mxp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
+
+</div>
+<!-- /tjs_right_unit 02 -->
+
+<div class="product_div tjs_right_unit">
+
+<div  style=" height:36px; width:100%;"></div>
+<div class="tjs_rightmatch_title"><span>月月配</span><br />长线投资，最高5倍杠杆
+</div>
+<div class="tjs_rightmatch_content"><span class="tjs_shalloworange">2000元</span> 起配，月息低至 <span class="tjs_shalloworange">1.1%</span></div>
+
+<div class="tjs_rightmatch_content">最高<span class="tjs_shalloworange">5倍</span>杠杆，最高可配<span class="tjs_shalloworange">500万</span></div>
+
+<div  style=" height:45px; width:100%;"></div>
+<div class="tjs_right_btndiv"> <a href="rest/web/peizi/yyp/monthCapital" target="_blank" class="tjs_btn">我要配资</a></div>
+
+</div>
+
+<!-- /tjs_right_unit 03 -->
+<div class="clearfloat"></div>
+
+</div>
+
+</div>
+<!-- /tjs_product_right -->
+
+</div>
+
+</div>
+<!-- /tjs_product_div -->
+<!-- 配资板块结束 -->
+
+
+
+
+
+
+
 <div style=" height:26px; width:100%;"></div>
 
 <!-- 合作伙伴开始 -->
