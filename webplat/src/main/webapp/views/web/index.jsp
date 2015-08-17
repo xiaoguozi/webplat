@@ -133,6 +133,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_div">
 <div class="tjs_1108px center">
 <div class="tjs_product_left">
+<a href="rest/web/xintuo/trust/trustIndex" target="_blank">
 <div class="tjs_tag_div">固<br />定<br />收<br />益</div>
 <div class="tjs_trust_topdiv">30万起</div>
 <div class="tjs_product_left_cdiv">
@@ -144,6 +145,7 @@ document.all(imgg).style.display='block'}}
 增值，收益高且稳健，30倍银行活期存款
 利息，信托迄今为止本息100%兑付。</div>
 </div>
+</a>
 </div>
 <!-- /tjs_product_left -->
 
@@ -198,6 +200,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_div">
 <div class="tjs_1108px center">
 <div class="tjs_product_left">
+<a href="rest/web/pe/peIndex" target="_blank">
 <div class="tjs_tag_div">浮<br />动<br />收<br />益</div>
 <div class="tjs_private_topdiv">百万理财</div>
 <div class="tjs_product_left_cdiv">
@@ -207,6 +210,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <div class="tjs_product_textdiv">私募适合追求超高收益，承 担高风险投 资者。收益可无 限放大无上限，但也可 能出 现亏损，选择时需优中选优。</div>
 </div>
+</a>
 </div>
 <!-- /tjs_product_left -->
 
@@ -350,6 +354,7 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_div">
 <div class="tjs_1108px center">
 <div class="tjs_product_left">
+<a href="rest/web/peizi/index" target="_blank">
 <div class="tjs_tag_div">翻<br />倍<br />收<br />益</div>
 <div class="tjs_match_topdiv">百元随取</div>
 <div class="tjs_product_left_cdiv">
@@ -359,6 +364,7 @@ document.all(imgg).style.display='block'}}
 </div>
 <div class="tjs_product_textdiv">配资包赚不赔，新手体验;短线投资,3倍杠杆;中长线投资 ,5倍杠杆</div>
 </div>
+</a>
 </div>
 <!-- /tjs_product_left -->
 
