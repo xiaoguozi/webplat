@@ -449,8 +449,21 @@ public class PassportController {
     	model.addAttribute("ctrlData", ctrlModel);
         return "web/passport/mreg";
     }
-
-
+    
+    /**
+     * 高铁
+     * @param user
+     * @param ctrlModel
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/mregact")
+    public String mregact(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	model.addAttribute(user);
+    	model.addAttribute("ctrlData", ctrlModel);
+        return "web/passport/mreg";
+    }
 
     @RequestMapping("/mregS2")
     public String mregS2(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
