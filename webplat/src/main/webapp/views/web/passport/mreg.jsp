@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <head>
         <base href="<%=basePath%>">
         <meta charset="utf-8" />
-        <title>淘金山—注册</title>
+        <title>淘金山金融—注册</title>
         <div id='wx_pic' style='margin:0 auto;display:none;'>
            <img src='assets/img/fx_logo.jpg' />
         </div>
@@ -83,6 +83,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
            <script src="assets/plugins/jquery-validation/localization/messages_zh.js" type="text/javascript"></script>
         <script src="app/lib/security/sha256.js" type="text/javascript"></script>
+        <script src="assets/scripts/wx/jweixin-1.0.0.js" ></script>
         
 <script>
 $(function() {  
@@ -228,6 +229,48 @@ $(function() {
            
     handleRegister();
     handleNewVerifyCode();
+    
+    
+    
+    		//分享
+		    $.post("<%=basePath%>rest/wx/share/sign",
+					{"url":window.location.href},
+					function(data){
+						//data=eval("("+data+")");
+						wx.config({
+						          debug: false,
+						          appId: data.appId,
+						          timestamp:data.timestamp,
+						          nonceStr:data.nonceStr,
+						          signature:data.signature,
+						          jsApiList: [
+						          'checkJsApi',
+						          'onMenuShareTimeline',
+						          'onMenuShareAppMessage',
+						          'onMenuShareQQ'
+						          ]
+						});
+						
+						wx.ready(function(){
+							  var sdata = {
+								  title: '淘金山金融—注册', 
+								  desc: '专注信托、私募、海外保险、定制金融、消费贷款等金融服务',
+								  link: '<%=basePath%>rest/web/passport/mreg',
+								  imgUrl: '<%=basePath%>assets/img/fx_logo.jpg',
+								  success: function () {
+								  	
+								  },
+								  cancel: function () {
+								  	
+								  }
+							  };
+							  wx.onMenuShareAppMessage(sdata);
+							  wx.onMenuShareTimeline(sdata);
+							  wx.onMenuShareQQ(sdata);
+						});
+			});
+    
+    
         });
     </script>
         
