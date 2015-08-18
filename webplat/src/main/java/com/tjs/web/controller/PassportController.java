@@ -26,7 +26,9 @@ import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserService;
 import com.tjs.core.util.StringExtUtils;
 import com.tjs.web.constants.WebConstants;
+import com.tjs.web.enums.RegFromEnum;
 import com.tjs.web.service.PassportService;
+import com.tjs.web.utils.StringEncryptUtil;
 
 /**
  * 用户控制器
@@ -43,6 +45,7 @@ public class PassportController {
     
     @Resource
     private PassportService passportService;
+    
 
     /**
      * 用户登录
@@ -329,6 +332,10 @@ public class PassportController {
     	
     	boolean isValid = false;  
     	Integer verifyCount = (Integer)request.getSession().getAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY);
+    	//如果不存在，表明还没有发送验证码，直接返回错误信息
+    	if(verifyCount==null){
+    		return isValid;
+    	}
 		if(verifyCount<=WebConstants.SMS_VERIFY_COUNT_MAX){
 			String code = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
 	        if(StringExtUtils.isNotBlank(code) && code.equalsIgnoreCase(mobileVerifyCode)){
@@ -451,7 +458,7 @@ public class PassportController {
     }
     
     /**
-     * 高铁
+     * 高铁合作页面
      * @param user
      * @param ctrlModel
      * @param model
@@ -462,7 +469,74 @@ public class PassportController {
     public String mregact(User user, PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
     	model.addAttribute(user);
     	model.addAttribute("ctrlData", ctrlModel);
-        return "web/passport/mreg";
+        return "web/passport/mregact";
+    }
+    
+    /**
+     * 高铁合作提交
+     * @param ctrlModel
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/mregSact")
+    public String mregSact(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
+    	//验证手机号，验证短信验证码（session是否匹配，数据库中是否存在）
+    	//新增帐号到数据库，清除session中的手机号和短信验证码
+    	model.addAttribute("ctrlData", ctrlModel);
+    	boolean dataValid = true;
+    	String errorMsg = "";
+    	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
+    	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
+    	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
+    		dataValid = false;
+    		errorMsg = "手机验证码错误";
+    	}else if(StringExtUtils.isBlank(userName) 
+    			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
+    			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号验证错误";
+    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword())){
+    		dataValid = false;
+    		errorMsg = "密码验证错误";
+    	}else if(!passportService.notExistUserName(ctrlModel.getUserName())){
+    		dataValid = false;
+    		errorMsg = "手机号已注册";
+    	}
+    	
+    	if(dataValid){
+    		String passwdSource = StringEncryptUtil.genRandomNum(8);
+    		String password = StringEncryptUtil.encrypt(passwdSource, "");
+    		User user = new User();
+        	user.setUsername(ctrlModel.getUserName());
+        	user.setPassword(password);
+        	user.setCreateTime(new Date());
+        	//从高铁注册
+        	user.setRegFrom(RegFromEnum.HSR.getKey());
+        	
+        	UserInfo userInfo = new UserInfo();
+        	userInfo.setMobileNo(ctrlModel.getUserName());
+        	userInfo.setNickName(ctrlModel.getUserName());
+        	userInfo.setRegTime(new Date());
+        	userInfo.setUserStatus(UserConstants.USER_STATUS_REG);
+        	Long userId = passportService.regUser(user, userInfo);
+			if (userId > 0) {
+				// 注册成功，登录后回到首页
+				// 清除session中的短信验证码
+				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
+				//发送电影码
+				passportService.sendMovieCode(userName, passwdSource, ctrlModel.getMovieCode());
+			}else{
+				dataValid = false;
+	    		errorMsg = "注册服务发生错误，请稍后再试！";
+			}
+			
+    	}
+
+		model.addAttribute("error", errorMsg);
+		model.addAttribute("dataValid", dataValid);
+		
+		return "web/passport/mregSact";
     }
 
     @RequestMapping("/mregS2")

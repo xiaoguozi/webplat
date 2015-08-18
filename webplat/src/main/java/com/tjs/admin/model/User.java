@@ -19,6 +19,11 @@ public class User implements Serializable {
     private String state;
 
     private Date createTime;
+    
+    /**
+     * 注册来源，区分是否从高铁之类注册
+     */
+    private String regFrom;
 
     public User() {
 
@@ -69,7 +74,15 @@ public class User implements Serializable {
         this.createTime = createTime;
     }
 
-    @Override
+    public String getRegFrom() {
+		return regFrom;
+	}
+
+	public void setRegFrom(String regFrom) {
+		this.regFrom = regFrom;
+	}
+
+	@Override
     public String toString() {
         return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
     }

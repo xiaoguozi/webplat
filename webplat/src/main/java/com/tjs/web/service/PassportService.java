@@ -19,4 +19,6 @@ public interface PassportService{
     String sendSmsCode(String userName);
     
     boolean resetPassword(String userName, String password);
+    
+    void sendMovieCode(String userName, String password, String movieCode);
 }

@@ -106,5 +106,27 @@ public class PassportServiceImpl implements PassportService {
     	
     	return smsCode;
     }
+
+	@Override
+	public void sendMovieCode(String userName, String password, String movieCode) {
+    	
+    	String accountSid="6f97d5e6c0510b7605a7470c9316efa9";
+		String authToken="65fcd6178dc9c92b699ee0a0b587cd9f";
+		String appId="e054516603424d1c9e85c1c5be001afc";
+		String templateId="11644";
+		String to=userName;
+		String para=password+","+movieCode;
+		try {
+			AbsRestClient restClient = new JsonReqClient();
+			String result=restClient.templateSMS(accountSid, authToken, appId, templateId, to, para);
+			//System.out.println("Response content is: " + result);
+		} catch (Exception e) {
+			// TODO: handle exception
+			//e.printStackTrace();
+		}
+	
+    	
+    	return;
+	}
     
 }

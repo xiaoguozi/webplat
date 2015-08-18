@@ -7,6 +7,7 @@
         <result column="password" property="password" jdbcType="CHAR" />
         <result column="state" property="state" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="reg_from" property="regFrom" jdbcType="VARCHAR" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -67,7 +68,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id, username, password, state, create_time
+        id, username, password, state, create_time, reg_from
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tjs.admin.model.UserExample">
         select
@@ -101,9 +102,9 @@
     </delete>
     <insert id="insert" parameterType="com.tjs.admin.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user (id, username, password,
-        state, create_time)
+        state, create_time, reg_from)
         values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=CHAR},
-        #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+        #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{regFrom,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.tjs.admin.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user
@@ -123,6 +124,9 @@
             <if test="createTime != null">
                 create_time,
             </if>
+            <if test="regFrom != null">
+                regFrom
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -139,6 +143,9 @@
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="regFrom != null">
+                #{regFrom,jdbcType=VARCHAR}
             </if>
         </trim>
     </insert>
@@ -166,6 +173,9 @@
             <if test="record.createTime != null">
                 create_time = #{record.createTime,jdbcType=TIMESTAMP},
             </if>
+            <if test="record.regFrom != null">
+                regFrom = #{record.regFrom,jdbcType=VARCHAR}
+            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +187,8 @@
         username = #{record.username,jdbcType=VARCHAR},
         password = #{record.password,jdbcType=CHAR},
         state = #{record.state,jdbcType=VARCHAR},
-        create_time = #{record.createTime,jdbcType=TIMESTAMP}
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        regFrom = #{record.regFrom,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -197,6 +208,9 @@
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
+            <if test="regFrom != null">
+                regFrom = #{regFrom,jdbcType=VARCHAR}
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -205,8 +219,8 @@
         set username = #{username,jdbcType=VARCHAR},
         password = #{password,jdbcType=CHAR},
         state = #{state,jdbcType=VARCHAR},
-        create_time =
-        #{createTime,jdbcType=TIMESTAMP}
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        regFrom = #{regFrom,jdbcType=VARCHAR}
         where id = #{id,jdbcType=BIGINT}
     </update>
 

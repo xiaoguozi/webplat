@@ -21,6 +21,9 @@ public class PassportCtrlModel extends GenericCtrlModel {
 	private String mobileVerifyCode;
 
 	private String email;
+	
+	//高铁电影码
+	private String movieCode;
 
 	public String getUserName() {
 		return userName;
@@ -61,5 +64,14 @@ public class PassportCtrlModel extends GenericCtrlModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getMovieCode() {
+		return movieCode;
+	}
+
+	public void setMovieCode(String movieCode) {
+		this.movieCode = movieCode;
+	}
+	
 
 }
