@@ -125,7 +125,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <td colspan="3" class="tjs_pcs_textoddbg"><strong>${productXtcp.xtcpFullname}</strong>
      <c:if test="${!empty productXtcp.xtcpUrl}">
       <span style="float:right;">
-      <a href="rest/web/system/upfile/downFile?imageName=${productXtcp.xtcpUrl}"  id="JS-img-src"><img alt="下载资料" src="assets/img/attachfile.png" style="width:30px;height:30px; vertical-align: middle;"/><span style="padding-bottom:10px">附件</span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      <a href="rest/web/system/upfile/downFile?imageName=${productXtcp.xtcpUrl}"  id="JS-img-src"><img alt="下载资料" src="assets/img/attachfile.png" style="width:30px;height:30px; vertical-align: middle;"/><span style="padding-bottom:10px">资料下载</span>&nbsp;&nbsp;&nbsp;&nbsp;</a>
       </span>
     </c:if>
    
