@@ -26,8 +26,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <style>
 		.btn_common{
 			background:#59CBFF;
-			border:1px solid #00669B;
-			color:#045C86;
+			color:#ffffff;
+			font-size:18px;
 		}
       		
     </style>
@@ -57,7 +57,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</div>
 				</div>
 				<div class="form-group">
-					<button class="btn btn_common" id="register-submit-btn"  style="width:100%;" type="button" >点击获取观影验证码</button>
+					<button class="btn btn_common" id="register-submit-btn"  style="width:100%;color:#ffffff; " type="button" >点击获取观影验证码</button>
 				</div>
 			</form>
 		</div>
@@ -219,7 +219,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			   data: {
 				   movieCode: $("#movieCode").val(),
 				   userName: $("#userName").val(),
-				   mobileVerifyCode:$("mobileVerifyCode").val()
+				   mobileVerifyCode:$("#mobileVerifyCode").val()
                },
 			   success: function(data){
 				   //setTimeout('ajaxResult("'+msg+'")', 600);
