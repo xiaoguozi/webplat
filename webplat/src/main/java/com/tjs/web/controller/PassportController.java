@@ -1,6 +1,8 @@
 package com.tjs.web.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.tjs.admin.constants.UserConstants;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
@@ -46,7 +49,8 @@ public class PassportController {
     @Resource
     private PassportService passportService;
     
-
+    Gson gson = new Gson();
+    
     /**
      * 用户登录
      * 
@@ -345,7 +349,6 @@ public class PassportController {
         	request.getSession().setAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY, verifyCount);
 		}
 		
-    	
         return isValid;
     }
 
@@ -480,32 +483,35 @@ public class PassportController {
      * @return
      */
     @RequestMapping("/mregSact")
+    @ResponseBody
     public String mregSact(PassportCtrlModel ctrlModel, Model model, HttpServletRequest request) {
     	//验证手机号，验证短信验证码（session是否匹配，数据库中是否存在）
     	//新增帐号到数据库，清除session中的手机号和短信验证码
-    	model.addAttribute("ctrlData", ctrlModel);
-    	boolean dataValid = true;
-    	String errorMsg = "";
+    	//model.addAttribute("ctrlData", ctrlModel);
+    	//boolean dataValid = true;
+    	Map<String, String> result = new HashMap<String, String>();		
+    	String errorMsg = "0";
     	String userName = (String)request.getSession().getAttribute(WebConstants.USERNAME_VERIFY_SESSION_KEY);
     	String smsCode = (String) request.getSession().getAttribute(WebConstants.SMS_VERIFY_SESSION_KEY);
     	if(StringExtUtils.isBlank(smsCode) || !smsCode.equalsIgnoreCase(ctrlModel.getMobileVerifyCode())){
-    		dataValid = false;
-    		errorMsg = "手机验证码错误";
+    		//dataValid = false;
+    		//errorMsg = "手机验证码错误";
+    		errorMsg = "1";
     	}else if(StringExtUtils.isBlank(userName) 
     			|| !userName.equalsIgnoreCase(ctrlModel.getUserName()) 
     			|| !StringExtUtils.checkMobileNumber(ctrlModel.getUserName())){
-    		dataValid = false;
-    		errorMsg = "手机号验证错误";
-    	}else if(StringExtUtils.isBlank(ctrlModel.getPassword())){
-    		dataValid = false;
-    		errorMsg = "密码验证错误";
+    		//dataValid = false;
+    		//errorMsg = "手机号验证错误";
+    		errorMsg = "2";
     	}else if(!passportService.notExistUserName(ctrlModel.getUserName())){
-    		dataValid = false;
-    		errorMsg = "手机号已注册";
+    		//dataValid = false;
+    		//errorMsg = "手机号已注册";
+    		errorMsg = "3";
     	}
     	
-    	if(dataValid){
-    		String passwdSource = StringEncryptUtil.genRandomNum(8);
+    	String passwdSource = StringEncryptUtil.genRandomNum(8);
+    	
+    	if("0".equals(errorMsg)){
     		String password = StringEncryptUtil.encrypt(passwdSource, "");
     		User user = new User();
         	user.setUsername(ctrlModel.getUserName());
@@ -525,18 +531,21 @@ public class PassportController {
 				// 清除session中的短信验证码
 				request.getSession().setAttribute(WebConstants.SMS_VERIFY_SESSION_KEY, "");
 				//发送电影码
-				passportService.sendMovieCode(userName, passwdSource, ctrlModel.getMovieCode());
+				passportService.sendMovieCode(ctrlModel.getUserName(), passwdSource, ctrlModel.getMovieCode());
 			}else{
-				dataValid = false;
-	    		errorMsg = "注册服务发生错误，请稍后再试！";
+				//dataValid = false;
+	    		//errorMsg = "注册服务发生错误，请稍后再试！";
+	    		errorMsg = "4";
 			}
 			
     	}
 
-		model.addAttribute("error", errorMsg);
-		model.addAttribute("dataValid", dataValid);
-		
-		return "web/passport/mregSact";
+    	result.put("movieCode", ctrlModel.getMovieCode());
+    	result.put("password", passwdSource);
+    	result.put("userName", ctrlModel.getUserName());
+    	result.put("msg", errorMsg);
+    	
+    	return gson.toJson(result);
     }
 
     @RequestMapping("/mregS2")

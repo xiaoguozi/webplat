@@ -125,7 +125,7 @@
                 create_time,
             </if>
             <if test="regFrom != null">
-                regFrom
+                reg_from
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">

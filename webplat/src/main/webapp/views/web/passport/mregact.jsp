@@ -41,7 +41,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<div class="col-md-12">
 			<form class="register-form" action="rest/web/passport/mregSact"
 				method="post">
-				<input type="hidden" name="movieCode" value="888888" />
+				<input type="hidden" id="movieCode" name="movieCode" value="888888" />
 				
 				<div class="form-group">
 					<input type="text" class="form-control" name="userName"
@@ -66,10 +66,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <script type="text/javascript">
 	$(function() {
-		//根据是否合格，显示相应的框
-		if('${dataValid}'=='false'){
-			showMsgDialog();
-		}
 		
 		var handleRegister = function() {
 
@@ -141,17 +137,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									} else {
 										error.insertAfter(element);
 									}
-								},
-
-								submitHandler : function(form) {
-									form.submit();
 								}
 							});
 
 			$('.register-form input').keypress(function(e) {
 				if (e.which == 13) {
 					if ($('.register-form').validate().form()) {
-						$('.register-form').submit();
+						//$('.register-form').submit();
+						ajaxSubmit();
 					}
 					return false;
 				}
@@ -160,7 +153,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			$('#register-submit-btn').click(function(e) {
 				e.preventDefault();
 				if ($('.register-form').validate().form()) {
-					$('.register-form').submit();
+					//$('.register-form').submit();
+					ajaxSubmit();
 				}
 				return false;
 			});
@@ -207,20 +201,73 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	});
 	
-	function showMsgDialog(){
+	var tipDialog;
+	function ajaxSubmit(){
+		//显示一个模态加载窗口
+		tipDialog = dialog({
+		    title: '温馨提示',
+		    content: '<div style="float:left;"><img src="assets/img/circle_loading.gif" ></div><div style="text-align:center;float:left;height:32px; line-height:32px;">&nbsp;&nbsp;获取观影验证码中，请稍等...</div>',
+		    width: 220,
+		    cancel: false,
+		    ok: false
+		});
+		tipDialog.showModal();
+		$.ajax({
+			   type: "POST",
+			   url: "rest/web/passport/mregSact",
+			   dataType:"json",
+			   data: {
+				   movieCode: $("#movieCode").val(),
+				   userName: $("#userName").val(),
+				   mobileVerifyCode:$("mobileVerifyCode").val()
+               },
+			   success: function(data){
+				   //setTimeout('ajaxResult("'+msg+'")', 600);
+				   ajaxResult(data);
+			   }
+		});
+	}
+	
+	function ajaxResult(data){
+		if(tipDialog){
+			tipDialog.close().remove();
+		}
+		showMsgDialog(data);
+	}
+	
+	function showMsgDialog(data){
+		var msgImg = "";
+		if(data.msg!="0"){
+			msgImg = "<img src=\"assets/img/peizi/check_alert.png\" valign=\"center\">";
+		}
+		var msg = getMsgContent(data);
+		
 		var dialogContent = "<div>";
-		dialogContent += "<div><nobr><img src=\"assets/img/peizi/check_alert.png\" valign=\"center\">&nbsp;<span id=\"span_register_name\">${error}</span></nobr></div><br/>";
+		dialogContent += "<div>"+msgImg+"&nbsp;<span id=\"span_register_name\">"+msg+"</span></div><br/>";
 		dialogContent += "</div>";
 		
 		dInput = dialog({
-		    title: 'http:www.taojinshan.com.cn',
+		    title: 'http://www.taojinshan.com.cn',
 		    content: dialogContent,
-		    width:230,
-		    okValue: '确定',
-		    ok:function(){}
+		    width:230
 		});
 		
 		dInput.showModal();	
+	}
+	
+	function getMsgContent(data){
+		var msg;
+		if(data.msg=="0"){
+			msg = "<nobr>您在淘金山的用户名为"+data.userName+"，</nobr><br><nobr>初始密码为"+data.password+"，</nobr>您的高铁观影验证码已经发送到您的手机，淘金山祝您旅途愉快！";
+			msg += "如您对高铁观影操作有疑问，可拨打观影客服电话：4008556685，感谢您的支持！";
+		}else if(data.msg=="1" || data.msg=="2"){
+			msg = "手机验证码错误";
+		}else if(data.msg=="3"){
+			msg = "手机号已注册";
+		}else if(data.msg=="4"){
+			msg = "注册服务发生错误，请稍后再试！";
+		}
+		return msg;
 	}
 	
 </script>
