@@ -174,7 +174,7 @@
                 create_time = #{record.createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="record.regFrom != null">
-                regFrom = #{record.regFrom,jdbcType=VARCHAR}
+                reg_from = #{record.regFrom,jdbcType=VARCHAR}
             </if>
         </set>
         <if test="_parameter != null">
@@ -188,7 +188,7 @@
         password = #{record.password,jdbcType=CHAR},
         state = #{record.state,jdbcType=VARCHAR},
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
-        regFrom = #{record.regFrom,jdbcType=VARCHAR}
+        reg_from = #{record.regFrom,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -209,7 +209,7 @@
                 create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="regFrom != null">
-                regFrom = #{regFrom,jdbcType=VARCHAR}
+                reg_from = #{regFrom,jdbcType=VARCHAR}
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
@@ -220,7 +220,7 @@
         password = #{password,jdbcType=CHAR},
         state = #{state,jdbcType=VARCHAR},
         create_time = #{createTime,jdbcType=TIMESTAMP},
-        regFrom = #{regFrom,jdbcType=VARCHAR}
+        reg_from = #{regFrom,jdbcType=VARCHAR}
         where id = #{id,jdbcType=BIGINT}
     </update>
 
