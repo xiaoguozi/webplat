@@ -128,7 +128,7 @@
         kybx_modify_by=#{kybxModifyBy,jdbcType=VARCHAR},
         kybx_Class=#{kybxClass,jdbcType=VARCHAR},  
         kybx_subclass= #{kybxSubclass,jdbcType=VARCHAR},
-        kybx_Tjno= #{kybxTjno,jdbcType=INTEGER}
+        kybx_Tjno= #{kybxTjno,jdbcType=INTEGER},
         kybx_img_url=#{kybxImgUrl,jdbcType=VARCHAR}                      
         where kybx_id=#{kybxId}
     </update>
