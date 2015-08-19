@@ -91,6 +91,7 @@
                 <input type="radio" name="locationBanner" value="20" <c:if test="${fn:contains(sysHome.locationBanner,'20')}">checked="checked"</c:if>>信托首页banner
                 <input type="radio" name="locationBanner" value="30" <c:if test="${fn:contains(sysHome.locationBanner,'30')}">checked="checked"</c:if>>私募首页banner       
             	<input type="radio" name="locationBanner" value="40" <c:if test="${fn:contains(sysHome.locationBanner,'40')}">checked="checked"</c:if>>配资首页banner              
+           		<input type="radio" name="locationBanner" value="50" <c:if test="${fn:contains(sysHome.locationBanner,'50')}">checked="checked"</c:if>>保险首页banner                           
             </div>    
         </div>
         
