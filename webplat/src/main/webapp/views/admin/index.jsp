@@ -55,6 +55,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <link rel="stylesheet" href="assets/widget/bootstrap-notify/css/styles/alert-notification-animations.css">
     <link rel="stylesheet" href="assets/widget/kindeditor/themes/default/default.css">
     <link rel="stylesheet" href="assets/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="../themes/default/default.css" />
+	<link rel="stylesheet" href="assets/widget/kindeditor/plugins/code/prettify.css" />
     <link rel="stylesheet" href="assets/css/admin-index.css">
 <!-- END CUSTOM CSS IMPORT -->
         <link rel="shortcut icon" href="favicon.ico" />
@@ -203,6 +205,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                  <li>
                                     <a href="rest/admin/pe/peProduct/index">
                                       	 私募产品
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="rest/admin/kybx/kybxIndex">
+                                      	 海外保险
                                     </a>
                                 </li>
                                
@@ -447,6 +454,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     
 	    <script src="assets/widget/bootstrap-notify/js/bootstrap-notify.js" charset="utf-8"></script>
 	    <script src="assets/widget/kindeditor/kindeditor-min.js" charset="utf-8"></script>
+	    <script src="assets/widget/kindeditor/plugins/code/prettify.js" charset="utf-8"></script>
 	    <script src="assets/widget/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
 	    
         <script src="assets/scripts/btk.js" type="text/javascript"></script>

@@ -201,11 +201,11 @@ var Btk = {};
     };
 
     //设置表单组件
-    Btk.form = function(form,type,callback){
+    Btk.form = function(form,type,callback,precallback){
         Btk.formFillCheck(form);
         Btk.formCheck(form);
         Btk.formAjaxSelect(form);
-        var editor = Btk.formRichtext(form);
+        var editor;
         if("view" == type){
             Btk.formReadonly(form, editor);
         }
@@ -213,7 +213,7 @@ var Btk = {};
             Btk.formDatetimepicker(form);
             Btk.formRequiredStyle(form);
             Btk.formValidate(form);
-            Btk.formSubmit(form, callback, editor);
+            Btk.formSubmit(form, callback, editor,precallback);
         }
         if("search" == type){
             Btk.formDatetimepicker(form);
@@ -222,7 +222,7 @@ var Btk = {};
     }; 
 
     //绑定保存表单事件
-    Btk.formSubmit = function(form,callback,editor){
+    Btk.formSubmit = function(form,callback,editor,precallback){
         var $form = $(form);
         var $saveBtn = $($form.attr("data-submit"));
 
@@ -231,7 +231,11 @@ var Btk = {};
             if(editor){
                editor.sync(); 
             }
-            if($form.valid()){
+            if($form.valid()){ 
+            	
+            	if(precallback){
+            		typeof precallback == 'function' && precallback.call(this);
+            	}         	
                 var l = Ladda.create(this);
                 l.start();
                 $form.find("input[disabled-field]").prop('disabled', false);

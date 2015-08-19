@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tjs.admin.kybx.dao.KybxMapper">
+    <resultMap id="BaseResultMap" type="com.tjs.admin.kybx.model.Kybx">
+        <id column="kybx_id" property="kybxId" javaType="java.lang.Long" jdbcType="BIGINT" />
+        <result column="kybx_name" property="kybxName" jdbcType="VARCHAR"  />
+        <result column="kybx_choose" property="kybxChoose" jdbcType="VARCHAR" />
+        <result column="kybx_age" property="kybxAge" jdbcType="VARCHAR" />
+        <result column="kybx_amont" property="kybxAmont" jdbcType="VARCHAR"  javaType="java.lang.String" />
+        <result column="kybx_good" property="kybxGood"  javaType="java.lang.String" />
+        <result column="kybx_info" property="kybxInfo"   javaType="java.lang.String"/>
+        <result column="kybx_Plan" property="kybxPlan"  javaType="java.lang.String"/>
+        <result column="kybx_Lplc" property="kybxLplc"   javaType="java.lang.String"/>
+        <result column="kybx_Question" property="kybxQuestion"  javaType="java.lang.String"/>
+        <result column="kybx_Tk" property="kybxTk"  javaType="java.lang.String"/>
+        <result column="kybx_status" property="kybxStatus"  jdbcType="VARCHAR" />
+        <result column="kybx_tjw" property="kybxTjw" jdbcType="VARCHAR" />
+        <result column="kybx_create_date" property="kybxCreateDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <result column="kybx_create_by" property="kybxCreateBy" jdbcType="VARCHAR" />
+        <result column="kybx_modify_date" property="kybxModifyDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+        <result column="kybx_modify_by" property="kybxModifyBy" jdbcType="VARCHAR" />
+        <result column="kybx_Class" property="kybxClass" jdbcType="VARCHAR" />
+        <result column="kybx_subclass" property="kybxSubclass" jdbcType="VARCHAR" />
+        <result column="kybx_Tjno" property="kybxTjno" jdbcType="INTEGER" />
+        <result column="kybx_img_url" property="kybxImgUrl" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_select_Column_List">
+        kybx_id,kybx_name,kybx_choose,kybx_age,kybx_amont,kybx_good,kybx_info,kybx_Plan,kybx_Lplc,kybx_Question,kybx_Tk,kybx_status,
+        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url
+    </sql>
+    
+     <sql id="Base_insert_Column_List">
+        kybx_name,kybx_choose,kybx_age,kybx_amont,kybx_good,kybx_info,kybx_Plan,kybx_Lplc,kybx_Question,kybx_Tk,kybx_status,
+        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url
+    </sql>
+    
+    <select id="countKybx" resultType="int" parameterType="com.tjs.admin.kybx.controller.KybxCtrlModel" >
+        select count(*) c from tjs_kybx where 1=1
+          <if test="kybx!=null and kybx.kybxStatus!= null and kybx.kybxStatus!= ''">
+           AND kybx_status= #{kybx.kybxStatus}
+          </if>
+          
+          <if test="keyWord!= null and keyWord!= ''">
+             AND kybx_name like CONCAT('%',#{keyWord},'%')
+          </if>
+          
+          <if test="kybx!=null and kybx.kybxTjw!= null and kybx.kybxTjw!= ''">
+             AND kybx_tjw like CONCAT('%',#{kybx.kybxTjw},'%')    
+          </if>              
+    </select>
+    
+    <select id="selectKybx"  resultMap="BaseResultMap" parameterType="com.tjs.admin.kybx.controller.KybxCtrlModel">
+        select
+                 
+          <include refid="Base_select_Column_List" />  
+                   
+         from  tjs_kybx where 1=1
+                                       
+           <if test="kybx!=null and kybx.kybxStatus!= null and kybx.kybxStatus!= ''">
+             AND kybx_status= #{kybx.kybxStatus}
+           </if>
+          
+          <if test="keyWord!= null and keyWord!= ''">
+             AND kybx_name like CONCAT('%',#{keyWord},'%')
+          </if>
+          
+          <if test="kybx!=null and kybx.kybxTjw!= null and kybx.kybxTjw!= ''">
+             AND kybx_tjw like CONCAT('%',#{kybx.kybxTjw},'%')    
+          </if> 
+               
+         <if test="sortField!= null and sortField!= ''">
+            ORDER BY ${sortField} ${sortType}
+        </if>
+        
+         <if test="sortField== null or sortField==''">
+           ORDER BY  kybx_status asc,kybx_create_date desc
+        </if>
+                    
+         <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+                
+    </select>
+    
+    <insert id="insertKybx"   useGeneratedKeys="true" keyProperty="kybxId"  parameterType="com.tjs.admin.kybx.model.Kybx">
+        insert into tjs_kybx(
+         <include refid="Base_insert_Column_List" /> 
+        ) values
+        (#{kybxName,jdbcType=VARCHAR},
+        #{kybxChoose,jdbcType=VARCHAR},
+        #{kybxAge,jdbcType=VARCHAR},
+        #{kybxAmont,jdbcType=VARCHAR},
+        #{kybxGood,javaType=java.lang.String},
+        #{kybxInfo,javaType=java.lang.String},
+        #{kybxPlan,javaType=java.lang.String},
+        #{kybxLplc,javaType=java.lang.String},
+        #{kybxQuestion,javaType=java.lang.String},
+        #{kybxTk,javaType=java.lang.String},
+        #{kybxStatus,jdbcType=VARCHAR},
+        #{kybxTjw,jdbcType=VARCHAR},
+        #{kybxCreateDate,jdbcType=TIMESTAMP},
+        #{kybxCreateBy,jdbcType=VARCHAR},
+        #{kybxModifyDate,jdbcType=TIMESTAMP},
+        #{kybxModifyBy,jdbcType=VARCHAR},
+        #{kybxClass,jdbcType=VARCHAR},              
+        #{kybxSubclass,jdbcType=VARCHAR} ,
+        #{kybxTjno,jdbcType=INTEGER},
+        #{kybxImgUrl,jdbcType=VARCHAR}   
+        )
+    </insert>
+    
+    <update id="updateKybx" parameterType="com.tjs.admin.kybx.model.Kybx">
+        update tjs_kybx set 
+        kybx_name=#{kybxName,jdbcType=VARCHAR},
+        kybx_choose=#{kybxChoose,jdbcType=VARCHAR},
+        kybx_age=#{kybxAge,jdbcType=VARCHAR},
+        kybx_amont= #{kybxAmont,jdbcType=VARCHAR},
+        kybx_good= #{kybxGood,javaType=java.lang.String},
+        kybx_info=#{kybxInfo,javaType=java.lang.String},
+        kybx_Plan=#{kybxPlan,javaType=java.lang.String},
+        kybx_Lplc= #{kybxLplc,javaType=java.lang.String},
+        kybx_Question=#{kybxQuestion,javaType=java.lang.String},
+        kybx_Tk= #{kybxTk,javaType=java.lang.String},
+        kybx_status=#{kybxStatus,jdbcType=VARCHAR},
+        kybx_tjw=#{kybxTjw,jdbcType=VARCHAR},
+        kybx_modify_date= #{kybxModifyDate,jdbcType=TIMESTAMP},
+        kybx_modify_by=#{kybxModifyBy,jdbcType=VARCHAR},
+        kybx_Class=#{kybxClass,jdbcType=VARCHAR},  
+        kybx_subclass= #{kybxSubclass,jdbcType=VARCHAR},
+        kybx_Tjno= #{kybxTjno,jdbcType=INTEGER}
+        kybx_img_url=#{kybxImgUrl,jdbcType=VARCHAR}                      
+        where kybx_id=#{kybxId}
+    </update>
+    
+    <delete id="deleteKybx" parameterType="Long">
+        delete from tjs_kybx where kybx_id=#{kybxId}
+    </delete>
+    
+    
+     <delete id="deleteBatchKybx" parameterType="Long">
+        delete from tjs_kybx where kybx_id in       
+        <foreach item="idItem" collection="array" open="(" separator="," close=")">
+		  #{idItem}
+		</foreach>
+    </delete>
+    
+    <select id="findBykybxId" parameterType="Long" resultMap="BaseResultMap">
+        select 
+         <include refid="Base_select_Column_List" />    
+        from  tjs_kybx  where kybx_id=#{kybxId}
+    </select>
+</mapper>
