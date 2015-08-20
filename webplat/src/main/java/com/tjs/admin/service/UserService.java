@@ -35,5 +35,18 @@ public interface UserService extends GenericService<User, Long> {
     
     List<User> selectUserList(UserCtrlModel userCtrlModel);
     
+    /**
+     * 查询我推荐的用户数量
+     * @param userCtrlModel
+     * @return
+     */
+    Integer selectMyRmdUserCount(UserCtrlModel userCtrlModel);
+    
+    /**
+     * 查询我推荐的用户
+     * @param userCtrlModel
+     * @return
+     */
+    List<User> selectMyRmdUserList(UserCtrlModel userCtrlModel);
     
 }

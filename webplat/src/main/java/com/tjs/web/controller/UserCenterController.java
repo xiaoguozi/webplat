@@ -18,13 +18,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.com.nciic.www.IdentifierServiceClient.CheckResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.tjs.admin.controller.UserCtrlModel;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
+import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
 import com.tjs.admin.zhifu.model.CustomerFund;
+import com.tjs.admin.zhifu.model.Recharge;
 import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.model.CustIdentity;
@@ -388,6 +391,46 @@ public class UserCenterController {
 		return customerFund;
 	}
     
+	/**
+	 * 我的推荐
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/myRecommend")
+    public String myRecommend(UserCtrlModel userCtrlModel, Model model) {
+		
+		Subject subject = SecurityUtils.getSubject();
+		String username = (String)subject.getPrincipal();
+		User user = userService.selectByUsername(username);
+		userCtrlModel.setUser(new User());
+		userCtrlModel.getUser().setParent(user.getId());
+		
+    	//设置总条数
+    	int totalCount =userService.selectMyRmdUserCount(userCtrlModel);
+    	userCtrlModel.setPageSize(8);
+    	userCtrlModel.setTotalCount(totalCount); 
+    	
+    	//判断请求页
+        int totalPageNO = userCtrlModel.getTotalPageSize();//总页数
+        int currentPageNo = 1;//当前页
+        if(userCtrlModel.getPageNo()<1){//如果请求的页数小于1，设置成第一页
+        	userCtrlModel.setPageNo(1);
+        } else if(userCtrlModel.getPageNo()>totalPageNO){//如果请求页大于总页数，设置成最后一页
+        	userCtrlModel.setPageNo(totalPageNO);
+        }else{
+        	currentPageNo = userCtrlModel.getPageNo();
+        }
+        userCtrlModel.setPageNo(currentPageNo);
+        userCtrlModel.setSortField("create_time");
+        userCtrlModel.setSortType("desc");
+        
+		List<User> lstUser = userService.selectMyRmdUserList(userCtrlModel);
+		
+		model.addAttribute("userCtrlModel", userCtrlModel);
+		model.addAttribute("lstUser", lstUser);
+		
+		return "web/userCenter/myRecommend";
+	}
 
 }
  

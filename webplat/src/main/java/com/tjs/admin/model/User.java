@@ -24,6 +24,11 @@ public class User implements Serializable {
      * 注册来源，区分是否从高铁之类注册
      */
     private String regFrom;
+    
+    /**
+     * 推荐人
+     */
+    private Long parent;
 
     public User() {
 
@@ -80,6 +85,14 @@ public class User implements Serializable {
 
 	public void setRegFrom(String regFrom) {
 		this.regFrom = regFrom;
+	}
+	
+	public Long getParent() {
+		return parent;
+	}
+
+	public void setParent(Long parent) {
+		this.parent = parent;
 	}
 
 	@Override

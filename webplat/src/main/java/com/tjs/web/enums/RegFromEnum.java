@@ -8,6 +8,9 @@ package com.tjs.web.enums;
 public enum RegFromEnum {
 	PC("0", "PC端"), 
 	PHONE("1", "手机端"),
+	WEIXIN_RMD("5", "微信推荐"),
+	LINK_RMD("6", "链接推荐"),
+	OFFLINE_RMD("7", "线下推广"),
 	HSR("10", "高铁");
 	
 	/** 键 */

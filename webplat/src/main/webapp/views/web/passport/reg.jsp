@@ -46,7 +46,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="tjs_register_div">
 
  <form class="register-form" action="rest/web/passport/regS2" method="post">
- 
+ 					<input type="hidden" name="regFrom" value="${ctrlData.regFrom}" />
+		        	<input type="hidden" name="parent" value="${ctrlData.parent}" />
 <div style=" height:30px;width:100%;"></div>
 <div class="tjs_register_left">手机：</div><div class="tjs_register_right"><input name="userName" type="text" class="tjs_register_input  tjs_width350px" tabindex="1" spellcheck="false" placeholder=" 手机号码" autofocus x-webkit-speech ></div>
 

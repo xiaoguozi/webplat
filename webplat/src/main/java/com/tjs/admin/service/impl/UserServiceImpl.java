@@ -99,5 +99,15 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 		// TODO Auto-generated method stub
 		return userMapper.selectList(userCtrlModel);
 	}
+
+	@Override
+	public Integer selectMyRmdUserCount(UserCtrlModel userCtrlModel) {
+		return userMapper.selectMyRmdUserCount(userCtrlModel);
+	}
+
+	@Override
+	public List<User> selectMyRmdUserList(UserCtrlModel userCtrlModel) {
+		return userMapper.selectMyRmdUserList(userCtrlModel);
+	}
     
 }

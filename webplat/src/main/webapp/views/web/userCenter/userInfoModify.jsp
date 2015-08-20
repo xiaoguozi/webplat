@@ -96,9 +96,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         
                         <li class="zlsz">资料设置</li>
                         <div class="bor_dashed  mmxg">
-	                        <span>
+                        	<span>
 	                        	<a href="rest/web/userCenter/userModify" style="color:#ff6600">个人信息</a>
 	                        </span>
+                        	<span class="bor_dashed">
+                        		<a href="rest/web/userCenter/myRecommend">我的推荐</a>
+                        	</span>
                         </div>
                         
                         

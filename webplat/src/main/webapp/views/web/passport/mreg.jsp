@@ -44,6 +44,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		    <img src="assets/img/ui/register_logo.png" alt="logo" class="img-responsive"/>
 		    </div>
 		        <form class="register-form" action="rest/web/passport/mregS2" method="post">
+		        	<input type="hidden" name="regFrom" value="${ctrlData.regFrom}" />
+		        	<input type="hidden" name="parent" value="${ctrlData.parent}" />
   <div class="form-group" >
     <label>手机号</label>
     <input type="text" class="form-control" name="userName" id="userName" placeholder="手机号">

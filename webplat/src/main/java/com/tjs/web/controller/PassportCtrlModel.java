@@ -24,6 +24,12 @@ public class PassportCtrlModel extends GenericCtrlModel {
 	
 	//高铁电影码
 	private String movieCode;
+	
+    // 注册来源，枚举类：RegFromEnum
+    private String regFrom;
+    
+    //推荐人
+    private Long parent;
 
 	public String getUserName() {
 		return userName;
@@ -72,6 +78,22 @@ public class PassportCtrlModel extends GenericCtrlModel {
 	public void setMovieCode(String movieCode) {
 		this.movieCode = movieCode;
 	}
-	
 
+	public String getRegFrom() {
+		return regFrom;
+	}
+
+	public void setRegFrom(String regFrom) {
+		this.regFrom = regFrom;
+	}
+
+	public Long getParent() {
+		return parent;
+	}
+
+	public void setParent(Long parent) {
+		this.parent = parent;
+	}
+	
+	
 }

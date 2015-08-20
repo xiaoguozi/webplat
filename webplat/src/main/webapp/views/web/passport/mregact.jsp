@@ -41,7 +41,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<div class="col-md-12">
 			<form class="register-form" action="rest/web/passport/mregSact"
 				method="post">
-				<input type="hidden" id="movieCode" name="movieCode" value="888888" />
+				<input type="hidden" id="movieCode" name="movieCode" value="9552134346" />
+		       	<input type="hidden" id="parent" name="parent" value="${ctrlData.parent}" />
 				
 				<div class="form-group">
 					<input type="text" class="form-control" name="userName"
@@ -219,6 +220,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			   data: {
 				   movieCode: $("#movieCode").val(),
 				   userName: $("#userName").val(),
+				   parent: $("#parent").val(),
 				   mobileVerifyCode:$("#mobileVerifyCode").val()
                },
 			   success: function(data){

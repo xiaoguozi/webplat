@@ -526,11 +526,11 @@ CREATE TABLE `tjs_wx_tick` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='微信分享朋友圈调用凭证缓存';
 
 
-ALTER TABLE `tjs_product_xtcp` 
+ALTER TABLE `tjs_product_xtcp`;
 ADD COLUMN `xtcp_url` VARCHAR(100) NULL COMMENT '文件地址' AFTER `xtcp_tzfs`;
 
 ALTER TABLE USER ADD COLUMN reg_from VARCHAR(10) COMMENT '注册来源：0或null--PC端；1--手机端；10--高铁';
-
+ALTER TABLE USER ADD COLUMN parent BIGINT(20) COMMENT '推荐人';
 
 
 

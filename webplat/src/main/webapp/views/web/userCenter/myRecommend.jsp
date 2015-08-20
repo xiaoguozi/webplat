@@ -42,7 +42,16 @@
 				</div>
 				<div class="top_wrap_menu menu">
 					<ul>
-						<li style="width: 115px"><a href="#">首页</a></li>
+						<c:if test="${isLog!='true'}">
+							<li st><a href="rest/web/peizi/index"><span>配资首页</span></a></li>
+							<li class="tjpz"><a href="rest/web/peizi/capital"><span>淘金配资</span></a></li>
+							<li><a href="rest/web/peizi/usercenter/pzzhongxin"><span
+									class="simu_on">个人中心</span></a></li>
+							<li><a href="rest/web/peizi/trade"><span>交易软件下载</span></a></li>
+						</c:if>
+
+						<c:if test="${isLog=='true'}">
+							<li style="width: 115px"><a href="#">首页</a></li>
 							<li style="width: 115px"><a
 								href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
 							<li style="width: 115px"><a href="rest/web/pe/peIndex"
@@ -52,6 +61,7 @@
 							<li style="width: 115px"><a href="#" target="_blank">海外保险</a></li>
 							<li style="width: 115px"><a href="rest/web/aboutUs/index"
 								target="_blank">关于我们</a></li>
+						</c:if>
 
 					</ul>
 				</div>
@@ -83,9 +93,9 @@
 				<div class="bgcolor">
 					<div class="mycenter_left">
 						<ul class="mc_lbox">
-							
+						
 							<li class="wypz">我的配资</li>
-							<div class="ttp wypz_div">
+							<div class="ttp wypz_div" >
 								<span class="bor_dashed"><a
 									href="rest/web/peizi/usercenter/mfp">免费配</a></span> <span
 									class="bor_dashed"><a
@@ -100,21 +110,21 @@
 
 							<li class="wdzj">我的资金</li>
 							<div class="moneymx">
-                        	<span class="bor_dashed"><a href="javascript:void()">银行卡</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur" >充值</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex" style="color: #ff6600">提现</a></span>
-                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory" >资金明细</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/addbank">银行卡</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/enterCur">充值</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/withdrawIndex">提现</a></span>
+                        	<span class="bor_dashed"><a href="rest/web/userCenter/zhifu/fundHistory">资金明细</a></span>
                            </div>
 
 							<li class="zlsz">资料设置</li>
 							<div class="bor_dashed  mmxg">
-							  <span class="bor_dashed">
-								<a href="rest/web/userCenter/userModify" >个人信息</a>
-							   </span>
-							   <span class="bor_dashed">
-	                        		<a href="rest/web/userCenter/myRecommend">我的推荐</a>
+		                        <span>
+		                        	<a href="rest/web/userCenter/userModify" >个人信息</a>
+		                        </span>
+		                        <span class="bor_dashed">
+	                        		<a href="rest/web/userCenter/myRecommend" style="color:#ff6600">我的推荐</a>
 	                        	</span>
-							</div>
+	                        </div>
 
 
 						</ul>
@@ -137,42 +147,41 @@
 					</script>
 					<div class="mycenter_right" id="mycenter_right">
 						<h2 class="space-right-h2">
-							<a href="rest/web/userCenter/zhifu/withdrawIndex" ><img src="assets/img/zhifu/back.png" title="返回提现" style="cursor: pointer;"/></a>&nbsp;<strong>历史提现记录</strong>
+							&nbsp;<strong>推荐历史记录</strong><span style="font-size:14px;">（总数：${userCtrlModel.totalCount}）</span>
 						</h2>
 						<div class="ms-c6-table" style="margin-right: 15px;">
 							<table style="border: 1px solid #fff; border-collapse: collapse; ">
 							 		<thead>
 									 <tr style="background: #f9f9f9;">
-									     <th width="120px;">时间</th>
-									     <th width="100px;">交易类型</th>
-									     <th width="100px;" >金额&nbsp;(元)</th>
-									     <th width="170px;">状态</th>
+									     <th>用户名</th>
+									     <th>注册时间</th>
+									     <th>注册来源</th>
 									   </tr>
 									</thead>
 									<tbody>
-										<c:forEach var="withdraw" items="${lstWithdraw}">
+										<c:forEach var="user" items="${lstUser}">
 											<tr>
-												<td><fmt:formatDate value="${withdraw.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td>提现</td>
-												<td style="color: green;"><fmt:formatNumber value="${withdraw.amount}" pattern="########.##" /></td>
-												<c:if test="${withdraw.status==0 || withdraw.status==1}">
-													<td>冻结中</td>
-												</c:if>
-												<c:if test="${withdraw.status==2}">
-													<td>已完成</td>
-												</c:if>
-												<c:if test="${withdraw.status==3}">
-													<td>取消</td>
-												</c:if>
-												
+												<td>${user.username}</td>
+												<td><fmt:formatDate value="${user.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+												<td>
+													<c:choose>
+														<c:when test="${user.regFrom==0}">PC端</c:when>
+														<c:when test="${user.regFrom==1}">手机端</c:when>
+														<c:when test="${user.regFrom==5}">微信推荐</c:when>
+														<c:when test="${user.regFrom==6}">链接推荐</c:when>
+														<c:when test="${user.regFrom==7}">线下推广</c:when>
+														<c:when test="${user.regFrom==10}">高铁</c:when>
+														<c:otherwise>PC端</c:otherwise>
+													</c:choose>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
               				</table>
               			</div>
-              			<form id="modalForm" action="rest/web/userCenter/zhifu/withdrawHistory" method="post" >
-              				<input name="pageNo" type="hidden" value="${withdrawCtrlModel.pageNo}"/>
-							<input name="pageSize" type="hidden" value="${withdrawCtrlModel.pageSize }"/>
+              			<form id="modalForm" action="rest/web/userCenter/myRecommend" method="post" >
+              				<input name="pageNo" type="hidden" value="${userCtrlModel.pageNo}"/>
+							<input name="pageSize" type="hidden" value="${userCtrlModel.pageSize }"/>
               			</form>
               			
               			<!-- 翻页开始 -->
@@ -181,11 +190,11 @@
 						      <tbody>
 						        <tr>
 						        <td class=pagnum><a title=最前一页 href="#" page_no="1">|<</a></td>
-						        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${withdrawCtrlModel.pageNo-1}"><</a></td>
-						        <c:if test="${withdrawCtrlModel.totalPageSize<=9||(withdrawCtrlModel.totalPageSize>9&&withdrawCtrlModel.pageNo<=5)}">
-						       	 <c:forEach var="item" varStatus="status" begin="1" end="${withdrawCtrlModel.totalPageSize>9?9:withdrawCtrlModel.totalPageSize}">             
+						        <td class=pagnum><a class=currentpg title=上一页  href="#" page_no="${userCtrlModel.pageNo-1}"><</a></td>
+						        <c:if test="${userCtrlModel.totalPageSize<=9||(userCtrlModel.totalPageSize>9&&userCtrlModel.pageNo<=5)}">
+						       	 <c:forEach var="item" varStatus="status" begin="1" end="${userCtrlModel.totalPageSize>9?9:userCtrlModel.totalPageSize}">             
 							        <c:choose>  
-							          <c:when test="${status.index==withdrawCtrlModel.pageNo }"> 
+							          <c:when test="${status.index==userCtrlModel.pageNo }"> 
 							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
@@ -195,10 +204,10 @@
 						       </c:forEach>
 						       </c:if>
 						       
-						       <c:if test="${withdrawCtrlModel.totalPageSize>9&&withdrawCtrlModel.pageNo>5&&withdrawCtrlModel.totalPageSize>withdrawCtrlModel.pageNo+4}">
-						        <c:forEach var="item" varStatus="status" begin="${withdrawCtrlModel.pageNo-4}" end="${withdrawCtrlModel.pageNo+4}">             
+						       <c:if test="${userCtrlModel.totalPageSize>9&&userCtrlModel.pageNo>5&&userCtrlModel.totalPageSize>userCtrlModel.pageNo+4}">
+						        <c:forEach var="item" varStatus="status" begin="${userCtrlModel.pageNo-4}" end="${userCtrlModel.pageNo+4}">             
 						        <c:choose>  
-						          <c:when test="${status.index==withdrawCtrlModel.pageNo }"> 
+						          <c:when test="${status.index==userCtrlModel.pageNo }"> 
 						           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 						          </c:when> 
 						          <c:otherwise>
@@ -209,10 +218,10 @@
 						       </c:if>
 						       
 						       
-						       <c:if test="${withdrawCtrlModel.totalPageSize>9&&withdrawCtrlModel.pageNo>5&&withdrawCtrlModel.totalPageSize<=withdrawCtrlModel.pageNo+4}">
-							        <c:forEach var="item" varStatus="status" begin="${withdrawCtrlModel.totalPageSize-8}" end="${withdrawCtrlModel.totalPageSize}">             
+						       <c:if test="${userCtrlModel.totalPageSize>9&&userCtrlModel.pageNo>5&&userCtrlModel.totalPageSize<=userCtrlModel.pageNo+4}">
+							        <c:forEach var="item" varStatus="status" begin="${userCtrlModel.totalPageSize-8}" end="${userCtrlModel.totalPageSize}">             
 							        <c:choose>  
-							          <c:when test="${status.index==withdrawCtrlModel.pageNo }"> 
+							          <c:when test="${status.index==userCtrlModel.pageNo }"> 
 							           <td class=pagnum><a class=currentpg title=当前页  href="#" page_no="${status.index}" id="pagnum_click">${status.index}</a></td>     
 							          </c:when> 
 							          <c:otherwise>
@@ -221,8 +230,8 @@
 							        </c:choose>             
 							        </c:forEach>							        
 							       </c:if>
-							        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${withdrawCtrlModel.pageNo+1}">></a></td>
-							        <td class=pagnum><a title=最前一页 href="#" page_no="${withdrawCtrlModel.totalPageSize}">>|</a></td>          
+							        <td class=pagnum><a class=currentpg title=下一页 href="#" page_no="${userCtrlModel.pageNo+1}">></a></td>
+							        <td class=pagnum><a title=最前一页 href="#" page_no="${userCtrlModel.totalPageSize}">>|</a></td>          
 							        </tr>
 							      </tbody>
 							    </table>
@@ -248,18 +257,6 @@
 	            $("input[name=pageNo]").val($(this).attr("page_no"));
 		    	$("#modalForm").submit();
 		    });
-			
-			//修改成功提示
-			if('${isSuccess}'=='1'){
-				var dNew = dialog({
-	    		    content: '<img src="assets/img/peizi/check_sucess.png" valign="center">&nbsp;提现成功'
-	    		});
-	    		dNew.show();
-	    		setTimeout(function () {
-	    			dNew.close().remove();
-	    		}, 2000);
-			}
-			
 		});
 		
 	</script>

@@ -90,6 +90,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						  <span class="bor_dashed">
 							<a href="rest/web/userCenter/userModify" >个人信息</a>
 						   </span>
+						   <span class="bor_dashed">
+                        		<a href="rest/web/userCenter/myRecommend">我的推荐</a>
+                        	</span>
 						</div>
                         
                     </ul>

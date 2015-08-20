@@ -19,6 +19,8 @@ public class UserCtrlModel extends GenericCtrlModel {
 	
 	private User user;
 	
+	private int totalPageSize;
+	
 	public int getLimitStart() {
 		return (this.getPageNo()-1)*this.getPageSize();
 	}
@@ -43,6 +45,18 @@ public class UserCtrlModel extends GenericCtrlModel {
 
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
+	}
+	
+	public int getTotalPageSize() {
+		if(super.getTotalCount()%super.getPageSize()==0){
+			return super.getTotalCount()/super.getPageSize();
+		}else{
+			return super.getTotalCount()/super.getPageSize()+1;
+		}
+	}
+
+	public void setTotalPageSize(int totalPageSize) {
+		this.totalPageSize = totalPageSize;
 	}
 	
 

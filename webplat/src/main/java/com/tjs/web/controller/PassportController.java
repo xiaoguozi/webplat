@@ -333,7 +333,6 @@ public class PassportController {
     @RequestMapping("/validMobileVerifyCode")
     @ResponseBody
     public boolean validMobileVerifyCode(String mobileVerifyCode, Model model, HttpServletRequest request) {
-    	
     	boolean isValid = false;  
     	Integer verifyCount = (Integer)request.getSession().getAttribute(WebConstants.SMS_VERIFY_COUNT_SESSION_KEY);
     	//如果不存在，表明还没有发送验证码，直接返回错误信息
@@ -419,6 +418,8 @@ public class PassportController {
         	user.setUsername(ctrlModel.getUserName());
         	user.setPassword(ctrlModel.getPassword());
         	user.setCreateTime(new Date());
+        	user.setRegFrom(ctrlModel.getRegFrom());
+        	user.setParent(ctrlModel.getParent());
         	UserInfo userInfo = new UserInfo();
         	userInfo.setMobileNo(ctrlModel.getUserName());
         	userInfo.setNickName(ctrlModel.getUserName());
@@ -519,6 +520,7 @@ public class PassportController {
         	user.setCreateTime(new Date());
         	//从高铁注册
         	user.setRegFrom(RegFromEnum.HSR.getKey());
+        	user.setParent(ctrlModel.getParent());
         	
         	UserInfo userInfo = new UserInfo();
         	userInfo.setMobileNo(ctrlModel.getUserName());
@@ -578,6 +580,8 @@ public class PassportController {
         	user.setUsername(ctrlModel.getUserName());
         	user.setPassword(ctrlModel.getPassword());
         	user.setCreateTime(new Date());
+        	user.setRegFrom(ctrlModel.getRegFrom());
+        	user.setParent(ctrlModel.getParent());
         	UserInfo userInfo = new UserInfo();
         	userInfo.setMobileNo(ctrlModel.getUserName());
         	userInfo.setNickName(ctrlModel.getUserName());

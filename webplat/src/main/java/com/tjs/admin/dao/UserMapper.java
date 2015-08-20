@@ -62,5 +62,9 @@ public interface UserMapper extends GenericDao<User, Long> {
     Integer selectListCount(UserCtrlModel userCtrlModel);
     
     Integer selectCountByUserName(String userName);
+    
+    Integer selectMyRmdUserCount(UserCtrlModel userCtrlModel);
+    
+    List<User> selectMyRmdUserList(UserCtrlModel userCtrlModel);
 
 }

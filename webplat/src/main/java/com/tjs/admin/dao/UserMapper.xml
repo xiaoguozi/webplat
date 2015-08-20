@@ -8,6 +8,7 @@
         <result column="state" property="state" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
         <result column="reg_from" property="regFrom" jdbcType="VARCHAR" />
+        <result column="parent" property="parent" jdbcType="BIGINT" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -68,7 +69,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id, username, password, state, create_time, reg_from
+        id, username, password, state, create_time, reg_from, parent
     </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tjs.admin.model.UserExample">
         select
@@ -102,9 +103,10 @@
     </delete>
     <insert id="insert" parameterType="com.tjs.admin.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user (id, username, password,
-        state, create_time, reg_from)
+        state, create_time, reg_from, parent)
         values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=CHAR},
-        #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{regFrom,jdbcType=VARCHAR})
+        #{state,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{regFrom,jdbcType=VARCHAR}, 
+        #{parent,jdbcType=BIGINT})
     </insert>
     <insert id="insertSelective" parameterType="com.tjs.admin.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user
@@ -125,7 +127,10 @@
                 create_time,
             </if>
             <if test="regFrom != null">
-                reg_from
+                reg_from,
+            </if>
+            <if test="parent != null">
+                parent
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -145,7 +150,10 @@
                 #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="regFrom != null">
-                #{regFrom,jdbcType=VARCHAR}
+                #{regFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="parent != null">
+                #{parent,jdbcType=BIGINT}
             </if>
         </trim>
     </insert>
@@ -174,7 +182,10 @@
                 create_time = #{record.createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="record.regFrom != null">
-                reg_from = #{record.regFrom,jdbcType=VARCHAR}
+                reg_from = #{record.regFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="record.parent != null">
+                parent = #{record.parent,jdbcType=BIGINT}
             </if>
         </set>
         <if test="_parameter != null">
@@ -188,7 +199,8 @@
         password = #{record.password,jdbcType=CHAR},
         state = #{record.state,jdbcType=VARCHAR},
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
-        reg_from = #{record.regFrom,jdbcType=VARCHAR}
+        reg_from = #{record.regFrom,jdbcType=VARCHAR},
+        parent = #{record.parent,jdbcType=BIGINT}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -211,6 +223,9 @@
             <if test="regFrom != null">
                 reg_from = #{regFrom,jdbcType=VARCHAR}
             </if>
+            <if test="parent != null">
+                parent = #{parent,jdbcType=BIGINT}
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -220,7 +235,8 @@
         password = #{password,jdbcType=CHAR},
         state = #{state,jdbcType=VARCHAR},
         create_time = #{createTime,jdbcType=TIMESTAMP},
-        reg_from = #{regFrom,jdbcType=VARCHAR}
+        reg_from = #{regFrom,jdbcType=VARCHAR},
+        parent = #{parent,jdbcType=BIGINT}
         where id = #{id,jdbcType=BIGINT}
     </update>
 
@@ -264,4 +280,17 @@
         select count(*) as total from user where username = #{userName}
        
     </select>
+    
+    <select id="selectMyRmdUserCount" parameterType="com.tjs.admin.controller.UserCtrlModel" resultType="java.lang.Integer">
+        select count(*) as total from user where parent = #{user.parent}
+    </select>
+    <select id="selectMyRmdUserList" resultMap="BaseResultMap" parameterType="com.tjs.admin.controller.UserCtrlModel">
+        select
+        <include refid="Base_Column_List" />
+        from user where parent = #{user.parent}
+        <if test="pageNo!= 0">
+          LIMIT #{limitStart} ,#{pageSize}
+       </if> 
+    </select>
+    
 </mapper>
