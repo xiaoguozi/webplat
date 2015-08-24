@@ -27,13 +27,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <img src="assets/img/ui/tjs_logo.png" width="338" height="94" align="middle" alt="淘金山理财" />
                     </a>
                 </div>
-                <div class="top_wrap_menu menu">
+                <div class="top_wrap_menu_main menu">
                     <ul>
 				    <li><a href="">首页</a></li>
 				    <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
 				    <li><a href="rest/web/pe/peIndex" target="_blank">私募</a></li>
 				    <li><a href="rest/web/peizi/index" target="_blank">配资</a></li>
 				    <li><a href="#" target="_blank">海外保险</a></li>
+				    <li><a href="http://academy.taojinshan.com.cn/portal.php" target="_blank">淘金学院</a></li>
 				    <li><a href="rest/web/aboutUs/index" target="_blank">关于我们</a></li>
 				    </ul>
                 </div>

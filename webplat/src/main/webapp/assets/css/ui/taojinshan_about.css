@@ -56,6 +56,13 @@ span{margin: 0; padding:0;}
     margin: 0px auto;
     font-size: 12px;
 }
+
+.top_wrap_menu_main{margin-left:320px;height:94px;width:auto;}
+.top_wrap_menu_main ul{ width:100%;}
+.top_wrap_menu_main ul li{float:left;width:110px; height:94px; line-height:94px; color:#333333; font-size:18px;text-align:center;}
+.top_wrap_menu_main ul li a{float:left;width:110px; height:94px; line-height:94px; color:#333333; text-decoration:none;text-align:center;}
+.top_wrap_menu_main ul li a:hover{float:left;width:110px; height:94px; line-height:94px; color:#0280CC; text-decoration:none;text-align:center;}
+	
 	
 .logo_wrap {float:left; width:338px;height:94px; line-height:94px;overflow: hidden;}
 .top_wrap_menu{margin-left:400px;height:94px;width:auto;}
