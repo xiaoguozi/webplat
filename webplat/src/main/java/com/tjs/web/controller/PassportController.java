@@ -27,6 +27,7 @@ import com.tjs.admin.constants.UserConstants;
 import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.utils.StringUtils;
 import com.tjs.core.util.StringExtUtils;
 import com.tjs.web.constants.WebConstants;
 import com.tjs.web.enums.RegFromEnum;
@@ -519,7 +520,12 @@ public class PassportController {
         	user.setPassword(password);
         	user.setCreateTime(new Date());
         	//从高铁注册
-        	user.setRegFrom(RegFromEnum.HSR.getKey());
+        	if(StringUtils.isEmpty(ctrlModel.getRegFrom())){
+	        	user.setRegFrom(RegFromEnum.HSR.getKey());
+        	}else{
+        		user.setRegFrom(RegFromEnum.HSR2.getKey());
+        	}
+        	
         	user.setParent(ctrlModel.getParent());
         	
         	UserInfo userInfo = new UserInfo();

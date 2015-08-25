@@ -11,7 +11,8 @@ public enum RegFromEnum {
 	WEIXIN_RMD("5", "微信推荐"),
 	LINK_RMD("6", "链接推荐"),
 	OFFLINE_RMD("7", "线下推广"),
-	HSR("10", "高铁");
+	HSR("10", "高铁"),
+	HSR2("11", "高铁二等座");
 	
 	/** 键 */
 	private String key;
