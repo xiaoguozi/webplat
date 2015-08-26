@@ -157,6 +157,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="rest/admin/user/statistics/index">
+                                      	  用户统计
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="rest/admin/role/index">
                                         	角色管理
                                     </a>

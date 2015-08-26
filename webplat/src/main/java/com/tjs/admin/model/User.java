@@ -29,6 +29,27 @@ public class User implements Serializable {
      * 推荐人
      */
     private Long parent;
+    
+    /**
+     * 姓名
+     */
+    private String name;
+    
+    /**
+     * 推荐人手机号
+     */
+    private String rmobileNo;
+    
+    /**
+     * 推荐人姓名
+     */
+    private String rname;
+    
+    /**
+     * 日期字符串
+     */
+    private String createDateString;
+    
 
     public User() {
 
@@ -93,6 +114,38 @@ public class User implements Serializable {
 
 	public void setParent(Long parent) {
 		this.parent = parent;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRmobileNo() {
+		return rmobileNo;
+	}
+
+	public void setRmobileNo(String rmobileNo) {
+		this.rmobileNo = rmobileNo;
+	}
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+	
+	public String getCreateDateString() {
+		return createDateString;
+	}
+
+	public void setCreateDateString(String createDateString) {
+		this.createDateString = createDateString;
 	}
 
 	@Override

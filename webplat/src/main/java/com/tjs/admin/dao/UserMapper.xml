@@ -10,6 +10,16 @@
         <result column="reg_from" property="regFrom" jdbcType="VARCHAR" />
         <result column="parent" property="parent" jdbcType="BIGINT" />
     </resultMap>
+    <resultMap id="AdminResultMap" type="com.tjs.admin.model.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="reg_from" property="regFrom" jdbcType="VARCHAR" />
+        <result column="parent" property="parent" jdbcType="BIGINT" />
+        <result column="rmobile_no" property="rmobileNo" jdbcType="VARCHAR" />
+        <result column="rname" property="rname" jdbcType="VARCHAR" />
+    </resultMap>
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -272,6 +282,7 @@
           LIMIT #{limitStart} ,#{pageSize}
        </if> 
     </select>
+    
      <select id="selectListCount" parameterType="com.tjs.admin.controller.UserCtrlModel" resultType="java.lang.Integer">
         select count(*) as total from user
        
@@ -291,6 +302,73 @@
         <if test="pageNo!= 0">
           LIMIT #{limitStart} ,#{pageSize}
        </if> 
+    </select>
+    
+    
+    <select id="selectAdminRmdListCount" parameterType="com.tjs.admin.controller.UserCtrlModel" resultType="java.lang.Integer">
+        SELECT COUNT(f.id) FROM
+		(
+			SELECT t.*, u2.mobile_no rmobile_no, u2.name rname FROM
+			(SELECT 
+			  u.id,
+			  u.username,
+			  u1.name,
+			  u.create_time,
+			  u.reg_from,
+			  u.parent 
+			FROM
+			  USER u,
+			  t_user_info u1 
+			WHERE u.id = u1.user_id 
+			)t LEFT JOIN t_user_info u2 ON t.parent = u2.user_id
+		)f where 1=1
+		<if test="user.rmobileNo != null and user.rmobileNo!=''">
+               and f.rmobile_no = #{user.rmobileNo}
+        </if>
+        <if test="user.regFrom != null and user.regFrom!=''">
+               <if test="user.regFrom != 0 ">
+	               and f.reg_from = #{user.regFrom}
+               </if>
+               <if test="user.regFrom == 0 ">
+	               and (f.reg_from = #{user.regFrom} || f.reg_from is null)
+               </if>
+        </if>
+        <if test="user.createDateString != null and user.createDateString!=''">
+               and DATE_FORMAT(f.create_time,'%Y-%m-%d') = #{user.createDateString}
+        </if>
+    </select>
+    
+    <select id="selectAdminRmdUserList" resultMap="AdminResultMap" parameterType="com.tjs.admin.controller.UserCtrlModel">
+        SELECT f.*, f.rmobile_no, f.rname  FROM
+		(
+			SELECT t.*, u2.mobile_no rmobile_no, u2.name rname FROM
+			(SELECT 
+			  u.id,
+			  u.username,
+			  u1.name,
+			  u.create_time,
+			  u.reg_from,
+			  u.parent 
+			FROM
+			  USER u,
+			  t_user_info u1 
+			WHERE u.id = u1.user_id 
+			)t LEFT JOIN t_user_info u2 ON t.parent = u2.user_id
+		)f where 1=1
+		<if test="user.rmobileNo != null and user.rmobileNo!=''">
+               and f.rmobile_no = #{user.rmobileNo}
+        </if>
+        <if test="user.regFrom != null and user.regFrom!=''">
+               <if test="user.regFrom != 0 ">
+	               and f.reg_from = #{user.regFrom}
+               </if>
+               <if test="user.regFrom == 0 ">
+	               and (f.reg_from = #{user.regFrom} || f.reg_from is null)
+               </if>
+        </if>
+        <if test="user.createDateString != null and user.createDateString!=''">
+               and DATE_FORMAT(f.create_time,'%Y-%m-%d') = #{user.createDateString}
+        </if>
     </select>
     
 </mapper>

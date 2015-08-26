@@ -93,6 +93,12 @@ public class UserController {
         return "admin/user/index";
     }
     
+    @RequestMapping("/statistics")
+    public String statistics() {
+        return "admin/user/statistics/index";
+    }
+    
+    
     @RequestMapping("/listDataCount")
     @ResponseBody
     public Map<String, Integer> listDataCount(UserCtrlModel userCtrlModel, Model model) {
