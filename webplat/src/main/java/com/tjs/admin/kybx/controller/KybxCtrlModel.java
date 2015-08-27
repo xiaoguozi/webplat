@@ -45,6 +45,9 @@ public class KybxCtrlModel extends GenericCtrlModel {
 	}
 
 	public Kybx getKybx() {
+		if(kybx==null){
+			kybx = new Kybx();
+		}
 		return kybx;
 	}
 

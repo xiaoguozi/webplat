@@ -31,7 +31,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					    <li><a href="<%=basePath%>rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
 					    <li><a href="<%=basePath%>rest/web/pe/peIndex" target="_blank">私募</a></li>
 					    <li><a href="<%=basePath%>rest/web/peizi/index" target="_blank">配资</a></li>
-					    <li><a href="#" target="_blank">海外保险</a></li>
+					    <li><a href="<%=basePath%>rest/web/Kybx/kybxIndex" target="_blank">海外保险</a></li>
 					    <li><a href="http://academy.taojinshan.com.cn/portal.php" target="_blank">淘金学院</a></li>
 					    <li><a href="<%=basePath%>rest/web/aboutUs/index" target="_blank">关于我们</a></li>
                     </ul>                    

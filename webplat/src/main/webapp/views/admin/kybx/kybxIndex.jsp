@@ -114,7 +114,7 @@ $(function(){
             },
             function(){
                 togglePage('modal'); 
-                editorkybxGood=editRich('kybxGood');
+                editorkybxGood=editRich('kybxCpys');
                 editorkybxInfo=editRich('kybxInfo');
                 editorkybxPlan=editRich('kybxPlan');
                 editorkybxLplc=editRich('kybxLplc');
@@ -164,7 +164,7 @@ $(function(){
                 }, 
                 function(){
                     togglePage('modal');
-                    editorkybxGood=editRich('kybxGood');
+                    editorkybxGood=editRich('kybxCpys');
                     editorkybxInfo=editRich('kybxInfo');
                     editorkybxPlan=editRich('kybxPlan');
                     editorkybxLplc=editRich('kybxLplc');

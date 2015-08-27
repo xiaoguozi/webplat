@@ -23,16 +23,23 @@
         <result column="kybx_subclass" property="kybxSubclass" jdbcType="VARCHAR" />
         <result column="kybx_Tjno" property="kybxTjno" jdbcType="INTEGER" />
         <result column="kybx_img_url" property="kybxImgUrl" jdbcType="VARCHAR" />
+        <result column="kybx_zl_url" property="kybxZlUrl" jdbcType="VARCHAR" />
+        <result column="kybx_cpys" property="kybxCpys" javaType="java.lang.String" />
+        <result column="kybx_shrq" property="kybxShrq" jdbcType="VARCHAR" />
+        <result column="kybx_company_name" property="kybxCompanyName" jdbcType="VARCHAR" />
+        <result column="kybx_short_name" property="kybxShortName" jdbcType="VARCHAR" />
     </resultMap>
     
     <sql id="Base_select_Column_List">
         kybx_id,kybx_name,kybx_choose,kybx_age,kybx_amont,kybx_good,kybx_info,kybx_Plan,kybx_Lplc,kybx_Question,kybx_Tk,kybx_status,
-        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url
+        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url,kybx_zl_url,
+        kybx_cpys,kybx_shrq,kybx_company_name,kybx_short_name
     </sql>
     
      <sql id="Base_insert_Column_List">
         kybx_name,kybx_choose,kybx_age,kybx_amont,kybx_good,kybx_info,kybx_Plan,kybx_Lplc,kybx_Question,kybx_Tk,kybx_status,
-        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url
+        kybx_tjw,kybx_create_date,kybx_create_by,kybx_modify_date,kybx_modify_by,kybx_Class,kybx_subclass,kybx_Tjno,kybx_img_url,kybx_zl_url,
+        kybx_cpys,kybx_shrq,kybx_company_name,kybx_short_name
     </sql>
     
     <select id="countKybx" resultType="int" parameterType="com.tjs.admin.kybx.controller.KybxCtrlModel" >
@@ -47,6 +54,10 @@
           
           <if test="kybx!=null and kybx.kybxTjw!= null and kybx.kybxTjw!= ''">
              AND kybx_tjw like CONCAT('%',#{kybx.kybxTjw},'%')    
+          </if>
+          
+           <if test="kybx!=null and kybx.kybxClass!= null and kybx.kybxClass!= ''">
+             AND kybx_Class like CONCAT('%',#{kybx.kybxClass},'%')    
           </if>              
     </select>
     
@@ -68,13 +79,17 @@
           <if test="kybx!=null and kybx.kybxTjw!= null and kybx.kybxTjw!= ''">
              AND kybx_tjw like CONCAT('%',#{kybx.kybxTjw},'%')    
           </if> 
+          
+          <if test="kybx!=null and kybx.kybxClass!= null and kybx.kybxClass!= ''">
+             AND kybx_Class like CONCAT('%',#{kybx.kybxClass},'%')    
+          </if>  
                
          <if test="sortField!= null and sortField!= ''">
             ORDER BY ${sortField} ${sortType}
         </if>
         
          <if test="sortField== null or sortField==''">
-           ORDER BY  kybx_status asc,kybx_create_date desc
+           ORDER BY kybx_create_date desc, kybx_status asc
         </if>
                     
          <if test="pageNo!= 0">
@@ -106,7 +121,12 @@
         #{kybxClass,jdbcType=VARCHAR},              
         #{kybxSubclass,jdbcType=VARCHAR} ,
         #{kybxTjno,jdbcType=INTEGER},
-        #{kybxImgUrl,jdbcType=VARCHAR}   
+        #{kybxImgUrl,jdbcType=VARCHAR},
+        #{kybxZlUrl,jdbcType=VARCHAR},
+        #{kybxCpys,javaType=java.lang.String},
+        #{kybxShrq,jdbcType=VARCHAR},
+        #{kybxCompanyName,jdbcType=VARCHAR},
+        #{kybxShortName,jdbcType=VARCHAR}  
         )
     </insert>
     
@@ -129,7 +149,12 @@
         kybx_Class=#{kybxClass,jdbcType=VARCHAR},  
         kybx_subclass= #{kybxSubclass,jdbcType=VARCHAR},
         kybx_Tjno= #{kybxTjno,jdbcType=INTEGER},
-        kybx_img_url=#{kybxImgUrl,jdbcType=VARCHAR}                      
+        kybx_img_url=#{kybxImgUrl,jdbcType=VARCHAR},
+        kybx_zl_url=#{kybxZlUrl,jdbcType=VARCHAR},
+        kybx_cpys=#{kybxCpys,javaType=java.lang.String},
+        kybx_shrq=#{kybxShrq,jdbcType=VARCHAR},
+        kybx_company_name=#{kybxCompanyName,jdbcType=VARCHAR},
+        kybx_short_name=#{kybxShortName,jdbcType=VARCHAR}                         
         where kybx_id=#{kybxId}
     </update>
     

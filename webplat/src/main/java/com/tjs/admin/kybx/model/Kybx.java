@@ -10,6 +10,8 @@ public class Kybx {
 	private Long kybxId;
 	/**保险名称 */
 	private String  kybxName;
+	/**保险公司名称 */
+	private String  kybxCompanyName;	
 	/**年限选择*/
 	private String kybxChoose;
 	/**投保年龄*/
@@ -31,10 +33,10 @@ public class Kybx {
 	/**产品状态*/
 	private String kybxStatus;
 	
-	private Integer kybxTjw;
+	private String kybxTjw;
 	
 	/**推荐位*/
-	private String kybxTjno;
+	private Integer kybxTjno;
 	/**创建时间*/
 	private Date kybxCreateDate;
 	/**创建人*/
@@ -48,7 +50,16 @@ public class Kybx {
 	/**产品小类：待定*/
 	private String kybxSubclass;	
 	/**产品对应图片路径*/
-	private String kybxImgUrl;
+	private String kybxImgUrl;	
+	/**上传资料路径*/
+	private String kybxZlUrl;
+	/**产品优势*/
+	private String kybxCpys;
+	/**适合人群*/
+	private String kybxShrq;
+	/**产品简称*/
+	private String kybxShortName;
+	
 	
 	
 	public Long getKybxId() {
@@ -123,10 +134,10 @@ public class Kybx {
 	public void setKybxStatus(String kybxStatus) {
 		this.kybxStatus = kybxStatus;
 	}
-	public String getKybxTjno() {
+	public Integer getKybxTjno() {
 		return kybxTjno;
 	}
-	public void setKybxTjno(String kybxTjno) {
+	public void setKybxTjno(Integer kybxTjno) {
 		this.kybxTjno = kybxTjno;
 	}
 
@@ -167,10 +178,10 @@ public class Kybx {
 	public void setKybxSubclass(String kybxSubclass) {
 		this.kybxSubclass = kybxSubclass;
 	}
-	public Integer getKybxTjw() {
+	public String getKybxTjw() {
 		return kybxTjw;
 	}
-	public void setKybxTjw(Integer kybxTjw) {
+	public void setKybxTjw(String kybxTjw) {
 		this.kybxTjw = kybxTjw;
 	}
 	public String getKybxImgUrl() {
@@ -178,6 +189,36 @@ public class Kybx {
 	}
 	public void setKybxImgUrl(String kybxImgUrl) {
 		this.kybxImgUrl = kybxImgUrl;
+	}
+	public String getKybxZlUrl() {
+		return kybxZlUrl;
+	}
+	public void setKybxZlUrl(String kybxZlUrl) {
+		this.kybxZlUrl = kybxZlUrl;
+	}
+	public String getKybxCpys() {
+		return kybxCpys;
+	}
+	public void setKybxCpys(String kybxCpys) {
+		this.kybxCpys = kybxCpys;
+	}
+	public String getKybxShrq() {
+		return kybxShrq;
+	}
+	public void setKybxShrq(String kybxShrq) {
+		this.kybxShrq = kybxShrq;
+	}
+	public String getKybxCompanyName() {
+		return kybxCompanyName;
+	}
+	public void setKybxCompanyName(String kybxCompanyName) {
+		this.kybxCompanyName = kybxCompanyName;
+	}
+	public String getKybxShortName() {
+		return kybxShortName;
+	}
+	public void setKybxShortName(String kybxShortName) {
+		this.kybxShortName = kybxShortName;
 	}
 	
 	

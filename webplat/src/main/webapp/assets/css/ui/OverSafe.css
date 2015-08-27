@@ -1,0 +1,27 @@
+.os-l-ul{margin-top:20px}
+.clearfix{border:1px solid #e2e2e2}
+.fl{float:left}
+.fr{float:right}
+.c-left{padding-top:18px;margin-bottom:10px;width:700px;}
+.os-pic{padding-left:20px}
+.tit{color:#000;padding-top:10px;font-size:24px;padding-left:20px}
+.i-item{width:460px;display:block;word-break: break-all;word-wrap: break-word;padding-left:20px}
+.c-left ul{list-style-type:disc } 
+.c-left ul li{color:#666;line-height:28px;}
+
+.c-right{width:400px;border-left:1px solid #e2e2e2;height:100%}
+.c-right ul li{line-height:41px;border:1px solid #e2e2e2;height:41px;}
+.sleft{width:85px;color:#666;padding-left:20px}
+.sright{color:#000;}
+.border-bottom{border-bottom:1px solid #e2e2e2; }
+.border-bottom td{background:#F5F5F5; font-size:16px; padding-top:10px;padding-bottom:10px;}
+tr.last{padding-top:20px;line-height:61px;height:61px;text-align:center}
+.last a.kybx_btn{ width:122px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 30px; background-color: #0280cc;border-radius: 4px;line-height: 30px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;margin-left:10px}
+.last a.kybx_downbtn{ width:122px;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; display: inline-block; height: 30px; background-color: #0280cc;border-radius: 4px;line-height: 30px;text-align:center;font-size: 16px;color: #FFF; border:none;cursor:pointer;margin-left:10px}
+
+
+.dleft{color:#666;}
+.drihgt{color:#000;}
+.d-item{width:89%;display:block;word-break: break-all;word-wrap: break-word;padding-left:30px}
+.d-item ul{list-style-type:decimal } 
+.d-item ul li{color:#000;line-height:28px;}

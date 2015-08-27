@@ -1,6 +1,8 @@
 <%@ include file="/views/admin/include.jsp"%>
 <%@page contentType="text/html;charset=UTF-8"%>
-
+<%@page language="java" import="com.tjs.admin.order.constants.ProductTypeEnum" pageEncoding="utf-8"%>
+<%@page language="java" import="com.tjs.admin.constants.OperateStatusEnum"%>
+<%@page language="java" import="com.tjs.core.util.*"%>
 
 
 <c:forEach items="${showData}" var="order">
@@ -22,47 +24,14 @@
         </td>        
         <td>${order.productName}</td>
         <td>
-         <c:choose>  
-                <c:when test="${order.productType=='10'}">  
-                  		信托
-                </c:when>
-                 <c:when test="${order.productType=='20'}">  
-                  		私募
-                </c:when>
-                 <c:when test="${order.productType=='30'}">  
-                  		  配资
-                </c:when> 
-                 <c:when test="${order.productType=='40'}">  
-                  		海外保险      
-                </c:when> 
-                    
-                <c:otherwise>  
-                     	其他
-                </c:otherwise>  
-            </c:choose>    
-                       
+          <c:set var="classKey"  value="${order.productType}" scope="request"/> 
+          <%=EnumUtils.getValue((IEnum[])ProductTypeEnum.values(), (String)request.getAttribute("classKey")) %>                                     
         </td>
         <td><fmt:formatDate value="${order.createDate}" pattern="yyyy-MM-dd HH:mm"/></td> 
         <td>${order.operateName}</td>       
         <td>
-        
-        <c:choose>  
-                <c:when test="${order.operateStatus=='10'}">  
-                  		未处理
-                </c:when>
-                 <c:when test="${order.operateStatus=='20'}">  
-                  		处理中
-                </c:when>
-                 <c:when test="${order.operateStatus=='30'}">  
-                  		已处理
-                </c:when>                                    
-                <c:otherwise>  
-                     	其他
-                </c:otherwise>  
-            </c:choose> 
-
-        
-        
+        	 <c:set var="operateKey"  value="${order.operateStatus}" scope="request"/> 
+          <%=EnumUtils.getValue((IEnum[])OperateStatusEnum.values(), (String)request.getAttribute("operateKey")) %>                                         
         </td>             
     </tr>
 

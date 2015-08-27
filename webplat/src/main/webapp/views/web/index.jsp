@@ -48,7 +48,7 @@ document.all(imgg).style.display='block'}}
     <li><a href="rest/web/xintuo/trust/trustIndex" target="_blank">信托</a></li>
     <li><a href="rest/web/pe/peIndex" target="_blank">私募</a></li>
     <li><a href="rest/web/peizi/index" target="_blank">配资</a></li>
-    <li><a href="#" target="_blank">海外保险</a></li>
+    <li><a href="rest/web/Kybx/kybxIndex" target="_blank">海外保险</a></li>
     <li><a href="http://academy.taojinshan.com.cn/portal.php" target="_blank">淘金学院</a></li>
     <li><a href="rest/web/aboutUs/index" target="_blank">关于我们</a></li>
     </ul>
@@ -257,6 +257,7 @@ document.all(imgg).style.display='block'}}
 <!-- 海外保险板块开始 -->
 <div class="tjs_product_div">
 <div class="tjs_1108px center">
+<a href="rest/web/Kybx/kybxIndex" target="_blank">
 <div class="tjs_product_left">
 <div class="tjs_tag_div">分<br />红<br />收<br />益</div>
 <div class="tjs_foreign_topdiv">千万雄资</div>
@@ -268,67 +269,34 @@ document.all(imgg).style.display='block'}}
 <div class="tjs_product_textdiv">保障全面、保费低、分红返利;回报高、投保简单、环球医疗援助。</div>
 </div>
 </div>
+</a>
 <!-- /tjs_product_left -->
 
 <div class="tjs_product_right">
-<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">海外保险</span><span style="float:right;"><a href="#" class="tjs_moreurl">更多>></a></span></div>
+<div class="tjs_right_titlediv tjs_shalloworange"><span style="float:left;font-size:28px">海外保险</span><span style="float:right;"><a href="rest/web/Kybx/kybxIndex"  target="_blank" class="tjs_moreurl">更多>></a></span></div>
 <div class="tjs_coloreddiv"><div class="tjs_coloredorange" style=" width:180px;"></div></div>
 
 <div class="tjs_right_typle">
 
-<div class="product_div tjs_right_unit tjs_right_2border">
+<c:forEach items="${kybxData}" var="kybx"  end="2" varStatus="status">
+<div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span>至尊环球明珠医疗</span>
+<div class="tjs_rightforeign_title"><span><a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank">${kybx.kybxShortName}</a></span>
   <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
   </div>
+<div class="tjs_product_textdiv" style="height:60px">保险公司：${kybx.kybxCompanyName}<br />
+产品类型：${kybx.kybxSubclass}<br />
+承保年龄：${kybx.kybxAge}</div>
 
-<div class="tjs_foreign_textdiv">保险公司：友邦保险<br />
-产品类型：医疗保障<br />
-承保年龄：0周岁~99周岁</div>
 
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_foreignbtn">详细信息</a>&nbsp;&nbsp;<a href="#" class="tjs_orderbtn">在线预约</a></div>
+<div  style=" height:24px; width:100%;"></div>
+<div class="tjs_right_btndiv"><a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" class="tjs_btn" target="_blank">了解详情</a></div>
 
 </div>
 <!-- /tjs_right_unit 01 -->
 
-<div class="product_div tjs_right_unit tjs_right_2border">
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span>简爱延续</span>
-  <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
-  </div>
-
-<div class="tjs_foreign_textdiv">保险公司：友邦保险<br />
-产品类型：储蓄保险<br />
-承保年龄：0周岁~60周岁</div>
-
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_foreignbtn">详细信息</a>&nbsp;&nbsp;<a href="#" class="tjs_orderbtn">在线预约</a></div>
-
-</div>
-<!-- /tjs_right_unit 02 -->
-
-<div class="product_div tjs_right_unit">
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span>危疾终身保计划</span>
-  <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
-  </div>
-
-<div class="tjs_foreign_textdiv">保险公司：英国保诚<br />
-产品类型：危疾保障<br />
-承保年龄：0周岁~100周岁</div>
-
-
-<div  style=" height:36px; width:100%;"></div>
-<div class="tjs_right_btndiv"> <a href="#" class="tjs_foreignbtn">详细信息</a>&nbsp;&nbsp;<a href="#" class="tjs_orderbtn">在线预约</a></div>
-
-</div>
-<!-- /tjs_right_unit 03 -->
+</c:forEach>
 <div class="clearfloat"></div>
 
 </div>

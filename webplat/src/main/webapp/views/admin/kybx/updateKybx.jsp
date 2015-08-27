@@ -51,10 +51,25 @@
                </div>
            </div>
              
-        <div class="form-group">
-            <label class="col-md-2 control-label">保险名称</label>
+         <div class="form-group">
+            <label class="col-md-2 control-label">保险产品全称</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="kybxName" value="${kybx.kybxName}"  >
+            </div>
+         </div>
+         
+          <div class="form-group">
+            <label class="col-md-2 control-label">保险产品简称称</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control required" name="kybxShortName" value="${kybx.kybxShortName}"  >
+            </div>
+         </div>
+         
+         
+         <div class="form-group">
+            <label class="col-md-2 control-label">保险公司名称</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control required" name="kybxCompanyName" value="${kybx.kybxCompanyName}"  >
             </div>
          </div>
         
@@ -72,10 +87,24 @@
             </div>
          </div>
          
-         <div class="form-group">
-            <label class="col-md-2 control-label">保险金额</label>
+          <div class="form-group">
+            <label class="col-md-2 control-label">保障金额</label>
             <div class="col-md-6">
                 <input type="text" class="form-control required" name="kybxAmont" value="${kybx.kybxAmont}"  >
+            </div>
+         </div>
+         
+          <div class="form-group">
+            <label class="col-md-2 control-label">适合人群</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control required" name="kybxShrq" value="${kybx.kybxShrq}"  >
+            </div>
+         </div>
+         
+          <div class="form-group">
+            <label class="col-md-2 control-label">产品亮点</label>
+            <div class="col-md-6">
+            	<input type="text" class="form-control required" name="kybxGood" value="${kybx.kybxGood}"  >
             </div>
          </div>
          
@@ -127,14 +156,14 @@
         
         
         <div class="form-group">
-            <label class="col-md-2 control-label">产品亮点</label>
+            <label class="col-md-2 control-label">产品优势</label>
             <div class="col-md-6">
-                <textarea id="kybxGood" name="kybxGood" style="width:700px;height:300px;">${kybx.kybxGood}</textarea>
+                <textarea  name="kybxCpys" style="width:700px;height:300px;">${kybx.kybxCpys}</textarea>
             </div>
          </div>
          
          <div class="form-group">
-            <label class="col-md-2 control-label">产品信息</label>
+            <label class="col-md-2 control-label">产品介绍</label>
             <div class="col-md-6">
                 <textarea id="kybxInfo" name="kybxInfo" style="width:700px;height:300px;">${kybx.kybxInfo}</textarea>
             </div>
@@ -171,6 +200,36 @@
                 <textarea id="kybxTk" name="kybxTk" style="width:700px;height:300px;">${kybx.kybxTk}</textarea>
             </div>
          </div>
+         
+          
+         <div class="form-group">
+           <label class="col-md-2 control-label">资料上传 </label>
+            <div  class="col-md-1" <c:if test="${(empty kybx.kybxZlUrl)}">style="display:none"</c:if> id="zl_div">	            	   
+		          <a href="rest/web/system/upfile/downFile?imageName=${kybx.kybxZlUrl}"  id="JS-zl-src"><img alt="ddd" src="assets/img/attachfile.png"></a>
+		    </div>
+         	<input type="hidden" class="form-control " name="kybxZlUrl" id="JS-homezl" value="${kybx.kybxZlUrl}" >
+            <div class="col-md-5">          			           				            	   
+                     <div id="uploader" class="wu-example">
+                    	
+				        <div class="queueList">
+				            <div id="dndArea" class="placeholder">
+				                <div id="filePicker1"></div>				               
+				            </div>
+				        </div>
+				        <div class="statusBar" style="display:none;">
+				            <div class="progress">
+				                <span class="text">0%</span>
+				                <span class="percentage"></span>
+				            </div>
+				            <div class="info"></div>
+				            <div class="btns">
+				                <div id="filePicker3"></div>
+				                <div class="uploadBtn">开始上传</div>
+				            </div>
+				        </div>
+				    </div>
+               </div>
+           </div>
          
          
                    
@@ -212,8 +271,9 @@ $(function(){
         KindEditor.remove('textarea[name="kybxTk"]');
     });
      
+ 
  // 实例化
-    var uploader = WebUploader.create({
+    var uploader1 = WebUploader.create({
     	 // swf文件路径
 	    swf: 'assets/plugins/webuploader/Uploader.swf',
 	    // 文件接收服务端。
@@ -233,7 +293,7 @@ $(function(){
     });
    
 
-    uploader.on( 'uploadSuccess', function(file,ret) {
+    uploader1.on( 'uploadSuccess', function(file,ret) {
     	var success = false;
 		var message = "";
 		try {
@@ -254,6 +314,53 @@ $(function(){
         }
 
     });
+    
+    
+    
+    
+    // 实例化
+    var uploader = WebUploader.create({
+    	 // swf文件路径
+	    swf: 'assets/plugins/webuploader/Uploader.swf',
+	    // 文件接收服务端。
+	    server :  'rest/web/system/upfile/uploadFile',//上传的URL
+	    accept: {
+            title: 'Images',
+            extensions: "pdf,doc,docx,rar,zip",
+            mimeTypes: 'application/msword|word,application/pdf|pdf,application/zip'
+        },
+        auto: true,
+	    // 选择文件的按钮。可选。
+	    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	    pick: {
+        	id: '#filePicker1',
+        	innerHTML: "选择资料"
+    	}
+    });
+   
+
+    uploader.on( 'uploadSuccess', function(file,ret) {
+    	var success = false;
+		var message = "";
+		try {
+        	if (ret.state == 'SUCCESS') {
+        		success = true;
+            }else{
+            	message = ret.statusText || "未知原因"
+            }
+        } catch (e) {
+        	message = "未知原因";
+        }
+        if(success){
+        	$("#JS-homezl").val(ret.url);
+        	$("#zl_div").css("display","block");
+        	$("#JS-zl-src").attr("href","rest/web/system/upfile/downFile?imageName=" + ret.url);
+        }else{
+        	XT.error(message);
+        }
+
+    });
+    
 
 });
 

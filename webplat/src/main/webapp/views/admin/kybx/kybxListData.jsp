@@ -1,9 +1,10 @@
 <%@ include file="/views/admin/include.jsp"%>
 <%@page contentType="text/html;charset=UTF-8"%>
+<%@page language="java" import="com.tjs.admin.kybx.constants.KybxClassEnum" pageEncoding="utf-8"%>
+<%@page language="java" import="com.tjs.core.util.*"%>
 
 
-
-<c:forEach items="${showData}" var="kybx">
+<c:forEach items="${showData}" var="kybx" >
     <tr>
         <td class="data-operator">
             <label class="checkbox-inline">
@@ -17,22 +18,10 @@
         <td>${kybx.kybxName}</td>
         <td>${kybx.kybxChoose}</td>
         <td>${kybx.kybxAge}</td>
-        <td>${kybx.kybxAge}</td>
+        <td>${kybx.kybxAmont}</td>
         <td>
-          <c:choose>  
-                <c:when test="${kybx.kybxClass=='10'}">  
-                  		寿险
-                </c:when>
-                 <c:when test="${kybx.kybxClass=='20'}">  
-                  		医疗
-                </c:when>
-                 <c:when test="${kybx.kybxClass=='30'}">  
-                  		 保费隔资   
-                </c:when>     
-                <c:otherwise>  
-                     	其他
-                </c:otherwise>  
-            </c:choose>    
+          <c:set var="classKey"  value="${kybx.kybxClass}" scope="request"/> 
+          <%=EnumUtils.getValue((IEnum[])KybxClassEnum.values(), (String)request.getAttribute("classKey")) %>
         </td>
         <td>${kybx.kybxSubclass}</td>
     </tr>

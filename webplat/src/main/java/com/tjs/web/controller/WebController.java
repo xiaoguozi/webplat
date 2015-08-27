@@ -12,6 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tjs.admin.constants.ProductStatus;
+import com.tjs.admin.constants.TjwEnum;
+import com.tjs.admin.kybx.controller.KybxCtrlModel;
+import com.tjs.admin.kybx.model.Kybx;
+import com.tjs.admin.kybx.service.IKybxService;
 import com.tjs.admin.model.User;
 import com.tjs.admin.pe.model.PEProduct;
 import com.tjs.admin.pe.service.PEProductService;
@@ -41,6 +46,9 @@ public class WebController {
        
     @Resource
     private ISysHome sysHomeService;
+    
+    @Resource
+	private IKybxService kybxService;
     
 	/**
 	 * 首页－默认
@@ -79,6 +87,17 @@ public class WebController {
 		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();				
 		model.addAttribute("smcpData", smcp);
 		
+		
+		  //海外保险
+		  KybxCtrlModel kybxCtrlModel = new KybxCtrlModel();
+		  kybxCtrlModel.setPageSize(3);
+		  kybxCtrlModel.setPageNo(1);
+		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
+		  kybxCtrlModel.setSortField("kybx_Tjno");
+		  kybxCtrlModel.setSortType("asc");
+		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
+		  model.addAttribute("kybxData", lstKybx);
+		
 		if (isLogin) {
 			return "web/home";
 		} else {
@@ -113,6 +132,17 @@ public class WebController {
 		model.addAttribute("smcpData", smcp);
 		
 		
+		//海外保险
+		  KybxCtrlModel kybxCtrlModel = new KybxCtrlModel();
+		  kybxCtrlModel.setPageSize(3);
+		  kybxCtrlModel.setPageNo(1);
+		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
+		  kybxCtrlModel.setSortField("kybx_Tjno");
+		  kybxCtrlModel.setSortType("asc");
+		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
+		  model.addAttribute("kybxData", lstKybx);
+		
+		
 		return "web/index";
 	}
 
@@ -140,6 +170,16 @@ public class WebController {
 		List<PEProduct> smcp =  pEProductService.selectStarPEProductIndex();
 					
 		model.addAttribute("smcpData", smcp);
+		
+		//海外保险
+		  KybxCtrlModel kybxCtrlModel = new KybxCtrlModel();
+		  kybxCtrlModel.setPageSize(3);
+		  kybxCtrlModel.setPageNo(1);
+		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
+		  kybxCtrlModel.setSortField("kybx_Tjno");
+		  kybxCtrlModel.setSortType("asc");
+		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
+		  model.addAttribute("kybxData", lstKybx);
 		
 		
 		return "web/home";
