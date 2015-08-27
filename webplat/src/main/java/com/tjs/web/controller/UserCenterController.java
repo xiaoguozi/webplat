@@ -425,11 +425,22 @@ public class UserCenterController {
         userCtrlModel.setSortType("desc");
         
 		List<User> lstUser = userService.selectMyRmdUserList(userCtrlModel);
+		for(User userVO : lstUser){
+			userVO.setUsername(formatMobileNo(userVO.getUsername()));
+		}
 		
 		model.addAttribute("userCtrlModel", userCtrlModel);
 		model.addAttribute("lstUser", lstUser);
 		
 		return "web/userCenter/myRecommend";
+	}
+	
+	private String formatMobileNo(String mobileNo){
+		if(StringUtils.isBlank(mobileNo)){
+			return mobileNo;
+		}
+		String mobileNoMask = mobileNo.substring(0,3)+"****"+mobileNo.substring(7);
+		return mobileNoMask;
 	}
 
 }

@@ -369,6 +369,13 @@
         <if test="user.createDateString != null and user.createDateString!=''">
                and DATE_FORMAT(f.create_time,'%Y-%m-%d') = #{user.createDateString}
         </if>
+        	
+        ORDER BY f.create_time desc
+        	
+        <if test="pageNo!= 0">
+           LIMIT #{limitStart} ,#{pageSize}
+        </if>
+        
     </select>
     
 </mapper>

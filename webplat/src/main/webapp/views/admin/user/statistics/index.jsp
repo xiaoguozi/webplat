@@ -19,16 +19,7 @@
 <div class="row">
     <div class="col-md-12">
         <form id="searchForm" class="form-inline" role="form">
-            <div class="form-group">
-                <input type="text" class="form-control" size="11"  name="user.rmobileNo" placeholder="推荐人手机号" value=""  onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" >
-                <input type="hidden" name="sortField" value="">
-                <input type="hidden" name="sortType" value="">
-                <input type="hidden" name="pageNo" value="">
-                <input type="hidden" name="pageSize" value="">
-                <input type="hidden" id="userRegFrom" name="user.regFrom" value="">
-            </div>&nbsp;&nbsp;
-            <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
-        	&nbsp;
+            
         	<div class="btn-group" >
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			   <span class="pzzt" style="width:50px">注册来源</span><span class="caret"></span>
@@ -47,6 +38,16 @@
 			&nbsp;
 			<input id="d12" onFocus="WdatePicker({el:'d12', onpicked:function(){search();},oncleared:function(){search();}})" size="10" type="text" name="user.createDateString" class="form-control" placeholder="注册日期" style="width:150px;"/>
 			<img onclick="WdatePicker({el:'d12', onpicked:function(){search();},oncleared:function(){search();}})" src="assets/img/ui2/cal_pick.png" align="middle"  style="cursor:pointer; margin-left:-9px;">
+        	<div class="form-group">
+                <input type="text" class="form-control" size="11"  name="user.rmobileNo" placeholder="推荐人手机号" value=""  onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" >
+                <input type="hidden" name="sortField" value="">
+                <input type="hidden" name="sortType" value="">
+                <input type="hidden" name="pageNo" value="">
+                <input type="hidden" name="pageSize" value="15">
+                <input type="hidden" id="userRegFrom" name="user.regFrom" value="">
+            </div>&nbsp;&nbsp;
+            <button type="submit" id="searchBtn" class="btn btn-info ladda-button" data-style="expand-right"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+        	&nbsp;
         	<span style="font-size:14px;">注册人数：<span id="totalCount"></span>人</span>
         </form>
     </div>
