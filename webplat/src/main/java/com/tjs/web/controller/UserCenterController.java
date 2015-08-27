@@ -1,10 +1,15 @@
 package com.tjs.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -23,6 +28,7 @@ import com.tjs.admin.model.User;
 import com.tjs.admin.model.UserInfo;
 import com.tjs.admin.service.UserInfoService;
 import com.tjs.admin.service.UserService;
+import com.tjs.admin.system.utils.FileUtil;
 import com.tjs.admin.utils.StringUtils;
 import com.tjs.admin.zhifu.controller.CustomerFundCtrlModel;
 import com.tjs.admin.zhifu.controller.RechargeCtrlModel;
@@ -32,6 +38,7 @@ import com.tjs.admin.zhifu.service.ICustomerFund;
 import com.tjs.web.constants.PeiZiConstants;
 import com.tjs.web.model.CustIdentity;
 import com.tjs.web.service.CustIdentityService;
+import com.tjs.web.utils.QRCodeUtils;
 
 /**
  * 用户控制器
@@ -433,6 +440,34 @@ public class UserCenterController {
 		model.addAttribute("lstUser", lstUser);
 		
 		return "web/userCenter/myRecommend";
+	}
+	
+	/**
+	 * 生成二维码
+	 * 
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping("/rerfererQRCode")
+	public void getQRCode(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ServletOutputStream ot = response.getOutputStream();
+		String contextPath = getContextPath(request);
+		String url = contextPath + "rest/web/passport/mreg?regFrom=6&parent=" + id;
+		String ttString = UserCenterController.class.getResource("/").getPath();
+		String p = ttString.substring(0,
+				ttString.indexOf("/WEB-INF/classes"));
+		String logoUrl = p+File.separator + "assets/img/wx/logo_share.jpg";
+		QRCodeUtils.generateQRCode(ot, url, logoUrl, 300);
+		ot.flush();
+		ot.close();
+	}
+	
+	private String getContextPath(HttpServletRequest request){
+		String path = request.getContextPath();
+		String basePath = request.getScheme() + "://"
+				+ request.getServerName() + ":" + request.getServerPort()
+				+ path + "/";
+		return basePath;
 	}
 	
 	private String formatMobileNo(String mobileNo){
