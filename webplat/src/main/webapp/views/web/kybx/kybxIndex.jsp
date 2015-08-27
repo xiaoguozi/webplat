@@ -98,7 +98,7 @@ html{ width:100%; height:100%;background:#f5f5f5;}
             <li class="clearfix" style="min-height:238px">
             <div class="c-left fl ">
                     <div class="fl os-pic">
-                        <a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank"><img src="rest/web/system/upfile/viewImage?imageName=${kybx.kybxImgUrl}" alt="" /></a>
+                        <a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank"><img src="rest/web/system/upfile/viewImage?imageName=${kybx.kybxImgUrl}" alt="" style="width:197px;height:197px" /></a>
                     </div>
                     <div class="fl os-tdsc">
                         <a class="tit" href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank">${kybx.kybxName}</a> 

@@ -22,6 +22,6 @@ tr.last{padding-top:20px;line-height:61px;height:61px;text-align:center}
 
 .dleft{color:#666;}
 .drihgt{color:#000;}
-.d-item{width:89%;display:block;word-break: break-all;word-wrap: break-word;padding-left:30px}
+.d-item{width:89%;display:block;word-break: break-all;word-wrap: break-word;padding-left:10px}
 .d-item ul{list-style-type:decimal } 
 .d-item ul li{color:#000;line-height:28px;}

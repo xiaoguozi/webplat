@@ -94,6 +94,7 @@ public class WebController {
 		  kybxCtrlModel.setPageNo(1);
 		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
 		  kybxCtrlModel.setSortField("kybx_Tjno");
+		  kybxCtrlModel.getKybx().setKybxTjw(TjwEnum.PTSY.getKey());
 		  kybxCtrlModel.setSortType("asc");
 		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
 		  model.addAttribute("kybxData", lstKybx);
@@ -137,6 +138,7 @@ public class WebController {
 		  kybxCtrlModel.setPageSize(3);
 		  kybxCtrlModel.setPageNo(1);
 		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
+		  kybxCtrlModel.getKybx().setKybxTjw(TjwEnum.PTSY.getKey());
 		  kybxCtrlModel.setSortField("kybx_Tjno");
 		  kybxCtrlModel.setSortType("asc");
 		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
@@ -176,6 +178,7 @@ public class WebController {
 		  kybxCtrlModel.setPageSize(3);
 		  kybxCtrlModel.setPageNo(1);
 		  kybxCtrlModel.getKybx().setKybxStatus(ProductStatus.online.getKey());
+		  kybxCtrlModel.getKybx().setKybxTjw(TjwEnum.PTSY.getKey());
 		  kybxCtrlModel.setSortField("kybx_Tjno");
 		  kybxCtrlModel.setSortType("asc");
 		  List<Kybx> lstKybx = kybxService.selectKybx(kybxCtrlModel);
