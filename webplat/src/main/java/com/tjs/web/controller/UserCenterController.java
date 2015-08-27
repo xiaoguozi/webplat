@@ -463,11 +463,12 @@ public class UserCenterController {
 	}
 	
 	private String getContextPath(HttpServletRequest request){
-		String path = request.getContextPath();
-		String basePath = request.getScheme() + "://"
-				+ request.getServerName() + ":" + request.getServerPort()
-				+ path + "/";
-		return basePath;
+//		String path = request.getContextPath();
+//		String basePath = request.getScheme() + "://"
+//				+ request.getServerName() + ":" + request.getServerPort()
+//				+ path + "/";
+//		return basePath;
+		return "http://www.taojinshan.com.cn/";
 	}
 	
 	private String formatMobileNo(String mobileNo){
