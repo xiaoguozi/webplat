@@ -291,7 +291,7 @@ document.all(imgg).style.display='block'}}
 <div class="product_div tjs_right_unit <c:if test='${status.index<2}'>tjs_right_2border</c:if>">
 
 <div  style=" height:36px; width:100%;"></div>
-<div class="tjs_rightforeign_title"><span><a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank">${kybx.kybxShortName}</a></span>
+<div class="tjs_rightforeign_title"><span  style="font-size:16px"><a href="rest/web/Kybx/kybxDetail?id=${kybx.kybxId}&flag=${flag}" target="_blank">${kybx.kybxShortName}</a></span>
   <span style="margin-top:12px;display:block"><img src="assets/img/ui/publicity_ico.png" width="206" height="114" /></span>
   </div>
 <div class="tjs_product_textdiv" style="height:60px">保险公司：${kybx.kybxCompanyName}<br />

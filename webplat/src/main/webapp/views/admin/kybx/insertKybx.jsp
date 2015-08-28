@@ -62,14 +62,14 @@
           <div class="form-group">
             <label class="col-md-2 control-label">保险产品简称称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="kybxShortName" value="${kybx.kybxShortName}"  >
+                <input type="text" class="form-control required" maxlength="13"  name="kybxShortName" value="${kybx.kybxShortName}"  >
             </div>
          </div>
          
          <div class="form-group">
             <label class="col-md-2 control-label">保险公司名称</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="kybxCompanyName" value="${kybx.kybxCompanyName}"  >
+                <input type="text" class="form-control required" maxlength="10" name="kybxCompanyName" value="${kybx.kybxCompanyName}"  >
             </div>
          </div>
          
@@ -78,7 +78,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">年限选择</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="kybxChoose" value="${kybx.kybxChoose}"  >
+                <input type="text" class="form-control required" maxlength="10" name="kybxChoose" value="${kybx.kybxChoose}"  >
             </div>
          </div>
          
@@ -106,7 +106,7 @@
           <div class="form-group">
             <label class="col-md-2 control-label">产品亮点</label>
             <div class="col-md-6">
-            	<input type="text" class="form-control required" name="kybxGood" value="${kybx.kybxGood}"  >
+            	<input type="text" class="form-control required" maxlength="19" name="kybxGood" value="${kybx.kybxGood}"  >
             </div>
          </div>
          
@@ -124,7 +124,7 @@
           <div class="form-group">
             <label class="col-md-2 control-label">产品小类</label>
             <div class="col-md-6">
-                <input type="text" class="form-control required" name="kybxSubclass" value="${kybx.kybxSubclass}"  >
+                <input type="text" class="form-control required" maxlength="10" name="kybxSubclass" value="${kybx.kybxSubclass}"  >
             </div>
          </div>
          
