@@ -58,6 +58,10 @@
 /* 复制提示 */
 .copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -20px -80px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:6px;}
 .copy-tips-wrap{padding:10px 20px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:14px;}
+#ckepop .jiathis_bubble_style .jiathis_counter{
+	width:36px !important;
+}
+
 
 </style>
 
@@ -113,7 +117,7 @@
 			</div>
 		</div>
 		<div class="w100bg" >
-			<hr class="pc" />
+			<hr class="pc" style="padding:2px;"/>
 			<div class="tjs_1108px center">
 				<div class="bgcolor">
 					<div class="mycenter_left">
@@ -203,6 +207,25 @@
                   					 <div>
                    					<input class="copy_btn" type="text" value="http://www.taojinshan.com.cn/rest/web/passport/mreg?regFrom=6&parent=${userCtrlModel.user.parent}" style="width:90%;margin-left:3%;font-size:13px;color:#AAAAAA;border:1px solid #AAAAAA; line-height:26px; height:26px;" readOnly="readOnly"/></div>
 					 			</div>
+					 			
+					 			<!-- JiaThis Button BEGIN -->
+							<div id="ckepop" style="float:left; width:100%; margin-top:15px;">
+							<span class="jiathis_txt">分享到：</span>
+							<a class="jiathis_button_cqq">QQ好友</a>
+							<a class="jiathis_button_qzone">QQ空间</a>
+							<a class="jiathis_button_weixin">微信</a>
+							<a class="jiathis_button_tsina">新浪微博</a>
+							<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+							</div>
+							<script "text/javascript"> 
+								var jiathis_config = { 
+									url: "http://www.taojinshan.com.cn/rest/web/passport/reg", 
+									title: "淘金山互联网金融", 
+									summary:"淘金山-采集、风控、销售、服务为一体，为客户提供全面、专业、简单、高效的互联网++金融服务平台,互联网金融行业的京东,国内最牛的互联网金融服务平台;4006-114-088" 
+								} 
+							</script> 
+							<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+							<!-- JiaThis Button END -->
 						   </div>
 						   <div class="tab-pane fade" id="history">
 						     		<h2 class="space-right-h2">
@@ -334,6 +357,11 @@
                 });  
             }  
 			
+			//$(".jiathis_button_expanded").attr("width", "36px");
+			if($(".jiathis_counter").size()==1){
+				//$(".jiathis_counter").css("width", "36");
+				//$(".jiathis_counter").addClass("count_width");
+			}
 		});
 		
 	</script>
